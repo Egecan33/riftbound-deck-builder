@@ -1,15 +1,15 @@
 {
  "cards": {
   "all": {
-   "full": 1071,
-   "partial": 22,
+   "full": 1070,
+   "partial": 23,
    "none": 2
   }
  },
  "sentences": {
   "all": {
-   "full": 2087,
-   "partial": 15,
+   "full": 2083,
+   "partial": 19,
    "none": 11
   }
  },
@@ -21,8 +21,8 @@
     "none": 1
    },
    "sentences": {
-    "full": 489,
-    "partial": 3,
+    "full": 488,
+    "partial": 4,
     "none": 5
    }
   },
@@ -40,13 +40,13 @@
   },
   "SFD": {
    "cards": {
-    "full": 233,
-    "partial": 2,
+    "full": 232,
+    "partial": 3,
     "none": 0
    },
    "sentences": {
-    "full": 449,
-    "partial": 1,
+    "full": 448,
+    "partial": 2,
     "none": 1
    }
   },
@@ -69,8 +69,8 @@
     "none": 0
    },
    "sentences": {
-    "full": 366,
-    "partial": 6,
+    "full": 365,
+    "partial": 7,
     "none": 3
    }
   },
@@ -81,8 +81,8 @@
     "none": 1
    },
    "sentences": {
-    "full": 340,
-    "partial": 4,
+    "full": 339,
+    "partial": 5,
     "none": 2
    }
   }
@@ -90,13 +90,13 @@
  "byType": {
   "unit": {
    "cards": {
-    "full": 551,
-    "partial": 5,
+    "full": 550,
+    "partial": 6,
     "none": 1
    },
    "sentences": {
-    "full": 963,
-    "partial": 4,
+    "full": 962,
+    "partial": 5,
     "none": 3
    }
   },
@@ -119,8 +119,8 @@
     "none": 0
    },
    "sentences": {
-    "full": 262,
-    "partial": 3,
+    "full": 260,
+    "partial": 5,
     "none": 2
    }
   },
@@ -131,8 +131,8 @@
     "none": 0
    },
    "sentences": {
-    "full": 89,
-    "partial": 2,
+    "full": 88,
+    "partial": 3,
     "none": 2
    }
   },
@@ -149,8 +149,8 @@
    }
   }
  },
- "unparsedSentences": 26,
- "unparsedShapes": 26,
+ "unparsedSentences": 30,
+ "unparsedShapes": 30,
  "unknownHeads": [
   [
    "each player",

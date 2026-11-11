@@ -682,16 +682,16 @@
     ]
    },
    "ref": {
-    "total": 22,
-    "main": 19,
+    "total": 23,
+    "main": 20,
     "unit": 12,
     "spell": 6,
-    "gear": 1,
+    "gear": 2,
     "legend": 3,
     "battlefield": 0,
     "bySet": {
      "VEN": 9,
-     "SFD": 4,
+     "SFD": 5,
      "RAD": 3,
      "OGN": 3,
      "UNL": 3
@@ -716,22 +716,23 @@
      "Raging Soul",
      "Repair Specialist",
      "Rumble, Hotheaded",
+     "Serrated Dirk",
      "Shadow Fiend",
      "Square Up",
      "Vault Breaker"
     ]
    },
    "any": {
-    "total": 44,
-    "main": 41,
+    "total": 45,
+    "main": 42,
     "unit": 34,
     "spell": 6,
-    "gear": 1,
+    "gear": 2,
     "legend": 3,
     "battlefield": 0,
     "bySet": {
      "VEN": 9,
-     "SFD": 8,
+     "SFD": 9,
      "RAD": 7,
      "UNL": 9,
      "OGN": 10,
@@ -775,6 +776,7 @@
      "Rengar, Unseen",
      "Repair Specialist",
      "Rumble, Hotheaded",
+     "Serrated Dirk",
      "Shadow Fiend",
      "Sharkling",
      "Square Up",
@@ -813,6 +815,7 @@
      "Perfect Execution",
      "Purifier",
      "Rumble, Hotheaded",
+     "Serrated Dirk",
      "Square Up",
      "Vault Breaker"
     ],
@@ -891,31 +894,34 @@
     ]
    },
    "ref": {
-    "total": 4,
-    "main": 4,
+    "total": 6,
+    "main": 6,
     "unit": 3,
     "spell": 0,
-    "gear": 1,
+    "gear": 3,
     "legend": 0,
     "battlefield": 0,
     "bySet": {
      "VEN": 2,
      "RAD": 1,
-     "OGN": 1
+     "OGN": 1,
+     "SFD": 2
     },
     "names": [
      "Baccai Witherclaw",
      "Detonation Amplifier",
      "Karthus, Eternal",
-     "Noxian Emissary"
+     "Noxian Emissary",
+     "Sacred Shears",
+     "The Zero Drive"
     ]
    },
    "any": {
-    "total": 29,
-    "main": 29,
+    "total": 31,
+    "main": 31,
     "unit": 26,
     "spell": 0,
-    "gear": 3,
+    "gear": 5,
     "legend": 0,
     "battlefield": 0,
     "bySet": {
@@ -923,7 +929,7 @@
      "UNL": 9,
      "RAD": 5,
      "OGN": 8,
-     "SFD": 5
+     "SFD": 7
     },
     "names": [
      "Baccai Witherclaw",
@@ -948,10 +954,12 @@
      "Noxian Emissary",
      "Rift Herald",
      "Ruined Rex",
+     "Sacred Shears",
      "Scuttle Crab",
      "Soaring Scout",
      "Sprite Fountain",
      "Tasty Faefolk",
+     "The Zero Drive",
      "Undercover Agent",
      "Unsung Hero",
      "Watchful Sentry"
@@ -963,7 +971,9 @@
    "refClass": {
     "grant": [
      "Baccai Witherclaw",
-     "Noxian Emissary"
+     "Noxian Emissary",
+     "Sacred Shears",
+     "The Zero Drive"
     ],
     "filter": [
      "Detonation Amplifier",
@@ -1024,16 +1034,16 @@
     ]
    },
    "ref": {
-    "total": 23,
-    "main": 21,
+    "total": 24,
+    "main": 22,
     "unit": 16,
     "spell": 2,
-    "gear": 3,
+    "gear": 4,
     "legend": 0,
     "battlefield": 2,
     "bySet": {
      "VEN": 9,
-     "SFD": 2,
+     "SFD": 3,
      "UNL": 8,
      "OGN": 2,
      "RAD": 2
@@ -1049,6 +1059,7 @@
      "Grumpy Rockbear",
      "Gutter Palace",
      "Heisho, Shell of the World",
+     "Hexdrinker",
      "Hunting Dog",
      "Jayce, Hammer in Hand",
      "Kayle, Justified",
@@ -1065,18 +1076,18 @@
     ]
    },
    "any": {
-    "total": 51,
-    "main": 49,
+    "total": 52,
+    "main": 50,
     "unit": 44,
     "spell": 2,
-    "gear": 3,
+    "gear": 4,
     "legend": 0,
     "battlefield": 2,
     "bySet": {
      "UNL": 16,
      "RAD": 6,
      "VEN": 12,
-     "SFD": 10,
+     "SFD": 11,
      "OGN": 7
     },
     "names": [
@@ -1097,6 +1108,7 @@
      "Grumpy Rockbear",
      "Gutter Palace",
      "Heisho, Shell of the World",
+     "Hexdrinker",
      "Hunting Dog",
      "Irelia, Fervent",
      "Jax, Unmatched",
@@ -1151,6 +1163,7 @@
     ],
     "grant": [
      "Breakneck Mech",
+     "Hexdrinker",
      "Jayce, Hammer in Hand",
      "Petricite Monument",
      "Spirit's Refuge",
@@ -1227,22 +1240,24 @@
     ]
    },
    "ref": {
-    "total": 22,
-    "main": 20,
+    "total": 25,
+    "main": 23,
     "unit": 17,
     "spell": 2,
-    "gear": 1,
+    "gear": 4,
     "legend": 1,
     "battlefield": 1,
     "bySet": {
      "OGN": 6,
-     "SFD": 3,
+     "RAD": 3,
+     "SFD": 5,
      "VEN": 6,
-     "RAD": 2,
      "UNL": 5
     },
     "names": [
      "Bilgewater Bully",
+     "Blade of the Exile",
+     "Boots of Swiftness",
      "Bounty Hunter",
      "Breakneck Mech",
      "Brutal Hunter",
@@ -1259,6 +1274,7 @@
      "Portable Portal",
      "Raging Soul",
      "Renekton, Brute",
+     "Shurelya's Requiem",
      "Sivir, Mercenary",
      "Udyr, Wildman",
      "Vault Breaker",
@@ -1267,24 +1283,26 @@
     ]
    },
    "any": {
-    "total": 40,
-    "main": 38,
+    "total": 43,
+    "main": 41,
     "unit": 34,
     "spell": 2,
-    "gear": 2,
+    "gear": 5,
     "legend": 1,
     "battlefield": 1,
     "bySet": {
      "UNL": 11,
      "OGN": 13,
-     "SFD": 4,
+     "RAD": 6,
+     "SFD": 6,
      "VEN": 6,
-     "RAD": 5,
      "OGS": 1
     },
     "names": [
      "Atakhan",
      "Bilgewater Bully",
+     "Blade of the Exile",
+     "Boots of Swiftness",
      "Bounty Hunter",
      "Breakneck Mech",
      "Brutal Hunter",
@@ -1314,6 +1332,7 @@
      "Renekton, Brute",
      "Rengar, Unseen",
      "Revna the Lorekeeper",
+     "Shurelya's Requiem",
      "Siren of the Shallows",
      "Sivir, Mercenary",
      "The Ball",
@@ -1343,6 +1362,8 @@
      "Wily Newtfish"
     ],
     "grant": [
+     "Blade of the Exile",
+     "Boots of Swiftness",
      "Bounty Hunter",
      "Breakneck Mech",
      "Demon Shade",
@@ -1351,6 +1372,7 @@
      "Megatusk",
      "Oasis Raider",
      "Portable Portal",
+     "Shurelya's Requiem",
      "Udyr, Wildman",
      "Vault Breaker",
      "Windswept Hillock"
@@ -1970,24 +1992,25 @@
     ]
    },
    "ref": {
-    "total": 14,
-    "main": 10,
+    "total": 16,
+    "main": 12,
     "unit": 5,
     "spell": 4,
-    "gear": 1,
+    "gear": 3,
     "legend": 2,
     "battlefield": 2,
     "bySet": {
      "UNL": 2,
      "OGN": 3,
-     "RAD": 5,
-     "VEN": 3,
-     "SFD": 1
+     "SFD": 2,
+     "RAD": 6,
+     "VEN": 3
     },
     "names": [
      "Black Flame Altar",
      "Block",
      "Chakram Dancer",
+     "Cloth Armor",
      "Consult the Heavens",
      "Disciple of Shen",
      "Fiora, Victorious",
@@ -1996,26 +2019,27 @@
      "Grumpy Rockbear",
      "Hunting Blind",
      "Mechanized Menace",
+     "Nazuman Ntofo",
      "Ntofo Strikes",
      "Pride of Nazumah",
      "Serene Ascetic"
     ]
    },
    "any": {
-    "total": 39,
-    "main": 35,
+    "total": 41,
+    "main": 37,
     "unit": 30,
     "spell": 4,
-    "gear": 1,
+    "gear": 3,
     "legend": 2,
     "battlefield": 2,
     "bySet": {
-     "RAD": 13,
+     "RAD": 14,
      "UNL": 7,
      "OGN": 11,
+     "SFD": 3,
      "VEN": 4,
-     "OGS": 2,
-     "SFD": 2
+     "OGS": 2
     },
     "names": [
      "Armored Tusker",
@@ -2023,6 +2047,7 @@
      "Block",
      "Blue Sentinel",
      "Chakram Dancer",
+     "Cloth Armor",
      "Consult the Heavens",
      "Disciple of Shen",
      "Fiora, Victorious",
@@ -2038,6 +2063,7 @@
      "Leona, Determined",
      "Mechanized Menace",
      "Mutated Mouser",
+     "Nazuman Ntofo",
      "Needlessly Large Yordle",
      "Ntofo Strikes",
      "Orianna, Exquisite",
@@ -2070,10 +2096,12 @@
      "Black Flame Altar",
      "Block",
      "Chakram Dancer",
+     "Cloth Armor",
      "Consult the Heavens",
      "For Demacia!",
      "Hunting Blind",
      "Mechanized Menace",
+     "Nazuman Ntofo",
      "Ntofo Strikes",
      "Pride of Nazumah"
     ],
@@ -2155,49 +2183,53 @@
     ]
    },
    "ref": {
-    "total": 7,
-    "main": 4,
+    "total": 9,
+    "main": 6,
     "unit": 3,
     "spell": 1,
-    "gear": 0,
+    "gear": 2,
     "legend": 1,
     "battlefield": 2,
     "bySet": {
      "OGN": 1,
+     "SFD": 1,
      "VEN": 3,
-     "RAD": 1,
+     "RAD": 2,
      "UNL": 2
     },
     "names": [
      "Block",
+     "Doran's Shield",
      "Dune Surfer",
      "Durand Memorial",
      "Eye of Twilight",
      "Kinkou Temple",
      "Lillia, Protector of Dreams",
+     "Protector's Shield",
      "Yuumi, Magical Cat"
     ]
    },
    "any": {
-    "total": 30,
-    "main": 27,
+    "total": 32,
+    "main": 29,
     "unit": 26,
     "spell": 1,
-    "gear": 0,
+    "gear": 2,
     "legend": 1,
     "battlefield": 2,
     "bySet": {
      "UNL": 8,
-     "RAD": 5,
+     "RAD": 6,
      "OGN": 10,
-     "VEN": 4,
-     "SFD": 3
+     "SFD": 4,
+     "VEN": 4
     },
     "names": [
      "Alpha Wildclaw",
      "Armored Tusker",
      "Blitzcrank, Impassive",
      "Block",
+     "Doran's Shield",
      "Dune Surfer",
      "Durand Memorial",
      "Eye of Twilight",
@@ -2212,6 +2244,7 @@
      "Needlessly Large Yordle",
      "Party Crasher",
      "Poppy, Defender of the Meek",
+     "Protector's Shield",
      "Rell, Magnetic",
      "Sett, Kingpin",
      "Shen, Kinkou",
@@ -2232,9 +2265,11 @@
    "refClass": {
     "grant": [
      "Block",
+     "Doran's Shield",
      "Durand Memorial",
      "Eye of Twilight",
      "Lillia, Protector of Dreams",
+     "Protector's Shield",
      "Yuumi, Magical Cat"
     ],
     "filter": [
@@ -3055,26 +3090,30 @@
     ]
    },
    "ref": {
-    "total": 0,
-    "main": 0,
+    "total": 1,
+    "main": 1,
     "unit": 0,
     "spell": 0,
-    "gear": 0,
-    "legend": 0,
-    "battlefield": 0,
-    "bySet": {},
-    "names": []
-   },
-   "any": {
-    "total": 12,
-    "main": 12,
-    "unit": 12,
-    "spell": 0,
-    "gear": 0,
+    "gear": 1,
     "legend": 0,
     "battlefield": 0,
     "bySet": {
-     "UNL": 12
+     "UNL": 1
+    },
+    "names": [
+     "Hunter's Machete"
+    ]
+   },
+   "any": {
+    "total": 13,
+    "main": 13,
+    "unit": 12,
+    "spell": 0,
+    "gear": 1,
+    "legend": 0,
+    "battlefield": 0,
+    "bySet": {
+     "UNL": 13
     },
     "names": [
      "Arachnoid Horror",
@@ -3083,6 +3122,7 @@
      "Gemhand Hunter",
      "Gustwalker",
      "Herald of Spring",
+     "Hunter's Machete",
      "Kha'Zix, Evolving Hunter",
      "Master Yi, Tempered",
      "Mosstomper",
@@ -3096,7 +3136,11 @@
     "1 (no number)": 6,
     "3": 1
    },
-   "refClass": {},
+   "refClass": {
+    "grant": [
+     "Hunter's Machete"
+    ]
+   },
    "reminders": [
     [
      "(When I conquer or hold, gain 1 XP.)",
@@ -3146,26 +3190,30 @@
     ]
    },
    "ref": {
-    "total": 0,
-    "main": 0,
+    "total": 1,
+    "main": 1,
     "unit": 0,
     "spell": 0,
-    "gear": 0,
+    "gear": 1,
     "legend": 0,
     "battlefield": 0,
-    "bySet": {},
-    "names": []
+    "bySet": {
+     "UNL": 1
+    },
+    "names": [
+     "Soul Sword"
+    ]
    },
    "any": {
-    "total": 14,
-    "main": 13,
+    "total": 15,
+    "main": 14,
     "unit": 9,
     "spell": 3,
-    "gear": 1,
+    "gear": 2,
     "legend": 1,
     "battlefield": 0,
     "bySet": {
-     "UNL": 14
+     "UNL": 15
     },
     "names": [
      "Bandle Soldier",
@@ -3179,6 +3227,7 @@
      "Mosstomper",
      "Scorchclaw",
      "Skyward Strike",
+     "Soul Sword",
      "Targonian Visionary",
      "Wuju Apprentice",
      "Wuju Master"
@@ -3190,7 +3239,11 @@
     "11": 4,
     "16": 1
    },
-   "refClass": {},
+   "refClass": {
+    "grant": [
+     "Soul Sword"
+    ]
+   },
    "reminders": [],
    "firstSet": "UNL",
    "tokensWith": []
@@ -4292,16 +4345,16 @@
    "regex": "pay any amount|\\bx\\b"
   },
   "channel": {
-   "total": 32,
-   "main": 24,
+   "total": 33,
+   "main": 25,
    "unit": 14,
    "spell": 8,
-   "gear": 2,
+   "gear": 3,
    "legend": 3,
    "battlefield": 5,
    "bySet": {
     "OGN": 14,
-    "SFD": 3,
+    "SFD": 4,
     "VEN": 4,
     "UNL": 4,
     "RAD": 7
@@ -4311,6 +4364,7 @@
     "Aphelios, Exalted",
     "Baccai Witherclaw",
     "Black Rose Dignitary",
+    "Boneshiver",
     "Catalyst of Aeons",
     "Coalesced Energy",
     "Find Your Center",
@@ -4372,16 +4426,16 @@
    "regex": "\\bready (up to )?(\\w+ )?(of your |friendly |exhausted )?runes?\\b|ready (your|all) runes"
   },
   "rune-exhaust": {
-   "total": 28,
-   "main": 22,
+   "total": 29,
+   "main": 23,
    "unit": 12,
    "spell": 8,
-   "gear": 2,
+   "gear": 3,
    "legend": 2,
    "battlefield": 4,
    "bySet": {
     "OGN": 13,
-    "SFD": 3,
+    "SFD": 4,
     "VEN": 3,
     "UNL": 3,
     "RAD": 6
@@ -4391,6 +4445,7 @@
     "Aphelios, Exalted",
     "Baccai Witherclaw",
     "Black Rose Dignitary",
+    "Boneshiver",
     "Catalyst of Aeons",
     "Coalesced Energy",
     "Find Your Center",
@@ -4440,17 +4495,17 @@
    "regex": "\\brecycles? [^.]*\\brunes?\\b"
   },
   "rune-any": {
-   "total": 57,
-   "main": 42,
+   "total": 58,
+   "main": 43,
    "unit": 29,
    "spell": 11,
-   "gear": 2,
+   "gear": 3,
    "legend": 6,
    "battlefield": 9,
    "bySet": {
     "VEN": 16,
     "OGN": 20,
-    "SFD": 4,
+    "SFD": 5,
     "RAD": 9,
     "UNL": 6,
     "OGS": 2
@@ -4464,6 +4519,7 @@
     "Battle Mistress",
     "Battle Preparations",
     "Black Rose Dignitary",
+    "Boneshiver",
     "Catalyst of Aeons",
     "Coalesced Energy",
     "Cosmic Vista",
@@ -4517,16 +4573,16 @@
    "regex": "\\brunes?\\b"
   },
   "gold": {
-   "total": 27,
-   "main": 22,
+   "total": 29,
+   "main": 24,
    "unit": 13,
    "spell": 6,
-   "gear": 3,
+   "gear": 5,
    "legend": 3,
    "battlefield": 2,
    "bySet": {
     "RAD": 6,
-    "SFD": 17,
+    "SFD": 19,
     "UNL": 4
    },
    "names": [
@@ -4540,6 +4596,7 @@
     "Card Sharp",
     "Chem-Baroness",
     "Chemtech Cask",
+    "Cull",
     "Deadly Flourish",
     "Draven, Vanquisher",
     "Eminent Benefactor",
@@ -4556,6 +4613,7 @@
     "Trove Golem",
     "Wages of Pain",
     "Whirling Twirligig",
+    "World Atlas",
     "Yeti Brawler"
    ],
    "regex": "\\bgold\\b"
@@ -4670,18 +4728,18 @@
    "regex": "new choices|gain control of (it|that spell|a spell)"
   },
   "attack-trigger": {
-   "total": 39,
-   "main": 38,
+   "total": 41,
+   "main": 40,
    "unit": 36,
    "spell": 0,
-   "gear": 2,
+   "gear": 4,
    "legend": 1,
    "battlefield": 0,
    "bySet": {
     "OGN": 12,
     "VEN": 7,
     "UNL": 8,
-    "SFD": 7,
+    "SFD": 9,
     "RAD": 5
    },
    "names": [
@@ -4701,6 +4759,7 @@
     "Dune Drake",
     "Ezreal, Dashing",
     "Fiora, Peerless",
+    "Forgefire Cape",
     "Graves, Blasting Through",
     "Icevale Archer",
     "Jarvan IV, Royal Heir",
@@ -4712,6 +4771,7 @@
     "Mask of Foresight",
     "Mordekaiser, Dominating",
     "Nine-Tailed Fox",
+    "Recurve Bow",
     "Rek'Sai, Swarm Queen",
     "Rell, Magnetic",
     "Renekton, Rage Fueled",
@@ -4728,17 +4788,17 @@
    "regex": "when (i|a friendly unit|one or more friendly units|you|another friendly unit|a unit you control|an? [a-z]+ unit|it) (attack|attacks)\\b|when (i|a friendly unit) attacks? or defends?"
   },
   "defend-trigger": {
-   "total": 18,
-   "main": 14,
+   "total": 20,
+   "main": 16,
    "unit": 13,
    "spell": 0,
-   "gear": 1,
+   "gear": 3,
    "legend": 0,
    "battlefield": 4,
    "bySet": {
     "OGN": 5,
     "VEN": 1,
-    "SFD": 6,
+    "SFD": 8,
     "RAD": 4,
     "UNL": 2
    },
@@ -4749,6 +4809,7 @@
     "Durand Memorial",
     "Ezreal, Dashing",
     "Fiora, Peerless",
+    "Forgefire Cape",
     "Fortified Position",
     "Graves, Blasting Through",
     "K'Sante, Dauntless",
@@ -4758,6 +4819,7 @@
     "Overzealous Fan",
     "Ravenbloom Conservatory",
     "Reaver's Row",
+    "Recurve Bow",
     "Teemo, Strategist",
     "Yuumi, Magical Cat",
     "Ziggs, Explosive"
@@ -4765,18 +4827,18 @@
    "regex": "when (i|a friendly unit|one or more friendly units|you|another friendly unit|it) (defend|defends)\\b|attacks? or defends?"
   },
   "attacker-ref": {
-   "total": 52,
-   "main": 50,
+   "total": 54,
+   "main": 52,
    "unit": 44,
    "spell": 3,
-   "gear": 3,
+   "gear": 5,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
     "OGN": 15,
     "VEN": 9,
     "UNL": 11,
-    "SFD": 12,
+    "SFD": 14,
     "RAD": 5
    },
    "names": [
@@ -4798,6 +4860,7 @@
     "Existential Dread",
     "Ezreal, Dashing",
     "Fiora, Peerless",
+    "Forgefire Cape",
     "Graves, Blasting Through",
     "Icevale Archer",
     "Jarvan IV, Royal Heir",
@@ -4811,6 +4874,7 @@
     "Mordekaiser, Dominating",
     "Nine-Tailed Fox",
     "Overzealous Fan",
+    "Recurve Bow",
     "Rek'Sai, Swarm Queen",
     "Rell, Magnetic",
     "Renekton, Rage Fueled",
@@ -4836,18 +4900,18 @@
    "regex": "\\battack(s|er|ers|ing|ed)?\\b"
   },
   "defender-ref": {
-   "total": 23,
-   "main": 16,
+   "total": 25,
+   "main": 18,
    "unit": 15,
    "spell": 0,
-   "gear": 1,
+   "gear": 3,
    "legend": 1,
    "battlefield": 6,
    "bySet": {
     "OGN": 6,
     "UNL": 4,
     "VEN": 2,
-    "SFD": 6,
+    "SFD": 8,
     "RAD": 4,
     "OGS": 1
    },
@@ -4860,6 +4924,7 @@
     "Ezreal, Dashing",
     "Fiora, Peerless",
     "Forbidding Waste",
+    "Forgefire Cape",
     "Fortified Position",
     "Graves, Blasting Through",
     "K'Sante, Dauntless",
@@ -4869,6 +4934,7 @@
     "Overzealous Fan",
     "Ravenbloom Conservatory",
     "Reaver's Row",
+    "Recurve Bow",
     "Teemo, Strategist",
     "Threshold of the Gray",
     "Wielder of Water",
@@ -5001,19 +5067,20 @@
    "regex": "assign(ed|ing|s)? (combat )?damage|must be assigned|ignore \\[(tank|backline)\\]"
   },
   "excess-damage": {
-   "total": 5,
-   "main": 3,
+   "total": 6,
+   "main": 4,
    "unit": 3,
    "spell": 0,
-   "gear": 0,
+   "gear": 1,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
-    "UNL": 3,
+    "UNL": 4,
     "SFD": 1,
     "OGN": 1
    },
    "names": [
+    "Hextech Gauntlets",
     "Piltover Enforcer",
     "Sivir, Ambitious",
     "Trapping Grounds",
@@ -5023,19 +5090,19 @@
    "regex": "excess damage"
   },
   "deal-damage": {
-   "total": 95,
-   "main": 93,
+   "total": 99,
+   "main": 97,
    "unit": 34,
    "spell": 55,
-   "gear": 4,
+   "gear": 8,
    "legend": 0,
    "battlefield": 2,
    "bySet": {
     "VEN": 13,
-    "UNL": 15,
+    "UNL": 16,
     "OGN": 32,
     "OGS": 6,
-    "SFD": 13,
+    "SFD": 16,
     "RAD": 16
    },
    "names": [
@@ -5049,6 +5116,7 @@
     "Bellows Breath",
     "Bilgewater Tracker",
     "Blast Corps Cadet",
+    "Blighted Battleaxe",
     "Bullet Time, Miss Fortune",
     "Caitlyn, Patrolling",
     "Cannon Barrage",
@@ -5072,6 +5140,7 @@
     "Final Spark, Lux",
     "Firestorm",
     "Flurry of Blades",
+    "Forgefire Cape",
     "Frozen Fortress",
     "Gentlemen's Duel",
     "Glowstone",
@@ -5095,9 +5164,11 @@
     "Parallel Convergence",
     "Piercing Light",
     "Primordial Roar",
+    "Rabadon's Deathcrown",
     "Rampage",
     "Ravenborn Tome",
     "Realm of Death",
+    "Recurve Bow",
     "Renekton, Rage Fueled",
     "Riptide Rex",
     "Riven, Shattered",
@@ -5158,17 +5229,18 @@
    "regex": "split (among|between)"
   },
   "bonus-damage": {
-   "total": 6,
-   "main": 5,
+   "total": 7,
+   "main": 6,
    "unit": 2,
    "spell": 2,
-   "gear": 1,
+   "gear": 2,
    "legend": 0,
    "battlefield": 1,
    "bySet": {
     "OGS": 1,
     "VEN": 1,
     "UNL": 1,
+    "SFD": 1,
     "OGN": 2,
     "RAD": 1
    },
@@ -5176,6 +5248,7 @@
     "Annie, Fiery",
     "Consuming Curse",
     "Dancing Grenade",
+    "Rabadon's Deathcrown",
     "Ravenborn Tome",
     "Void Gate",
     "Ziggs, Short-Fused"
@@ -5204,22 +5277,23 @@
    "regex": "\\bprevent"
   },
   "heal": {
-   "total": 9,
-   "main": 7,
+   "total": 10,
+   "main": 8,
    "unit": 3,
    "spell": 2,
-   "gear": 2,
+   "gear": 3,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
     "UNL": 2,
+    "SFD": 3,
     "OGS": 1,
-    "SFD": 2,
     "RAD": 1,
     "OGN": 3
    },
    "names": [
     "Altar of Blood",
+    "Guardian Angel",
     "Highlander, Yi",
     "Janna, Savior",
     "Mordekaiser, Twice Slain",
@@ -5253,18 +5327,18 @@
    "regex": "takes? (\\d+ |combat |non-combat |any )?damage|is dealt damage|would be dealt damage|damaged"
   },
   "might-plus": {
-   "total": 145,
-   "main": 137,
+   "total": 149,
+   "main": 141,
    "unit": 92,
    "spell": 33,
-   "gear": 12,
+   "gear": 16,
    "legend": 3,
    "battlefield": 5,
    "bySet": {
-    "UNL": 29,
-    "SFD": 18,
+    "UNL": 30,
+    "SFD": 19,
     "RAD": 22,
-    "VEN": 42,
+    "VEN": 44,
     "OGN": 28,
     "OGS": 6
    },
@@ -5285,6 +5359,7 @@
     "Battle Preparations",
     "Bonds of Strength",
     "Brutal Hunter",
+    "Brutalizer",
     "Call to Glory",
     "Combat Experience",
     "Crimson Pigeons",
@@ -5326,6 +5401,7 @@
     "Grim Resolve",
     "Gustwalker",
     "Guttural Roar",
+    "Hand Hammer",
     "Harpoon Squad",
     "Heart of Dark Ice",
     "Heartening Soul",
@@ -5359,6 +5435,7 @@
     "Overloaded Traveler",
     "Packed Amphitheater",
     "Pakaa Protector",
+    "Pendulum Blade",
     "Petal Pixie",
     "Pirate's Haven",
     "Prepared Neophyte",
@@ -5391,6 +5468,7 @@
     "Sivir, Mercenary",
     "Solari Sunhawk",
     "Soul Shepherd",
+    "Soul Sword",
     "Spectral Centaur",
     "Spiderling",
     "Spirit of the Forge",
@@ -5566,17 +5644,17 @@
    "regex": "\\balone\\b|one on one"
   },
   "move": {
-   "total": 106,
-   "main": 97,
+   "total": 109,
+   "main": 100,
    "unit": 62,
    "spell": 29,
-   "gear": 6,
+   "gear": 9,
    "legend": 4,
    "battlefield": 5,
    "bySet": {
     "RAD": 18,
-    "VEN": 15,
-    "SFD": 21,
+    "VEN": 17,
+    "SFD": 22,
     "UNL": 29,
     "OGN": 22,
     "OGS": 1
@@ -5613,6 +5691,7 @@
     "Entrenched Boar",
     "Evelynn, Entrancing",
     "Exemplar of Demacia",
+    "Eye of the Herald",
     "Ezreal, Dashing",
     "Fae Porter",
     "Fight or Flight",
@@ -5627,6 +5706,7 @@
     "Imposing Challenger",
     "Irresistible Faefolk",
     "Isolate",
+    "Jagged Cutlass",
     "Janna, Savior",
     "Jarvan IV, Royal Heir",
     "Jhin, Murderous Artist",
@@ -5647,6 +5727,7 @@
     "Noxian Drummer",
     "Overzealous Fan",
     "Pakaa Protector",
+    "Pendulum Blade",
     "Raving Witness",
     "Reaver's Row",
     "Relentless Pursuit",
@@ -5692,16 +5773,17 @@
    "regex": "\\bmov(e|es|ed|ing)\\b"
   },
   "cant-move": {
-   "total": 6,
-   "main": 5,
+   "total": 7,
+   "main": 6,
    "unit": 4,
    "spell": 1,
-   "gear": 0,
+   "gear": 1,
    "legend": 0,
    "battlefield": 1,
    "bySet": {
     "UNL": 2,
     "RAD": 2,
+    "VEN": 1,
     "SFD": 1,
     "OGN": 1
    },
@@ -5709,6 +5791,7 @@
     "Determined Sentry",
     "Entrenched Boar",
     "Hunker Down",
+    "Jagged Cutlass",
     "Minotaur Reckoner",
     "Vex, Apathetic",
     "Vilemaw's Lair"
@@ -5716,18 +5799,18 @@
    "regex": "can't move|can't be moved|skip the next time[^.]*move"
   },
   "recall": {
-   "total": 13,
-   "main": 11,
+   "total": 14,
+   "main": 12,
    "unit": 2,
    "spell": 5,
-   "gear": 4,
+   "gear": 5,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
     "UNL": 3,
     "VEN": 1,
+    "SFD": 3,
     "OGS": 1,
-    "SFD": 2,
     "RAD": 1,
     "OGN": 5
    },
@@ -5735,6 +5818,7 @@
     "Altar of Blood",
     "Conscription",
     "Glowstone",
+    "Guardian Angel",
     "Highlander, Yi",
     "Hostile Takeover",
     "Mordekaiser, Twice Slain",
@@ -5954,16 +6038,16 @@
    "regex": "enters? ready|play[^.]*\\bready\\b[^.]*token|ready [0-9a-z\\[\\] ]*unit token"
   },
   "exhaust-effect": {
-   "total": 34,
-   "main": 19,
+   "total": 35,
+   "main": 20,
    "unit": 4,
    "spell": 7,
-   "gear": 8,
+   "gear": 9,
    "legend": 14,
    "battlefield": 1,
    "bySet": {
     "UNL": 8,
-    "SFD": 9,
+    "SFD": 10,
     "RAD": 9,
     "VEN": 1,
     "OGS": 1,
@@ -5985,6 +6069,7 @@
     "Gloomist",
     "Grand Duelist",
     "Green Father",
+    "Guardian Angel",
     "Highlander, Yi",
     "Invigorating Bloom",
     "Ki Burst",
@@ -6119,17 +6204,17 @@
    "regex": "\\[exhaust\\]\\s*:|\\[e\\]\\s*:|, \\[exhaust\\]"
   },
   "exhausted-ref": {
-   "total": 71,
-   "main": 59,
+   "total": 74,
+   "main": 62,
    "unit": 32,
    "spell": 15,
-   "gear": 12,
+   "gear": 15,
    "legend": 6,
    "battlefield": 6,
    "bySet": {
     "OGN": 16,
     "RAD": 18,
-    "SFD": 20,
+    "SFD": 23,
     "VEN": 6,
     "UNL": 11
    },
@@ -6145,12 +6230,14 @@
     "Black Rose Dignitary",
     "Blood Money",
     "Bloodharbor Ripper",
+    "Boneshiver",
     "Bushwhack",
     "Card Sharp",
     "Catalyst of Aeons",
     "Chem-Baroness",
     "Chemtech Cask",
     "Coalesced Energy",
+    "Cull",
     "Deadly Flourish",
     "Draven, Vanquisher",
     "Eminent Benefactor",
@@ -6204,6 +6291,7 @@
     "Voidreaver",
     "Wages of Pain",
     "Whirling Twirligig",
+    "World Atlas",
     "Yeti Brawler"
    ],
    "regex": "\\bexhausted\\b"
@@ -6373,37 +6461,43 @@
    "regex": "battlefields? you control|battlefield you (don\\'t )?control|control (\\w+ ){0,3}battlefields?|uncontrolled|open battlefield|enemy battlefield|battlefields? (an opponent|your opponents?) controls?"
   },
   "conquer": {
-   "total": 54,
-   "main": 30,
+   "total": 62,
+   "main": 38,
    "unit": 26,
    "spell": 2,
-   "gear": 2,
+   "gear": 10,
    "legend": 7,
    "battlefield": 17,
    "bySet": {
     "OGN": 15,
-    "SFD": 16,
+    "SFD": 22,
+    "UNL": 10,
     "RAD": 7,
-    "UNL": 8,
     "VEN": 7,
     "OGS": 1
    },
    "names": [
     "Adaptatron",
     "Blade Dancer",
+    "Blighted Battleaxe",
     "Bloodscent Swarm",
+    "Boneshiver",
     "Concert Poster",
+    "Cull",
     "Deceiver",
+    "Doran's Ring",
     "Emperor's Dais",
     "Firelights' Hideout",
     "Green Father",
     "Hall of Legends",
+    "Hextech Gauntlets",
     "Inviolus Vox",
     "Ivern, Friend to All",
     "Jarvan IV, Martial Paragon",
     "Kai'Sa, Evolutionary",
     "Kai'Sa, Survivor",
     "Kennen, Storm of Shuriken",
+    "Last Rites",
     "Lucian, Merciless",
     "Might of Demacia, Starter",
     "Minefield",
@@ -6426,6 +6520,7 @@
     "Sett, Brawler",
     "Sigil of the Storm",
     "Sivir, Ambitious",
+    "Skyfall of Areion",
     "Sneaky Zeebles",
     "Sunken Temple",
     "Super Mega Death Rocket!, Jinx",
@@ -6439,6 +6534,7 @@
     "Vayne, Hunter",
     "Veiled Temple",
     "Void Burrower",
+    "Warmog's Armor",
     "Yeti Brawler",
     "Yone, Blademaster",
     "Zaun Warrens",
@@ -6447,17 +6543,17 @@
    "regex": "\\bconquer"
   },
   "hold": {
-   "total": 46,
-   "main": 27,
+   "total": 50,
+   "main": 31,
    "unit": 24,
    "spell": 0,
-   "gear": 3,
+   "gear": 7,
    "legend": 5,
    "battlefield": 14,
    "bySet": {
     "OGN": 9,
     "UNL": 16,
-    "SFD": 9,
+    "SFD": 13,
     "RAD": 8,
     "VEN": 4
    },
@@ -6489,6 +6585,7 @@
     "Ivern, Nurturer",
     "K'Sante, Courageous",
     "Keeper of the Hammer",
+    "Last Rites",
     "Nami, Headstrong",
     "Navori Fighting Pit",
     "Needlessly Large Yordle",
@@ -6500,29 +6597,32 @@
     "Shadow Temple",
     "Shen, Leader of the Kinkou Order",
     "Shen, Scourge of Shadows",
+    "Skyfall of Areion",
     "Startipped Peak",
     "The Academy",
     "The Good Stuff",
     "The Grand Plaza",
     "The Papertree",
     "Trevor Snoozebottom",
+    "Trinity Force",
     "Vaults of Helia",
-    "Vilemaw"
+    "Vilemaw",
+    "World Atlas"
    ],
    "regex": "\\bhold(s|ing)?\\b|\\bheld\\b"
   },
   "score-points": {
-   "total": 26,
-   "main": 21,
+   "total": 27,
+   "main": 22,
    "unit": 18,
    "spell": 1,
-   "gear": 2,
+   "gear": 3,
    "legend": 1,
    "battlefield": 4,
    "bySet": {
     "OGN": 9,
     "VEN": 6,
-    "SFD": 6,
+    "SFD": 7,
     "RAD": 3,
     "UNL": 2
    },
@@ -6550,6 +6650,7 @@
     "Swain, Visionary",
     "The Arena's Greatest",
     "Tianna Crownguard",
+    "Trinity Force",
     "Tryndamere, Barbarian",
     "Yasuo, Windrider",
     "Zero Point Inflection"
@@ -6557,17 +6658,17 @@
    "regex": "\\bscores? \\d+ points?|gains? \\d+ points?|\\byou score\\b|score a point|\\bpoints?\\b"
   },
   "score-ref": {
-   "total": 24,
-   "main": 20,
+   "total": 25,
+   "main": 21,
    "unit": 16,
    "spell": 1,
-   "gear": 3,
+   "gear": 4,
    "legend": 1,
    "battlefield": 3,
    "bySet": {
     "OGN": 5,
     "VEN": 7,
-    "SFD": 6,
+    "SFD": 7,
     "RAD": 3,
     "UNL": 3
    },
@@ -6593,6 +6694,7 @@
     "Shen, Leader of the Kinkou Order",
     "Sumpworks Map",
     "Swain, Visionary",
+    "Trinity Force",
     "Tryndamere, Barbarian",
     "Yasuo, Windrider",
     "Zero Point Inflection"
@@ -6658,16 +6760,16 @@
    "regex": "take a turn after|extra turn|another turn|additional turn"
   },
   "buff": {
-   "total": 52,
-   "main": 45,
+   "total": 53,
+   "main": 46,
    "unit": 32,
    "spell": 8,
-   "gear": 5,
+   "gear": 6,
    "legend": 4,
    "battlefield": 3,
    "bySet": {
     "OGN": 32,
-    "SFD": 6,
+    "SFD": 7,
     "UNL": 8,
     "RAD": 6
    },
@@ -6722,6 +6824,7 @@
     "Vanguard Helm",
     "Voidreaver",
     "Wallop",
+    "Warmog's Armor",
     "Wildclaw Shaman",
     "Wizened Elder"
    ],
@@ -6863,11 +6966,11 @@
    "regex": "when (you|an opponent|a player) chooses?|when i(\\'m| am) chosen|chosen by"
   },
   "kill": {
-   "total": 81,
-   "main": 79,
+   "total": 82,
+   "main": 80,
    "unit": 29,
    "spell": 31,
-   "gear": 19,
+   "gear": 20,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
@@ -6875,7 +6978,7 @@
     "UNL": 14,
     "VEN": 11,
     "RAD": 17,
-    "SFD": 13,
+    "SFD": 14,
     "OGS": 1
    },
    "names": [
@@ -6914,6 +7017,7 @@
     "Forge of the Future",
     "Fox-Fire, Ahri",
     "Glowstone",
+    "Guardian Angel",
     "Harnessed Dragon",
     "Heedless Resurrection",
     "Hexplosive Minefield",
@@ -7014,16 +7118,16 @@
    "regex": "\\bkill (an? |another |\\d+ |any number of |up to \\w+ |two |one )?(other )?(of your |friendly )(units?|gear)|kill this|kill me\\b|sacrifice"
   },
   "dies-trigger": {
-   "total": 32,
-   "main": 28,
+   "total": 33,
+   "main": 29,
    "unit": 17,
    "spell": 6,
-   "gear": 5,
+   "gear": 6,
    "legend": 2,
    "battlefield": 2,
    "bySet": {
     "UNL": 11,
-    "SFD": 5,
+    "SFD": 6,
     "RAD": 6,
     "OGS": 1,
     "VEN": 2,
@@ -7038,6 +7142,7 @@
     "Deadly Flourish",
     "Demacian Illuminators",
     "Draven, Audacious",
+    "Guardian Angel",
     "Highlander, Yi",
     "Lingering Animus",
     "Lonely Poro",
@@ -7256,18 +7361,18 @@
    "regex": "\\btrash(es)?\\b"
   },
   "discard": {
-   "total": 40,
-   "main": 35,
+   "total": 41,
+   "main": 36,
    "unit": 24,
    "spell": 6,
-   "gear": 5,
+   "gear": 6,
    "legend": 3,
    "battlefield": 2,
    "bySet": {
     "RAD": 6,
     "UNL": 8,
     "OGN": 16,
-    "SFD": 2,
+    "SFD": 3,
     "VEN": 8
    },
    "names": [
@@ -7277,6 +7382,7 @@
     "Chemtech Enforcer",
     "Corrupt Enforcer",
     "Deceiver",
+    "Doran's Ring",
     "Ekko, Revolutionary",
     "Evershade Stalker",
     "Ezreal, Prodigy",
@@ -7352,16 +7458,16 @@
    "regex": "burn(s|ed)? out"
   },
   "play-from-trash": {
-   "total": 40,
-   "main": 40,
+   "total": 41,
+   "main": 41,
    "unit": 16,
    "spell": 21,
-   "gear": 3,
+   "gear": 4,
    "legend": 0,
    "battlefield": 0,
    "bySet": {
     "OGS": 1,
-    "SFD": 5,
+    "SFD": 6,
     "VEN": 19,
     "OGN": 6,
     "UNL": 6,
@@ -7389,6 +7495,7 @@
     "Kai'Sa, Evolutionary",
     "Kennen, Storm of Shuriken",
     "Lacerate",
+    "Last Rites",
     "Lightning Rush",
     "Meticulous Restorationist",
     "Onslaught",
@@ -7691,18 +7798,18 @@
    "regex": "\\[predict( \\d+)?\\]|\\bpredict"
   },
   "draw": {
-   "total": 156,
-   "main": 137,
+   "total": 159,
+   "main": 140,
    "unit": 59,
    "spell": 48,
-   "gear": 30,
+   "gear": 33,
    "legend": 10,
    "battlefield": 9,
    "bySet": {
     "VEN": 17,
     "RAD": 27,
-    "SFD": 35,
-    "UNL": 34,
+    "SFD": 37,
+    "UNL": 35,
     "OGN": 41,
     "OGS": 2
    },
@@ -7737,6 +7844,7 @@
     "Discipline",
     "Disintegrate",
     "Disposal Order",
+    "Doran's Ring",
     "Double Trouble",
     "Downstage Dramatics",
     "Dredge Up",
@@ -7757,6 +7865,7 @@
     "Glorious Executioner",
     "Gravity Field",
     "Grove of the God-Willow",
+    "Hextech Gauntlets",
     "Hidden Blade",
     "Hunker Down",
     "Hwei, Brooding Painter",
@@ -7814,6 +7923,7 @@
     "Resplendent Rostrum",
     "Rift Herald",
     "Right of Conquest",
+    "Sacred Shears",
     "Sacrifice",
     "Salvage",
     "Scrapheap",
@@ -7867,17 +7977,17 @@
    "regex": "\\bdraws?\\b"
   },
   "token": {
-   "total": 104,
-   "main": 86,
+   "total": 107,
+   "main": 89,
    "unit": 53,
    "spell": 23,
-   "gear": 10,
+   "gear": 13,
    "legend": 9,
    "battlefield": 9,
    "bySet": {
     "OGN": 11,
     "RAD": 23,
-    "SFD": 32,
+    "SFD": 35,
     "UNL": 27,
     "VEN": 10,
     "OGS": 1
@@ -7905,6 +8015,7 @@
     "Chemtech Cask",
     "Concert Poster",
     "Corina Veraza",
+    "Cull",
     "Deadly Flourish",
     "Death Mark",
     "Deceiver",
@@ -7915,6 +8026,7 @@
     "Emperor's Dais",
     "Encore",
     "Explosimian",
+    "Eye of the Herald",
     "Fae Dragon",
     "Faithful Manufactor",
     "Ferrous Forerunner",
@@ -7981,6 +8093,7 @@
     "Wages of Pain",
     "Walking Roost",
     "Whirling Twirligig",
+    "World Atlas",
     "Yeti Brawler",
     "Zed, From the Shadows",
     "Zed, Without a Sound",
@@ -7991,17 +8104,17 @@
    "regex": "\\btokens?\\b"
   },
   "token-unit": {
-   "total": 59,
-   "main": 51,
+   "total": 60,
+   "main": 52,
    "unit": 28,
    "spell": 15,
-   "gear": 8,
+   "gear": 9,
    "legend": 4,
    "battlefield": 4,
    "bySet": {
     "OGN": 11,
     "RAD": 11,
-    "SFD": 12,
+    "SFD": 13,
     "UNL": 16,
     "VEN": 8,
     "OGS": 1
@@ -8022,6 +8135,7 @@
     "Emperor of the Sands",
     "Emperor's Dais",
     "Encore",
+    "Eye of the Herald",
     "Faithful Manufactor",
     "Ferrous Forerunner",
     "Flurry of Feathers",
@@ -8070,17 +8184,17 @@
    "regex": "unit tokens?\\b"
   },
   "token-recruit": {
-   "total": 20,
-   "main": 17,
+   "total": 21,
+   "main": 18,
    "unit": 9,
    "spell": 4,
-   "gear": 4,
+   "gear": 5,
    "legend": 1,
    "battlefield": 2,
    "bySet": {
     "OGN": 9,
     "RAD": 7,
-    "SFD": 2,
+    "SFD": 3,
     "VEN": 1,
     "OGS": 1
    },
@@ -8090,6 +8204,7 @@
     "Concert Poster",
     "Corina Veraza",
     "Encore",
+    "Eye of the Herald",
     "Faithful Manufactor",
     "Forge of the Future",
     "Herald of the Arcane",
@@ -8312,17 +8427,17 @@
    "regex": "baron pit"
   },
   "gear-ref": {
-   "total": 115,
-   "main": 97,
+   "total": 117,
+   "main": 99,
    "unit": 60,
    "spell": 29,
-   "gear": 8,
+   "gear": 10,
    "legend": 11,
    "battlefield": 7,
    "bySet": {
     "VEN": 19,
     "OGN": 11,
-    "SFD": 38,
+    "SFD": 40,
     "RAD": 40,
     "UNL": 7
    },
@@ -8350,6 +8465,7 @@
     "Chem-Baroness",
     "Chemtech Cask",
     "Command: Attack",
+    "Cull",
     "Curator of the Sands",
     "Deadly Flourish",
     "Decree of Unity",
@@ -8438,6 +8554,7 @@
     "Watchful Curator",
     "Whirling Twirligig",
     "Wild Claw",
+    "World Atlas",
     "Yeti Brawler",
     "Zaun Punk",
     "Ziggs, Explosive",
@@ -8670,15 +8787,15 @@
    "regex": "(spend|pay|spends) (\\d+|x|any amount of|all (of )?your) xp"
   },
   "xp-gain": {
-   "total": 29,
-   "main": 26,
+   "total": 30,
+   "main": 27,
    "unit": 20,
    "spell": 3,
-   "gear": 3,
+   "gear": 4,
    "legend": 2,
    "battlefield": 1,
    "bySet": {
-    "UNL": 29
+    "UNL": 30
    },
    "names": [
     "Alpha Strike",
@@ -8692,6 +8809,7 @@
     "Grim Resolve",
     "Gustwalker",
     "Herald of Spring",
+    "Hunter's Machete",
     "Keeper of the Hammer",
     "Kha'Zix, Evolving Hunter",
     "Kha'Zix, Mutating Horror",
@@ -8759,17 +8877,17 @@
    "regex": "\\bchampions?\\b"
   },
   "spell-matters": {
-   "total": 23,
-   "main": 19,
+   "total": 24,
+   "main": 20,
    "unit": 16,
    "spell": 0,
-   "gear": 3,
+   "gear": 4,
    "legend": 2,
    "battlefield": 2,
    "bySet": {
     "OGS": 4,
     "VEN": 3,
-    "SFD": 4,
+    "SFD": 5,
     "UNL": 6,
     "OGN": 5,
     "RAD": 1
@@ -8790,6 +8908,7 @@
     "Lady of Luminosity, Starter",
     "Lux, Illuminated",
     "Mel, Newly Awakened",
+    "Rabadon's Deathcrown",
     "Raging Firebrand",
     "Ravenbloom Student",
     "Ravenborn Tome",
@@ -8843,25 +8962,26 @@
    "regex": "once each turn|only once (a|each|per) turn|first time"
   },
   "replacement-would": {
-   "total": 15,
-   "main": 13,
+   "total": 16,
+   "main": 14,
    "unit": 7,
    "spell": 3,
-   "gear": 3,
+   "gear": 4,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
     "UNL": 4,
     "VEN": 3,
+    "SFD": 2,
     "RAD": 3,
     "OGS": 1,
-    "SFD": 1,
     "OGN": 3
    },
    "names": [
     "Altar of Blood",
     "Endless Riches",
     "Gangplank, Naval",
+    "Guardian Angel",
     "Heimerdinger, Academy Instructor",
     "Highlander, Yi",
     "Mordekaiser, Twice Slain",
@@ -9254,11 +9374,11 @@
    "regex": "\\bfriendly\\b"
   },
   "here-ref": {
-   "total": 154,
-   "main": 90,
+   "total": 158,
+   "main": 94,
    "unit": 78,
    "spell": 0,
-   "gear": 12,
+   "gear": 16,
    "legend": 0,
    "battlefield": 64,
    "bySet": {
@@ -9266,7 +9386,7 @@
     "OGN": 42,
     "RAD": 32,
     "VEN": 20,
-    "SFD": 21,
+    "SFD": 25,
     "OGS": 1
    },
    "names": [
@@ -9315,10 +9435,12 @@
     "Emperor's Dais",
     "Enthusiastic Promoter",
     "Evelynn, In Control",
+    "Eye of the Herald",
     "Ezreal, Dashing",
     "Faithful Manufactor",
     "Firelights' Hideout",
     "Forbidding Waste",
+    "Forgefire Cape",
     "Forgotten Monument",
     "Fortified Position",
     "Frisky Hunter",
@@ -9367,6 +9489,7 @@
     "Ravenbloom Conservatory",
     "Reaver's Row",
     "Reckoner's Arena",
+    "Recurve Bow",
     "Red Brambleback",
     "Rek'Sai, Swarm Queen",
     "Renekton, Rage Fueled",
@@ -9382,6 +9505,7 @@
     "Shadow Temple",
     "Shen, Leader of the Kinkou Order",
     "Shen, Scourge of Shadows",
+    "Shurelya's Requiem",
     "Sigil of the Storm",
     "Sinister Poro",
     "Soraka, Wanderer",

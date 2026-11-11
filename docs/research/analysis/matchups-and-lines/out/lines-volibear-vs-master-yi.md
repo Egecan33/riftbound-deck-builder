@@ -5,8 +5,8 @@ Runes 6 fury / 6 body. Library N=39 (40 minus the Champion Zone copy, rules 103.
 Curve (runes needed = max(Energy, Power)): 0:0 1:3 2:9 3:0 4:3 5:3 6:5 7+:16
 
 **Opening hand (rule 116: draw 4; rule 117: set aside up to 2, draw that many, recycle them)**
-- On the play (2 runes turn 1, 4 turn 2). Keep rule [BOARD-OR-INTERACTION]: keep any hand holding one of Sabotage x3, Falling Star x2, Challenge x2 (K=7). P(natural 4) = 56.3%; set aside the 2 most expensive cards otherwise: P(after mulligan, 6 looks) = 72.2%.
-- On the draw (3 runes turn 1, 5 turn 2). Keep rule [BOARD-OR-INTERACTION]: keep any hand holding one of Sabotage x3, Falling Star x2, Challenge x2 (K=7). P(natural 4) = 56.3%; set aside the 2 most expensive cards otherwise: P(after mulligan, 6 looks) = 72.2%.
+- On the play (2 runes turn 1, 4 turn 2). Keep rule [BOARD-OR-INTERACTION]: keep any hand holding one of Sabotage x3, Challenge x2, Falling Star x2 (K=7). P(natural 4) = 56.3%; set aside the 2 most expensive cards otherwise: P(after mulligan, 6 looks) = 72.2%.
+- On the draw (3 runes turn 1, 5 turn 2). Keep rule [BOARD-OR-INTERACTION]: keep any hand holding one of Sabotage x3, Challenge x2, Falling Star x2 (K=7). P(natural 4) = 56.3%; set aside the 2 most expensive cards otherwise: P(after mulligan, 6 looks) = 72.2%.
   Turn-2 follow-ups (5 runes): Rengar, Trophy Hunter x3; P(turn-1 play and a turn-2 follow-up by turn 2, 6 cards) = 0.0%.
 - Set aside first: Gentle Gemdragon x3, Sky Splitter x3, Deadbloom Predator x1, Dazzling Aurora x3 (+2 more) (not castable before turn 4 on the play).
 - Any single 3-of by turn 3: 45.7% natural, 55.6% if both mulligan slots dug for it; a 2-of: 33.1%; a 1-of: 17.9%.

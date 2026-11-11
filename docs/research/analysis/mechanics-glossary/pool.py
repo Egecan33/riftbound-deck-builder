@@ -49,9 +49,31 @@ def alt_types():
         t = re.match(r'Riftbound ([A-Za-z]+): ', (it.get('cardImage') or {}).get('accessibilityText') or '')
         if m and t and t.group(1).lower() in ('unit', 'spell', 'gear', 'legend', 'battlefield', 'rune'): out.setdefault(m.group(1) + '-' + m.group(2), t.group(1).lower())
     return out
+def gtxt(h):
+    """Same HTML -> text conversion as ../build-cards.mjs."""
+    h = re.sub(r'<br\s*/?>', '\n', h or ''); h = re.sub(r'</p>\s*<p>', '\n', h); h = re.sub(r'<[^>]+>', '', h)
+    h = h.replace(':rb_might:', '[Might]').replace(':rb_exhaust:', '[Exhaust]'); h = re.sub(r':rb_energy_(\d+):', r'[\1]', h)
+    h = re.sub(r':rb_rune_(\w+):', lambda m: '[' + m.group(1)[0].upper() + m.group(1)[1:] + ']', h)
+    for a, b in (('&amp;', '&'), ('&#x27;', "'"), ('&#39;', "'"), ('&quot;', '"'), ('&gt;', '>'), ('&lt;', '<'), ('&nbsp;', ' ')): h = h.replace(a, b)
+    return h.strip()
+def effect_texts():
+    """Equipment Effect Text (CR 136) and Might Bonus (CR 137) live in separate gallery fields ('effect', 'mightBonus') that
+    ../build-cards.mjs does not read. Returned per base code so the pool text can carry them."""
+    html = open(os.path.join(HERE, '..', 'raw', 'gallery-2026-11-11.html'), encoding='utf8').read()
+    a = html.index('<script id="__NEXT_DATA__"'); b = html.index('>', a) + 1; e = html.index('</script>', b)
+    blades = json.loads(html[b:e])['props']['pageProps']['page']['blades']
+    items = next(x for x in blades if isinstance(x.get('cards'), dict) and x['cards'].get('items'))['cards']['items']
+    out = {}
+    for it in items:
+        m = re.match(r'^([A-Z0-9]+)-([A-Z]*\d+)', it['publicCode'])
+        if not m: continue
+        eff = gtxt(((it.get('effect') or {}).get('richText') or {}).get('body'))
+        mb = ((it.get('mightBonus') or {}).get('value') or {}).get('label')
+        if eff or mb: out.setdefault(m.group(1) + '-' + m.group(2), {'effect': eff, 'mightBonus': mb})
+    return out
 def build():
     src = json.load(open(os.path.join(HERE, '..', 'cards-2026-11-11.json')))
-    alt = alt_types()
+    alt = alt_types(); eff = effect_texts()
     by = collections.OrderedDict()
     for c in src['cards']: by.setdefault(c['name'], []).append(c)
     errata = {}
@@ -80,6 +102,10 @@ def build():
             if status != 'gallery=new':
                 rec['text'] = e['new']; rec['errata'] = {'source': e['source'], 'url': e['url'], 'galleryStatus': status}
             else: rec['errata'] = {'source': e['source'], 'url': e['url'], 'galleryStatus': status, 'applied': False}
+        ef = next((eff[c] for c in rec['codes'] if c in eff and eff[c]['effect']), None) or eff.get(rec['code'])
+        rec['effectText'] = (ef or {}).get('effect') or None; rec['mightBonus'] = (ef or {}).get('mightBonus')
+        if rec['effectText']:      # appended on its own line so detectors see it; never counted as a keyword the gear itself "owns"
+            rec['text'] = rec['text'] + '\nEffect text (active only while attached, CR 136): ' + rec['effectText'].replace('\n', ' ')
         pool.append(rec)
     missing = [n for n in errata if n not in {r['name'].replace('’', "'") for r in pool} and not errata[n].get('matched')]
     return pool, log, missing

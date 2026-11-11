@@ -19,7 +19,7 @@ def plain(body):
     t = re.sub(r'<br\s*/?>', '\n', body or ''); t = re.sub(r'</p>\s*<p>', '\n', t); t = re.sub(r'<[^>]+>', '', t)
     t = html.unescape(t); t = re.sub(r':(rb_[a-z0-9_]+):', icon, t)
     return t.strip()
-KW = ['Action', 'Reaction', 'Equip', 'Empower', 'Hidden', 'Empowered', 'Accelerate', 'Deflect', 'Deathknell', 'Repeat', 'Tank', 'Level', 'Assault', 'Shield', 'Flow', 'Ganking', 'Ambush', 'Hunt', 'Weaponmaster', 'Legion', 'Vision', 'Temporary', 'Quick-Draw', 'Backline', 'Unique']
+KW = ['Action', 'Reaction', 'Equip', 'Empower', 'Hidden', 'Empowered', 'Accelerate', 'Deflect', 'Deathknell', 'Repeat', 'Tank', 'Level', 'Assault', 'Shield', 'Flow', 'Ganking', 'Ambush', 'Hunt', 'Weaponmaster', 'Legion', 'Vision', 'Temporary', 'Quick-Draw', 'Backline', 'Unique', 'Deploy', 'Disarm', 'Show Off', 'Predict']
 seen = {}; out = []
 for c in items:
     if c['set']['value']['id'] != 'RAD': continue
@@ -28,6 +28,17 @@ for c in items:
     body0 = (c.get('text') or {}).get('richText', {}).get('body') or ''
     typ = tl[0]['id'] if tl else ('unit' if c.get('might') else ('gear' if re.search(r'\[Equip\]|rb_exhaust', body0) else 'spell'))
     inferred = not tl
+    # The gallery snapshot of 2026-11-11 carries wrong type ids on some RAD cards (e.g. "Supernova", text "Deal 10 to a unit. Draw 2.", typed Unit;
+    # "Siren of the Shallows", Might 1, typed Spell). HEURISTIC repair from printed fields: Might present => unit (unless it equips);
+    # no Might + [Deploy]/Equip/[Exhaust] ability => gear; no Might otherwise => spell.
+    mightv = (c.get('might') or {}).get('value', {}).get('id')
+    equips = bool(re.search(r'\[?Equip\]?', body0))
+    fixed = typ
+    if typ not in ('legend', 'battlefield', 'rune'):
+        if mightv is not None and not equips: fixed = 'unit'
+        elif mightv is None and typ == 'unit': fixed = 'gear' if (re.search(r'\[Deploy\]|rb_exhaust', body0) or equips) else 'spell'
+    corrected = fixed != typ
+    typ = fixed
     sup = [s['id'] for s in c['cardType'].get('superType') or []]
     name = c['name']; sub = c.get('subtitle')
     full = sub if typ == 'legend' and sub else (f'{name}, {sub}' if sub else name)
@@ -40,8 +51,8 @@ for c in items:
     kws = [k for k in KW if re.search(r'(?:^|\n|\. )\[' + k + r'(?: \d+)?\]', text)]
     out.append(dict(code=code, gid=c['id'], name=full, set='RAD', type=typ, superTypes=sup, domains=[d['id'] for d in c['domain']['values'] if d['id'] in DOM],
                     tags=(c.get('tags') or {}).get('tags') or [], energy=(c.get('energy') or {}).get('value', {}).get('id'), power=(c.get('power') or {}).get('value', {}).get('id'),
-                    might=(c.get('might') or {}).get('value', {}).get('id'), text=text, keywords=kws, typeInferred=inferred))
+                    might=(c.get('might') or {}).get('value', {}).get('id'), text=text, keywords=kws, typeInferred=inferred, typeCorrected=corrected))
 json.dump(dict(source='https://playriftbound.com/en-us/card-gallery/', fetchedAt='2026-11-11', cards=out), open(os.path.join(HERE, 'data/rad-cards.json'), 'w'), indent=1)
 from collections import Counter
 print(len(out), Counter(c['type'] for c in out), Counter(len(c['domains']) for c in out))
-print([c['name'] for c in out if c['type'] == 'legend']); print('type inferred:', [(c['name'], c['type']) for c in out if c['typeInferred']])
+print([c['name'] for c in out if c['type'] == 'legend']); print('type corrected:', [(c['name'], c['type']) for c in out if c['typeCorrected']]); print('type inferred:', [(c['name'], c['type']) for c in out if c['typeInferred']])

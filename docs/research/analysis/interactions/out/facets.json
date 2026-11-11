@@ -617,6 +617,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "When you play me, the next spell you play this turn costs [5] less."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
+"sent": "When you play me, the next spell you play this turn costs [5] less."
 }
 }
 },
@@ -634,6 +639,11 @@
 "C.exhaustAbility": {
 "rep": "turn",
 "src": "engine",
+"sent": "[Exhaust]: The next spell you play this turn deals 1 Bonus Damage."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
 "sent": "[Exhaust]: The next spell you play this turn deals 1 Bonus Damage."
 }
 }
@@ -1002,6 +1012,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "If you do, draw 2."
+},
+"P.exhaustFriendly": {
+"rep": "static",
+"src": "text",
+"sent": "As an additional cost to play this, you may exhaust a friendly unit."
 }
 }
 },
@@ -2689,6 +2704,11 @@
 "rep": "once",
 "src": "keyword",
 "sent": "[Hidden]"
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck."
 }
 }
 },
@@ -3557,6 +3577,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "Play it, ignoring its cost, and recycle the rest."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit."
 }
 }
 },
@@ -4490,6 +4515,11 @@
 "C.attackTrigger": {
 "rep": "repeat",
 "src": "engine",
+"sent": "When I attack, reveal the top rune of your rune deck, then recycle it."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
 "sent": "When I attack, reveal the top rune of your rune deck, then recycle it."
 }
 }
@@ -5574,6 +5604,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Exhaust]: [Reaction] \u2014 [Add] [Any]."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
+"sent": "Use only to play spells."
 }
 }
 },
@@ -6986,6 +7021,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Exhaust]: [Reaction] \u2014 [Add] [2]."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
+"sent": "Use only to play spells."
 }
 }
 },
@@ -7437,7 +7477,13 @@
 "energy": 3,
 "might": 3,
 "source": "engine",
-"facets": {}
+"facets": {
+"C.notFromHand": {
+"rep": "static",
+"src": "text",
+"sent": "I cost [2] less to play from anywhere other than your hand."
+}
+}
 },
 "SFD-011": {
 "name": "Angle Shot",
@@ -7864,7 +7910,13 @@
 "energy": 3,
 "might": 3,
 "source": "engine",
-"facets": {}
+"facets": {
+"C.notFromHand": {
+"rep": "static",
+"src": "text",
+"sent": "Friendly units played from anywhere other than a player's hand have [Accelerate]."
+}
+}
 },
 "SFD-030": {
 "name": "Skyfall of Areion",
@@ -8133,6 +8185,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "When I move, reveal the top card of your Main Deck. If it's a gear, draw it. Otherwise, recycle it."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When I move, reveal the top card of your Main Deck."
 }
 }
 },
@@ -9021,6 +9078,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Any], [Exhaust]: Give the next spell you play this turn [Repeat] equal to its cost."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
+"sent": "[Any], [Exhaust]: Give the next spell you play this turn [Repeat] equal to its cost."
 }
 }
 },
@@ -9174,6 +9236,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "When you play me, you may kill a friendly gear. If you do, you may play a gear with Energy cost no more than [7] from hand this turn, ignoring its Energy cost."
+},
+"C.deploy": {
+"rep": "static",
+"src": "text",
+"sent": "When you play me, you may kill a friendly gear."
 }
 }
 },
@@ -10873,6 +10940,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "When you play me, if you paid the additional cost, kill a gear."
+},
+"C.deploy": {
+"rep": "static",
+"src": "text",
+"sent": "You may kill a friendly gear as an additional cost to play me."
 }
 }
 },
@@ -10960,6 +11032,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "Kill a unit at a battlefield."
+},
+"C.notFromHand": {
+"rep": "static",
+"src": "text",
+"sent": "I cost [2] less to play from anywhere other than your hand."
 }
 }
 },
@@ -11113,6 +11190,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "If the played card is a unit, you may play it here."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When I attack, you may reveal the top 2 cards of your Main Deck."
 }
 }
 },
@@ -11212,6 +11294,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "When you play me, give your other units +2 [Might] this turn."
+},
+"C.revealed": {
+"rep": "static",
+"src": "text",
+"sent": "As I'm revealed from your deck, [Add] [2]."
 }
 }
 },
@@ -11413,7 +11500,13 @@
 "energy": null,
 "might": null,
 "source": "engine",
-"facets": {}
+"facets": {
+"P.onlyFor.gear": {
+"rep": "static",
+"src": "text",
+"sent": "Your Equipment each give [Assault]."
+}
+}
 },
 "SFD-184": {
 "name": "Relentless Pursuit",
@@ -11523,6 +11616,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck."
 }
 }
 },
@@ -11547,6 +11645,11 @@
 "rep": "once",
 "src": "engine",
 "sent": "Reveal the top 2 cards of your Main Deck. You may play one of them, reducing its cost by [2]. Draw any you did not play this way."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "Reveal the top 2 cards of your Main Deck."
 }
 }
 },
@@ -11571,6 +11674,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Exhaust]: [Reaction] \u2014 [Add] [Any]."
+},
+"P.onlyFor.gear": {
+"rep": "static",
+"src": "text",
+"sent": "Use only to play gear or use gear abilities."
 }
 }
 },
@@ -12228,6 +12336,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "When you defend here, reveal the top card of your Main Deck. If it's a spell, put it in your hand. Otherwise, recycle it."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When you defend here, reveal the top card of your Main Deck."
 }
 }
 },
@@ -13496,6 +13609,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Action][>] Exhaust a unit you control, [Exhaust]: Move a different unit you control to the location of the unit you exhausted to pay for this ability."
+},
+"P.exhaustFriendly": {
+"rep": "static",
+"src": "text",
+"sent": "[Action][>] Exhaust a unit you control, [Exhaust]: Move a different unit you control to the location of the unit you exhausted to pay for this ability."
 }
 }
 },
@@ -14371,6 +14489,11 @@
 "P.topdeck": {
 "rep": "repeat",
 "src": "engine",
+"sent": "If you do, [Predict], then reveal the top card of your Main Deck."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
 "sent": "If you do, [Predict], then reveal the top card of your Main Deck."
 }
 }
@@ -15981,6 +16104,11 @@
 "C.spellCast": {
 "rep": "static",
 "src": "engine",
+"sent": "While I'm in a showdown, your spells have [Repeat] [2][Chaos]."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
 "sent": "While I'm in a showdown, your spells have [Repeat] [2][Chaos]."
 }
 }
@@ -18684,6 +18812,11 @@
 "rep": "repeat",
 "src": "engine",
 "sent": "Otherwise, put it in your trash and give me +2 [Might] this turn."
+},
+"P.reveal": {
+"rep": "static",
+"src": "text",
+"sent": "When I move, reveal the top card of your Main Deck."
 }
 }
 },
@@ -19248,6 +19381,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Empower] [3] [Empowered][>] Your spells cost [1][Any] less, to a minimum of [1]."
+},
+"P.onlyFor.spell": {
+"rep": "static",
+"src": "text",
+"sent": "[Empowered][>] Your spells cost [1][Any] less, to a minimum of [1]."
 }
 }
 },
@@ -21959,6 +22097,11 @@
 "rep": "turn",
 "src": "engine",
 "sent": "[Action][>] Disempower me, [Exhaust]: Give a unit [Assault 2] this turn."
+},
+"C.notFromHand": {
+"rep": "static",
+"src": "text",
+"sent": "When you play a card from anywhere other than your hand, empower me."
 }
 }
 },
@@ -22196,7 +22339,17 @@
 "might": 4,
 "source": "text",
 "facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm]"
+},
 "P.might+": {
+"rep": "repeat",
+"src": "text",
+"sent": "When you reduce the Might of an enemy unit here by 1 or more, give me +1 [Might] this turn."
+},
+"C.mightReduced": {
 "rep": "repeat",
 "src": "text",
 "sent": "When you reduce the Might of an enemy unit here by 1 or more, give me +1 [Might] this turn."
@@ -22253,6 +22406,11 @@
 "sent": "When you play me, play a Bomb gear token to a battlefield."
 },
 "C.replay": {
+"rep": "once",
+"src": "text",
+"sent": "When you play me, play a Bomb gear token to a battlefield."
+},
+"P.bomb": {
 "rep": "once",
 "src": "text",
 "sent": "When you play me, play a Bomb gear token to a battlefield."
@@ -22475,6 +22633,11 @@
 "src": "text",
 "sent": "[Show Off] a gear."
 },
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a gear."
+},
 "P.might+": {
 "rep": "once",
 "src": "text",
@@ -22499,7 +22662,7 @@
 },
 "RAD-130": {
 "name": "Battlefield Armorer",
-"type": "spell",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "order"
@@ -22507,7 +22670,13 @@
 "energy": 3,
 "might": 3,
 "source": "text",
-"facets": {}
+"facets": {
+"C.deploy": {
+"rep": "repeat",
+"src": "text",
+"sent": "When a friendly gear at a battlefield dies, you may pay [1] to return it to its owner's hand."
+}
+}
 },
 "RAD-107": {
 "name": "Bedeviling Stranger",
@@ -22615,6 +22784,11 @@
 "source": "text",
 "facets": {
 "P.attach": {
+"rep": "once",
+"src": "text",
+"sent": "[Equip] \u2014 [Any] or exhaust a friendly unit."
+},
+"P.exhaustFriendly": {
 "rep": "once",
 "src": "text",
 "sent": "[Equip] \u2014 [Any] or exhaust a friendly unit."
@@ -22756,7 +22930,7 @@
 },
 "RAD-108": {
 "name": "Bushwhack Trap",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "fury"
@@ -22853,6 +23027,11 @@
 "might": 2,
 "source": "text",
 "facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "Your Mechs have [Disarm]."
+},
 "C.tag:Mech": {
 "rep": "once",
 "src": "text",
@@ -22905,7 +23084,7 @@
 },
 "RAD-016": {
 "name": "Coalesced Energy",
-"type": "spell",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "mind"
@@ -22943,6 +23122,11 @@
 "sent": "Choose one \u2014Move a friendly gear with [Deploy] to a battlefield.Look at the top 5 cards of your Main Deck."
 },
 "P.topdeck": {
+"rep": "once",
+"src": "text",
+"sent": "Choose one \u2014Move a friendly gear with [Deploy] to a battlefield.Look at the top 5 cards of your Main Deck."
+},
+"C.deploy": {
 "rep": "once",
 "src": "text",
 "sent": "Choose one \u2014Move a friendly gear with [Deploy] to a battlefield.Look at the top 5 cards of your Main Deck."
@@ -22994,7 +23178,7 @@
 },
 "RAD-025": {
 "name": "Consult the Heavens",
-"type": "unit",
+"type": "spell",
 "set": "RAD",
 "domains": [
 "calm"
@@ -23048,7 +23232,7 @@
 },
 "RAD-131": {
 "name": "Demacian Illuminators",
-"type": "spell",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "order"
@@ -23162,6 +23346,11 @@
 "src": "text",
 "sent": "When you play this, you may kill another friendly unit or gear to draw 1."
 },
+"C.deploy": {
+"rep": "once",
+"src": "text",
+"sent": "When you play this, you may kill another friendly unit or gear to draw 1."
+},
 "C.selfDeath": {
 "rep": "once",
 "src": "text",
@@ -23189,12 +23378,17 @@
 "rep": "once",
 "src": "text",
 "sent": "I enter ready if you control no other units."
+},
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm 2]"
 }
 }
 },
 "RAD-136": {
 "name": "Dockside Lock-Up",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "order"
@@ -23242,6 +23436,11 @@
 "source": "text",
 "facets": {
 "C.replay": {
+"rep": "once",
+"src": "text",
+"sent": "When you play me, reveal the top card of each opponent's Main Deck."
+},
+"P.reveal": {
 "rep": "once",
 "src": "text",
 "sent": "When you play me, reveal the top card of each opponent's Main Deck."
@@ -23463,7 +23662,7 @@
 },
 "RAD-039": {
 "name": "Ephemeral Ward",
-"type": "unit",
+"type": "spell",
 "set": "RAD",
 "domains": [
 "calm"
@@ -23528,6 +23727,11 @@
 "might": 4,
 "source": "text",
 "facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm]"
+},
 "P.point": {
 "rep": "repeat",
 "src": "text",
@@ -23576,6 +23780,11 @@
 "rep": "repeat",
 "src": "text",
 "sent": "When you play a gear with [Deploy], you may exhaust me and pay [Any] to move a friendly unit to that battlefield."
+},
+"C.deploy": {
+"rep": "repeat",
+"src": "text",
+"sent": "When you play a gear with [Deploy], you may exhaust me and pay [Any] to move a friendly unit to that battlefield."
 }
 }
 },
@@ -23596,6 +23805,11 @@
 "sent": "When I hold, play three Bomb gear tokens to a single battlefield."
 },
 "C.hold": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I hold, play three Bomb gear tokens to a single battlefield."
+},
+"P.bomb": {
 "rep": "repeat",
 "src": "text",
 "sent": "When I hold, play three Bomb gear tokens to a single battlefield."
@@ -23840,6 +24054,11 @@
 "src": "text",
 "sent": "[Hidden]"
 },
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a card with [Hidden]."
+},
 "P.add": {
 "rep": "once",
 "src": "text",
@@ -23967,6 +24186,16 @@
 "rep": "once",
 "src": "text",
 "sent": "Kill any number of friendly Bomb tokens."
+},
+"C.deploy": {
+"rep": "once",
+"src": "text",
+"sent": "Kill any number of friendly Bomb tokens."
+},
+"P.bomb": {
+"rep": "once",
+"src": "text",
+"sent": "At end of turn, play that many Bomb tokens to a single battlefield."
 }
 }
 },
@@ -23988,6 +24217,11 @@
 "sent": "[1][Any], [Exhaust]: Play a Bomb gear token to a battlefield."
 },
 "C.exhaustAbility": {
+"rep": "repeat",
+"src": "text",
+"sent": "[1][Any], [Exhaust]: Play a Bomb gear token to a battlefield."
+},
+"P.bomb": {
 "rep": "repeat",
 "src": "text",
 "sent": "[1][Any], [Exhaust]: Play a Bomb gear token to a battlefield."
@@ -24086,7 +24320,7 @@
 },
 "RAD-044": {
 "name": "Hunting Blind",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "calm"
@@ -24190,6 +24424,11 @@
 "might": 4,
 "source": "text",
 "facets": {
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a Mech."
+},
 "C.tag:Mech": {
 "rep": "once",
 "src": "text",
@@ -24230,7 +24469,7 @@
 },
 "RAD-035": {
 "name": "Invigorating Bloom",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "calm"
@@ -24372,6 +24611,11 @@
 "might": 4,
 "source": "text",
 "facets": {
+"C.deploy": {
+"rep": "once",
+"src": "text",
+"sent": "Your gear with [Deploy] have [Action]."
+},
 "P.channel": {
 "rep": "repeat",
 "src": "text",
@@ -24435,7 +24679,18 @@
 "energy": 5,
 "might": 5,
 "source": "text",
-"facets": {}
+"facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm] ."
+},
+"P.onlyFor.spell": {
+"rep": "once",
+"src": "text",
+"sent": "While I'm in a showdown, your spells have [Reaction]."
+}
+}
 },
 "RAD-182": {
 "name": "Kayn, Unleashed",
@@ -24471,6 +24726,11 @@
 "might": null,
 "source": "text",
 "facets": {
+"P.exhaustFriendly": {
+"rep": "once",
+"src": "text",
+"sent": "As an additional cost to play this, exhaust a friendly unit."
+},
 "P.stun": {
 "rep": "once",
 "src": "text",
@@ -24521,6 +24781,11 @@
 "might": null,
 "source": "text",
 "facets": {
+"P.exhaustFriendly": {
+"rep": "once",
+"src": "text",
+"sent": "As an additional cost to play this, exhaust a friendly unit."
+},
 "P.draw": {
 "rep": "once",
 "src": "text",
@@ -24617,7 +24882,7 @@
 },
 "RAD-120": {
 "name": "Meticulous Restorationist",
-"type": "gear",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "order"
@@ -24792,6 +25057,11 @@
 "rep": "once",
 "src": "text",
 "sent": "When you play me, [Predict 2]."
+},
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm 2]"
 }
 }
 },
@@ -24922,7 +25192,7 @@
 },
 "RAD-072": {
 "name": "Overloaded Traveler",
-"type": "spell",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "body"
@@ -24932,6 +25202,11 @@
 "source": "text",
 "facets": {
 "P.might+": {
+"rep": "once",
+"src": "text",
+"sent": "While there's a friendly gear with [Deploy] at my battlefield, I have +1 [Might]."
+},
+"C.deploy": {
 "rep": "once",
 "src": "text",
 "sent": "While there's a friendly gear with [Deploy] at my battlefield, I have +1 [Might]."
@@ -25059,7 +25334,7 @@
 },
 "RAD-087": {
 "name": "Portable Portal",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "body"
@@ -25145,6 +25420,11 @@
 "might": null,
 "source": "text",
 "facets": {
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a unit."
+},
 "P.damage": {
 "rep": "once",
 "src": "text",
@@ -25249,6 +25529,11 @@
 "src": "text",
 "sent": "When I move, reveal the top card of your Main Deck."
 },
+"P.reveal": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I move, reveal the top card of your Main Deck."
+},
 "C.mighty": {
 "rep": "once",
 "src": "text",
@@ -25302,6 +25587,11 @@
 "source": "text",
 "facets": {
 "P.gold": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I become exhausted, choose one \u2014Play a Gold gear token exhausted."
+},
+"C.selfExhausted": {
 "rep": "repeat",
 "src": "text",
 "sent": "When I become exhausted, choose one \u2014Play a Gold gear token exhausted."
@@ -25394,6 +25684,11 @@
 "rep": "repeat",
 "src": "text",
 "sent": "When I become exhausted, give a friendly unit +3 [Might] this turn."
+},
+"C.selfExhausted": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I become exhausted, give a friendly unit +3 [Might] this turn."
 }
 }
 },
@@ -25445,6 +25740,11 @@
 "rep": "once",
 "src": "text",
 "sent": "Exhaust a friendly unit: Ready a unit."
+},
+"P.exhaustFriendly": {
+"rep": "once",
+"src": "text",
+"sent": "Exhaust a friendly unit: Ready a unit."
 }
 }
 },
@@ -25459,6 +25759,11 @@
 "might": 4,
 "source": "text",
 "facets": {
+"C.selfExhausted": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I become exhausted, choose one that hasn't been chosen this turn \u2014[Buff] me."
+},
 "P.stun": {
 "rep": "once",
 "src": "text",
@@ -25487,6 +25792,11 @@
 "might": null,
 "source": "text",
 "facets": {
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a card with Energy cost [7] or more."
+},
 "P.token": {
 "rep": "once",
 "src": "text",
@@ -25527,7 +25837,7 @@
 },
 "RAD-012": {
 "name": "Runeblade Anvil",
-"type": "unit",
+"type": "gear",
 "set": "RAD",
 "domains": [
 "chaos"
@@ -25611,6 +25921,11 @@
 "rep": "once",
 "src": "text",
 "sent": "Move a friendly unit, then play a Bomb gear token to a battlefield."
+},
+"P.bomb": {
+"rep": "once",
+"src": "text",
+"sent": "Move a friendly unit, then play a Bomb gear token to a battlefield."
 }
 }
 },
@@ -25645,6 +25960,11 @@
 "rep": "repeat",
 "src": "text",
 "sent": "[1], [Exhaust]: Choose an opponent."
+},
+"P.reveal": {
+"rep": "once",
+"src": "text",
+"sent": "Reveal the top card of your Main Deck."
 },
 "P.recycle": {
 "rep": "once",
@@ -25686,6 +26006,11 @@
 "src": "text",
 "sent": "When you play me or when I become exhausted, play a 1 [Might] Recruit unit token to your base."
 },
+"C.selfExhausted": {
+"rep": "once",
+"src": "text",
+"sent": "When you play me or when I become exhausted, play a 1 [Might] Recruit unit token to your base."
+},
 "P.token:recruit": {
 "rep": "once",
 "src": "text",
@@ -25709,7 +26034,17 @@
 "might": 3,
 "source": "text",
 "facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm 2]"
+},
 "P.draw": {
+"rep": "once",
+"src": "text",
+"sent": "Once each turn, when you exhaust three or more friendly units at the same time, you may draw 1."
+},
+"C.selfExhausted": {
 "rep": "once",
 "src": "text",
 "sent": "Once each turn, when you exhaust three or more friendly units at the same time, you may draw 1."
@@ -25769,7 +26104,7 @@
 },
 "RAD-097": {
 "name": "Siren of the Shallows",
-"type": "spell",
+"type": "unit",
 "set": "RAD",
 "domains": [
 "chaos"
@@ -25778,6 +26113,11 @@
 "might": 1,
 "source": "text",
 "facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm]"
+},
 "P.move.self": {
 "rep": "once",
 "src": "text",
@@ -26020,6 +26360,11 @@
 "rep": "repeat",
 "src": "text",
 "sent": "When I become exhausted, [Predict]."
+},
+"C.selfExhausted": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I become exhausted, [Predict]."
 }
 }
 },
@@ -26048,7 +26393,7 @@
 },
 "RAD-059": {
 "name": "Supernova",
-"type": "unit",
+"type": "spell",
 "set": "RAD",
 "domains": [
 "order"
@@ -26109,6 +26454,11 @@
 "might": 8,
 "source": "text",
 "facets": {
+"C.showoff": {
+"rep": "once",
+"src": "text",
+"sent": "[Show Off] a card."
+},
 "P.draw": {
 "rep": "once",
 "src": "text",
@@ -26300,7 +26650,13 @@
 "energy": 3,
 "might": 3,
 "source": "text",
-"facets": {}
+"facets": {
+"P.might-": {
+"rep": "once",
+"src": "text",
+"sent": "[Disarm]"
+}
+}
 },
 "RAD-008": {
 "name": "War Scout",
@@ -26346,6 +26702,11 @@
 "src": "text",
 "sent": "Your gear have [Deflect]."
 },
+"P.onlyFor.gear": {
+"rep": "once",
+"src": "text",
+"sent": "Your gear have [Deflect]."
+},
 "P.grantkw:Deflect": {
 "rep": "once",
 "src": "text",
@@ -26378,6 +26739,11 @@
 "sent": "Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token."
 },
 "P.kill.friendly": {
+"rep": "repeat",
+"src": "text",
+"sent": "Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token."
+},
+"C.deploy": {
 "rep": "repeat",
 "src": "text",
 "sent": "Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token."
@@ -26509,12 +26875,22 @@
 "src": "text",
 "sent": "[1], [Exhaust]: Play a Bomb gear token to a battlefield."
 },
+"P.bomb": {
+"rep": "repeat",
+"src": "text",
+"sent": "[1], [Exhaust]: Play a Bomb gear token to a battlefield."
+},
 "P.might+": {
 "rep": "repeat",
 "src": "text",
 "sent": "When I defend, you may kill a friendly gear to give me +2 [Might] this turn."
 },
 "P.kill.friendly": {
+"rep": "repeat",
+"src": "text",
+"sent": "When I defend, you may kill a friendly gear to give me +2 [Might] this turn."
+},
+"C.deploy": {
 "rep": "repeat",
 "src": "text",
 "sent": "When I defend, you may kill a friendly gear to give me +2 [Might] this turn."
@@ -26538,6 +26914,11 @@
 "sent": "When you play me, play a Bomb gear token to a battlefield."
 },
 "C.replay": {
+"rep": "once",
+"src": "text",
+"sent": "When you play me, play a Bomb gear token to a battlefield."
+},
+"P.bomb": {
 "rep": "once",
 "src": "text",
 "sent": "When you play me, play a Bomb gear token to a battlefield."

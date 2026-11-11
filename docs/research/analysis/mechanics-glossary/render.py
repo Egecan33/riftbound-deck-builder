@@ -27,7 +27,7 @@ def exlist(matches, names):
     return '\n'.join('  - ' + X.fmt(c) for c in X.pick(pool, 3, prefer=names))
 def esc(rx): return '`' + rx.replace('|', '\\|') + '`'
 def detect_table():
-    rows = ['| Mechanic (rule) | Keyword field | Text regex (case-insensitive, on reminder-stripped text) | Pool n (own / any) | Role | Axis |', '|---|---|---|---|---|---|']
+    rows = ['| Mechanic (rule) | Keyword field (derived, see 6.1) | Text regex (case-insensitive, on reminder-stripped text) | Pool n (own / any) | Role | Axis |', '|---|---|---|---|---|---|']
     for kid, role, axis in D.KW_ROWS:
         _, kw, rule, valued = KW[kid]; v = out['keywords'][kid]
         k = re.escape(kw).replace('\\ ', ' ').replace('\\-', '-')
@@ -46,6 +46,10 @@ def sub(m):
     if head[0] == 'c': return cnt(out['systems'][head[2]])
     if head[0] == 'n' and head[1] == 'sys': return str(out['systems'][head[2]]['total'])
     if head[0] == 'n' and head[1] == 'kw': return str(out['keywords'][head[2]]['any']['total'])
+    if head[0] == 'refs':
+        rc = out['keywords'][head[1]]['refClass']; lab = {'grant': 'grant it', 'filter': 'look for / tax / ignore it', 'self': 'gain it conditionally'}
+        bits = ['%s (%d): %s%s' % (lab[k], len(rc[k]), ', '.join(rc[k][:7]), ', …' if len(rc[k]) > 7 else '') for k in ('grant', 'self', 'filter') if rc.get(k)]
+        return '; '.join(bits) if bits else 'none in the pool'
     if head[0] == 'own': return str(out['keywords'][head[2]]['has']['total'])
     if head[0] == 'ref': return str(out['keywords'][head[2]]['ref']['total'])
     if head[0] == 'rx': return '`' + out['systems'][head[2]]['regex'].replace('|', '\\|') + '`'

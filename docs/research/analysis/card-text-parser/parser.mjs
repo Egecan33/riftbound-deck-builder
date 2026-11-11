@@ -256,7 +256,7 @@ const COND2 = [
   [/^your units have all 4 tags$/i, () => ({ type: 'tag-set' })],
   [/^you've played a non-token unit, a non-token gear, and a spell this turn$/i, () => ({ type: 'turn-event', value: 'played-unit-gear-spell' })],
   [/^a combat where you are the attacker ends in a tie$/i, () => ({ type: 'combat-tie' })],
-  [/^its controller (?:has you draw \d+|pays \[.+\])$/i, () => ({ type: 'opponent-choice' })],
+  [/^its controller (?:has you draw (\d+)|pays (\[.+\]))$/i, (m) => ({ type: 'opponent-choice', value: m[1] ? 'you-draw:' + m[1] : 'pays:' + m[2] })],
   [/^you play me to a battlefield$/i, () => ({ type: 'played-to-battlefield' })],
   [/^there are (\d+) spells banished with me$/i, (m) => ({ type: 'banished-count', value: +m[1] })],
   [/^it(?:'s| is) (?:the only|alone)/i, () => ({ type: 'alone', value: 'target' })],
@@ -289,7 +289,7 @@ const amountRef = (s) => {
   if (/^the damage marked on it$/i.test(s)) return { ref: 'target.damage' };
   if (/^that unit's Might$/i.test(s)) return { ref: 'target.might' };
   if (/^the number of (.+)$/i.test(s)) return { ref: 'count:' + s.replace(/^the number of /i, '') };
-  if (/^(its|that spell's|that card's|the burned card's|the gear you returned'?s?) (Energy cost|Power cost|Might|cost|base cost)$/i.test(s) || /^the (Energy cost|Might) of .+$/i.test(s)) return { ref: 'target.' + (/Energy|cost/.test(s) ? 'energy' : 'might') };
+  if (/^(its|that spell's|that card's|the burned card's|the gear you returned'?s?) (Energy cost|Power cost|Might|cost|base cost)$/i.test(s) || /^the (Energy cost|Might) of .+$/i.test(s)) return { ref: 'target.' + (/Power cost/.test(s) ? 'power' : /Energy|cost/.test(s) ? 'energy' : 'might') };
   return null;
 };
 function tokenFrom(m, o) {
@@ -565,11 +565,23 @@ function parseClause(s0, depth = 0) {
   tryRules.best = null;
   const finish = (arr, ok) => ({ effects: arr.map((e) => ({ ...e, ...(duration && !e.duration ? { duration } : {}), raw: e.raw || s, ok: e.ok !== false && (!e.target || e.target.ok) })), ok });
   let arr = tryRules(body);
+  // Iteration 2 (engine comparison): a greedy single-clause rule can swallow a trailing clause ("play it, ignoring its cost, and
+  // recycle the rest"; "attach X to Y or detach X from Y"). When the clause also splits cleanly into more effects, prefer the split.
+  if (arr && depth < 5 && /(,? then |, and | and | or )/i.test(body)) {
+    const VERBS = '(?:you may |then |they |you )?(?:make|lose|unattach|deal|kill|banish|stun|buff|give|ready|exhaust|move|recall|draw|discard|channel|recycle|play|return|attach|detach|heal|gain|score|add|reveal|look|put|empower|disempower|counter|burn|predict)\\b';
+    for (const sep of [new RegExp(',? then (?=' + VERBS + ')', 'i'), new RegExp(',? and (?=' + VERBS + ')', 'i')]) {
+      const parts = body.split(sep); if (parts.length < 2) continue;
+      const rs = parts.map((p) => parseClause(p, depth + 1)); parseClause.partial = null;
+      if (rs.every((r) => r.ok && r.effects.every((e) => e.verb !== 'unknown'))) { const fxs = rs.flatMap((r) => r.effects); if (fxs.length > arr.length) return { effects: fxs.map((e) => ({ ...e, ...(duration && !e.duration ? { duration } : {}) })), ok: true }; }
+    }
+    const mo = new RegExp('^(.+?) or (' + VERBS + '.+)$', 'i').exec(body);
+    if (mo && arr.length === 1 && arr[0].verb !== 'chooseOne' && !arr[0].orExhaust) { const a = tryRules(mo[1]); const b = a && tryRules(mo[2]); if (a && b) return finish([{ verb: 'chooseOne', chooseCount: 1, options: [a, b], ok: true }], true); }
+  }
   if (arr) return finish(arr, true);
   // "this turn" in the middle of the clause ("give X -1 [Might] this turn, to a minimum of 1 [Might]")
   if (/ this turn\b/i.test(body)) { const b2 = body.replace(/,? this turn\b/gi, ''); const a2 = tryRules(b2); if (a2) { duration = 'turn'; return finish(a2, true); } body = b2; duration = 'turn'; }
   // "<effect> for each <X>"
-  if ((m = /^(.+?) for each (.+)$/i.exec(body))) { const inner = tryRules(m[1]); if (inner) return finish(inner.map((e) => ({ ...e, perEach: m[2] })), true); }
+  if ((m = /^(.+?) for each (.+)$/i.exec(body)) && !/, then |, and (?=recycle|draw|deal|kill|ready)/i.test(m[2])) { const inner = tryRules(m[1]); if (inner) return finish(inner.map((e) => ({ ...e, perEach: m[2] })), true); }
   // "A or B" choice between two effects
   if ((m = /^(.+?) or (.+)$/i.exec(body))) { const a = tryRules(m[1]); const b = a && tryRules(m[2]); if (a && b) return finish([{ verb: 'chooseOne', chooseCount: 1, options: [a, b], ok: true }], true); }
   // "X if COND" / "X unless COND" / "X while COND"
@@ -640,13 +652,14 @@ const TRIG = [
   [/^this is played, discarded, or killed$/i, () => ({ event: 'when-played', events: ['when-played', 'when-discarded', 'when-i-die'], scope: 'self' })],
   [/^you discard me$/i, () => ({ event: 'when-discarded', scope: 'self' })],
   [/^you look at cards from the top of your deck and see me$/i, () => ({ event: 'when-seen-from-deck', scope: 'self' })],
-  [/^you (?:choose|buff|ready|choose or ready) me(?: with a spell)?$/i, (m) => ({ event: 'when-you-' + (/buff/.test(m[0]) ? 'buff' : /choose/.test(m[0]) ? 'choose' : 'ready'), scope: 'self' })],
+  [/^you (?:choose|buff|ready|choose or ready) me(?: with a spell)?$/i, (m) => ({ event: 'when-you-' + (/buff/.test(m[0]) ? 'buff' : /choose/.test(m[0]) ? 'choose' : 'ready'), ...(/choose or ready/.test(m[0]) ? { events: ['when-you-choose', 'when-you-ready'] } : {}), scope: 'self' })],
   [/^you attach an Equipment to me$/i, () => ({ event: 'when-you-attach', scope: 'self' })],
   [/^you (conquer|hold|defend|score)( or hold)?( here)?(?: with .+)?$/i, (m) => ({ event: 'when-you-' + m[1].toLowerCase(), ...(m[2] ? { events: ['when-you-conquer', 'when-you-hold'] } : {}), scope: m[3] ? 'here' : 'any' })],
   [/^you or an ally hold$/i, () => ({ event: 'when-you-hold', scope: 'any' })],
   [/^you defend at a battlefield$/i, () => ({ event: 'when-you-defend', scope: 'any' })],
   [/^you win a combat( here)?$/i, (m) => ({ event: 'when-you-win-combat', scope: m[1] ? 'here' : 'any' })],
   [/^an opponent (holds|scores|conquers)( here)?$/i, (m) => ({ event: 'when-opponent-' + m[1].replace(/s$/, ''), scope: m[2] ? 'here' : 'any' })],
+  [/^you play a unit, gear, or activated ability with Energy cost \[(\d+)\] or more$/i, (m) => ({ event: 'when-you-play-unit', events: ['when-you-play-unit', 'when-you-play-gear', 'when-you-use-ability'], scope: 'any', qualifier: 'energy>=' + m[1] })],
   [/^you play (?:a|an|another|your (?:first|second)) (.+?)(?: (?:on an opponent's turn|during a showdown|in a turn|each turn|this turn))?$/i, (m) => { const what = m[1].toLowerCase(); const k = /spell/.test(what) ? 'spell' : /gear|equipment/.test(what) ? 'gear' : /unit/.test(what) ? 'unit' : 'card'; return { event: 'when-you-play-' + k, scope: 'any', subject: m[1], ...( /opponent's turn|showdown|from face down|from \[hidden\]|from anywhere|second|first|costs|cost|with |mighty|token|another/i.test(m[0]) ? { qualifier: m[0].replace(/^you play /i, '') } : {}) }; }],
   [/^you play (?:me or another Dragon)$/i, () => ({ event: 'when-played', events: ['when-played', 'when-you-play-unit'], scope: 'self', qualifier: 'or another Dragon' })],
   [/^you discard one or more cards$/i, () => ({ event: 'when-you-discard', scope: 'any' })],
@@ -709,6 +722,16 @@ function classifyTrigger(clause) {
     let hit = null;
     for (const [re, v] of PHASE) if (re.test(p)) hit = { ...v };
     if (!hit) for (const [re, f] of TRIG) { const m = re.exec(p); if (m) { hit = f(m); break; } }
+    // iteration 2: delayed / pronoun-subject triggers that the first pass left as event "other" while the sentence counted as full
+    if (!hit) { const q = p.replace(/ (?:this|each) turn$/i, '').replace(/\[(Stun|Buff)\]/g, (x, w) => w.toLowerCase()); let mm;
+      if (/^(it|that unit) dies$/i.test(q)) hit = { event: 'when-a-unit-dies', scope: 'any', subject: 'chosen' };
+      else if (/^(it|that unit) wins a combat$/i.test(q)) hit = { event: 'when-a-unit-wins-combat', scope: 'any', subject: 'chosen' };
+      else if (/^they hold$/i.test(q)) hit = { event: 'when-opponent-holds', scope: 'any' };
+      else if (/^i conquer$/i.test(q)) hit = { event: 'when-i-conquer', scope: 'self' };
+      else if (/^you stun an enemy unit at a battlefield$/i.test(q)) hit = { event: 'when-you-stun', scope: 'any' };
+      else if (/^at end of turn$/i.test(q)) hit = { event: 'end-of-turn', scope: 'any' };
+      else if ((mm = /^(.+?) would (die|be dealt damage)$/i.exec(q)) || (mm = /^(it) (dies)$/i.exec(q))) hit = { event: /damage/.test(mm[2]) ? 'would-damage' : 'would-die', scope: 'any', subject: /^(it|that unit)$/i.test(mm[1]) ? 'chosen' : /friendly|you control/i.test(mm[1]) ? 'friendly' : mm[1] };
+    }
     if (!hit && /^you play me or i attack$/i.test(p)) hit = { event: 'when-played', events: ['when-played', 'when-i-attack'], scope: 'self' };
     if (!hit && /^i defend or i'm played from \[Hidden\]$/i.test(p)) hit = { event: 'when-i-defend', events: ['when-i-defend', 'when-played'], scope: 'self', qualifier: 'from-face-down' };
     if (!hit && /^i'm played and when i conquer$/i.test(p)) hit = { event: 'when-played', events: ['when-played', 'when-i-conquer'], scope: 'self' };
@@ -749,8 +772,10 @@ function subjectTarget(s0) {
   if (/^Sand Soldiers you play$/i.test(s)) return { types: ['unit'], tags: ['Sand Soldier'], controller: 'friendly', count: 'all', raw: s, ok: true };
   if (/^Bird, Cat, Dog, Poro, and Ivern units$/i.test(s)) return { types: ['unit'], tags: ['Bird', 'Cat', 'Dog', 'Poro', 'Ivern'], controller: 'any', count: 'all', raw: s, ok: true };
   if (/^Bird, Cat, Dog, Poro, and Ivern units here$/i.test(s)) return { types: ['unit'], tags: ['Bird', 'Cat', 'Dog', 'Poro', 'Ivern'], controller: 'any', count: 'all', location: 'here', raw: s, ok: true };
-  s = s.replace(/ each$/i, '').replace(/ you play( this turn| to battlefields you control)?$/i, ' you control').replace(/ played from anywhere other than a player's hand$/i, '');
+  s = s.replace(/ each$/i, '').replace(/ you play( this turn| to battlefields you control)?$/i, ' you control');
+  let notFromHand = false; if (/ played from anywhere other than a player's hand$/i.test(s)) { notFromHand = true; s = s.replace(/ played from anywhere other than a player's hand$/i, ''); }
   const t = parseNP(s[0].toLowerCase() + s.slice(1));
+  if (notFromHand) t.filters = [...(t.filters || []), { key: 'playedFrom', op: '!=', value: 'hand' }];
   return t;
 }
 const STATIC = [
@@ -778,7 +803,7 @@ const STATIC = [
   [/^Reduce my cost by ((?:\[\w+\])+)( for each .+)?$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[1]), sign: '-', target: { ref: 'self', raw: 'I', ok: true }, ...(m[2] ? { perEach: m[2].replace(/^ for each /, '') } : {}), ok: true }] })],
   [/^This (?:spell's|ability's) Energy cost is reduced by (.+)$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: { ref: m[1] }, sign: '-', target: { ref: 'self', raw: 'this', ok: true }, ok: true }] })],
   [/^This ability costs ((?:\[\w+\])+) less (for each|if) (.+)$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[1]), sign: '-', target: { ref: 'self', raw: 'this ability', ok: true }, ...(m[2] === 'if' ? { conditions: [parseCondition(m[3])] } : { perEach: m[3] }), ok: true }] })],
-  [/^(.+?) (?:cost|costs|is reduced by|are reduced by) ((?:\[\w+\])+(?: or \[\w+\])?)( less| more)?(?: to play)?( this turn)?(?:,? to a minimum of \[\d+\])?( instead)?$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[2].replace(/ or .*/, '')), sign: m[3] && /more/.test(m[3]) ? '+' : '-', target: { raw: m[1], ok: true, types: [/spell/i.test(m[1]) ? 'spell' : /gear/i.test(m[1]) ? 'gear' : /unit|Dragons|Mechs/i.test(m[1]) ? 'unit' : 'card'], controller: /opponent|enemy/i.test(m[1]) ? 'enemy' : 'friendly' }, ok: true }] })],
+  [/^(.+?) (?:cost|costs|is reduced by|are reduced by) ((?:\[\w+\])+(?: or \[\w+\])?)( less| more)?(?: to play)?( this turn)?(?:,? to a minimum of \[\d+\])?( instead)?$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[2].replace(/ or .*/, '')), sign: m[3] && /more/.test(m[3]) ? '+' : '-', target: /^(they|it|those)$/i.test(m[1]) ? { ref: 'prev', raw: m[1], ok: true } : { raw: m[1], ok: true, types: [/spell/i.test(m[1]) ? 'spell' : /gear/i.test(m[1]) ? 'gear' : /unit|Dragons|Mechs/i.test(m[1]) ? 'unit' : 'card'], controller: /opponent|enemy/i.test(m[1]) ? 'enemy' : /^(each|for each player|cards|spells with)/i.test(m[1]) && !/you play/i.test(m[1]) ? 'any' : 'friendly', count: 'all', ...(/that choose|first|with \[|optional|\[Repeat\]|activated ability|for each player|non-token|Dragons/i.test(m[1]) ? { qualifier: m[1] } : {}) }, ...(/ or \[/.test(m[2]) ? { amountAlt: parseResources(m[2].replace(/^.* or /, '')) } : {}), ok: !/, and /.test(m[1]) }] })],
   // play permissions / restrictions
   [/^(?:You may play me|I can be played|Play me only) to (.+)$/i, (m) => ({ staticType: 'play-permission', effects: [{ verb: 'playPermission', where: m[1], only: /^Play me only/i.test(m[0]), target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
   [/^Friendly units (?:may|can) be played to (.+)$/i, (m) => ({ staticType: 'play-permission', effects: [{ verb: 'playPermission', where: m[1], target: { types: ['unit'], controller: 'friendly', count: 'all', raw: 'friendly units', ok: true }, ok: true }] })],
@@ -932,7 +957,7 @@ function parseLine(line0, card, origin, options) {
       if (!st.trigger.ok) status = status === 'none' ? 'none' : 'partial';
       if (ab.conditions.some((c) => !c.ok)) status = worst(status, 'partial') === 'none' ? 'partial' : worst(status, 'partial');
       // following sentences belong to the same ability until a new trigger/static starts
-      while (sents[i + 1] && !splitTrigger(sents[i + 1].replace(/\.$/, '')) && !usageRe.test(sents[i + 1].replace(/\.$/, '')) && !(parseStatic(sents[i + 1].replace(/\.$/, '')) && !/^(They|It) /i.test(sents[i + 1]))) status = worst(status, pushEffects(ab, sents[++i]));
+      while (sents[i + 1] && !(card.type === 'spell' && /^Draw \d+\.?$/i.test(sents[i + 1])) && !splitTrigger(sents[i + 1].replace(/\.$/, '')) && !usageRe.test(sents[i + 1].replace(/\.$/, '')) && !(parseStatic(sents[i + 1].replace(/\.$/, '')) && !/^(They|It) /i.test(sents[i + 1]))) status = worst(status, pushEffects(ab, sents[++i]));
       // fix sentence status of first sentence when trigger unknown
       done(ab, status, sent); current = ab; continue;
     }
@@ -956,7 +981,8 @@ function parseLine(line0, card, origin, options) {
     }
     if (stt) {
       const ab = mkAbility('static', { staticType: stt.staticType, effects: stt.effects });
-      if (cond) ab.conditions.push(cond);
+      // a trailing "unless/while C" after "X and can't Y" binds to the last clause only (VEN-084)
+      if (cond && !/^(?:While|If|During) /i.test(bare) && ab.effects.some((e) => e.tailClause)) { for (const e of ab.effects) if (e.tailClause) e.conditions = [...(e.conditions || []), cond]; } else if (cond) ab.conditions.push(cond);
       const ok = stt.effects.every((e) => e.ok !== false) && (!cond || cond.ok);
       done(ab, ok ? 'full' : 'partial', sent); sentences.push({ text: sent, status: ok ? 'full' : 'partial' }); current = ab; continue;
     }
@@ -971,7 +997,7 @@ function parseLine(line0, card, origin, options) {
   }
   return { abilities, sentences };
 }
-function parseStatic(s0) { const s = s0.replace(/\[(Add|ADD)\]/g, 'add').replace(/ if they didn't already$/i, '').replace(/^Once each turn, /i, ''); for (const [re, f] of STATIC) { const m = re.exec(s); if (m) { const r = f(m); if (r) return r; } } return null; }
+function parseStatic(s0) { const s = s0.replace(/\[(Add|ADD)\]/g, 'add').replace(/ if they didn't already$/i, '').replace(/^Once each turn, /i, ''); { const mc = /^(I|.+?) (have|has) (.+?) and (can't|can only|must|don't) (.+)$/i.exec(s); if (mc) { const a = parseStatic(`${mc[1]} ${mc[2]} ${mc[3]}`); const b = a && parseStatic(`${mc[1]} ${mc[4]} ${mc[5]}`); if (a && b) return { ...a, effects: [...a.effects, ...b.effects.map((e) => ({ ...e, tailClause: true }))] }; } } for (const [re, f] of STATIC) { const m = re.exec(s); if (m) { const r = f(m); if (r) return r; } } return null; }
 function splitActivated(line) {
   // "<cost>: [Speed] — effect"  |  "<cost>: effect"
   const i = line.indexOf(': '); if (i < 0) return null;
@@ -1002,6 +1028,14 @@ export function parseCard(card) {
   if (card.effectText && stripReminders(card.effectText).trim() && !/^\d+$/.test(card.effectText.trim())) run(card.effectText, 'equipment-effect');
   // quoted granted abilities: parse the inner text too
   for (const ab of abilities) for (const e of ab.effects) if (e.verb === 'grantAbility' && e.grantedText) { const inner = parseLine(e.grantedText, { ...card, type: 'unit' }, 'granted', []); e.granted = inner.abilities; if (inner.sentences.some((s) => s.status !== 'full')) { e.ok = false; } }
+  // post-pass normalisation (iteration 2, after the engine comparison):
+  //  - a duration only means something on continuous effects; drop the one a shared "this turn" smeared onto instant verbs
+  //  - "put N into your hand" from looked-at cards is not a draw (GameLab scripts mark it notADraw; draw triggers must not see it)
+  //  - gate keywords ([Legion], [Level N], [Empowered], [Deathknell]) are also listed in card.keywords with gate:true
+  const CONTINUOUS = new Set(['might', 'grantKeyword', 'grantAbility', 'takeControl', 'costChange', 'restrict', 'ruleMod', 'untargetable', 'permission', 'playPermission', 'bonusDamage', 'enterReady', 'setMight', 'swapMight', 'doubleMight', 'prevent', 'grantTag', 'amplifyDamage', 'copy', 'unknown']);
+  const gates = [];
+  const norm = (e) => { if (!e || typeof e !== 'object') return; if (Array.isArray(e)) return e.forEach(norm); if (e.duration && !CONTINUOUS.has(e.verb)) delete e.duration; if (e.verb === 'draw' && e.from === 'looked') e.verb = 'toHand'; if (e.verb === 'play' && !e.from && /from your trash/i.test(e.raw || '')) e.from = 'trash'; if (e.amount && e.amount.ref === 'target.might' && /that unit's Might/i.test(e.raw || '') && (e.conditions || []).some((c) => c.type === 'showed-off')) e.amount = { ref: 'shown.might' }; if (e.options) norm(e.options); if (e.granted) for (const a of [].concat(e.granted)) norm(a.effects); };
+  for (const ab of abilities) { norm(ab.effects); for (const c of ab.conditions || []) { if (c.type === 'legion') gates.push({ name: 'Legion', gate: true }); if (c.type === 'level') gates.push({ name: 'Level', value: c.value, gate: true }); if (c.type === 'empowered' && /\[Empowered\]/.test(c.raw || '')) gates.push({ name: 'Empowered', gate: true }); } if (ab.trigger && /\[Deathknell\]/.test(ab.trigger.raw || '')) gates.push({ name: 'Deathknell', gate: true }); }
   // card-level speed and keyword summary
   let speed = 'normal'; const keywords = [];
   for (const ab of abilities) if (ab.kind === 'keyword') {
@@ -1010,6 +1044,8 @@ export function parseCard(card) {
     if (ab.origin === 'rules' && !ab.conditions.length && (k.name === 'Action' || k.name === 'Reaction')) speed = k.name === 'Reaction' ? 'reaction' : speed === 'reaction' ? 'reaction' : 'action';
   }
   // Hidden grants Reaction when played from face down; Quick-Draw and Ambush grant Reaction timing (reminder text, CR 811/819/822)
+  for (const g of gates) if (!keywords.some((k) => k.name === g.name && k.value === g.value)) keywords.push(g);
+  for (const ab of abilities) if (ab.status && ab.status !== 'full') { const st = sentences.find((x) => x.status === 'full' && ab.text && (ab.text.startsWith(x.text) || x.text.startsWith(ab.text) || ab.text.includes(x.text))); if (st) { st.status = 'partial'; st.why = 'ability-not-full'; } }
   const status = combine(sentences.map((s) => s.status));
   const { text: _t, effectText: _e, printings, altType, galleryType, ...meta } = card;
   return { ...meta, speed, keywords, abilities, parse: { status: sentences.length ? status : 'full', sentences }, textUsed: text, effectTextUsed: card.effectText || '', textSource: source };

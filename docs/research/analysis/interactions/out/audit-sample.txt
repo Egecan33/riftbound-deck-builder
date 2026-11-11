@@ -1,0 +1,120 @@
+#1 [A] s=2.77 rule=gearability->abilitypayoff
+  A OGN-072 Solari Shrine (gear, E3, MNone): When you kill a stunned enemy unit, you may exhaust this to draw 1.
+  B VEN-145 Curator of the Sands (legend, ENone, MNone): When you play a unit, gear, or activated ability with Energy cost [7] or more, you may exhaust me to ready up to 2 runes.
+#2 [A] s=6.75 rule=ready->exhaust-legend
+  A OGN-162 Miss Fortune, Captain (unit, E5, M5): [Accelerate]  / [Ganking]  / The first time I move each turn, you may ready something else that's exhausted.
+  B UNL-201 Voidreaver (legend, ENone, MNone): When you win a combat, gain 1 XP. / Spend 1 XP, [Exhaust]: [Buff] a unit. / Spend 2 XP, [Exhaust]: Move an exhausted friendly unit from a battlefield to its base.
+#3 [A] s=2.88 rule=cheat->expensive
+  A OGN-107 Ava Achiever (unit, E5, M4): When I attack, you may pay [Mind] to play a card with [Hidden] from your hand here, ignoring its cost.
+  B SFD-202 Hostile Takeover (spell, E5, MNone): [Hidden]  / Take control of an enemy unit at a battlefield. Ready it.  / Lose control of that unit and recall it at end of turn. 
+#4 [A] s=3.35 rule=ready->exhaust-gear
+  A VEN-149 Defender of Tomorrow (legend, ENone, MNone): [Empower] [2][Any][Any]  / [1], [Exhaust]: Ready a gear. / [Empowered][>] [1], [Exhaust]: Ready 2 gear.
+  B RAD-022 Whirling Twirligig (gear, E4, MNone): [Exhaust]: Play a Gold gear token exhausted.  / Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token. / Kill a friendly unit, [Exhaust]: Play a 3 [Might] Mech unit token.
+#5 [A] s=2.49 rule=discard->discardpayoff
+  A OGN-023 Unlicensed Armory (gear, E2, MNone): Discard 1, [Exhaust]: Choose a friendly unit. The next time it dies this turn, you may pay [Fury] to recall it exhausted instead. 
+  B OGN-182 Scrapheap (gear, E2, MNone): When this is played, discarded, or killed, draw 1.
+#6 [A] s=2.77 rule=gearability->abilitypayoff
+  A SFD-052 Heart of Dark Ice (gear, E3, MNone): [Exhaust]: Give a unit +3 [Might] this turn.
+  B VEN-145 Curator of the Sands (legend, ENone, MNone): When you play a unit, gear, or activated ability with Energy cost [7] or more, you may exhaust me to ready up to 2 runes.
+#7 [A] s=2.65 rule=empower->empowered
+  A VEN-099 Tornado Warrior (unit, E3, M3): [Hidden]  / When you play me from face down, you may empower something here. Disempower it at end of turn.
+  B VEN-143 Master of Shadows (legend, ENone, MNone): When you banish a card you own, empower me.  / [Action][>] Disempower me, [Exhaust]: Discard 1, then draw 1.
+#8 [A] s=5.53 rule=ready->exhaust-legend
+  A SFD-039 Royal Entourage (unit, E3, M4): When you play me, ready or exhaust a legend.
+  B SFD-189 Fire Below the Mountain (legend, ENone, MNone): [Exhaust]: [Reaction] — [Add] [Any]. Use only to play gear or use gear abilities. 
+#9 [A] s=3.9 rule=tribal:Recruit
+  A OGN-265 Herald of the Arcane (legend, ENone, MNone): [1], [Exhaust]: Play a 1 [Might] Recruit unit token.
+  B OGN-246 Viktor, Leader (unit, E4, M4): When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.
+#10 [A] s=2.6 rule=keyword:Temporary
+  A UNL-078 Sprite Fountain (gear, E2, MNone): [Temporary]  / When you play this, play a ready 3 [Might] Sprite unit token with [Temporary] to your base. / [Deathknell][>] Repeat this gear's play effect. 
+  B UNL-076 Petal Pixie (unit, E2, M2): I have +1 [Might] for each of your units with [Temporary] at my battlefield.
+#11 [A] s=2.52 rule=ready->exhaust-gear
+  A VEN-068 Jayce, Brilliant Inventor (unit, E6, M6): When you play me or the first time you play a non-token gear each turn, you may ready something besides me that's exhausted.
+  B UNL-045 Forgotten Signpost (gear, E2, MNone): [Action][>] Exhaust a unit you control, [Exhaust]: Move a different unit you control to the location of the unit you exhausted to pay for this ability.
+#12 [A] s=2.52 rule=ready->exhaust-gear
+  A VEN-068 Jayce, Brilliant Inventor (unit, E6, M6): When you play me or the first time you play a non-token gear each turn, you may ready something besides me that's exhausted.
+  B OGN-242 Baited Hook (gear, E3, MNone): [1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.
+#13 [A] s=3.12 rule=tribal:Recruit
+  A OGN-218 Vanguard Captain (unit, E3, M3): [Legion] — When you play me, play two 1 [Might] Recruit unit tokens here. 
+  B OGN-246 Viktor, Leader (unit, E4, M4): When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.
+#14 [A] s=2.94 rule=target->targeted
+  A VEN-139 Rogue Assassin (legend, ENone, MNone): [Empower] [3][Any]  / [Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.
+  B SFD-057 Irelia, Fervent (unit, E5, M4): [Deflect]  / When you choose or ready me, give me +1 [Might] this turn.
+#15 [A] s=6.75 rule=ready->exhaust-legend
+  A OGN-162 Miss Fortune, Captain (unit, E5, M5): [Accelerate]  / [Ganking]  / The first time I move each turn, you may ready something else that's exhausted.
+  B OGN-249 Relentless Storm (legend, ENone, MNone): When you play a [Mighty] unit, you may exhaust me to channel 1 rune exhausted. 
+#16 [A] s=3.74 rule=shrink->shrinkpayoff
+  A OGN-119 Ahri, Inquisitive (unit, E3, M3): When I attack or defend, give an enemy unit here -2 [Might] this turn, to a minimum of 1 [Might].
+  B RAD-SP1 Ahri, Confident (unit, E4, M4): [Disarm] / When you reduce the Might of an enemy unit here by 1 or more, give me +1 [Might] this turn.
+#17 [A] s=2.49 rule=discard->discardpayoff
+  A RAD-166 Ruined Monastery (battlefield, ENone, MNone): When you conquer here, you may discard 1 and channel 1 rune exhausted.
+  B OGN-202 Jinx, Rebel (unit, E5, M5): When you discard one or more cards, ready me and give me +1 [Might] this turn.
+#18 [A] s=2.52 rule=discard->discardpayoff
+  A SFD-123 Corrupt Enforcer (unit, E3, M4): When I move to a battlefield, discard 1. / When I win a combat, draw 1.
+  B OGN-006 Flame Chompers (unit, E3, M3): When you discard me, you may pay [Fury] to play me.
+#19 [A] s=2.48 rule=stun->stunpayoff
+  A RAD-028 Ki Burst (spell, E1, MNone): [Action]  / As an additional cost to play this, exhaust a friendly unit. / [Stun] a unit. 
+  B OGN-261 Radiant Dawn (legend, ENone, MNone): When you stun one or more enemy units, buff a friendly unit. 
+#20 [A] s=3.12 rule=shrink->shrinkpayoff
+  A VEN-052 Mesmerize (spell, E1, MNone): [Reaction]  / Choose one — / - Return a friendly unit to its owner's hand. / - Give an enemy unit -2 [Might] this turn.
+  B RAD-SP1 Ahri, Confident (unit, E4, M4): [Disarm] / When you reduce the Might of an enemy unit here by 1 or more, give me +1 [Might] this turn.
+#21 [B] s=1.33 rule=cheat->expensive
+  A SFD-187 Void Burrower (legend, ENone, MNone): When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest.
+  B OGN-002 Brazen Buccaneer (unit, E6, M5): As you play me, you may discard 1 as an additional cost. If you do, reduce my cost by [2].
+#22 [B] s=1.44 rule=move->selfmove
+  A SFD-184 Relentless Pursuit (spell, E2, MNone): [Action]  / Move a friendly unit. You may attach an Equipment with the same controller to it. This turn, that unit has "When I conquer, you may move me to my base."
+  B RAD-078 Armored Tusker (unit, E6, M4): [Shield 3]  / [Tank]  / When I move, you may deal damage equal to my [Shield] to a unit at a battlefield.
+#23 [B] s=1.52 rule=ready->exhaust-unit
+  A RAD-114a Riven, Deserter (unit, E5, M5): When another friendly unit is exhausted, give me +1 [Might] this turn. / Exhaust a friendly unit: Ready a unit. Use this ability only once each turn.
+  B OGN-078 Lee Sin, Ascetic (unit, E5, M5): [Shield]  / [Exhaust]: Buff me.  / I can have any number of buffs.
+#24 [B] s=1.69 rule=buff->buffpayoff
+  A UNL-102 Crowd Favorite (unit, E3, M3): [Hunt]  / Spend 2 XP: [Buff] me. 
+  B SFD-047 Simian Ancestor (unit, E5, M5): When you buff me, ready me.
+#25 [B] s=1.44 rule=move->selfmove
+  A OGN-250 Stormbringer (spell, E6, MNone): Choose a friendly unit in your base. Deal damage equal to its Might to all enemy units at a battlefield, then move your unit there.
+  B OGN-162 Miss Fortune, Captain (unit, E5, M5): [Accelerate]  / [Ganking]  / The first time I move each turn, you may ready something else that's exhausted.
+#26 [B] s=1.7 rule=cheat->expensive
+  A SFD-187 Void Burrower (legend, ENone, MNone): When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest.
+  B RAD-018 Drakehound Packmaster (unit, E9, M9): When you play me, reveal the top card of each opponent's Main Deck. Choose one and banish it, then play it, ignoring its cost. Recycle the rest.
+#27 [B] s=1.81 rule=reanimate->etb
+  A SFD-026 Rumble, Hotheaded (unit, E4, M4): Your Mechs each have [Assault].  / When I conquer, you may recycle another friendly unit to play a Mech from your trash. Reduce its Energy cost by the Might of the unit you recycled.
+  B SFD-007 Gem Jammer (unit, E2, M2): When you play me, give a unit [Ganking] this turn. 
+#28 [B] s=1.42 rule=temporary->deathknell
+  A UNL-165 Shadow's Call (spell, E2, MNone): Choose a friendly unit without [Temporary]. Give it [Temporary]. Draw 2. 
+  B SFD-167 Unsung Hero (unit, E2, M2): [Deathknell] — If I was [Mighty], draw 2. 
+#29 [B] s=1.31 rule=hidden->hiddenpayoff
+  A RAD-095 Momentary Companion (unit, E4, M4): [Hidden]  / When you play me, if it's not your turn, give me [Temporary]. 
+  B OGN-101 Mushroom Pouch (gear, E2, MNone): At the start of your Beginning Phase, if you control a facedown card at a battlefield, draw 1.
+#30 [B] s=1.74 rule=ready->exhaustpayoff
+  A VEN-150 Acceleration Gate (spell, E3, MNone): Ready up to 4 units, gear, and/or runes.
+  B RAD-053 Strigian Oracle (unit, E2, M2): When I become exhausted, [Predict]. 
+#31 [B] s=1.2 rule=move->selfmove
+  A RAD-031 Stoic Ferryman (unit, E4, M2): [Shield 3]  / When you play me to a battlefield, you may move another unit you control here to your base.
+  B SFD-038 Ribbon Dancer (unit, E3, M3): When I move to a battlefield, give another friendly unit +1 [Might] this turn.
+#32 [B] s=1.26 rule=cheat->expensive
+  A RAD-136 Dockside Lock-Up (gear, E6, MNone): [Deploy]  / When you play this, banish a unit here. / When you hold here, kill this to play the banished card, ignoring its cost. 
+  B OGN-041 Volibear, Furious (unit, E10, M9): [Deflect 2]  / When I attack, deal 5 damage split among any number of enemy units here.
+#33 [B] s=1.29 rule=removal->killpayoff
+  A SFD-082 Ezreal, Dashing (unit, E4, M3): When I attack or defend, deal damage equal to my Might to an enemy unit here. / I don't deal combat damage. / [Mind]: [Action] — Move me to your base.
+  B OGN-037 Immortal Phoenix (unit, E3, M3): [Assault 2]  / When you kill a unit with a spell, you may pay [1][Fury] to play me from your trash.
+#34 [B] s=1.65 rule=target->targeted
+  A RAD-031 Stoic Ferryman (unit, E4, M2): [Shield 3]  / When you play me to a battlefield, you may move another unit you control here to your base.
+  B SFD-057 Irelia, Fervent (unit, E5, M4): [Deflect]  / When you choose or ready me, give me +1 [Might] this turn.
+#35 [B] s=1.39 rule=temporary->deathwatch
+  A UNL-069 Sprite Burst (spell, E5, MNone): Play two ready 3 [Might] Sprite unit tokens with [Temporary]. 
+  B SFD-169 Altar of Memories (gear, E2, MNone): When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.
+#36 [B] s=1.66 rule=deploy->deploypayoff
+  A RAD-062 Gravity Field (gear, E5, MNone): [Deploy]  / Opponents must pay [1][Any] to move one or more units to this battlefield. / [Deathknell][>] Draw 1. 
+  B RAD-022 Whirling Twirligig (gear, E4, MNone): [Exhaust]: Play a Gold gear token exhausted.  / Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token. / Kill a friendly unit, [Exhaust]: Play a 3 [Might] Mech unit token.
+#37 [B] s=1.65 rule=tribal:Dog
+  A SFD-126 Loyal Pup (unit, E3, M3): When you defend at a battlefield, you may move me there.
+  B UNL-046 Friendship (spell, E1, MNone): [Reaction]  / Choose a unit. Give it +1 [Might] this turn for each of the following tags among your units — Bird, Cat, Dog, and Poro.
+#38 [B] s=1.35 rule=trashfill->trash
+  A UNL-199 Deceiver (legend, ENone, MNone): When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. It becomes a copy of another unit there. Give it [Temporary].
+  B VEN-049 Dredge Up (spell, E2, MNone): Draw 1. / [Flow] [2] 
+#39 [B] s=1.42 rule=buff->buffpayoff
+  A SFD-166 Rally the Troops (spell, E2, MNone): [Action]  / When a friendly unit is played this turn, buff it.  / Draw 1.
+  B OGN-063 Spirit's Refuge (gear, E2, MNone): When you play this, buff a friendly unit.  / Friendly buffed units have [Deflect] if they didn't already. 
+#40 [B] s=1.29 rule=xp->xppayoff
+  A UNL-053 Scuttle Crab (unit, E2, M0):  / When you play me, draw 1. / [Deathknell][>] Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP. 
+  B UNL-135 Insightful Investigator (unit, E3, M3): When you play me, choose an opponent. They reveal their hand. You may pay 2 XP to choose a card from their hand. If you do, they discard that card and draw 1.

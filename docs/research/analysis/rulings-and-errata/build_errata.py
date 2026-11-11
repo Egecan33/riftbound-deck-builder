@@ -45,7 +45,9 @@ hist = {}
 for e in events:
     hist.setdefault(e['card'], []).append(e)
     latest[e['card']] = e  # later date wins; a same-day duplicate keeps the later-listed doc
-gal = json.load(open(GAL))
+sys.path.insert(0, here)
+import gallery  # verification 2026-11-11: consistent snapshot + uniqueness assertion (the interactions/data copy lacks SFD-054/221)
+gal = gallery.load()
 def gtext(x):
     at = x['cardImage'].get('accessibilityText') or ''
     at = re.sub(r'^Riftbound [^:]*: [^.]*?\. ', '', at, count=1) if at.startswith('Riftbound') else at

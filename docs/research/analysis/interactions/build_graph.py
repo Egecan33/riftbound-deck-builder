@@ -57,7 +57,7 @@ V = {
  'P.gold':         ('creates Gold / gear tokens', r'\bgold gear tokens?|play (?:an?|two|three|\d+)[^.]*gear token'),
  'P.buff':         ('puts buffs on friendly units', r'(?<!\[)\bbuff (?:an?\b|me\b|it\b|them\b|another|each|all|up to|two|three|your|\d|that|this|the|one|friendly|a friendly)|\bbuff\.|\bbuff,'),
  'P.might+':       ('raises Might of a friendly unit', r'\+\d+ \[might\]|\+x \[might\]|double (?:my|its|their) \[?might|might (?:becomes|to the might)'),
- 'P.might-':       ('lowers Might of an enemy unit', r'-\d+ \[might\]|-x \[might\]'),
+ 'P.might-':       ('lowers Might of an enemy unit', r'-\d+ \[might\]|-x \[might\]|\[disarm'),
  'P.ready.unit':   ('readies a friendly unit', r'\bready (?!your runes|\d+ runes|a rune|two runes|your legend|.{0,12}gear)(?:an?\b|another|up to \w+|two|your|all|each|it\b|them\b|me\b|that|friendly|the|something)'),
  'P.ready.rune':   ('readies runes', r'\bready (?:your |\d+ |a |an |two |up to \w+ |that |those )?(?:exhausted )?runes?'),
  'P.ready.legend': ('readies your legend', r'\bready (?:your|a) legend|ready something'),
@@ -133,6 +133,18 @@ V = {
  'C.excess':       ('rewards excess combat damage', r'excess damage'),
  'C.bigEnergy':    ('is an Energy sink', r'\[repeat\]|pay any amount|\bx\b'),
  'C.exhaustAbility':('has an [Exhaust] ability (wants to be readied)', r'\[exhaust\](?:,[^:]{0,40})?:|exhaust me(?:,| to|:)|\[exhaust\], '),
+ # ---- Radiance (RAD) mechanics: Core Rules 2026-10-09, 830 Deploy, 831 Disarm, 832 Show Off (text only, no engine script yet)
+ 'P.bomb':         ('creates Bomb gear tokens (they have [Deploy])', r'play (?:an?|two|three|\d+|that many) bomb (?:gear )?tokens?'),
+ 'C.deploy':       ('cares about gear with [Deploy] / Bombs / gear at a battlefield', r'gear with \[deploy\]|friendly bomb tokens|friendly gear at a battlefield|kill a friendly gear|kill another friendly unit or gear'),
+ 'C.mightReduced': ('triggers when you reduce an enemy unit\'s Might', r'when you reduce the might'),
+ 'C.showoff':      ('[Show Off]: rewards holding or controlling a matching card', r'\[show off\]'),
+ 'P.exhaustFriendly':('exhausts one of your own units as a cost or effect', r'exhaust a friendly unit|exhaust (?:another|one of your|an?) (?:other )?(?:friendly )?units? you control|exhaust (?:two|three|\d+) friendly units'),
+ 'C.selfExhausted':('triggers when it becomes exhausted', r'when i become exhausted|when (?:a|another) friendly unit becomes exhausted|when you exhaust (?:a|one or more|three or more) friendly units?'),
+ 'P.reveal':       ('reveals cards from the top of your Main Deck', r'reveal (?:the top|cards from the top)|reveal[^.]{0,30}from the top of your main deck'),
+ 'C.revealed':     ('has an effect when revealed from your deck', r"as i'm revealed|when i'm revealed|as this is revealed"),
+ 'C.notFromHand':  ('rewards units played from somewhere other than hand', r"from anywhere other than (?:a player's|your) hand|not from (?:your )?hand"),
+ 'P.onlyFor.spell':('gives a resource or bonus that only spells can use', r'use only to play spells|next spell you play|your spells (?:cost|have|deal)|spells you play (?:cost|have)'),
+ 'P.onlyFor.gear': ('gives a resource or bonus that only gear can use', r'use only to play gear|your (?:gear|equipment) (?:costs?|have|each give)|next gear you play'),
  'C.handSize':     ('wants a small or large hand', r'cards? in (?:your )?hand|no cards in hand|hand is empty'),
 }
 
@@ -448,6 +460,7 @@ def engine_facets(card):
 KW_FACETS = {  # keyword on the card itself (cards.json keywords) -> facet
  'Deathknell': ('C.selfDeath', 'repeat'), 'Legion': ('C.multiPlay', 'once'), 'Hunt': ('P.xp', 'repeat'), 'Level': ('C.xp', 'static'),
  'Ganking': ('P.move.self', 'repeat'), 'Weaponmaster': ('C.gear', 'once'), 'Quick-Draw': ('C.gear', 'once'), 'Hidden': ('C.hidden', 'once'),
+ 'Disarm': ('P.might-', 'repeat'),
  'Repeat': ('C.bigEnergy', 'once'), 'Vision': ('P.topdeck', 'once'), 'Empowered': ('C.empowered', 'static'), 'Flow': ('C.trash', 'repeat'),
 }
 
@@ -468,6 +481,8 @@ def build_facets(pool):
             # tag cares only seen by text (the engine hides them in manual scripts' filters): accept text tags as supplements
             for k, v in tf.items():
                 if k.startswith('C.tag:') and k not in ef: ef[k] = dict(src='text', rep='static', ab='txt')
+                # facets the engine dump does not expose (restricted resources, Radiance wording): accept the text match
+                if k in ('P.exhaustFriendly', 'C.selfExhausted', 'P.reveal', 'C.revealed', 'C.notFromHand', 'P.onlyFor.spell', 'P.onlyFor.gear', 'C.deploy', 'C.mightReduced', 'C.showoff', 'P.bomb') and k not in ef: ef[k] = dict(src='text', rep='static', ab='txt', sent=v['sent'])
             base_e = {k for k in ef if '@' not in k and ':' not in k and not k.startswith('_')}
             base_t = {k for k in tf if ':' not in k}
             for k in V:
@@ -587,7 +602,32 @@ def x_mighty(a, b): return (True, 1, '')
 def x_tag_factory(tag):
     return lambda a, b: (True, 1, '')
 
+def x_showoff(a, b):
+    """Core Rules 832.1.c: Show Off reveals [Object] from hand or picks it among friendly objects. Match a against b's printed object."""
+    m = re.search(r'\[show off\] ([^.(]*)', fa(b, 'C.showoff')['sent'], re.I)
+    if not m: return (False, 1, '')
+    obj = m.group(1).strip().lower()
+    if obj.startswith('a gear'): return (a['type'] == 'gear', 1, '')
+    if '[hidden]' in obj: return ('Hidden' in a['keywords'], 1, '')
+    mm = re.search(r'energy cost \[(\d+)\] or more', obj)
+    if mm: return (a['type'] in MAIN and (a['energy'] or 0) >= int(mm.group(1)), 1.2, '')
+    if obj.startswith('a unit'): return (a['type'] == 'unit' and (a['might'] or 0) >= 5, 1, 'Primordial Roar-style effects scale with the shown unit; only 5+ Might units are linked')
+    for t in TAG_WORDS:
+        if re.match(r'an? ' + re.escape(t.lower()) + r'\b', obj): return (t in a['tags'], 1.2, '')
+    return (False, 1, '')
+
 RULES = [
+ R('deploy->deploypayoff', 2.6, lambda c: 'is' if (c['type'] == 'gear' and 'Deploy' in c['keywords']) else ('P.bomb' if has(c, 'P.bomb') else None), P('C.deploy'), 'puts a gear with [Deploy] (or a Bomb token, which has [Deploy]) on a battlefield for the payoff'),
+ R('shrink->shrinkpayoff', 2.6, P('P.might-'), P('C.mightReduced'), 'reduces an enemy unit\'s Might, which is the trigger'),
+ R('exhaust->exhaustpayoff', 2.6, P('P.exhaustFriendly'), P('C.selfExhausted'), 'exhausts a friendly unit outside combat, which is the trigger', x_unit),
+ R('ready->exhaustpayoff', 2.0, P('P.ready.unit'), P('C.selfExhausted'), 'readies the unit so it can become exhausted (and trigger) a second time in the turn', x_unit),
+ R('reveal->revealed', 2.6, P('P.reveal'), P('C.revealed'), 'reveals cards from the top of your Main Deck, which can hit the as-revealed effect'),
+ R('offhand->notfromhand', 2.4, P('P.reveal', 'P.reanimate'), P('C.notFromHand'), 'plays units from the deck or trash, not from hand, which the payoff rewards',
+   lambda a, b: (not re.search(r'play (?:me|this) from', (fa(a, 'P.reveal') or fa(a, 'P.reanimate'))['sent'], re.I) and not re.match(r'i cost', fa(b, 'C.notFromHand')['sent'], re.I), 1, '')),
+ R('spellsupport->spell', 1.2, P('P.onlyFor.spell'), IS(lambda c: c['type'] == 'spell'), 'gives a resource or bonus that only spells can use; this is a spell', cls='class'),
+ R('gearsupport->gear', 1.2, P('P.onlyFor.gear'), IS(lambda c: c['type'] == 'gear'), 'gives a resource or bonus that only gear can use; this is a gear',
+   lambda a, b: ('Equipment' in b['tags'] or not re.search(r'equipment', fa(a, 'P.onlyFor.gear')['sent'], re.I), 1, ''), cls='class'),
+ R('object->showoff', 2.0, IS(lambda c: True), P('C.showoff'), 'is a card that can be shown off (Core Rules 832) to switch on the bonus', x_showoff),
  R('sac->deathknell', 3.0, P('P.kill.friendly'), P('C.selfDeath'), 'kills its own unit on demand, which fires the Deathknell', x_death),
  R('sac->deathwatch', 2.6, P('P.kill.friendly', 'P.selfkill'), P('C.friendlyDeath'), 'makes a friendly unit die, which the watcher rewards'),
  R('temporary->deathwatch', 2.0, lambda c: 'P.grantkw:Temporary' if has(c, 'P.grantkw:Temporary') else ('is' if 'Temporary' in c['keywords'] and c['type'] == 'unit' else ('P.token:sprite' if has(c, 'P.token:sprite') else None)), P('C.friendlyDeath'), 'supplies a unit that dies on schedule ([Temporary]) for the death watcher'),

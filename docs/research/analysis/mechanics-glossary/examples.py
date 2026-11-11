@@ -15,6 +15,6 @@ def pick(cards, n=3, prefer=None):
     return out[:n]
 def fmt(c):
     cost = '' if c['energy'] is None else ' · cost %s%s' % (c['energy'], ('+%s power' % c['power']) if c.get('power') else '')
-    might = '' if c['might'] is None else ' · %s Might' % c['might']
+    might = '' if c['might'] is None else (' · %s Might bonus' % (c.get('mightBonus') or ('+%s' % c['might'])) if c['type'] == 'gear' else ' · %s Might' % c['might'])
     err = ' · **errata text** (%s errata)' % c['errata']['source'] if c['errata'] and c['errata'].get('applied', True) else ''
     return '**%s** (%s, %s%s%s%s): "%s"' % (c['name'], c['code'], c['type'], cost, might, err, c['text'].replace('\n', ' / '))

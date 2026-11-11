@@ -4,7 +4,9 @@ and expand {{Card Name}} to "Card Name (CODE)" using the gallery snapshot. Run: 
 import json, os, re, sys
 from collections import Counter
 here = os.path.dirname(os.path.abspath(__file__))
-gal = json.load(open(os.path.join(here, '..', 'interactions', 'data', 'gallery-cards-2026-11-11.json')))
+sys.path.insert(0, here)
+import gallery  # verification 2026-11-11: see gallery.py
+gal = gallery.load()
 man = {m['name']: m for m in json.load(open(os.path.join(here, 'manifest.json')))}
 err = json.load(open(os.path.join(here, 'out', 'errata.json')))
 KEYS = [('ERR-OGN', 'origins-errata'), ('FAQ-OGN', 'origins-faq'), ('PN-OGN', 'patch-notes-origins'), ('PN-SFD', 'patch-notes-spiritforged'),

@@ -345,18 +345,18 @@
    ],
    "printings": [
     {
-     "code": "UNL-079/219",
-     "id": "unl-079-219",
-     "set": "UNL",
-     "status": "OLD",
-     "gallery_text": "When a showdown begins here, you may pay [1]. If you do, [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it. (To Predict, look at the top card of your Main Deck. You may recycle it.)"
-    },
-    {
      "code": "UNL-079a/219",
      "id": "unl-079a-219",
      "set": "UNL",
      "status": "OLD~",
      "gallery_text": "When a showdown begins here, you may pay [1]. If you do, [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it."
+    },
+    {
+     "code": "UNL-079/219",
+     "id": "unl-079-219",
+     "set": "UNL",
+     "status": "OLD",
+     "gallery_text": "When a showdown begins here, you may pay [1]. If you do, [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it. (To Predict, look at the top card of your Main Deck. You may recycle it.)"
     }
    ],
    "gallery": "printed text (stale)"
@@ -771,6 +771,13 @@
      "set": "SFD",
      "status": "OLD",
      "gallery_text": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nEach Equipment in your hand has [Quick-Draw]. (It gains [Reaction]. When you play it, attach it to a unit you control.)"
+    },
+    {
+     "code": "SFD-054/221",
+     "id": "sfd-054-221",
+     "set": "SFD",
+     "status": "OLD",
+     "gallery_text": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nEach Equipment in your hand has [Quick-Draw]. (It gains [Reaction]. When you play it, attach it to a unit you control.)"
     }
    ],
    "gallery": "printed text (stale)"
@@ -930,15 +937,15 @@
    ],
    "printings": [
     {
-     "code": "UNL-199/219",
-     "id": "unl-199-219",
+     "code": "UNL-235*/219",
+     "id": "unl-235-star-219",
      "set": "UNL",
      "status": "OLD",
      "gallery_text": "When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. It becomes a copy of another unit there. Give it [Temporary]."
     },
     {
-     "code": "UNL-235*/219",
-     "id": "unl-235-star-219",
+     "code": "UNL-199/219",
+     "id": "unl-199-219",
      "set": "UNL",
      "status": "OLD",
      "gallery_text": "When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. It becomes a copy of another unit there. Give it [Temporary]."
@@ -1481,16 +1488,16 @@
      "gallery_text": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck. Deal 1 to an enemy unit here for each card with [Hidden], then recycle them."
     },
     {
-     "code": "OGN-121a/298",
-     "id": "ogn-121a-298",
-     "set": "OGN",
+     "code": "SFD-230*/221",
+     "id": "sfd-230-star-221",
+     "set": "SFD",
      "status": "OLD",
      "gallery_text": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck. Deal 1 to an enemy unit here for each card with [Hidden], then recycle them."
     },
     {
-     "code": "SFD-230*/221",
-     "id": "sfd-230-star-221",
-     "set": "SFD",
+     "code": "OGN-121a/298",
+     "id": "ogn-121a-298",
+     "set": "OGN",
      "status": "OLD",
      "gallery_text": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck. Deal 1 to an enemy unit here for each card with [Hidden], then recycle them."
     },
@@ -1750,18 +1757,18 @@
    ],
    "printings": [
     {
-     "code": "SFD-187/221",
-     "id": "sfd-187-221",
-     "set": "SFD",
-     "status": "OLD",
-     "gallery_text": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest."
-    },
-    {
      "code": "SFD-243/221",
      "id": "sfd-243-221",
      "set": "SFD",
      "status": "NEW",
      "gallery_text": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may banish one, then play it. Recycle the rest."
+    },
+    {
+     "code": "SFD-187/221",
+     "id": "sfd-187-221",
+     "set": "SFD",
+     "status": "OLD",
+     "gallery_text": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest."
     }
    ],
    "gallery": "mixed"
