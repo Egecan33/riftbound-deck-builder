@@ -1,0 +1,23 @@
+Kai'Sa vs Master Yi: claim favoured | estimate 51.3% (lists 2x3) | AGREE | riftbound.gg week-2 tier list 2026-11-06 (Radiance lists)
+Kai'Sa vs Rek'Sai: claim favoured | estimate 54.3% (lists 2x2) | AGREE | riftbound.gg week-2 tier list 2026-11-06
+Kai'Sa vs Kha'Zix: claim favoured | estimate 50.3% (lists 2x3) | AGREE | riftbound.gg week-2 tier list 2026-11-06
+Sivir vs Master Yi: claim unfavoured | estimate 47.5% (lists 1x3) | AGREE | cardsrealm Miracle Sivir 2026-01-18
+Sivir vs Ahri: claim unfavoured | estimate 48.8% (lists 1x2) | AGREE | cardsrealm Miracle Sivir 2026-01-18
+Sivir vs Ezreal: claim favoured | estimate 47.9% (lists 1x2) | DISAGREE | cardsrealm Miracle Sivir 2026-01-18
+Sivir vs Draven: claim unfavoured | estimate 45.3% (lists 1x2) | AGREE | cardsrealm Miracle Sivir 2026-01-18
+Sivir vs Kai'Sa: claim unfavoured | estimate 47.4% (lists 1x2) | AGREE | cardsrealm Miracle Sivir 2026-01-18 ("one chance to win")
+Irelia vs Master Yi: claim favoured | estimate 50.5% (lists 2x3) | AGREE | riftmana Irelia guide 2026-02-19
+Irelia vs Kai'Sa: claim unfavoured | estimate 51.4% (lists 2x2) | DISAGREE | riftmana Irelia guide 2026-02-19 (average to difficult)
+agreement 8/10
+matrix (row vs column, estimate %):
+	Master Yi	Kai'Sa	Rek'Sai	Volibear	Irelia	Ornn	Diana	Vex	Rengar	Lux
+Master Yi	--	49	51	51	50	49	51	50	47	52
+Kai'Sa	51	--	54	51	49	50	51	47	53	49
+Rek'Sai	49	46	--	48	51	50	50	51	48	49
+Volibear	49	49	52	--	46	48	48	45	50	49
+Irelia	50	51	49	54	--	49	51	51	49	53
+Ornn	51	50	50	52	51	--	51	50	48	52
+Diana	49	49	50	52	49	49	--	49	48	52
+Vex	50	53	49	55	49	50	51	--	52	52
+Rengar	53	47	52	50	51	52	52	48	--	50
+Lux	48	51	51	51	47	48	48	48	50	--

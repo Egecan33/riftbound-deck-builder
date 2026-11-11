@@ -2,7 +2,7 @@
 import { writeFileSync } from 'node:fs';
 const all = [];
 for (let page = 1; page <= 60; page++) {
-  const res = await fetch(`https://api.riftcodex.com/cards?page=${page}&size=100`, { headers: { 'User-Agent': 'Mozilla/5.0 (compatible; deck-research/1.0)' } });
+  const res = await fetch(`https://api.riftcodex.com/cards?page=${page}&size=100`, { signal: AbortSignal.timeout(25000), headers: { 'User-Agent': 'Mozilla/5.0 (compatible; deck-research/1.0)' } });
   if (!res.ok) { console.log('http', res.status, 'page', page); break; }
   const body = await res.json();
   all.push(...(body.items ?? []));

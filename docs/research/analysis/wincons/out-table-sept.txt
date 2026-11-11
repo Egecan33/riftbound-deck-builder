@@ -1,0 +1,35 @@
+Ahri, Nine-Tailed Fox                    WIDE 1, ATTRITION 1
+Annie, Dark Child                        WIDE 2
+Azir, Emperor of the Sands               TALL 1
+Darius, Hand of Noxus                    WIDE 1
+Diana, Scorn of the Moon                 ATTRITION 2
+Draven, Glorious Executioner             HIDDEN 1, BURST 1
+Ezreal, Prodigal Explorer                ATTRITION 2
+Fiora, Grand Duelist                     TALL 1
+Irelia, Blade Dancer                     BURST 1, HIDDEN 1
+Ivern, Green Father                      HOLD 1
+Jax, Grandmaster at Arms                 TALL 1
+Jhin, Virtuoso                           ATTRITION 2
+Jinx, Loose Cannon                       ATTRITION 1
+Kai'Sa, Daughter of the Void             ATTRITION 2
+Kha'Zix, Voidreaver                      HIDDEN 1
+LeBlanc, Deceiver                        ATTRITION 1
+Lillia, Bashful Bloom                    WIDE 1
+Lux, Lady of Luminosity                  ATTRITION 1
+Master Yi, Wuju Bladesman                TALL 2
+Master Yi, Wuju Master                   TALL 1
+Ornn, Fire Below the Mountain            WIDE 1, BURST 1
+Poppy, Keeper of the Hammer              ATTRITION 1
+Pyke, Bloodharbor Ripper                 ATTRITION 1, WIDE 1
+Rek'Sai, Void Burrower                   HIDDEN 1, WIDE 1
+Rengar, Pridestalker                     HIDDEN 2
+Sett, The Boss                           TALL 2
+Sivir, Battle Mistress                   TALL 1
+Teemo, Swift Scout                       HIDDEN 1
+Vex, Gloomist                            HOLD 3
+Vi, Piltover Enforcer                    BURST 1
+Viktor, Herald of the Arcane             WIDE 1, ATTRITION 1
+Volibear, Relentless Storm               TALL 1
+primary route totals [('ATTRITION', 15), ('TALL', 10), ('WIDE', 9), ('HIDDEN', 7), ('HOLD', 4), ('BURST', 4)] n 49
+secondary route totals [('WIDE', 12), ('BURST', 12), ('TALL', 11), ('ATTRITION', 7), ('HIDDEN', 6), ('POINTS', 1)]
+specials [('BF_SYMMETRIC', 19), ('ALTWIN', 2)]

@@ -1,0 +1,37 @@
+nov  0 | Riven, The Exile               | HOLD      1.33 | HIDDEN    0.93 | cl  2 | T6 fast   | 0.72 |                    | Best
+nov  1 | Teemo, Swift Scout             | HIDDEN     3.9 | HOLD      1.58 | cl  6 | T6 fast   | 0.82 |                    | Ashe
+nov  2 | Kennen, Heart of the Tempest   | BURST     0.94 | ATTRITION 0.66 | cl  6 | T6 fast   | 0.69 |                    | Kenn
+nov  3 | Viktor, Herald of the Arcane   | WIDE      2.05 | ATTRITION 1.29 | cl 10 | T7 medium | 0.83 |                    | LDXP
+nov  4 | Diana, Scorn of the Moon       | ATTRITION 0.97 | BURST     0.88 | cl  0 | T6 fast   | 0.57 |                    | Dian
+nov  5 | Lillia, Bashful Bloom          | WIDE      2.29 | ATTRITION 1.01 | cl  8 | T7 medium | 0.86 |                    | 1st 
+nov  6 | Ivern, Green Father            | HOLD      4.67 | TALL      0.95 | cl  3 | T6 fast   | 0.83 |                    | Best
+nov  7 | Evelynn, Agony's Embrace       | HIDDEN    4.07 | HOLD      1.75 | cl 13 | T8 slow   | 0.79 |                    | mimi
+nov  8 | Mordekaiser, Iron Revenant     | WIDE      1.29 | ATTRITION 1.28 | cl  3 | T6 fast   | 0.77 |                    | Best
+nov  9 | Zed, Master of Shadows         | HIDDEN     0.7 | TALL       0.6 | cl  0 | T7 medium | 0.22 |                    | [BES
+nov 10 | Kha'Zix, Voidreaver            | TALL       1.1 | BURST      1.1 | cl  3 | T6 fast   | 0.77 |                    | 3rd 
+nov 11 | Orianna, Lady of Clockwork     | WIDE      0.95 | TALL       0.9 | cl  5 | T7 medium | 0.72 |                    | STUT
+nov 12 | Orianna, Lady of Clockwork     | ATTRITION 1.07 | TALL       0.8 | cl  2 | T7 medium | 0.51 |                    | 2nd 
+nov 13 | Kennen, Heart of the Tempest   | HIDDEN    1.07 | BURST     0.86 | cl  2 | T6 fast   | 0.59 |                    | 1st 
+nov 14 | Rek'Sai, Void Burrower         | WIDE      1.38 | BURST     0.72 | cl  6 | T6 fast   | 0.67 |                    | Bolu
+nov 15 | Kai'Sa, Daughter of the Void   | ATTRITION  1.3 | TALL       0.5 | cl  5 | T9 slow   | 0.54 |                    | RC S
+nov 16 | Riven, The Exile               | HIDDEN     1.6 | TALL       1.0 | cl  3 | T6 fast   | 0.77 |                    | 1st 
+nov 17 | Akali, Rogue Assassin          | HOLD      1.33 | BURST     1.14 | cl  2 | T8 slow   | 0.73 |                    | Alex
+nov 18 | Jarvan IV, Exemplar of Demacia | TALL      1.65 | HOLD       1.0 | cl  2 | T8 slow   | 0.75 |                    | 【T
+nov 19 | Ziggs, Hexplosives Expert      | WIDE      0.76 | ATTRITION 0.63 | cl  2 | T7 medium | 0.45 |                    | Zigg
+nov 20 | Ekko, Boy Who Shattered Time   | BURST     2.88 | HIDDEN     0.9 | cl 11 | T6 fast   | 0.81 |                    | Ekko
+nov 21 | K'Sante, Pride of Nazumah      | HOLD      4.92 | HIDDEN     1.0 | cl  1 | T7 medium | 0.87 |                    | K'Sa
+nov 22 | Seraphine, Starry-Eyed Songstr | WIDE      1.86 | ATTRITION 1.45 | cl  6 | T6 fast   | 0.85 |                    | Sera
+nov 23 | Rengar, Pridestalker           | HIDDEN    2.07 | TALL      1.02 | cl  8 | T6 fast   | 0.74 |                    | Weng
+nov 24 | Leona, Radiant Dawn            | HOLD      2.08 | TALL      1.82 | cl  4 | T8 slow   | 0.80 |                    | Leon
+nov 25 | Master Yi, Wuju Bladesman      | HIDDEN    1.47 | TALL      1.27 | cl  7 | T7 medium | 0.88 |                    | Mast
+nov 26 | Sett, The Boss                 | TALL      2.48 | BURST     1.28 | cl  3 | T6 fast   | 0.86 |                    | READ
+nov 27 | Pyke, Bloodharbor Ripper       | ATTRITION 1.36 | HOLD      0.58 | cl  2 | T8 slow   | 0.52 |                    | Dock
+nov 28 | Rumble, Mechanized Menace      | BURST     1.62 | WIDE       0.9 | cl  3 | T6 fast   | 0.70 |                    | we'r
+nov 29 | Vex, Gloomist                  | HIDDEN    2.73 | HOLD      2.42 | cl  5 | T7 medium | 0.91 |                    | Radi
+nov 30 | Azir, Emperor of the Sands     | TALL      1.62 | WIDE       1.1 | cl  0 | T7 medium | 0.51 |                    | Azir
+nov 31 | Renekton, Butcher of the Sands | TALL      1.25 | BURST     0.98 | cl  5 | T6 fast   | 0.80 |                    | Rene
+nov 32 | Draven, Glorious Executioner   | HIDDEN    3.07 | BURST     0.86 | cl  9 | T7 medium | 0.73 |                    | Drav
+nov 33 | Volibear, Relentless Storm     | TALL      2.75 | BURST     1.02 | cl 15 | T8 slow   | 0.78 |                    | DRAG
+nov 34 | Ahri, Nine-Tailed Fox          | ATTRITION 1.28 | HIDDEN     0.9 | cl  3 | T7 medium | 0.70 |                    | Radi
+nov 35 | Mel, Soul's Reflection         | HIDDEN     1.3 | ATTRITION 0.97 | cl  3 | T7 medium | 0.66 |                    | Mel 
+nov 36 | Ornn, Fire Below the Mountain  | TALL      0.95 | ATTRITION 0.87 | cl  0 | T6 fast   | 0.46 |                    | Radi

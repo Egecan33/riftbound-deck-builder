@@ -1,0 +1,96 @@
+# lists=59
+## field by legend champion tag (count, share)
+Master Yi	3	5.1%
+Diana	3	5.1%
+Vex	3	5.1%
+Pyke	3	5.1%
+Kha'Zix	3	5.1%
+Viktor	2	3.4%
+Ezreal	2	3.4%
+Jhin	2	3.4%
+Ivern	2	3.4%
+Rek'Sai	2	3.4%
+Irelia	2	3.4%
+Poppy	2	3.4%
+Annie	2	3.4%
+Lillia	2	3.4%
+Rengar	2	3.4%
+Draven	2	3.4%
+Ornn	2	3.4%
+Sett	2	3.4%
+Teemo	2	3.4%
+Ahri	2	3.4%
+Kai'Sa	2	3.4%
+Azir	1	1.7%
+Miss Fortune	1	1.7%
+Vi	1	1.7%
+Fiora	1	1.7%
+Jinx	1	1.7%
+LeBlanc	1	1.7%
+Leona	1	1.7%
+Darius	1	1.7%
+Lux	1	1.7%
+Sivir	1	1.7%
+Volibear	1	1.7%
+Jax	1	1.7%
+
+## sideboard size distribution {8: 55, 10: 3, 7: 1}
+copies per sideboard slot (1-of/2-of/3-of): {3: 23, 2: 104, 1: 200}
+distinct cards per sideboard: mean 5.54
+side copies that are extra copies of a main-deck card: 129/477 = 27.0%
+side copies by type: {'unit': 195, 'spell': 268, 'gear': 14} {'unit': '40.9%', 'spell': '56.2%', 'gear': '2.9%'}
+side energy cost mean 3.37 vs main 2.83
+
+## sideboard categories: lists with >=1 slot, mean copies among those lists, share of all side copies; same for main
+category	side_lists	side_mean_copies	side_share	main_lists	main_mean_copies
+gear_hate	51/59	2.27	24.3%	19/59	1.42
+counter	22/59	1.41	6.5%	32/59	2.91
+sweeper	21/59	1.43	6.3%	12/59	1.92
+removal	41/59	2.02	17.4%	56/59	5.77
+hand_attack	22/59	1.73	8.0%	17/59	2.65
+protect	17/59	1.65	5.9%	48/59	3.27
+displace	6/59	1.50	1.9%	29/59	2.86
+stun	1/59	1.00	0.2%	2/59	1.50
+draw	21/59	1.76	7.8%	55/59	7.80
+pump	17/59	1.53	5.5%	49/59	5.86
+ramp	2/59	1.50	0.6%	10/59	5.00
+units in side: mean 3.31
+
+## top sideboard cards (lists, total copies, classes, text)
+Disarming Rake	SFD-032	15/59	35	calm	gear_hate	When you play me, you may kill a gear.
+Turn to Dust	UNL-070	13/59	21	mind	gear_hate	Give a gear [Temporary].
+Star-Crossed	UNL-128	13/59	17	chaos	bounce,removal	[Reaction]  Return a friendly unit and an enemy unit to their owners' hands.
+Salvage	OGN-224	11/59	22	order	draw,gear_hate	[Action]  You may kill a gear. Draw 1.
+Ashe, Focused	UNL-169	10/59	20	order	hand_attack	When you play me, choose an opponent. They reveal their hand. Choose a card revealed this way and banish it. When they hold, return it to their hand .
+Gust	OGN-169	10/59	14	chaos	bounce,removal	[Reaction]  Return a unit at a battlefield with 3 [Might] or less to its owner's hand.
+Akshan, Mischievous	SFD-109	9/59	16	body	gear_hate	[Weaponmaster] You may pay [Body][Body] as an additional cost to play me. When you play me, if you paid the additional cost, move an enemy gear to you
+Thermo Beam	OGN-022	9/59	13	fury	gear_hate	[Action]  Kill all gear.
+Singularity	OGN-105	8/59	11	mind	burn,removal,sweeper	Deal 6 to each of up to two units.
+Kha'Zix, Mutating Horror	UNL-143	8/59	12	chaos	pump	[Ambush]  When I attack or defend, if an enemy unit is alone here, give me +2 [Might] this turn and gain 2 XP.
+Rebuke	OGN-172	8/59	9	chaos	bounce,removal	[Action]  Return a unit at a battlefield to its owner's hand.
+Brynhir Thundersong	OGN-026	8/59	11	fury	lockout	When you play me, opponents can't play cards this turn.
+Unyielding Spirit	OGN-145	8/59	13	body	protect	[Reaction]  Prevent all spell and ability damage this turn.
+Sabotage	OGN-156	8/59	13	body	hand_attack	Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.
+Hard Bargain	SFD-136	6/59	8	chaos	counter	[Reaction]  [Repeat] [2]  Counter a spell unless its controller pays [2].
+Unchecked Power	OGN-123	6/59	8	mind	sweeper	Exhaust all friendly units, then deal 12 to ALL units at battlefields.
+Vi, Peacekeeper	UNL-176	6/59	7	order		[Ambush]  When I attack, [Stun] an enemy unit here.
+Repulse	UNL-106	6/59	8	body	counter	[Reaction]  Choose a friendly unit at a battlefield. Counter an enemy spell or ability that chooses it and no other friendly unit.
+Vex, Cheerless	SFD-146	5/59	6	chaos		While I'm in combat, friendly spells cost [1][Any] less to a minimum of [1], and enemy spells cost [1][Any] more.
+Not So Fast	SFD-045	5/59	6	calm	counter	[Reaction]  Counter an enemy spell or ability that chooses a friendly unit or gear.
+Mindsplitter	OGN-192	5/59	5	chaos	hand_attack	When you play me, choose an opponent. They reveal their hand. Choose a card from it, and they discard that card.
+Charm	OGN-043	5/59	6	calm	displace	Move an enemy unit.
+
+## field exposure (share of lists whose MAIN deck is vulnerable)
+gear copies>=4	22/59	37.3%
+gear copies>=6	13/59	22.0%
+spell copies>=14	45/59	76.3%
+unit copies>=22	19/59	32.2%
+units with Might<=3 >=12 copies	24/59	40.7%
+units with Might>=5 >=8 copies	7/59	11.9%
+mean main composition: units 18.5 spells 17.5 gear 4.0
+gear-hate copies main+side per list: mean 2.42; lists with any: 52/59
+
+## rune splits (two-domain legends)
+{(7, 5): 29, (6, 6): 19, (10, 2): 1, (8, 4): 7}
+lists usable=56; majority-rune share mean 0.570; majority-domain power-demand share mean 0.604; Pearson r=0.59
+lists where the majority rune is also the majority power-demand domain: 43/56

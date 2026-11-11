@@ -1,0 +1,37 @@
+Ahri, Nine-Tailed Fox                    ATTRITION 1
+Akali, Rogue Assassin                    HOLD 1
+Azir, Emperor of the Sands               TALL 1
+Diana, Scorn of the Moon                 ATTRITION 1
+Draven, Glorious Executioner             HIDDEN 1
+Ekko, Boy Who Shattered Time             BURST 1
+Evelynn, Agony's Embrace                 HIDDEN 1
+Ivern, Green Father                      HOLD 1
+Jarvan IV, Exemplar of Demacia           TALL 1
+K'Sante, Pride of Nazumah                HOLD 1
+Kai'Sa, Daughter of the Void             ATTRITION 1
+Kennen, Heart of the Tempest             BURST 1, HIDDEN 1
+Kha'Zix, Voidreaver                      TALL 1
+Leona, Radiant Dawn                      HOLD 1
+Lillia, Bashful Bloom                    WIDE 1
+Master Yi, Wuju Bladesman                HIDDEN 1
+Mel, Soul's Reflection                   HIDDEN 1
+Mordekaiser, Iron Revenant               WIDE 1
+Orianna, Lady of Clockwork               WIDE 1, ATTRITION 1
+Ornn, Fire Below the Mountain            TALL 1
+Pyke, Bloodharbor Ripper                 ATTRITION 1
+Rek'Sai, Void Burrower                   WIDE 1
+Renekton, Butcher of the Sands           TALL 1
+Rengar, Pridestalker                     HIDDEN 1
+Riven, The Exile                         HOLD 1, HIDDEN 1
+Rumble, Mechanized Menace                BURST 1
+Seraphine, Starry-Eyed Songstress        WIDE 1
+Sett, The Boss                           TALL 1
+Teemo, Swift Scout                       HIDDEN 1
+Vex, Gloomist                            HIDDEN 1
+Viktor, Herald of the Arcane             WIDE 1
+Volibear, Relentless Storm               TALL 1
+Zed, Master of Shadows                   HIDDEN 1
+Ziggs, Hexplosives Expert                WIDE 1
+primary route totals [('HIDDEN', 10), ('WIDE', 7), ('TALL', 7), ('HOLD', 5), ('ATTRITION', 5), ('BURST', 3)] n 37
+secondary route totals [('BURST', 9), ('TALL', 9), ('ATTRITION', 8), ('HOLD', 5), ('HIDDEN', 4), ('WIDE', 2)]
+specials []

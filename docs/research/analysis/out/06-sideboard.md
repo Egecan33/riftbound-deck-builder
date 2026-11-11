@@ -1,0 +1,75 @@
+### sideboard size: {"0":4,"5":1,"6":2,"7":2,"8":48,"9":2,"10":182}
+### sideboard slots by category, all lists with a sideboard (n=237)
+- spot removal/stun/bounce: 27.9% of slots, 2.65 cards/deck
+- hate (gear/trash/hand/points): 26.2% of slots, 2.49 cards/deck
+- unit (threat/body): 12.1% of slots, 1.15 cards/deck
+- counterspell: 8.6% of slots, 0.81 cards/deck
+- combat trick/debuff: 8.4% of slots, 0.80 cards/deck
+- spell (other): 4.6% of slots, 0.43 cards/deck
+- protection: 4.4% of slots, 0.42 cards/deck
+- sweeper: 3.8% of slots, 0.36 cards/deck
+- card flow: 2.4% of slots, 0.23 cards/deck
+- gear (other): 1.7% of slots, 0.16 cards/deck
+- aggro (n=27): hate (gear/trash/hand/points) 2.6; spot removal/stun/bounce 2.4; unit (threat/body) 1.7; counterspell 0.9; protection 0.4; sweeper 0.4
+- midrange (n=116): spot removal/stun/bounce 2.9; hate (gear/trash/hand/points) 2.4; unit (threat/body) 1.1; counterspell 1.0; combat trick/debuff 0.8; protection 0.5
+- control (n=70): hate (gear/trash/hand/points) 2.4; spot removal/stun/bounce 2.1; combat trick/debuff 1.0; unit (threat/body) 1.0; counterspell 0.7; spell (other) 0.6
+- ramp/big (n=24): spot removal/stun/bounce 3.3; hate (gear/trash/hand/points) 2.9; unit (threat/body) 1.1; combat trick/debuff 0.8; sweeper 0.6; counterspell 0.3
+### most common sideboard cards (share of lists with a sideboard)
+- Decree of Rage: 23% [removal_damage,protection]
+- Star-Crossed: 22% [removal_bounce]
+- An Offer You Can't Refuse: 21% [hate_gear,ramp]
+- Decree of Unity: 21% [removal_kill]
+- Decree of Focus: 19% [combat_trick]
+- Ferrous Forerunner: 18% [token_maker,topend]
+- Salvage: 18% [hate_gear,draw]
+- Not So Fast: 18% [counterspell]
+- Decree of Insight: 16% [debuff,combat_trick]
+- Hush: 16% [counterspell]
+- Brittle Steel: 15% [hate_gear,recursion]
+- Sabotage: 14% [hand_attack]
+- Thermo Beam: 13% [hate_gear]
+- Gust: 13% [removal_bounce]
+- Decree of Strength: 12% [hand_attack]
+- Ravenbloom Prefect: 12% []
+- Disarming Rake: 11% [hate_gear]
+- Abandon: 11% [counterspell,selection]
+- Vex, Apathetic: 11% [stun,movement,protection]
+- Hard Bargain: 11% [counterspell]
+- Tomb-Raider Barbara: 10% [hate_gear]
+- Ashe, Focused: 10% [hand_attack]
+- Unyielding Spirit: 9% [combat_trick,protection]
+- Graves, Blasting Through: 9% [removal_damage]
+- Rebuke: 9% [removal_bounce]
+### most common main-deck cards (share of valid lists)
+- Defy: 32% [counterspell]
+- Star-Crossed: 31% [removal_bounce]
+- Discipline: 31% [draw,combat_trick]
+- Noxus Hopeful: 29% []
+- Falling Star: 28% [removal_damage]
+- Gust: 27% [removal_bounce]
+- Switcheroo: 25% [movement]
+- Thousand-Tailed Watcher: 25% [debuff,tempo_ready,topend]
+- Tideturner: 25% [movement]
+- Stupefy: 23% [debuff,draw,combat_trick]
+- Kai'Sa, Survivor: 23% [draw,tempo_ready,score_trigger]
+- Vex, Apathetic: 22% [stun,movement,protection]
+- Punch First: 21% [combat_trick]
+- Bellows Breath: 19% [removal_damage]
+- Fizz, Trickster: 19% [recursion]
+- Ride the Wind: 19% [movement,tempo_ready]
+- Reckless Innovator: 19% [draw,ramp,tempo_ready]
+- Sabotage: 19% [hand_attack]
+- Bedeviling Stranger: 19% [removal_bounce]
+- Scuttle Crab: 19% [hand_attack,draw]
+- Rengar, Trophy Hunter: 18% [tempo_ready,topend]
+- Hidden Blade: 18% [removal_kill]
+- Zhonya's Hourglass: 18% [protection]
+- Charm: 17% [movement]
+- Not So Fast: 17% [counterspell]
+- Traveling Merchant: 17% [draw,discard_outlet]
+- Bilgewater Tracker: 17% [removal_damage,sweeper]
+- Rebuke: 16% [removal_bounce]
+- Vi, Peacekeeper: 16% [stun,tempo_ready]
+- Rampage: 15% [removal_damage,combat_trick]
+### sideboard: distinct cards p50 7, copies-per-card: {"1":977,"2":503,"3":90}
+### side champions: lists with a champion unit of the legend's tag in the sideboard: 24/237

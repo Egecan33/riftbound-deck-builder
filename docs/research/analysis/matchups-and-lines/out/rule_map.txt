@@ -1,0 +1,50 @@
+cited=83 unchanged=34
+103.2.a.1 -> 103.3.a.1 | This will be placed in the Champion Zone at the st
+103.3.a -> 103.4.a | 12 Rune Cards
+164.2.b -> TEXT CHANGED/NOT FOUND | Recycle this: [Reaction] — Add [C].
+347.1.b -> TEXT CHANGED/NOT FOUND | When that Chain closes, Focus passes to the next P
+416.1 -> 417.1 | Recycling cards is the action in which a player ta
+416.5 -> 417.5 | If 2 or more cards are Recycled to the Main Deck s
+430.4.a -> 431.4.a | A player Channels two Runes during the Channel Pha
+431.2.c -> 432.2.c | Chooses an opponent to gain 1 point.
+446.3.c -> 448.3.c | Moving does not use the Chain, nor is it able to b
+447.2.a -> 449.2.a | In Modes of Play with more than two players, Battl
+447.2.b -> 449.2.b | In Modes of Play with teammates, Battlefields occu
+457.1 -> TEXT CHANGED/NOT FOUND | When an un-attached non-Unit Gear is created or pl
+460 -> 462 | A Combat occurs when a Cleanup occurs, there are n
+461.1 -> 463.1 | If more than one Battlefield has Units controlled 
+464.2.c.1 -> 466.2.c.1 | The Attacker is the player whose unit(s) applied t
+464.2.d -> TEXT CHANGED/NOT FOUND | 3. The Attacker gains Focus.
+465.2.c -> 467.2.c | Starting with the Attacker, each player assigns an
+465.2.c.3 -> 467.2.c.3 | Units must have lethal damage assigned to them in 
+465.2.c.6 -> 467.2.c.6 | A player must obey all requirements and restrictio
+466.1.a.1 -> 317.2.b | Insert “3c. Heal all Units.”
+466.1.a.2 -> 468.1.a.2 | Insert “3d. Recall Attackers present at the Battle
+466.3.d.1 -> 468.3.d.1 | If “No Result” was reached, and both players have 
+466.5.d -> 468.5.d | Establishing Control results in a Conquer if that 
+469.1 -> 471.1 | Conquer: A player gains Control of a Battlefield t
+469.2 -> 471.2 | Hold: A player maintains Control of a Battlefield 
+470 -> 472 | A player may only Score, from either method, once 
+471.1.b.1 -> 473.1.b.1 | If the player has Scored every Battlefield this tu
+472 -> 474 | When a cleanup occurs and a player has accrued Poi
+485.3 -> 487.3 | Victory Score: 8
+485.4 -> 487.4 | Battlefield Count: 2
+485.5 -> 487.5 | Setup: Each player randomly selects one (1) of the
+485.7 -> 487.7 | First Turn Process: The player going second channe
+486.5 -> 488.5 | Setup: Each player selects one (1) of their three 
+486.6 -> 488.6 | Format: Best of 3. The first player to reach the V
+486.7 -> 487.7 | First Turn Process: The player going second channe
+487.7 -> 489.7 | First Turn Process: The player going first does no
+488.4.b -> 490.4.b | The player who is taking the first turn removes th
+488.7 -> 489.7 | First Turn Process: The player going first does no
+489.3 -> 491.3 | Victory Score: 11
+489.5.c.1 -> 491.5.c.1 | The first player will be followed by an opponent, 
+489.8.a -> 491.8.a | Players may play spells or activate abilities duri
+489.8.b -> TEXT CHANGED/NOT FOUND | Battlefields controlled during the Beginning Phase
+489.8.c.2 -> 491.8.c.2 | Players may not issue Standard Movement to their T
+489.8.d -> 491.8.d | Points are shared by a team.
+489.8.e -> 491.8.e | Friendly describes controlled Game Objects by a pl
+489.8.g.1 -> TEXT CHANGED/NOT FOUND | When scoring the Final Point from Conquer, a playe
+489.8.h -> 491.8.h | Teammates may not utilize the same Champion Legend
+805.1.a -> 805.1.b | Accelerate is functionally short for "As you play 
+811.1.d.2 -> 811.1.d.5 | If a hidden spell or a play effect of a hidden per
