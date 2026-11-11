@@ -1,0 +1,410 @@
+{
+ "schemaVersion": 1,
+ "asOf": "2026-11-12",
+ "note": "Reviewed per-card corrections applied by the `cards` sync step. Each entry names its reason and source. An entry may set: type, domains, noDomain, tags, championTag, copyLimit (a number or \"unlimited\"). Radiance entries: on 2026-11-12 the official gallery had unfinished Radiance rows (empty or wrong card type, empty or wrong domain). The sync flags such rows as incomplete by itself; an entry here repairs a row only where two sources agree (the row's own image text for the type, Piltover Archive card data for type and domain, and the set's collector-number domain blocks). Rows without a second source stay incomplete. Remove an entry once the gallery row is fixed.",
+ "cards": [
+  {
+   "name": "Karma, Channeler",
+   "code": "OGN-235",
+   "tags": [
+    "Ionia",
+    "Karma"
+   ],
+   "championTag": "Karma",
+   "reason": "The gallery stores printing OGN-235 with tags [Vi, Ionia]; the SFD-237 printings of the same card have [Karma]. A tag match would let Karma lead a Vi deck.",
+   "source": "docs/research/rules.md section 3 (data errors that break a naive tag match)"
+  },
+  {
+   "name": "Spiderling",
+   "code": "VEN-097",
+   "copyLimit": "unlimited",
+   "reason": "Card text: \"Your deck can have any number of cards named Spiderling.\" The sync also reads this from the text; the entry keeps the limit if the wording changes.",
+   "source": "docs/research/rules.md section 4 (card text that raises the limit)"
+  },
+  {
+   "name": "Amateur Demolitionist",
+   "code": "RAD-001",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is chaos; collector number 1 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 10 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Bilgewater Tracker",
+   "code": "RAD-003",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is body; collector number 3 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 70 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Brawl",
+   "code": "RAD-004",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is chaos; collector number 4 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 3 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Scorched Earth",
+   "code": "RAD-006",
+   "type": "spell",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\"; gallery domain is empty; collector number 6 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Rally for War",
+   "code": "RAD-007",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is gear; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Antagonistic Apparatus",
+   "code": "RAD-009",
+   "type": "unit",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Unit:\"; gallery domain is empty; collector number 9 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 9 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Runeblade Anvil",
+   "code": "RAD-012",
+   "type": "gear",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\"; gallery domain is chaos; collector number 12 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 21 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Coalesced Energy",
+   "code": "RAD-016",
+   "type": "unit",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is spell; the row's own image text says \"Riftbound Unit:\"; gallery domain is mind; collector number 16 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 3 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Detonation Amplifier",
+   "code": "RAD-017",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is chaos; collector number 17 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 4 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Whirling Twirligig",
+   "code": "RAD-022",
+   "type": "gear",
+   "domains": [
+    "fury"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Gear:\"; gallery domain is empty; collector number 22 sits in the set's Fury block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 4 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Blossoming Dreamroot",
+   "code": "RAD-024",
+   "domains": [
+    "calm"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is chaos; collector number 24 sits in the set's Calm block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 9 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Consult the Heavens",
+   "code": "RAD-025",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 7 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Entrenched Boar",
+   "code": "RAD-026",
+   "type": "unit",
+   "domains": [
+    "calm"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Unit:\"; gallery domain is empty; collector number 26 sits in the set's Calm block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 2 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Command: Attack",
+   "code": "RAD-033",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is gear; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 8 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Hunker Down",
+   "code": "RAD-034",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 12 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Invigorating Bloom",
+   "code": "RAD-035",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 3 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Hush",
+   "code": "RAD-041",
+   "type": "spell",
+   "domains": [
+    "calm"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\"; gallery domain is empty; collector number 41 sits in the set's Calm block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 87 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Hunting Blind",
+   "code": "RAD-044",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 11 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Resplendent Rostrum",
+   "code": "RAD-046",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is spell; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 5 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Fanfare",
+   "code": "RAD-047",
+   "type": "spell",
+   "domains": [
+    "mind"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\"; gallery domain is empty; collector number 47 sits in the set's Mind block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Industrious Mechsmith",
+   "code": "RAD-049",
+   "type": "unit",
+   "domains": [
+    "mind"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Unit:\"; gallery domain is empty; collector number 49 sits in the set's Mind block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Improvised Projectile",
+   "code": "RAD-056",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is gear; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Supernova",
+   "code": "RAD-059",
+   "type": "spell",
+   "domains": [
+    "mind"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Spell:\"; gallery domain is order; collector number 59 sits in the set's Mind block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Gravity Field",
+   "code": "RAD-062",
+   "domains": [
+    "mind"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is calm; collector number 62 sits in the set's Mind block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 7 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Scrutinizing Scope",
+   "code": "RAD-064",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is spell; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 2 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Clocktower Guardian",
+   "code": "RAD-067",
+   "domains": [
+    "mind"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is fury; collector number 67 sits in the set's Mind block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Nazuman Ntofo",
+   "code": "RAD-071",
+   "domains": [
+    "body"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is order; collector number 71 sits in the set's Body block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 9 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Pillaged Armory",
+   "code": "RAD-073",
+   "domains": [
+    "body"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is calm; collector number 73 sits in the set's Body block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 22 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Elnuk Herd",
+   "code": "RAD-081",
+   "domains": [
+    "body"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is fury; collector number 81 sits in the set's Body block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 11 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Portable Portal",
+   "code": "RAD-087",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 23 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Disposal Expert",
+   "code": "RAD-093",
+   "domains": [
+    "chaos"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is fury; collector number 93 sits in the set's Chaos block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Siren of the Shallows",
+   "code": "RAD-097",
+   "type": "unit",
+   "reason": "Unfinished Radiance gallery row: gallery card type is spell; the row's own image text says \"Riftbound Unit:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 1 synced deck list agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "An Offer You Can't Refuse",
+   "code": "RAD-101",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is gear; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 146 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "The Good Stuff",
+   "code": "RAD-106",
+   "domains": [
+    "chaos"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery domain is body; collector number 106 sits in the set's Chaos block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 54 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Bushwhack Trap",
+   "code": "RAD-108",
+   "type": "gear",
+   "domains": [
+    "chaos"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\"; gallery domain is fury; collector number 108 sits in the set's Chaos block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 4 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "One-Two Punch",
+   "code": "RAD-121",
+   "type": "spell",
+   "domains": [
+    "order"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\"; gallery domain is empty; collector number 121 sits in the set's Order block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 6 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Protector's Shield",
+   "code": "RAD-123",
+   "type": "gear",
+   "domains": [
+    "order"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Gear:\"; gallery domain is empty; collector number 123 sits in the set's Order block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 3 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Burn Away",
+   "code": "RAD-124",
+   "type": "spell",
+   "domains": [
+    "order"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is gear; the row's own image text says \"Riftbound Spell:\"; gallery domain is body; collector number 124 sits in the set's Order block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 6 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Rousing Display",
+   "code": "RAD-127",
+   "type": "spell",
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 4 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Battlefield Armorer",
+   "code": "RAD-130",
+   "type": "unit",
+   "reason": "Unfinished Radiance gallery row: gallery card type is spell; the row's own image text says \"Riftbound Unit:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 2 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Raucous Anthem",
+   "code": "RAD-134",
+   "type": "spell",
+   "domains": [
+    "order"
+   ],
+   "reason": "Unfinished Radiance gallery row: gallery card type is empty; the row's own image text says \"Riftbound Spell:\"; gallery domain is empty; collector number 134 sits in the set's Order block.",
+   "source": "Official gallery image text (type); Piltover Archive card data from 13 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  },
+  {
+   "name": "Dockside Lock-Up",
+   "code": "RAD-136",
+   "type": "gear",
+   "reason": "Unfinished Radiance gallery row: gallery card type is unit; the row's own image text says \"Riftbound Gear:\".",
+   "source": "Official gallery image text (type); Piltover Archive card data from 23 synced deck lists agrees on type and domain (community source); checked 2026-11-12"
+  }
+ ],
+ "aliases": [
+  {
+   "alias": "Yi, Meditative",
+   "name": "Master Yi, Meditative",
+   "reason": "Name in older local data and lists (rules.md section 3)."
+  },
+  {
+   "alias": "Yi, Honed",
+   "name": "Master Yi, Honed",
+   "reason": "Name in older local data and lists (rules.md section 3)."
+  },
+  {
+   "alias": "Dreaming Tree",
+   "name": "The Dreaming Tree",
+   "reason": "The official ban list writes the battlefield without the article (rules.md section 9)."
+  },
+  {
+   "alias": "Wuju Bladesman - Starter",
+   "name": "Wuju Bladesman",
+   "reason": "Starter legend name before the gallery split name and subtitle (legality-and-data.md section 5.1)."
+  }
+ ]
+}

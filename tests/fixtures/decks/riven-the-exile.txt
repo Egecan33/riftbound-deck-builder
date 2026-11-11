@@ -1,0 +1,46 @@
+# Reference deck for tests. A public list from Piltover Archive, checked against the rules on the day it was exported.
+# Source: https://piltoverarchive.com/decks/view/493c5f53-dac5-4385-aca1-e353f5182e9d (edited 2026-11-10)
+# Format: standard-bo3. The Chosen Champion counts toward the 40 main-deck cards.
+
+Legend:
+1 The Exile
+
+Champion:
+1 Riven, Broken Blade
+
+Main:
+1 An Offer You Can't Refuse
+1 Baron Nashor
+2 Battle Preparations
+2 Bedeviling Stranger
+3 Blade of the Exile
+2 Blitzcrank, Impassive
+3 Defy
+3 Discipline
+2 Gust
+2 Hunker Down
+1 Hush
+2 Ki Burst
+3 Reckless Innovator
+3 Riven, Deserter
+3 Scuttle Crab
+2 Stellacorn Herder
+1 The Good Stuff
+3 Treasure Hunter
+
+Battlefields:
+1 Emperor's Dais
+1 Hunters' Circle
+1 Star Spring
+
+Runes:
+6 Calm Rune
+6 Chaos Rune
+
+Sideboard:
+2 An Offer You Can't Refuse
+2 Decree of Focus
+1 Hush
+1 Not So Fast
+2 Star-Crossed
+2 Vex, Apathetic

@@ -2,7 +2,7 @@
 
 This file is the single place a new session reads to continue the build if the previous one was cut off. Update it at every stage boundary, in the same commit as the stage's work.
 
-Last updated: 2026-11-12. Design and plan written; build starts at plan Task 1.
+Last updated: 2026-11-12. Stage 2 (plan Tasks 1-2) done; the build continues at plan Task 3.
 
 ## Owner's decisions (do not re-ask)
 
@@ -27,7 +27,7 @@ Last updated: 2026-11-12. Design and plan written; build starts at plan Task 1.
 |---|---|---|
 | 0 | Research with independent fact-checking | done; 5 of 11 files verified, the rest are tested against real cards during the build (owner asked to stop spending on research) |
 | 1 | Design doc `docs/superpowers/specs/2026-11-12-riftbound-forge-design.md` and plan `docs/superpowers/plans/2026-11-12-riftbound-forge.md` | done |
-| 2 | Foundation and data: plan Tasks 1-2 | **in progress** |
+| 2 | Foundation and data: plan Tasks 1-2 | done |
 | 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | not started |
 | 4 | API and UI: plan Tasks 10-11 | not started |
 | 5 | End-to-end tests: plan Task 12 | not started |
@@ -66,6 +66,14 @@ To resume Stage 0 in a new session: for each expected file that is missing or ha
 - Core Rules and Tournament Rules have a 2026-10-09 edition; rule numbers moved.
 - Ban list last updated 2026-09-18; 2v2 has its own list; FFA has none (use Standard, switchable).
 - Side deck maximum is 10.
+- The official gallery's Radiance rows were unfinished on 2026-11-12: 13 with no card type, 23 whose type contradicts the row's own image text, 11 with no domain, and 14 more with a wrong domain that looks complete. The `cards` sync flags all of them `dataIncomplete` by itself (type checks, plus a collector-number domain-block check). `sync-data/card-overrides.json` repairs the 42 that a second source confirms; 8 stay incomplete (RAD-039, 069, 072, 102, 104, 111, 120, 131). Remove an override once the gallery row is fixed.
+- The gallery repeats an Equipment's Might bonus in `might`; `Card.might` is null for gear and the bonus is in `mightBonus`. An Equipment's attached-effect text is appended to `Card.text` as lines starting with `Effect: `.
+- `Card.text` symbols: `[Might]`, `[Exhaust]`, `[Any]`, `[Fury]`...`[Order]`, `[N]`. The Riftfoundry mine expects `[S]`, `[T]`, `[A]`, `[C]`; `src/engine/mine/adapter.ts` (Task 4) converts.
+- Meta after the first sync: 508 Piltover Archive lists (502 usable), 58 legends, but only 1 legend graded `ok` and 12 `thin`; the rest are `insufficient` until more `pnpm sync meta` runs (150 requests each) add lists.
+
+## Data on disk (gitignored, rebuild with `pnpm sync`)
+
+`pnpm sync cards errata legality meta` then `pnpm sync images` (`--limit N` for a part) and, to refresh the committed test fixture, `pnpm sync fixtures`. `pnpm sync meta --max 0` re-aggregates from the caches without any request.
 
 ## Resume
 

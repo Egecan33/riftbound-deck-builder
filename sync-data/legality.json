@@ -1,0 +1,251 @@
+{
+ "schemaVersion": 1,
+ "asOf": "2026-11-11",
+ "note": "Reviewed snapshot from docs/research/rules.md section 9 and legality-and-data.md sections 2-3. Bans are by card name (every printing); `code` is the first printing and is asserted against the synced cards. Edit this file, not code, when the official lists change.",
+ "hub": {
+  "url": "https://playriftbound.com/en-us/rules-hub/",
+  "banListUpdated": "2026-09-18",
+  "rulesUpdated": "2026-10-09"
+ },
+ "sources": [
+  {
+   "key": "HUB",
+   "url": "https://playriftbound.com/en-us/rules-hub/"
+  },
+  {
+   "key": "TR",
+   "url": "https://cmsassets.rgpub.io/sanity/files/dsfx7636/news_live/861752822d217edf37d9febaeaf77a7d924c1bb6.pdf",
+   "edition": "2026-10-09"
+  },
+  {
+   "key": "BAN-MAR",
+   "url": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/",
+   "published": "2026-03-30"
+  },
+  {
+   "key": "BAN-JUL",
+   "url": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/",
+   "published": "2026-07-17"
+  },
+  {
+   "key": "BAN-SEP",
+   "url": "https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026/",
+   "published": "2026-09-15"
+  }
+ ],
+ "sets": [
+  {
+   "code": "OGN",
+   "name": "Origins",
+   "legalFrom": "2025-10-31",
+   "collectorNumberMax": 298,
+   "confirmed": true,
+   "rule": "TR 601.3.c.2"
+  },
+  {
+   "code": "OGS",
+   "name": "Proving Grounds",
+   "legalFrom": "2025-10-31",
+   "collectorNumberMax": 24,
+   "confirmed": false,
+   "rule": "TR 601.3.c.1",
+   "note": "Release date unconfirmed by a primary source; does not affect legality today."
+  },
+  {
+   "code": "SFD",
+   "name": "Spiritforged",
+   "legalFrom": "2026-02-13",
+   "collectorNumberMax": 221,
+   "confirmed": true,
+   "rule": "TR 601.3.c.3"
+  },
+  {
+   "code": "UNL",
+   "name": "Unleashed",
+   "legalFrom": "2026-05-08",
+   "collectorNumberMax": 219,
+   "confirmed": true,
+   "rule": "TR 601.3.c.4"
+  },
+  {
+   "code": "VEN",
+   "name": "Vendetta",
+   "legalFrom": "2026-07-31",
+   "collectorNumberMax": 166,
+   "confirmed": true,
+   "rule": "TR 601.3.c.5"
+  },
+  {
+   "code": "RAD",
+   "name": "Radiance",
+   "legalFrom": "2026-10-23",
+   "collectorNumberMax": 167,
+   "confirmed": true,
+   "rule": "TR 601.3.c.6"
+  }
+ ],
+ "sideboardMax": 10,
+ "ffa": {
+  "useStandardBans": true,
+  "heuristic": true,
+  "note": "No official free-for-all ban list or tournament section exists (rules.md section 9, UNCONFIRMED). The Standard list is applied to ffa3 and ffa4 by default; the app lets the user switch this off."
+ },
+ "bans": [
+  {
+   "name": "Called Shot",
+   "zone": "main",
+   "code": "SFD-122",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "Draven, Vanquisher",
+   "zone": "main",
+   "code": "SFD-020",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "Fight or Flight",
+   "zone": "main",
+   "code": "OGN-168",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "Scrapheap",
+   "zone": "main",
+   "code": "OGN-182",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "Stealthy Pursuer",
+   "zone": "main",
+   "code": "OGN-177",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-07-24",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/"
+  },
+  {
+   "name": "Ekko, Recurrent",
+   "zone": "main",
+   "code": "OGN-110",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-09-18",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026/"
+  },
+  {
+   "name": "Stacked Deck",
+   "zone": "main",
+   "code": "OGN-183",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-09-18",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026/"
+  },
+  {
+   "name": "The Dreaming Tree",
+   "zone": "battlefields",
+   "code": "OGN-292",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/",
+   "listedAs": "Dreaming Tree"
+  },
+  {
+   "name": "Obelisk of Power",
+   "zone": "battlefields",
+   "code": "OGN-284",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "Reaver's Row",
+   "zone": "battlefields",
+   "code": "OGN-285",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-03-31",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/announcing-riftbounds-first-bans/"
+  },
+  {
+   "name": "The Arena's Greatest",
+   "zone": "battlefields",
+   "code": "OGN-290",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-07-24",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/"
+  },
+  {
+   "name": "Aspirant's Climb",
+   "zone": "battlefields",
+   "code": "OGN-276",
+   "formats": [
+    "standard-bo1",
+    "standard-bo3",
+    "2v2"
+   ],
+   "effectiveFrom": "2026-07-24",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/"
+  },
+  {
+   "name": "Wuju Bladesman",
+   "zone": "legend",
+   "code": "OGS-019",
+   "formats": [
+    "2v2"
+   ],
+   "effectiveFrom": "2026-07-24",
+   "sourceUrl": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/",
+   "listedAs": "Master Yi, Wuju Bladesman"
+  }
+ ]
+}

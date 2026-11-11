@@ -1,0 +1,49 @@
+# Reference deck for tests. A public list from Piltover Archive, checked against the rules on the day it was exported.
+# Source: https://piltoverarchive.com/decks/view/874079c7-174c-46d1-9662-e93d398dff89 (edited 2026-11-02)
+# Format: standard-bo3. The Chosen Champion counts toward the 40 main-deck cards.
+
+Legend:
+1 Heart of the Tempest
+
+Champion:
+1 Kennen, Storm of Shuriken
+
+Main:
+1 An Offer You Can't Refuse
+2 Bedeviling Stranger
+1 Edge of Night
+2 Fizz, Trickster
+1 Flash
+2 Gust
+2 Last Rites
+3 Lightning Rush
+3 Nocturne, Horrifying
+2 Reckless Innovator
+3 Rhasa the Sunderer
+2 Ride the Wind
+3 Seal of Discord
+2 Star-Crossed
+2 Switcheroo
+1 Tideturner
+3 Traveling Merchant
+3 Trifarian Captain
+1 Vex, Apathetic
+
+Battlefields:
+1 Minefield
+1 The Candlelit Sanctum
+1 Zaun Warrens
+
+Runes:
+9 Chaos Rune
+3 Order Rune
+
+Sideboard:
+1 An Offer You Can't Refuse
+2 Decree of Unity
+1 Existential Dread
+2 Hard Bargain
+1 Imperial Decree
+1 Ravenbloom Prefect
+1 Rebuke
+1 Star-Crossed

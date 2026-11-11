@@ -1,0 +1,42 @@
+# Reference deck for tests. A public list from Piltover Archive, checked against the rules on the day it was exported.
+# Source: https://piltoverarchive.com/decks/view/3becfe62-2ab4-4e72-a4c1-7240e98bba1e (edited 2026-11-06)
+# Format: standard-bo3. The Chosen Champion counts toward the 40 main-deck cards.
+
+Legend:
+1 Void Burrower
+
+Champion:
+1 Rek'Sai, Breacher
+
+Main:
+3 Bilgewater Tracker
+3 Carrion Dredger
+3 Concert Poster
+3 Cull the Weak
+3 Faithful Manufactor
+3 Falling Star
+1 Grim Apothecary
+1 Hunting Dog
+3 Inferna
+1 Long Sword
+3 Noxus Hopeful
+3 Rengar, Pouncing
+3 Shimmering Swimmer
+3 Trifarian Captain
+3 Undertitan
+
+Battlefields:
+1 Hunters' Circle
+1 Ruined Monastery
+1 The Candlelit Sanctum
+
+Runes:
+8 Fury Rune
+4 Order Rune
+
+Sideboard:
+3 Ashe, Focused
+1 Brittle Steel
+2 Decree of Rage
+2 Decree of Unity
+2 Mordekaiser, Dominating

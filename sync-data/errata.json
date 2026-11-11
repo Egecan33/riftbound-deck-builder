@@ -1,0 +1,909 @@
+{
+ "schemaVersion": 1,
+ "snapshotDate": "2026-11-11",
+ "coreRulesEdition": "2026-10-09",
+ "note": "Reviewed snapshot from docs/research/rulings-and-errata.md section 1 (70 rows: 67 errata blocks in five official errata articles, 3 revised only in the Origins FAQ). Texts are copied from the articles; symbols as printed there ([M] or [S] Might, [E] or [T] exhaust, [A] any rune, [C] the card's own domain). The effective date is the publication date (heuristic, see the research file). Overlay matches by card code first, then by name.",
+ "sources": [
+  {
+   "key": "FAQ-OGN",
+   "kind": "faq",
+   "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-origins-faq/",
+   "published": "2025-10-16"
+  },
+  {
+   "key": "ERR-OGN",
+   "kind": "errata",
+   "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-origins-card-errata/",
+   "published": "2025-10-28"
+  },
+  {
+   "key": "ERR-SFD",
+   "kind": "errata",
+   "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-spiritforged-errata/",
+   "published": "2026-01-14"
+  },
+  {
+   "key": "ERR-UNL",
+   "kind": "errata",
+   "url": "https://playriftbound.com/en-us/news/rules-and-releases/unleashed-errata-updates/",
+   "published": "2026-04-03"
+  },
+  {
+   "key": "ERR-VEN",
+   "kind": "errata",
+   "url": "https://playriftbound.com/en-us/news/announcements/vendetta-errata-updates/",
+   "published": "2026-07-23"
+  },
+  {
+   "key": "ERR-RAD",
+   "kind": "errata",
+   "url": "https://playriftbound.com/en-us/news/announcements/radiance-errata-updates/",
+   "published": "2026-10-09"
+  }
+ ],
+ "errata": [
+  {
+   "id": "origins-faq:symbol-of-the-solari",
+   "cardName": "Symbol of the Solari",
+   "codes": [
+    "OGN-227"
+   ],
+   "printedText": "If a combat where you are the attacker ends in a tie, recall ALL units instead. (Send them to base. This isn't a move. Ties are calculated after combat damage is dealt.)",
+   "currentText": "If a combat where you are the attacker ends in a tie that would recall any of your units, recall all units at that battlefield instead. (Send them to base. This isn't a move. Ties are calculated after combat damage is dealt.)",
+   "effective": "2025-10-16",
+   "source": "FAQ-OGN",
+   "status": "faq-only"
+  },
+  {
+   "id": "origins-faq:unyielding-spirit",
+   "cardName": "Unyielding Spirit",
+   "codes": [
+    "OGN-145"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nPrevent all spell and ability damage this turn.",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nPrevent all damage that would be dealt this turn by spells and abilities.",
+   "effective": "2025-10-16",
+   "source": "FAQ-OGN",
+   "status": "faq-only"
+  },
+  {
+   "id": "origins-faq:wraith-of-echoes",
+   "cardName": "Wraith of Echoes",
+   "codes": [
+    "OGN-118"
+   ],
+   "printedText": "The first time a friendly unit dies each turn, draw 1.",
+   "currentText": "The first time another friendly unit dies each turn, draw 1.",
+   "effective": "2025-10-16",
+   "source": "FAQ-OGN",
+   "status": "faq-only"
+  },
+  {
+   "id": "origins-errata-1",
+   "cardName": "Ava Achiever",
+   "codes": [
+    "OGN-107"
+   ],
+   "printedText": "When I attack, you may pay [C] to play a card with [Hidden] from your hand here, ignoring its cost.",
+   "currentText": "When I attack, you may pay [C] to play a card with [Hidden] from your hand, ignoring its cost. If it’s a unit, play it here.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-10",
+   "cardName": "Dune Drake",
+   "codes": [
+    "OGN-131"
+   ],
+   "printedText": "When I attack, give me +2 [M] if there is a ready enemy unit here.",
+   "currentText": "When I attack, give me +2 [M] this turn if there is a ready enemy unit here.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-11",
+   "cardName": "Highlander",
+   "codes": [
+    "OGS-020"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit. The next time it dies this turn, recall it exhausted instead. (Send it to base. This isn't a move.)",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit. The next time it would die this turn, heal it, exhaust it, and recall it instead. (Send it to base. This isn't a move.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-12",
+   "cardName": "Karma, Channeler",
+   "codes": [
+    "OGN-235",
+    "SFD-237",
+    "SFD-237s"
+   ],
+   "printedText": "[Vision] (When you play me, look at the top card of your Main Deck. You may recycle it.)\nWhen you recycle one or more cards, buff a friendly unit. (If it doesn't have a buff, it gets a +1 [M] buff. Runes aren't cards.)",
+   "currentText": "[Vision] (When you play me, look at the top card of your Main Deck. You may recycle it.)\nWhen you recycle one or more cards to your Main Deck, buff a friendly unit. (If it doesn't have a buff, it gets a +1 [M] buff. Runes aren't cards.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-13",
+   "cardName": "Kinkou Monk",
+   "codes": [
+    "OGN-141"
+   ],
+   "printedText": "When you play me, buff two other friendly units. (Each one that doesn't have a buff gets a +1 [M] buff.)",
+   "currentText": "When you play me, buff up to two other friendly units. (Each one that doesn't have a buff gets a +1 [M] buff.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-14",
+   "cardName": "Nocturne, Horrifying",
+   "codes": [
+    "OGN-194"
+   ],
+   "printedText": "[Ganking] (I can move from battlefield to battlefield.)\nWhen you look at cards from the top of your deck (and don't draw them) and see me, you may play me for [A].",
+   "currentText": "[Ganking] (I can move from battlefield to battlefield.)\nAs you look at or reveal me from the top of your deck, you may banish me. If you do, you may play me for [A].",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-15",
+   "cardName": "Pack of Wonders",
+   "codes": [
+    "OGN-181"
+   ],
+   "printedText": "[E]: Return another friendly gear, unit, or [Hidden] card to its owner's hand.",
+   "currentText": "[E]: Return another friendly gear, unit, or facedown card to its owner's hand.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-16",
+   "cardName": "Portal Rescue",
+   "codes": [
+    "OGN-102"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nBanish a friendly unit, then play it to base, ignoring its cost.",
+   "currentText": "[Action] (Play on your turn or in showdowns.)\nBanish a friendly unit, then its owner plays it to their base, ignoring its cost.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-17",
+   "cardName": "Promising Future",
+   "codes": [
+    "OGN-115"
+   ],
+   "printedText": "Each player looks at the top 5 cards of their Main Deck, chooses one, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs. (They must still pay Power costs.)",
+   "currentText": "Each player looks at the top 5 cards of their Main Deck, banishes one of them, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs. (They must still pay Power costs.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-18",
+   "cardName": "Ravenborn Tome",
+   "codes": [
+    "OGN-032"
+   ],
+   "printedText": "[E]: The next spell you play deals 1 Bonus Damage. (Each instance of damage the spell deals is increased by 1.)",
+   "currentText": "[E]: The next spell you play this turn deals 1 Bonus Damage. (Each instance of damage the spell deals is increased by 1.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-19",
+   "cardName": "Salvage",
+   "codes": [
+    "OGN-224"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nYou may kill a gear. Draw 1.",
+   "currentText": "[Action] (Play on your turn or in showdowns.)\nYou may kill up to one gear. Draw 1.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-2",
+   "cardName": "Baited Hook",
+   "codes": [
+    "OGN-242"
+   ],
+   "printedText": "[1][C], [E]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may play a unit from among them that has Might up to 1 more than the killed unit, ignoring its cost. Then recycle the rest.",
+   "currentText": "[1][C], [E]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-20",
+   "cardName": "Sigil of the Storm",
+   "codes": [
+    "OGN-287"
+   ],
+   "printedText": "When you conquer here, recycle one of your runes.",
+   "currentText": "When you conquer here, you must recycle one of your runes. (This doesn’t choose anything.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-21",
+   "cardName": "Sona, Harmonious",
+   "codes": [
+    "OGN-073",
+    "VEN-SP2"
+   ],
+   "printedText": "While I'm at a battlefield, ready 4 friendly runes at the end of your turn.",
+   "currentText": "At the end of your turn, if I'm at a battlefield, ready up to 4 friendly runes.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-22",
+   "cardName": "Targon's Peak",
+   "codes": [
+    "OGN-289"
+   ],
+   "printedText": "When you conquer here, ready 2 runes at the end of this turn.",
+   "currentText": "When you conquer here, ready up to 2 runes at the end of this turn.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-23",
+   "cardName": "Teemo, Strategist",
+   "codes": [
+    "OGN-121",
+    "OGN-121a",
+    "SFD-230",
+    "SFD-230s"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck. Deal 1 to an enemy unit here for each card with [Hidden], then recycle them.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen I defend, choose an enemy unit here and reveal the top 5 cards of your Main Deck. Deal 1 to that unit for each card with [Hidden] revealed this way, then recycle the revealed cards.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-24",
+   "cardName": "The Boss",
+   "codes": [
+    "OGN-269",
+    "OGN-310",
+    "OGN-310s"
+   ],
+   "printedText": "When a buffed unit you control would die, you may pay [C] and exhaust me to spend its buff and recall it exhausted instead. (Send it to base. This isn't a move.)\nWhen you conquer, ready me.",
+   "currentText": "If a buffed unit you control would die, you may pay [C], exhaust me, and spend its buff to heal it, exhaust it, and recall it instead. (Send it to base. This isn't a move.)\nWhen you conquer, ready me.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-25",
+   "cardName": "The Dreaming Tree",
+   "codes": [
+    "OGN-292"
+   ],
+   "printedText": "The first time you choose a friendly unit with a spell here each turn, draw 1.",
+   "currentText": "When a player chooses a friendly unit here with a spell for the first time each turn, they draw 1.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-26",
+   "cardName": "The Syren",
+   "codes": [
+    "OGN-184"
+   ],
+   "printedText": "[1], [E]: Move a friendly unit at a battlefield to your base.",
+   "currentText": "[1], [E]: Move a friendly unit at a battlefield to its base.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-27",
+   "cardName": "Tideturner",
+   "codes": [
+    "OGN-199"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, you may choose a friendly unit. Move me to its location and it to my original location.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, you may choose a unit you control at another location. Move me to its location and it to my original location.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-28",
+   "cardName": "Unforgiven",
+   "codes": [
+    "OGN-259",
+    "OGN-305",
+    "OGN-305s"
+   ],
+   "printedText": "[2], [E]: Move a friendly unit to or from your base.",
+   "currentText": "[2], [E]: Move a friendly unit to or from its base.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-29",
+   "cardName": "Unlicensed Armory",
+   "codes": [
+    "OGN-023"
+   ],
+   "printedText": "Discard 1, [E]: Choose a friendly unit. The next time it dies this turn, you may pay [C] to recall it exhausted instead. (Send it to base. This isn't a move.)",
+   "currentText": "Discard 1, [E]: Choose a friendly unit. The next time it would die this turn, you may pay [C] to heal it, exhaust it, and recall it instead. (Send it to base. This isn't a move.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-3",
+   "cardName": "Blind Fury",
+   "codes": [
+    "OGN-025"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nEach opponent reveals the top card of their Main Deck. Choose one and play it, ignoring its cost. Then recycle the rest.",
+   "currentText": "[Action] (Play on your turn or in showdowns.)\nEach opponent reveals the top card of their Main Deck. Choose one and banish it, then play it, ignoring its cost. Then recycle the rest.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-30",
+   "cardName": "Void Gate",
+   "codes": [
+    "OGN-296"
+   ],
+   "printedText": "Spells and abilities affecting units here each deal 1 Bonus Damage. (Each instance of damage the spell deals is increased by 1.)",
+   "currentText": "Spells and abilities deal 1 Bonus Damage to units here. (Each instance of damage the spell deals to a unit here is increased by 1.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-31",
+   "cardName": "Zhonya's Hourglass",
+   "codes": [
+    "OGN-077"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nThe next time a friendly unit would die, kill this instead. Recall that unit exhausted. (Send it to base. This isn't a move.)",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nIf a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. (Send it to base. This isn't a move.)",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-4",
+   "cardName": "Clockwork Keeper",
+   "codes": [
+    "OGN-044"
+   ],
+   "printedText": "As you play me, you may pay [C] as an additional cost. If you do, draw 1.",
+   "currentText": "You may pay [C] as an additional cost to play me.\nWhen you play me, if you paid the additional cost, draw 1.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-5",
+   "cardName": "Convergent Mutation",
+   "codes": [
+    "OGN-108"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit. Increase its Might until it equals the Might of another friendly unit.",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a friendly unit. This turn, increase its Might to the Might of another friendly unit.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-6",
+   "cardName": "Dark Child, Starter",
+   "codes": [
+    "OGS-017"
+   ],
+   "printedText": "At the end of your turn, ready 2 runes.",
+   "currentText": "At the end of your turn, ready up to 2 runes.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-7",
+   "cardName": "Dazzling Aurora",
+   "codes": [
+    "OGN-160"
+   ],
+   "printedText": "At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit. Play it, ignoring its cost, and recycle the rest.",
+   "currentText": "At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit and banish it. Play it, ignoring its cost, and recycle the rest.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-8",
+   "cardName": "Disintegrate",
+   "codes": [
+    "OGN-005"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nDeal 3 to a unit at a battlefield. If this kills it, draw 1.",
+   "currentText": "Action (Play on your turn or in showdowns.)\nDeal 3 to a unit at a battlefield. If this kills it, do this: draw 1.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "origins-errata-9",
+   "cardName": "Dragon's Rage",
+   "codes": [
+    "OGN-258"
+   ],
+   "printedText": "Move an enemy unit. Then choose another enemy unit at its destination. They deal damage equal to their Mights to each other.",
+   "currentText": "Move an enemy unit. Then do this: Choose another enemy unit at its destination. They deal damage equal to their Mights to each other.",
+   "effective": "2025-10-28",
+   "source": "ERR-OGN",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-1",
+   "cardName": "Falling Star",
+   "codes": [
+    "OGN-029"
+   ],
+   "printedText": "Do this twice:\nDeal 3 to a unit. (You can choose different units.)",
+   "currentText": "Deal 3 to a unit.\nDeal 3 to a unit.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-10",
+   "cardName": "Kato the Arm",
+   "codes": [
+    "SFD-112"
+   ],
+   "printedText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhen I move to a battlefield, give a friendly unit my keywords and +[M] equal to my Might this turn.",
+   "currentText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhen I move to a battlefield, give another friendly unit my keywords and +[M] equal to my Might this turn.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-11",
+   "cardName": "Rek'Sai, Swarm Queen",
+   "codes": [
+    "SFD-170",
+    "SFD-170a"
+   ],
+   "printedText": "When I attack, you may reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest. If the played card is a unit, you may play it here.",
+   "currentText": "When I attack, you may reveal the top 2 cards of your Main Deck. You may banish one, then play it. If it is a unit, you may play it here. Recycle the rest.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-12",
+   "cardName": "Rell, Magnetic",
+   "codes": [
+    "SFD-024"
+   ],
+   "printedText": "[Tank] (I must be assigned combat damage first.)\nWhen I attack, you may play an Equipment with Energy cost no more than [2], ignoring its cost, and attach it to me.",
+   "currentText": "[Tank] (I must be assigned combat damage first.)\nWhen I attack, you may play an Equipment with Energy cost no more than [2], ignoring its cost. If you do, then do this: Attach it to me.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-13",
+   "cardName": "Tianna Crownguard",
+   "codes": [
+    "SFD-060"
+   ],
+   "printedText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhile I'm at a battlefield, opponents can't score points.",
+   "currentText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nWhile I'm at a battlefield, opponents can't gain points.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-14",
+   "cardName": "Void Burrower",
+   "codes": [
+    "SFD-187",
+    "SFD-243"
+   ],
+   "printedText": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest.",
+   "currentText": "When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may banish one, then play it. Recycle the rest.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-15",
+   "cardName": "Void Rush",
+   "codes": [
+    "SFD-188"
+   ],
+   "printedText": "Reveal the top 2 cards of your Main Deck. You may play one of them, reducing its cost by [2]. Draw any you did not play this way.",
+   "currentText": "Reveal the top 2 cards of your Main Deck. You may banish one, then play it, reducing its cost by [2]. Draw any you didn't banish.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-16",
+   "cardName": "Yone, Blademaster",
+   "codes": [
+    "RAD-181",
+    "SFD-116",
+    "SFD-233",
+    "SFD-233s"
+   ],
+   "printedText": "[Weaponmaster] (When you play me, you may [Equip] one of your Equipment to me for [A] less, even if it's already attached.)\nWhen I conquer an open battlefield, deal damage equal to my Might to an enemy unit in a base.",
+   "currentText": "[Weaponmaster] (When you play me, you may [Equip] one of your Equipment to me for [A] less, even if it's already attached.)\nWhen I conquer a battlefield that was uncontrolled, deal damage equal to my Might to an enemy unit in a base.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-2",
+   "cardName": "Icathian Rain",
+   "codes": [
+    "OGN-248"
+   ],
+   "printedText": "Do this 6 times:\nDeal 2 to a unit. (You can choose different units.)",
+   "currentText": "Deal 2 to a unit.\nDeal 2 to a unit.\nDeal 2 to a unit.\nDeal 2 to a unit.\nDeal 2 to a unit.\nDeal 2 to a unit.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-3",
+   "cardName": "Reinforce",
+   "codes": [
+    "OGN-062"
+   ],
+   "printedText": "Look at the top 5 cards of your Main Deck. You may play a unit from among them. Its Energy cost is reduced by [5]. Then recycle the remaining cards.",
+   "currentText": "Look at the top 5 cards of your Main Deck. You may banish a unit from among them, then play it, reducing its cost by [5]. Recycle the remaining cards.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-4",
+   "cardName": "Arise!",
+   "codes": [
+    "SFD-198"
+   ],
+   "printedText": "Play a 2 [M] Sand Soldier unit token for each Equipment you control. Then ready two of them.",
+   "currentText": "Play a 2 [M] Sand Soldier unit token for each Equipment you control. Then do this: Ready up to two of them.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-5",
+   "cardName": "Blood Rush",
+   "codes": [
+    "SFD-003"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\n[Repeat] [1] (You may pay the additional cost to repeat this spell's effect.)\nGive a unit [Assault 2]. (+2 [M] while it's an attacker.)",
+   "currentText": "[Action] (Play on your turn or in showdowns.)\n[Repeat] [1] (You may pay the additional cost to repeat this spell's effect.)\nGive a unit [Assault 2] this turn. (+2 [M] while it's an attacker.)",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-6",
+   "cardName": "Deathgrip",
+   "codes": [
+    "SFD-163"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nKill a friendly unit to give +[M] equal to its Might to another friendly unit this turn. Draw 1.",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nKill a friendly unit. If you do, give +[M] equal to its Might to another friendly unit this turn.\nDraw 1.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-7",
+   "cardName": "Edge of Night",
+   "codes": [
+    "SFD-139"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play this from face down, attach it to a unit you control here.\n[Equip] [C] ([C]: Attach this to a unit you control.)",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play this from face down, attach it to a unit you control _(here)_.\n[Equip] [C] ([C]: Attach this to a unit you control.)",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-8",
+   "cardName": "Janna, Savior",
+   "codes": [
+    "SFD-053"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve, including to a battlefield you control.)\nWhen you play me, heal your units here, then move an enemy unit from here to its base.",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve, including to a battlefield you control.)\nWhen you play me, heal your units here, then move up to one enemy unit from here to its base.",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "spiritforged-errata-9",
+   "cardName": "Jax, Unmatched",
+   "codes": [
+    "SFD-054",
+    "SFD-054a"
+   ],
+   "printedText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nEach Equipment in your hand has [Quick-Draw]. (It gains [Reaction]. When you play it, attach it to a unit you control.)",
+   "currentText": "[Deflect] (Opponents must pay [A] to choose me with a spell or ability.)\nYour Equipment everywhere have [Quick-Draw]. (Each gains [Reaction]. When you play it, attach it to a unit you control.)",
+   "effective": "2026-01-14",
+   "source": "ERR-SFD",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-1",
+   "cardName": "Guards!",
+   "codes": [
+    "SFD-154"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nPlay a 2 [M] Sand Soldier unit token. You may pay [C] to ready it.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nPlay a 2 [M] Sand Soldier unit token. Then do this: You may pay [C] to ready it.",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-2",
+   "cardName": "Relentless Pursuit",
+   "codes": [
+    "SFD-184"
+   ],
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nMove a friendly unit. You may attach an Equipment with the same controller to it. This turn, that unit has \"When I conquer, you may move me to my base.\"",
+   "currentText": "[Action] (Play on your turn or in showdowns.)\nMove a friendly unit. You may attach up to one Equipment with the same controller to it. This turn, that unit has \"When I conquer, you may move me to my base.\"",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-3",
+   "cardName": "Death from Below",
+   "codes": [
+    "UNL-186"
+   ],
+   "printedText": "Kill a unit at a battlefield. Then, if it had 3 [M] or less, you may play this from your trash for [A].",
+   "currentText": "Kill a unit at a battlefield. Then, if it had 3 [M] or less, do this: You may play this from your trash for [A].",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-4",
+   "cardName": "Bone Skewer",
+   "codes": [
+    "UNL-139"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nChoose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs. When they do, [Stun] it. (It doesn't deal combat damage this turn.)",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nChoose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs. If they do, then do this: [Stun] it. (It doesn't deal combat damage this turn.)",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-5",
+   "cardName": "Leblanc, Deceiver",
+   "codes": [
+    "UNL-199",
+    "UNL-235",
+    "UNL-235s"
+   ],
+   "printedText": "When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. It becomes a copy of another unit there. Give it [Temporary].",
+   "currentText": "When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. Then do this: It becomes a copy of another unit there. Give it [Temporary].",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-6",
+   "cardName": "Mirror Image",
+   "codes": [
+    "UNL-200"
+   ],
+   "printedText": "Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)",
+   "currentText": "Choose a unit. Play a ready Reflection unit token to your base. Then do this: It becomes a copy of that unit. Give it [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-7",
+   "cardName": "Keeper of Masks",
+   "codes": [
+    "UNL-081"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Temporary] (Kill me at the start of my controller's Beginning Phase, before scoring.)\nWhen you play me, play two Reflection unit tokens here. They become copies of me.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Temporary] (Kill me at the start of my controller's Beginning Phase, before scoring.)\nWhen you play me, play two Reflection unit tokens here. Then do this: They become copies of me.",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "unleashed-errata-8",
+   "cardName": "Rengar, Trophy Hunter",
+   "codes": [
+    "UNL-120",
+    "UNL-120a",
+    "VEN-179"
+   ],
+   "printedText": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nI can be played to a battlefield where there are enemy units (even if you don't have units there).",
+   "currentText": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nI can [Ambush] to a battlefield where there are enemy units, even if you don't have units there.",
+   "effective": "2026-04-03",
+   "source": "ERR-UNL",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-1",
+   "cardName": "Draven, Vanquisher",
+   "codes": [
+    "SFD-020",
+    "SFD-020a"
+   ],
+   "printedText": "When I win a combat, play a Gold gear token exhausted.\nWhen I attack or defend, you may pay [C]. If you do, give me +2 [M] this turn.",
+   "currentText": "When I win a combat, play a Gold gear token exhausted.\nWhen I attack or defend, you may pay [C] to give me +2 [M] this turn.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-2",
+   "cardName": "Emperor's Dais",
+   "codes": [
+    "SFD-207"
+   ],
+   "printedText": "When you conquer here, you may pay [1] and return a unit you control here to its owner's hand. If you do, play a 2 [M] Sand Soldier unit token here.",
+   "currentText": "When you conquer here, you may pay [1] and return a unit you control here to its owner's hand to play a 2 [M] Sand Soldier unit token here.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-3",
+   "cardName": "Fizz, Trickster",
+   "codes": [
+    "SFD-140"
+   ],
+   "printedText": "When you play me, you may play a spell from your trash with Energy cost no more than [3], ignoring its Energy cost. Recycle that spell after you play it. (You must still pay its Power cost.)",
+   "currentText": "When you play me, you may play a spell from your trash with Energy cost no more than [3], ignoring its Energy cost. Then recycle it. (You must still pay its Power cost.)",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-4",
+   "cardName": "Diana, Lunari",
+   "codes": [
+    "UNL-079",
+    "UNL-079a"
+   ],
+   "printedText": "When a showdown begins here, you may pay [1]. If you do, [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it. (To Predict, look at the top card of your Main Deck. You may recycle it.)",
+   "currentText": "When a showdown begins here, you may pay [1] to [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it. (To Predict, look at the top card of your Main Deck. You may recycle it.)",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-5",
+   "cardName": "Stalking Wolf",
+   "codes": [
+    "UNL-166"
+   ],
+   "printedText": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nAs an additional cost to play me, kill a Bird, Cat, Dog, or Poro you control. You may play me to its battlefield (even if you don't have other units there).",
+   "currentText": "[Ambush] (You may play me as a [Reaction] to a battlefield where you have units.)\nAs an additional cost to play me, kill a Bird, Cat, Dog, or Poro you control. You may [Ambush] me to its battlefield, even if you don't have other units there.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-6",
+   "cardName": "Astral Heron",
+   "codes": [
+    "VEN-044"
+   ],
+   "printedText": "When you play your first card each turn, if I'm at a battlefield, your next card costs [2][A][A] less.",
+   "currentText": "When you play your first card each turn, if I'm at a battlefield, the next card you play this turn costs [2][A][A] less.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-7",
+   "cardName": "Gangplank, Naval",
+   "codes": [
+    "VEN-086",
+    "VEN-181"
+   ],
+   "printedText": "[Empower] [C][C] ([C][C]: Empower me. Use only if not Empowered.)\n[Empowered][>] If a spell or ability that chooses me would stun me, give me -[M], or return me to hand, give me +3 [M] instead.",
+   "currentText": "[Empower] [C][C] ([C][C]: Empower me. Use only if not Empowered.)\n[Empowered][>] If a spell or ability that chooses me would stun me, give me -[M], or return me to hand, give me +3 [M] this turn instead.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "vendetta-errata-8",
+   "cardName": "Resonating Strike",
+   "codes": [
+    "VEN-034"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Reaction] (Play on your turn or in showdowns.)\nChoose a battlefield you control and a unit you control at a different location. Move that unit to that battlefield and give it +2 [S] this turn.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\n[Reaction] (Play any time, even before spells and abilities resolve.)\nChoose a battlefield you control and a unit you control at a different location. Move that unit to that battlefield and give it +2 [S] this turn.",
+   "effective": "2026-07-23",
+   "source": "ERR-VEN",
+   "status": "official"
+  },
+  {
+   "id": "radiance-errata-1",
+   "cardName": "Elnuk Herd",
+   "codes": [
+    "RAD-081"
+   ],
+   "printedText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, give another friendly unit +3 [M] this turn, then recycle me if I was played from face down.",
+   "currentText": "[Hidden] (Hide now for [A] to react with later for [0].)\nWhen you play me, give a friendly unit +3 [M] this turn, then recycle me if I was played from face down.",
+   "effective": "2026-10-09",
+   "source": "ERR-RAD",
+   "status": "official"
+  },
+  {
+   "id": "radiance-errata-2",
+   "cardName": "Last Caress",
+   "codes": [
+    "RAD-154"
+   ],
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nThe next unit you play this turn (even from face down) can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [M] buff if it doesn't have one.)",
+   "currentText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nThe next unit you play this turn, even from face down, can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [M] buff if it doesn't have one.)",
+   "effective": "2026-10-09",
+   "source": "ERR-RAD",
+   "status": "official"
+  },
+  {
+   "id": "radiance-errata-3",
+   "cardName": "Forbidden Technique",
+   "codes": [
+    "RAD-010"
+   ],
+   "printedText": "Ready a unit.\nWhen you play a card with Energy cost [7] or more, you may play this from your trash for [1][C][C]. Banish this.",
+   "currentText": "Ready a unit.\nWhen you play a card with Energy cost [7] or more, you may play this from your trash for [1][C][C]. Then banish this.",
+   "effective": "2026-10-09",
+   "source": "ERR-RAD",
+   "status": "official"
+  },
+  {
+   "id": "radiance-errata-4",
+   "cardName": "Neeko, Blending In",
+   "codes": [
+    "RAD-167"
+   ],
+   "printedText": "(Neutral cards can go in decks of any Domain.)\nIf Neeko is in your deck, choose 3 different legends in addition to your starting legend. (Different means none match names.)\nWhen you play me, choose one of those Legends and add it to your Legend Zone while I'm on the board.",
+   "currentText": "(Neutral cards can go in decks of any Domain.)\nIf Neeko is in your deck, choose up to 3 different legends in addition to your starting legend. (Different means none match names.)\nWhen you play me, choose one of those Legends and add it to your Legend Zone while I'm on the board.",
+   "effective": "2026-10-09",
+   "source": "ERR-RAD",
+   "status": "official"
+  }
+ ]
+}
