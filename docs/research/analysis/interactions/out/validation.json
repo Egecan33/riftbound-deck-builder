@@ -14,17 +14,23 @@
    "observed": 56276,
    "exp_global": 54894.1,
    "exp_within_legend": 49774.9,
+   "pairs_card_card": 57968,
+   "observed_card_card": 50690,
+   "lift_global_card_card": 1.03,
    "lift_global": 1.03,
    "lift_within_legend": 1.02,
    "share_cooccurring": 0.222
   },
   "no_edge": {
-   "pairs": 58346,
-   "observed": 50410,
-   "exp_global": 50638.7,
-   "exp_within_legend": 45191.6,
+   "pairs": 58457,
+   "observed": 50508,
+   "exp_global": 50680.4,
+   "exp_within_legend": 45227.5,
+   "pairs_card_card": 53745,
+   "observed_card_card": 45932,
+   "lift_global_card_card": 1.0,
    "lift_global": 1.0,
-   "lift_within_legend": 1.01,
+   "lift_within_legend": 1.02,
    "share_cooccurring": 0.217
   },
   "class_edge": {
@@ -32,112 +38,148 @@
    "observed": 1562,
    "exp_global": 1229.8,
    "exp_within_legend": 1017.7,
+   "pairs_card_card": 1193,
+   "observed_card_card": 1049,
+   "lift_global_card_card": 1.19,
    "lift_global": 1.27,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.237
   },
   "specific_edge": {
-   "pairs": 3428,
-   "observed": 4304,
-   "exp_global": 3025.6,
-   "exp_within_legend": 3565.5,
-   "lift_global": 1.42,
-   "lift_within_legend": 1.06,
+   "pairs": 3317,
+   "observed": 4206,
+   "exp_global": 2983.9,
+   "exp_within_legend": 3529.7,
+   "pairs_card_card": 3030,
+   "observed_card_card": 3709,
+   "lift_global_card_card": 1.34,
+   "lift_global": 1.41,
+   "lift_within_legend": 1.05,
    "share_cooccurring": 0.297
   }
  },
  "by_strength": {
   "s>=3.0": {
-   "pairs": 51,
-   "observed": 149,
-   "exp_global": 57.7,
+   "pairs": 49,
+   "observed": 143,
+   "exp_global": 55.4,
    "exp_within_legend": 39.4,
+   "pairs_card_card": 9,
+   "observed_card_card": 40,
+   "lift_global_card_card": 2.19,
    "lift_global": 2.58,
    "lift_within_legend": 1.02,
-   "share_cooccurring": 0.549
+   "share_cooccurring": 0.531
   },
   "2.4<=s<3.0": {
    "pairs": 61,
    "observed": 165,
    "exp_global": 72.2,
    "exp_within_legend": 140.5,
+   "pairs_card_card": 43,
+   "observed_card_card": 144,
+   "lift_global_card_card": 2.56,
    "lift_global": 2.29,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.557
   },
   "1.8<=s<2.4": {
-   "pairs": 228,
+   "pairs": 227,
    "observed": 494,
    "exp_global": 227.4,
    "exp_within_legend": 303.1,
+   "pairs_card_card": 177,
+   "observed_card_card": 318,
+   "lift_global_card_card": 1.8,
    "lift_global": 2.17,
    "lift_within_legend": 1.05,
-   "share_cooccurring": 0.434
+   "share_cooccurring": 0.436
   },
   "1.2<=s<1.8": {
    "pairs": 643,
    "observed": 1131,
    "exp_global": 680.3,
    "exp_within_legend": 953.5,
+   "pairs_card_card": 560,
+   "observed_card_card": 1023,
+   "lift_global_card_card": 1.63,
    "lift_global": 1.66,
    "lift_within_legend": 1.07,
    "share_cooccurring": 0.407
   },
   "s<1.2": {
-   "pairs": 2445,
-   "observed": 2365,
-   "exp_global": 1988.0,
-   "exp_within_legend": 2129.1,
-   "lift_global": 1.19,
-   "lift_within_legend": 1.06,
-   "share_cooccurring": 0.243
+   "pairs": 2337,
+   "observed": 2273,
+   "exp_global": 1948.5,
+   "exp_within_legend": 2093.3,
+   "pairs_card_card": 2241,
+   "observed_card_card": 2184,
+   "lift_global_card_card": 1.16,
+   "lift_global": 1.17,
+   "lift_within_legend": 1.04,
+   "share_cooccurring": 0.241
   }
  },
  "top_n": {
   "50": {
    "pairs": 50,
-   "observed": 146,
-   "exp_global": 57.3,
+   "observed": 143,
+   "exp_global": 55.4,
    "exp_within_legend": 39.4,
-   "lift_global": 2.55,
+   "pairs_card_card": 10,
+   "observed_card_card": 40,
+   "lift_global_card_card": 2.19,
+   "lift_global": 2.58,
    "lift_within_legend": 1.02,
-   "share_cooccurring": 0.54
+   "share_cooccurring": 0.52
   },
   "100": {
    "pairs": 100,
-   "observed": 266,
-   "exp_global": 111.4,
-   "exp_within_legend": 132.7,
-   "lift_global": 2.39,
-   "lift_within_legend": 1.03,
-   "share_cooccurring": 0.54
+   "observed": 270,
+   "exp_global": 110.9,
+   "exp_within_legend": 142.7,
+   "pairs_card_card": 42,
+   "observed_card_card": 146,
+   "lift_global_card_card": 2.53,
+   "lift_global": 2.44,
+   "lift_within_legend": 1.02,
+   "share_cooccurring": 0.53
   },
   "250": {
    "pairs": 250,
-   "observed": 660,
-   "exp_global": 275.8,
+   "observed": 654,
+   "exp_global": 273.5,
    "exp_within_legend": 352.6,
+   "pairs_card_card": 150,
+   "observed_card_card": 369,
+   "lift_global_card_card": 2.09,
    "lift_global": 2.39,
    "lift_within_legend": 1.05,
-   "share_cooccurring": 0.492
+   "share_cooccurring": 0.484
   },
   "500": {
    "pairs": 500,
-   "observed": 1056,
-   "exp_global": 525.0,
-   "exp_within_legend": 702.1,
+   "observed": 1053,
+   "exp_global": 524.5,
+   "exp_within_legend": 704.6,
+   "pairs_card_card": 382,
+   "observed_card_card": 732,
+   "lift_global_card_card": 1.77,
    "lift_global": 2.01,
    "lift_within_legend": 1.04,
-   "share_cooccurring": 0.452
+   "share_cooccurring": 0.45
   },
   "1000": {
    "pairs": 1000,
-   "observed": 1988,
-   "exp_global": 1077.9,
+   "observed": 1982,
+   "exp_global": 1075.6,
    "exp_within_legend": 1484.1,
+   "pairs_card_card": 808,
+   "observed_card_card": 1574,
+   "lift_global_card_card": 1.71,
    "lift_global": 1.84,
    "lift_within_legend": 1.06,
-   "share_cooccurring": 0.43
+   "share_cooccurring": 0.428
   }
  },
  "by_rule": {
@@ -146,24 +188,33 @@
    "observed": 600,
    "exp_global": 433.9,
    "exp_within_legend": 449.1,
+   "pairs_card_card": 807,
+   "observed_card_card": 471,
+   "lift_global_card_card": 1.42,
    "lift_global": 1.38,
    "lift_within_legend": 1.05,
    "share_cooccurring": 0.202
   },
   "replay->etb": {
-   "pairs": 713,
-   "observed": 1055,
-   "exp_global": 954.6,
-   "exp_within_legend": 938.0,
-   "lift_global": 1.11,
-   "lift_within_legend": 1.09,
-   "share_cooccurring": 0.272
+   "pairs": 611,
+   "observed": 981,
+   "exp_global": 923.3,
+   "exp_within_legend": 911.2,
+   "pairs_card_card": 586,
+   "observed_card_card": 945,
+   "lift_global_card_card": 1.05,
+   "lift_global": 1.06,
+   "lift_within_legend": 1.04,
+   "share_cooccurring": 0.275
   },
   "gear->gearpayoff": {
-   "pairs": 482,
+   "pairs": 483,
    "observed": 389,
    "exp_global": 222.2,
    "exp_within_legend": 336.5,
+   "pairs_card_card": 454,
+   "observed_card_card": 364,
+   "lift_global_card_card": 1.71,
    "lift_global": 1.75,
    "lift_within_legend": 1.08,
    "share_cooccurring": 0.255
@@ -173,6 +224,9 @@
    "observed": 142,
    "exp_global": 111.1,
    "exp_within_legend": 37.1,
+   "pairs_card_card": 167,
+   "observed_card_card": 33,
+   "lift_global_card_card": 1.02,
    "lift_global": 1.28,
    "lift_within_legend": 0.89,
    "share_cooccurring": 0.145
@@ -182,6 +236,9 @@
    "observed": 174,
    "exp_global": 130.8,
    "exp_within_legend": 167.5,
+   "pairs_card_card": 259,
+   "observed_card_card": 174,
+   "lift_global_card_card": 1.33,
    "lift_global": 1.33,
    "lift_within_legend": 1.04,
    "share_cooccurring": 0.181
@@ -191,6 +248,9 @@
    "observed": 149,
    "exp_global": 115.9,
    "exp_within_legend": 135.6,
+   "pairs_card_card": 246,
+   "observed_card_card": 149,
+   "lift_global_card_card": 1.29,
    "lift_global": 1.29,
    "lift_within_legend": 1.1,
    "share_cooccurring": 0.175
@@ -200,6 +260,9 @@
    "observed": 144,
    "exp_global": 144.9,
    "exp_within_legend": 118.5,
+   "pairs_card_card": 183,
+   "observed_card_card": 118,
+   "lift_global_card_card": 1.0,
    "lift_global": 0.99,
    "lift_within_legend": 1.0,
    "share_cooccurring": 0.202
@@ -209,6 +272,9 @@
    "observed": 47,
    "exp_global": 48.9,
    "exp_within_legend": 23.4,
+   "pairs_card_card": 138,
+   "observed_card_card": 22,
+   "lift_global_card_card": 0.7,
    "lift_global": 0.96,
    "lift_within_legend": 0.94,
    "share_cooccurring": 0.16
@@ -218,6 +284,9 @@
    "observed": 422,
    "exp_global": 375.5,
    "exp_within_legend": 358.0,
+   "pairs_card_card": 111,
+   "observed_card_card": 370,
+   "lift_global_card_card": 1.1,
    "lift_global": 1.12,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.421
@@ -227,6 +296,9 @@
    "observed": 262,
    "exp_global": 88.3,
    "exp_within_legend": 189.6,
+   "pairs_card_card": 86,
+   "observed_card_card": 193,
+   "lift_global_card_card": 2.85,
    "lift_global": 2.97,
    "lift_within_legend": 1.02,
    "share_cooccurring": 0.574
@@ -236,6 +308,9 @@
    "observed": 179,
    "exp_global": 183.5,
    "exp_within_legend": 173.5,
+   "pairs_card_card": 108,
+   "observed_card_card": 175,
+   "lift_global_card_card": 0.98,
    "lift_global": 0.98,
    "lift_within_legend": 1.01,
    "share_cooccurring": 0.333
@@ -245,6 +320,9 @@
    "observed": 123,
    "exp_global": 90.9,
    "exp_within_legend": 91.1,
+   "pairs_card_card": 99,
+   "observed_card_card": 96,
+   "lift_global_card_card": 1.24,
    "lift_global": 1.35,
    "lift_within_legend": 1.05,
    "share_cooccurring": 0.315
@@ -254,6 +332,9 @@
    "observed": 223,
    "exp_global": 128.1,
    "exp_within_legend": 212.7,
+   "pairs_card_card": 101,
+   "observed_card_card": 223,
+   "lift_global_card_card": 1.74,
    "lift_global": 1.74,
    "lift_within_legend": 1.05,
    "share_cooccurring": 0.475
@@ -263,6 +344,9 @@
    "observed": 138,
    "exp_global": 82.0,
    "exp_within_legend": 107.4,
+   "pairs_card_card": 88,
+   "observed_card_card": 121,
+   "lift_global_card_card": 1.66,
    "lift_global": 1.68,
    "lift_within_legend": 1.13,
    "share_cooccurring": 0.4
@@ -272,6 +356,9 @@
    "observed": 79,
    "exp_global": 75.2,
    "exp_within_legend": 58.9,
+   "pairs_card_card": 85,
+   "observed_card_card": 59,
+   "lift_global_card_card": 0.99,
    "lift_global": 1.05,
    "lift_within_legend": 1.0,
    "share_cooccurring": 0.283
@@ -281,6 +368,9 @@
    "observed": 213,
    "exp_global": 102.2,
    "exp_within_legend": 189.9,
+   "pairs_card_card": 96,
+   "observed_card_card": 207,
+   "lift_global_card_card": 2.03,
    "lift_global": 2.08,
    "lift_within_legend": 1.09,
    "share_cooccurring": 0.531
@@ -290,6 +380,9 @@
    "observed": 333,
    "exp_global": 238.4,
    "exp_within_legend": 286.0,
+   "pairs_card_card": 86,
+   "observed_card_card": 298,
+   "lift_global_card_card": 1.32,
    "lift_global": 1.4,
    "lift_within_legend": 1.04,
    "share_cooccurring": 0.5
@@ -299,6 +392,9 @@
    "observed": 127,
    "exp_global": 97.3,
    "exp_within_legend": 121.0,
+   "pairs_card_card": 80,
+   "observed_card_card": 127,
+   "lift_global_card_card": 1.31,
    "lift_global": 1.31,
    "lift_within_legend": 1.05,
    "share_cooccurring": 0.4
@@ -308,6 +404,9 @@
    "observed": 171,
    "exp_global": 86.4,
    "exp_within_legend": 96.0,
+   "pairs_card_card": 60,
+   "observed_card_card": 99,
+   "lift_global_card_card": 1.42,
    "lift_global": 1.98,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.389
@@ -317,6 +416,9 @@
    "observed": 21,
    "exp_global": 23.8,
    "exp_within_legend": 16.2,
+   "pairs_card_card": 38,
+   "observed_card_card": 17,
+   "lift_global_card_card": 0.78,
    "lift_global": 0.88,
    "lift_within_legend": 1.05,
    "share_cooccurring": 0.289
@@ -326,6 +428,9 @@
    "observed": 22,
    "exp_global": 33.5,
    "exp_within_legend": 29.0,
+   "pairs_card_card": 42,
+   "observed_card_card": 22,
+   "lift_global_card_card": 0.66,
    "lift_global": 0.66,
    "lift_within_legend": 0.76,
    "share_cooccurring": 0.214
@@ -335,6 +440,9 @@
    "observed": 158,
    "exp_global": 109.0,
    "exp_within_legend": 0.0,
+   "pairs_card_card": 0,
+   "observed_card_card": 0,
+   "lift_global_card_card": null,
    "lift_global": 1.45,
    "lift_within_legend": null,
    "share_cooccurring": 0.5
@@ -344,6 +452,9 @@
    "observed": 87,
    "exp_global": 41.6,
    "exp_within_legend": 58.6,
+   "pairs_card_card": 29,
+   "observed_card_card": 61,
+   "lift_global_card_card": 1.75,
    "lift_global": 2.09,
    "lift_within_legend": 1.04,
    "share_cooccurring": 0.595
@@ -353,6 +464,9 @@
    "observed": 53,
    "exp_global": 43.5,
    "exp_within_legend": 49.8,
+   "pairs_card_card": 31,
+   "observed_card_card": 51,
+   "lift_global_card_card": 1.23,
    "lift_global": 1.22,
    "lift_within_legend": 1.02,
    "share_cooccurring": 0.353
@@ -362,6 +476,9 @@
    "observed": 49,
    "exp_global": 37.4,
    "exp_within_legend": 10.2,
+   "pairs_card_card": 19,
+   "observed_card_card": 9,
+   "lift_global_card_card": 0.68,
    "lift_global": 1.31,
    "lift_within_legend": 0.88,
    "share_cooccurring": 0.31
@@ -371,6 +488,9 @@
    "observed": 22,
    "exp_global": 2.2,
    "exp_within_legend": 5.5,
+   "pairs_card_card": 22,
+   "observed_card_card": 10,
+   "lift_global_card_card": 13.32,
    "lift_global": 9.98,
    "lift_within_legend": 1.83,
    "share_cooccurring": 0.429
@@ -380,6 +500,9 @@
    "observed": 10,
    "exp_global": 7.3,
    "exp_within_legend": 4.9,
+   "pairs_card_card": 24,
+   "observed_card_card": 9,
+   "lift_global_card_card": 1.4,
    "lift_global": 1.36,
    "lift_within_legend": 1.86,
    "share_cooccurring": 0.259
@@ -389,6 +512,9 @@
    "observed": 17,
    "exp_global": 17.0,
    "exp_within_legend": 12.5,
+   "pairs_card_card": 24,
+   "observed_card_card": 13,
+   "lift_global_card_card": 0.86,
    "lift_global": 1.0,
    "lift_within_legend": 1.04,
    "share_cooccurring": 0.185
@@ -398,6 +524,9 @@
    "observed": 30,
    "exp_global": 8.0,
    "exp_within_legend": 15.0,
+   "pairs_card_card": 20,
+   "observed_card_card": 15,
+   "lift_global_card_card": 2.47,
    "lift_global": 3.76,
    "lift_within_legend": 1.0,
    "share_cooccurring": 0.231
@@ -407,6 +536,9 @@
    "observed": 61,
    "exp_global": 16.8,
    "exp_within_legend": 0.0,
+   "pairs_card_card": 0,
+   "observed_card_card": 0,
+   "lift_global_card_card": null,
    "lift_global": 3.63,
    "lift_within_legend": null,
    "share_cooccurring": 0.64
@@ -416,24 +548,21 @@
    "observed": 27,
    "exp_global": 37.9,
    "exp_within_legend": 22.2,
+   "pairs_card_card": 19,
+   "observed_card_card": 23,
+   "lift_global_card_card": 0.73,
    "lift_global": 0.71,
    "lift_within_legend": 1.04,
    "share_cooccurring": 0.364
-  },
-  "token->deathwatch": {
-   "pairs": 19,
-   "observed": 31,
-   "exp_global": 13.9,
-   "exp_within_legend": 21.7,
-   "lift_global": 2.22,
-   "lift_within_legend": 0.97,
-   "share_cooccurring": 0.368
   },
   "double->trigger": {
    "pairs": 18,
    "observed": 78,
    "exp_global": 27.2,
    "exp_within_legend": 75.4,
+   "pairs_card_card": 18,
+   "observed_card_card": 78,
+   "lift_global_card_card": 2.87,
    "lift_global": 2.87,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.778
@@ -443,6 +572,9 @@
    "observed": 55,
    "exp_global": 43.7,
    "exp_within_legend": 49.8,
+   "pairs_card_card": 17,
+   "observed_card_card": 55,
+   "lift_global_card_card": 1.26,
    "lift_global": 1.26,
    "lift_within_legend": 1.1,
    "share_cooccurring": 0.588
@@ -452,24 +584,30 @@
    "observed": 27,
    "exp_global": 5.8,
    "exp_within_legend": 13.4,
+   "pairs_card_card": 17,
+   "observed_card_card": 27,
+   "lift_global_card_card": 4.65,
    "lift_global": 4.65,
    "lift_within_legend": 2.01,
    "share_cooccurring": 0.176
   }
  },
- "random_250_pairs_global_p95": 1.14,
+ "random_250_pairs_global_p95": 1.12,
  "random_250_pairs": {
   "n_draws": 200,
   "lift_within_median": 1.01,
   "lift_within_p95": 1.08,
-  "lift_global_median": 1.0,
-  "share_cooccurring_median": 0.216
+  "lift_global_median": 0.99,
+  "share_cooccurring_median": 0.22
  },
  "nonbo_pairs": {
   "pairs": 206,
   "observed": 222,
   "exp_global": 165.3,
   "exp_within_legend": 170.9,
+  "pairs_card_card": 185,
+  "observed_card_card": 175,
+  "lift_global_card_card": 1.37,
   "lift_global": 1.34,
   "lift_within_legend": 1.02,
   "share_cooccurring": 0.267
@@ -480,6 +618,9 @@
    "observed": 91,
    "exp_global": 62.0,
    "exp_within_legend": 69.1,
+   "pairs_card_card": 44,
+   "observed_card_card": 71,
+   "lift_global_card_card": 1.34,
    "lift_global": 1.47,
    "lift_within_legend": 1.03,
    "share_cooccurring": 0.314
@@ -489,6 +630,9 @@
    "observed": 27,
    "exp_global": 18.7,
    "exp_within_legend": 26.4,
+   "pairs_card_card": 18,
+   "observed_card_card": 27,
+   "lift_global_card_card": 1.44,
    "lift_global": 1.44,
    "lift_within_legend": 1.02,
    "share_cooccurring": 0.333
@@ -498,6 +642,9 @@
    "observed": 84,
    "exp_global": 59.0,
    "exp_within_legend": 72.7,
+   "pairs_card_card": 97,
+   "observed_card_card": 74,
+   "lift_global_card_card": 1.39,
    "lift_global": 1.42,
    "lift_within_legend": 1.02,
    "share_cooccurring": 0.252
@@ -507,6 +654,9 @@
    "observed": 20,
    "exp_global": 25.6,
    "exp_within_legend": 2.7,
+   "pairs_card_card": 26,
+   "observed_card_card": 3,
+   "lift_global_card_card": 1.19,
    "lift_global": 0.78,
    "lift_within_legend": 1.12,
    "share_cooccurring": 0.206
@@ -514,11 +664,11 @@
  },
  "deck_density": {
   "decks": 327,
-  "real_median": 14.6,
-  "random_legal_played_median": 12.1,
-  "random_same_legend_weighted_median": 14.0,
-  "share_real_above_random_legal": 0.59,
-  "share_real_above_same_legend": 0.502
+  "real_median": 14.3,
+  "random_legal_played_median": 11.6,
+  "random_same_legend_weighted_median": 13.8,
+  "share_real_above_random_legal": 0.584,
+  "share_real_above_same_legend": 0.523
  },
  "density_variants": {
   "train_legends": 28,
@@ -544,35 +694,35 @@
   ],
   "all_specific_test": {
    "decks": 170,
-   "real_median": 13.5,
-   "uniform_random_median": 11.9,
+   "real_median": 13.1,
+   "uniform_random_median": 11.5,
    "share_real_above_uniform": 0.582,
-   "popularity_weighted_random_median": 9.6,
-   "share_real_above_popularity_weighted": 0.665
+   "popularity_weighted_random_median": 9.9,
+   "share_real_above_popularity_weighted": 0.653
   },
   "specific_s_ge_1_8_test": {
    "decks": 170,
-   "real_median": 2.3,
-   "uniform_random_median": 3.0,
-   "share_real_above_uniform": 0.453,
-   "popularity_weighted_random_median": 2.2,
-   "share_real_above_popularity_weighted": 0.512
+   "real_median": 2.2,
+   "uniform_random_median": 2.8,
+   "share_real_above_uniform": 0.435,
+   "popularity_weighted_random_median": 2.4,
+   "share_real_above_popularity_weighted": 0.5
   },
   "kept_rules_test": {
    "decks": 170,
    "real_median": 5.0,
-   "uniform_random_median": 6.5,
-   "share_real_above_uniform": 0.353,
-   "popularity_weighted_random_median": 4.9,
-   "share_real_above_popularity_weighted": 0.465
+   "uniform_random_median": 6.6,
+   "share_real_above_uniform": 0.341,
+   "popularity_weighted_random_median": 5.1,
+   "share_real_above_popularity_weighted": 0.435
   },
   "kept_rules_s_ge_1_2_test": {
    "decks": 170,
    "real_median": 1.5,
    "uniform_random_median": 2.7,
-   "share_real_above_uniform": 0.341,
-   "popularity_weighted_random_median": 2.6,
-   "share_real_above_popularity_weighted": 0.4
+   "share_real_above_uniform": 0.353,
+   "popularity_weighted_random_median": 2.5,
+   "share_real_above_popularity_weighted": 0.376
   }
  },
  "community": {
@@ -592,7 +742,7 @@
   },
   "base_rate_any": 0.08,
   "base_rate_specific": 0.052,
-  "base_n": 51151,
+  "base_n": 51144,
   "missed_sample": [
    [
     "Cleave (OGN-004)",
@@ -838,44 +988,44 @@
  },
  "strong_density": {
   "decks": 327,
-  "real_mean": 6.95,
-  "null_mean": 2.57,
+  "real_mean": 6.87,
+  "null_mean": 2.55,
   "real_median": 2.3,
   "null_median": 2.0,
-  "share_decks_zero": 0.425,
-  "share_decks_ge_10": 0.229,
-  "legends_real_above_null": 33,
+  "share_decks_zero": 0.428,
+  "share_decks_ge_10": 0.223,
+  "legends_real_above_null": 31,
   "legends": 56,
   "per_legend": [
    [
     "Radiant Dawn",
     1,
     55.1,
-    7.6
+    6.6
    ],
    [
     "Deceiver",
     10,
     54.7,
-    8.2
+    8.0
    ],
    [
     "Green Father",
     8,
     28.8,
-    3.5
+    3.3
    ],
    [
     "Mechanized Menace",
     2,
     24.0,
-    2.3
+    3.1
    ],
    [
     "Defender of Tomorrow",
     5,
     21.2,
-    2.6
+    2.2
    ],
    [
     "Relentless Storm",
@@ -887,37 +1037,31 @@
     "Bounty Hunter",
     1,
     13.6,
-    0.3
+    0.5
    ],
    [
     "Wuju Master",
     5,
     13.6,
-    2.8
+    2.5
    ],
    [
     "The Exile",
     16,
     10.3,
-    1.7
+    1.5
    ],
    [
     "Void Burrower",
     9,
     12.1,
-    3.6
+    3.5
    ],
    [
     "Swift Scout",
     3,
     10.4,
-    2.0
-   ],
-   [
-    "Loose Cannon",
-    1,
-    8.7,
-    1.0
+    2.2
    ],
    [
     "The Boss",
@@ -926,88 +1070,94 @@
     3.6
    ],
    [
+    "Loose Cannon",
+    1,
+    8.7,
+    1.7
+   ],
+   [
     "Hexplosives Expert",
     5,
     8.5,
-    2.1
-   ],
-   [
-    "Battle Mistress",
-    3,
-    9.8,
-    4.2
+    2.3
    ],
    [
     "Voidreaver",
     11,
     10.0,
-    4.4
+    4.3
    ],
    [
     "Nine-Tailed Fox",
     3,
     6.8,
-    1.2
-   ],
-   [
-    "Exemplar of Demacia",
-    3,
-    9.2,
-    4.0
+    1.1
    ],
    [
     "Blind Monk",
     1,
     7.1,
-    2.4
+    1.6
    ],
    [
-    "Heart of the Tempest",
-    11,
-    11.6,
-    7.5
-   ],
-   [
-    "Master of Shadows",
-    5,
-    6.9,
-    3.3
+    "Exemplar of Demacia",
+    3,
+    9.2,
+    4.3
    ],
    [
     "Blade Dancer",
     11,
     7.7,
-    4.2
+    3.8
+   ],
+   [
+    "Heart of the Tempest",
+    11,
+    11.6,
+    7.9
+   ],
+   [
+    "Master of Shadows",
+    5,
+    6.9,
+    3.6
    ],
    [
     "Glorious Executioner",
     5,
     4.5,
-    1.7
+    1.9
    ],
    [
     "Rogue Assassin",
     9,
     6.6,
-    4.3
+    4.2
    ],
    [
     "Emperor of the Sands",
     4,
     4.1,
-    2.5
+    2.9
    ],
    [
     "Grandmaster at Arms",
     4,
     2.5,
-    1.5
+    1.4
+   ],
+   [
+    "Eye of Twilight",
+    4,
+    4.7,
+    3.8
    ],
    [
     "Grand Duelist",
     5,
     2.4,
-    1.4
+    1.5
    ],
    [
     "Lady of Luminosity - Starter",
@@ -1016,58 +1166,46 @@
     1.8
    ],
    [
-    "Unforgiven",
-    2,
-    4.1,
-    3.4
-   ],
-   [
     "Piltover Enforcer",
     8,
     3.9,
-    3.2
+    3.5
    ],
    [
-    "Eye of Twilight",
-    4,
-    4.7,
-    4.3
+    "Unforgiven",
+    2,
+    4.1,
+    3.7
    ],
    [
     "Iron Revenant",
     7,
     3.5,
-    3.1
-   ],
-   [
-    "Gloomist",
-    12,
-    1.9,
-    1.7
-   ],
-   [
-    "Keeper of the Hammer",
-    5,
-    2.8,
-    3.0
-   ],
-   [
-    "Purifier",
-    3,
-    0.0,
-    0.3
+    3.3
    ],
    [
     "Lady of Clockwork",
     7,
     0.6,
-    0.9
+    0.7
+   ],
+   [
+    "Gloomist",
+    12,
+    1.9,
+    2.0
+   ],
+   [
+    "Soul's Reflection",
+    2,
+    1.0,
+    1.2
    ],
    [
     "Hand of Noxus",
     5,
     2.0,
-    2.4
+    2.2
    ],
    [
     "Matriarch of War",
@@ -1076,10 +1214,16 @@
     2.1
    ],
    [
-    "Soul's Reflection",
-    2,
-    1.0,
-    1.5
+    "Purifier",
+    3,
+    0.0,
+    0.5
+   ],
+   [
+    "Keeper of the Hammer",
+    5,
+    2.8,
+    3.3
    ],
    [
     "Pridestalker",
@@ -1088,44 +1232,62 @@
     0.6
    ],
    [
+    "Virtuoso",
+    8,
+    0.0,
+    0.6
+   ],
+   [
     "Wuju Bladesman - Starter",
     9,
     0.2,
-    0.8
+    0.9
+   ],
+   [
+    "Starry-Eyed Songstress",
+    3,
+    0.8,
+    1.5
    ],
    [
     "Agony's Embrace",
     8,
     0.5,
-    1.1
+    1.3
    ],
    [
-    "Butcher of the Sands",
-    2,
+    "Pride of Nazumah",
+    6,
     0.0,
-    0.8
+    0.9
    ],
    [
-    "Virtuoso",
-    8,
-    0.0,
-    0.8
-   ],
-   [
-    "Fire Below the Mountain",
-    7,
-    0.0,
-    1.0
+    "Battle Mistress",
+    3,
+    1.3,
+    2.2
    ],
    [
     "Bashful Bloom",
     11,
     0.5,
-    1.6
+    1.5
    ],
    [
     "Daughter of the Void",
     17,
+    0.0,
+    1.0
+   ],
+   [
+    "Butcher of the Sands",
+    2,
+    0.0,
+    1.0
+   ],
+   [
+    "Fire Below the Mountain",
+    7,
     0.0,
     1.1
    ],
@@ -1133,25 +1295,13 @@
     "Curator of the Sands",
     6,
     0.0,
-    1.1
-   ],
-   [
-    "Starry-Eyed Songstress",
-    3,
-    0.8,
-    2.0
-   ],
-   [
-    "Pride of Nazumah",
-    6,
-    0.0,
     1.2
    ],
    [
-    "Dark Child - Starter",
-    1,
+    "Boy Who Shattered Time",
+    4,
     0.0,
-    1.2
+    1.3
    ],
    [
     "Scorn of the Moon",
@@ -1160,28 +1310,28 @@
     1.4
    ],
    [
-    "Boy Who Shattered Time",
-    4,
+    "Dark Child - Starter",
+    1,
     0.0,
-    1.4
-   ],
-   [
-    "Prodigal Explorer",
-    4,
-    0.0,
-    1.6
+    1.5
    ],
    [
     "Herald of the Arcane",
     10,
     1.0,
-    2.8
+    2.7
+   ],
+   [
+    "Prodigal Explorer",
+    4,
+    0.0,
+    1.8
    ],
    [
     "Bloodharbor Ripper",
     6,
     0.0,
-    2.1
+    1.9
    ]
   ]
  }

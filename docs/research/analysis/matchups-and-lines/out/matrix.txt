@@ -1,0 +1,36 @@
+formats {'Constructed': 25}
+tournaments used 25 matches 18712 players 6761
+field (players with legend, all used tournaments): Riven 1463 (21.6%), Kai'Sa 1062 (15.7%), Kennen 741 (11.0%), Legend 525 (7.8%), Rengar 266 (3.9%), Master 222 (3.3%), Rek'Sai 173 (2.6%), Viktor 173 (2.6%), Jayce 172 (2.5%), Akali 168 (2.5%), Irelia 164 (2.4%), Vex 150 (2.2%), Leblanc 128 (1.9%), Lillia 121 (1.8%)
+directed cells 232 unordered pairs 116 asymmetric directed cells 0
+pairs with n>=30: 30  n>=100: 16  median n 7
+favoured | versus | W-L-D | n | rate | Wilson 95% | shrunk
+Riven | Kai'Sa | 871-782-20 | 1673 | 52.7 | 50.3-55.0 | 52.6
+Riven | Kennen | 588-542-33 | 1163 | 52.0 | 49.1-54.8 | 51.9
+Kai'Sa | Kennen | 386-372-25 | 783 | 50.9 | 47.4-54.4 | 50.9
+Riven | Rengar | 193-130-7 | 330 | 59.5 | 54.2-64.7 | 59.0
+Riven | Master | 169-121-8 | 298 | 58.1 | 52.4-63.5 | 57.5
+Rek'Sai | Riven | 145-115-2 | 262 | 55.7 | 49.7-61.6 | 55.3
+Kai'Sa | Rengar | 140-101-6 | 247 | 57.9 | 51.7-63.9 | 57.3
+Jayce | Riven | 128-112-4 | 244 | 53.3 | 47.0-59.4 | 53.0
+Master | Kai'Sa | 113-90-3 | 206 | 55.6 | 48.8-62.2 | 55.1
+Kennen | Rengar | 103-94-5 | 202 | 52.2 | 45.4-59.0 | 52.0
+Riven | Viktor | 121-61-2 | 184 | 66.3 | 59.2-72.7 | 64.7
+Kai'Sa | Rek'Sai | 100-78-0 | 178 | 56.2 | 48.8-63.3 | 55.6
+Master | Kennen | 83-67-3 | 153 | 55.2 | 47.3-62.9 | 54.6
+Kai'Sa | Viktor | 75-73-3 | 151 | 50.7 | 42.8-58.5 | 50.6
+Jayce | Kai'Sa | 81-57-7 | 145 | 58.3 | 50.1-66.0 | 57.3
+Rek'Sai | Kennen | 50-49-2 | 101 | 50.5 | 40.9-60.0 | 50.4
+Kennen | Viktor | 59-35-4 | 98 | 62.2 | 52.4-71.2 | 60.2
+Kennen | Jayce | 68-23-1 | 92 | 74.5 | 64.7-82.3 | 70.1
+Riven | Irelia | 49-20-3 | 72 | 70.1 | 58.8-79.5 | 65.8
+Rengar | Master | 32-22-0 | 54 | 59.3 | 46.0-71.3 | 56.8
+Riven | Akali | 32-18-2 | 52 | 63.5 | 49.9-75.2 | 59.7
+Irelia | Kai'Sa | 27-25-0 | 52 | 51.9 | 38.7-64.9 | 51.4
+Rengar | Viktor | 27-19-1 | 47 | 58.5 | 44.3-71.4 | 56.0
+Rengar | Rek'Sai | 26-21-0 | 47 | 55.3 | 41.2-68.6 | 53.7
+Master | Rek'Sai | 26-18-0 | 44 | 59.1 | 44.4-72.3 | 56.2
+Jayce | Master | 35-8-0 | 43 | 81.4 | 67.4-90.3 | 71.4
+Jayce | Rengar | 28-14-0 | 42 | 66.7 | 51.6-79.0 | 61.3
+Irelia | Kennen | 19-14-2 | 35 | 57.1 | 40.9-72.0 | 54.5
+Riven | Evelynn | 21-11-1 | 33 | 65.2 | 48.1-79.0 | 59.4
+Master | Viktor | 19-12-0 | 31 | 61.3 | 43.8-76.3 | 56.9

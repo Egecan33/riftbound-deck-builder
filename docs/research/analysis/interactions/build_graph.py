@@ -18,6 +18,7 @@ from itertools import combinations
 HERE = os.path.dirname(os.path.abspath(__file__))
 GAMELAB = os.environ.get('GAMELAB', os.path.expanduser('~/github_repositories/GameLab'))
 OUT = os.path.join(HERE, os.environ.get('OUT_DIR', 'out'))
+BANS = json.load(open(os.path.join(HERE, 'bans-2026-11-11.json')))['standard']  # Standard ban list, from legality-and-data.md section 3.2
 NO_SUPPRESS = '--no-suppress' in sys.argv  # reproduces the pre-audit graph (the one the first 40-edge sample was drawn from)
 os.makedirs(OUT, exist_ok=True)
 
@@ -718,6 +719,21 @@ def suppress(rule, a, ka, b, kb):
     if rule.startswith('ready->') and re.search(r'ready (?:up to \w+ |\d+ |your |two |a )?(?:exhausted )?runes?\b', sa, re.I) and not re.search(r'ready (?:an?\b(?! rune)|another|it\b|them\b|me\b|that|something|up to \w+ (?:units|gear)|your legend|all)', sa, re.I): return 'S12 readies-runes-only'
     # S13 the enabler moves gear, the payoff is a unit's own move trigger
     if rule == 'move->selfmove' and re.search(r'move (?:an? )?(?:friendly )?gear', mv, re.I) and not re.search(r'move (?:an? |another |up to \w+ )?(?:friendly )?units?', mv, re.I): return 'S13 moves-gear'
+    # S14 (added before the third sample) death watcher that excludes a tag ("another non-Recruit unit you control dies"): every token the enabler makes carries that tag
+    if rule == 'token->deathwatch':
+        neg = {t.lower() for t in re.findall(r'non-(\w+)', sb)}
+        kinds = [k[8:] for k in a['facets'] if k.startswith('P.token:') and '@' not in k]
+        tags = [{t.lower() for t in TOKENS.get(k, {}).get('tags', [])} for k in kinds]
+        if neg and tags and all(t & neg for t in tags): return 'S14 negated-tag-deathwatch'
+    # S15-S17 (added after the third sample; not themselves audited)
+    # S15 the watcher needs a RUNE to be recycled; the enabler recycles Main Deck or trash cards
+    if rule == 'recycle->recyclepayoff' and re.search(r'recycle (?:an? |one or more |\d+ )?runes?\b', sb, re.I) and not re.search(r'recycle [^.]{0,30}runes?\b', a['text'], re.I): return 'S15 recycle-object'
+    # S16 the watcher needs YOU to move an enemy unit; "They move a unit they control" is the opponent's move
+    if rule == 'move->movewatch' and re.search(r'you move an enemy unit', sb, re.I) and re.search(r'\bthey move\b', a['text'], re.I) and not re.search(r'move[^.]*enemy|enemy[^.]*\bmove', re.sub(r'they move[^.]*', '', a['text'], flags=re.I), re.I): return 'S16 opponent-moves'
+    # S17 a replacement effect ("The next time a friendly unit would die, kill this instead") prevents a death; it is not a sacrifice outlet (Core Rules 370.1.a.1)
+    if rule in ('sac->deathknell', 'sac->deathwatch', 'token->sac') and re.search(r'would die', sa, re.I) and not re.search(r'\bkill (?:an?|another|one|two|any|all|up to)\b[^.]*friendly|kill a unit you control', sa, re.I): return 'S17 replacement-not-sacrifice'
+    # S18 (added after the lines demo) the enabler returns only ITSELF to hand ("return this to its owner's hand"); it replays no other card's when-played effect
+    if rule == 'replay->etb' and re.search(r'return (?:this|me) to', sa, re.I) and not re.search(r'return (?:an?\b|another|up to|it\b|that|them|all|each|one|two|target|friendly)', sa, re.I): return 'S18 returns-itself'
     # S8 "with a spell" qualifier on a kill payoff
     if rule == 'removal->killpayoff' and re.search(r'with a spell', sb, re.I) and a['type'] != 'spell': return 'S8 needs-spell'
     return None
@@ -954,13 +970,18 @@ def main():
     together, legends = legality(pool)
     edges, stats = build_edges(pool, together)
     nonbos = build_nonbos(pool, together)
-    S = build_structures(pool, edges, together)
+    # Ban annotation. Edges keep banned cards (older lists in the validation corpus contain them) but are flagged;
+    # structures are built twice: from Standard-legal edges only (structures.json) and from all edges (structures-all.json, for the published-loop check).
+    for e in edges + nonbos: e['banned'] = sorted(c for c in (e['a'], e['b']) if c in BANS)
+    S_all = build_structures(pool, edges, together)
+    S = build_structures([c for c in pool if c['code'] not in BANS], [e for e in edges if not e['banned']], together)
     by = {c['code']: c for c in pool}
     facets_out = {c['code']: dict(name=c['name'], type=c['type'], set=c['set'], domains=c['domains'], energy=c['energy'], might=c['might'], source='engine' if c['script'] is not None else 'text',
                                   facets={k: dict(rep=v.get('rep'), src=v.get('src'), sent=v.get('sent')) for k, v in c['facets'].items() if '@' not in k and not k.startswith('_')}) for c in pool}
     json.dump(facets_out, open(os.path.join(OUT, 'facets.json'), 'w'), indent=0)
     json.dump(dict(edges=edges, nonbos=nonbos, rule_stats=stats, suppressed=dict(SUPPRESSED)), open(os.path.join(OUT, 'edges.json'), 'w'))
     json.dump(S, open(os.path.join(OUT, 'structures.json'), 'w'), indent=0, default=lambda o: dict(o))
+    json.dump(S_all, open(os.path.join(OUT, 'structures-all.json'), 'w'), indent=0, default=lambda o: dict(o))
     # agreement of the text-only extractor with the engine-derived facets (931 scripted cards)
     rows = []
     for k in V:
@@ -971,7 +992,9 @@ def main():
     print('pool', len(pool), 'engine-scripted', sum(1 for c in pool if c['script'] is not None), 'text-only', sum(1 for c in pool if c['script'] is None))
     print('cards with >=1 produces facet', sum(1 for c in pool if any(k.startswith('P.') and '@' not in k for k in c['facets'])), 'with >=1 cares facet', sum(1 for c in pool if any(k.startswith('C.') and '@' not in k for k in c['facets'])))
     print('edges', len(edges), 'specific', sum(1 for e in edges if e['cls'] == 'specific'), 'class', sum(1 for e in edges if e['cls'] == 'class'), 'nonbos', len(nonbos))
-    print('structures', json.dumps(S['counts'], default=dict))
+    print('edges touching a Standard-banned card', sum(1 for e in edges if e['banned']), 'of which specific', sum(1 for e in edges if e['banned'] and e['cls'] == 'specific'))
+    print('structures (Standard-legal)', json.dumps(S['counts'], default=dict))
+    print('structures (all cards)     ', json.dumps(S_all['counts'], default=dict))
     print('suppressed', dict(SUPPRESSED))
     if '-v' in sys.argv:
         for k, v in sorted(stats.items(), key=lambda x: -x[1]['edges']): print(f"  {k:28s} enablers {v['enablers']:4d} payoffs {v['payoffs']:4d} edges {v['edges']:6d} {v['cls']}")

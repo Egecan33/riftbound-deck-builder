@@ -14,8 +14,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 F = json.load(open(os.path.join(HERE, 'out/facets.json')))
 G = json.load(open(os.path.join(HERE, 'out/edges.json')))
 S = json.load(open(os.path.join(HERE, 'out/structures.json')))
-EDGES = [e for e in G['edges'] if e['cls'] == 'specific']
-NONBOS = G['nonbos']
+BANS = json.load(open(os.path.join(HERE, 'bans-2026-11-11.json')))['standard']   # Standard ban list (legality-and-data.md section 3.2)
+EDGES = [e for e in G['edges'] if e['cls'] == 'specific' and not e.get('banned')]   # no line or suggestion may use a banned card
+NONBOS = [n for n in G['nonbos'] if not n.get('banned')]
+TOKEN_TAG = {'recruit': 'recruit', 'sprite': 'fae', 'sand soldier': 'shurima', 'mech': 'mech', 'bird': 'bird', 'tentacle': 'bilgewater'}  # Core Rules 187
+def only_makes(code):
+    kinds = [k[8:] for k in F[code]['facets'] if k.startswith('P.token:')]
+    return {TOKEN_TAG.get(k) for k in kinds} if kinds else set()
+def excluded_by(code, fkey):
+    return {t.lower() for t in re.findall(r'non-(\w+)', (F[code]['facets'].get(fkey) or {}).get('sent') or '')}
 
 def nkey(s): return re.sub(r'[^a-z0-9]', '', (s or '').lower())
 BY_NAME = {}
@@ -67,6 +74,9 @@ def analyse(deck, k=6):
         for e2 in out_of.get(e1['b'], []):
             if e2['b'] in (e1['a'], e1['b']): continue
             chained = e1['abB'] is not None and e1['abB'] == e2['abA']      # the ability e1 switches on is the one that feeds e2
+            # a token maker feeding a sacrifice outlet does not feed a death watcher that excludes that token's tag ("non-Recruit")
+            mk = only_makes(e1['a']); ex = excluded_by(e2['b'], e2['fb'])
+            if e1['rule'].startswith('token->') and e2['rule'].endswith('deathwatch') and mk and None not in mk and mk <= ex: continue
             lines.append(dict(kind='chain' if chained else 'pivot', cards=[e1['a'], e1['b'], e2['b']], rules=[e1['rule'], e2['rule']],
                               score=round((w(e1) + w(e2)) * (1.3 if chained else 1.0), 2), steps=[e1['reason'], e2['reason']]))
     for e in inn:   # two-card lines keep decks with a short graph from producing nothing
@@ -106,12 +116,14 @@ def find(q):
 
 def show(deck, res):
     print(f"\n=== {deck['name']}  [{nm(deck['legend'])}]  https://piltoverarchive.com/decks/view/{deck['id']}")
+    bn = [nm(c) for c in sorted(deck['cards']) if c in BANS]
+    if bn: print('    NOTE: this list predates a ban and contains ' + ', '.join(bn) + '; edges through banned cards are ignored')
     print(f"    {len(deck['cards'])} distinct cards, {res['n_edges']} specific edges inside the deck (sum of strength {res['density']}), {res['n_candidates']} candidate lines")
     for i, ln in enumerate(res['lines'], 1):
         print(f"  LINE {i} [{ln['kind']}, score {ln['score']}]: " + ' -> '.join(nm(c) for c in ln['cards']))
         for s in ln['steps']: print('      - ' + s)
         if ln.get('needs'): print('      needs: ' + '; '.join(ln['needs']) + (' | in this deck: ' + ', '.join(nm(c) for c in ln['closers_in_deck']) if ln.get('closers_in_deck') else ' | no closer in this deck'))
-    print('  ONE CARD AWAY (not in the list, legal in the legend\'s domains; bans not applied here):')
+    print('  ONE CARD AWAY (not in the list, legal in the legend\'s domains, Standard bans applied):')
     for sc, c, why in res['away']:
         print(f"    +{sc} {nm(c)}"); [print('        - ' + r) for _, r in why]
     print(f"  NONBOS inside the deck: {len(res['nonbos'])}")

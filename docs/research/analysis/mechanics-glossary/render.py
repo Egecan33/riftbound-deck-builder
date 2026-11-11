@@ -55,7 +55,12 @@ def sub(m):
     if head[0] == 'rx': return '`' + out['systems'][head[2]]['regex'].replace('|', '\\|') + '`'
     if head[0] == 'pool': 
         v = out['pool'][head[1]]
-        return json.dumps(v, ensure_ascii=False) if isinstance(v, (dict, list)) else str(v)
+        if head[1] == 'typeFixed':
+            bycode = {k: c['name'] for c in cards for k in c['codes']}
+            return '; '.join('%s %s %s' % (x.split(' ')[0], bycode.get(x.split(' ')[0], '?'), x.split(' ')[1]) for x in v)
+        if isinstance(v, list): return ', '.join(v)
+        if isinstance(v, dict): return ', '.join('%s: %s' % kv for kv in v.items())
+        return str(v)
     raise SystemExit('bad placeholder ' + m.group(0))
 tpl = open(os.path.join(HERE, 'template.md'), encoding='utf8').read()
 doc = re.sub(r'\{\{([^{}]+)\}\}', sub, tpl)

@@ -108,12 +108,12 @@ out.classes = ranked.map(([k, v]) => ({ class: k, n: v.length, manual: v.filter(
 // ---- adjudication of every disagreeing row (hand-read 2026-11-11; see card-text-parser.md section 5) ----
 const ADJ = {};
 const put = (cls, codes) => codes.split(/[ ,]+/).filter(Boolean).forEach((c) => (ADJ[c] = cls));
-put('parser-lossy', 'VEN-044 SFD-198 UNL-170 SFD-039');                                   // still silently incomplete after iteration 2
+put('repr:scaling-amount', 'SFD-198'); put('repr:other', 'VEN-044 UNL-170');            // iteration 3: were parser-lossy; parse fixed, the remaining facet difference is representational
 put('repr:cost-as-effect', 'OGN-110 SFD-128 SFD-163 VEN-095 VEN-101');             // "kill me to ..." = cost in the parse, an effect op in the script
 put('repr:additional-cost', 'OGN-002 OGN-146 OGN-150 OGN-207 OGN-231 UNL-178 UNL-089 SFD-026 SFD-084 OGN-264 UNL-025 OGN-044');
 put('repr:scaling-amount', 'OGN-028 OGN-109 OGN-038 SFD-106 OGN-230 UNL-046 UNL-157 VEN-041 OGN-201 VEN-018 OGN-138 SFD-068');
 put('repr:delayed-or-granted', 'UNL-073 UNL-095 UNL-169 VEN-146 OGN-221 SFD-166 SFD-184 VEN-108 SFD-208 UNL-213 UNL-216 SFD-078 UNL-146');
-put('repr:look-reveal', 'OGN-200 OGN-291 SFD-018 SFD-140 SFD-170 SFD-188 SFD-243 SFD-058 UNL-051 UNL-064 UNL-179 UNL-032 SFD-122 OGN-194 OGN-160 OGN-121');
+put('repr:look-reveal', 'OGN-200 OGN-291 SFD-018 SFD-140 SFD-170 SFD-188 SFD-243 SFD-058 UNL-051 UNL-064 UNL-179 UNL-032 SFD-122 OGN-194 OGN-160 OGN-121 OGN-115');
 put('repr:other', 'OGN-053 OGN-068 OGN-111 UNL-131 UNL-138 UNL-147 UNL-177 UNL-195 SFD-109 SFD-201 SFD-202 SFD-207 VEN-075 VEN-134 UNL-086 OGN-033 SFD-011 VEN-145 SFD-057 VEN-045 SFD-029');
 put('engine-extra', 'OGN-027 OGN-117 UNL-023 SFD-147 OGN-077 OGN-269 OGS-020'); // incl. "recall it exhausted" scripted as heal+exhaust+recall                            // script does more than the text says (implementation detail)
 put('engine-gap', 'SFD-175');

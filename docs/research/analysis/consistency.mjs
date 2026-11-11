@@ -14,7 +14,7 @@ out.push('', '### B. Copies needed for P(at least one) >= target by own turn T (
 out.push('| target | T1 | T2 | T3 | T4 | T5 | T6 |', '|---|---|---|---|---|---|---|');
 for (const tgt of [0.5, 0.75, 0.85, 0.9, 0.95]) out.push(`| ${pct(tgt)} | ${[1, 2, 3, 4, 5, 6].map((T) => { const f = (n) => { for (let k = 1; k <= 39; k++) if (atLeast(N, k, n) >= tgt) return k; }; return `${f(4 + T)} / ${f(6 + T)}`; }).join(' | ')} |`);
 out.push('', '### C. Opening hand (4 cards, before mulligan): P(x copies) for a group of K cards');
-out.push('| K | P(0) | P(1) | P(2) | P(3+) | P(>=1 after a 2-card dig when 0) |', '|---|---|---|---|---|---|');
+out.push('| K | P(0) | P(1) | P(2) | P(3+) | P(>=1) overall if you dig 2 whenever you have 0 |', '|---|---|---|---|---|---|');
 for (const K of [3, 6, 9, 12, 15, 18, 21, 24]) out.push(`| ${K} | ${pct(hyp(N, K, 4, 0))} | ${pct(hyp(N, K, 4, 1))} | ${pct(hyp(N, K, 4, 2))} | ${pct(atLeast(N, K, 4, 3))} | ${pct(atLeast(N, K, 6))} |`);
 // first-player-skips-draw modes
 out.push('', '### D. Multiplayer first player (skips first draw: 3+T cards) vs others, P(>=1) by T2 and T3');

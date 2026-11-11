@@ -46,8 +46,8 @@ OGN-265 Herald of the Arcane [legend mind+order E- P- M- normal] kw:
    - activated {E1,exh} => createToken 1xRecruit1
 
 OGN-160 Dazzling Aurora [gear body E9 P2 M- normal] kw:
-  TEXT: At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit. Play it, ignoring its cost, and recycle the rest.
-   - triggered @end-of-turn/any => look x; play <prev> free; recycle from:looked
+  TEXT: At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit and banish it. Play it, ignoring its cost, and recycle the rest.
+   - triggered @end-of-turn/any => look x; banish <prev>; play <prev> free; recycle from:looked
 
 OGN-035 Vayne, Hunter [unit/champion fury E4 P1 M2 normal] kw:Assault3
   TEXT: [Assault 3] (+3 [Might] while I'm an attacker.) / If an opponent controls a battlefield, I enter ready. / When I conquer, you may pay [1] to return me to my owner's hand.
@@ -120,7 +120,7 @@ SFD-166 Rally the Troops [spell order E2 P- M- action] kw:Action
 
 UNL-170 Atakhan [unit order E10 P3 M7 normal] kw:Ganking
   TEXT: You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs. / [Ganking] (I can move from battlefield to battlefield.) / When I attack, the defender must kill one of their units here.
-   - static(additional-cost) {killFriendly1} IF[optional] => costChange (undefined) <self> per(Energy it costs and [Order] less for each Power it costs) IF[if-you-do]
+   - static(additional-cost) {killFriendly1} IF[optional] => costChange (sacrificed.cost) <self> IF[if-you-do]
    - keyword:Ganking
    - triggered @when-i-attack/self => chosen-player:kill <friendly unit @here>
 
@@ -143,7 +143,7 @@ UNL-095 Grim Resolve [spell body E2 P- M- action] kw:Action
    - triggered @when-a-unit-wins-combat/any => gainXp 2
 
 UNL-081 Keeper of Masks [unit mind E2 P- M1 normal] kw:Hidden,Temporary
-  TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Temporary] (Kill me at the start of my controller's Beginning Phase, before scoring.) / When you play me, play two Reflection unit tokens here. They become copies of me.
+  TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Temporary] (Kill me at the start of my controller's Beginning Phase, before scoring.) / When you play me, play two Reflection unit tokens here. Then do this: They become copies of me.
    - keyword:Hidden
    - keyword:Temporary
    - triggered @when-played/self => createToken 2xReflection@here; copy <self>
@@ -171,7 +171,7 @@ UNL-109 Blood Rose [gear body E1 P- M- normal] kw:
 
 VEN-053 Otterpus [unit mind E2 P- M2 normal] kw:
   TEXT: If a player would score 1 point from conquering or holding during their first or second turn, they draw 1 instead.
-   - replacement @would-score => chosen-player:draw 1
+   - replacement @would-score IF[turn-number=<=2,score-source=conquering|holding] => chosen-player:draw 1
 
 VEN-001 Baccai Sandspinner [unit fury E6 P- M6 normal] kw:Empower,Empowered
   TEXT: [Empower] [5]. This ability costs [3] less if you control 4 or fewer runes. (Pay the cost: Empower me. Use only if not Empowered.) / [Empowered][>] I have [Deflect] and [Assault 2]. (Opponents must pay [Rainbow] to choose me with a spell or ability. +2 [Might] while I'm an attacker.)
@@ -216,7 +216,7 @@ RAD-049 Industrious Mechsmith [unit  E4 P- M1 normal] kw:
    - triggered @when-played/self => createToken 1xMech3@here
 
 RAD-154 Last Caress [spell/signature body+chaos E2 P- M- reaction] kw:Reaction
-  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / The next unit you play this turn (even from face down) can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [Might] buff if it doesn't have one.)
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / The next unit you play this turn, even from face down, can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [Might] buff if it doesn't have one.)
    - keyword:Reaction
    - on-play => playPermission ~turn @next-unit
    - triggered @when-played/any => buff <prev>

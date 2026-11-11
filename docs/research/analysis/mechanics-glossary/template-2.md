@@ -215,3 +215,15 @@ These appear in card text in brackets or as verbs. They are defined in CR 413-44
 | Copy | CR 446 | take on another object's copyable traits | {{n:sys:copy}} | see 4.19 |
 | Recall | CR 456-460 | relocate a permanent to its base; "Recalls are not Moves" (458) | {{n:sys:recall}} | save a unit from death or remove an attacker without killing it |
 | "Pick" | CR 355.7 | a choice that is not a target (new wording from Radiance on, PN-RAD) | printed only in reminder text so far | not taxed by Deflect, not stopped by "can't be chosen" |
+
+Examples for the game actions that have no entry of their own in section 4 (verbatim, DATA GAL):
+- **Predict:**
+{{ex:sys:predict}}
+- **Prevent:**
+{{ex:sys:prevent}}
+- **Double / Swap:**
+{{ex:sys:double}}
+- **Heal:**
+{{ex:sys:heal}}
+- **Reveal:**
+{{ex:sys:reveal}}

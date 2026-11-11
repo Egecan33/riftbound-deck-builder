@@ -1,0 +1,430 @@
+{
+ "source": "Core Rules 2026-10-09, rules 187.1-187.12 (docs/research/analysis/raw/core-rules-2026-10-09.txt)",
+ "tokens": [
+  {
+   "rule": "187.1",
+   "name": "Recruit",
+   "type": "unit",
+   "might": 1,
+   "tags": [
+    "Recruit"
+   ],
+   "text": "",
+   "definition": "A 1 [Might] Recruit token is a domainless unit token with 1 Might and the Recruit tag.",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": []
+  },
+  {
+   "rule": "187.2",
+   "name": "Sprite",
+   "type": "unit",
+   "might": 3,
+   "tags": [
+    "Fae"
+   ],
+   "text": "[Temporary]",
+   "definition": "A 3 [Might] Sprite token with Temporary is a domainless unit token with 3 Might, the Fae tag, and the Temporary keyword.",
+   "parseStatus": "full",
+   "keywords": [
+    {
+     "name": "Temporary"
+    }
+   ],
+   "abilities": [
+    {
+     "kind": "keyword",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [],
+     "origin": "rules",
+     "keyword": {
+      "name": "Temporary"
+     },
+     "text": "[Temporary]",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.3",
+   "name": "Sand Soldier",
+   "type": "unit",
+   "might": 2,
+   "tags": [
+    "Shurima"
+   ],
+   "text": "",
+   "definition": "A 2 [Might] Sand Soldier token is a domainless unit token with 2 Might and the Shurima tag.",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": []
+  },
+  {
+   "rule": "187.4",
+   "name": "Mech",
+   "type": "unit",
+   "might": 3,
+   "tags": [
+    "Mech"
+   ],
+   "text": "",
+   "definition": "A 3 [Might] Mech token is a domainless unit token with 3 Might and the Mech tag.",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": []
+  },
+  {
+   "rule": "187.5",
+   "name": "Gold",
+   "type": "gear",
+   "might": null,
+   "tags": [],
+   "text": "[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].",
+   "definition": "A Gold gear token is a domainless gear token with \"[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].\"",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": [
+    {
+     "kind": "activated",
+     "speed": "reaction",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "add",
+       "resources": {
+        "raw": "[Rainbow]",
+        "power": {
+         "any": 1
+        }
+       },
+       "raw": "add [Rainbow]",
+       "ok": true
+      }
+     ],
+     "origin": "rules",
+     "cost": {
+      "raw": "Kill this, [Exhaust]",
+      "other": [
+       {
+        "verb": "killSelf",
+        "raw": "Kill this"
+       }
+      ],
+      "exhaust": true
+     },
+     "text": "[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.6",
+   "name": "Reflection",
+   "type": "unit",
+   "might": 0,
+   "tags": [],
+   "text": "",
+   "definition": "A 0 [Might] Reflection token is a domainless unit token with 0 Might.",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": []
+  },
+  {
+   "rule": "187.7",
+   "name": "Bird",
+   "type": "unit",
+   "might": 1,
+   "tags": [
+    "Bird"
+   ],
+   "text": "[Deflect]",
+   "definition": "A 1 [Might] Bird token is a domainless unit token with 1 Might, the Bird tag, and the Deflect keyword.",
+   "parseStatus": "full",
+   "keywords": [
+    {
+     "name": "Deflect"
+    }
+   ],
+   "abilities": [
+    {
+     "kind": "keyword",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [],
+     "origin": "rules",
+     "keyword": {
+      "name": "Deflect"
+     },
+     "text": "[Deflect]",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.8",
+   "name": "Brush",
+   "type": "battlefield",
+   "might": null,
+   "tags": [],
+   "text": "Bird, Cat, Dog, Poro, and Ivern units here have +1 [Might].\nWhen you score here, you may replace this with the battlefield it replaced.",
+   "definition": "A Brush battlefield token is a domainless battlefield token with \"Bird, Cat, Dog, Poro, and Ivern units here have +1 [Might]\" and \"When you score here, you may replace this with the battlefield it replaced.\"",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": [
+    {
+     "kind": "static",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "might",
+       "amount": 1,
+       "target": {
+        "types": [
+         "unit"
+        ],
+        "tags": [
+         "Bird",
+         "Cat",
+         "Dog",
+         "Poro",
+         "Ivern"
+        ],
+        "controller": "any",
+        "count": "all",
+        "location": "here",
+        "raw": "Bird, Cat, Dog, Poro, and Ivern units here",
+        "ok": true
+       },
+       "ok": true
+      }
+     ],
+     "origin": "rules",
+     "staticType": "might-mod",
+     "text": "Bird, Cat, Dog, Poro, and Ivern units here have +1 [Might].",
+     "status": "full"
+    },
+    {
+     "kind": "triggered",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "replaceBattlefield",
+       "with": "the battlefield it replaced",
+       "raw": "replace this with the battlefield it replaced",
+       "ok": true,
+       "optional": true
+      }
+     ],
+     "origin": "rules",
+     "trigger": {
+      "event": "when-you-score",
+      "scope": "here",
+      "ok": true,
+      "raw": "When you score here"
+     },
+     "text": "When you score here, you may replace this with the battlefield it replaced.",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.9",
+   "name": "Baron Pit",
+   "type": "battlefield",
+   "might": null,
+   "tags": [],
+   "text": "Units can move here from anywhere.",
+   "definition": "The Baron Pit battlefield token is a domainless battlefield token with \"Units can move here from anywhere.\"",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": [
+    {
+     "kind": "static",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "ruleMod",
+       "what": "move-from-anywhere",
+       "ok": true
+      }
+     ],
+     "origin": "rules",
+     "staticType": "rule-mod",
+     "text": "Units can move here from anywhere.",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.10",
+   "name": "Tentacle",
+   "type": "unit",
+   "might": 1,
+   "tags": [
+    "Bilgewater"
+   ],
+   "text": "",
+   "definition": "A 1 [Might] Tentacle token is a domainless unit token with 1 Might and the Bilgewater tag.",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": []
+  },
+  {
+   "rule": "187.11",
+   "name": "Shadow Clone",
+   "type": "unit",
+   "might": 0,
+   "tags": [],
+   "text": "When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn.",
+   "definition": "A 0 [Might] Shadow Clone token is a domainless unit token with 0 Might and \"When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn.\"",
+   "parseStatus": "full",
+   "keywords": [],
+   "abilities": [
+    {
+     "kind": "triggered",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "banish",
+       "target": {
+        "raw": "a unit from your trash",
+        "ok": true,
+        "location": "trash",
+        "count": 1,
+        "types": [
+         "unit"
+        ],
+        "controller": "any"
+       },
+       "raw": "banish a unit from your trash",
+       "ok": true,
+       "optional": true
+      },
+      {
+       "verb": "grantKeyword",
+       "keywords": [
+        {
+         "name": "Assault",
+         "value": 4
+        }
+       ],
+       "target": {
+        "ref": "self",
+        "raw": "me",
+        "ok": true
+       },
+       "duration": "turn",
+       "raw": "give me [Assault 4] this turn",
+       "ok": true,
+       "conditions": [
+        {
+         "type": "if-you-do",
+         "raw": "you do",
+         "ok": true
+        }
+       ]
+      }
+     ],
+     "origin": "rules",
+     "trigger": {
+      "event": "when-i-attack",
+      "scope": "self",
+      "ok": true,
+      "raw": "When I attack"
+     },
+     "text": "When I attack, you may banish a unit from your trash.",
+     "status": "full"
+    }
+   ]
+  },
+  {
+   "rule": "187.12",
+   "name": "Bomb",
+   "type": "gear",
+   "might": null,
+   "tags": [],
+   "text": "[Deploy]\n[Deathknell][>] Deal 2 to an enemy unit here and kill all other Bombs you control here.",
+   "definition": "A Bomb gear token is a domainless gear token with \"[Deploy]\" and \"[Deathknell][>] Deal 2 to an enemy unit here and kill all other Bombs you control here.\"",
+   "parseStatus": "full",
+   "keywords": [
+    {
+     "name": "Deploy"
+    },
+    {
+     "name": "Deathknell",
+     "gate": true
+    }
+   ],
+   "abilities": [
+    {
+     "kind": "keyword",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [],
+     "origin": "rules",
+     "keyword": {
+      "name": "Deploy"
+     },
+     "text": "[Deploy]",
+     "status": "full"
+    },
+    {
+     "kind": "triggered",
+     "speed": "normal",
+     "conditions": [],
+     "effects": [
+      {
+       "verb": "deal",
+       "amount": 2,
+       "target": {
+        "raw": "an enemy unit here",
+        "ok": true,
+        "location": "here",
+        "count": 1,
+        "controller": "enemy",
+        "types": [
+         "unit"
+        ]
+       },
+       "raw": "Deal 2 to an enemy unit here",
+       "ok": true
+      },
+      {
+       "verb": "kill",
+       "target": {
+        "raw": "all other Bombs you control here",
+        "ok": true,
+        "location": "here",
+        "controller": "friendly",
+        "count": "all",
+        "other": true,
+        "types": [
+         "gear"
+        ],
+        "tags": [
+         "Bomb"
+        ]
+       },
+       "raw": "kill all other Bombs you control here",
+       "ok": true
+      }
+     ],
+     "origin": "rules",
+     "trigger": {
+      "event": "when-i-die",
+      "scope": "self",
+      "raw": "[Deathknell]",
+      "ok": true
+     },
+     "text": "[Deathknell][>] Deal 2 to an enemy unit here and kill all other Bombs you control here.",
+     "status": "full"
+    }
+   ]
+  }
+ ]
+}

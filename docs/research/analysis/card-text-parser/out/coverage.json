@@ -1,29 +1,29 @@
 {
  "cards": {
   "all": {
-   "full": 1070,
-   "partial": 23,
+   "full": 1072,
+   "partial": 21,
    "none": 2
   }
  },
  "sentences": {
   "all": {
-   "full": 2083,
-   "partial": 19,
-   "none": 11
+   "full": 2086,
+   "partial": 18,
+   "none": 10
   }
  },
  "bySet": {
   "OGN": {
    "cards": {
-    "full": 284,
-    "partial": 7,
+    "full": 286,
+    "partial": 5,
     "none": 1
    },
    "sentences": {
-    "full": 488,
-    "partial": 4,
-    "none": 5
+    "full": 492,
+    "partial": 3,
+    "none": 4
    }
   },
   "OGS": {
@@ -57,7 +57,7 @@
     "none": 0
    },
    "sentences": {
-    "full": 474,
+    "full": 473,
     "partial": 1,
     "none": 0
    }
@@ -95,32 +95,32 @@
     "none": 1
    },
    "sentences": {
-    "full": 962,
+    "full": 963,
     "partial": 5,
     "none": 3
    }
   },
   "spell": {
    "cards": {
-    "full": 266,
-    "partial": 5,
+    "full": 267,
+    "partial": 4,
     "none": 0
    },
    "sentences": {
-    "full": 691,
+    "full": 693,
     "partial": 3,
-    "none": 2
+    "none": 1
    }
   },
   "gear": {
    "cards": {
-    "full": 128,
-    "partial": 5,
+    "full": 129,
+    "partial": 4,
     "none": 0
    },
    "sentences": {
-    "full": 260,
-    "partial": 5,
+    "full": 261,
+    "partial": 4,
     "none": 2
    }
   },
@@ -143,21 +143,21 @@
     "none": 1
    },
    "sentences": {
-    "full": 82,
+    "full": 81,
     "partial": 3,
     "none": 2
    }
   }
  },
- "unparsedSentences": 30,
- "unparsedShapes": 30,
+ "unparsedSentences": 28,
+ "unparsedShapes": 28,
  "unknownHeads": [
   [
-   "each player",
-   2
+   "play a",
+   1
   ],
   [
-   "play a",
+   "each player",
    1
   ],
   [

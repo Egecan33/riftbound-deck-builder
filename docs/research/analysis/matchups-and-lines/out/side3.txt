@@ -1,0 +1,21 @@
+players with a published legend 6236 not mapped to domains 59
+share of players whose legend has the domain: {'chaos': '46.9%', 'calm': '43.5%', 'mind': '33.9%', 'fury': '31.3%', 'order': '25.4%', 'body': '17.2%'}
+decree | text | side decks | side copies | main decks | main copies
+Decree of Discord | Return any number of enemy Order units with total Might 5 or less to their owners' hands. | 1/240 | 2 | 0 | 0
+Decree of Focus | [Reaction] / Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 [Might] this tu | 59/240 | 102 | 0 | 0
+Decree of Insight | [Reaction] / Ignore [Deflect] while paying this spell's cost. / Give an enemy Body unit -5 [Might] this turn. | 58/240 | 112 | 0 | 0
+Decree of Rage | [Action] / This can't be countered. / Deal 4 to an enemy Calm unit. | 65/240 | 140 | 0 | 0
+Decree of Strength | Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card. | 32/240 | 46 | 0 | 0
+Decree of Unity | Kill an enemy Chaos unit or gear. | 64/240 | 120 | 2 | 2
+hand attack (corrected regex): side decks 64/240 (27%), mean copies when present 1.97, share of side copies 5.2%, main decks with it 92, mean main copies 0.83
+gear hate (corrected regex): side decks 223/240 (93%), mean copies when present 3.15, share of side copies 29.3%, main decks with it 116, mean main copies 0.82
+Riven 22 lists; side (mean copies): An Offer You Can't Refuse 1.8, Decree of Focus 1.8, Vex, Apathetic 1.0, Hush 0.9, Not So Fast 0.8, Star-Crossed 0.7, Rebuke 0.5, Tomb-Raider Barbara 0.4, Defy 0.3
+Kai'Sa 17 lists; side (mean copies): Decree of Rage 2.6, Ferrous Forerunner 1.6, Brittle Steel 1.3, Thermo Beam 1.0, Pickpocket 0.8, Bellows Breath 0.6, Decree of Insight 0.6, Icathian Rain, Kai'Sa 0.4, Retreat 0.4
+Kennen 15 lists; side (mean copies): Decree of Unity 1.8, Ravenbloom Prefect 1.3, An Offer You Can't Refuse 0.9, Abandon 0.7, Lacerate 0.6, Fizz, Trickster 0.6, Star-Crossed 0.5, Ride the Wind 0.5, The Good Stuff 0.5
+decree | own domain | hits | eligible lists | eligible lists running it | mean copies when run | field share of the hit domain
+Decree of Discord | chaos | order | 97 | 1 (1%) | 2.00 | 25.4%
+Decree of Focus | calm | fury | 79 | 59 (75%) | 1.73 | 31.3%
+Decree of Insight | mind | body | 82 | 58 (71%) | 1.93 | 17.2%
+Decree of Rage | fury | calm | 80 | 65 (81%) | 2.15 | 43.5%
+Decree of Strength | body | mind | 64 | 32 (50%) | 1.44 | 33.9%
+Decree of Unity | order | chaos | 78 | 64 (82%) | 1.91 | 46.9%

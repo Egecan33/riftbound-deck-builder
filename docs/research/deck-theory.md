@@ -1,6 +1,6 @@
 # Riftbound deck theory from data: role bands, rune and consistency math, synergy axes, multiplayer valuation, game-plan templates, and 0-100 scores
 
-Research date: 2026-11-11. All web sources below were fetched on 2026-11-11 unless a line says otherwise.
+Research date: 2026-11-11. All web sources below were fetched on 2026-11-11 unless a line says otherwise. An independent verification pass was run later the same day; its corrections are marked **[V]** inline and listed in "Verification log (2026-11-11)" at the end.
 
 Labels used on every claim:
 - **[F]** FACT from a primary source (playriftbound.com, the official PDFs, the official card gallery). Rule numbers are quoted.
@@ -15,20 +15,23 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 
 ## 0. Not confirmed, stale, or weak (read first)
 
-1. **Local data is one set behind.** `~/github_repositories/GameLab/data/cards/cards.json` has 931 cards and no Radiance (RAD). The official gallery today has 1,408 printings, 1,237 base codes and 1,103 distinct names, including 195 RAD codes [F: https://playriftbound.com/en-us/card-gallery/]. `GameLab/data/rules/core-rules.md` is the 2026-07-16 edition; the current edition is 2026-10-09 and **its rule numbers moved** (deck construction 103.2 → 103.3, runes 103.3 → 103.4, modes 485-489 → 487-491, Recycle 416 → 417, Channel 430 → 431, Burn Out 431 → 432, Scoring 467 → 469). Do not cite the local file's numbers.
+1. **Local data is one set behind.** `~/github_repositories/GameLab/data/cards/cards.json` has 931 cards and no Radiance (RAD). The official gallery today has 1,408 printings, 1,237 base codes and 1,103 distinct names, including 195 RAD codes [F: https://playriftbound.com/en-us/card-gallery/]. [V] A re-fetch later the same day returned 1,408 printings, 1,236 base codes and 1,103 names: the printing UNL-224 Mystic Poro was served as a second copy of OGN-171 Mystic Poro, and the item order differed. The gallery payload is not stable between requests, so the card sync must pin a snapshot and diff it. `GameLab/data/rules/core-rules.md` is the 2026-07-16 edition; the current edition is 2026-10-09 and **its rule numbers moved** (deck construction 103.2 → 103.3, runes 103.3 → 103.4, modes 485-489 → 487-491, Recycle 416 → 417, Channel 430 → 431, Burn Out 431 → 432, Scoring 467 → 469). Do not cite the local file's numbers.
 2. **Ban list in `Untitled/config/current-constructed-rules.json` is stale.** It stops at the July update. The Rules Hub ("Last updated: September 18, 2026") adds *Ekko, Recurrent* and *Stacked Deck*; see 1.1.
-3. **The deck sample is not a random sample of the metagame.** It is 406 lists that players uploaded to Piltover Archive with a tournament-looking name. 153 of them are "Best of <legend>" lists, which gives every legend roughly one list per event and flattens meta share. A community tracker reports Kai'Sa at about 40% of the RC Europe field [C, UNCONFIRMED: riftdecks.com, seen only as a search snippet because the page returned HTTP 403]; in our Stuttgart-tagged subset Kai'Sa is 12 of 67. Bands are therefore "what a tournament-quality list of this shape looks like", not "what the field looks like".
+3. **The deck sample is not a random sample of the metagame.** It is 406 lists that players uploaded to Piltover Archive with a tournament-looking name. 153 of them are "Best of <legend>" lists, which gives every legend roughly one list per event and flattens meta share. [V: corrected] Riot's own field breakdown for RC Europe shows how far the sample is from the field: Riven was 126 lists, 40.9% of Day 1 and 49.0% of Day 2; Kai'Sa 16.9% and 17.7%; Kennen 14.6% and 12.5%; the Top 8 was four Riven, three Kennen and one Kai'Sa, and Kennen won [F: https://playriftbound.com/en-us/news/organizedplay/best-ofs-for-the-european-championship, published 2026-11-11]. The first pass quoted a community search snippet (riftdecks.com, page not readable) saying Kai'Sa was about 40% of that field; the official table contradicts it and the line is withdrawn. In this sample Riven is 22 of 406 lists (5%); in the Stuttgart-tagged subset Riven is 7 of 67 and Kai'Sa 12 of 67. 42 of those 67 lists were created before the event began and 58 carry no placement, so they are lists named after the event, not the lists played in it. Bands are therefore "what a tournament-quality list of this shape looks like", not "what the field looks like".
 4. **Placement is parsed from the deck title** with a regex (2.1). Only 106 lists carry a win or top-8 claim. Nothing verifies those claims against official standings.
 5. **Uploaded lists can be edited after the event.** We keep the list as it was on 2026-11-11.
 6. **Archetype names are ours.** The data produced four composition clusters; none of them is "combo". No Riot source defines archetypes.
 7. **Exhausted runes can still be recycled for power.** This follows from CR 164.2.a/b (the recycle ability has no exhaust cost) but no rule sentence says it outright. The rune model in 3.3 depends on it. UNCONFIRMED as an explicit statement.
-8. **Start-of-game rules are being playtested.** Riot is testing three go-second bonuses outside premier events and says this is "not a rules update" [F: https://playriftbound.com/en-us/news/organizedplay/testing-start-of-game-rules, published 2026-10-15]. Section 3 uses the current CR only.
+8. **Start-of-game rules are being playtested.** Riot is testing three go-second bonuses outside premier events and answers its own question "Is this a rules update?" with "No" [V: the first pass put a paraphrase in quotation marks]. The same article says going first currently wins more often than Riot wants [F: https://playriftbound.com/en-us/news/organizedplay/testing-start-of-game-rules, published 2026-10-15]. Section 3 uses the current CR only.
 9. **Bomb token text** comes from CR 187.12, not from the gallery (the gallery has no Bomb row).
-10. **Gallery typing errors.** 15 RAD rows have an empty card type and several `[Deploy]` gear are typed "unit" with no Might. `build-cards.mjs` repairs these by rule (CR 830.1.a: Deploy is present on Gear) and flags them (`inferType`, `typeFixed`). Five rows remain typed "unit" with no Might (Consult the Heavens, Ephemeral Ward, Invigorating Bloom, Runeblade Anvil, Supernova). Deck analysis uses the type printed in the Piltover Archive deck record when a card appears in a list.
+10. **Gallery typing errors.** 15 gallery rows have an empty card type: 13 RAD cards plus the two UNL helper rows Buff (UNL-T04) and XP Tracker (UNL-T08) [V: was "15 RAD rows"]. Four RAD `[Deploy]` gear (Bushwhack Trap, Dockside Lock-Up, Hunting Blind, Portable Portal) are typed "unit" with no Might. `build-cards.mjs` repairs these by rule (CR 830.1.a: Deploy is present on Gear) and flags them (`inferType`, `typeFixed`). Five rows remain typed "unit" with no Might (Consult the Heavens, Ephemeral Ward, Invigorating Bloom, Runeblade Anvil, Supernova). Deck analysis uses the type printed in the Piltover Archive deck record when a card appears in a list.
     A second group was found while validating section 4 and is **not** repaired in `cards-2026-11-11.json`: seven RAD rows are typed "spell" although five print a Might value (Battlefield Armorer RAD-130, Coalesced Energy RAD-016, Demacian Illuminators RAD-131, Overloaded Traveler RAD-072, Siren of the Shallows RAD-097) and two have gear-style `[Exhaust]:` abilities and no Might (Resplendent Rostrum RAD-046, Scrutinizing Scope RAD-064) [D: gallery fetched 2026-11-11]. Their true types are UNCONFIRMED here (no second primary source was read). Pool-level role and axis counts treat them as spells; deck-level counts are unaffected when the Piltover Archive record carries a type. The card sync must re-check these codes.
 11. **Who may act in another pair's showdown in multiplayer** is now read from the rules (5.1): Focus passes to "the next Player in Turn Order" and the showdown ends when "all Players have passed once in sequence" (CR 347.1.b, 347.2.a, 347.2.b, 348). No rule limits Focus to the attacker and defender, but no rule sentence says "players outside the combat may play cards" either; the multipliers in 5.2 assume they may.
 12. Synergy-axis regexes (section 4) were hand-checked on two 40-card samples (section 4, "Validation"). The structural tests (type, cost, Might) were not sampled because they cannot misread text; they are the weakest signals and are marked as such.
 13. Multiplayer strategy has **no data** here: all 406 lists are 1v1 lists.
+14. [V] **A ban announcement is pending.** Riot's article of 2026-11-11 says the game team is considering bans, that the decision will be published on Friday 2026-11-13, and that the bans are targeted to take effect on 2026-11-23 (1.1). Which cards are affected is UNCONFIRMED. Every band, most-played list and matchup plan below describes the format before that change.
+15. [V] **Source B is older than its label** (2.1). 55 of the 406 lists come from a local sample that the analysis dates 2026-09-06 and files under "VEN-preban", but they are pre-Vendetta lists, mostly from June 2026 Regional Qualifiers, with 8-card sideboards. They are 14% of the sample and 57% of the "VEN-preban" era.
+16. [V] **The hand-validation error rates are UNCONFIRMED.** The false-positive and false-negative counts in 2.2 and 4 are the first pass's own reading of sampled cards. No script reproduces them, and this pass did not re-read the samples.
 
 ## 1. Facts the model must encode
 
@@ -40,8 +43,9 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 - [F] 2v2 Constructed uses the same list plus the legend *Master Yi, Wuju Bladesman* (Rules Hub, "2v2 Constructed Legality").
 - [F] Ekko, Recurrent and Stacked Deck were banned effective 2026-09-18 (https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026).
 - [F] Radiance adds keywords Deploy (CR 830), Disarm (CR 831), Show Off (CR 832), Equipment that can become units, and Bomb gear tokens (CR 187.12; overview article above). Radiance has nine new legends in the gallery: Evelynn (body/chaos), Ekko (fury/mind), Jarvan IV (body/order), Ziggs (fury/chaos), Mordekaiser (fury/order), Orianna (calm/mind), K'Sante (calm/body), Seraphine (mind/order), Riven (calm/chaos). The gallery now lists 58 distinct legend names.
-- [F] RC Europe took place in Stuttgart; the preview article dated 2026-10-27 calls it "next month" (https://playriftbound.com/en-us/news/organizedplay/all-eyes-on-rc-europe). [C] A community guide gives the dates as November 6-8, 2026 (gamertagmythras.com, via search snippet).
-- [F] Nothing newer than this changes deck building: the official news index on 2026-11-11 lists only two November items, "Riftbound World Showcase" (2026-11-05, organized play) and a product-drawing FAQ (2026-11-06); the latest rules, ban and set articles are the October and September ones cited here (https://playriftbound.com/en-us/news/).
+- [F] RC Europe took place in Stuttgart; the preview article dated 2026-10-27 calls it "next month" and lists hall hours from Friday to Sunday (https://playriftbound.com/en-us/news/organizedplay/all-eyes-on-rc-europe). [V] Riot's follow-up of 2026-11-11 says it "took place last weekend", which puts it on the weekend of November 6-8, 2026 (https://playriftbound.com/en-us/news/organizedplay/best-ofs-for-the-european-championship). The exact days are inferred from those two articles; the gamertagmythras.com page cited in 5.3 does not state them.
+- [F] [V: corrected] The official news index lists three November items: "Riftbound World Showcase" (2026-11-05), a product-drawing article (2026-11-06) and "Best Ofs for the European Championship" (2026-11-11 17:00 UTC, published after the first pass, which counted two). The rules, ban and set articles in force are still the October and September ones cited here (https://playriftbound.com/en-us/news/).
+- [F] [V] **A ban change is pending.** The 2026-11-11 article says the game team is considering bans, that any decision will be shared on Friday (2026-11-13), and that the bans are targeted to take effect on 2026-11-23. The ban list above is valid until then; re-read the Rules Hub after the announcement. The affected cards are UNCONFIRMED (nothing is published).
 
 ### 1.2 Deck construction
 
@@ -54,7 +58,8 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 - [F] Rune Deck: exactly 12 runes of the legend's domains (CR 103.4.a, 103.4.a.1, 161.2.a).
 - [F] Battlefields: no duplicate names (CR 103.5.c). Every sanctioned mode asks for three (CR 487.4.a, 489.4.a, 490.4.a, 491.4.a).
 - [F] Sideboard: 10 or fewer cards, main-deck card types only, copy limits apply across main + side (TR 601.1.c.1-601.1.c.3). Swaps are 1 for 1 (TR 403.4). The Chosen Champion may be changed while sideboarding (TR 403.4.a, 601.1.c.4). Runes, legend and battlefields may not be changed (TR 403.4.b). No sideboarding before game 1 (TR 403.5). Most matches are best of 3 (TR 404.2).
-- [D] Sideboard size in the sample: 8 was normal before the September lists (53 of 97 "VEN-preban" lists have exactly 8), 10 afterwards (240 of 254 RAD-era lists). The TR change itself was not traced to a changelog. UNCONFIRMED which TR edition raised it.
+- [F] [V: corrected, was UNCONFIRMED] The sideboard limit rose from "8 or fewer" to "10 or fewer" in the July 2026 Tournament Rules update (edition dated 7/16/2026, effective 2026-07-24, rule 601.1.c.1) [F: https://playriftbound.com/en-us/news/announcements/july-2026-tournament-rules-update-changelog/; the 7/16/2026 TR PDF already reads "10 or fewer"].
+- [D] Sideboard size in the sample: 53 of the 97 lists labelled "VEN-preban" have exactly 8, and 240 of 254 RAD-era lists have 10. [V] This is a source effect, not a September change: 52 of those 53 eight-card sideboards are source B lists that predate the July update (2.1). Of the 351 valid lists fetched from Piltover Archive, 334 have 10.
 
 ### 1.3 Setup, turn and resources
 
@@ -81,7 +86,7 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 
 - Reserve 3 slots for the signature card unless you have a reason not to.
 - Stay at 40 cards.
-- "Play more copies of your Chosen Champion."
+- "Play more of your champion": it is "generally a good idea to play more copies of your Chosen Champion".
 - "Play 9+ small units" (2-4 cost) so you reliably have one by turn one or two.
 - "Play 6+ interactive spells."
 - "When in doubt, play more units."
@@ -96,14 +101,14 @@ Section 2.10 tests each of these against the lists.
 
 Sources:
 - **A. Piltover Archive, fetched 2026-11-11.** `robots.txt` allows `/decks?page=N` and `/decks/view/<id>` and disallows `/api/` and filtered listings; we used only the allowed paths. We read listing pages 1-144 (3,456 decks, default "trending" order), kept the 463 whose name matched an event/placement regex, dropped precon and "Champion Deck" names and decks last edited before 2026-08-01, and fetched the remaining 361 deck pages. Requests were serial, 1.2-1.3 s apart, with the User-Agent `Mozilla/5.0 (compatible; deck-research/1.0)` and no personal data. Scripts: `crawl-list.mjs`, `select-tournament.mjs`, `fetch-decks.mjs`.
-- **B. Local sample** `~/github_repositories/GameLab/data/decks/samples/piltover-archive-2026-09-06.json` (60 lists from the same site, 2026-09-06). Lists already present in A are skipped. Rows where the legend or the runes had been imported into `main` are repaired by card type.
+- **B. Local sample** `~/github_repositories/GameLab/data/decks/samples/piltover-archive-2026-09-06.json` (59 lists in the file; its source line says "60 most recent"; collected from the same site on 2026-09-06). [V] The collection date is not the deck date. `analyze.mjs` stamps every B list with 2026-09-06, but 57 of the 59 contain no Vendetta card, the 21 that also appear in the 2026-11-11 listing crawl were created between 2025-11 and 2026-06, and the four live pages checked (three Hartford RQ lists, one Vancouver RQ list) show June 2026 creation and edit dates and 8-card sideboards. Treat source B as pre-Vendetta lists built under the old 8-card sideboard rule. Lists already present in A are skipped. Rows where the legend or the runes had been imported into `main` are repaired by card type.
 - **Cards:** the official gallery page (one request, `__NEXT_DATA__`), reduced to one row per name by `build-cards.mjs`. Every card in every list matched a gallery name (0 misses).
 
 Counts [D]:
 - 419 lists loaded, **406 valid** (40 main including the Chosen Champion, 12 runes, 3 battlefields, legend known). 351 from A, 55 from B.
-- Era: 254 "RAD" (contains a RAD card or edited on or after 2026-10-16), 55 "VEN-postban" (edited 2026-09-18 to 10-15), 97 "VEN-preban". 38 lists contain a card that is banned today; 37 of them are pre-ban, none is RAD-era.
+- Era: 254 "RAD" (contains a RAD card or edited on or after 2026-10-16), 55 "VEN-postban" (edited 2026-09-18 to 10-15), 97 "VEN-preban". 38 lists contain a card that is banned today; 37 of them are pre-ban, none is RAD-era. [V] "VEN-preban" is a misleading label: 55 of those 97 are source B lists, which are older than Vendetta. Read it as "before the 2026-09-18 bans". The era comes from the last edit date, not from the event date.
 - Placement parsed from the title: 36 win, 70 top 8 (rank 2-8 or "top 4/8"), 22 top 64, 153 "best of <legend>", 125 event name only. So 281 lists carry some placement signal and 106 carry a win/top-8 claim.
-- Events named: Stuttgart (RC Europe) 67, Orlando 25K 47, Sacramento 42, Hartford RQ 24, Singapore RQ 19, Los Angeles RQ 17, Utrecht RQ 14, Melbourne 10, Vancouver RQ 8, Chengdu 5, Sydney RQ 4, other or unspecified 149.
+- Events named: Stuttgart (RC Europe) 67, Orlando 25K 47, Sacramento 42, Hartford RQ 24, Singapore RQ 19, Los Angeles RQ 17, Utrecht RQ 14, Melbourne 10, Vancouver RQ 8, Chengdu 5, Sydney RQ 4, other or unspecified 149. [V] An event name in a title does not mean the list was played there: 42 of the 67 Stuttgart-tagged lists were created before 2026-11-06 and 58 of the 67 carry no placement.
 - 55 legend champion tags appear. Per-legend rows below need n ≥ 5.
 
 Counting convention: all counts are **copies in the 40**, including the Champion Zone copy.
@@ -178,7 +183,7 @@ Validation by hand [D]. Each round printed 40 cards with their assigned roles (`
 | 4 | 45 most-played cards in the lists | ~70 | 6 | 0 | Switcheroo is a trick, not movement; "can't move it" excluded; "each of up to 2" is not a sweeper; reveal-only is not hand attack; blink is not removal |
 | 5 | most-played cards ranked 46-90 | ~60 | 0 | 4 | extra turn added to `points`; edict and conditional kills added; "in your trash ... play it" added to `recursion` |
 
-Read this as: the last unbiased random round (3) had about 5% label errors, and the cards that matter most for the bands (rounds 4 and 5) were corrected individually. Rounds 4 and 5 were not re-sampled after their fixes.
+[V] UNCONFIRMED: the counts in this table are a hand reading that no script reproduces. Read this as: the last unbiased random round (3) had about 5% label errors, and the cards that matter most for the bands (rounds 4 and 5) were corrected individually. Rounds 4 and 5 were not re-sampled after their fixes.
 
 Known remaining gaps [H]: conditional or pronoun-only removal ("if it is stunned, kill it") is caught only for a few phrasings; `ramp` includes one-shot Gold tokens; `tempo_ready` mixes "enters ready" units with "ready another unit" effects; cards whose value is a static combat bonus (Mask of Foresight) have no role. A sixth check (the section 4 samples) found that `buff` and `combat_trick` matched "spend a buff as an additional cost" (Call to Glory, Wallop, Kraken Hunter) because of a missing word boundary; this was fixed and the analysis re-run. Only the `x_buff` means moved (Call to Glory is in 19 lists); no band, cluster or centroid changed.
 
@@ -287,7 +292,7 @@ Things worth noticing [D]:
 - Only 15% of lists run a card that scores a point directly or takes an extra turn. Winning is done on battlefields.
 - Reaction-speed spells average 6.2 copies, Action 4.9, slow 5.0.
 - The "placed win/top 8" column is close to the "ALL" column on every row, so the bands do not depend on trusting titles.
-- The RAD-era column is slightly heavier (median average Energy 2.83 against 2.65 pre-ban) with more gear.
+- The RAD-era column is slightly heavier (median average Energy 2.83 against 2.65 for the lists labelled pre-ban; median gear 5 against 3). [V] 55 of the 97 pre-ban lists are pre-Vendetta lists from source B, so this compares Radiance-era lists with a mix of two older card pools, not with Vendetta alone.
 
 ### 2.5 Per legend and per domain pair
 
@@ -441,7 +446,7 @@ Reading [D]:
 - Splits: 7-5 in 46% of lists, 6-6 in 34%, 8-4 in 15%, 9-3 or 10-2 in 5%. No list runs a non-basic rune in the Rune Deck.
 - "Printed + text pips" means printed Power costs plus domain symbols that appear in rules text outside reminder text (Equip, Accelerate, Empower and activated costs). It predicts the split a little better than printed pips alone (R² 0.56 against 0.53) and far better than counting cards per domain (0.28).
 - Players skew less than proportionally. A domain holding 75-85% of the pips gets 7.3 runes on average, not 9-10.
-- Most decks top out at Power 2 on a single card (264 of 406); 64 lists run a Power-4 card (Time Warp and similar), almost all big-control.
+- Most decks top out at Power 2 on a single card (264 of 406); 64 lists run a Power-4 card (Time Warp and similar); 52 of the 64 are big-control [V: was "almost all"].
 
 ### 2.8 Battlefields
 
@@ -588,7 +593,7 @@ Reading [D]:
 Reading [D]:
 - About half of all sideboard slots are answers: 2.5 removal/stun/bounce cards and 2.4 "hate" cards per sideboard.
 - The Vendetta "Decree" cycle is the backbone of sideboards. Each is a cheap card that only works against one domain [F: gallery text]: *Decree of Rage* (fury) "Deal 4 to an enemy Calm unit", *Decree of Focus* (calm) protects against Fury, *Decree of Insight* (mind) "-5 Might" to an enemy Body unit, *Decree of Strength* (body) takes a Mind card from hand, *Decree of Discord* (chaos) bounces Order units, *Decree of Unity* (order) "Kill an enemy Chaos unit or gear".
-- Gear answers are the next block: Salvage 22%, An Offer You Can't Refuse 17%, Disarming Rake 16%, Brittle Steel 15%, Ravenbloom Prefect 15%, Thermo Beam 11%, Tomb-Raider Barbara 11%.
+- Gear answers are the next block: Salvage 22%, An Offer You Can't Refuse 17%, Disarming Rake 16%, Brittle Steel 15%, Ravenbloom Prefect 15%, Thermo Beam 11%, Tomb-Raider Barbara 11%. [V] Ravenbloom Prefect answers gear by its text (it banishes itself to banish a gear an opponent plays), but the role classifier gives it no role, so it is missing from every `hate_gear` count in this file.
 - Sideboards are spread thin: median 7 distinct cards; 1,635 one-ofs, 907 two-ofs, 139 three-ofs.
 - 42 of 401 sideboards hold a champion unit of the legend's own tag, the only evidence here of the champion swap that TR 403.4.a allows.
 
@@ -657,9 +662,9 @@ major = clamp( round( 6 + 6 × (s − 0.5) ), 6, 9 )      // s = 0.50 → 6, 0.6
 minor = 12 − major
 ```
 
-- Fit [D: n = 406]: exact match with the player's choice in 49% of lists, within one rune in 90%. A steeper slope does worse (slope 12: 24% exact, 68% within one).
+- Fit [D: n = 406]: exact match with the player's choice in 48-49% of lists, within one rune in 89-90% [V: the script's per-domain variant with a 3-9 clamp gives 49% and 90%; the formula exactly as written above gives 48.3% and 88.9%]. A steeper slope does worse (slope 12: 24% exact, 68% within one).
 - Then run the castability check in 3.3 on every card with Power ≥ 2 and on the Chosen Champion. If a card you want on turn `t` is below 80%, move one rune toward its domain and re-check the other domain. Report both numbers, do not optimise silently [H].
-- Single-domain demand (s near 1) still gets 3 runes of the other domain in practice (9-3 in 16 lists, 10-2 in 3) because the off-domain's activated costs and sideboard cards need them [D].
+- Single-domain demand (s near 1) still gets 3 runes of the other domain in practice (9-3 in 16 lists, 10-2 in 3) [D]. The likely reason is that the off-domain's remaining cards, activated costs and sideboard cards still need them [H; V: the cause was labelled D but was not measured].
 - Seals (gear such as *Seal of Unity*: "[Exhaust]: [Reaction] — [Add] [Order]" [F: gallery]) are Main Deck cards, not runes; they raise effective supply. No list in the sample has a non-basic rune. Treat each Seal copy as +0.5 rune of its domain in the check [H].
 
 ### 3.3 Consistency model
@@ -700,7 +705,7 @@ Assumptions, each tied to a rule:
 
 **C. Opening hand (4 cards, before mulligan): P(x copies) for a group of K cards**
 
-| K | P(0) | P(1) | P(2) | P(3+) | P(>=1 after a 2-card dig when 0) |
+| K | P(0) | P(1) | P(2) | P(3+) | P(>=1) overall if you dig 2 whenever you have 0 |
 |---|---|---|---|---|---|
 | 3 | 72% | 26% | 2% | 0% | 40% |
 | 6 | 50% | 40% | 10% | 1% | 66% |
@@ -794,10 +799,10 @@ Assumptions, each tied to a rule:
 
 Worked answers:
 - *Copies needed to see a card by turn N.* A 3-of is seen by turn 3 in 46% of games and by turn 5 in 56%; digging two cards with the mulligan lifts turn 3 to 56%. Even by turn 8 a 3-of has been seen in only 68% of games, so a plan must rest on **groups** of interchangeable cards (table B): 7 copies for 75% by turn 3, 9 for 85%, 11 for 90%.
-- *A two-drop on turn 2.* With 9 units costing ≤ 2 (the unit-aggro median) you have at least one by turn 2 in 82% of games without a mulligan and 90% with a two-card dig. With 6 it is 66% and 77%.
-- *Opening hands.* With 9 early units, 33% of opening fours have none; throwing back two cards fixes that 82% of the time overall (table C, last column).
+- *A two-drop on turn 2.* With 9 units costing ≤ 2 (the unit-aggro p75; the median is 8 [V: was called the median]) you have at least one by turn 2 in 82% of games without a mulligan and 90% with a two-card dig. With 8 it is 77% and 87%; with 6 it is 66% and 77%.
+- *Opening hands.* With 9 early units, 33% of opening fours have none. Throwing back two cards then finds one 45% of the time (two draws from the other 35 cards), which leaves 82% of all games with an early unit after the mulligan (table C, last column) [V: the first pass gave 82% as the fix rate].
 - *Runes for Power 1.* Going first, a turn-2 Power-1 card (4 runes on board) is castable 97% of the time on 6 runes of its domain, 93% on 5, 86% on 4. A 7-5 split costs the minor domain four points on turn 2.
-- *Runes for Power 2.* Going first on turn 3 (6 runes on board): 96% with 6 runes of that domain, 88% with 5, 73% with 4. To cast a Power-2 card on turn 2, 8 runes give 93% and 6 give 73%. This is why 8-4 appears only when the minor domain has almost no Power-2 cards.
+- *Runes for Power 2.* Going first on turn 3 (6 runes on board): 96% with 6 runes of that domain, 88% with 5, 73% with 4. To cast a Power-2 card on turn 2, 8 runes give 93% and 6 give 73%. The lists agree: 47 of the 55 Piltover Archive lists on 8-4 have no Power-2 card in the minor domain (mean 0.27 copies, against 0.91 on 7-5 and 1.62 on 6-6) [D; V: measured in this pass, the first pass said "only" without a count].
 - *Runes for Power 3.* On turn 4 going first (8 runes): 97% with 6, 85% with 5, 59% with 4.
 - *Going second* is worth one extra rune in every row; for example Power 2 on turn 2 with 6 runes rises from 73% to 88%.
 
@@ -922,7 +927,7 @@ Validation [D]. `validate-axes.mjs N seed` prints N random pool cards with every
 | 1 | 40 random, seed 31337 | 105 | 5 | 2 | "move an enemy unit" split out of movement into its own axis; "chosen by an enemy spell" (hosers, "can't be chosen") no longer a being-chosen payoff; "didn't die alone" and "no other friendly unit" no longer solo payoffs; "spend a buff as…" no longer a buff enabler; "channel that many runes plus 1" added to ramp; "kill a … you control" as a cost added to sacrifice payoffs |
 | 2 | 40 random, seed 99, after the round-1 fixes | 86 | 3 | 2 | "gear with [Deploy]" mentioned in text is no longer a Deploy enabler; "spent … to play a spell this turn" added to spell-slinging payoffs. Left as is: `[Ganking]` on a gear (The Ball) counts as a conquer enabler; two errors came from the mistyped RAD rows in caveat 0.10 |
 
-Read this as 6-7% wrong or missing text-based labels in a fresh sample (7 of 105, then 5 of 86), a little worse than the role classifier's last random round (2.2). Round 2 was not re-sampled after its two fixes. The counts in the table above are the post-fix counts.
+[V] UNCONFIRMED: these counts are a hand reading that no script reproduces. Read this as 6-7% wrong or missing text-based labels in a fresh sample (7 of 105, then 5 of 86), a little worse than the role classifier's last random round (2.2). Round 2 was not re-sampled after its two fixes. The counts in the table above are the post-fix counts.
 
 ## 5. How 2v2 and free-for-all change card value
 
@@ -954,7 +959,7 @@ More facts that move card value:
 Card-pool counts that matter here [D: 953 named main-deck cards]:
 - 14 cards scale with the number of opponents ("each opponent", "opponents …"); 12 say "each player".
 - 29 cards "choose an opponent" and do not scale.
-- 25 cards hit "all" or "each" units; board size roughly doubles at a four-player table.
+- 25 cards hit "all" or "each" units [D]; board size roughly doubles at a four-player table [H].
 - 167 cards say "friendly"; 14 legend tags have "friendly" in the legend text (Lillia, Irelia, Lee Sin, Pyke, Jarvan IV, Shen, Orianna, K'Sante, Leona, Akali, Seraphine, Yasuo, Kha'Zix, Master Yi).
 - 2 cards mention "allies" (Bushwhack Trap, Right of Conquest); 9 of 76 battlefield names mention allies or "each player".
 - 21 cards refer to points or the Victory Score.
@@ -984,7 +989,7 @@ Deck-level changes [H]:
 - **Seat risk.** In FFA4 and 2v2 the first player's battlefields are not used at all (CR 490.4.b, 491.5.b). Value "my battlefield" synergies at about 3/4 in FFA4 and 2v2 when turn order is random. In FFA3 all three are used.
 - **Opening consistency.** The multiplayer first player sees one card fewer (table D in 3.3): 9 early units give 75% by turn 2 instead of 82%. Add one early play in multiplayer builds.
 - **Bands.** Until multiplayer lists exist, shift the 1v1 bands: +1 to +2 on protection and hold cards, +1 on finishers, −1 to −2 on one-for-one tricks and counterspells in FFA. This is a guess and should be shown as such in the UI.
-- **Politics.** FFA has no rule that binds deals. The only rules-level political levers are who you attack, who you give a Burn Out point to (CR 432.2.c), and the lead check in CR 474 (a player at 8 who is tied does not win). A score that is "ahead of every opponent" invites two players to attack the leader; cards that gain the last points without combat avoid that.
+- **Politics.** The Core Rules have no rule that binds in-game deals in FFA [V: checked by text search of the CR; in sanctioned events TR 704.5 forbids influencing games with out-of-game rewards, and that covers actions within a game (704.5.a, 704.5.a.2)]. The only rules-level political levers are who you attack, who you give a Burn Out point to (CR 432.2.c), and the lead check in CR 474 (a player at 8 who is tied does not win). A score that is "ahead of every opponent" invites two players to attack the leader; cards that gain the last points without combat avoid that.
 - **2v2 pairing.** Score a pair of decks together: the two legends must differ, the six battlefields must be six different names, and "friendly" payoffs on one deck count the other deck's units as enablers.
 
 ### 5.3 Community sources [C]
@@ -992,7 +997,7 @@ Deck-level changes [H]:
 "Riftbound Multiplayer Rules - How 2v2, Skirmish and War Actually Work", gamertagmythras.com (published 2026-08-02, updated 2026-11-01), https://gamertagmythras.com/blog/riftbound-tcg/riftbound-multiplayer-2v2-rules:
 - Restates the mode table above and the 2v2 scoring clauses; its rule content matches CR 487-491 as read here.
 - Argues that 11 points is slow in practice: a team holding all three battlefields scores them only on one teammate's turn per round, about 3 points per four turns, so a game takes at least four full rounds. This is an arithmetic consequence of CR 491.8.b.1 and looks correct, but it is their reasoning, not a Riot statement.
-- Says the Master Yi legend was banned in 2v2 effective 2026-07-24 because the +2 Might reaches a teammate's lone defender. The ban is confirmed on the Rules Hub; the stated reason is consistent with the July article (https://playriftbound.com/en-us/news/announcements/july-ban-list-updates) but was not quoted from it here.
+- Says the Master Yi legend was banned in 2v2 effective 2026-07-24 because the +2 Might reaches a teammate's lone defender. The ban is confirmed on the Rules Hub. [V] The July article confirms the date (effective July 24, 2026) and the reason (the defensive bonus extends to both you and your ally) (https://playriftbound.com/en-us/news/announcements/july-ban-list-updates).
 - Notes that XP is not shared between teammates. Confirmed: CR 732.
 
 No community tier list or card-by-card multiplayer evaluation was found by search on 2026-11-11.
@@ -1026,7 +1031,7 @@ Keep rule, evaluated on the opening 4:
 3. If `e ≥ 1`: set aside up to two cards from step 4 that satisfy its conditions. If none qualifies, keep.
 4. Toss order: (a) TOP cards beyond the first, (b) any card with Power ≥ 2 in the minor rune domain when `pPower(card, 3) < 0.6`, (c) a copy of the Chosen Champion's name (the Champion Zone copy already covers it; only 7% of lists even run a second copy [D]), (d) sideboard-style hate cards in game 1, (e) the third copy of the same name, (f) a 4-Energy card when the hand already has two cards costing ≥ 4.
 5. Never toss: the only EARLY unit; in spell-tempo and big-control, the only CHEAP_IX card.
-6. Archetype override [D-based]: big-control (median 0–6 units costing ≤ 2) uses `EARLY ∪ CHEAP_IX ∪ ramp with energy ≤ 2` as its keep class; gear-engine uses `EARLY ∪ ENGINE`.
+6. Archetype override [D-based]: big-control (p25–p75 of 0–6 units costing ≤ 2, median 5.5 [V: the range was called a median]) uses `EARLY ∪ CHEAP_IX ∪ ramp with energy ≤ 2` as its keep class; gear-engine uses `EARLY ∪ ENGINE`.
 
 Output lines:
 - "Keep: at least one of {top 3 EARLY names by copies}. You open with one in {1 − P(0)}% of hands (table C) and reach {pEarly(2, dig)}% by turn 2 if you mulligan for it."
@@ -1063,7 +1068,7 @@ Pick the row by the opponent's archetype (nearest centroid of their list, or the
 | unit-aggro | 22–27 units, 8–9 costing ≤ 2, 6–16 tempo effects, 1–4 reaction spells, 0–1 counterspells | "You are the control. Trade early: keep {CHEAP_IX names}. Hold one battlefield with {Shield/Tank/Deflect units} rather than racing two. Their tricks are mostly at Action speed (3–7): attack into open runes freely on your turn, block with tricks on theirs. Sweepers are good here: {sweeper names or 'none in list'}." |
 | spell-tempo | 16–20 units, 8–13 reaction spells, 3–4 counterspells, 5–9 combat tricks, 2–5 protection | "Play around open runes. Defy counters a spell costing ≤ 4 Energy and ≤ 1 Power and is in 37% of lists [D]: lead with a cheaper spell or use {spells with energy ≥ 5 or power ≥ 2}. Make them act first in showdowns. Prefer units over spells as threats: {top units}. Stun/bounce is their main removal (bounce 0–4, stun 1–3), so re-playable cheap units beat one expensive unit." |
 | gear-engine | 7–15 gear, 8–12 cards costing ≤ 1, 8–12 card flow | "Attack the engine: {hate_gear names or 'none: add in sideboard'}. Race before the gear pays off: you are the beatdown if your average Energy is below {their median 2.55}. Kill gear in response to Equip or Deploy value where the card allows it." |
-| big-control | 10–11 cards costing 6+, 10–13 removal, 10–15 card flow, 0 counterspells in most lists, sweepers in few | "You are the beatdown. They do little before turn 3 (0–6 units costing ≤ 2): score early holds. Spread across both battlefields; 87% of all lists run no sweeper [D]. Save {counterspell / hand_attack names} for their 6+ cards: {known finishers of that legend from 2.6 data}. Do not hold cards past turn 5 against Time Warp-style finishers." |
+| big-control | 10–11 cards costing 6+, 10–13 removal, 10–15 card flow, 0 counterspells in most lists (51 of 66), a sweeper in 23 of 66 lists (35%) | "You are the beatdown. They do little before turn 3 (0–6 units costing ≤ 2): score early holds. Spread across both battlefields, but expect a sweeper more often than elsewhere: 35% of big-control lists run one, against 13% of all lists [D; V: the first pass cited only the all-lists figure]. Save {counterspell / hand_attack names} for their 6+ cards: {known finishers of that legend from 2.6 data}. Do not hold cards past turn 5 against Time Warp-style finishers." |
 | mirror (same cluster) | — | "Mirror: card flow and the first held battlefield decide it. You have {r_card_flow} flow cards against a typical {band}. Going second is one rune ahead on every turn (CR 487.7)." |
 
 When the opposing **legend** is known and has n ≥ 8 lists, append: "Typical {legend} list: chosen champion {name} ({share}%), runes {split}, battlefields {top three}" from the per-legend table.
@@ -1128,7 +1133,7 @@ Adapted from `~/github_repositories/commander-forge/docs/research/deck-theory.md
 - Staple floor: a card with a core role (early unit, removal, card flow) and play ≥ 0.8 scores at least 55.
 - Champion and signature bonus: the legend's own signature cards get +8 (43% of lists run all three [D]); the second and third copy of the Chosen Champion get −10 unless the champion costs ≤ 3 (93% run one copy [D]).
 - Explanation: store each term, the top axis and the matched text. Example: "+26 synergy: makes unit tokens, legend pays off going wide; +14 data: in 71% of Viktor lists; −4: fifth card at 5 Energy".
-- Calibration target: for the 20 legends with n ≥ 8, cards in ≥ 50% of that legend's lists should score ≥ 70 and off-identity-theme cards with 0% play should score < 35.
+- Calibration target: for the 23 legends with n ≥ 8 [V: was 20], cards in ≥ 50% of that legend's lists should score ≥ 70 and off-identity-theme cards with 0% play should score < 35.
 
 ## 8. Deck rating 0-100
 
@@ -1198,11 +1203,83 @@ Corrections to local material (old → new, source):
 - Rule numbers for deck construction, modes, Recycle, Channel, Burn Out, Scoring shifted as listed in 0.1 (CR).
 - Banned cards 5 → 7, banned battlefields unchanged at 5, plus a separate 2v2 list (Rules Hub).
 - Card pool 931 → 1,237 base codes / 1,103 names (gallery).
-- Sideboard size 8 in the September sample → 10 allowed and used (TR 601.1.c.1; 2.9).
+- Sideboard size 8 in the local sample (lists from before July 2026) → 10 allowed since the July 2026 TR update, and used (TR 601.1.c.1; July changelog; 1.2, 2.9).
 
 Could not verify:
 - Items 0.3, 0.4, 0.7, 0.8 (outcome of the playtest); the true card types of the seven RAD rows in 0.10.
-- RC Europe dates and metagame shares (community only; riftdecks.com and mobalytics.gg returned HTTP 403 and were not retried).
+- [V: now verified] RC Europe timing and metagame shares, from Riot's article of 2026-11-11 (0.3, 1.1). riftdecks.com and mobalytics.gg are no longer relied on.
 - api.riftcodex.com timed out on 2026-11-11; the gallery was used instead, so Riftcodex-only fields (TCGplayer ids) were not refreshed.
-- Which Tournament Rules edition raised the sideboard from 8 to 10.
+- [V: now verified] The sideboard rose from 8 to 10 in the July 2026 TR update (1.2).
 - Any multiplayer deck data.
+
+## Verification log (2026-11-11)
+
+Independent pass over the whole file, run after the first pass on the same day. Inline corrections carry **[V]**. The same edits were applied to `analysis/deck-theory.template.md`, `analysis/consistency.mjs` and `analysis/out/08-consistency.md`, so re-running `assemble.mjs` reproduces this file.
+
+### What was checked
+
+- **Rules.** Both PDFs were downloaded again from the URLs in the header. Their SHA-256 hashes equal the copies in `analysis/raw/` (Core Rules `94d41fee…`, Tournament Rules `ce07da4f…`), and the Rules Hub still links exactly these two files and dates both "October 9, 2026". No newer edition exists. All 150 CR/TR rule numbers cited above the "Verification notes" heading exist in the PDFs; the text of each rule that carries a claim was read against the claim. Result: no wrong rule number and no wrong rule wording.
+- **Local rules file.** `GameLab/data/rules/core-rules.md` is the 2026-07-16 edition; the number shifts listed in 0.1 were checked heading by heading and are correct.
+- **Rules Hub.** Legality text, both ban lists and the "Last updated: September 18, 2026" stamps match 1.1.
+- **Riot articles** re-fetched and read: Radiance overview, September and July ban articles, start-of-game test, Deckbuilding Primer, RC Europe preview, the news index, the July 2026 TR changelog, the October 2026 TR changelog, and the new "Best Ofs for the European Championship" article.
+- **Card gallery** re-fetched: printings, names, RAD codes, legends, battlefields, untyped rows, mistyped rows and every card text quoted in this file (Decree cycle, Defy, Seal of Unity, Spiderling, Fiora, Victorious, the Master Yi legend, Blast Cone, Isolate, Siren's Song, the two Bilgewater cards, Time Warp, Ravenbloom Prefect).
+- **Local data.** `GameLab/data/cards/cards.json` (931 cards, no RAD), the local deck sample, `Untitled/config/current-constructed-rules.json` (5 banned cards, 5 banned battlefields, last source July 2026) and `DECK_CURVE_TARGETS` in `Untitled/apps/web/src/lib/scoring.ts`.
+- **Analysis scripts.** `analyze.mjs`, `targets.mjs`, `consistency.mjs`, `axes.mjs`, `extra.mjs` and `validate-roles.mjs … counts` were re-run on a copy of the saved raw data. Every generated table (`out/00` to `07`, `08`, `09`, `10`, `13`, `axes.json`) came out byte-identical, and `assemble.mjs` rebuilt the pre-correction file byte for byte from the template. The role rules printed in 2.2 are identical to `roles.mjs`.
+- **Independent recomputation** (own code, not the scripts): all hypergeometric tables A to H in 3.3 and every worked answer; list validity, sideboard sizes, rune splits and Stuttgart counts from `raw/pa-decks.jsonl`; the rune formula in 3.2 exactly as written; medians and per-cluster counts behind the hand-written sentences in 2.3, 2.4, 2.6, 2.7, 2.10, 3.3, 6.2, 6.4 and 7.3.
+- **Piltover Archive.** `robots.txt` is unchanged. Listing page 1 was fetched again (sort is "trending"; all 24 decks are in the saved crawl). Three saved deck pages were fetched again and matched the saved main deck and sideboard exactly; four source B deck pages were fetched to date them. The full 144-page crawl was not repeated.
+- **Community page** gamertagmythras.com (5.3) re-fetched: publication and update dates and the three claims attributed to it are as stated.
+
+Counted roughly: about 330 separate claims checked one by one (150 rule citations, about 40 statements from Riot pages and the Rules Hub, about 35 gallery and card-text statements, about 105 hand-written data and arithmetic statements), plus the 11 generated tables reproduced as a whole.
+
+### Corrections made
+
+| # | where | was | now | evidence |
+|---|---|---|---|---|
+| 1 | 0.3 | A community snippet put Kai'Sa at about 40% of the RC Europe field | Withdrawn. Riven 40.9% Day 1 and 49.0% Day 2, Kai'Sa 16.9% / 17.7%, Kennen 14.6% / 12.5%; Top 8 four Riven, three Kennen, one Kai'Sa; Kennen won | Riot, "Best Ofs for the European Championship", 2026-11-11 |
+| 2 | 0.3, 2.1 | Stuttgart-tagged lists read as RC Europe lists | 42 of 67 were created before 2026-11-06 and 58 of 67 carry no placement; Riven is 7 of 67 there and 5% of the whole sample | `raw/pa-decks.jsonl` creation dates; `out/results.json` |
+| 3 | 1.1 | "only two November items" on the news index; nothing newer affects deck building | Three items; the third (2026-11-11) announces that bans are being considered, decision on 2026-11-13, target effective date 2026-11-23 | Riot news index and the article above |
+| 4 | 1.1 | RC Europe dates from a community search snippet | Riot's two articles place it on the weekend of November 6-8, 2026; the community page cited does not state the dates | RC Europe preview (2026-10-27) and follow-up (2026-11-11) |
+| 5 | 1.2, notes | Edition that raised the sideboard to 10 UNCONFIRMED; "8 was normal before the September lists" | Raised from 8 to 10 in the July 2026 TR update, edition 7/16/2026, effective 2026-07-24. The 8-card lists are older lists, not a September effect | Riot, July 2026 TR changelog; 7/16/2026 TR PDF rule 601.1.c.1 |
+| 6 | 2.1 | Source B: "60 lists … 2026-09-06", filed as Vendetta-era pre-ban lists | 59 lists; 57 contain no Vendetta card; creation dates 2025-11 to 2026-06 where known; four live pages show June 2026. They are pre-Vendetta lists | sample file; `raw/pa-list.jsonl`; four live deck pages |
+| 7 | 2.1, 2.4 | Era label "VEN-preban" and the RAD-against-pre-ban comparison taken at face value | 55 of the 97 are pre-Vendetta lists; the comparison mixes two older pools | same as 6 |
+| 8 | 0.1 | 1,237 base codes | 1,237 at the first fetch, 1,236 at the re-fetch (one printing served twice under another code); gallery payload is unstable | two gallery fetches |
+| 9 | 0.10 | "15 RAD rows have an empty card type"; "several" Deploy gear mistyped | 13 RAD rows plus 2 UNL helper rows; exactly four Deploy gear, named | gallery `__NEXT_DATA__` |
+| 10 | 0.8 | "not a rules update" given as a quotation | The article asks "Is this a rules update?" and answers "No" | Riot, "Testing Start of Game Rules" |
+| 11 | 1.5 | Primer heading quoted loosely | Heading and sentence quoted as printed | Riot, "Deckbuilding Primer" |
+| 12 | 2.7 | Power-4 lists "almost all big-control" | 52 of 64 | `out/results.json` |
+| 13 | 2.9 | Ravenbloom Prefect counted as a gear answer without comment | It is one by text, but the classifier gives it no role, so `hate_gear` counts omit it | gallery text; `roles.mjs` output |
+| 14 | 3.2 | Formula fit "49% exact, 90% within one" | 48.3% and 88.9% for the formula as written; 49% and 90% only for the script's per-domain variant | own recomputation; `analyze.mjs` line 257 |
+| 15 | 3.2 | Cause of 9-3 splits labelled [D] | Relabelled [H]; the cause was never measured | no measurement exists in the scripts |
+| 16 | 3.3 table C | Last column headed "P(>=1 after a 2-card dig when 0)" | It is the overall probability when you dig only on a zero hand; the conditional values are 17, 32, 45, 57, 68, 77, 85, 91% for K = 3 … 24 | own recomputation |
+| 17 | 3.3 | "9 units costing ≤ 2 (the unit-aggro median)" | The median is 8; 9 is the p75. With 8: 77% by turn 2, 87% with a dig | `out/results.json`; own recomputation |
+| 18 | 3.3 | A two-card mulligan "fixes that 82% of the time" | It finds an early unit 45% of the time; 82% is the overall rate | own recomputation |
+| 19 | 3.3 | "8-4 appears only when the minor domain has almost no Power-2 cards" (no count) | 47 of 55 Piltover Archive lists on 8-4 have none | own count from `raw/pa-decks.jsonl` |
+| 20 | 5.1 | "board size roughly doubles" inside a [D] bullet | Split into [D] and [H] | not a measurement |
+| 21 | 5.2 | "FFA has no rule that binds deals" | True of the Core Rules; TR 704.5 restricts out-of-game incentives in sanctioned play | CR text search; TR 704.5, 704.5.a, 704.5.a.2 |
+| 22 | 5.3 | Reason for the Master Yi 2v2 ban "not quoted" | Confirmed, with the effective date July 24, 2026 | Riot, "July Ban List Updates" |
+| 23 | 6.2 | "big-control (median 0–6 …)" | 0–6 is p25–p75; the median is 5.5 | `out/results.json` |
+| 24 | 6.4 | Against big-control: "87% of all lists run no sweeper"; "sweepers in few" | 23 of 66 big-control lists (35%) run a sweeper | `out/results.json` |
+| 25 | 7.3 | "the 20 legends with n ≥ 8" | 23 legends | table in 2.5 |
+
+### Left UNCONFIRMED
+
+- Which cards the pending November ban will hit (announcement due 2026-11-13).
+- Whether an exhausted rune may be recycled for Power (0.7). No sentence in the CR, the Radiance patch notes or the how-to-play page states it; it follows only from the absence of an exhaust cost in CR 164.2.b. The rune model in 3.3 and all of tables E to G depend on it.
+- The true card types of the seven RAD rows typed "spell" and the five typed "unit" without Might (0.10). No second primary source lists them.
+- Whether uninvolved players may play cards in another pair's showdown (0.11, 5.1). The Focus rules imply it; no sentence states it.
+- The false-positive and false-negative counts in the validation tables of 2.2 and 4, and the 5% and 6-7% error rates read from them. They are hand counts that no script reproduces.
+- Every placement parsed from a deck title (0.4), and whether a list named after an event was played in it.
+- The outcome of the start-of-game playtest (0.8).
+- "No community tier list or card-by-card multiplayer evaluation was found" (5.3): a negative search result that cannot be reproduced.
+- The full Piltover Archive crawl: reproduced from the saved raw files, spot-checked live on 8 pages, not repeated in full.
+
+### What the design must treat as heuristic
+
+- The four archetype names and the whole cluster model (2.3): k-means on an unrepresentative sample. Riven is 5% of this sample and was 41% of the RC Europe field.
+- All target and tolerance bands (2.4, 3.1) and the scoring rule built on them. They describe uploaded lists, 14% of which are pre-Vendetta, and the format changes again on 2026-11-23.
+- The rune split formula (3.2): it matches the player's choice in under half of the lists, and the Seal adjustment is a guess.
+- The castability model (3.3) beyond the first Power payment, and its dependence on the unconfirmed rule reading in 0.7.
+- Role and axis labels (2.2, 4): regex output with known misses (Ravenbloom Prefect has no role; mistyped RAD rows).
+- Every multiplayer multiplier, band shift and seat-risk factor in 5.2. There is no multiplayer deck data.
+- All thresholds and templates in section 6, all weights in sections 7 and 8, and the calibration targets. None has been tested against results.
+- Any use of title-parsed placements as a quality signal.

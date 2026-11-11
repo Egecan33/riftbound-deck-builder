@@ -1,0 +1,17 @@
+{
+  "_source": "docs/research/legality-and-data.md section 3.2 (Standard, 1v1 Constructed), which resolves the Rules Hub list and ban articles A/B/C against the official gallery; reviewed 2026-11-11. Prototype input only: production reads the synced legality table.",
+  "standard": {
+    "SFD-122": {"name": "Called Shot", "effective": "2026-03-31"},
+    "SFD-020": {"name": "Draven, Vanquisher", "effective": "2026-03-31"},
+    "OGN-168": {"name": "Fight or Flight", "effective": "2026-03-31"},
+    "OGN-182": {"name": "Scrapheap", "effective": "2026-03-31"},
+    "OGN-177": {"name": "Stealthy Pursuer", "effective": "2026-07-24"},
+    "OGN-110": {"name": "Ekko, Recurrent", "effective": "2026-09-18"},
+    "OGN-183": {"name": "Stacked Deck", "effective": "2026-09-18"},
+    "OGN-292": {"name": "Dreaming Tree", "effective": "2026-03-31"},
+    "OGN-284": {"name": "Obelisk of Power", "effective": "2026-03-31"},
+    "OGN-285": {"name": "Reaver's Row", "effective": "2026-03-31"},
+    "OGN-290": {"name": "The Arena's Greatest", "effective": "2026-07-24"},
+    "OGN-276": {"name": "Aspirant's Climb", "effective": "2026-07-24"}
+  }
+}

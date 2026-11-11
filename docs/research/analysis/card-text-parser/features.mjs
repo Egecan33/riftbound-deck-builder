@@ -43,7 +43,11 @@ const hitsEnemy = (e, t) => !isSelf(t) && parts(t).some((p) => !p.ref && (OPP_AC
 const hitsFriendly = (e, t) => isSelf(t) || (!OPP_ACTORS.has(e.actor) && parts(t).some((p) => p.controller === 'friendly' || p.controller === 'any'));
 const isMass = (e, t) => t && (t.count === 'all' || t.count === 'any-number' || e.split === true || (typeof t.count === 'number' && t.count >= 3 && !t.multi) || (typeof t.count === 'object' && t.count?.upTo >= 3));
 const onBoard = (t) => !['trash', 'hand', 'deck', 'looked', 'banished-with-this'].includes(t?.location);
-const fast = (c, a) => a.speed === 'action' || a.speed === 'reaction' || (c.type === 'spell' && c.speed !== 'normal');
+// iteration 3: a permanent that can be played at Reaction timing ([Reaction] / [Action] on the card, [Hidden] CR 811.1.b, [Ambush] CR 822,
+// [Quick-Draw] CR 819) delivers its play effect at that speed, so its "When you play me" trigger counts as fast.
+const FASTKW = new Set(['Hidden', 'Ambush', 'Quick-Draw']);
+const fast = (c, a) => a.speed === 'action' || a.speed === 'reaction' || (c.type === 'spell' && c.speed !== 'normal')
+  || ((c.speed !== 'normal' || c.keywords.some((k) => FASTKW.has(k.name) && !k.grantedToWearer)) && (a.kind === 'on-play' || (a.kind === 'triggered' && (a.trigger?.events || [a.trigger?.event]).includes('when-played') && a.trigger?.scope === 'self')));
 const kwNames = (c) => c.keywords.filter((k) => !k.grantedToWearer).map((k) => k.name);
 
 // ---------- role derivation (exact rules; mirrored in card-text-parser.md section 7) ----------
@@ -86,7 +90,8 @@ export function deriveRoles(c) {
     if (v === 'grantKeyword' && stat && !isSelf(t) && a.origin !== 'equipment-effect') add('buff_source', 'keyword-anthem');
     // mobility
     if (['move', 'swapPlaces'].includes(v) && (isSelf(t) || (t && hitsFriendly(e, t) && parts(t).some((p) => p.controller === 'friendly')) || (!t && !OPP_ACTORS.has(e.actor)))) add('mobility', v);
-    if (v === 'recall' && !e.instead && !OPP_ACTORS.has(e.actor)) add('mobility', 'recall');
+    // a recall that is the outcome of a replacement effect ("heal it, exhaust it, and recall it instead", errata wording) is a save, not movement
+    if (v === 'recall' && !e.instead && a.kind !== 'replacement' && !/would die/.test(String(e.delayed || '')) && !OPP_ACTORS.has(e.actor)) add('mobility', 'recall');
     if (v === 'playPermission') add('mobility', 'play-anywhere');
     if (v === 'grantKeyword' && (e.keywords || []).some((k) => k.name === 'Ganking')) add('mobility', 'grant-Ganking');
     if (v === 'enterReady') add('haste', isSelf(t) ? 'self' : 'others');
@@ -104,7 +109,7 @@ export function deriveRoles(c) {
     if (v === 'returnToHand' && t && !isSelf(t) && onBoard(t) && e.from !== 'trash' && parts(t).some((p) => !p.ref && (p.controller === 'enemy' || p.controller === 'any'))) add('disruption', 'bounce');
     if (v === 'might' && !stat && hitsEnemy(e, t) && t && (e.sign === '-' || (typeof e.amount === 'number' && e.amount < 0))) add('disruption', 'shrink');
     if (v === 'costChange' && e.sign === '+') add('disruption', 'tax');
-    if (v === 'restrict' && !isSelf(t) && (a.staticType === 'restriction' ? /^(can't (play|move|score|ready|be played|be revealed)|can only|must pay|only channel|don't ready)/.test(e.what || '') : a.kind !== 'static' && /^can't play/.test(e.what || ''))) add('disruption', 'restriction');
+    if (v === 'restrict' && !isSelf(t) && (a.staticType === 'restriction' ? /^(can't (play|move|score|gain points|ready|be played|be revealed)|can only|must pay|only channel|don't ready)/.test(e.what || '') : a.kind !== 'static' && /^can't play/.test(e.what || ''))) add('disruption', 'restriction');
     if (v === 'burn' && OPP_ACTORS.has(e.actor)) add('disruption', 'mill');
     if (v === 'banish' && t?.location === 'trash') add('disruption', 'trash-hate');
     if (v === 'grantKeyword' && (e.keywords || []).some((k) => k.name === 'Temporary') && t && hitsEnemy(e, t)) add('removal_single', 'grant-Temporary');

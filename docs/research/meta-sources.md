@@ -2,7 +2,7 @@
 
 What this file answers: where Riftbound Forge can get (1) data to anchor a casual / focused / competitive power target, (2) per-legend card inclusion and co-play, (3) matchup data, (4) side deck and rune-split statistics, for 1v1 and whatever exists for 2v2 and FFA; how to fetch each source politely; which tables to sync; how to weight; and what to do when a source is down.
 
-All web sources were fetched on 2026-11-11 with a generic `User-Agent` (`Mozilla/5.0 (compatible; deck-research/1.0)`), serially, 1 to 1.5 s apart, with no personal data in any request. There were two passes on that day: about 10:39-10:47 UTC (an earlier run of this task that was cut off; its raw files were reused) and about 15:20-16:10 UTC. Raw downloads are in `docs/research/analysis/meta-sources/raw/` (git-ignored). Nothing here comes from memory.
+All web sources were fetched on 2026-11-11 with a generic `User-Agent` (`Mozilla/5.0 (compatible; deck-research/1.0)`), serially, 1 to 1.5 s apart, with no personal data in any request. There were three passes on that day: about 10:39-10:47 UTC (an earlier run of this task that was cut off; its raw files were reused), about 15:20-16:10 UTC, and a verification pass at about 20:15-20:40 UTC that re-fetched the main sources, settled several open points and found one new official article (section 12 lists what the third pass changed; its raw files are named `raw/v3-*`). Raw downloads are in `docs/research/analysis/meta-sources/raw/` (git-ignored). Nothing here comes from memory.
 
 Labels:
 
@@ -19,12 +19,13 @@ Player names appear in every results source. This file prints none, and the sync
 
 ## 1. Headline findings
 
-1. **Usable matchup win-rate data exists, and it is machine-readable.** riftbound.org tournament pages embed a legend-versus-legend table of wins, losses and draws per tournament in plain JSON inside the HTML (section 3.1). Example: Regional Championship Europe (Stuttgart, 2026-11-06), 315 players, 1,130 matches, 8 x 8 legend table. This corrects `matchups-and-lines.md` section 4.1, which found only riftdecks.com (HTTP 403) and riftbound.gg (JavaScript loader). The cell values are a community site's computation from official pairings, so they are UNCONFIRMED as facts and small per cell (median non-mirror cell in that event is 8 matches).
+1. **Usable matchup win-rate data exists, and it is machine-readable.** riftbound.org tournament pages embed a legend-versus-legend table of wins, losses and draws per tournament in plain JSON inside the HTML (section 3.1). Example: Regional Championship Europe (Stuttgart, 2026-11-06), 315 players, 1,130 matches, 8 x 8 legend table. This corrects `matchups-and-lines.md` section 4.1, which found only riftdecks.com (HTTP 403) and riftbound.gg (JavaScript loader). The cell values are a community site's computation from official pairings, so they are UNCONFIRMED as facts and small per cell (median non-mirror cell in that event is 8 matches). **Summed over all 19 Radiance tournaments the tables hold 1,528 non-mirror matches in 94 legend pairs; only 11 pairs have 30 or more matches, 2 have 100 or more, and the median pair has 4.5** (DATA, section 3.1). So real matchup numbers exist for roughly the ten most common pairings and for nothing else.
 2. **The upstream of all of it is official.** The official event locator `locator.riftbound.uvsgames.com` (FACT: linked from playriftbound.com event pages; it runs on UVS Games' platform) publishes registrations with wins, losses, draws, final standing and a `deck_id`, and its event object says `decklist_status: "PUBLISHED"` for RC Europe (section 3.3). Its JavaScript bundle names public-looking endpoints for round matches, standings and public decks. I did not call the API host, because its robots.txt disallows AI agents by name; whether those endpoints answer without login is UNCONFIRMED and needs one manual test by the owner.
 3. **riftbound.org is the best single source for the current set.** Radiance window (from 2026-10-23): 1,485 lists with a known legend, 1,179 with a card list, from 19 tournaments, whole fields and not only top cuts. It gives per-legend share, W-L-D, top-cut count, wins; per-card and per-legend-per-card inclusion, average copies, side deck share; standings with records; per-deck match lists.
 4. **Piltover Archive is a deck-builder site, not a results site.** Its `/tournaments` section has 141 events and none later than 2026-06-20; the pages carry no data in the HTML. Its value is (a) full, legal, exact 40 + 12 + 3 + side lists with battlefields and chosen champion, which riftbound.org's official-export lists lack, and (b) the community lists that are the only available stand-in for "casual / focused". About 103,600 public decks, 3,605 touched since 2026-10-26.
-5. **Official primary data exists but stops before Radiance.** Eleven "Top Decks" articles on playriftbound.com (2026-02-25 to 2026-09-30) give a Day 1 and Day 2 legend count table per Regional Qualifier and 36 to 48 full lists each with "Legend Rank" and "Overall Rank" (459 lists in total). No article for a Radiance event exists yet (news index newest item 2026-11-05).
-6. **riftbound.one** (the source the older project used) is top-3 only: 535 lists from 169 events, April to October 2026, only 27 lists dated 10/26. Good as a small, clean fallback.
+5. **Official primary data exists, and since this evening it covers Radiance.** Twelve "Top Decks" articles on playriftbound.com (2026-02-25 to 2026-11-11) give a Day 1 and Day 2 legend count table per event and 24 to 48 full lists each with "Legend Rank" and "Overall Rank" (483 lists in total). The twelfth, "Best Ofs for the European Championship", was published 2026-11-11 17:00 UTC, between the second and third pass: 28 legends, 308 Day 1 and 96 Day 2 players, 24 complete lists. Its legend counts agree with riftbound.org's for 27 of 28 legends, which is the first check of that community source against a primary one (section 3.4).
+5a. **A ban decision is pending and will cut the current era short.** FACT (same article, fetched 2026-11-11): "the game team are considering bans to the format, and any decisions they make will be shared on this coming Friday. These bans are targeted to go into effect on November 23." Friday is 2026-11-13. Nothing is banned yet; which cards are concerned is UNCONFIRMED. Every Radiance-era number in this file describes a format that may change twelve days from now (section 8.1).
+6. **riftbound.one** (the source the older project used) is top-3 only: 535 lists from 145 event names (169 event-and-month pairs), April to October 2026, only 27 lists dated 10/26. Good as a small, clean fallback.
 7. **2v2 and FFA: no results source with decklists was found anywhere.** Only community-named lists on Piltover Archive (a few dozen with "2v2" or "FFA" in the title) and one team-trios event on riftbound.org. Multiplayer statistics will be thin and mostly heuristic.
 8. **Terms matter.** Riot's developer policy forbids apps that "publish or retain metagame-defining data"; Piltover Archive's terms forbid using automated systems "to overload or scrape the Service"; several sites block AI crawlers in robots.txt. The owner has decided scraping is acceptable for this local, single-user tool. Section 2 records each restriction as found so the decision is made with the text in view.
 
@@ -39,7 +40,7 @@ Player names appear in every results source. This file prints none, and the sync
 | riftdecks.com robots.txt | Comment: scraping "explity not allowed" for six named sites "And any other similar sites building a competing service"; `Disallow: /` for ClaudeBot, anthropic-ai, GPTBot and others. | DATA. `raw/robots-riftdecks.com.txt` |
 | riftbound.gg, riftmana.com, riftboundop.com, api.cloudflare.riftbound.uvsgames.com | `Disallow: /` for `anthropic-ai` and `Claude-Web` (and ClaudeBot on two of them). `User-agent: *` is allowed on all four. | DATA. `raw/robots-*.txt` |
 | riftbound.org robots.txt | `Allow: /`; disallows `/search`, `/admin`, auth pages, `/meta/*/*/copy`, `/decks/*/*/copy`, `/*/calendar.ics`. No crawl delay. | DATA. `raw/robots-riftbound.org.txt` |
-| riftbound.org terms | The page exists (`updated: 2026-11-03` in its props) but its text is rendered in the browser from the script bundle. | UNCONFIRMED: text not read |
+| riftbound.org terms | "Fair use of the site. You may browse, search and link to the site as much as you like. You may not: send automated requests at a rate that slows the site down for others, try to get around its security or to reach parts that are not public, use it to break the law or the rights of someone else." Also: "You may link to any page and quote short passages with a link back. Please do not copy the site as a whole or present it as your own." Terms `updated: 2026-11-03`. | DATA. https://riftbound.org/terms; the text is in the page's script chunk `build/assets/Terms-DmWgnLrZ.js`, fetched 2026-11-11 (`raw/v3-rorg-Terms-DmWgnLrZ.js`). Slow automated reading of public pages is not forbidden by this text; copying the site wholesale is asked against. |
 | riftbound.one robots.txt | `Allow: /`, `Crawl-delay: 1`; AI crawlers explicitly allowed. | DATA. `raw/robots-www.riftbound.one.txt` |
 | locator.riftbound.uvsgames.com robots.txt | `Allow: /`, `Disallow: /players/` | DATA. `raw/robots-locator.riftbound.uvsgames.com.txt` |
 
@@ -66,6 +67,15 @@ Server-rendered Inertia app. Every page carries its whole data as JSON in `<scri
 | `/meta/tournaments` (plus `?page=N`) | `Meta/Tournaments` | `tournaments[]` (about 50 per page), `total`, `players`, `span` |
 | `/meta/tournaments/{slug}` (plus `?page=N` for standings) | tournament page | `tournament`, `winner`, `bracket[]`, `field[]`, `matchups`, `standings[]` (100 per page) |
 | `/sitemap.xml` → `sitemap-pages.xml` (4,046 URLs), `sitemap-events.xml` (38,685), `sitemap-cards.xml` | | every legend, deck and tournament URL |
+
+Query parameters and a lighter transport (DATA, tested 2026-11-11 third pass, files `raw/v3-rorg-*`):
+
+- `?window={key}` selects the era: `radiance` (default), `vendetta-bans` (2026-09-18 to 2026-10-22, 3,284 lists in `pool`, 56 legends, 13 tournaments with card lists), `vendetta`. `/meta?window=vendetta-bans` returned HTTP 200 with that window in `props.window`.
+- `?result=top-cut` restricts `/meta` to top-cut lists: `pool: 85`, 17 tournaments, 23 legends (Riven 23 lists, share 0.2706). `?field=64&result=top-cut` (events with at least 64 players) gives 37 lists from 4 tournaments, 11 legends. Other filter keys present in `props.filters`: `domain`, `event` (`championship`, `showdown`, `cash_event`, `store_event`, `tournament`), `country`, `from`, `to`, `rate_min`, `rate_max`, `sort`. Use the scalar form: the bracketed form `result[]=top-cut&field[]=64` returned HTTP 500.
+- `/meta/cards?legend=…` **ignores** `result` (same 186 lists with or without it). So the site offers a ready-made top-cut view per legend but not per card; top-cut card inclusion has to be computed from lists we store ourselves.
+- The site speaks the Inertia protocol. A GET with the headers `X-Inertia: true` and `X-Inertia-Version: {version}` (the `version` string in the embedded page JSON, `e95ee5be…` today) returns the same page object as `application/json` without the HTML: `/meta` is 303 KB as HTML and 73 KB as JSON. Adding `X-Inertia-Partial-Component: {component}` and `X-Inertia-Partial-Data: {comma-separated prop names}` returns only those props: `/meta` with `window,rows,pool,lists,tournaments` is 40 KB; the RC Europe tournament page with `tournament,field,matchups,pages` is 14 KB; a deck page with `deck,tournament` is 238 KB (274 KB as full JSON, about 500 KB as HTML). What the server does when the version header is stale was not tested (UNCONFIRMED; the Inertia convention is HTTP 409 with an `X-Inertia-Location` header, after which the client reloads the HTML).
+- No cache validators: responses carry `cache-control: no-cache, private`, no `ETag`, no `Last-Modified`, and `cf-cache-status: DYNAMIC`. Conditional GET is not available; decide what to refetch from the tournament list (`decks` count per tournament) instead.
+- Each response sets session cookies. The sync does not need to send them back.
 
 Trimmed real samples (DATA; player fields removed):
 
@@ -101,7 +111,13 @@ Trimmed real samples (DATA; player fields removed):
 {"id":318733,"round":"Round 1","stage":"swiss","result":"lost","games":"1-2","opponent":"<removed>"}
 {"legal":false,"counts":{"main":39,"rune":12,"battlefield":0,"sideboard":10,"signatures":3},
  "sizes":{"main":40,"rune":12,"battlefield":3,"copies":3,"signatures":3,"sideboard":10},"champion_tag":"Riven"}
+
+// same deck page: one of props.tournament.faced (this deck's record against each opposing legend), and props.deck.text
+{"key":"kennen-heart-of-the-tempest","name":"Kennen, Heart of the Tempest","wins":3,"losses":2,"draws":1,"matches":6}
+"<deck name>\n\nLegend\n1 The Exile (RAD-149/167)\n\nMain deck (39)\n2 Defy (OGN-045/298)\n1 En Garde (OGN-046/298)\n…"
 ```
+
+Two deck-page fields make parsing cheap: `deck.text` is the whole list as plain text with official card codes, and `tournament.faced[]` is that deck's wins, losses and draws against every opposing legend it met, not only the eight most played. Each card object inside a deck also repeats the global `meta` block (`share`, `decks`, `lists`, `side_share`, `copies`, `rank`), which is why the pages are large.
 
 Fields available: placement (`rank`, `place`, `top_cut`), record, event size (`players`), date, kind, country, format label ("Constructed"), legend, list by section with quantities, side deck, per-match results with game score, a per-tournament matchup table, field table per tournament, price.
 
@@ -110,7 +126,10 @@ Volume (DATA, n as stated by the pages):
 - `/meta/tournaments`: `total: 285`, `players: 56459`, `span.from: 2026-02-20`. With the default filter "legends known" the list shows 99 tournaments holding 11,617 lists.
 - Since Radiance became legal (2026-10-23): 25 tournaments listed, 19 with lists, 1,490 lists by the list's `decks` column; `/meta` reports 1,485 in `pool` and 1,179 `lists` with cards. The largest: LDXP Sacramento Showdown 25k (2026-10-24, 755 players, 723 lists), RC Europe (315, 309), Convergence IV (2026-10-31, 272, 235).
 - 52 legends appear in the window; 13 have at least 30 lists, 33 have at least 10. Riven has 312 (21.0%), Kennen 143, Kai'Sa 141, then a long tail under 60 each.
-- Other windows offered: "Vendetta after the bans" (1,365 lists) and "Vendetta" (521). The query parameter that selects a window was not tested (UNCONFIRMED; the tournaments page has a `window` filter key).
+- Other windows offered: "Vendetta after the bans" (1,365 lists with cards) and "Vendetta" (521), selected with `?window=` (see above).
+- Where the Radiance lists come from (filter counts on `/meta`, n = 1,485): by event kind, Showdown Series 728, Regional Championship 307, other tournaments 389, store events 35, cash events 26; by country, United States 908, Germany 307, no country (online or unknown) 270; from events with at least 64 players 1,296, at least 512 players 721. Three events (Sacramento 723, RC Europe 309, Convergence IV 235) supply 85% of the window. Top-cut lists: 85; winners: 15.
+- Matchup tables summed over the window (DATA, 19 tournament pages fetched 2026-11-11, `raw/v3-t/*.json`): the 19 tournaments report 4,763 matches in all; their tables (eight most played legends per event, mirrors excluded) cover 1,528 of them, in 94 unordered legend pairs across 26 legends. Pairs with at least 100 matches: 2 (Kai'Sa against Riven 276 matches, 125-142-9 from Kai'Sa's side, 9 events; Kennen against Riven 262, 129-118-15, 8 events). At least 50: 6. At least 30: 11. Between 10 and 29: 24. Under 10: 59. Median 4.5. Every non-mirror cell is consistent with its reverse cell (0 of 188 disagree).
+- Cross-check against the primary source (DATA): for RC Europe the official article's Day 1 legend counts (section 3.4, 28 legends, 308 players) equal riftbound.org's `field[].players` for 27 of 28 legends; the one difference is Rengar (official 6, riftbound.org 7). riftbound.org lists 315 entrants, 6 of them under "Legend not published".
 
 Freshness: the newest tournament in the list is dated 2026-11-08, three days before the fetch. The three Stuttgart side events of 2026-11-06 to 11-08 (1,208 to 1,976 players) are listed with 0 lists, so decklists lag standings.
 
@@ -119,20 +138,22 @@ Caveats (DATA):
 - Lists that come from the official decklist export are **partial**: the RC Europe list examined has `"partial": true, "missing": {"champion": 1, "battlefield": 3}` and 39 main-deck cards. So battlefield choice and chosen champion cannot be learned from those lists. Rune counts and the side deck are present.
 - `/meta/cards` sections are `deck`, `battlefield`, `legend`. Runes are not in the card table, so the rune split needs the deck pages.
 - Mirror cells in `matchups.cells` are not symmetric (Riven versus Riven shows 88-112-10). Ignore mirror cells.
-- The matchup table covers only the 8 most played legends of that tournament. Other pairings have to be rebuilt from deck-page `matches[]` joined to standings, which costs one request per deck.
-- Page weight is high: a deck page is about 500 KB, a legend page about 870 KB, because each card object is repeated in full.
+- The matchup table covers only the 8 most played legends of that tournament. Other pairings can be rebuilt by summing deck-page `tournament.faced[]` rows per legend, which costs one request per deck (each match is then seen from both sides, so halve the totals or count from one side only). Small events list fewer legends (5 or 6), and events with a single published list have no table.
+- Page weight is high: a deck page is about 500 KB as HTML, a legend page about 870 KB, because each card object is repeated in full. Use the Inertia JSON transport above.
+- Standings of RC Europe: 99 of the first 100 rows are `partial: true`. Expect every official-export list to lack battlefields and the chosen champion.
 - Legend naming: `rows[].name` is the full "Riven, The Exile"; inside deck pages the legend card has `name: "The Exile"` and tag "Riven", the same split the official gallery now uses (`legality-and-data.md` section 1). Join on the gallery id, never on a name.
 
 Polite recipe:
 
-1. `GET /meta` (1 request). Store `window`, legend rows.
+0. `GET /meta` as HTML once per run to read `version` from the embedded page JSON; send it as `X-Inertia-Version` with `X-Inertia: true` on every later request and ask only for the props needed (`X-Inertia-Partial-Component`, `X-Inertia-Partial-Data`). If a response is not `application/json` (version changed mid-run), re-read the version once and continue; if it happens twice, fall back to parsing HTML.
+1. `GET /meta` (1 request). Store `window`, legend rows. `GET /meta?result=top-cut` (1 request) for the ready-made top-cut legend rows. If `window.key` or `window.from` differs from the stored one, a new era has started on the site: re-run the legality sync before trusting anything.
 2. `GET /meta/tournaments?page=1..N` until a page is older than the last sync (2 requests today).
 3. For each tournament that is new, or whose `decks` count changed: `GET /meta/tournaments/{slug}` and its standings pages (RC Europe has 4). Store tournament, field, standings without names, matchup cells.
 4. For each legend in `/meta` rows: `GET /meta/cards?legend={key}&page=1..pages` (Riven: 114 cards, 2 pages; about 110 requests for all 52 legends).
 5. Deck pages only where the list is needed: top-cut lists first (85 in the window), then lists of the legend the user is building, in the background, newest first, capped per run. Skip ids already stored; a stored deck never changes.
-6. 2 s between requests, stop on any 429 or 5xx and retry next run, at most one full sync per day. Send `If-Modified-Since` or `If-None-Match` when the previous response gave validators (not checked whether it does: UNCONFIRMED).
+6. 2 s between requests, stop on any 429 or 5xx and retry next run, at most one full sync per day. There are no validators to send (see above); skip a tournament whose `decks` count is unchanged and never refetch a stored deck id.
 
-A first full sync without deck pages is about 130 requests, under 5 minutes. All 1,179 deck pages would be about 600 MB and 40 minutes; do not do that in one go.
+A first full sync without deck pages is about 130 requests, under 5 minutes, and about 20 MB with partial JSON. All 1,179 deck pages would be about 280 MB as partial JSON (600 MB as HTML) and 40 minutes; do not do that in one go. The third pass of this research made 37 requests to the site at 2 s spacing and saw no throttling.
 
 ### 3.2 Piltover Archive (community deck builder; allowed by the owner)
 
@@ -145,6 +166,7 @@ Next.js App Router. No `__NEXT_DATA__`; data sits in `self.__next_f.push([1,"…
 | `/sitemap.xml` → `/sitemap/decks/1..21`, `/sitemap/pages`, `/sitemap/profiles/1..5`, `/sitemap/teams/1` | deck sitemaps hold 5,000 URLs each with `lastmod` |
 | `/tournaments`, `/tournaments/{uuid}` | page shell only; the table is filled in the browser. Title and meta description are server-rendered. |
 | `/meta` | HTTP 404. There is no meta or tier page. |
+| caching | `/decks?page=1` answers `cache-control: private, no-cache, no-store, max-age=0, must-revalidate` with no `ETag` (third pass, 669 KB); `/sitemap.xml` answers `public, s-maxage=3600, stale-while-revalidate=86400`. So conditional GET does not help; the sitemap `lastmod` is the change signal. |
 | `/api/…` | disallowed by robots.txt; not called. |
 
 Trimmed real samples (DATA, `raw/pa-decks-p1.html`, `raw/pa-deck-1.html`):
@@ -256,8 +278,18 @@ DATA (11 articles parsed with `analysis/meta-sources/official-parse.mjs` into `r
 | 2026-08-26 | barcelonas-top-decks | 41 | 2,130 | 379 | 41 |
 | 2026-09-09 | singapores-top-decks | 43 | 1,893 | 303 | 41 |
 | 2026-09-30 | los-angeles-top-decks | 44 | 1,962 | 371 | 41 |
+| 2026-11-11 | best-ofs-for-the-european-championship (RC Europe, Stuttgart, Radiance era) | 28 | 308 | 96 | 24 |
 
-Total 459 lists. A twelfth, older article exists at `/en-us/news/announcements/from-garen-to-annie-rq-houstons-top-decks/` (not parsed).
+Total 483 lists (459 in the first eleven, parsed into `raw/official-events.json`; the twelfth was read in the third pass from `raw/v3-prb-rc-europe.html` and is not yet in that JSON file).
+
+The RC Europe article (FACT, fetched 2026-11-11 about 20:25 UTC, published 2026-11-11T17:00:00Z):
+
+- Field table header "Day 1 / Day 2", columns "Legend, # Played, % of Field, # Played, % of Field". Top rows: Riven 126 (40.90%) and 47 (49.00%); Kai'Sa 52 and 17; Kennen 45 and 12; Master Yi, Wuju Bladesman 16 and 4; Rek'Sai 10 and 5.
+- "a Top 8 of four Riven, three Kennen, and a Kai'Sa"; Kennen won.
+- All 24 lists have the same shape: Legend 1, Champion 1, Main Deck 39, Battlefields 3, Rune Pool 12, Sideboard 10. These are the only primary-source Radiance lists with battlefields and chosen champion (riftbound.org's copies of the same event lack both).
+- The article explains why there are fewer lists than before: "The Regional Championship format changed to decrease the importance of Best-Of as a motivator for this tournament … As such the variety of decks here is far fewer than have been previously seen at Regional Qualifiers." Lists are the best finisher of each legend, so some are far down the standings (two of the lists shown have "Overall Ranking" #290 and #297). Weight them by overall rank, not by the fact of being published.
+- Pending bans: "the game team are considering bans to the format, and any decisions they make will be shared on this coming Friday. These bans are targeted to go into effect on November 23."
+- The parser `official-parse.mjs` matches file names ending in `top-decks` or `bologna`; this slug needs adding ("best-ofs"), and this article writes "Overall Ranking" where older ones write "Overall Rank" (the parser's pattern already accepts both). One more, older article exists at `/en-us/news/announcements/from-garen-to-annie-rq-houstons-top-decks/` (not parsed).
 
 ```json
 // field row (Los Angeles)                      // deck (player removed)
@@ -271,9 +303,9 @@ Total 459 lists. A twelfth, older article exists at `/en-us/news/announcements/f
 
 What it gives: the only primary-source field composition (legend counts on Day 1 and Day 2, so a Day 2 conversion rate per legend), and the best-finishing list of each legend with its overall rank. Side deck totals are 8 through Hartford and 10 from Barcelona on, matching the rule change recorded in `rules.md` (TR 601.1.c.1, sideboard "10 or fewer"). Cards are given by name, so they must be resolved against the card table; older articles omit the legend line or the battlefields for some lists (see the section counts printed by the parser), so validate each list and keep only complete ones.
 
-Freshness: none for Radiance. The newest organised-play items on 2026-11-11 are "Riftbound World Showcase" (2026-11-05) and "All Eyes on RC Europe" (2026-10-27). The Los Angeles article appeared 4 days after the event; a Stuttgart article may still come (UNCONFIRMED).
+Freshness: one Radiance article so far. The newest organised-play items on 2026-11-11 (third pass) are "Best Ofs for the European Championship" (2026-11-11), "Riftbound World Showcase" (2026-11-05) and "All Eyes on RC Europe" (2026-10-27). The Los Angeles article appeared 4 days after its event and the RC Europe article 3 days after its final day. These pages do send an `ETag` (`cache-control: public,max-age=0,must-revalidate`), so `If-None-Match` works for the index.
 
-Recipe: fetch the index page once per sync; for each unseen slug matching `top-decks` or `best-decks`, fetch and parse it once. About one request per month.
+Recipe: fetch the index page once per sync; for each unseen slug whose title or slug contains `top-decks`, `best-decks` or `best-ofs`, fetch and parse it once. Do not rely on the slug pattern alone (it has changed three times): also accept any organised-play article whose body contains both "Legend Rank" and "Rune Pool". About one request per month. The same index is where ban announcements appear, so the legality sync should read it too.
 
 ### 3.5 riftbound.one `/decklists` (community; top-3 lists)
 
@@ -285,9 +317,9 @@ One static HTML page of 7.7 MB. Rows are `<tr class="deck-row" id="deck-N">` wit
  {"id":"RAD-043","qty":1},{"id":"OGN-067","qty":2},"…"]}  "tcgPlayerId":"721334","price":1.75}
 ```
 
-DATA (`raw/r1-parsed.json`, fetched 2026-11-11): 535 lists, 169 events, 51 legends; results 183 first, 176 second, 176 third; by month 04/26: 98, 05/26: 157, 06/26: 104, 07/26: 46, 08/26: 68, 09/26: 35, 10/26: 27. In August the same page had 381 lists (`Untitled/docs/META_INGESTION.md`). The most common section shape is legend 1, champion 1, runes 12, battlefields 3, main 39, side deck 10 (130 lists) or 8 (78); about a fifth of rows are incomplete. Events include Chinese City Challenges and Regional Opens that no other English source lists.
+DATA (`raw/r1-parsed.json`, fetched 2026-11-11): 535 lists, 169 distinct (event name, month) pairs under 145 distinct event names, 51 legends; results 183 first, 176 second, 176 third; by month 04/26: 98, 05/26: 157, 06/26: 104, 07/26: 46, 08/26: 68, 09/26: 35, 10/26: 27. In August the same page had 381 lists (`Untitled/docs/META_INGESTION.md`). The most common section shape is legend 1, champion 1, runes 12, battlefields 3, main 39, side deck 10 (130 lists) or 8 (78); about a fifth of rows are incomplete. Events include Chinese City Challenges and Regional Opens that no other English source lists.
 
-Limits: no event size, no exact date, top 3 only, no records. robots.txt: allowed, `Crawl-delay: 1`. Recipe: one GET per sync with `If-None-Match`; reuse the parser in `Untitled/netlify/lib/meta-ingestion-core.mjs` (it already validates the two JSON blocks and maps "1ST" to a rank).
+Limits: no event size, no exact date, top 3 only, no records. robots.txt: allowed, `Crawl-delay: 1`. A `HEAD` request in the third pass returned `cache-control: public, max-age=0, must-revalidate` and no `ETag` or `Last-Modified`, so whether conditional GET works is UNCONFIRMED (the older project's sync code handles `304`, which suggests the GET response did carry a validator in August). Recipe: one GET per sync, with `If-None-Match` when the last GET gave an `ETag`, otherwise compare a hash of the body; reuse the parser in `Untitled/netlify/lib/meta-ingestion-core.mjs` (it already validates the two JSON blocks and maps "1ST" to a rank).
 
 ### 3.6 Riftools (community; do not scrape the stats)
 
@@ -335,16 +367,16 @@ Y = present and machine-readable, P = partial, N = absent. "RAD n" is lists date
 | Legend win rate, share, top cut | Y | N | derivable | P (Day 1 to Day 2 conversion) | N |
 | Card inclusion per legend | Y (ready-made) | derivable | derivable | derivable (small n) | derivable (small n) |
 | Matchup matrix | Y (top 8 legends per event) | N | derivable if match endpoint is public | N | N |
-| RAD n | 1,179 lists with cards, 19 events | 3,605 decks touched since 10-26 (community, unfiltered) | RC Europe: 315 entrants with deck ids | 0 | 27 |
-| Lag | about 3 days | minutes | live | about 4 days, irregular | weeks |
+| RAD n | 1,179 lists with cards, 19 events | 3,605 decks touched since 10-26 (community, unfiltered) | RC Europe: 315 entrants with deck ids | 24 lists, 1 event (plus its 28-legend field table) | 27 |
+| Lag | about 3 days | minutes | live | 3 to 4 days, majors only | weeks |
 
 ## 5. What is and is not available for each goal
 
 1. **Power target.** There is competitive data (whole fields with standings) and community data (Piltover Archive lists with views and likes). There is **no dataset of casual play**: nobody publishes kitchen-table lists with outcomes. "Casual" will be defined by rule and judgement (section 8).
 2. **Per-legend inclusion and co-play.** Inclusion, average copies and side deck share per legend are ready-made on riftbound.org. Co-play (pairs) is not published anywhere; it has to be computed from stored lists, so it is limited to lists we fetched in full.
-3. **Matchups.** Per-tournament legend tables on riftbound.org, top 8 legends of each event. Summed over the Radiance events this gives usable n only for the most played pairings (Riven against Kennen at RC Europe alone: 143 matches; median cell 8). There is no archetype-level or list-level matchup data, no play-first or draw-first split, and nothing for pre- versus post-sideboard games.
+3. **Matchups.** Per-tournament legend tables on riftbound.org, top 8 legends of each event. Summed over the 19 Radiance events: 1,528 non-mirror matches, 94 pairs, 11 pairs with at least 30 matches, median 4.5 (section 3.1). Said plainly: **usable matchup win rates exist for about ten legend pairings, nearly all of them involving Riven, Kennen or Kai'Sa. For every other pairing there is no usable matchup data anywhere that a script may read**, and the app has to show a computed estimate marked as such. Fetching every deck page and summing `faced[]` would widen coverage to all pairs but cannot create matches that were not played: 1,485 lists over 52 legends leave most of the 1,326 possible pairs with a handful of matches. riftdecks.com publishes per-event and aggregate matrices (search result titles on 2026-11-11: "Matchups Analysis - 11434 Matches Analyzed" for Constructed; per-event "Winrates Matrix" pages for Convergence IV and RC Europe) but forbids scraping and blocks AI agents, so it is a by-eye reference only. There is no archetype-level or list-level matchup data, no play-first or draw-first split, and nothing for pre- versus post-sideboard games.
 4. **Side deck and rune split.** Side deck share per card per legend: ready-made. Rune split: from full lists only (Piltover Archive lists, riftbound.org deck pages, official articles). Side deck plans against a named opponent ("what comes in against Riven"): not published anywhere as data.
-5. **2v2 and FFA.** No results source. Core Rules define FFA3 "Skirmish" (CR 489), FFA4 "War" (CR 490) and 2v2 "Magma Chamber" (CR 491), and there is a 2v2 ban list (both per `legality-and-data.md` sections 3.3 and 3.4). The data on hand: a few dozen self-labelled Piltover Archive lists, one "Team Trios" event on riftbound.org (2026-08-22, 40 players, 39 lists), and 2v2 side events at Stuttgart that appear only in deck names. The locator can tell team events apart, so official 2v2 results may exist there (UNCONFIRMED). Plan for multiplayer advice to be rules-based with a clearly labelled, small community sample.
+5. **2v2 and FFA.** No results source (a web search on 2026-11-11 for 2v2 standings and decklists found only the TopDeck.gg "Dual Queue" event listing and a start.gg team event page showing no standings). Core Rules define FFA3 "Skirmish" (CR 489), FFA4 "War" (CR 490) and 2v2 "Magma Chamber" (CR 491), and there is a 2v2 ban list (both per `legality-and-data.md` sections 3.3 and 3.4). The data on hand: a few dozen self-labelled Piltover Archive lists, one "Team Trios" event on riftbound.org (2026-08-22, 40 players, 39 lists), and 2v2 side events at Stuttgart that appear only in deck names. The locator can tell team events apart, so official 2v2 results may exist there (UNCONFIRMED). Plan for multiplayer advice to be rules-based with a clearly labelled, small community sample.
 
 ## 6. How earlier work treated this
 
@@ -465,13 +497,14 @@ Everything in this section is HEURISTIC unless marked. Each constant should live
 ### 8.1 Eras
 
 - An era starts on the later of: the newest set's Constructed-legal date and the newest ban effective date. FACT (dates, per `legality-and-data.md` sections 2.1 and 3.1): Radiance legal 2026-10-23; last ban effective 2026-09-18. Current era: `RAD`, from 2026-10-23. Previous: `VEN-postban` (2026-09-18 to 2026-10-22), `VEN-preban` (2026-07-31 to 2026-09-17). riftbound.org cuts its windows the same way.
+- Pending change (FACT, section 3.4): a ban decision is announced for Friday 2026-11-13, with bans "targeted to go into effect on November 23". If any Standard ban is confirmed, a new era `RAD-postban` starts on its effective date and the current one closes after one month with about 1,500 lists. The era table must therefore be data produced by the legality sync (set legal dates and ban effective dates), never a constant, and the meta sync must re-derive eras on every run. Until the effective date, lists containing a card announced as banned stay in the current era's statistics but the UI should mark the card "banned from <date>"; from the effective date the existing rule below removes those lists.
 - A deck belongs to the era of its event date; a community deck to the era of its last edit.
 - A deck with a card banned today is dropped from every statistic (kept in raw). A deck with a card not yet legal on its event date is dropped.
 
 ### 8.2 Recency
 
 - Inside the current era: weight `r = 0.5 ^ (age_days / 21)`, age measured from the newest event in the data, not from today, so a quiet fortnight does not shrink everything. Half-life 21 days because a set's first three weeks move fastest; revisit when the era is two months old.
-- Previous era: used only when the current era has `n_eff < 20` for that legend; then weight `0.25 * r` and only cards still legal. Label any number that used previous-era data in the UI ("includes pre-Radiance lists").
+- Previous era: used only when the current era has `n_eff < 20` for that legend; then weight `0.25 * r` and only cards still legal. Label any number that used previous-era data in the UI ("includes pre-Radiance lists"). Right after a ban every legend is in this state, so the first weeks of a post-ban era run mostly on down-weighted earlier lists with the banned-card lists removed; say so on screen.
 - Month-precision dates (riftbound.one) are taken as the 15th of the month.
 
 ### 8.3 Placement and event size
@@ -556,23 +589,25 @@ A list's level read-out: `competitive_score = 100 * weighted overlap with the le
 
 | Need | First | Then | Then | Last resort |
 |---|---|---|---|---|
-| Legend field share, win rate | riftbound.org `/meta` | sum of official article field tables (previous era, labelled) | RiftAtlas event metagame tables (if mapped) | none shown; legend tier "unknown" |
+| Legend field share, win rate | riftbound.org `/meta` | official article field tables (RC Europe for the current era; earlier ones labelled previous era) | RiftAtlas event metagame tables (if mapped) | none shown; legend tier "unknown" |
 | Card inclusion per legend | computed from our stored lists | riftbound.org `/meta/cards?legend=` (`source_card_stat`) | domain-pair aggregate over all stored lists | rules-based only |
 | Full lists with battlefields | Piltover Archive | official articles | riftbound.one | bundled seed |
 | Matchups | riftbound.org tournament cells | locator matches (if confirmed public) | user-imported CSV (`matchups-and-lines.md` 4.1 recommendation) | computed estimate, marked |
 | Rune split, side deck | stored full lists | riftbound.org deck pages for top-cut lists | none | computed from costs |
 
-6. **Bundled seed.** Ship nothing scraped in the repo. On first run with no network, the app has no meta and says so. (The 459 official-article lists and the 59-deck GameLab sample can be imported locally by a one-off command; they are pre-Radiance and get the previous-era label.)
+6. **Bundled seed.** Ship nothing scraped in the repo. On first run with no network, the app has no meta and says so. (The 483 official-article lists and the 59-deck GameLab sample can be imported locally by a one-off command; all but the 24 RC Europe lists are pre-Radiance and get the previous-era label.)
 7. **Shape changes.** Every parser validates what it extracted (counts per zone, known card ids, share within 0 to 1, totals that add up) and rejects the page otherwise. A rejected page is a failure for that source, not a row of bad data. Keep one saved fixture per page type under the test folder for parser tests (fixtures stay local, see `.gitignore`).
 
 ## 10. What stayed unconfirmed
 
 - Whether the official locator's API endpoints for matches, standings and public decks answer without a login, and their shapes. Not requested (robots.txt disallows AI agents on that host). One manual check by the owner settles it.
-- riftbound.org's terms text (rendered client-side), the query parameter for older windows, whether it sends cache validators, and how it computes `win_rate`, `edge` and mirror cells. Its numbers are a community computation; none was cross-checked against the locator.
+- How riftbound.org computes `win_rate`, `edge` and mirror cells, and what it answers to a stale `X-Inertia-Version`. Its numbers are a community computation; the legend counts of one event were cross-checked against the official article (27 of 28 equal), nothing was cross-checked against the locator, and no win rate was cross-checked against anything. (Settled in the third pass: its terms text, the `window` parameter, and that it sends no cache validators.)
+- Which cards, if any, will be banned on 2026-11-13 and whether the 2026-11-23 effective date holds. The official article says only that bans are being considered.
+- Whether riftbound.one supports conditional GET (neither the saved GET headers of the first pass nor a HEAD in the third pass show an `ETag`).
 - riftbound.gg's data endpoints and volumes (the "12,221 lists of 210 tournaments" figure is TCG Panel's statement about it), riftdecks.com's matrix values, riftmana and riftboundop content: none fetched.
 - TopDeck.gg API terms and fields for Riftbound; whether "Dual Queue" there is a 2v2 event with decklists.
 - Whether any 2v2 or FFA event publishes results with decklists anywhere.
-- Whether an official "Top Decks" article will be published for RC Europe or other Radiance events.
+- Whether official articles will follow for other Radiance events (the Sacramento Showdown of 2026-10-24 has none; the series so far covers Regional Qualifiers and the Regional Championship only).
 - How `GameLab/data/decks/samples/piltover-archive-2026-09-06.json` was produced (no script found; inferred to be hand-saved from an agent session).
 - Whether the main-deck count of 39 in official exports always means "chosen champion omitted" (true for the one RC Europe list examined and consistent with the official articles' "Main Deck: 39 + Champion: 1" layout).
 
@@ -586,4 +621,29 @@ Under `docs/research/analysis/`:
 - `meta-sources/uvs.mjs`, `uvs2.mjs`: official locator page readers (names redacted on output).
 - `meta-sources/inertia.py`: prints the trimmed props of a riftbound.org page.
 - `meta-sources/crawl-pa-tournaments.sh`, `fl.mjs`, `shape.mjs`, `sm.mjs`: Piltover Archive tournament titles, flight-payload grep, shapes, sitemap check.
-- `meta-sources/raw/`: every page fetched for this file, with response headers in `*.hdr` (git-ignored).
+- `meta-sources/v3-get.mjs` (serial fetcher, 2 s spacing, prints status and cache headers) and `meta-sources/v3.py` (Inertia props loader): third-pass helpers.
+- `meta-sources/raw/`: every page fetched for this file, with response headers in `*.hdr` (git-ignored). Third-pass files are `raw/v3-*`; the 19 Radiance tournament pages are in `raw/v3-t/`.
+
+## 12. Verification log, third pass (2026-11-11, about 20:15-20:40 UTC)
+
+Re-fetched and found unchanged (DATA):
+
+- riftbound.org `/meta`: window `radiance` from 2026-10-23, `lists` 1,179, `pool` 1,485, 19 tournaments, 52 legend rows, Riven 312 lists (share 0.2101, 1,146-899-92), Kennen 143, Kai'Sa 141; 13 legends with at least 30 lists, 33 with at least 10.
+- riftbound.org `/meta/tournaments`: total 285, players 56,459, span from 2026-02-20; 25 tournaments dated on or after 2026-10-23, 19 with lists, 1,490 lists by the `decks` column.
+- riftbound.org RC Europe page: 315 players, 307 decks, 12 Swiss rounds, top cut 8, 1,130 matches, 8-legend matchup table, 29 field rows, standings 100 per page over 4 pages.
+- riftbound.org deck page (the second-place list): rules counts main 39, rune 12, battlefield 0, sideboard 10; `missing` champion 1 and battlefield 3; entry 11-2-2; 15 matches.
+- `/meta/cards?legend=riven-the-exile`: 114 cards, 2 pages, 186 lists; sections on page 1: deck 83, battlefield 16, legend 1.
+- Piltover Archive `/decks?page=1`: `total` 10000, `totalPages` 417; sitemap index: 21 deck files, 1 pages, 5 profiles, 1 teams.
+- Saved raw files agree with the text for: 459 lists in 11 official articles; riftbound.one 535 lists (183 / 176 / 176 by result, month counts as stated); Limitless 10 tournaments, newest 2026-07-19, 4 to 32 players; Piltover Archive 141 tournament pages dated 2025-07-06 to 2026-06-20; the Riot policy sentences quoted in section 2; the three AI user agents under `Disallow: /` on the locator's API host.
+- Local sample: `GameLab/data/decks/samples/piltover-archive-2026-09-06.json` has 59 decks (49 complete, 10 not) and the stated `source` string; no producing script exists in `GameLab/scripts/` (only `card-fleet.mjs`, `card-fleet.test.mjs`, `deploy.sh`) or elsewhere in GameLab or Untitled outside readers and documents.
+
+Changed or added by the third pass:
+
+1. New official article for RC Europe (published 2026-11-11T17:00Z): headline finding 5, section 3.4, coverage matrix. "Official data stops before Radiance" was true at 16:00 UTC and is no longer true.
+2. Pending ban decision (2026-11-13, effective 2026-11-23 if confirmed): headline finding 5a, section 8.1.
+3. Matchup volume measured across the whole window instead of one event: 1,528 non-mirror matches, 94 pairs, 11 pairs with n of at least 30: headline finding 1, sections 3.1 and 5.
+4. riftbound.org: `window`, `result`, `field` parameters; Inertia JSON and partial requests with measured sizes; no cache validators; `faced[]` and `text` on deck pages; terms text read; field counts cross-checked against the official article.
+5. riftbound.one: "169 events" corrected to 169 (event, month) pairs under 145 event names; conditional GET marked UNCONFIRMED.
+6. Piltover Archive: cache headers recorded.
+
+Not re-fetched in the third pass (text rests on the first two passes' raw files): Piltover Archive deck pages, tournament pages and terms; the locator pages; Riftools; RiftAtlas; TopDeck.gg; TCG Panel; riftboundstats.com; Mobalytics; TCGplayer; melee.gg; RiftCompare. Still not fetched at all, by choice: riftbound.gg, riftmana.com, riftdecks.com, riftboundop.com and the locator's API host (section 2).

@@ -44,21 +44,21 @@
    }
   },
   "combat_trick": {
-   "all": 65,
-   "deckable": 63,
+   "all": 77,
+   "deckable": 75,
    "byType": {
-    "unit": 1,
-    "spell": 61,
+    "unit": 8,
+    "spell": 66,
     "gear": 1,
     "legend": 2,
     "battlefield": 0
    },
-   "rad": 10,
+   "rad": 12,
    "why": {
-    "might": 36,
-    "stun": 10,
-    "grantKeyword": 9,
-    "ready": 5,
+    "might": 40,
+    "grantKeyword": 13,
+    "stun": 12,
+    "ready": 8,
     "prevent": 3,
     "doubleMight": 2,
     "setMight": 1,
@@ -66,19 +66,19 @@
    }
   },
   "counter_protection": {
-   "all": 33,
-   "deckable": 31,
+   "all": 34,
+   "deckable": 32,
    "byType": {
     "unit": 8,
     "spell": 19,
-    "gear": 4,
+    "gear": 5,
     "legend": 1,
     "battlefield": 1
    },
    "rad": 3,
    "why": {
     "counter": 12,
-    "death-replacement": 8,
+    "death-replacement": 9,
     "grant-Deflect": 5,
     "prevent": 4,
     "retarget": 2,
@@ -104,18 +104,18 @@
    }
   },
   "card_selection": {
-   "all": 54,
-   "deckable": 49,
+   "all": 55,
+   "deckable": 50,
    "byType": {
     "unit": 28,
-    "spell": 14,
+    "spell": 15,
     "gear": 7,
     "legend": 1,
     "battlefield": 4
    },
    "rad": 15,
    "why": {
-    "look": 44,
+    "look": 45,
     "Vision": 8,
     "banishTop": 3
    }
@@ -198,10 +198,10 @@
    }
   },
   "buff_source": {
-   "all": 122,
-   "deckable": 106,
+   "all": 121,
+   "deckable": 105,
    "byType": {
-    "unit": 47,
+    "unit": 46,
     "spell": 6,
     "gear": 53,
     "legend": 8,
@@ -212,28 +212,27 @@
     "equipment": 43,
     "buff-counter": 40,
     "keyword-anthem": 25,
-    "anthem": 16,
-    "permanent-might": 1
+    "anthem": 16
    }
   },
   "mobility": {
-   "all": 98,
-   "deckable": 91,
+   "all": 94,
+   "deckable": 87,
    "byType": {
-    "unit": 61,
+    "unit": 59,
     "spell": 21,
-    "gear": 9,
+    "gear": 7,
     "legend": 5,
     "battlefield": 2
    },
-   "rad": 14,
+   "rad": 13,
    "why": {
     "move": 32,
     "grant-Ganking": 23,
     "Ganking": 18,
     "play-anywhere": 13,
-    "recall": 7,
     "swapPlaces": 4,
+    "recall": 3,
     "equip-Ganking": 2
    }
   },
@@ -287,7 +286,7 @@
    "rad": 13,
    "why": {
     "move-enemy": 28,
-    "stun": 25,
+    "stun": 26,
     "shrink": 23,
     "bounce": 16,
     "restriction": 15,
@@ -301,7 +300,7 @@
    }
   }
  },
- "noRoleDeckable": 184,
+ "noRoleDeckable": 179,
  "speed": {
   "card": {
    "unit:normal": 547,
@@ -316,7 +315,7 @@
   "hidden": 45
  },
  "conditionality": {
-  "anyConditional": 210,
+  "anyConditional": 215,
   "gates": {
    "legion": 10,
    "level": 15,
@@ -329,21 +328,20 @@
    "opponent-choice": 1,
    "excess-damage": 6,
    "opponent-controls": 2,
+   "paid-additional-cost": 18,
    "alone": 6,
    "opponent-near-win": 3,
    "control": 13,
    "other": 4,
-   "state": 13,
-   "at-battlefield": 8,
+   "state": 15,
+   "at-battlefield": 9,
    "exists": 11,
    "if-you-cant": 2,
-   "combat-tie": 1,
    "mighty": 2,
    "hand-size": 2,
    "unit-count-here": 2,
    "rune-count": 9,
    "showed-off": 6,
-   "paid-additional-cost": 17,
    "if-you-do": 1,
    "control-here": 7,
    "in-combat": 5,
@@ -355,12 +353,13 @@
    "rune-deck-empty": 1,
    "played-from-not-hand": 2,
    "died-alone": 2,
-   "target-is": 4,
+   "target-is": 3,
    "was-mighty": 1,
    "you-have": 3,
    "you-near-win": 2,
+   "spent": 3,
    "level": 15,
-   "if-they-do": 2,
+   "if-they-do": 3,
    "played-from-hand": 1,
    "target-has": 1,
    "exact-board": 1,
@@ -373,7 +372,9 @@
    "target-might": 3,
    "played-to-battlefield": 1,
    "empowered": 36,
-   "exactly-one-other-here": 3
+   "exactly-one-other-here": 3,
+   "turn-number": 1,
+   "score-source": 1
   },
   "optionalCosts": 39,
   "selfCostReduction": 35
@@ -487,7 +488,7 @@
    ]
   },
   "removal": {
-   "regexHits": 174,
+   "regexHits": 175,
    "withRole": 133,
    "missing": [
     "OGN-025",
@@ -497,6 +498,7 @@
     "OGN-072",
     "OGN-102",
     "OGN-113",
+    "OGN-160",
     "OGN-208",
     "OGN-231",
     "OGN-242",

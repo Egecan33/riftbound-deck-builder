@@ -5,8 +5,8 @@ Chosen Champion Kai'Sa, Survivor (OGN-039): 4 Energy + 0 Power, Might 4. "[Accel
 Runes 6 fury / 6 mind. Library 39: 19 units, 20 spells, 0 gear. Curve by rune need 1:7, 2:12, 3:5, 4:3, 6:5, 7+:7. Battlefields: Void Gate, Rockfall Path, Frozen Fortress.
 
 ## Opening hand
-- on the play (2 runes on turn 1), rule BOARD-OR-INTERACTION: keep any hand with Bellows Breath, Brittle Steel, Falling Star, Hextech Ray, Plundering Poro, Temporal Breach (K=14 of 39). P(in 4 cards) 84.6%; P(after setting aside 2 and drawing 2, CR 117) 94.6%.
-- on the draw (3 runes on turn 1), rule BOARD: keep any hand with Bilgewater Tracker, Lecturing Yordle, Plundering Poro (K=8 of 39). P(in 4 cards) 61.7%; P(after setting aside 2 and drawing 2, CR 117) 77.4%.
+- on the play (2 runes on turn 1 and the champion needs 4, so the hand has to supply turn 1), rule BOARD-OR-INTERACTION: keep any hand with Bellows Breath, Brittle Steel, Falling Star, Hextech Ray, Plundering Poro, Temporal Breach (K=14 of 39). P(in 4 cards) 84.6%; P(after setting aside 2 and drawing 2, CR 117) 94.6%.
+- on the draw (3 runes on turn 1 and the champion needs 4, so the hand has to supply turn 1), rule BOARD: keep any hand with Bilgewater Tracker, Lecturing Yordle, Plundering Poro (K=8 of 39). P(in 4 cards) 61.7%; P(after setting aside 2 and drawing 2, CR 117) 77.4%.
 - Set aside first: Time Warp x2 (needs 10 runes), The Empyrean x2 (needs 8 runes), Thousand-Tailed Watcher x3 (needs 7 runes), Brynhir Thundersong x3 (needs 6 runes), Singularity x2 (needs 6 runes).
 
 ## Turn 1 to 6, best lines per seat
@@ -43,6 +43,7 @@ Rune ledger of the first-choice line on the draw: 3 Power recycled by turn 6 (ea
 - Kai'Sa, Survivor from the Champion Zone: turn 2 on the play (Power available 100.0%), turn 2 on the draw (100.0%).
 - Time Warp x2 (10E+4P): turn 5 / 5; drawn by then 41.3% / 41.3%.
 - The Empyrean x2 (8E+0P): turn 4 / 4; drawn by then 37.2% / 37.2%.
+- Thousand-Tailed Watcher x3 (7E+1P): turn 4 / 3; drawn by then 50.8% / 45.7%.
 
 ## Sequencing (card A before card B, with the rule)
 - [main-phase only] Brittle Steel, Falling Star, Singularity, Temporal Breach have neither Action nor Reaction: cast them before the move that opens the showdown, they cannot be played once it is open (CR 310, 308.1.a).
@@ -58,23 +59,23 @@ Rune ledger of the first-choice line on the draw: 3 Power recycled by turn 6 (ea
 ## What to hold runes for
 - Smoke Screen x2 (2E+1P): "[Reaction] / Give a unit -4 [Might] this turn, to a minimum of 1 [Might]." Against Riven it has no computed target. First turn you can deploy Kai'Sa, Survivor and still pay for it: 3 on the play, 3 on the draw.
 - Stupefy x3 (1E+0P): "[Reaction] / Give a unit -1 [Might] this turn, to a minimum of 1 [Might]. Draw 1." Against Riven it has no computed target. First turn you can deploy Kai'Sa, Survivor and still pay for it: 3 on the play, 2 on the draw.
-- Temporal Breach x3 (2E+1P): "[Hidden] / Banish a unit, then its owner plays it to the same location, ignoring its cost." Against Riven it answers 19.3 expected copies: Stellacorn Herder (2.8), Astral Heron (2.5), Tideturner (2.5), Reckless Innovator (2.5). First turn you can deploy Kai'Sa, Survivor and still pay for it: 3 on the play, 3 on the draw.
+- Temporal Breach x3 (2E+1P): "[Hidden] / Banish a unit, then its owner plays it to the same location, ignoring its cost." Against Riven it answers 66.0 expected copies: Astral Heron (2.5), Stellacorn Herder (2.8), Blitzcrank, Impassive (1.9), Reckless Innovator (2.5). First turn you can deploy Kai'Sa, Survivor and still pay for it: 3 on the play, 3 on the draw.
 
 ## Battlefields (one chosen per game in a match, CR 488.5; a battlefield used in a won game is gone)
-- Void Gate: "Spells and abilities affecting units here each deal 1 Bonus Damage." Reads damage cards: you run 12, Riven lists average 0.0 (you have more of what it reads).
+- Void Gate: "Spells and abilities affecting units here each deal 1 Bonus Damage." No computed fit (text matches none of the generator's predicates).
 - Rockfall Path: "Units can't be played here." Reads units: you run 20, Riven lists average 20.0 (even).
-- Frozen Fortress: "At the start of each player's Beginning Phase, deal 1 to each unit here." Reads damage cards: you run 12, Riven lists average 0.0 (you have more of what it reads).
+- Frozen Fortress: "At the start of each player's Beginning Phase, deal 1 to each unit here." No computed fit (text matches none of the generator's predicates).
 
 ## Versus Riven (profile: 22 Radiance-era lists; numbers are expected copies per opposing list)
 
 **Your answers and their targets**
-- Temporal Breach x3: answers 19.3 (field mean 19.3): Stellacorn Herder (2.8), Astral Heron (2.5), Tideturner (2.5), Reckless Innovator (2.5).
-- Singularity x2: answers 16.7 (field mean 17.9): Stellacorn Herder (2.8), Tideturner (2.5), Reckless Innovator (2.5), Bedeviling Stranger (2.2).
-- Falling Star x3: answers 13.3 (field mean 11.3): Stellacorn Herder (2.8), Tideturner (2.5), Reckless Innovator (2.5), Bedeviling Stranger (2.2).
-- Hextech Ray x3: answers 13.3 (field mean 11.3): Stellacorn Herder (2.8), Tideturner (2.5), Reckless Innovator (2.5), Bedeviling Stranger (2.2).
-- Brittle Steel x1: answers 5.9 (field mean 5.1): Blade of the Exile (2.9), Zhonya's Hourglass (2.6), Boots of Swiftness (0.2), The Good Stuff (0.1).
-- Bellows Breath x1: answers 2.4 (field mean 2.9): Scuttle Crab (2.0), Treasure Hunter (0.3), Teemo, Scout (0.0).
-- Bilgewater Tracker x3: answers 2.4 (field mean 2.9): Scuttle Crab (2.0), Treasure Hunter (0.3), Teemo, Scout (0.0).
+- Temporal Breach x3: answers 66.0 (field mean 66.9): Astral Heron (2.5), Stellacorn Herder (2.8), Blitzcrank, Impassive (1.9), Reckless Innovator (2.5).
+- Singularity x2: answers 50.8 (field mean 58.1): Stellacorn Herder (2.8), Blitzcrank, Impassive (1.9), Reckless Innovator (2.5), Tideturner (2.5).
+- Falling Star x3: answers 34.7 (field mean 28.0): Stellacorn Herder (2.8), Reckless Innovator (2.5), Tideturner (2.5), Bedeviling Stranger (2.2).
+- Hextech Ray x3: answers 34.7 (field mean 28.0): Stellacorn Herder (2.8), Reckless Innovator (2.5), Tideturner (2.5), Bedeviling Stranger (2.2).
+- Brittle Steel x1: answers 15.0 (field mean 11.9): Blade of the Exile (2.9), Zhonya's Hourglass (2.6), Boots of Swiftness (0.2), The Good Stuff (0.1).
+- Bellows Breath x1: answers 4.7 (field mean 5.7): Scuttle Crab (2.0), Treasure Hunter (0.3), Teemo, Scout (0.0).
+- Bilgewater Tracker x3: answers 4.7 (field mean 5.7): Scuttle Crab (2.0), Treasure Hunter (0.3), Teemo, Scout (0.0).
 
 **Play around** (their cards that answer yours; turn = first turn they can pay for it from the other seat)
 - Bedeviling Stranger (2.2 copies, removal, Hidden, 2 runes: their turn 1 when you are on the play, 1 when you are on the draw) hits 20 of your cards: Bilgewater Tracker x3, Brynhir Thundersong x3, Noxus Hopeful x3, Plundering Poro x3, Thousand-Tailed Watcher x3.
@@ -86,8 +87,10 @@ Rune ledger of the first-choice line on the draw: 3 Power recycled by turn 6 (ea
 - Not So Fast (0.8 copies, counter, Reaction, 2 runes: their turn 1 when you are on the play, 1 when you are on the draw) hits 15 of your cards: Falling Star x3, Hextech Ray x3, Stupefy x3, Temporal Breach x3, Smoke Screen x2.
 
 **Games 2 and 3** (exchanges are 1 for 1, TR 403.4; net = answers above field mean minus exposure above field mean, their sideboard counted at half weight; HEURISTIC thresholds: bring in at net >= +1.0, swap only when the gap is >= 1.5)
-- No swap clears the thresholds. Best sideboard card here: Sprite Fountain (net -0.1).
-- Stay in the sideboard: Sprite Fountain (-0.1), Brittle Steel (-1.0), Decree of Rage (-1.2), Ferrous Forerunner (-2.8), The Empyrean (-3.0), Decree of Insight (-3.5), Bellows Breath (-6.1).
+- IN +3 Decree of Rage (net +9.8): answers 20.1 here vs 4.8 field: Stellacorn Herder (2.8), Riven, Broken Blade (1.1), Scuttle Crab (2.0).
+- OUT -2 The Empyrean (net -12.6): 37.8 of their cards answer it vs 25.2 field: Blitzcrank, Impassive (1.9), Star-Crossed (1.4), Rebuke (1.3).
+- OUT -1 Thousand-Tailed Watcher (net -12.6): 37.8 of their cards answer it vs 25.2 field: Blitzcrank, Impassive (1.9), Star-Crossed (1.4), Rebuke (1.3).
+- Stay in the sideboard: Sprite Fountain (-0.3), Brittle Steel (-0.5), Decree of Insight (-4.6), Bellows Breath (-6.5), Ferrous Forerunner (-11.3), The Empyrean (-12.6).
 - Expect from their sideboard: Star-Crossed (0.7) at Bilgewater Tracker, Brynhir Thundersong, Noxus Hopeful; Not So Fast (0.8) at Falling Star, Hextech Ray, Stupefy; Vex, Apathetic (1.0) at Falling Star, Hextech Ray, Temporal Breach; Rebuke (0.5) at Bilgewater Tracker, Brynhir Thundersong, Noxus Hopeful.
 
 **Matchup estimate (HEURISTIC, uncalibrated; mean over 22 Riven lists): 50.5%**. Terms in points: wide vs sweepers +1.6, tall vs spot removal +1.7, protection vs spot removal -1.7, speed vs interaction +0.5, reach +0.1, counters vs key spells -1.8.

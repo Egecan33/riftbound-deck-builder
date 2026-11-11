@@ -139,13 +139,14 @@ played = [c for c in cnt if cnt[c] >= 3 and facets[c]['type'] in ('unit', 'spell
 PLAYED = set(played)
 
 def pooled(keys):
-    O = Eg = Ew = Ow = 0.0; n = 0; anyco = 0
+    O = Eg = Ew = Ow = Egcc = 0.0; n = 0; anyco = 0; ncc = 0
     for (a, b) in keys:
         eg, ew, ne = expected(a, b)
         if ne == 0: continue
         o = cooc(a, b); O += o; Eg += eg; n += 1; anyco += 1 if o else 0
-        if ew is not None: Ew += ew; Ow += o
+        if ew is not None: Ew += ew; Ow += o; ncc += 1; Egcc += eg
     return dict(pairs=n, observed=int(O), exp_global=round(Eg, 1), exp_within_legend=round(Ew, 1),
+                pairs_card_card=ncc, observed_card_card=int(Ow), lift_global_card_card=round(Ow / Egcc, 2) if Egcc else None,
                 lift_global=round(O / Eg, 2) if Eg else None, lift_within_legend=round(Ow / Ew, 2) if Ew else None,
                 share_cooccurring=round(anyco / n, 3) if n else None)
 

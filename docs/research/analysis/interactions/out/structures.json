@@ -1618,7 +1618,7 @@
 "OGN-144",
 "RAD-069"
 ],
-"strength": 3.43,
+"strength": 3.45,
 "limiter": "none found by the model",
 "line": "Spoils of War (OGN-144: \"Draw 2.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")  AND BACK  Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Spoils of War (OGN-144: \"[Reaction] If an enemy unit has died this turn, this costs [2] less. Draw 2.\")"
 },
@@ -1728,7 +1728,7 @@
 "RAD-069",
 "OGN-118"
 ],
-"strength": 3.74,
+"strength": 3.75,
 "limiter": "Wraith of Echoes: once per turn / needs readying",
 "line": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")  AND BACK  Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")"
 },
@@ -1738,7 +1738,7 @@
 "RAD-069",
 "SFD-169"
 ],
-"strength": 3.75,
+"strength": 3.77,
 "limiter": "none found by the model",
 "line": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")  AND BACK  Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")"
 },
@@ -1751,16 +1751,6 @@
 "strength": 3.9,
 "limiter": "none found by the model",
 "line": "Jae Medarda (SFD-142: \"When you choose me with a spell, draw 1.\") draws cards, which the payoff triggers on: Frigid Jewel (UNL-074: \"When you draw your second card each turn, give a friendly unit +2 [Might] this turn.\")  AND BACK  Frigid Jewel (UNL-074: \"When you draw your second card each turn, give a friendly unit +2 [Might] this turn.\") chooses a friendly unit, which is the trigger: Jae Medarda (SFD-142: \"When you choose me with a spell, draw 1.\")"
-},
-{
-"kind": "mutual-card-level",
-"cards": [
-"OGN-182",
-"RAD-069"
-],
-"strength": 4.37,
-"limiter": "none found by the model",
-"line": "Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")  AND BACK  Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "kind": "mutual",
@@ -2021,733 +2011,6 @@
 "strength": 5.45,
 "limiter": "Hextech Formula: once per turn / needs readying",
 "line": "Hextech Formula (VEN-062: \"[Exhaust]: Empower another gear.\") empowers it without paying its own [Empower] cost: Defender of Tomorrow (VEN-149: \"[Empowered][>] [1], [Exhaust]: Ready 2 gear.\")  AND BACK  Defender of Tomorrow (VEN-149: \"[1], [Exhaust]: Ready a gear.\") readies the gear so its [Exhaust] ability can be used again: Hextech Formula (VEN-062: \"[Exhaust]: Empower another gear.\")"
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-208",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 4,
-"net": "positive",
-"needs": [
-"a way to get Cruel Patron back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Cruel Patron (OGN-208: \"As an additional cost to play me, kill a friendly unit.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 4 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-209",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 2,
-"net": "positive",
-"needs": [
-"a way to get Cull the Weak back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Cull the Weak (OGN-209: \"Each player kills one of their units.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-231",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 6,
-"net": "positive",
-"needs": [
-"a way to get Commander Ledros back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Commander Ledros (OGN-231: \"As you play me, you may kill any number of friendly units as an additional cost.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 6 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-242",
-"OGN-110"
-],
-"strength": 1.94,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 1,
-"net": "positive",
-"needs": [
-"a way to ready Baited Hook (its ability exhausts it)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 1 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"SFD-163",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 2,
-"net": "positive",
-"needs": [
-"a way to get Deathgrip back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Deathgrip (SFD-163: \"Kill a friendly unit to give +[Might] equal to its Might to another friendly unit this turn.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"SFD-178",
-"OGN-110"
-],
-"strength": 1.94,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-142",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 2,
-"net": "positive",
-"needs": [
-"a way to get Heedless Resurrection back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Heedless Resurrection (UNL-142: \"As an additional cost to play this, kill a friendly unit.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-170",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 10,
-"net": "positive",
-"needs": [
-"a way to get Atakhan back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Atakhan (UNL-170: \"You may kill a friendly unit as an additional cost to play me.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 10 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-173",
-"OGN-110"
-],
-"strength": 2.45,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 1,
-"net": "positive",
-"needs": [
-"a way to get Sacrifice back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Sacrifice (UNL-173: \"As an additional cost to play this, kill a friendly [Mighty] unit.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\") [its printed stats satisfy the kill requirement]  REFUND: the same ability gives back all your runes; the enabler spends 1 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-209",
-"OGN-110"
-],
-"strength": 1.94,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-017",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 4,
-"net": "positive",
-"needs": [
-"a way to get Detonation Amplifier back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Detonation Amplifier (RAD-017: \"When you play this, you may kill another friendly unit or gear to draw 1.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 4 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-125",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 7,
-"net": "positive",
-"needs": [
-"a way to get Dune Devourer back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Dune Devourer (RAD-125: \"You may kill a friendly unit as an additional cost to play me.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 7 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-020a",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 7,
-"net": "positive",
-"needs": [
-"a way to get Mordekaiser, Twice Slain back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Mordekaiser, Twice Slain (RAD-020a: \"Once each turn, if I would die, you may kill a friendly unit to heal me, exhaust me, and recall me instead.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 7 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-014",
-"OGN-110"
-],
-"strength": 1.62,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 3,
-"net": "positive",
-"needs": [
-"a way to get Shimmering Swimmer back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Shimmering Swimmer (RAD-014: \"You may kill a friendly unit or gear as an additional cost to play me.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 3 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-022",
-"OGN-110"
-],
-"strength": 1.94,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-112a",
-"OGN-110"
-],
-"strength": 1.94,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-069",
-"OGN-110"
-],
-"strength": 1.42,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 3,
-"net": "positive",
-"needs": [
-"a way to get Last Stand back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Last Stand (OGN-069: \"Give it [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 3 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-180",
-"OGN-110"
-],
-"strength": 1.42,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 4,
-"net": "positive",
-"needs": [
-"a way to get Fading Memories back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Fading Memories (OGN-180: \"Give a unit at a battlefield or a gear [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 4 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-070",
-"OGN-110"
-],
-"strength": 1.42,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 2,
-"net": "positive",
-"needs": [
-"a way to get Turn to Dust back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Turn to Dust (UNL-070: \"Give a gear [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-165",
-"OGN-110"
-],
-"strength": 1.42,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 2,
-"net": "positive",
-"needs": [
-"a way to get Shadow's Call back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Shadow's Call (UNL-165: \"Give it [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-199",
-"OGN-110"
-],
-"strength": 2.36,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-212",
-"SFD-061",
-"UNL-167"
-],
-"n_closers": 4,
-"line": "Deceiver (UNL-199: \"Give it [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"UNL-200",
-"OGN-110"
-],
-"strength": 1.57,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 3,
-"net": "positive",
-"needs": [
-"a way to get Mirror Image back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-212",
-"SFD-061",
-"UNL-167"
-],
-"n_closers": 4,
-"line": "Mirror Image (UNL-200: \"Give it [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 3 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"RAD-095",
-"OGN-110"
-],
-"strength": 1.42,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 4,
-"net": "positive",
-"needs": [
-"a way to get Momentary Companion back (it is used up each time)",
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Momentary Companion (RAD-095: \"When you play me, if it's not your turn, give me [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 4 Energy."
 },
 {
 "kind": "refund",
@@ -6568,69 +5831,6 @@
 {
 "kind": "refund",
 "cards": [
-"OGN-168",
-"UNL-022"
-],
-"strength": 1.27,
-"refund": [
-"P.add"
-],
-"refund_amount": 2,
-"enabler_energy": 2,
-"net": "neutral",
-"needs": [
-"a way to get Fight or Flight back (it is used up each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Fight or Flight (OGN-168: \"Move a unit from a battlefield to its base.\") moves the unit, which fires its when-I-move trigger: Jhin, Murderous Artist (UNL-022: \"When I move, [Add] [1][Any].\")  REFUND: the same ability gives back 2 resource(s); the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-168",
-"UNL-080"
-],
-"strength": 1.3,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": 2,
-"enabler_energy": 2,
-"net": "neutral",
-"needs": [
-"a way to get Fight or Flight back (it is used up each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Fight or Flight (OGN-168: \"Move a unit from a battlefield to its base.\") moves the unit, which fires its when-I-move trigger: Hwei, Brooding Painter (UNL-080: \"When I move, draw 1, then discard 1.\")  REFUND: the same ability gives back 2 resource(s); the enabler spends 2 Energy."
-},
-{
-"kind": "refund",
-"cards": [
 "OGN-173",
 "UNL-022"
 ],
@@ -6901,65 +6101,6 @@
 ],
 "n_closers": 1,
 "line": "Stormbringer (OGN-250: \"Deal damage equal to its Might to all enemy units at a battlefield, then move your unit there.\") moves the unit, which fires its when-I-move trigger: Jhin, Murderous Artist (UNL-022: \"When I move, [Add] [1][Any].\")  REFUND: the same ability gives back 2 resource(s); the enabler spends 6 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-285",
-"UNL-022"
-],
-"strength": 1.52,
-"refund": [
-"P.add"
-],
-"refund_amount": 2,
-"enabler_energy": 0,
-"net": "positive",
-"needs": [],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Jhin, Murderous Artist (UNL-022: \"When I move, [Add] [1][Any].\")  REFUND: the same ability gives back 2 resource(s); the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-285",
-"UNL-080"
-],
-"strength": 1.56,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": 2,
-"enabler_energy": 0,
-"net": "positive",
-"needs": [],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGN-264",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 11,
-"line": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Hwei, Brooding Painter (UNL-080: \"When I move, draw 1, then discard 1.\")  REFUND: the same ability gives back 2 resource(s); the enabler spends 0 Energy."
 },
 {
 "kind": "refund",
@@ -11020,37 +10161,6 @@
 ],
 "n_closers": 5,
 "line": "Blade of the Exile (RAD-150) is a Equipment, which Aphelios, Exalted (SFD-049: \"When you attach an Equipment to me, choose one that hasn't been chosen this turn \u2014 - Ready 2 runes. - Channel 1 rune exhausted. - Buff a friendly unit.\") names  REFUND: the same ability gives back 2 resource(s); the enabler spends 0 Energy."
-},
-{
-"kind": "refund",
-"cards": [
-"OGN-236",
-"OGN-110"
-],
-"strength": 2.4,
-"refund": [
-"P.ready.rune"
-],
-"refund_amount": "all runes",
-"enabler_energy": 0,
-"net": "positive",
-"needs": [
-"a way to get Ekko, Recurrent back (it dies each time)"
-],
-"closers": [
-"OGN-109",
-"OGN-165",
-"OGN-170",
-"OGN-212",
-"OGS-010",
-"SFD-035",
-"SFD-061",
-"UNL-103",
-"UNL-167",
-"VEN-103"
-],
-"n_closers": 10,
-"line": "Karthus, Eternal (OGN-236: \"Your [Deathknell] effects trigger an additional time.\") makes this trigger happen an additional time: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")  REFUND: the same ability gives back all your runes; the enabler spends 0 Energy."
 }
 ],
 "cost_cheats": [
@@ -21884,15 +20994,6 @@
 {
 "cards": [
 "OGN-160",
-"OGN-110"
-],
-"s": 0.93,
-"saved": 5,
-"reason": "Dazzling Aurora (OGN-160: \"Play it, ignoring its cost, and recycle the rest.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"OGN-160",
 "OGN-215"
 ],
 "s": 0.93,
@@ -22150,15 +21251,6 @@
 "s": 0.93,
 "saved": 5,
 "reason": "Baited Hook (OGN-242: \"You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost.\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"OGN-242",
-"OGN-110"
-],
-"s": 0.93,
-"saved": 5,
-"reason": "Baited Hook (OGN-242: \"You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -25079,15 +24171,6 @@
 {
 "cards": [
 "UNL-179",
-"OGN-110"
-],
-"s": 0.9,
-"saved": 5,
-"reason": "Rift Herald (UNL-179: \"[Deathknell][>] Play a unit from your hand to your base, ignoring its Energy cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"UNL-179",
 "OGN-215"
 ],
 "s": 0.9,
@@ -25894,15 +24977,6 @@
 "s": 0.89,
 "saved": 5,
 "reason": "Chronobreak (RAD-140: \"Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"RAD-140",
-"OGN-110"
-],
-"s": 0.89,
-"saved": 5,
-"reason": "Chronobreak (RAD-140: \"Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -35789,15 +34863,6 @@
 {
 "cards": [
 "OGN-062",
-"OGN-110"
-],
-"s": 0.77,
-"saved": 5,
-"reason": "Reinforce (OGN-062: \"You may banish a unit from among them, then play it, reducing its cost by [5].\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"OGN-062",
 "OGN-215"
 ],
 "s": 0.77,
@@ -36091,15 +35156,6 @@
 "s": 0.77,
 "saved": 5,
 "reason": "Wild Claw (VEN-089: \"You may banish a unit or gear from among them and play it, reducing its Energy cost by [5].\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"VEN-089",
-"OGN-110"
-],
-"s": 0.77,
-"saved": 5,
-"reason": "Wild Claw (VEN-089: \"You may banish a unit or gear from among them and play it, reducing its Energy cost by [5].\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -40235,15 +39291,6 @@
 {
 "cards": [
 "OGN-102",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Portal Rescue (OGN-102: \"Banish a friendly unit, then play it to base, ignoring its cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"OGN-102",
 "OGN-215"
 ],
 "s": 0.75,
@@ -40505,15 +39552,6 @@
 {
 "cards": [
 "OGN-115",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Promising Future (OGN-115: \"Each player looks at the top 5 cards of their Main Deck, chooses one, then recycles the rest. Starting with the next player, each player plays those cards, igno\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"OGN-115",
 "OGN-215"
 ],
 "s": 0.75,
@@ -40771,15 +39809,6 @@
 "s": 0.75,
 "saved": 5,
 "reason": "The Zero Drive (SFD-090: \"[3][Mind], Banish this: Play all units banished with this, ignoring their costs.\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"SFD-090",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "The Zero Drive (SFD-090: \"[3][Mind], Banish this: Play all units banished with this, ignoring their costs.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -41077,15 +40106,6 @@
 "s": 0.75,
 "saved": 5,
 "reason": "Here to Help (SFD-111: \"[Hidden] [Action] You may play a unit from hand to a battlefield you control, reducing its cost by [3].\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"SFD-111",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Here to Help (SFD-111: \"[Hidden] [Action] You may play a unit from hand to a battlefield you control, reducing its cost by [3].\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -41504,15 +40524,6 @@
 {
 "cards": [
 "RAD-067",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Clocktower Guardian (RAD-067: \"You may play it, ignoring its Energy cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"RAD-067",
 "OGN-215"
 ],
 "s": 0.75,
@@ -41927,15 +40938,6 @@
 {
 "cards": [
 "RAD-018",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Drakehound Packmaster (RAD-018: \"Choose one and banish it, then play it, ignoring its cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"RAD-018",
 "OGN-215"
 ],
 "s": 0.75,
@@ -42314,15 +41316,6 @@
 {
 "cards": [
 "RAD-135",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Remember the Fallen (RAD-135: \"Play up to 3 units and/or gear from your trash, each with Energy cost no more than [3] and Power cost no more than [Any], ignoring their costs.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"RAD-135",
 "OGN-215"
 ],
 "s": 0.75,
@@ -42616,15 +41609,6 @@
 "s": 0.75,
 "saved": 5,
 "reason": "Transpositionist (RAD-115: \"You may play a unit with less Might than that unit had, ignoring its cost.\") puts it into play without paying its full cost: Ava Achiever (OGN-107: \"costs 5 Energy\") [saves up to 5 Energy]"
-},
-{
-"cards": [
-"RAD-115",
-"OGN-110"
-],
-"s": 0.75,
-"saved": 5,
-"reason": "Transpositionist (RAD-115: \"You may play a unit with less Might than that unit had, ignoring its cost.\") puts it into play without paying its full cost: Ekko, Recurrent (OGN-110: \"costs 5 Energy + 1 Power\") [saves up to 5 Energy]"
 },
 {
 "cards": [
@@ -43854,15 +42838,6 @@
 },
 {
 "cards": [
-"SFD-150",
-"SFD-203"
-],
-"s": 4.68,
-"rule": "recycle->recyclepayoff",
-"reason": "Last Rites (SFD-150: \"[Equip] \u2014 [Chaos], Recycle 2 cards from your trash\") recycles cards, which the payoff triggers on: Battle Mistress (SFD-203: \"When you recycle a rune, you may exhaust me to play a Gold gear token exhausted.\")"
-},
-{
-"cards": [
 "SFD-195",
 "SFD-057"
 ],
@@ -43980,6 +42955,24 @@
 },
 {
 "cards": [
+"UNL-144",
+"UNL-133"
+],
+"s": 3.74,
+"rule": "move->movewatch",
+"reason": "Maduli the Gatekeeper (UNL-144: \"[Chaos]: Move me to an occupied enemy battlefield if my Might is greater than the total Might of enemy units there.\") produces the unit movement the watcher triggers on: Blast Cone (UNL-133: \"When you move an enemy unit, you may exhaust this to [Stun] it.\")"
+},
+{
+"cards": [
+"UNL-207",
+"UNL-133"
+],
+"s": 3.74,
+"rule": "move->movewatch",
+"reason": "Amateur Recital (UNL-207: \"When you hold here, you may move a unit at a battlefield to its base.\") produces the unit movement the watcher triggers on: Blast Cone (UNL-133: \"When you move an enemy unit, you may exhaust this to [Stun] it.\")"
+},
+{
+"cards": [
 "OGN-036",
 "OGN-235"
 ],
@@ -44004,15 +42997,6 @@
 "s": 3.74,
 "rule": "recycle->recyclepayoff",
 "reason": "Dr. Mundo, Expert (OGN-109: \"At the start of your Beginning Phase, recycle 3 from your trash.\") recycles cards, which the payoff triggers on: Karma, Channeler (OGN-235: \"When you recycle one or more cards, buff a friendly unit.\")"
-},
-{
-"cards": [
-"OGN-110",
-"OGN-235"
-],
-"s": 3.74,
-"rule": "recycle->recyclepayoff",
-"reason": "Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\") recycles cards, which the payoff triggers on: Karma, Channeler (OGN-235: \"When you recycle one or more cards, buff a friendly unit.\")"
 },
 {
 "cards": [
@@ -44043,21 +43027,12 @@
 },
 {
 "cards": [
-"UNL-144",
-"UNL-133"
+"SFD-150",
+"OGN-235"
 ],
-"s": 3.62,
-"rule": "move->movewatch",
-"reason": "Maduli the Gatekeeper (UNL-144: \"[Chaos]: Move me to an occupied enemy battlefield if my Might is greater than the total Might of enemy units there.\") produces the unit movement the watcher triggers on: Blast Cone (UNL-133: \"When you move an enemy unit, you may exhaust this to [Stun] it.\")"
-},
-{
-"cards": [
-"UNL-207",
-"UNL-133"
-],
-"s": 3.62,
-"rule": "move->movewatch",
-"reason": "Amateur Recital (UNL-207: \"When you hold here, you may move a unit at a battlefield to its base.\") produces the unit movement the watcher triggers on: Blast Cone (UNL-133: \"When you move an enemy unit, you may exhaust this to [Stun] it.\")"
+"s": 3.74,
+"rule": "recycle->recyclepayoff",
+"reason": "Last Rites (SFD-150: \"[Equip] \u2014 [Chaos], Recycle 2 cards from your trash\") recycles cards, which the payoff triggers on: Karma, Channeler (OGN-235: \"When you recycle one or more cards, buff a friendly unit.\")"
 },
 {
 "cards": [
@@ -44109,7 +43084,7 @@
 "RAD-168",
 "OGN-118"
 ],
-"s": 3.39,
+"s": 3.43,
 "rule": "sac->deathwatch",
 "reason": "Boy Who Shattered Time (RAD-168: \"Disempower me, [Exhaust]: Reduce the cost of the next unit you play this turn by [2][Any] and give it \"Kill me at end of turn.\"\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -44118,7 +43093,7 @@
 "RAD-168",
 "UNL-068"
 ],
-"s": 3.39,
+"s": 3.43,
 "rule": "sac->deathwatch",
 "reason": "Boy Who Shattered Time (RAD-168: \"Disempower me, [Exhaust]: Reduce the cost of the next unit you play this turn by [2][Any] and give it \"Kill me at end of turn.\"\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -44458,15 +43433,6 @@
 {
 "cards": [
 "VEN-143",
-"OGN-182"
-],
-"s": 3.09,
-"rule": "discard->discardpayoff",
-"reason": "Master of Shadows (VEN-143: \"[Action][>] Disempower me, [Exhaust]: Discard 1, then draw 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"VEN-143",
 "OGN-202"
 ],
 "s": 3.09,
@@ -44544,15 +43510,6 @@
 "s": 3.01,
 "rule": "recycle->recyclepayoff",
 "reason": "Sigil of the Storm (OGN-287: \"When you conquer here, recycle one of your runes.\") recycles cards, which the payoff triggers on: Karma, Channeler (OGN-235: \"When you recycle one or more cards, buff a friendly unit.\")"
-},
-{
-"cards": [
-"SFD-150",
-"OGN-235"
-],
-"s": 3.01,
-"rule": "recycle->recyclepayoff",
-"reason": "Last Rites (SFD-150: \"[Equip] \u2014 [Chaos], Recycle 2 cards from your trash\") recycles cards, which the payoff triggers on: Karma, Channeler (OGN-235: \"When you recycle one or more cards, buff a friendly unit.\")"
 },
 {
 "cards": [
@@ -44661,24 +43618,6 @@
 "s": 2.89,
 "rule": "ready->exhaust-unit",
 "reason": "Piltover Enforcer (UNL-187: \"When you conquer, if you assigned 3 or more excess damage, you may exhaust me to ready a unit.\") readies the unit so its [Exhaust] ability can be used again: Pitiless Stalker (RAD-104: \"[Exhaust]: [Stun] an enemy unit.\")"
-},
-{
-"cards": [
-"OGN-259",
-"OGN-177"
-],
-"s": 2.88,
-"rule": "move->movewatch",
-"reason": "Unforgiven (OGN-259: \"[2], [Exhaust]: Move a friendly unit to or from its base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-201",
-"OGN-177"
-],
-"s": 2.88,
-"rule": "move->movewatch",
-"reason": "Voidreaver (UNL-201: \"Spend 2 XP, [Exhaust]: Move an exhausted friendly unit from a battlefield to its base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
 },
 {
 "cards": [
@@ -44850,15 +43789,6 @@
 "s": 2.7,
 "rule": "ready->exhaust-unit",
 "reason": "Rogue Assassin (VEN-139: \"[Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.\") readies the unit so its [Exhaust] ability can be used again: Pitiless Stalker (RAD-104: \"[Exhaust]: [Stun] an enemy unit.\")"
-},
-{
-"cards": [
-"OGN-177",
-"OGN-277"
-],
-"s": 2.68,
-"rule": "move->movewatch",
-"reason": "Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\") produces the unit movement the watcher triggers on: Back-Alley Bar (OGN-277: \"When a unit moves from here, give it +1 [Might] this turn.\")"
 },
 {
 "cards": [
@@ -45124,15 +44054,6 @@
 {
 "cards": [
 "OGN-023",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Unlicensed Armory (OGN-023: \"Discard 1, [Exhaust]: Choose a friendly unit.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"OGN-023",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45147,15 +44068,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Unlicensed Armory (OGN-023: \"Discard 1, [Exhaust]: Choose a friendly unit.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-178",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Undercover Agent (OGN-178: \"[Deathknell] \u2014 Discard 2, then draw 2.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45178,15 +44090,6 @@
 {
 "cards": [
 "OGN-185",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Traveling Merchant (OGN-185: \"When I move, discard 1, then draw 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"OGN-185",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45201,15 +44104,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Traveling Merchant (OGN-185: \"When I move, discard 1, then draw 1.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-252",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Super Mega Death Rocket! (OGN-252: \"When you conquer, you may discard 1 to return this from your trash to your hand.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45232,15 +44126,6 @@
 {
 "cards": [
 "OGN-298",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Zaun Warrens (OGN-298: \"When you conquer here, discard 1, then draw 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"OGN-298",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45255,15 +44140,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Zaun Warrens (OGN-298: \"When you conquer here, discard 1, then draw 1.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"SFD-123",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Corrupt Enforcer (SFD-123: \"When I move to a battlefield, discard 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45286,15 +44162,6 @@
 {
 "cards": [
 "UNL-080",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Hwei, Brooding Painter (UNL-080: \"When I move, draw 1, then discard 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"UNL-080",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45309,15 +44176,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Hwei, Brooding Painter (UNL-080: \"When I move, draw 1, then discard 1.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"UNL-088",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Gutter Palace (UNL-088: \"Discard 1, [Exhaust]: Play a 1 [Might] Bird unit token with [Deflect].\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45340,15 +44198,6 @@
 {
 "cards": [
 "VEN-060",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Sky Cruiser (VEN-060: \"Discard a gear, [1], [Exhaust]: Deal 4 to a unit at a battlefield.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"VEN-060",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45363,15 +44212,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Sky Cruiser (VEN-060: \"Discard a gear, [1], [Exhaust]: Deal 4 to a unit at a battlefield.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"VEN-111",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Minah Swiftfoot (VEN-111: \"When I move to a battlefield, choose one \u2014 - Each player discards 1. - Each player draws 1.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45394,15 +44234,6 @@
 {
 "cards": [
 "RAD-166",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Ruined Monastery (RAD-166: \"When you conquer here, you may discard 1 and channel 1 rune exhausted.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
-},
-{
-"cards": [
-"RAD-166",
 "OGN-202"
 ],
 "s": 2.47,
@@ -45417,15 +44248,6 @@
 "s": 2.47,
 "rule": "discard->discardpayoff",
 "reason": "Ruined Monastery (RAD-166: \"When you conquer here, you may discard 1 and channel 1 rune exhausted.\") discards from your own hand, which the payoff rewards: Mask Mother (VEN-094: \"When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"RAD-069",
-"OGN-182"
-],
-"s": 2.47,
-"rule": "discard->discardpayoff",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") discards from your own hand, which the payoff rewards: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -45952,29 +44774,11 @@
 {
 "cards": [
 "OGN-236",
-"OGN-110"
-],
-"s": 2.4,
-"rule": "double->trigger",
-"reason": "Karthus, Eternal (OGN-236: \"Your [Deathknell] effects trigger an additional time.\") makes this trigger happen an additional time: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
-},
-{
-"cards": [
-"OGN-236",
 "OGN-178"
 ],
 "s": 2.4,
 "rule": "double->trigger",
 "reason": "Karthus, Eternal (OGN-236: \"Your [Deathknell] effects trigger an additional time.\") makes this trigger happen an additional time: Undercover Agent (OGN-178: \"[Deathknell] \u2014 Discard 2, then draw 2.\")"
-},
-{
-"cards": [
-"OGN-236",
-"OGN-182"
-],
-"s": 2.4,
-"rule": "double->trigger",
-"reason": "Karthus, Eternal (OGN-236: \"Your [Deathknell] effects trigger an additional time.\") makes this trigger happen an additional time: Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\")"
 },
 {
 "cards": [
@@ -46708,15 +45512,6 @@
 {
 "cards": [
 "UNL-199",
-"OGN-110"
-],
-"s": 2.36,
-"rule": "temporary->deathknell",
-"reason": "Deceiver (UNL-199: \"Give it [Temporary].\") can give the Deathknell unit [Temporary] so it dies at your next Beginning Phase: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
-},
-{
-"cards": [
-"UNL-199",
 "OGN-216"
 ],
 "s": 2.36,
@@ -46947,240 +45742,6 @@
 "s": 2.31,
 "rule": "buff->buffpayoff",
 "reason": "Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\") puts the buff counter that the payoff needs or spends: The Boss (OGN-269: \"When a buffed unit you control would die, you may pay [Any] and exhaust me to spend its buff and recall it exhausted instead.\")"
-},
-{
-"cards": [
-"OGN-036",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Vi, Destructive (OGN-036: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-112",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Kai'Sa, Evolutionary (OGN-112: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-162",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Miss Fortune, Captain (OGN-162: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-184",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "The Syren (OGN-184: \"[1], [Exhaust]: Move a friendly unit at a battlefield to your base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-189",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Kayn, Unleashed (OGN-189: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-194",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Nocturne, Horrifying (OGN-194: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-205",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Yasuo, Windrider (OGN-205: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-231",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Commander Ledros (OGN-231: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGN-285",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"OGS-009",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Yi, Honed (OGS-009: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"SFD-050",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Azir, Ascendant (SFD-050: \"[Calm]: [Action] \u2014 Choose a unit you control. Move me to its location and it to my original location. If it's equipped, you may attach one of its Equipment to m\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"SFD-082",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Ezreal, Dashing (SFD-082: \"When I attack or defend, deal damage equal to my Might to an enemy unit here. I don't deal combat damage. [Mind]: [Action] \u2014 Move me to your base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"SFD-125",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Fae Porter (SFD-125: \"When I move to a battlefield, you may pay [Chaos] to move a unit you control to the same battlefield.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"SFD-126",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Loyal Pup (SFD-126: \"When you defend at a battlefield, you may move me there.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"SFD-177",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Azir, Sovereign (SFD-177: \"When I attack, you may move any number of your token units to this battlefield.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-005",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Revna the Lorekeeper (UNL-005: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-022",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Jhin, Murderous Artist (UNL-022: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-024",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Rengar, Unseen (UNL-024: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-028",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Pyke, Dockside Butcher (UNL-028: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-045",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Forgotten Signpost (UNL-045: \"[Action][>] Exhaust a unit you control, [Exhaust]: Move a different unit you control to the location of the unit you exhausted to pay for this ability.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-055",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Vex, Mocking (UNL-055: \"When you [Stun] an enemy unit at a battlefield, you may move me to that battlefield.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-115",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Nilah, Joyful Ascetic (UNL-115: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-170",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Atakhan (UNL-170: \"[Ganking]\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-215",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Star Spring (UNL-215: \"The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"VEN-112",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Zed, Without a Sound (VEN-112: \"When I conquer, play a 0 [Might] Shadow Clone unit token to your base. [Action][>] [1][Chaos]: Move me and a Shadow Clone you control to each other's locations.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"RAD-133",
-"OGN-177"
-],
-"s": 2.3,
-"rule": "move->movewatch",
-"reason": "Jarvan IV, Royal Heir (RAD-133: \"When I attack, you may move a unit you control to my battlefield.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
 },
 {
 "cards": [
@@ -48624,15 +47185,6 @@
 },
 {
 "cards": [
-"OGN-285",
-"OGN-277"
-],
-"s": 2.21,
-"rule": "move->movewatch",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") produces the unit movement the watcher triggers on: Back-Alley Bar (OGN-277: \"When a unit moves from here, give it +1 [Might] this turn.\")"
-},
-{
-"cards": [
 "OGS-009",
 "OGN-277"
 ],
@@ -49845,24 +48397,6 @@
 "s": 2.09,
 "rule": "xp->xppayoff",
 "reason": "Arachnoid Horror (UNL-117: \"[Hunt 2]\") gains the XP that the payoff checks or spends: Voidreaver (UNL-201: \"When you win a combat, gain 1 XP.\")"
-},
-{
-"cards": [
-"UNL-144",
-"OGN-177"
-],
-"s": 2.08,
-"rule": "move->movewatch",
-"reason": "Maduli the Gatekeeper (UNL-144: \"[Chaos]: Move me to an occupied enemy battlefield if my Might is greater than the total Might of enemy units there.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
-},
-{
-"cards": [
-"UNL-207",
-"OGN-177"
-],
-"s": 2.08,
-"rule": "move->movewatch",
-"reason": "Amateur Recital (UNL-207: \"When you hold here, you may move a unit at a battlefield to its base.\") produces the unit movement the watcher triggers on: Stealthy Pursuer (OGN-177: \"When a friendly unit moves from my location, I may be moved with it.\")"
 },
 {
 "cards": [
@@ -52009,15 +50543,6 @@
 {
 "cards": [
 "OGN-242",
-"OGN-110"
-],
-"s": 1.94,
-"rule": "sac->deathknell",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
-},
-{
-"cards": [
-"OGN-242",
 "OGN-190"
 ],
 "s": 1.94,
@@ -52086,15 +50611,6 @@
 "s": 1.94,
 "rule": "sac->deathknell",
 "reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") kills its own unit on demand, which fires the Deathknell: Tasty Faefolk (OGN-075: \"[Deathknell] \u2014 Channel 2 runes exhausted and draw 1.\")"
-},
-{
-"cards": [
-"SFD-178",
-"OGN-110"
-],
-"s": 1.94,
-"rule": "sac->deathknell",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
 },
 {
 "cards": [
@@ -52171,15 +50687,6 @@
 {
 "cards": [
 "UNL-209",
-"OGN-110"
-],
-"s": 1.94,
-"rule": "sac->deathknell",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
-},
-{
-"cards": [
-"UNL-209",
 "OGN-190"
 ],
 "s": 1.94,
@@ -52252,15 +50759,6 @@
 {
 "cards": [
 "RAD-022",
-"OGN-110"
-],
-"s": 1.94,
-"rule": "sac->deathknell",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
-},
-{
-"cards": [
-"RAD-022",
 "OGN-190"
 ],
 "s": 1.94,
@@ -52329,15 +50827,6 @@
 "s": 1.94,
 "rule": "sac->deathknell",
 "reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") kills its own unit on demand, which fires the Deathknell: Tasty Faefolk (OGN-075: \"[Deathknell] \u2014 Channel 2 runes exhausted and draw 1.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"OGN-110"
-],
-"s": 1.94,
-"rule": "sac->deathknell",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") kills its own unit on demand, which fires the Deathknell: Ekko, Recurrent (OGN-110: \"[Deathknell] \u2014 Recycle me to ready your runes.\")"
 },
 {
 "cards": [
@@ -53484,15 +51973,6 @@
 },
 {
 "cards": [
-"OGN-182",
-"RAD-069"
-],
-"s": 1.9,
-"rule": "draw->drawpayoff",
-"reason": "Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")"
-},
-{
-"cards": [
 "OGN-185",
 "RAD-069"
 ],
@@ -53526,15 +52006,6 @@
 "s": 1.9,
 "rule": "draw->drawpayoff",
 "reason": "Monastery of Hirana (OGN-282: \"When you conquer here, you may spend a buff to draw 1.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")"
-},
-{
-"cards": [
-"OGN-292",
-"RAD-069"
-],
-"s": 1.9,
-"rule": "draw->drawpayoff",
-"reason": "The Dreaming Tree (OGN-292: \"When a player chooses a friendly unit here with a spell for the first time each turn, they draw 1.\") draws cards, which the payoff triggers on: Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\")"
 },
 {
 "cards": [
@@ -53997,15 +52468,6 @@
 },
 {
 "cards": [
-"OGN-182",
-"UNL-074"
-],
-"s": 1.89,
-"rule": "draw->drawpayoff",
-"reason": "Scrapheap (OGN-182: \"When this is played, discarded, or killed, draw 1.\") draws cards, which the payoff triggers on: Frigid Jewel (UNL-074: \"When you draw your second card each turn, give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
 "OGN-185",
 "UNL-074"
 ],
@@ -54039,15 +52501,6 @@
 "s": 1.89,
 "rule": "draw->drawpayoff",
 "reason": "Monastery of Hirana (OGN-282: \"When you conquer here, you may spend a buff to draw 1.\") draws cards, which the payoff triggers on: Frigid Jewel (UNL-074: \"When you draw your second card each turn, give a friendly unit +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-292",
-"UNL-074"
-],
-"s": 1.89,
-"rule": "draw->drawpayoff",
-"reason": "The Dreaming Tree (OGN-292: \"When a player chooses a friendly unit here with a spell for the first time each turn, they draw 1.\") draws cards, which the payoff triggers on: Frigid Jewel (UNL-074: \"When you draw your second card each turn, give a friendly unit +2 [Might] this turn.\")"
 },
 {
 "cards": [
@@ -54429,6 +52882,681 @@
 },
 {
 "cards": [
+"OGN-186",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"OGN-186",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"OGN-186",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"OGN-186",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"OGN-186",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"OGN-242",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"OGN-242",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"OGN-242",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"OGN-242",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"OGN-242",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"SFD-046",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"SFD-046",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"SFD-046",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"SFD-046",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"SFD-046",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"SFD-128",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"SFD-128",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"SFD-128",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"SFD-128",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"SFD-128",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"SFD-178",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"SFD-178",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"SFD-178",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"SFD-178",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"SFD-178",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"UNL-136",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"UNL-136",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"UNL-136",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"UNL-136",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"UNL-136",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"UNL-161",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"UNL-161",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"UNL-161",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"UNL-161",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"UNL-161",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"UNL-209",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"UNL-209",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"UNL-209",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"UNL-209",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"UNL-209",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"VEN-133",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"VEN-133",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"VEN-133",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"VEN-133",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"VEN-133",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-136",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-136",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-136",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-136",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-136",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-039",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-039",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-039",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-039",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-039",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-012",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-012",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-012",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-012",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-012",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-022",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-022",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-022",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-022",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-022",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-069",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-069",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-069",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-069",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-069",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
+"RAD-112a",
+"OGN-228"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"RAD-112a",
+"OGN-246"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
+"RAD-112a",
+"SFD-169"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"RAD-112a",
+"UNL-174"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"RAD-112a",
+"RAD-131"
+],
+"s": 1.87,
+"rule": "sac->deathwatch",
+"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
+},
+{
+"cards": [
 "OGN-152",
 "RAD-104"
 ],
@@ -54483,757 +53611,10 @@
 },
 {
 "cards": [
-"OGN-077",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"OGN-077",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"OGN-077",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"OGN-077",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"OGN-077",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"OGN-186",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"OGN-186",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"OGN-186",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"OGN-186",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"OGN-186",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"OGN-242",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"OGN-242",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"OGN-242",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"OGN-242",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"OGN-242",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"SFD-046",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"SFD-046",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"SFD-046",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"SFD-046",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"SFD-046",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"SFD-128",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"SFD-128",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"SFD-128",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"SFD-128",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"SFD-128",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"SFD-178",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"SFD-178",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"SFD-178",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"SFD-178",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"SFD-178",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"UNL-136",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"UNL-136",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"UNL-136",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"UNL-136",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"UNL-136",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"UNL-161",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"UNL-161",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"UNL-161",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"UNL-161",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"UNL-161",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"UNL-209",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"UNL-209",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"UNL-209",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"UNL-209",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"UNL-209",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"VEN-133",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"VEN-133",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"VEN-133",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"VEN-133",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"VEN-133",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-136",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-136",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-136",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-136",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-136",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-039",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-039",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-039",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-039",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-039",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-012",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-012",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-012",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-012",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-012",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-022",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-022",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-022",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-022",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-022",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-069",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-069",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-069",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-069",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-069",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"OGN-228"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"OGN-246"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"SFD-169"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"UNL-174"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
-},
-{
-"cards": [
-"RAD-112a",
-"RAD-131"
-],
-"s": 1.85,
-"rule": "sac->deathwatch",
-"reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
-},
-{
-"cards": [
-"OGN-077",
-"OGN-118"
-],
-"s": 1.84,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
-},
-{
-"cards": [
-"OGN-077",
-"UNL-068"
-],
-"s": 1.84,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-077",
-"UNL-129"
-],
-"s": 1.84,
-"rule": "sac->deathwatch",
-"reason": "Zhonya's Hourglass (OGN-077: \"The next time a friendly unit would die, kill this instead.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
-},
-{
-"cards": [
 "OGN-186",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55242,7 +53623,7 @@
 "OGN-186",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55251,7 +53632,7 @@
 "OGN-186",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Treasure Trove (OGN-186: \"[Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55260,7 +53641,7 @@
 "OGN-242",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55269,7 +53650,7 @@
 "OGN-242",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55278,7 +53659,7 @@
 "OGN-242",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Baited Hook (OGN-242: \"[1][Order], [Exhaust]: Kill a friendly unit.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55287,7 +53668,7 @@
 "SFD-046",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55296,7 +53677,7 @@
 "SFD-046",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55305,7 +53686,7 @@
 "SFD-046",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Poro Snax (SFD-046: \"[1][Calm], [Exhaust], Kill this: Draw 1.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55314,7 +53695,7 @@
 "SFD-128",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55323,7 +53704,7 @@
 "SFD-128",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55332,7 +53713,7 @@
 "SFD-128",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Overzealous Fan (SFD-128: \"When I defend, you may kill me to move an attacking unit to its base.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55341,7 +53722,7 @@
 "SFD-178",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55350,7 +53731,7 @@
 "SFD-178",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55359,7 +53740,7 @@
 "SFD-178",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Blade of the Ruined King (SFD-178: \"[Equip] \u2014 [Order], Kill a friendly unit\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55368,7 +53749,7 @@
 "UNL-136",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55377,7 +53758,7 @@
 "UNL-136",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55386,7 +53767,7 @@
 "UNL-136",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Scryer's Bloom (UNL-136: \"Kill this, [1], [Exhaust]: [Predict 2], then draw 1.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55395,7 +53776,7 @@
 "UNL-161",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55404,7 +53785,7 @@
 "UNL-161",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55413,7 +53794,7 @@
 "UNL-161",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Divining Shells (UNL-161: \"[Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55422,7 +53803,7 @@
 "UNL-209",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55431,7 +53812,7 @@
 "UNL-209",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55440,7 +53821,7 @@
 "UNL-209",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dusk Rose Lab (UNL-209: \"At the start of your Beginning Phase, you may kill a unit you control here to draw 1.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55449,7 +53830,7 @@
 "VEN-133",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55458,7 +53839,7 @@
 "VEN-133",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55467,7 +53848,7 @@
 "VEN-133",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Glowstone (VEN-133: \"At the end of your turn, kill this and deal 5 to all units you control.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55476,7 +53857,7 @@
 "RAD-136",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55485,7 +53866,7 @@
 "RAD-136",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55494,7 +53875,7 @@
 "RAD-136",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Dockside Lock-Up (RAD-136: \"When you hold here, kill this to play the banished card, ignoring its cost.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55503,7 +53884,7 @@
 "RAD-039",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55512,7 +53893,7 @@
 "RAD-039",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55521,7 +53902,7 @@
 "RAD-039",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ephemeral Ward (RAD-039: \"When you play a unit, kill this.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55530,7 +53911,7 @@
 "RAD-012",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55539,7 +53920,7 @@
 "RAD-012",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55548,7 +53929,7 @@
 "RAD-012",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Runeblade Anvil (RAD-012: \"[2][Chaos], [Exhaust]: Kill this.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55557,7 +53938,7 @@
 "RAD-022",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55566,7 +53947,7 @@
 "RAD-022",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55575,7 +53956,7 @@
 "RAD-022",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55584,7 +53965,7 @@
 "RAD-069",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55593,7 +53974,7 @@
 "RAD-069",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55602,7 +53983,7 @@
 "RAD-069",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Zero Point Inflection (RAD-069: \"When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -55611,7 +53992,7 @@
 "RAD-112a",
 "OGN-118"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
 },
@@ -55620,7 +54001,7 @@
 "RAD-112a",
 "UNL-068"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
 },
@@ -55629,7 +54010,7 @@
 "RAD-112a",
 "UNL-129"
 ],
-"s": 1.84,
+"s": 1.85,
 "rule": "sac->deathwatch",
 "reason": "Ziggs, Explosive (RAD-112a: \"When I defend, you may kill a friendly gear to give me +2 [Might] this turn.\") makes a friendly unit die, which the watcher rewards: Vicious Snapjaws (UNL-129: \"When another friendly unit dies, gain 1 XP.\")"
 },
@@ -57993,15 +56374,6 @@
 },
 {
 "cards": [
-"SFD-020",
-"SFD-075"
-],
-"s": 1.6,
-"rule": "gearability->abilitypayoff",
-"reason": "Draven, Vanquisher (SFD-020: \"When I win a combat, play a Gold gear token exhausted.\") has a gear ability to activate for the payoff: Prize of Progress (SFD-075: \"When you use an activated ability of a gear, give me +1 [Might] this turn.\")"
-},
-{
-"cards": [
 "SFD-046",
 "SFD-075"
 ],
@@ -58665,33 +57037,6 @@
 "s": 1.56,
 "rule": "move->selfmove",
 "reason": "The Syren (OGN-184: \"[1], [Exhaust]: Move a friendly unit at a battlefield to your base.\") moves the unit, which fires its when-I-move trigger: Covert Informant (VEN-057: \"[Empowered][>] When I move, draw 1.\")"
-},
-{
-"cards": [
-"OGN-285",
-"UNL-080"
-],
-"s": 1.56,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Hwei, Brooding Painter (UNL-080: \"When I move, draw 1, then discard 1.\")"
-},
-{
-"cards": [
-"OGN-285",
-"UNL-082"
-],
-"s": 1.56,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Lillia, Fae Fawn (UNL-082: \"When I move from a location, play a 3 [Might] Sprite unit token with [Temporary] there.\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-057"
-],
-"s": 1.56,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Covert Informant (VEN-057: \"[Empowered][>] When I move, draw 1.\")"
 },
 {
 "cards": [
@@ -59802,69 +58147,6 @@
 },
 {
 "cards": [
-"OGN-285",
-"OGN-185"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Traveling Merchant (OGN-185: \"When I move, discard 1, then draw 1.\")"
-},
-{
-"cards": [
-"OGN-285",
-"OGN-189"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Kayn, Unleashed (OGN-189: \"If I have moved twice this turn, I don't take damage.\")"
-},
-{
-"cards": [
-"OGN-285",
-"OGN-205"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Yasuo, Windrider (OGN-205: \"The third time I move in a turn, you score 1 point.\")"
-},
-{
-"cards": [
-"OGN-285",
-"SFD-130"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Treasure Hunter (SFD-130: \"When I move, play a Gold gear token exhausted.\")"
-},
-{
-"cards": [
-"OGN-285",
-"SFD-137"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Harpoon Squad (SFD-137: \"When I move from a battlefield, give me +2 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-095"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Shadow Order Disciple (VEN-095: \"When I move, you may [Burn 1] to give me +1 [Might] this turn.\")"
-},
-{
-"cards": [
-"OGN-285",
-"RAD-110"
-],
-"s": 1.53,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Lulu, Whimsical (RAD-110: \"When I move, you may have another unit's base Might become 4 this turn.\")"
-},
-{
-"cards": [
 "SFD-050",
 "OGN-222"
 ],
@@ -60441,69 +58723,6 @@
 },
 {
 "cards": [
-"OGN-285",
-"SFD-041"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Apprentice Smith (SFD-041: \"When I move, reveal the top card of your Main Deck.\")"
-},
-{
-"cards": [
-"OGN-285",
-"SFD-048"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Stellacorn Herder (SFD-048: \"When I move, draw 1.\")"
-},
-{
-"cards": [
-"OGN-285",
-"UNL-022"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Jhin, Murderous Artist (UNL-022: \"When I move, [Add] [1][Any].\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-002"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Blade Twirler (VEN-002: \"The first time I move each turn, choose a player.\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-016"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Eclipse Dragon (VEN-016: \"When I move, if you control 4 or fewer runes, draw 1.\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-021"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Akali, Deadly Weapon (VEN-021: \"When I move, you may deal 1 to a unit at a battlefield I moved to or from.\")"
-},
-{
-"cards": [
-"OGN-285",
-"VEN-033"
-],
-"s": 1.52,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Pakaa Protector (VEN-033: \"When I move, reveal the top card of your Main Deck.\")"
-},
-{
-"cards": [
 "UNL-207",
 "SFD-041"
 ],
@@ -60753,51 +58972,6 @@
 "s": 1.51,
 "rule": "move->selfmove",
 "reason": "The Syren (OGN-184: \"[1], [Exhaust]: Move a friendly unit at a battlefield to your base.\") moves the unit, which fires its when-I-move trigger: Raving Witness (RAD-074: \"When I move, reveal the top card of your Main Deck.\")"
-},
-{
-"cards": [
-"OGN-285",
-"OGN-162"
-],
-"s": 1.51,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Miss Fortune, Captain (OGN-162: \"The first time I move each turn, you may ready something else that's exhausted.\")"
-},
-{
-"cards": [
-"OGN-285",
-"UNL-105"
-],
-"s": 1.51,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Imposing Challenger (UNL-105: \"When I move, you may move an enemy unit here with less Might than me to a different battlefield.\")"
-},
-{
-"cards": [
-"OGN-285",
-"UNL-115"
-],
-"s": 1.51,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Nilah, Joyful Ascetic (UNL-115: \"When I move, gain 1 XP.\")"
-},
-{
-"cards": [
-"OGN-285",
-"RAD-078"
-],
-"s": 1.51,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Armored Tusker (RAD-078: \"When I move, you may deal damage equal to my [Shield] to a unit at a battlefield.\")"
-},
-{
-"cards": [
-"OGN-285",
-"RAD-074"
-],
-"s": 1.51,
-"rule": "move->selfmove",
-"reason": "Reaver's Row (OGN-285: \"When you defend here, you may move a friendly unit here to base.\") moves the unit, which fires its when-I-move trigger: Raving Witness (RAD-074: \"When I move, reveal the top card of your Main Deck.\")"
 },
 {
 "cards": [
@@ -63385,15 +61559,6 @@
 {
 "cards": [
 "VEN-139",
-"SFD-020"
-],
-"s": 1.25,
-"rule": "ready->attacker",
-"reason": "Rogue Assassin (VEN-139: \"[Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.\") readies the attacker so its attack trigger can happen a second time in a turn: Draven, Vanquisher (SFD-020: \"When I attack or defend, you may pay [Fury].\")"
-},
-{
-"cards": [
-"VEN-139",
 "SFD-024"
 ],
 "s": 1.25,
@@ -63888,6 +62053,15 @@
 },
 {
 "cards": [
+"SFD-197",
+"OGN-246"
+],
+"s": 1.16,
+"rule": "token->deathwatch",
+"reason": "Emperor of the Sands (SFD-197: \"[1], [Exhaust]: Play a 2 [Might] Sand Soldier unit token to your base.\") creates expendable unit tokens whose deaths the watcher counts: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
 "UNL-187",
 "VEN-020"
 ],
@@ -63966,15 +62140,6 @@
 "s": 1.15,
 "rule": "ready->attacker",
 "reason": "Piltover Enforcer (UNL-187: \"When you conquer, if you assigned 3 or more excess damage, you may exhaust me to ready a unit.\") readies the attacker so its attack trigger can happen a second time in a turn: Volibear, Furious (OGN-041: \"When I attack, deal 5 damage split among any number of enemy units here.\")"
-},
-{
-"cards": [
-"UNL-187",
-"SFD-020"
-],
-"s": 1.15,
-"rule": "ready->attacker",
-"reason": "Piltover Enforcer (UNL-187: \"When you conquer, if you assigned 3 or more excess damage, you may exhaust me to ready a unit.\") readies the attacker so its attack trigger can happen a second time in a turn: Draven, Vanquisher (SFD-020: \"When I attack or defend, you may pay [Fury].\")"
 },
 {
 "cards": [
@@ -64338,6 +62503,15 @@
 },
 {
 "cards": [
+"UNL-199",
+"OGN-246"
+],
+"s": 1.08,
+"rule": "token->deathwatch",
+"reason": "Deceiver (UNL-199: \"When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there.\") creates expendable unit tokens whose deaths the watcher counts: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
+},
+{
+"cards": [
 "OGN-222",
 "OGN-293"
 ],
@@ -64452,33 +62626,6 @@
 "s": 1.08,
 "rule": "token->wide",
 "reason": "Whirling Twirligig (RAD-022: \"Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token.\") adds bodies for a count-your-units payoff: The Grand Plaza (OGN-293: \"When you hold here, if you have 7+ units here, you win the game.\")"
-},
-{
-"cards": [
-"SFD-020",
-"OGN-091"
-],
-"s": 1.08,
-"rule": "gear->gearpayoff",
-"reason": "Draven, Vanquisher (SFD-020: \"When I win a combat, play a Gold gear token exhausted.\") is / makes a gear that the payoff counts or triggers on: Pit Crew (OGN-091: \"When you play a gear, ready me.\")"
-},
-{
-"cards": [
-"SFD-020",
-"VEN-065"
-],
-"s": 1.08,
-"rule": "gear->gearpayoff",
-"reason": "Draven, Vanquisher (SFD-020: \"When I win a combat, play a Gold gear token exhausted.\") is / makes a gear that the payoff counts or triggers on: Swain, Visionary (VEN-065: \"[Vision] When I conquer, if you've played a non-token unit, a non-token gear, and a spell this turn, you score 1 point.\")"
-},
-{
-"cards": [
-"SFD-020",
-"VEN-068"
-],
-"s": 1.08,
-"rule": "gear->gearpayoff",
-"reason": "Draven, Vanquisher (SFD-020: \"When I win a combat, play a Gold gear token exhausted.\") is / makes a gear that the payoff counts or triggers on: Jayce, Brilliant Inventor (VEN-068: \"When you play me or the first time you play a non-token gear each turn, you may ready something besides me that's exhausted.\")"
 },
 {
 "cards": [
@@ -64843,15 +62990,6 @@
 {
 "cards": [
 "SFD-197",
-"OGN-246"
-],
-"s": 1.06,
-"rule": "token->deathwatch",
-"reason": "Emperor of the Sands (SFD-197: \"[1], [Exhaust]: Play a 2 [Might] Sand Soldier unit token to your base.\") creates expendable unit tokens whose deaths the watcher counts: Viktor, Leader (OGN-246: \"When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.\")"
-},
-{
-"cards": [
-"SFD-197",
 "SFD-169"
 ],
 "s": 1.06,
@@ -65037,6 +63175,60 @@
 "s": 1.03,
 "rule": "trashfill->trash",
 "reason": "Minah Swiftfoot (VEN-111: \"When I move to a battlefield, choose one \u2014 - Each player discards 1. - Each player draws 1.\") fills your trash for a card that uses the trash: Lightning Rush (VEN-156: \"[Flow] [2][Any]\")"
+},
+{
+"cards": [
+"OGN-265",
+"OGN-118"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Wraith of Echoes (OGN-118: \"The first time a friendly unit dies each turn, draw 1.\")"
+},
+{
+"cards": [
+"OGN-265",
+"OGN-228"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Vanguard Helm (OGN-228: \"When a buffed friendly unit dies, buff another friendly unit.\")"
+},
+{
+"cards": [
+"OGN-265",
+"SFD-169"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Altar of Memories (SFD-169: \"When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.\")"
+},
+{
+"cards": [
+"OGN-265",
+"UNL-068"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Spectral Centaur (UNL-068: \"When another friendly unit dies, give me +2 [Might] this turn.\")"
+},
+{
+"cards": [
+"OGN-265",
+"UNL-174"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Shard of Undoing (UNL-174: \"The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.\")"
+},
+{
+"cards": [
+"OGN-265",
+"RAD-131"
+],
+"s": 1.02,
+"rule": "token->deathwatch",
+"reason": "Herald of the Arcane (OGN-265: \"[1], [Exhaust]: Play a 1 [Might] Recruit unit token.\") creates expendable unit tokens whose deaths the watcher counts: Demacian Illuminators (RAD-131: \"When one or more friendly units die, [Buff] a friendly unit.\")"
 },
 {
 "cards": [
@@ -65633,16 +63825,6 @@
 },
 {
 "cards": [
-"SFD-150",
-"SFD-203"
-],
-"s": 4.68,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
 "SFD-057",
 "SFD-195"
 ],
@@ -65783,7 +63965,7 @@
 "OGN-118",
 "RAD-168"
 ],
-"s": 4.42,
+"s": 4.46,
 "rules": [
 "reduce->expensive",
 "sac->deathwatch"
@@ -65794,7 +63976,7 @@
 "RAD-168",
 "UNL-068"
 ],
-"s": 4.42,
+"s": 4.46,
 "rules": [
 "reduce->expensive",
 "sac->deathwatch"
@@ -65819,17 +64001,6 @@
 "s": 4.38,
 "rules": [
 "xp->xppayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"RAD-069"
-],
-"s": 4.37,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
 ]
 },
 {
@@ -66221,46 +64392,6 @@
 },
 {
 "cards": [
-"OGN-156",
-"SFD-203"
-],
-"s": 3.9,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
-"SFD-203",
-"UNL-103"
-],
-"s": 3.9,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
-"SFD-203",
-"VEN-085"
-],
-"s": 3.9,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
-"RAD-074",
-"SFD-203"
-],
-"s": 3.9,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
 "OGN-121",
 "OGN-263"
 ],
@@ -66435,6 +64566,17 @@
 "RAD-069",
 "SFD-169"
 ],
+"s": 3.77,
+"rules": [
+"draw->drawpayoff",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"OGN-118",
+"RAD-069"
+],
 "s": 3.75,
 "rules": [
 "draw->drawpayoff",
@@ -66593,13 +64735,22 @@
 },
 {
 "cards": [
-"OGN-118",
-"RAD-069"
+"UNL-133",
+"UNL-144"
 ],
 "s": 3.74,
 "rules": [
-"draw->drawpayoff",
-"sac->deathwatch"
+"move->movewatch"
+]
+},
+{
+"cards": [
+"UNL-133",
+"UNL-207"
+],
+"s": 3.74,
+"rules": [
+"move->movewatch"
 ]
 },
 {
@@ -66634,16 +64785,6 @@
 },
 {
 "cards": [
-"OGN-110",
-"OGN-235"
-],
-"s": 3.74,
-"rules": [
-"recycle->recyclepayoff"
-]
-},
-{
-"cards": [
 "OGN-121",
 "OGN-235"
 ],
@@ -66666,6 +64807,16 @@
 "cards": [
 "OGN-235",
 "SFD-026"
+],
+"s": 3.74,
+"rules": [
+"recycle->recyclepayoff"
+]
+},
+{
+"cards": [
+"OGN-235",
+"SFD-150"
 ],
 "s": 3.74,
 "rules": [
@@ -67024,26 +65175,6 @@
 },
 {
 "cards": [
-"UNL-133",
-"UNL-144"
-],
-"s": 3.62,
-"rules": [
-"move->movewatch"
-]
-},
-{
-"cards": [
-"UNL-133",
-"UNL-207"
-],
-"s": 3.62,
-"rules": [
-"move->movewatch"
-]
-},
-{
-"cards": [
 "UNL-007",
 "VEN-143"
 ],
@@ -67283,23 +65414,23 @@
 },
 {
 "cards": [
+"OGN-144",
+"RAD-069"
+],
+"s": 3.45,
+"rules": [
+"draw->drawpayoff",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "RAD-017",
 "RAD-112a"
 ],
 "s": 3.44,
 "rules": [
 "deploy->deploypayoff"
-]
-},
-{
-"cards": [
-"OGN-144",
-"RAD-069"
-],
-"s": 3.43,
-"rules": [
-"draw->drawpayoff",
-"sac->deathwatch"
 ]
 },
 {
@@ -67535,6 +65666,17 @@
 "rules": [
 "tribal:Bird",
 "tribal:Cat"
+]
+},
+{
+"cards": [
+"OGN-246",
+"UNL-199"
+],
+"s": 3.3,
+"rules": [
+"temporary->deathwatch",
+"token->deathwatch"
 ]
 },
 {
@@ -68451,6 +66593,56 @@
 },
 {
 "cards": [
+"OGN-191",
+"UNL-133"
+],
+"s": 3.12,
+"rules": [
+"move->movewatch"
+]
+},
+{
+"cards": [
+"UNL-133",
+"UNL-202"
+],
+"s": 3.12,
+"rules": [
+"move->movewatch"
+]
+},
+{
+"cards": [
+"UNL-133",
+"VEN-105"
+],
+"s": 3.12,
+"rules": [
+"move->movewatch"
+]
+},
+{
+"cards": [
+"RAD-113",
+"UNL-133"
+],
+"s": 3.12,
+"rules": [
+"move->movewatch"
+]
+},
+{
+"cards": [
+"RAD-084",
+"UNL-133"
+],
+"s": 3.12,
+"rules": [
+"move->movewatch"
+]
+},
+{
+"cards": [
 "OGN-006",
 "VEN-143"
 ],
@@ -68571,8 +66763,38 @@
 },
 {
 "cards": [
+"OGN-156",
+"OGN-235"
+],
+"s": 3.12,
+"rules": [
+"recycle->recyclepayoff"
+]
+},
+{
+"cards": [
 "OGN-212",
 "OGN-235"
+],
+"s": 3.12,
+"rules": [
+"recycle->recyclepayoff"
+]
+},
+{
+"cards": [
+"OGN-235",
+"UNL-103"
+],
+"s": 3.12,
+"rules": [
+"recycle->recyclepayoff"
+]
+},
+{
+"cards": [
+"OGN-235",
+"VEN-085"
 ],
 "s": 3.12,
 "rules": [
@@ -68633,6 +66855,16 @@
 "cards": [
 "OGN-235",
 "RAD-111"
+],
+"s": 3.12,
+"rules": [
+"recycle->recyclepayoff"
+]
+},
+{
+"cards": [
+"OGN-235",
+"RAD-074"
 ],
 "s": 3.12,
 "rules": [
@@ -68926,16 +67158,6 @@
 },
 {
 "cards": [
-"OGN-182",
-"VEN-143"
-],
-"s": 3.09,
-"rules": [
-"discard->discardpayoff"
-]
-},
-{
-"cards": [
 "OGN-202",
 "VEN-143"
 ],
@@ -69176,36 +67398,6 @@
 "rules": [
 "tribal:Mech"
 ]
-},
-{
-"cards": [
-"OGN-088",
-"SFD-065"
-],
-"s": 3.04,
-"rules": [
-"tribal:Mech"
-]
-},
-{
-"cards": [
-"OGN-088",
-"SFD-071"
-],
-"s": 3.04,
-"rules": [
-"tribal:Mech"
-]
-},
-{
-"cards": [
-"OGN-088",
-"SFD-076"
-],
-"s": 3.04,
-"rules": [
-"tribal:Mech"
-]
 }
 ],
 "triples": [
@@ -69247,19 +67439,6 @@
 "ready->exhaust-unit",
 "ready->readytrigger",
 "target->targeted"
-]
-},
-{
-"cards": [
-"OGN-162",
-"OGN-177",
-"UNL-201"
-],
-"s": 14.04,
-"rules": [
-"move->movewatch",
-"move->selfmove",
-"ready->exhaust-legend"
 ]
 },
 {
@@ -71411,7 +69590,7 @@
 "RAD-142",
 "UNL-129"
 ],
-"s": 9.92,
+"s": 9.97,
 "rules": [
 "deploy->deploypayoff",
 "sac->deathwatch",
@@ -71728,19 +69907,6 @@
 },
 {
 "cards": [
-"OGN-177",
-"UNL-115",
-"UNL-201"
-],
-"s": 9.38,
-"rules": [
-"move->movewatch",
-"move->selfmove",
-"xp->xppayoff"
-]
-},
-{
-"cards": [
 "UNL-051",
 "UNL-160",
 "UNL-167"
@@ -72010,6 +70176,18 @@
 },
 {
 "cards": [
+"RAD-112a",
+"RAD-142",
+"UNL-129"
+],
+"s": 9.12,
+"rules": [
+"deploy->deploypayoff",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "OGN-140",
 "OGN-142",
 "UNL-104"
@@ -72055,18 +70233,6 @@
 "rules": [
 "reduce->expensive",
 "tribal:Dragon"
-]
-},
-{
-"cards": [
-"RAD-112a",
-"RAD-142",
-"UNL-129"
-],
-"s": 9.07,
-"rules": [
-"deploy->deploypayoff",
-"sac->deathwatch"
 ]
 },
 {
@@ -72433,78 +70599,6 @@
 },
 {
 "cards": [
-"OGN-178",
-"OGN-182",
-"RAD-069"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"OGN-185",
-"RAD-069"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"OGN-298",
-"RAD-069"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"RAD-069",
-"SFD-123"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"RAD-069",
-"UNL-080"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"RAD-069",
-"VEN-111"
-],
-"s": 8.74,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
 "OGN-031",
 "OGN-140",
 "UNL-104"
@@ -72673,14 +70767,16 @@
 },
 {
 "cards": [
-"OGN-182",
-"RAD-069",
-"UNL-074"
+"OGN-162",
+"RAD-113",
+"UNL-133"
 ],
-"s": 8.49,
+"s": 8.51,
 "rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
+"move->movewatch",
+"move->selfmove",
+"ready->exhaust-gear",
+"ready->exhaust-unit"
 ]
 },
 {
@@ -72710,20 +70806,6 @@
 },
 {
 "cards": [
-"OGN-162",
-"RAD-113",
-"UNL-133"
-],
-"s": 8.41,
-"rules": [
-"move->movewatch",
-"move->selfmove",
-"ready->exhaust-gear",
-"ready->exhaust-unit"
-]
-},
-{
-"cards": [
 "OGN-269",
 "UNL-102",
 "UNL-162"
@@ -72732,19 +70814,6 @@
 "rules": [
 "buff->buffpayoff",
 "xp->xppayoff"
-]
-},
-{
-"cards": [
-"OGN-162",
-"OGN-177",
-"OGN-184"
-],
-"s": 8.38,
-"rules": [
-"move->movewatch",
-"move->selfmove",
-"ready->exhaust-gear"
 ]
 },
 {
@@ -73078,7 +71147,7 @@
 "SFD-169",
 "UNL-074"
 ],
-"s": 7.87,
+"s": 7.89,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73090,7 +71159,7 @@
 "RAD-069",
 "UNL-074"
 ],
-"s": 7.86,
+"s": 7.87,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73279,6 +71348,18 @@
 },
 {
 "cards": [
+"OGN-235",
+"SFD-142",
+"SFD-150"
+],
+"s": 7.76,
+"rules": [
+"recycle->recyclepayoff",
+"target->targeted"
+]
+},
+{
+"cards": [
 "OGN-078",
 "OGN-152",
 "OGN-162"
@@ -73366,6 +71447,18 @@
 },
 {
 "cards": [
+"RAD-069",
+"SFD-169",
+"UNL-209"
+],
+"s": 7.54,
+"rules": [
+"draw->drawpayoff",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "OGN-152",
 "OGN-257",
 "SFD-057"
@@ -73379,23 +71472,11 @@
 },
 {
 "cards": [
-"RAD-069",
-"SFD-169",
-"UNL-209"
-],
-"s": 7.5,
-"rules": [
-"draw->drawpayoff",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
 "OGN-118",
 "OGN-186",
 "RAD-069"
 ],
-"s": 7.48,
+"s": 7.5,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73407,7 +71488,7 @@
 "RAD-069",
 "SFD-046"
 ],
-"s": 7.48,
+"s": 7.5,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73419,7 +71500,7 @@
 "RAD-069",
 "UNL-136"
 ],
-"s": 7.48,
+"s": 7.5,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73431,7 +71512,7 @@
 "RAD-069",
 "UNL-209"
 ],
-"s": 7.48,
+"s": 7.5,
 "rules": [
 "draw->drawpayoff",
 "sac->deathwatch"
@@ -73475,6 +71556,19 @@
 },
 {
 "cards": [
+"OGN-242",
+"SFD-169",
+"VEN-068"
+],
+"s": 7.43,
+"rules": [
+"cheat->expensive",
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "OGN-072",
 "OGN-225",
 "UNL-196"
@@ -73483,31 +71577,6 @@
 "rules": [
 "removal->killpayoff",
 "stun->stunpayoff"
-]
-},
-{
-"cards": [
-"OGN-177",
-"OGN-259",
-"SFD-125"
-],
-"s": 7.42,
-"rules": [
-"move->movewatch",
-"move->selfmove"
-]
-},
-{
-"cards": [
-"OGN-242",
-"SFD-169",
-"VEN-068"
-],
-"s": 7.41,
-"rules": [
-"cheat->expensive",
-"ready->exhaust-gear",
-"sac->deathwatch"
 ]
 },
 {
@@ -73560,26 +71629,15 @@
 },
 {
 "cards": [
-"OGN-177",
-"OGN-189",
-"UNL-201"
+"RAD-113",
+"UNL-133",
+"VEN-068"
 ],
 "s": 7.33,
 "rules": [
 "move->movewatch",
-"move->selfmove"
-]
-},
-{
-"cards": [
-"OGN-177",
-"OGN-205",
-"UNL-201"
-],
-"s": 7.33,
-"rules": [
-"move->movewatch",
-"move->selfmove"
+"ready->exhaust-gear",
+"ready->exhaust-unit"
 ]
 },
 {
@@ -73604,18 +71662,6 @@
 "rules": [
 "ready->exhaust-unit",
 "stun->stunpayoff"
-]
-},
-{
-"cards": [
-"OGN-178",
-"OGN-182",
-"OGN-236"
-],
-"s": 7.27,
-"rules": [
-"discard->discardpayoff",
-"double->trigger"
 ]
 },
 {
@@ -73645,39 +71691,14 @@
 },
 {
 "cards": [
-"RAD-113",
-"UNL-133",
-"VEN-068"
-],
-"s": 7.23,
-"rules": [
-"move->movewatch",
-"ready->exhaust-gear",
-"ready->exhaust-unit"
-]
-},
-{
-"cards": [
-"OGN-177",
-"OGN-189",
-"OGN-259"
+"OGN-144",
+"RAD-069",
+"UNL-209"
 ],
 "s": 7.22,
 "rules": [
-"move->movewatch",
-"move->selfmove"
-]
-},
-{
-"cards": [
-"OGN-177",
-"OGN-205",
-"OGN-259"
-],
-"s": 7.22,
-"rules": [
-"move->movewatch",
-"move->selfmove"
+"draw->drawpayoff",
+"sac->deathwatch"
 ]
 },
 {
@@ -73752,18 +71773,6 @@
 "rules": [
 "removal->killpayoff",
 "stun->stunpayoff"
-]
-},
-{
-"cards": [
-"OGN-144",
-"RAD-069",
-"UNL-209"
-],
-"s": 7.18,
-"rules": [
-"draw->drawpayoff",
-"sac->deathwatch"
 ]
 },
 {
@@ -73878,18 +71887,6 @@
 },
 {
 "cards": [
-"OGN-235",
-"SFD-142",
-"SFD-150"
-],
-"s": 7.03,
-"rules": [
-"recycle->recyclepayoff",
-"target->targeted"
-]
-},
-{
-"cards": [
 "RAD-022",
 "RAD-112a",
 "VEN-068"
@@ -73928,6 +71925,19 @@
 },
 {
 "cards": [
+"RAD-142",
+"UNL-129",
+"VEN-109"
+],
+"s": 7.01,
+"rules": [
+"sac->deathwatch",
+"token->tokenpayoff",
+"tribal:Bilgewater"
+]
+},
+{
+"cards": [
 "RAD-043",
 "UNL-052",
 "VEN-135"
@@ -73937,19 +71947,6 @@
 "buff->buffpayoff",
 "ready->exhaustpayoff",
 "stun->stunpayoff"
-]
-},
-{
-"cards": [
-"RAD-142",
-"UNL-129",
-"VEN-109"
-],
-"s": 6.97,
-"rules": [
-"sac->deathwatch",
-"token->tokenpayoff",
-"tribal:Bilgewater"
 ]
 },
 {
@@ -75276,6 +73273,150 @@
 },
 {
 "cards": [
+"OGN-162",
+"OGN-242",
+"SFD-169"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"OGN-162",
+"SFD-169",
+"UNL-161"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"OGN-162",
+"SFD-169",
+"VEN-133"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"OGN-186",
+"SFD-169",
+"SFD-221"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"OGN-242",
+"SFD-169",
+"SFD-221"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"RAD-012",
+"SFD-169",
+"SFD-221"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-046",
+"SFD-169",
+"SFD-221"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-169",
+"SFD-221",
+"UNL-136"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-169",
+"SFD-221",
+"UNL-161"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-169",
+"SFD-221",
+"VEN-133"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-169",
+"UNL-161",
+"VEN-068"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"SFD-169",
+"VEN-068",
+"VEN-133"
+],
+"s": 6.41,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "OGN-124",
 "OGN-162",
 "SFD-057"
@@ -75298,150 +73439,6 @@
 "ready->exhaust-gear",
 "ready->readytrigger",
 "target->targeted"
-]
-},
-{
-"cards": [
-"OGN-162",
-"OGN-242",
-"SFD-169"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"OGN-162",
-"SFD-169",
-"UNL-161"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"OGN-162",
-"SFD-169",
-"VEN-133"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"OGN-186",
-"SFD-169",
-"SFD-221"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"OGN-242",
-"SFD-169",
-"SFD-221"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"RAD-012",
-"SFD-169",
-"SFD-221"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-046",
-"SFD-169",
-"SFD-221"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-169",
-"SFD-221",
-"UNL-136"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-169",
-"SFD-221",
-"UNL-161"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-169",
-"SFD-221",
-"VEN-133"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-169",
-"UNL-161",
-"VEN-068"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"SFD-169",
-"VEN-068",
-"VEN-133"
-],
-"s": 6.39,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
 ]
 },
 {
@@ -75665,78 +73662,6 @@
 },
 {
 "cards": [
-"OGN-178",
-"OGN-182",
-"UNL-074"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"OGN-185",
-"UNL-074"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"OGN-298",
-"UNL-074"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"SFD-123",
-"UNL-074"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"UNL-074",
-"UNL-080"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
-"OGN-182",
-"UNL-074",
-"VEN-111"
-],
-"s": 6.25,
-"rules": [
-"discard->discardpayoff",
-"draw->drawpayoff"
-]
-},
-{
-"cards": [
 "OGN-113",
 "OGN-152",
 "VEN-150"
@@ -75833,6 +73758,42 @@
 },
 {
 "cards": [
+"OGN-162",
+"RAD-022",
+"SFD-169"
+],
+"s": 6.16,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"RAD-022",
+"SFD-169",
+"SFD-221"
+],
+"s": 6.16,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
+"RAD-022",
+"SFD-169",
+"VEN-068"
+],
+"s": 6.16,
+"rules": [
+"ready->exhaust-gear",
+"sac->deathwatch"
+]
+},
+{
+"cards": [
 "UNL-093",
 "UNL-109",
 "VEN-150"
@@ -75845,42 +73806,6 @@
 },
 {
 "cards": [
-"OGN-162",
-"RAD-022",
-"SFD-169"
-],
-"s": 6.14,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"RAD-022",
-"SFD-169",
-"SFD-221"
-],
-"s": 6.14,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
-"RAD-022",
-"SFD-169",
-"VEN-068"
-],
-"s": 6.14,
-"rules": [
-"ready->exhaust-gear",
-"sac->deathwatch"
-]
-},
-{
-"cards": [
 "SFD-049",
 "SFD-142",
 "SFD-150"
@@ -75889,6 +73814,18 @@
 "rules": [
 "target->targeted",
 "tribal:Equipment"
+]
+},
+{
+"cards": [
+"UNL-129",
+"UNL-136",
+"UNL-201"
+],
+"s": 6.09,
+"rules": [
+"sac->deathwatch",
+"xp->xppayoff"
 ]
 },
 {
@@ -75941,18 +73878,6 @@
 },
 {
 "cards": [
-"UNL-129",
-"UNL-136",
-"UNL-201"
-],
-"s": 6.08,
-"rules": [
-"sac->deathwatch",
-"xp->xppayoff"
-]
-},
-{
-"cards": [
 "OGN-135",
 "UNL-166",
 "UNL-168"
@@ -76549,19 +74474,284 @@
 "rules": [
 "tribal:Cat",
 "tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-168",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-168",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-168",
+"VEN-071"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-177",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-177",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-177",
+"VEN-071"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-177",
+"VEN-132"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-196",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-196",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-166",
+"UNL-196",
+"VEN-132"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-168",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-168",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-168",
+"VEN-071"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-177",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-177",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-177",
+"VEN-071"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-177",
+"VEN-132"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-196",
+"VEN-033"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-196",
+"VEN-043"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"UNL-167",
+"UNL-196",
+"VEN-132"
+],
+"s": 6.05,
+"rules": [
+"tribal:Cat",
+"tribal:Dog"
+]
+},
+{
+"cards": [
+"OGN-059",
+"OGN-157",
+"UNL-051"
+],
+"s": 6.03,
+"rules": [
+"buff->buffpayoff",
+"stun->stunpayoff",
+"tribal:Bird"
+]
+},
+{
+"cards": [
+"OGN-277",
+"RAD-033",
+"RAD-146"
+],
+"s": 6.03,
+"rules": [
+"deploy->deploypayoff",
+"move->movewatch"
 ]
 }
 ],
 "counts": {
 "loops": {
 "self-replay": 6,
-"mutual-card-level": 179,
+"mutual-card-level": 178,
 "mutual": 16,
-"refund": 301
+"refund": 273
 },
-"cost_cheats": 3616,
-"engines": 2386,
-"strong_pairs": 2790,
-"triples": 851
+"cost_cheats": 3602,
+"engines": 2298,
+"strong_pairs": 2686,
+"triples": 828
 }
 }

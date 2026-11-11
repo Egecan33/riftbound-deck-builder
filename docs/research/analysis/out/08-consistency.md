@@ -21,7 +21,7 @@
 | 95% | 17 / 13 | 15 / 12 | 13 / 10 | 12 / 9 | 10 / 9 | 9 / 8 |
 
 ### C. Opening hand (4 cards, before mulligan): P(x copies) for a group of K cards
-| K | P(0) | P(1) | P(2) | P(3+) | P(>=1 after a 2-card dig when 0) |
+| K | P(0) | P(1) | P(2) | P(3+) | P(>=1) overall if you dig 2 whenever you have 0 |
 |---|---|---|---|---|---|
 | 3 | 72% | 26% | 2% | 0% | 40% |
 | 6 | 50% | 40% | 10% | 1% | 66% |

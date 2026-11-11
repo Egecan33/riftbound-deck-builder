@@ -3,14 +3,12 @@
 1	partial	Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.	RAD-140
 1	partial	Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell.	VEN-040
 1	partial	choose another friendly unit.	VEN-137
-1	partial	choose one of those legends and add it to your Legend Zone while I'm on the board.	RAD-167
+1	partial	choose one of those Legends and add it to your Legend Zone while I'm on the board.	RAD-167
 1	none	copy that unit's text to this Equipment's effect text for as long as this is attached to it.	SFD-059
 1	partial	During showdowns here, cards with [Reaction] cost [C] more to play.	VEN-160
 1	none	Each player chooses N units, N gear, N runes, and N cards in their hands.	OGN-244
-1	none	Each player looks at the top N cards of their Main Deck, chooses one, then recycles the rest.	OGN-115
 1	partial	Friendly buffed units have [Deflect] if they didn't already.	OGN-063
-1	partial	If a combat where you are the attacker ends in a tie, recall ALL units instead.	OGN-227
-1	partial	If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me ±N [Might] instead.	VEN-086
+1	partial	If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me ±N [Might] this turn instead.	VEN-086
 1	none	If a spell or ability you control would give -[Might] to a unit it chooses, it gives an additional ±N [Might].	VEN-069
 1	partial	If another unit you control here would die, if it has less Might than me, instead heal it, exhaust it, and recall it.	SFD-173
 1	partial	If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.	VEN-139

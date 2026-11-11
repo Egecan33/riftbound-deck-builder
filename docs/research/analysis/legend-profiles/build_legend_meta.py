@@ -400,11 +400,17 @@ ARCH_LABELS = {}
 
 def dedupe(decks):
     """Same legend, main deck, runes and battlefields = one list, whatever site it came from. First source wins."""
-    seen, out = set(), []
+    seen, out = {}, []
     for d in decks:
-        if d['dupKey'] in seen:
+        kept = seen.get(d['dupKey'])
+        if kept is not None:
+            # An identical list published under an event name (or as a podium/official list) gives the
+            # kept record tournament provenance too: the 56 cards are the same.
+            if d.get('eventMarker') and not kept.get('eventMarker'):
+                kept['eventMarker'] = True
+                kept['eventMarkerFrom'] = d.get('id')
             continue
-        seen.add(d['dupKey'])
+        seen[d['dupKey']] = d
         out.append(d)
     return out
 
@@ -447,6 +453,13 @@ def main():
     pa_own = read_pa(a.pa_decks, by_code, by_name, unresolved) if a.pa_decks else []
     pa_shared = read_shared_pa(a.pa_shared, by_code, by_name, unresolved)
     own_ids = {d['id'] for d in pa_own}
+    # A deck id fetched by both tasks keeps the shared task's event flag (its name matched ../select-tournament.mjs
+    # EVENT_RE), so the provenance count does not depend on which file the page came from.
+    shared_ids = {d['id'] for d in pa_shared}
+    for d in pa_own:
+        if d['id'] in shared_ids and not d['eventMarker']:
+            d['eventMarker'] = True
+            d['eventMarkerFrom'] = 'shared-event-fetch'
     pa = pa_own + [d for d in pa_shared if d['id'] not in own_ids]
     r1 = read_r1(a.r1_parsed, a.r1_qty, by_code, by_name, unresolved)
     rune_check = [(k, by_code[k]['name']) for k in sorted(by_code) if RUNE_PRINTING.match(k) and by_code[k] is not rune_by_showcase_code(k, by_name)]

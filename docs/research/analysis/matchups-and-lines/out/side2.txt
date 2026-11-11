@@ -1,0 +1,40 @@
+RAD lists 254 with a 10-card side deck 240 legends 48
+slots 1681 {1: '1046 (62%)', 2: '551 (33%)', 3: '84 (5%)'} mean distinct cards 7.0
+copies that top up a main-deck card 464 of 2400 19.3%
+types {'spell': '62.9%', 'unit': '29.5%', 'gear': '7.7%'}
+category | side decks with it | mean copies when present | share of side copies | main decks with it | mean main copies
+gear_hate | 201/240 (84%) | 2.74 | 22.9% | 101/240 | 0.8
+removal | 216/240 (90%) | 3.19 | 28.7% | 230/240 | 6.4
+counter | 128/240 (53%) | 1.65 | 8.8% | 123/240 | 1.4
+sweeper | 69/240 (29%) | 1.58 | 4.5% | 85/240 | 0.9
+hand_attack | 20/240 (8%) | 1.80 | 1.5% | 6/240 | 0.0
+protect | 153/240 (64%) | 1.83 | 11.7% | 167/240 | 2.7
+stun | 1/240 (0%) | 1.00 | 0.0% | 8/240 | 0.0
+draw | 92/240 (38%) | 1.72 | 6.6% | 228/240 | 7.7
+pump | 118/240 (49%) | 1.98 | 9.8% | 179/240 | 4.4
+most played side cards (lists, copies, classes):
+  Decree of Rage | 65 | 140 | ['burn', 'removal'] | [Action] / This can't be countered. / Deal 4 to an enemy Calm unit.
+  Decree of Unity | 64 | 120 | ['gear_hate', 'kill', 'removal'] | Kill an enemy Chaos unit or gear.
+  Decree of Insight | 58 | 112 | ['protect', 'shrink'] | [Reaction] / Ignore [Deflect] while paying this spell's cost. / Give an enemy Body unit -5 [Might] this turn.
+  An Offer You Can't Refuse | 67 | 108 | ['gear_hate'] | [Action] / Kill a gear. Its controller plays a Gold gear token exhausted.
+  Decree of Focus | 59 | 102 | ['pump'] | [Reaction] / Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enem
+  Salvage | 50 | 91 | ['draw', 'gear_hate'] | [Action] / You may kill a gear. Draw 1.
+  Star-Crossed | 58 | 65 | ['bounce', 'removal'] | [Reaction] / Return a friendly unit and an enemy unit to their owners' hands.
+  Ravenbloom Prefect | 38 | 64 | [] | When an opponent plays a gear, you may banish me to banish it.
+  Ferrous Forerunner | 42 | 62 | ['deathknell', 'token'] | [Deathknell] — Play two 3 [Might] Mech unit tokens to your base.
+  Hush | 48 | 57 | ['counter'] | [Reaction] / Counter a spell with Power cost [Rainbow][Rainbow] or more.
+  Brittle Steel | 41 | 53 | ['gear_hate'] | Kill a gear. / [Flow] [4][Fury]
+  Not So Fast | 51 | 52 | ['counter'] | [Reaction] / Counter an enemy spell or ability that chooses a friendly unit or gear.
+  Decree of Strength | 32 | 46 | [] | Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card.
+  Tomb-Raider Barbara | 32 | 46 | ['kill', 'removal'] | When you play me, if you control 7 or more runes, choose an enemy gear. If it's [Empowered], disempower it. Ot
+  Sabotage | 35 | 44 | [] | Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.
+  Vex, Apathetic | 33 | 43 | ['deflect', 'protect'] | [Deflect] / When an opponent plays a unit while I'm at a battlefield, [Stun] it. They can't move it this turn.
+  Pickpocket | 21 | 41 | ['gear_hate'] | When you play me, you may kill a gear with Energy cost no more than [1]. If you do, play a Gold gear token exh
+  Graves, Blasting Through | 30 | 40 | ['burn', 'removal', 'sweeper'] | When I attack or defend, deal damage equal to my Might to all enemy units here. / I don't deal combat damage.
+main decks (n=254): mean units 18.6, spells 15.2, gear 5.2; 4+ gear 64%, 6+ gear 44%, 22+ units 27%, 14+ spells 60%
+  placement win: n=20, mean gear-hate side copies 1.95, mean counter 1.10
+  placement top8: n=43, mean gear-hate side copies 2.60, mean counter 0.79
+  placement top64: n=18, mean gear-hate side copies 1.50, mean counter 1.28
+  placement bestof: n=61, mean gear-hate side copies 2.15, mean counter 0.77
+  placement event-only: n=98, mean gear-hate side copies 2.46, mean counter 0.87
+rune splits [((7, 5), 114), ((6, 6), 89), ((8, 4), 36), ((9, 3), 14), ((10, 2), 1)]

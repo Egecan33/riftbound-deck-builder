@@ -40,29 +40,17 @@
    "code": "OGN-115",
    "name": "Promising Future",
    "type": "spell",
-   "class": "unparsed",
-   "parseStatus": "partial",
-   "text": "Each player looks at the top 5 cards of their Main Deck, chooses one, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs.",
-   "derivedRoles": [],
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "Each player looks at the top 5 cards of their Main Deck, banishes one of them, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs.",
+   "derivedRoles": [
+    "card_selection"
+   ],
    "roles": {
-    "add": [
-     "card_selection"
-    ]
+    "note": "card_selection is symmetric (each player)"
    },
-   "why": "Symmetric \"each player looks at top 5, chooses one, ... plays those cards, ignoring Energy costs\".",
-   "ability": "each-player: look 5, keep 1, recycle rest; then each plays it energy-free"
-  },
-  {
-   "code": "OGN-227",
-   "name": "Symbol of the Solari",
-   "type": "gear",
-   "class": "unparsed",
-   "parseStatus": "partial",
-   "text": "If a combat where you are the attacker ends in a tie, recall ALL units instead.",
-   "derivedRoles": [],
-   "roles": {},
-   "why": "Replacement on a tied combat: \"recall ALL units instead\".",
-   "ability": "replacement @combat-tie (you attacker): recall all units"
+   "why": "Parsed in full on the errata text (banish one, recycle the rest, then each player plays the banished card). The effect is symmetric: every player gets the look and the free play.",
+   "ability": "each-player: look 5, banish 1, recycle rest; then each plays the banished card energy-free"
   },
   {
    "code": "OGN-242",
@@ -189,10 +177,10 @@
    "type": "unit",
    "class": "unparsed",
    "parseStatus": "partial",
-   "text": "/ If Neeko is in your deck, choose up to 3 different legends in addition to your starting legend. / When you play me, choose one of those legends and add it to your Legend Zone while I'm on the board.",
+   "text": "/ If Neeko is in your deck, choose up to 3 different legends in addition to your starting legend. / When you play me, choose one of those Legends and add it to your Legend Zone while I'm on the board.",
    "derivedRoles": [],
    "roles": {},
-   "why": "Deckbuilding rule plus Legend Zone change. Errata text used (Radiance Errata Updates, 2026-10-09). See rules.md 8.3.",
+   "why": "Deckbuilding rule plus Legend Zone change. Errata text used (errata-texts.json). See rules.md 8.3.",
    "ability": "deck rule: up to 3 extra legends; when-played: add one of them to Legend Zone while on board"
   },
   {
@@ -235,14 +223,9 @@
    "parseStatus": "partial",
    "text": "I must be assigned combat damage last. / If another unit you control here would die, if it has less Might than me, instead heal it, exhaust it, and recall it.",
    "derivedRoles": [
-    "counter_protection",
-    "mobility"
+    "counter_protection"
    ],
-   "roles": {
-    "remove": [
-     "mobility"
-    ]
-   },
+   "roles": {},
    "why": "Death replacement for another unit with a Might comparison; the recall is part of the save, not movement.",
    "ability": "replacement @would-die (other friendly unit here, might < mine): heal, exhaust, recall"
   },
@@ -295,19 +278,14 @@
    "type": "unit",
    "class": "unparsed",
    "parseStatus": "partial",
-   "text": "[Empower] [Body][Body] / [Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] instead.",
-   "derivedRoles": [
-    "buff_source"
-   ],
+   "text": "[Empower] [Body][Body] / [Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] this turn instead.",
+   "derivedRoles": [],
    "roles": {
-    "remove": [
-     "buff_source"
-    ],
     "add": [
      "counter_protection"
     ]
    },
-   "why": "Self-protection replacement (stun / -Might / return to hand become +3 Might). Not a buff source for others.",
+   "why": "Self-protection replacement (stun / -Might / return to hand become +3 Might this turn; errata text).",
    "ability": "Empowered replacement on self"
   },
   {
@@ -381,67 +359,10 @@
    "ability": "static cost-mod on Empower costs, -[1] or -[Rainbow]"
   },
   {
-   "code": "UNL-170",
-   "name": "Atakhan",
-   "type": "unit",
-   "class": "silent-loss",
-   "parseStatus": "full",
-   "text": "You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs. / [Ganking] / When I attack, the defender must kill one of their units here.",
-   "derivedRoles": [
-    "removal_single",
-    "mobility",
-    "finisher"
-   ],
-   "roles": {},
-   "why": "Two-part cost reduction merged into one phrase; actor of the forced kill is \"the defender\".",
-   "ability": "cost -[1] per Energy and -[Order] per Power of the killed unit; when-i-attack: defending player kills one of their units here"
-  },
-  {
-   "code": "VEN-044",
-   "name": "Astral Heron",
-   "type": "unit",
-   "class": "silent-loss",
-   "parseStatus": "full",
-   "text": "When you play your first card each turn, if I'm at a battlefield, your next card costs [2][Rainbow][Rainbow] less.",
-   "derivedRoles": [
-    "cost_reducer",
-    "finisher"
-   ],
-   "roles": {},
-   "why": "Trigger is \"your first card each turn\" and the reduction applies to the next card; frequency is lost.",
-   "ability": "trigger first-card-each-turn IF at-battlefield: next card -[2][Rainbow][Rainbow]"
-  },
-  {
-   "code": "SFD-198",
-   "name": "Arise!",
-   "type": "spell",
-   "class": "silent-loss",
-   "parseStatus": "full",
-   "text": "Play a 2 [Might] Sand Soldier unit token for each Equipment you control. Then ready two of them.",
-   "derivedRoles": [
-    "token_maker"
-   ],
-   "roles": {},
-   "why": "Token count scales with Equipment you control; \"ready two of them\".",
-   "ability": "createToken Sand Soldier x(count: Equipment you control); ready 2 of them"
-  },
-  {
-   "code": "SFD-039",
-   "name": "Royal Entourage",
-   "type": "unit",
-   "class": "silent-loss",
-   "parseStatus": "full",
-   "text": "When you play me, ready or exhaust a legend.",
-   "derivedRoles": [],
-   "roles": {},
-   "why": "Modal \"ready or exhaust a legend\" parsed as ready only (found against the GameLab script).",
-   "ability": "when-played: choose one: ready a legend | exhaust a legend"
-  },
-  {
    "code": "VEN-053",
    "name": "Otterpus",
    "type": "unit",
-   "class": "silent-loss",
+   "class": "role-fix",
    "parseStatus": "full",
    "text": "If a player would score 1 point from conquering or holding during their first or second turn, they draw 1 instead.",
    "derivedRoles": [
@@ -455,22 +376,8 @@
      "disruption"
     ]
    },
-   "why": "Symmetric replacement of early points by a draw; the \"first or second turn\" and \"from conquering or holding\" conditions are lost, and it is not card flow for its owner.",
+   "why": "Symmetric replacement of early points by a draw (parsed with both conditions since iteration 3); the draw goes to whoever would have scored, so it is not card flow for its owner.",
    "ability": "replacement @would-score (any player, turns 1-2, conquer/hold): that player draws 1 instead"
-  },
-  {
-   "code": "UNL-081",
-   "name": "Keeper of Masks",
-   "type": "unit",
-   "class": "silent-loss",
-   "parseStatus": "full",
-   "text": "[Hidden] / [Temporary] / When you play me, play two Reflection unit tokens here. They become copies of me.",
-   "derivedRoles": [
-    "token_maker"
-   ],
-   "roles": {},
-   "why": "\"They become copies of me\": parser points the copy at the source instead of the tokens.",
-   "ability": "when-played: 2 Reflection tokens here, each a copy of this card"
   },
   {
    "code": "OGN-033",
@@ -538,7 +445,7 @@
    "type": "spell",
    "class": "dynamic",
    "parseStatus": "full",
-   "text": "Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary].",
+   "text": "Choose a unit. Play a ready Reflection unit token to your base. Then do this: It becomes a copy of that unit. Give it [Temporary].",
    "derivedRoles": [
     "token_maker"
    ],
@@ -627,13 +534,22 @@
   }
  ],
  "tokens": {
-  "why": "Tokens with no gallery row get their Might and abilities only from the reminder text of the cards that create them; the parser strips reminder text.",
-  "needDefinition": [
-   "Mech (unit, 3 Might)",
-   "Sand Soldier (unit, 2 Might)",
-   "Shadow Clone (unit, 0 Might, ability in reminder text of VEN-023)",
-   "Tentacle (unit, 1 Might)",
-   "Bomb (gear)"
+  "source": "Core Rules 2026-10-09, rules 187.1-187.12",
+  "file": "tokens.cr187.json",
+  "note": "All 12 tokens are defined by the Core Rules and parsed in full by build-tokens.mjs; no hand-written token definition is needed. Join on the token name in roles.token_maker.",
+  "defined": [
+   "187.1 Recruit (unit, 1 Might)",
+   "187.2 Sprite (unit, 3 Might)",
+   "187.3 Sand Soldier (unit, 2 Might)",
+   "187.4 Mech (unit, 3 Might)",
+   "187.5 Gold (gear)",
+   "187.6 Reflection (unit, 0 Might)",
+   "187.7 Bird (unit, 1 Might)",
+   "187.8 Brush (battlefield)",
+   "187.9 Baron Pit (battlefield)",
+   "187.10 Tentacle (unit, 1 Might)",
+   "187.11 Shadow Clone (unit, 0 Might)",
+   "187.12 Bomb (gear)"
   ],
   "haveGalleryRow": [
    "OGN-271 Recruit (DE)",
@@ -973,6 +889,141 @@
   ],
   "text": [
    {
+    "code": "OGN-005",
+    "name": "Disintegrate",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-023",
+    "name": "Unlicensed Armory",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-044",
+    "name": "Clockwork Keeper",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-077",
+    "name": "Zhonya's Hourglass",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-102",
+    "name": "Portal Rescue",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-107",
+    "name": "Ava Achiever",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-115",
+    "name": "Promising Future",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-118",
+    "name": "Wraith of Echoes",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-121",
+    "name": "Teemo, Strategist",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-145",
+    "name": "Unyielding Spirit",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-160",
+    "name": "Dazzling Aurora",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-181",
+    "name": "Pack of Wonders",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-184",
+    "name": "The Syren",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-194",
+    "name": "Nocturne, Horrifying",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-199",
+    "name": "Tideturner",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-224",
+    "name": "Salvage",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-227",
+    "name": "Symbol of the Solari",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-235",
+    "name": "Karma, Channeler",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-258",
+    "name": "Dragon's Rage",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-259",
+    "name": "Unforgiven",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-269",
+    "name": "The Boss",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-287",
+    "name": "Sigil of the Storm",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-289",
+    "name": "Targon's Peak",
+    "kind": "errata"
+   },
+   {
+    "code": "OGN-296",
+    "name": "Void Gate",
+    "kind": "errata"
+   },
+   {
+    "code": "OGS-017",
+    "name": "Dark Child, Starter",
+    "kind": "errata"
+   },
+   {
+    "code": "OGS-020",
+    "name": "Highlander",
+    "kind": "errata"
+   },
+   {
+    "code": "RAD-010",
+    "name": "Forbidden Technique",
+    "kind": "errata"
+   },
+   {
     "code": "RAD-048",
     "name": "High Note",
     "kind": "fix"
@@ -983,13 +1034,53 @@
     "kind": "fix"
    },
    {
+    "code": "RAD-081",
+    "name": "Elnuk Herd",
+    "kind": "errata"
+   },
+   {
     "code": "RAD-127",
     "name": "Rousing Display",
     "kind": "fix"
    },
    {
+    "code": "RAD-154",
+    "name": "Last Caress",
+    "kind": "errata"
+   },
+   {
     "code": "RAD-167",
     "name": "Neeko, Blending In",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-003",
+    "name": "Blood Rush",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-020",
+    "name": "Draven, Vanquisher",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-024",
+    "name": "Rell, Magnetic",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-053",
+    "name": "Janna, Savior",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-054",
+    "name": "Jax, Unmatched",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-060",
+    "name": "Tianna Crownguard",
     "kind": "errata"
    },
    {
@@ -998,14 +1089,114 @@
     "kind": "fix"
    },
    {
+    "code": "SFD-112",
+    "name": "Kato the Arm",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-116",
+    "name": "Yone, Blademaster",
+    "kind": "errata"
+   },
+   {
     "code": "SFD-138",
     "name": "Windsinger",
     "kind": "fix"
    },
    {
+    "code": "SFD-140",
+    "name": "Fizz, Trickster",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-154",
+    "name": "Guards!",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-163",
+    "name": "Deathgrip",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-170",
+    "name": "Rek'Sai, Swarm Queen",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-184",
+    "name": "Relentless Pursuit",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-188",
+    "name": "Void Rush",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-198",
+    "name": "Arise!",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-207",
+    "name": "Emperor's Dais",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-079",
+    "name": "Diana, Lunari",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-081",
+    "name": "Keeper of Masks",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-120",
+    "name": "Rengar, Trophy Hunter",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-139",
+    "name": "Bone Skewer",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-166",
+    "name": "Stalking Wolf",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-186",
+    "name": "Death from Below",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-199",
+    "name": "Deceiver",
+    "kind": "errata"
+   },
+   {
+    "code": "UNL-200",
+    "name": "Mirror Image",
+    "kind": "errata"
+   },
+   {
+    "code": "VEN-044",
+    "name": "Astral Heron",
+    "kind": "errata"
+   },
+   {
     "code": "VEN-073",
     "name": "Jagged Cutlass",
     "kind": "fix"
+   },
+   {
+    "code": "VEN-086",
+    "name": "Gangplank, Naval",
+    "kind": "errata"
    },
    {
     "code": "VEN-109",
