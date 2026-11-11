@@ -8,10 +8,10 @@ Rule numbers are from the current Core Rules, edition 2026-10-09 (CR; URL in `ru
 
 ## 0. Sources
 
-All fetched 2026-11-11 with `analysis/rulings-and-errata/fetch-official.mjs` (serial, 2 s apart), text extracted from each page's embedded JSON by `extract.py` into `analysis/rulings-and-errata/raw/*.txt`. The `rev` value is the CMS revision id on the fetch date; a changed `rev` means the article was edited.
+All fetched 2026-11-11 with `analysis/rulings-and-errata/fetch-official.mjs` (serial, 2 s apart), text extracted from each page's embedded JSON by `extract.py` into `analysis/rulings-and-errata/raw/*.txt`. `rev` is the CMS revision value in the page data on the fetch date. It is not unique per article (ERR-OGN, PN-OGN and PN-SFD share one value), so change detection must use the hash of the extracted text (`manifest.json`, column `text sha256`, first 16 hex digits).
 
-| Key | Article | Published (UTC) | rev | URL |
-|---|---|---|---|---|
+| Key | Article | Published (UTC) | rev | text sha256 | URL |
+|---|---|---|---|---|---|
 <<SOURCES>>
 
 Completeness check. **DATA** (official sitemap https://playriftbound.com/sitemap_index.xml, en-us, 138 URLs, fetched 2026-11-11; list in `raw/sitemap-en-us.txt`): the 15 articles above are every en-us news URL whose slug contains errata, faq (rules), or patch-notes. There is no separate Proving Grounds errata article; the two Proving Grounds cards with errata (Dark Child, Starter; Highlander) are inside the Origins errata article. The other rules-relevant articles (ban lists, Tournament Rules changelogs, start-of-game test) are covered in `rules.md`.
@@ -38,9 +38,9 @@ Gallery check. **DATA** (gallery snapshot 2026-11-11, compared by `build_errata.
 
 <<ERRATA_SUMMARY>>
 
-Reading: the gallery shows the text printed on each printing. It only shows corrected text where a later printing was physically printed with it. A deterministic tool must therefore apply an errata overlay by card name to every printing.
+Reading: the gallery is not an errata source. It was corrected in place for <<REFLECT_LIST>>, and otherwise shows corrected text only on printings made after the errata; 56 cards still show only the pre-errata text, including all four Radiance errata. A deterministic tool must apply an errata overlay by full card name to every printing.
 
-Source keys are the article keys of section 0 followed by the block number inside that article.
+Source keys are the article keys of section 0 followed by the block number inside that article. The gallery names a legend by its title only: the errata article's "Leblanc, Deceiver" is gallery "Deceiver", "Dark Child, Starter" is gallery name "Dark Child".
 
 <<ERRATA_TABLE>>
 
@@ -53,17 +53,18 @@ Source keys are the article keys of section 0 followed by the block number insid
 | F: targets and Deflect | {{Falling Star}}, {{Icathian Rain}} | All targets chosen when played (no reflexive triggers); the same unit may be chosen several times and Deflect is paid per choice (CR 809.1.c) |
 | F: "another" added | {{Kato the Arm}}, {{Wraith of Echoes}} (faq-only) | Cannot affect or count itself |
 | F: "a friendly unit" (was "another") | {{Elnuk Herd}} | May now give the +3 to itself |
-| F: "up to" added | {{Sona, Harmonious}}, {{Targon's Peak}}, {{Dark Child, Starter}}, {{Kinkou Monk}}, {{Janna, Savior}}, {{Neeko, Blending In}} | A triggered ability needs every required target to go on the chain (FAQ-SFD, Janna); "up to" lets it trigger with fewer |
+| F: "up to" added | {{Sona, Harmonious}}, {{Targon's Peak}}, {{Dark Child, Starter}}, {{Kinkou Monk}}, {{Janna, Savior}}, {{Salvage}}, {{Relentless Pursuit}}, {{Neeko, Blending In}} | A triggered ability needs every required target to go on the chain (FAQ-SFD, Janna); "up to" lets it trigger with fewer |
 | F: owner / base wording | {{Portal Rescue}}, {{The Syren}}, {{Unforgiven}}, {{Tideturner}} | Portal Rescue gives a stolen unit back to its owner; the others clarify "its base" |
 | F: banish-then-play | {{Baited Hook}}, {{Blind Fury}}, {{Dazzling Aurora}}, {{Promising Future}}, {{Reinforce}}, {{Rek'Sai, Swarm Queen}}, {{Void Burrower}}, {{Void Rush}}, {{Nocturne, Horrifying}} | A card that cannot be played stays banished instead of going back to the deck; Nocturne also works on "reveal" and is not a triggered ability |
 | F: replacement instead of trigger; heals | {{Zhonya's Hourglass}}, {{Highlander}}, {{Unlicensed Armory}}, {{The Boss}} | Saved unit is healed, exhausted, recalled; Zhonya's applies on any turn and anywhere |
-| F: reflexive trigger ("do this:") | {{Dragon's Rage}}, {{Disintegrate}}, {{Arise!}}, {{Rell, Magnetic}}, {{Guards!}}, {{Leblanc, Deceiver}} | Second part is a separate chain item that can be reacted to and only exists if the first part happened |
+| F: reflexive trigger ("do this:") | {{Dragon's Rage}}, {{Disintegrate}}, {{Arise!}}, {{Rell, Magnetic}}, {{Guards!}}, {{Leblanc, Deceiver}}, {{Keeper of Masks}}, {{Mirror Image}}, {{Bone Skewer}}, {{Death from Below}} | Second part is a separate chain item that can be reacted to and only exists if the first part happened |
 | F: cost within instructions ("pay X to ...") | {{Draven, Vanquisher}}, {{Emperor's Dais}}, {{Diana, Lunari}} | Payment moves from resolution to finalization (CR 383.3.b); an "if you do" clause no longer exists to be negated |
 | F: "this turn" added | {{Convergent Mutation}}, {{Dune Drake}}, {{Ravenborn Tome}}, {{Blood Rush}}, {{Gangplank, Naval}}, {{Astral Heron}} | Effect no longer permanent or open-ended |
 | F: scope narrowed | {{Void Gate}} (only units there), {{Karma, Channeler}} (own Main Deck only), {{Teemo, Strategist}} (one target, defend trigger only), {{Ava Achiever}} ("here" only for units), {{Pack of Wonders}} (facedown card on board), {{Symbol of the Solari}} (faq-only: that battlefield only), {{Unyielding Spirit}} (faq-only) | See rows |
-| F: scope widened | {{Jax, Unmatched}} (Equipment everywhere), {{Yone, Blademaster}} (any battlefield that was uncontrolled, including surprise defense), {{Rengar, Trophy Hunter}} (gets Ambush's Reaction timing at enemy battlefields) | See rows |
+| F: scope widened | {{Jax, Unmatched}} (Equipment everywhere), {{Yone, Blademaster}} (any battlefield that was uncontrolled, including surprise defense), {{Rengar, Trophy Hunter}} and {{Stalking Wolf}} (the extra play location now uses Ambush, so it comes with Reaction timing) | See rows |
 | F: other | {{Tianna Crownguard}} ("gain points": conquer and hold still happen and still trigger), {{Deathgrip}} (killed unit is a target, bonus only if it died), {{Sigil of the Storm}} ("must": no target, cannot be answered by recycling the rune), {{Fizz, Trickster}} and {{Forbidden Technique}} ("Then recycle/banish" is a replacement effect, CR 829.1.b pattern) | See rows |
-| T | the rest | Wording only |
+| F: other | {{The Dreaming Tree}} | Any player who chooses a friendly unit there with a spell draws, not only the battlefield's controller |
+| T | {{Clockwork Keeper}} (now a normal play effect with a condition), {{Edge of Night}}, {{Last Caress}}, {{Resonating Strike}} (reminder text of Reaction corrected), {{Salvage}} wording aside | Same outcome; Clockwork Keeper moves to a different parse pattern |
 
 ## 2. Rulings that change interactions or valuation
 
@@ -99,7 +100,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | C6 | Discounts that name one cost component apply when that component is added, before general discounts | PN-UNL "Discounts to Cost Components" | PARSE |
 | C7 | Paying Energy or Power is always optional when an effect instructs it; declining negates only that instruction | CR 445.2; PN-VEN | PARSE |
 | C8 | `[C]` on a card with two domains must be paid with Power of one of those domains (signature cards). Before 2026-07-24 any domain worked | CR 135.2.e.6.c; PN-VEN | STR- for signature cards in decks whose rune split is uneven. Meta discount: see section 3 |
-| C9 | Energy and Power are paid before other costs such as "kill a unit" | CR 357.1, 357.2; FAQ-RAD | EDGE- {{Atakhan}} cannot use the unit it kills as its own cost to feed {{Mordekaiser, Iron Revenant}} for the same payment |
+| C9 | Energy and Power are paid before other costs such as "kill a unit" | CR 357.1, 357.2; FAQ-RAD | EDGE- the unit {{Atakhan}} kills as its additional cost is not yet in the trash when his Power is paid, so {{Mordekaiser, Iron Revenant}} cannot banish it for that payment |
 | C10 | "Play me for X" is an alternate cost replacing the base cost; resources restricted to "playing units" can pay it | FAQ-RAD | EDGE+ {{Meticulous Restorationist}} from trash paid through Mordekaiser, Iron Revenant |
 | C11 | Applied costs ("opponents must pay X to do Y") are paid by whoever performs the action. {{Charm}} moving an enemy unit to your {{Gravity Field}} battlefield costs nobody anything; {{Angler Wyrm}} makes the opponent move, so the opponent pays | CR 204.4; FAQ-RAD | EDGE+ Angler Wyrm plus Gravity Field. EDGE- Charm plus own Gravity Field as a tax |
 | C12 | A Standard Move that cannot be completed or paid for is undone entirely; you cannot exhaust a unit by attempting an impossible move | FAQ-RAD | EDGE- "attempt move into Gravity Field to exhaust my own unit" (exhaust-trigger enablers such as {{Riven, Broken Blade}}) |
@@ -145,7 +146,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | ID | Ruling | Rule / source | Graph |
 |---|---|---|---|
 | D1 | Lethal damage = non-zero damage at least equal to Might. In combat a unit must be assigned exactly lethal before the next unit gets any; more than lethal may be assigned only when no other unit is left to assign to | CR 142.4.b; CR 467.2.c.3, 467.2.c.4 | PARSE |
-| D2 | **"Excess damage" is not defined in the Core Rules.** DATA: the string "excess damage" occurs 0 times in CR 2026-10-09 and appears on these gallery cards: {{Tryndamere, Barbarian}}, {{Sivir, Ambitious}}, {{Yeti Brawler}}, {{Piltover Enforcer}}, {{Trapping Grounds}}, {{Hextech Gauntlets}}. **HEURISTIC** (the reading the GameLab engine implements, `packages/engine/src/engine.ts` near line 6546): excess = sum over the units you assigned to of (assigned minus minimum lethal), which by D1 can only sit on the last unit. **UNCONFIRMED** officially | none | Valuation: excess = your total attacking or defending Might minus the lethal total of the enemy units present. Shield, Tank order, prevention and damage already marked all change it |
+| D2 | **"Excess damage" is not defined in the Core Rules.** DATA: the string "excess damage" occurs 0 times in CR 2026-10-09 and appears in the gallery text of: <<EXCESS_CARDS>>. **HEURISTIC** (the reading the GameLab engine implements, `packages/engine/src/engine.ts` near line 6546): excess = sum over the units you assigned to of (assigned minus minimum lethal), which by D1 can only sit on the last unit. **UNCONFIRMED** officially | none | Valuation: excess = your total attacking or defending Might minus the lethal total of the enemy units present. Shield, Tank order, prevention and damage already marked all change it |
 | D3 | Replacement and prevention effects on combat damage apply at assignment, so the assigning player must plan around them; a unit that cannot be dealt damage is skipped | CR 467.2.c.5, 467.2.c.10; PN-VEN | STR+ for prevention in combat. Changed 2026-07-24 for damage-increasing effects ({{Lotus Trap}}) |
 | D4 | Tank must be assigned lethal first, Backline last; with several of the same kind the assigner chooses the order; a unit with both gets one applied, assigner's choice | CR 815.1.b; CR 467.2.c.6 to 467.2.c.8 | PARSE |
 | D5 | After combat damage, dead units are removed, then all units are healed, then attackers are recalled if defenders remain | CR 468.1.a.1, 468.1.a.2; FAQ-OGN | EDGE- "kill the Might-aura unit so damaged units die". Deathknell damage lands after the heal and stays on survivors |
@@ -178,7 +179,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | X14 | Permission to play a banished card "until your next Ending Phase" ends when that phase begins | FAQ-RAD ({{Runeblade Anvil}}) | PARSE |
 | X15 | "At end of turn" text granted to a unit means the end of this turn only; if its death is replaced it does not die on later turns | PN-RAD ({{Ekko, Boy Who Shattered Time}} with Unlicensed Armory) | EDGE+ keep the temporary unit |
 | X16 | Show Off locks in the shown object's values at finalization | CR 832.1.d.1; PN-RAD (Primordial Roar) | PARSE. Later pump or removal does not change the damage |
-| X17 | Referencing "if you channeled this way" counts only the action the spell itself instructed, not extra channels added by another effect | FAQ-RAD ({{Seraphic Wyvern}} with {{Mobilize}} / {{Catalyst of Aeons}}; old 359.3.e.14.c) | EDGE- |
+| X17 | Referencing "if you channeled this way" counts only the action the spell itself instructed, not extra channels added by another effect | FAQ-RAD ({{Seraphic Wyvern}} with {{Mobilize}} / {{Catalyst of Aeons}}; CR 359.3.e.14.c as cited by the FAQ) | EDGE- |
 
 ### 2.7 Location rules: where units may be played, "can't beats can"
 
@@ -286,7 +287,7 @@ One reviewed JSON snapshot, fail-closed like the legality snapshot in `legality-
       "pattern": null,                                    // or a parser feature key for generic rulings, e.g. "deflect.multiChoice"
       "effect": "forbid",                                 // forbid | allow | strength | parse
       "summary": "Copied text arrives after the attach event; no second trigger.",
-      "rules": ["370.1.b.1"], "sources": ["FAQ-VEN"],
+      "rules": [], "sources": ["FAQ-VEN"],                // rule numbers only when located in coreRulesEdition
       "validFrom": "2026-08-14", "validTo": null,
       "reverses": { "source": "FAQ-SFD", "validFrom": "2026-01-14", "effect": "allow" },
       "confidence": "fact" }                              // fact | heuristic | unconfirmed
@@ -308,9 +309,9 @@ Rules for the consumer:
 | Source | What to read | Change detection |
 |---|---|---|
 | https://playriftbound.com/sitemap_index.xml (en-us map) | New news URLs whose slug matches `errata`, `faq`, `patch-notes`, `rules`, `ban`, `changelog` | New URL = review needed |
-| Each article in section 0 | `__NEXT_DATA__` JSON: `analytics.rev`, `displayedPublishDate`, rich text | `rev` or text hash differs from the stored one |
+| Each article in section 0 | `__NEXT_DATA__` JSON: `displayedPublishDate`, rich text blades (FAQ-OGN keeps its answers in accordion blades, not in the main rich text) | Hash of extracted text differs from the stored one (`rev` alone is not reliable, see section 0) |
 | https://playriftbound.com/en-us/rules-hub/ | Links to the current Core Rules and Tournament Rules PDFs, ban lists | PDF URL hash changes with each edition |
-| https://playriftbound.com/en-us/card-gallery/ | Printed text per printing | Per-printing text hash; a reprint with new text is a signal of errata |
+| https://playriftbound.com/en-us/card-gallery/ | Printed text per printing. Note: an Equipment's attached-effect text is in the item's separate `effect` field, not in `text` or the image alt text (example: Hextech Gauntlets' excess-damage trigger); read both | Per-printing text hash; a reprint with new text is a signal of errata |
 | ERR-OGN and ERR-SFD PDF downloads | Same content as the articles (checked 2026-11-11: 31 and 16 blocks, same cards) | Hash |
 | Watcher | Official wordings | **UNCONFIRMED**: not public on 2026-11-11; add when it appears |
 | https://api.riftcodex.com/cards (community) | Secondary cross-check only | Not a source of truth, see 4.3 |
@@ -364,7 +365,7 @@ Origin of this list. **FACT**: the official FAQs say their questions were "gathe
 | 17 | {{Baited Hook}} while saving the sacrificed unit with a death replacement | No killed unit, so its Might is null and nothing can be played | FAQ-OGN; PN-OGN |
 | 18 | {{Stupefy}} on your own 1-Might empowered {{Gangplank, Naval}} for +3 | No -Might is actually given | FAQ-VEN |
 | 19 | {{Dragon Form}} to trigger {{Fiora, Grand Duelist}} through a unit already carrying -Might | Layers are evaluated at once; the unit never has the higher value | CR 478.1; FAQ-VEN |
-| 20 | Orianna, Lady of Clockwork turning an Equipment into a unit and equipping it | Units cannot be attached | CR 143.5.a, 435.1.h |
+| 20 | {{Orianna, Lady of Clockwork}} turning an Equipment into a unit and equipping it | Units cannot be attached | CR 143.5.a, 435.1.h |
 | 21 | Opponent's Kharox replaying your {{Neeko, Blending In}} to use your chosen legends | They get only legends they chose themselves, and only if their own deck has Neeko | FAQ-RAD; CR 103.1 |
 | 22 | {{Hostile Takeover}} then {{Temporal Breach}} to keep the stolen unit | The owner cannot play it to your base; it stays banished | FAQ-VEN |
 | 23 | 2v2: teammate leaves a battlefield so you can conquer it the same turn | Disqualified if the teammate controlled it at the scoring step | CR 491.8.b.1 |
@@ -377,7 +378,7 @@ Combos the same articles confirm (useful as positive edges, already listed in se
 
 ## 6. Open items
 
-- **UNCONFIRMED**: official definition of "excess damage" (section 2.5 D2). Six cards depend on it.
+- **UNCONFIRMED**: official definition of "excess damage" (section 2.5 D2).
 - **UNCONFIRMED**: standing of the three FAQ-only errata (Unyielding Spirit, Symbol of the Solari, Wraith of Echoes).
 - **UNCONFIRMED**: which Emperor of the Sands wording is current.
 - **UNCONFIRMED**: a public Watcher database.

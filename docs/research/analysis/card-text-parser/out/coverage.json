@@ -1,263 +1,163 @@
 {
  "cards": {
   "all": {
-   "full": 930,
-   "partial": 136,
-   "none": 29
+   "full": 1071,
+   "partial": 22,
+   "none": 2
   }
  },
  "sentences": {
   "all": {
-   "full": 1935,
-   "partial": 79,
-   "none": 101
+   "full": 2087,
+   "partial": 15,
+   "none": 11
   }
  },
  "bySet": {
   "OGN": {
    "cards": {
-    "full": 249,
-    "partial": 31,
-    "none": 12
+    "full": 284,
+    "partial": 7,
+    "none": 1
    },
    "sentences": {
-    "full": 453,
-    "partial": 13,
-    "none": 32
+    "full": 489,
+    "partial": 3,
+    "none": 5
    }
   },
   "OGS": {
    "cards": {
-    "full": 23,
-    "partial": 1,
+    "full": 24,
+    "partial": 0,
     "none": 0
    },
    "sentences": {
-    "full": 36,
-    "partial": 1,
+    "full": 37,
+    "partial": 0,
     "none": 0
    }
   },
   "SFD": {
    "cards": {
-    "full": 209,
-    "partial": 23,
-    "none": 3
+    "full": 233,
+    "partial": 2,
+    "none": 0
    },
    "sentences": {
-    "full": 422,
-    "partial": 10,
-    "none": 19
+    "full": 449,
+    "partial": 1,
+    "none": 1
    }
   },
   "UNL": {
    "cards": {
-    "full": 192,
-    "partial": 34,
-    "none": 5
+    "full": 230,
+    "partial": 1,
+    "none": 0
    },
    "sentences": {
-    "full": 431,
-    "partial": 21,
-    "none": 24
+    "full": 474,
+    "partial": 1,
+    "none": 0
    }
   },
   "VEN": {
    "cards": {
-    "full": 150,
-    "partial": 28,
-    "none": 5
+    "full": 175,
+    "partial": 8,
+    "none": 0
    },
    "sentences": {
-    "full": 339,
-    "partial": 23,
-    "none": 13
+    "full": 366,
+    "partial": 6,
+    "none": 3
    }
   },
   "RAD": {
    "cards": {
-    "full": 145,
-    "partial": 21,
-    "none": 6
+    "full": 167,
+    "partial": 4,
+    "none": 1
    },
    "sentences": {
-    "full": 318,
-    "partial": 12,
-    "none": 16
+    "full": 340,
+    "partial": 4,
+    "none": 2
    }
   }
  },
  "byType": {
   "unit": {
    "cards": {
-    "full": 494,
-    "partial": 50,
-    "none": 13
+    "full": 551,
+    "partial": 5,
+    "none": 1
    },
    "sentences": {
-    "full": 902,
-    "partial": 29,
-    "none": 41
+    "full": 963,
+    "partial": 4,
+    "none": 3
    }
   },
   "spell": {
    "cards": {
-    "full": 216,
-    "partial": 52,
-    "none": 3
+    "full": 266,
+    "partial": 5,
+    "none": 0
    },
    "sentences": {
-    "full": 637,
-    "partial": 28,
-    "none": 31
+    "full": 691,
+    "partial": 3,
+    "none": 2
    }
   },
   "gear": {
    "cards": {
-    "full": 111,
-    "partial": 19,
-    "none": 3
+    "full": 128,
+    "partial": 5,
+    "none": 0
    },
    "sentences": {
-    "full": 244,
-    "partial": 10,
-    "none": 13
+    "full": 262,
+    "partial": 3,
+    "none": 2
    }
   },
   "legend": {
    "cards": {
-    "full": 46,
-    "partial": 7,
-    "none": 5
+    "full": 54,
+    "partial": 4,
+    "none": 0
    },
    "sentences": {
-    "full": 80,
-    "partial": 4,
-    "none": 9
+    "full": 89,
+    "partial": 2,
+    "none": 2
    }
   },
   "battlefield": {
    "cards": {
-    "full": 63,
-    "partial": 8,
-    "none": 5
+    "full": 72,
+    "partial": 3,
+    "none": 1
    },
    "sentences": {
-    "full": 72,
-    "partial": 8,
-    "none": 7
+    "full": 82,
+    "partial": 3,
+    "none": 2
    }
   }
  },
- "unparsedSentences": 180,
- "unparsedShapes": 175,
+ "unparsedSentences": 26,
+ "unparsedShapes": 26,
  "unknownHeads": [
   [
-   "the next",
-   7
-  ],
-  [
-   "give a",
-   7
+   "each player",
+   2
   ],
   [
    "play a",
-   6
-  ],
-  [
-   "each player",
-   3
-  ],
-  [
-   "starting with",
-   3
-  ],
-  [
-   "its controller",
-   3
-  ],
-  [
-   "as you",
-   3
-  ],
-  [
-   "opponents can't",
-   2
-  ],
-  [
-   "ignore this",
-   2
-  ],
-  [
-   "draw 1",
-   2
-  ],
-  [
-   "give it",
-   2
-  ],
-  [
-   "you can",
-   2
-  ],
-  [
-   "until your",
-   2
-  ],
-  [
-   "it can't",
-   2
-  ],
-  [
-   "while you",
-   2
-  ],
-  [
-   "as this",
-   2
-  ],
-  [
-   "buffs give",
-   1
-  ],
-  [
-   "recycle me",
-   1
-  ],
-  [
-   "give enemy",
-   1
-  ],
-  [
-   "give an",
-   1
-  ],
-  [
-   "units you",
-   1
-  ],
-  [
-   "reveal cards",
-   1
-  ],
-  [
-   "i may",
-   1
-  ],
-  [
-   "discarded, or",
-   1
-  ],
-  [
-   "do one",
-   1
-  ],
-  [
-   "draws 4",
-   1
-  ],
-  [
-   "hide a",
    1
   ],
   [
@@ -265,35 +165,11 @@
    1
   ],
   [
-   "give friendly",
-   1
-  ],
-  [
    "return your",
    1
   ],
   [
-   "have my",
-   1
-  ],
-  [
-   "give me",
-   1
-  ],
-  [
    "once each",
-   1
-  ],
-  [
-   "channel that",
-   1
-  ],
-  [
-   "play up",
-   1
-  ],
-  [
-   "reduce the",
    1
   ],
   [
@@ -305,127 +181,7 @@
    1
   ],
   [
-   "as an",
-   1
-  ],
-  [
-   "friendly units",
-   1
-  ],
-  [
-   "look at",
-   1
-  ],
-  [
-   "reveal those",
-   1
-  ],
-  [
-   "reduce its",
-   1
-  ],
-  [
-   "you and",
-   1
-  ],
-  [
-   "you play",
-   1
-  ],
-  [
-   "play all",
-   1
-  ],
-  [
-   "you control",
-   1
-  ],
-  [
-   "recycle that",
-   1
-  ],
-  [
-   "instead heal",
-   1
-  ],
-  [
-   "as i'm",
-   1
-  ],
-  [
-   "while your",
-   1
-  ],
-  [
-   "lose control",
-   1
-  ],
-  [
-   "double all",
-   1
-  ],
-  [
-   "unattach this",
-   1
-  ],
-  [
-   "cat, dog,",
-   1
-  ],
-  [
-   "do the",
-   1
-  ],
-  [
-   "play that",
-   1
-  ],
-  [
-   "return it",
-   1
-  ],
-  [
-   "while i'm",
-   1
-  ],
-  [
-   "i enter",
-   1
-  ],
-  [
-   "they can't",
-   1
-  ],
-  [
-   "i gain",
-   1
-  ],
-  [
-   "put each",
-   1
-  ],
-  [
-   "replace that",
-   1
-  ],
-  [
-   "units here",
-   1
-  ],
-  [
-   "your non-token",
-   1
-  ],
-  [
-   "replace this",
-   1
-  ],
-  [
-   "your next",
-   1
-  ],
-  [
-   "a non-token",
+   "copy that",
    1
   ],
   [
@@ -433,23 +189,11 @@
    1
   ],
   [
-   "they reveal",
-   1
-  ],
-  [
    "the equipped",
    1
   ],
   [
-   "gear, or",
-   1
-  ],
-  [
    "any player",
-   1
-  ],
-  [
-   "the attacker",
    1
   ]
  ]

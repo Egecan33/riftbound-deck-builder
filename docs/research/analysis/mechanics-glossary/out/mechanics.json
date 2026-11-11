@@ -119,6 +119,15 @@
    "3": 12,
    "4": 3
   },
+  "units": 550,
+  "spells": 271,
+  "gear": 132,
+  "mightyUnits": 198,
+  "equipmentTag": 41,
+  "spellAction": 91,
+  "spellReaction": 71,
+  "spellSlow": 109,
+  "powerCards": 443,
   "errataLog": [
    "Arise! [spiritforged] gallery=old",
    "Astral Heron [vendetta] gallery=old",

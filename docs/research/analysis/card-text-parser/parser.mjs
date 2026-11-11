@@ -82,20 +82,35 @@ export function parseCost(s) {
 // ---------- noun phrases (targets) ----------
 const STATE_WORDS = { stunned: 'stunned', buffed: 'buffed', exhausted: 'exhausted', ready: 'ready', damaged: 'damaged', attacking: 'attacking', defending: 'defending', equipped: 'equipped', token: 'token', 'non-token': 'non-token', facedown: 'facedown', '[Mighty]': 'mighty', '[Empowered]': 'empowered', detached: 'detached', attached: 'attached', unattached: 'detached', champion: 'champion' };
 const HEAD = { unit: 'unit', units: 'unit', gear: 'gear', gears: 'gear', spell: 'spell', spells: 'spell', card: 'card', cards: 'card', rune: 'rune', runes: 'rune', legend: 'legend', legends: 'legend', equipment: 'equipment', battlefield: 'battlefield', battlefields: 'battlefield', token: 'token', tokens: 'token', something: 'permanent', permanent: 'permanent', ability: 'ability' };
+let SELF_NAME = null; // set per card so "kill Guardian Angel" resolves to self
 export function parseNP(raw0) {
   let s = raw0.trim().replace(/\.$/, ''); const t = { raw: raw0.trim(), ok: true }; let m;
+  if (SELF_NAME && s.toLowerCase() === SELF_NAME.toLowerCase()) return { ref: 'self', raw: t.raw, ok: true };
+  // two explicit targets: "a friendly unit and an enemy unit [at the same battlefield]"; alternatives: "a unit with 3 [Might] or less or a gear"
+  if ((m = /^((?:a|an|another) .+?) (and|or) ((?:a|an|another) .+)$/i.exec(s))) {
+    const tail = /^(.*?)( at the same battlefield| at a battlefield)$/i.exec(m[3]); const a = parseNP(m[1] + (tail && !/ at /.test(m[1]) ? tail[2] : '')); const b = parseNP(m[3]);
+    if (a.ok && b.ok && !a.multi && !b.multi) return { multi: [a, b], join: m[2].toLowerCase(), count: m[2].toLowerCase() === 'and' ? 2 : 1, controller: a.controller === b.controller ? a.controller : 'any', types: [...new Set([...(a.types || []), ...(b.types || [])])], location: a.location || b.location, raw: t.raw, ok: true };
+  }
   // pronouns and self
   if (/^(me|myself|this|this unit|this gear|this spell|i)$/i.test(s)) return { ref: 'self', raw: t.raw, ok: true };
-  if (/^(it|them|they|that unit|that card|that spell|that gear|that equipment|those units|those cards|the chosen unit|the unit|the friendly unit|the enemy unit|each|each of them|both|that enemy unit|your unit|the equipped unit|that many units you control)$/i.test(s)) return { ref: 'prev', raw: t.raw, ok: true };
+  if (/^(it|them|they|that unit|that card|that spell|that gear|that equipment|those units|those cards|the chosen unit|the unit|the friendly unit|the enemy unit|each|each of them|both|that enemy unit|your unit|the equipped unit|that many units you control|one|the rest|two of them|the killed unit|that token|the banished card|the chosen units?|those units|the other)$/i.test(s)) return { ref: 'prev', raw: t.raw, ok: true };
   if (/^(you|an opponent|each opponent|each player|a player|that player|opponents|each other player|its controller|its owner|their owners?)$/i.test(s)) return { ref: 'player', raw: t.raw, ok: true };
   const filters = []; const states = []; const tags = [];
   // --- trailing modifiers (repeat until stable) ---
   for (let guard = 0; guard < 8; guard++) {
     const before = s;
-    if ((m = /^(.*?),? (?:each )?with (\d+) \[Might\] or (less|more)$/i.exec(s))) { filters.push({ key: 'might', op: m[3] === 'less' ? '<=' : '>=', value: +m[2] }); s = m[1]; }
+    if ((m = /^(.*?),? each with Energy cost no more than \[(\d+)\] and Power cost no more than ((?:\[\w+\])+)$/i.exec(s))) { filters.push({ key: 'energy', op: '<=', value: +m[2] }, { key: 'power', op: '<=', value: (m[3].match(/\[/g) || []).length }); s = m[1]; }
+    else if ((m = /^(.*?),? (?:each )?with (\d+) \[Might\] or (less|more)$/i.exec(s))) { filters.push({ key: 'might', op: m[3] === 'less' ? '<=' : '>=', value: +m[2] }); s = m[1]; }
     else if ((m = /^(.*?) with (?:a )?total Might (?:of )?(\d+) or (less|more)$/i.exec(s))) { filters.push({ key: 'totalMight', op: m[3] === 'less' ? '<=' : '>=', value: +m[2] }); s = m[1]; }
     else if ((m = /^(.*?) with (less|more) Might than (me|it|that unit|the chosen unit)$/i.exec(s))) { filters.push({ key: 'might', op: m[2] === 'less' ? '<' : '>', value: m[3] === 'me' ? 'self' : 'ref' }); s = m[1]; }
     else if ((m = /^(.*?) with (?:Energy )?cost (?:no more than|up to) \[(\d+)\](?: and (?:with )?(?:Power cost )?no more than ((?:\[\w+\])+))?$/i.exec(s))) { filters.push({ key: 'energy', op: '<=', value: +m[2] }); if (m[3]) filters.push({ key: 'power', op: '<=', value: (m[3].match(/\[/g) || []).length }); s = m[1]; }
+    else if ((m = /^(.*?) (?:attacking|defending) here$/i.exec(s))) { t.location = 'here'; states.push(/attacking here$/i.test(s) ? 'attacking' : 'defending'); s = m[1]; }
+    else if ((m = /^(.*?) banished with (?:this|me)$/i.exec(s))) { t.location = 'banished-with-this'; s = m[1]; }
+    else if ((m = /^(.*?) (?:from it|from their hand|revealed this way)$/i.exec(s))) { t.location = 'hand'; s = m[1]; }
+    else if ((m = /^(.*?) where you have units$/i.exec(s))) { states.push('you-have-units'); s = m[1]; }
+    else if ((m = /^(.*?) that costs no more Energy and no more Power than the killed unit$/i.exec(s))) { filters.push({ key: 'cost', op: '<=', value: 'ref' }); s = m[1]; }
+    else if ((m = /^(.*?) with Energy cost no more than my Might$/i.exec(s))) { filters.push({ key: 'energy', op: '<=', value: 'self.might' }); s = m[1]; }
+    else if ((m = /^(.*?) with less Might than that unit had$/i.exec(s))) { filters.push({ key: 'might', op: '<', value: 'ref' }); s = m[1]; }
     else if ((m = /^(.*?) (?:with Energy cost|that costs?|costing) no more than \[(\d+)\](?: and (?:Power cost )?no more than ((?:\[\w+\])+))?$/i.exec(s))) { filters.push({ key: 'energy', op: '<=', value: +m[2] }); if (m[3]) filters.push({ key: 'power', op: '<=', value: (m[3].match(/\[/g) || []).length }); s = m[1]; }
     else if ((m = /^(.*?) (?:with Energy cost|that costs) \[(\d+)\] or (more|less)$/i.exec(s))) { filters.push({ key: 'energy', op: m[3] === 'more' ? '>=' : '<=', value: +m[2] }); s = m[1]; }
     else if ((m = /^(.*?) with Power cost ((?:\[\w+\])+) or more$/i.exec(s))) { filters.push({ key: 'power', op: '>=', value: (m[2].match(/\[/g) || []).length }); s = m[1]; }
@@ -104,7 +119,9 @@ export function parseNP(raw0) {
     else if ((m = /^(.*?) with (?:my|this) name$/i.exec(s))) { filters.push({ key: 'name', op: '=', value: 'self' }); s = m[1]; }
     else if ((m = /^(.*?) with the named tag$/i.exec(s))) { filters.push({ key: 'tag', op: '=', value: 'named' }); s = m[1]; }
     else if ((m = /^(.*?) (?:that's|that is|that are) (exhausted|ready|stunned|\[Empowered\]|\[Mighty\])$/i.exec(s))) { states.push(STATE_WORDS[m[2]] || m[2].toLowerCase()); s = m[1]; }
-    else if ((m = /^(.*?) that moved this turn$/i.exec(s))) { states.push('moved-this-turn'); s = m[1]; }
+    else if ((m = /^(.*?) at each location$/i.exec(s))) { t.location = 'each-location'; s = m[1]; }
+    else if ((m = /^(.*?) I moved to or from$/i.exec(s))) { states.push('moved-to-or-from'); s = m[1]; }
+    else if ((m = /^(.*?) that moved(?: this turn)?$/i.exec(s))) { states.push('moved-this-turn'); s = m[1]; }
     else if ((m = /^(.*?) (?:you control|you own)$/i.exec(s))) { t.controller = 'friendly'; s = m[1]; }
     else if ((m = /^(.*?) (?:you don't control|an opponent controls|they control)$/i.exec(s))) { t.controller = 'enemy'; s = m[1]; }
     else if ((m = /^(.*?) (?:here|at this battlefield|at my battlefield|at my location)$/i.exec(s))) { t.location = 'here'; s = m[1]; }
@@ -130,6 +147,7 @@ export function parseNP(raw0) {
   else if ((m = new RegExp(`^up to ${NUM} (other )?`, 'i').exec(s))) { t.count = { upTo: num(m[1]) }; if (m[2]) t.other = true; s = s.slice(m[0].length); }
   else if ((m = /^any number of (?:your )?/i.exec(s))) { t.count = 'any-number'; if (/your/i.test(m[0])) t.controller = 'friendly'; s = s.slice(m[0].length); }
   else if ((m = /^(all|each|both)( of)?( your| the)?( other)? /i.exec(s))) { t.count = 'all'; if (m[3] && /your/.test(m[3])) t.controller = 'friendly'; if (m[4]) t.other = true; s = s.slice(m[0].length); }
+  else if ((m = /^one of its /i.exec(s))) { t.count = 1; s = s.slice(m[0].length); }
   else if ((m = /^one of (your|their|them)( other)? ?/i.exec(s))) { t.count = 1; if (m[1] === 'your') t.controller = 'friendly'; if (m[2]) t.other = true; s = s.slice(m[0].length) || 'units'; }
   else if ((m = /^(your|their) (other )?/i.exec(s))) { t.count = 'all'; t.controller = m[1].toLowerCase() === 'your' ? 'friendly' : 'enemy'; if (m[2]) t.other = true; s = s.slice(m[0].length); }
   else if ((m = /^(another|a different) /i.exec(s))) { t.count = 1; t.other = true; s = s.slice(m[0].length); }
@@ -140,6 +158,7 @@ export function parseNP(raw0) {
   // --- adjectives ---
   for (let guard = 0; guard < 8; guard++) {
     if ((m = /^(friendly|enemy|other|opposing) /i.exec(s))) { const w = m[1].toLowerCase(); if (w === 'other') t.other = true; else t.controller = w === 'friendly' ? 'friendly' : 'enemy'; s = s.slice(m[0].length); continue; }
+    if ((m = /^(occupied|open|non-unit) /i.exec(s))) { states.push(m[1].toLowerCase()); s = s.slice(m[0].length); continue; }
     if ((m = /^(stunned|buffed|exhausted|ready|damaged|attacking|defending|equipped|token|non-token|facedown|detached|attached|unattached|champion|\[Mighty\]|\[Empowered\]) /i.exec(s))) { states.push(STATE_WORDS[m[1]] || STATE_WORDS[m[1].toLowerCase()] || m[1].toLowerCase()); s = s.slice(m[0].length); continue; }
     if ((m = /^(Fury|Calm|Mind|Body|Chaos|Order) /.exec(s))) { tags.push('domain:' + m[1].toLowerCase()); s = s.slice(m[0].length); continue; }
     if ((m = /^(non-)?([A-Z][a-z]+(?: [A-Z][a-z]+)?) (?=units?\b|gear\b|tokens?\b|cards?\b)/.exec(s))) { tags.push((m[1] ? '!' : '') + m[2]); s = s.slice(m[0].length); continue; }
@@ -219,9 +238,41 @@ const COND = [
   [/^this was attached to me this turn$/i, () => ({ type: 'turn-event', value: 'attached-this-turn' })],
   [/^it has that type$/i, () => ({ type: 'guessed-type' })],
 ];
+const COND2 = [
+  [/^(?:i'm|i am) at a battlefield with exactly one other unit you control$/i, () => ({ type: 'exactly-one-other-here' })],
+  [/^(?:i'm|i am) \[Empowered\] three times$/i, () => ({ type: 'empowered', value: 3 })],
+  [/^(?:a friendly unit|a unit here) (?:defends|is defending) alone$/i, () => ({ type: 'alone', value: 'defending' })],
+  [/^you control something that's \[Empowered\]$/i, () => ({ type: 'control', value: 'empowered' })],
+  [/^you choose a Bird, Cat, Dog, or Poro$/i, () => ({ type: 'target-is', value: 'Bird/Cat/Dog/Poro' })],
+  [/^it is the only unit you control there$/i, () => ({ type: 'alone', value: 'target' })],
+  [/^an opponent has played another spell this turn$/i, () => ({ type: 'turn-event', value: 'opponent-played-spell' })],
+  [/^your other units have total Might (\d+) or more$/i, (m) => ({ type: 'total-might', value: '>=' + m[1] })],
+  [/^the played card is a unit$/i, () => ({ type: 'target-is', value: 'unit' })],
+  [/^you revealed a card with the lowest Energy cost$/i, () => ({ type: 'lowest-revealed' })],
+  [/^you revealed a Bird, Cat, Dog, or Poro$/i, () => ({ type: 'target-is', value: 'Bird/Cat/Dog/Poro' })],
+  [/^at least one of them has \[Temporary\]$/i, () => ({ type: 'target-has', value: 'Temporary' })],
+  [/^my Might is greater than the total Might of enemy units there$/i, () => ({ type: 'might-compare' })],
+  [/^your units have all of the following tags among them — .+$/i, () => ({ type: 'tag-set' })],
+  [/^your units have all 4 tags$/i, () => ({ type: 'tag-set' })],
+  [/^you've played a non-token unit, a non-token gear, and a spell this turn$/i, () => ({ type: 'turn-event', value: 'played-unit-gear-spell' })],
+  [/^a combat where you are the attacker ends in a tie$/i, () => ({ type: 'combat-tie' })],
+  [/^its controller (?:has you draw \d+|pays \[.+\])$/i, () => ({ type: 'opponent-choice' })],
+  [/^you play me to a battlefield$/i, () => ({ type: 'played-to-battlefield' })],
+  [/^there are (\d+) spells banished with me$/i, (m) => ({ type: 'banished-count', value: +m[1] })],
+  [/^it(?:'s| is) (?:the only|alone)/i, () => ({ type: 'alone', value: 'target' })],
+  [/^it (?:was|is) an? (enemy|friendly) unit$/i, (m) => ({ type: 'target-is', value: m[1] })],
+  [/^there are no open battlefields$/i, () => ({ type: 'exists', value: 'no open battlefields', negate: true })],
+  [/^you have exactly (\d+) cards in hand and exactly (\d+) units at battlefields$/i, () => ({ type: 'exact-board' })],
+  [/^i(?:'m| am) on the board$/i, () => ({ type: 'on-board' })],
+  [/^it is empty$/i, () => ({ type: 'zone-empty' })],
+  [/^it's not there already$/i, () => ({ type: 'not-present' })],
+  [/^you have units there$/i, () => ({ type: 'control', value: 'units there' })],
+];
 export function parseCondition(raw) {
   const s = raw.trim().replace(/\.$/, '');
-  for (const [re, f] of COND) { const m = re.exec(s); if (m) return { ...f(m), raw: s, ok: true }; }
+  for (const [re, f] of [...COND2, ...COND]) { const m = re.exec(s); if (m) return { ...f(m), raw: s, ok: true }; }
+  const parts = s.split(/ and (?=you |it |i |there |an? )/i);
+  if (parts.length === 2) { const a = parseCondition(parts[0]); const b = parseCondition(parts[1]); if (a.ok && b.ok) return { type: 'and', value: a.type + '+' + b.type, raw: s, ok: true }; }
   return { type: 'other', raw: s, ok: false };
 }
 
@@ -278,7 +329,7 @@ const CLAUSES = [
   [/^buff (.+)$/i, (m) => E('buff', { target: np(m[1]) })],
   [new RegExp(`^give (.+?) ([+-]\\d+) \\[Might\\](?: and (${KWSEQ}))?(?:, to a minimum of (\\d+) \\[Might\\])?( for each .+)?$`, 'i'), (m) => { const out = [E('might', { amount: +m[2], target: np(m[1]) })]; if (m[4]) out[0].minimum = +m[4]; if (m[5]) out[0].perEach = m[5].replace(/^ for each /, ''); if (m[3]) out.push(E('grantKeyword', { keywords: kwList(m[3]), target: np(m[1]) })); return out; }],
   [/^give (.+?) (each )?([+-]\d+) \[Might\]$/i, (m) => E('might', { amount: +m[3], target: np(m[1]) })],
-  [/^give (.+?) ([+-]\d+) \[Might\] and (.+?) ([+-]\d+) \[Might\]$/i, (m) => [E('might', { amount: +m[2], target: np(m[1]) }), E('might', { amount: +m[4], target: np(m[3]) })]],
+  [/^give (.+?) ([+-]\d+) \[Might\] and (.+?) ([+-]\d+) \[Might\](?:, to a minimum of (\d+) \[Might\])?$/i, (m) => [E('might', { amount: +m[2], target: np(m[1]) }), E('might', { amount: +m[4], target: np(m[3]), ...(m[5] ? { minimum: +m[5] } : {}) })]],
   [/^give (.+?) ([+-])\[Might\] equal to (.+)$/i, (m) => { const a = amountRef(m[3]); return E('might', { amount: a || 'x', sign: m[2], target: np(m[1]), ok: !!a }); }],
   [/^give ([+-])\[Might\] equal to (.+?) to (.+)$/i, (m) => { const a = amountRef(m[2]); return E('might', { amount: a || 'x', sign: m[1], target: np(m[3]), ok: !!a }); }],
   [/^(?:then )?an additional ([+-]\d+) \[Might\]$/i, (m) => E('might', { amount: +m[1], target: { ref: 'prev', raw: '', ok: true } })],
@@ -349,7 +400,7 @@ const CLAUSES = [
   [/^(?:you )?win the game$/i, () => E('win', {})],
   [/^take a turn after this one$/i, () => E('extraTurn', {})],
   // --- tokens ---
-  [new RegExp(`^play (?<count>${NUM.slice(1, -1)})(?<ready> ready)? (?:(?<might>\\d+) \\[Might\\] )?(?<name>[A-Z][A-Za-z]+(?: [A-Z][a-z]+)?) (?<type>unit|gear) tokens?(?: with (?<kw>${KWSEQ}))?(?: from Bilgewater)?(?<exhausted> exhausted)?(?: ${WHERE.replace('(', '(?<where>')})?$`, 'i'), (m) => tokenFrom(m.groups, {})],
+  [new RegExp(`^play (?<count>${NUM.slice(1, -1)})(?<ready> ready)? (?:(?<might>\\d+) \\[Might\\] )?(?<name>[A-Z][A-Za-z]+(?: [A-Z][a-z]+)?) (?<type>unit|gear) tokens?(?: with (?<kw>${KWSEQ}))?(?: from Bilgewater)?(?<exhausted> exhausted)?(?: ${WHERE.replace('(', '(?<where>')})?(?<per> for each .+)?$`, 'i'), (m) => tokenFrom(m.groups, m.groups.per ? { perEach: m.groups.per.replace(/^ for each /, '') } : {})],
   [new RegExp(`^play (?<count>${NUM.slice(1, -1)})(?<ready> ready)? (?<name>[A-Z][A-Za-z]+) tokens?(?<exhausted> exhausted)?(?: ${WHERE.replace('(', '(?<where>')})?$`, 'i'), (m) => tokenFrom({ ...m.groups, type: /bomb|gold/i.test(m.groups.name) ? 'gear' : 'unit' }, {})],
   [/^play (four|three|two|\d+) (to your base|here)$/i, (m) => E('createToken', { token: { count: num(m[1]), name: '(same)', type: 'unit', where: m[2] } })],
   [/^play that many (\w+) tokens to (.+)$/i, (m) => E('createToken', { token: { count: 'x', name: m[1], type: 'gear', where: m[2] } })],
@@ -376,11 +427,48 @@ const CLAUSES = [
   [/^spend any number of buffs$/i, () => E('spendBuff', { amount: 'x' })],
   [/^(?:it|they) becomes? (?:a )?cop(?:y|ies) of (.+)$/i, (m) => E('copy', { target: np(m[1]) })],
   [/^make new choices for it$/i, () => E('retarget', {})],
-  [/^hide ignoring costs$/i, () => E('permission', { what: 'hide-free' })],
+  [/^(?:you can )?hide ignoring costs$/i, () => E('permission', { what: 'hide-free' })],
+  [/^you can look at their facedown cards$/i, () => E('permission', { what: 'peek-facedown' })],
+  [/^put each in its trash$/i, () => E('toTrash', { target: { ref: 'prev', raw: 'each', ok: true } })],
+  [/^reduce its Energy cost by (.+)$/i, (m) => E('costChange', { amount: { ref: m[1] }, sign: '-', target: { ref: 'prev', raw: 'its', ok: true } })],
+  [/^play this spell again for ((?:\[\w+\])+)$/i, (m) => E('play', { target: { ref: 'self', raw: 'this spell', ok: true }, cost: parseResources(m[1]), again: true })],
+  [/^have my base Might become equal to (.+)$/i, (m) => E('setMight', { amount: amountRef(m[1]) || 'x', target: { ref: 'self', raw: 'my', ok: true } })],
   [/^activate the conquer effects of (.+)$/i, (m) => E('triggerAgain', { what: 'conquer', target: np(m[1]) })],
   [/^repeat this gear's play effect$/i, () => E('triggerAgain', { what: 'play' })],
   [/^name (?:a|an) (spell|tag|card)$/i, (m) => E('name', { what: m[1] })],
   [/^guess a card type$/i, () => E('name', { what: 'type' })],
+  // --- delayed "next" effects and turn-long rules ---
+  [/^(?:the|your) next (spell|unit|card)(?: you play)?(?: this turn)? costs? ((?:\[\w+\])+) less$/i, (m) => E('costChange', { amount: parseResources(m[2]), sign: '-', delayed: 'next-' + m[1], target: { types: [m[1]], controller: 'friendly', count: 1, raw: 'next ' + m[1], ok: true } })],
+  [/^reduce the cost of the next (unit|spell|card) you play by ((?:\[\w+\])+)$/i, (m) => E('costChange', { amount: parseResources(m[2]), sign: '-', delayed: 'next-' + m[1], target: { types: [m[1]], controller: 'friendly', count: 1, raw: 'next ' + m[1], ok: true } })],
+  [/^the next spell you play deals (\d+) Bonus Damage$/i, (m) => E('bonusDamage', { amount: +m[1], delayed: 'next-spell' })],
+  [/^the next unit you play enters ready$/i, () => E('enterReady', { delayed: 'next-unit', target: { types: ['unit'], controller: 'friendly', count: 1, raw: 'next unit', ok: true } })],
+  [new RegExp(`^the next unit you play has (${KWSEQ})$`, 'i'), (m) => E('grantKeyword', { keywords: kwList(m[1]), delayed: 'next-unit', target: { types: ['unit'], controller: 'friendly', count: 1, raw: 'next unit', ok: true } })],
+  [/^the next unit you play can be played to any battlefield$/i, () => E('playPermission', { where: 'any battlefield', delayed: 'next-unit' })],
+  [new RegExp(`^give (?:the|your) next spell(?: you play)? (${KWSEQ}) equal to its (?:base )?cost$`, 'i'), (m) => E('grantKeyword', { keywords: kwList(m[1]), delayed: 'next-spell', amount: { ref: 'target.energy' }, target: { types: ['spell'], controller: 'friendly', count: 1, raw: 'next spell', ok: true } })],
+  [/^(?:units you play|friendly units) enter ready$/i, () => E('enterReady', { target: { types: ['unit'], controller: 'friendly', count: 'all', raw: 'units you play', ok: true } })],
+  [/^(opponents|its controller|they|it|you) can't (.+)$/i, (m) => E('restrict', { what: "can't " + m[2], who: m[1].toLowerCase() })],
+  [/^your non-token units cost ((?:\[\w+\])+) more to play$/i, (m) => E('costChange', { amount: parseResources(m[1]), sign: '+', target: { types: ['unit'], controller: 'friendly', count: 'all', raw: 'your non-token units', ok: true } })],
+  [/^ignore this spell's cost$/i, () => E('costChange', { free: true, target: { ref: 'self', raw: 'this', ok: true } })],
+  [/^i enter (ready|there)$/i, (m) => E(m[1] === 'ready' ? 'enterReady' : 'playPermission', { target: { ref: 'self', raw: 'I', ok: true } })],
+  [/^i cost ((?:\[\w+\])+) less$/i, (m) => E('costChange', { amount: parseResources(m[1]), sign: '-', target: { ref: 'self', raw: 'I', ok: true } })],
+  [/^i (?:gain|get) that tag$/i, () => E('grantTag', { target: { ref: 'self', raw: 'I', ok: true } })],
+  [/^i may be moved with it$/i, () => E('move', { target: { ref: 'self', raw: 'I', ok: true }, optional: true, to: 'there' })],
+  [/^move me there$/i, () => E('move', { target: { ref: 'self', raw: 'me', ok: true }, to: 'there' })],
+  [/^move me and (.+?) to each other's locations$/i, (m) => E('swapPlaces', { target: np(m[1]) })],
+  [/^you control it until i leave the board$/i, () => E('takeControl', { target: { ref: 'prev', raw: 'it', ok: true }, duration: 'until-leaves' })],
+  [/^lose control of (.+)$/i, (m) => E('loseControl', { target: np(m[1]) })],
+  [/^unattach this$/i, () => E('detach', { target: { ref: 'self', raw: 'this', ok: true } })],
+  [/^double all damage that would be dealt to it$/i, () => E('amplifyDamage', { target: { ref: 'prev', raw: 'it', ok: true } })],
+  [/^channel that many runes plus (\d+) exhausted runes?$/i, (m) => E('channel', { amount: +m[1], exhausted: true, bonus: true })],
+  [/^play that token and an additional copy of it$/i, () => E('createToken', { token: { count: 1, name: '(copy)', type: 'unit' }, bonus: true })],
+  [/^look at the top card first$/i, () => E('look', { amount: 1 })],
+  [/^reveal those cards$/i, () => E('look', { amount: 'x', reveal: true })],
+  [/^reveal cards from the top of your Main Deck until you reveal a (unit|spell|gear)$/i, (m) => E('look', { amount: 'x', reveal: true, until: m[1] })],
+  [/^replace (?:that battlefield|this) with (.+)$/i, (m) => E('replaceBattlefield', { with: m[1] })],
+  [/^name (?:a|an) (spell|tag|card)$/i, (m) => E('name', { what: m[1] })],
+  [/^choose (Bird, Cat, Dog, or Poro|Cards or Runes)$/i, (m) => E('name', { what: m[1] })],
+  [/^add (.+? battlefield token) to the board$/i, (m) => E('createToken', { token: { count: 1, name: m[1].replace(/^the /, '').replace(/ battlefield token$/, ''), type: 'battlefield' } })],
+  [/^play me for ((?:\[\w+\])+)$/i, (m) => E('play', { target: { ref: 'self', raw: 'me', ok: true }, cost: parseResources(m[1]) })],
   // --- targeting sentences ---
   [/^choose (.+?) and (?:an? )(.+)$/i, (m) => { const a = np(m[1]); const b = np('a ' + m[2]); return a.ok && b.ok ? [E('choose', { target: a }), E('choose', { target: b })] : null; }],
   [/^choose (an opponent|a player)$/i, (m) => E('choosePlayer', { who: m[1] })],
@@ -388,6 +476,7 @@ const CLAUSES = [
 ];
 function counterTarget(s) {
   const t = { types: /ability/.test(s) ? ['spell', 'ability'] : ['spell'], count: 1, controller: /enemy/.test(s) ? 'enemy' : 'any', raw: s, ok: true }; let m; const f = [];
+  if (/^(it|that spell)$/i.test(s)) return { ref: 'prev', types: ['spell'], raw: s, ok: true };
   let rest = s.replace(/^(a|an|that) (enemy )?spell( or ability)?/i, '').trim();
   if ((m = /^that costs no more than \[(\d+)\] and no more than ((?:\[\w+\])+)$/i.exec(rest))) { f.push({ key: 'energy', op: '<=', value: +m[1] }, { key: 'power', op: '<=', value: (m[2].match(/\[/g) || []).length }); rest = ''; }
   else if ((m = /^with Power cost ((?:\[\w+\])+) or more$/i.exec(rest))) { f.push({ key: 'power', op: '>=', value: (m[1].match(/\[/g) || []).length }); rest = ''; }
@@ -396,7 +485,7 @@ function counterTarget(s) {
 }
 function moveSrc(s) { const m = /^(.+?) from (?:a battlefield|here|there|a location)$/i.exec(s); const t = np(m ? m[1] : s); if (m && t.ok && !t.location) t.location = /here/.test(s) ? 'here' : 'battlefield'; return t; }
 
-const INLINE_COST = /^(pay ((?:\[\w+\])+)(?: and exhaust (?:me|this))?|exhaust (?:me|this)(?: and pay ((?:\[\w+\])+))?|pay ((?:\[\w+\])+) and exhaust (?:me|this)|spend (?:a|its|my) buff|(?:spend|pay) (\d+) XP|discard (\d+)(?: and exhaust me)?|kill (?:a|another) (?:friendly )?(?:unit or gear|unit|gear)(?: you control here)?|kill (?:this|me)|banish me|burn (\d+)|recycle another friendly unit|disempower something you control|kill 3 other friendly units and\/or gear|banish a card from any trash|banish a unit from your trash) to (.+)$/i;
+const INLINE_COST = /^(recycle me|pay ((?:\[\w+\])+)(?: and exhaust (?:me|this))?|exhaust (?:me|this)(?: and pay ((?:\[\w+\])+))?|pay ((?:\[\w+\])+) and exhaust (?:me|this)|spend (?:a|its|my) buff|(?:spend|pay) (\d+) XP|discard (\d+)(?: and exhaust me)?|kill (?:a|another) (?:friendly )?(?:unit or gear|unit|gear)(?: you control here)?|kill (?:this|me)|banish me|burn (\d+)|recycle another friendly unit|disempower something you control|kill 3 other friendly units and\/or gear|banish a card from any trash|banish a unit from your trash) to (.+)$/i;
 function inlineCost(text) {
   const c = { raw: text }; let m;
   if ((m = /((?:\[\w+\])+)/.exec(text))) Object.assign(c, parseResources(m[1]) || {}, { raw: text });
@@ -409,6 +498,7 @@ function inlineCost(text) {
   if (/^kill (this|me)/i.test(text)) o.push({ verb: 'killSelf', raw: text });
   if (/^banish me/i.test(text)) o.push({ verb: 'banishSelf', raw: text });
   if ((m = /^burn (\d+)/i.exec(text))) o.push({ verb: 'burn', amount: +m[1], raw: text });
+  if (/^recycle me/i.test(text)) o.push({ verb: 'recycleSelf', raw: text });
   if (/^recycle another/i.test(text)) o.push({ verb: 'recycleFriendly', amount: 1, raw: text });
   if (/^disempower/i.test(text)) o.push({ verb: 'disempower', raw: text });
   if (/^banish a (card|unit) from/i.test(text)) o.push({ verb: 'banishFromTrash', amount: 1, raw: text });
@@ -417,11 +507,11 @@ function inlineCost(text) {
 }
 
 const ACTOR = [
-  [/^each (?:other )?player (.+)$/i, 'each-player'], [/^each opponent (?:must )?(.+)$/i, 'each-opponent'], [/^(?:they|that player|an opponent) (?:must |may )?(.+)$/i, 'chosen-player'],
-  [/^its controller (.+)$/i, 'controller'], [/^(?:its|their) owners? (.+)$/i, 'owner'], [/^you and that player each (.+)$/i, 'both'], [/^the defender must (.+)$/i, 'chosen-player'],
-  [/^opponents (.+)$/i, 'each-opponent'], [/^you and each opponent (.+)$/i, 'each-player'],
+  [/^each (?:other )?player (.+)$/i, 'each-player'], [/^each opponent (?:must )?(.+)$/i, 'each-opponent'], [/^(?:they|that player|an opponent) (?!can't)(?:must )?(.+)$/i, 'chosen-player'],
+  [/^its controller (?!can't)(.+)$/i, 'controller'], [/^(?:its|their) owners? (.+)$/i, 'owner'], [/^you and that player each (.+)$/i, 'both'], [/^the defender must (.+)$/i, 'chosen-player'],
+  [/^opponents (?!can't)(.+)$/i, 'each-opponent'], [/^you and each opponent (.+)$/i, 'each-player'], [/^the attacker and defender each (.+)$/i, 'each-player'], [/^(?:that player|they) (.+)$/i, 'chosen-player'],
 ];
-const deconj = (s) => s.replace(/^(draw|discard|channel|play|kill|reveal|recycle|move|gain|score|choose|look|put|place|return|pay|burn|banish|guess|name|add)s\b/i, '$1').replace(/^(kills?|recycles?) one of their /i, 'kill a friendly ').replace(/^(choose|kill|move|reveal|discard|recycle) (\S+ )?(unit|gear|units)? ?they control/i, (m) => m.replace('they control', 'you control')).replace(/\btheir (hand|Main Deck|trash)\b/g, 'your $1');
+const deconj = (s) => s.replace(/^must /i, '').replace(/^(draw|discard|channel|play|kill|reveal|recycle|move|gain|score|choose|look|put|place|return|pay|burn|banish|guess|name|add)s\b/i, '$1').replace(/^(kills?|recycles?) one of their /i, 'kill a friendly ').replace(/^(choose|kill|move|reveal|discard|recycle) (\S+ )?(unit|gear|units)? ?they control/i, (m) => m.replace('they control', 'you control')).replace(/\btheir (hand|Main Deck|trash)\b/g, 'your $1');
 
 /** Parse one clause (no period). Returns { effects, ok } */
 function parseClause(s0, depth = 0) {
@@ -429,11 +519,20 @@ function parseClause(s0, depth = 0) {
   if (!s) return { effects: [], ok: true };
   let m; const wrap = (r, f) => ({ effects: r.effects.map((e) => { f(e); return e; }), ok: r.ok });
   if (depth > 6) return { effects: [{ verb: 'unknown', raw: s, ok: false }], ok: false };
-  if ((m = /^(?:then,?|and|also) (.+)$/i.exec(s))) return parseClause(m[1], depth + 1);
+  if ((m = /^(?:then,?|and|also|starting with the next player,) (.+)$/i.exec(s))) return parseClause(m[1], depth + 1);
+  if ((m = /^may (.+)$/i.exec(s))) return wrap(parseClause(m[1], depth + 1), (e) => (e.optional = true));
+  if ((m = /^until your next Ending Phase, (.+)$/i.exec(s))) return wrap(parseClause(m[1], depth + 1), (e) => (e.duration = 'next-end-phase'));
+  if ((m = /^the next time (.+?), (.+)$/i.exec(s))) return wrap(parseClause(m[2], depth + 1), (e) => (e.delayed = 'next-time:' + m[1]));
+  if ((m = /^when (it dies|it wins a combat|you play it|they do|you burn a unit this way)(?: this turn)?, (.+)$/i.exec(s))) return wrap(parseClause(m[2], depth + 1), (e) => (e.delayed = 'when:' + m[1]));
+  if ((m = /^(.+?) (?:instead of putting it in their trash|after you play it)$/i.exec(s))) return parseClause(m[1], depth + 1);
   if ((m = /^otherwise, (.+)$/i.exec(s))) return wrap(parseClause(m[1], depth + 1), (e) => (e.conditions = [...(e.conditions || []), { type: 'otherwise', raw: 'otherwise', ok: true }]));
   if ((m = /^if (you do|they do|you paid (?:the|my) additional cost|you showed off(?: (?:a|an) \w+)?|you can't|you couldn't channel \d+ runes this way), (.+)$/i.exec(s))) { const c = /couldn't/.test(m[1]) ? { type: 'if-you-cant', raw: m[1], ok: true } : parseCondition(m[1]); return wrap(parseClause(m[2], depth + 1), (e) => (e.conditions = [c, ...(e.conditions || [])])); }
   if ((m = /^(.+?) instead$/i.exec(s)) && !/would/.test(s)) return wrap(parseClause(m[1], depth + 1), (e) => (e.instead = true));
-  if ((m = /^if ([^,]+), (.+)$/i.exec(s))) { const c = parseCondition(m[1]); const r = wrap(parseClause(m[2], depth + 1), (e) => (e.conditions = [c, ...(e.conditions || [])])); return { effects: r.effects, ok: r.ok && c.ok }; }
+  if (/^if /i.test(s) && s.includes(', ')) {
+    let hit = null; for (let k = s.indexOf(', '); k > 0; k = s.indexOf(', ', k + 1)) { const c = parseCondition(s.slice(3, k)); if (c.ok) { hit = [c, s.slice(k + 2)]; break; } }
+    if (!hit) { m = /^if ([^,]+), (.+)$/i.exec(s); hit = [parseCondition(m[1]), m[2]]; }
+    const c = hit[0]; const r = wrap(parseClause(hit[1], depth + 1), (e) => (e.conditions = [c, ...(e.conditions || [])])); return { effects: r.effects, ok: r.ok && c.ok };
+  }
   if ((m = /^(?:then )?do this: (.+)$/i.exec(s))) return parseClause(m[1], depth + 1);
   if ((m = /^you may (?:then )?(?:do this: )?(.+)$/i.exec(s))) return wrap(parseClause(m[1], depth + 1), (e) => (e.optional = true));
   if ((m = /^for each (.+?), (.+)$/i.exec(s))) return wrap(parseClause(m[2], depth + 1), (e) => (e.perEach = m[1]));
@@ -446,7 +545,8 @@ function parseClause(s0, depth = 0) {
   if ((m = /^pay ((?:\[\w+\])+)$/i.exec(s))) return { effects: [{ verb: 'pay', cost: parseResources(m[1]), raw: s, ok: true }], ok: true };
   if ((m = /^pay any amount of (\[Rainbow\]|Energy|Power) to (.+)$/i.exec(s))) return wrap(parseClause(m[2], depth + 1), (e) => (e.cost = { variable: true, raw: m[1] }));
   // actor prefixes
-  for (const [re, actor] of ACTOR) if ((m = re.exec(s))) { const r = parseClause(deconj(m[1]), depth + 1); if (r.ok) return wrap(r, (e) => (e.actor = actor)); }
+  for (const [re, actor] of ACTOR) if ((m = re.exec(s))) { const body2 = m[1].split(/(,? then |, and | and )/).map((p2, k) => (k % 2 ? p2 : deconj(p2))).join(''); const r = parseClause(body2, depth + 1); if (r.ok) return wrap(r, (e) => (e.actor = actor)); }
+  if ((m = /^you (?!may |and |can |control |score|win )(.+)$/i.exec(s))) { const r = parseClause(m[1], depth + 1); if (r.ok) return r; }
   // duration
   let [body, duration] = dur(s);
   // trailing "if <cond>" / "unless <cond>"
@@ -466,13 +566,19 @@ function parseClause(s0, depth = 0) {
   const finish = (arr, ok) => ({ effects: arr.map((e) => ({ ...e, ...(duration && !e.duration ? { duration } : {}), raw: e.raw || s, ok: e.ok !== false && (!e.target || e.target.ok) })), ok });
   let arr = tryRules(body);
   if (arr) return finish(arr, true);
+  // "this turn" in the middle of the clause ("give X -1 [Might] this turn, to a minimum of 1 [Might]")
+  if (/ this turn\b/i.test(body)) { const b2 = body.replace(/,? this turn\b/gi, ''); const a2 = tryRules(b2); if (a2) { duration = 'turn'; return finish(a2, true); } body = b2; duration = 'turn'; }
+  // "<effect> for each <X>"
+  if ((m = /^(.+?) for each (.+)$/i.exec(body))) { const inner = tryRules(m[1]); if (inner) return finish(inner.map((e) => ({ ...e, perEach: m[2] })), true); }
+  // "A or B" choice between two effects
+  if ((m = /^(.+?) or (.+)$/i.exec(body))) { const a = tryRules(m[1]); const b = a && tryRules(m[2]); if (a && b) return finish([{ verb: 'chooseOne', chooseCount: 1, options: [a, b], ok: true }], true); }
   // "X if COND" / "X unless COND" / "X while COND"
   if ((m = /^(.+?) (if|unless|while) (.+)$/i.exec(body))) {
-    const inner = parseClause(m[1], depth + 1); const c = parseCondition(m[3]); if (m[2] === 'unless') c.negate = true;
+    const inner = parseClause(m[1], depth + 1); let c = parseCondition(m[3]); if (!c.ok && duration) { const c2 = parseCondition(m[3] + ' this turn'); if (c2.ok) c = c2; } if (m[2] === 'unless') c.negate = true;
     if (inner.ok) return { effects: inner.effects.map((e) => ({ ...e, conditions: [...(e.conditions || []), c], ...(duration ? { duration } : {}) })), ok: c.ok };
   }
   // compound: "A, then B" / "A and B" / "A, B, and C"
-  const seps = [/,? then /i, /, and /i, / and (?=(?:you may |then )?(?:deal|kill|banish|stun|buff|give|ready|exhaust|move|recall|draw|discard|channel|recycle|play|return|attach|detach|heal|gain|score|add|choose|reveal|look|put|empower|disempower|counter|burn|predict|its |it |they |each |spend|pay|take|double)\b)/i, /, (?=(?:exhaust|heal|recall|kill|draw|channel|put|discard) )/i];
+  const seps = [/,? then /i, /, and /i, / and (?=(?:you may |then |they |you )?(?:make|lose|unattach|deal|kill|banish|stun|buff|give|ready|exhaust|move|recall|draw|discard|channel|recycle|play|return|attach|detach|heal|gain|score|add|choose|reveal|look|put|empower|disempower|counter|burn|predict|its |it |they |each |spend|pay|take|double)\b)/i, /, (?=(?:exhaust|heal|recall|kill|draw|channel|put|discard) )/i];
   for (const sep of seps) {
     const parts = body.split(sep);
     if (parts.length < 2) continue;
@@ -488,7 +594,8 @@ function parseClause(s0, depth = 0) {
 
 // "Choose one —" lists
 function parseChoose(head, options) {
-  const m = /^(?:(.*?),? )?(?:then )?(?:choose|do) (one|two)(?: of the following)?(?: (?:that hasn't been chosen|you've not chosen|you haven't already chosen)(?: this turn)?| to give me this turn| based on [^—]+)? —$/i.exec(head.trim());
+  let m = /^(?:(.*?),? )?(?:then,? )?(?:choose|do) (one|two)(?: of the following)?(?: (?:that hasn't been chosen|you've not chosen|you haven't already chosen)(?: this turn)?| to give me this turn| based on [^—:]+)?(?: —|:)$/i.exec(head.trim());
+  if (!m) { const m2 = /^(?:(.*?)\.? )?(?:then,? )?do the following based on [^:]+:$/i.exec(head.trim()); if (m2) m = [head, m2[1], 'one']; }
   if (!m) return null;
   const opts = options.map((o) => { const t = o.replace(/^(?:\[\w+\]|Spell|Gear|Unit) — /, ''); if (new RegExp(`^${KWSEQ}$`).test(t.trim())) return { effects: [{ verb: 'grantKeyword', keywords: kwList(t), target: { ref: 'self', raw: 'me', ok: true }, raw: t, ok: true }], ok: true }; return parseEffects(t); });
   const pre = m[1] ? parseEffects(m[1] + '.') : { effects: [], status: 'full' };
@@ -580,6 +687,10 @@ const TRIG = [
   [/^a showdown begins here$/i, () => ({ event: 'when-showdown-begins', scope: 'here' })],
   [/^combat starts here$/i, () => ({ event: 'when-combat-starts', scope: 'here' })],
   [/^it (?:dies|wins a combat)$/i, (m) => ({ event: /dies/.test(m[0]) ? 'when-target-dies' : 'when-target-wins-combat', scope: 'any' })],
+  [/^this is attached to a unit$/i, () => ({ event: 'when-attached', scope: 'self' })],
+  [/^i'm revealed from your deck$/i, () => ({ event: 'when-revealed-from-deck', scope: 'self' })],
+  [/^each turn a non-token unit they control dies here$/i, () => ({ event: 'when-a-unit-dies', scope: 'here', subject: 'friendly' })],
+  [/^you play a unit(?: this turn)?$/i, () => ({ event: 'when-you-play-unit', scope: 'any' })],
   [/^you play it$/i, () => ({ event: 'when-played', scope: 'any' })], [/^they do$/i, () => ({ event: 'when-they-do', scope: 'any' })],
   [/^you burn a unit this way$/i, () => ({ event: 'when-you-burn', scope: 'any' })],
   [/^you play a card$/i, () => ({ event: 'when-you-play-card', scope: 'any' })],
@@ -610,44 +721,57 @@ function classifyTrigger(clause) {
 }
 /** Split "When X, [if C,] effect" at the first comma whose left side is a recognised trigger clause. */
 function splitTrigger(line) {
-  const m = /^(Once each turn, )?(?:(While [^,]+), )?(For each player, )?(When|At|The (first|second|third) time|The next time|The next (\w+) times)\b(.*)$/i.exec(line);
+  const m = /^(Once each turn, )?(?:(While [^,]+), )?(For each player, )?(When|At|As|The (first|second|third) time|The next time|The next (\w+) times)\b(.*)$/i.exec(line);
   if (!m) return null;
   const lead = m[4]; const rest = m[7]; const frequency = m[1] ? 'once-each-turn' : m[5] ? m[5].toLowerCase() + '-each-turn' : /next time/i.test(lead) ? 'next' : m[6] ? 'next-n' : undefined;
   const full = (/^at$/i.test(lead) ? 'At' : '') + rest; // phase triggers keep "At"
   const body = /^at$/i.test(lead) ? ('at' + rest) : rest.trim();
   // candidate comma positions
   const idxs = []; for (let i = 0; i < body.length; i++) if (body[i] === ',' && body[i + 1] === ' ') idxs.push(i);
-  let fallback = null;
+  let fallback = null; let best = null;
   for (const i of idxs) {
     const left = body.slice(0, i).trim(); const right = body.slice(i + 2).trim();
     const tr = classifyTrigger(left.replace(/^each turn /i, ''));
-    if (tr.ok) return { trigger: { ...tr, ...(frequency && !tr.frequency ? { frequency } : {}), raw: `${lead} ${left}`.trim() }, rest: right, pre: m[2], forEach: !!m[3] };
+    if (tr.ok) best = { trigger: { ...tr, ...(frequency && !tr.frequency ? { frequency } : {}), raw: `${lead} ${left}`.trim() }, rest: right, pre: m[2], forEach: !!m[3] };
     if (!fallback) fallback = { trigger: { event: 'other', ok: false, ...(frequency ? { frequency } : {}), raw: `${lead} ${left}`.trim() }, rest: right, pre: m[2], forEach: !!m[3] };
   }
-  return fallback;
+  return best || fallback;
 }
 
 // ---------- static lines ----------
-const SUBJ = '(I|This|Me|Other friendly units|Friendly units|Units|Your units|Your other units|Enemy units|Stunned enemy units|Other buffed friendly units|Friendly buffed units|Your Mechs|Your token units|Your gear|Your tokens|Champion units|Your Equipment|Friendly legends|Other units|Sand Soldiers you play|Each Equipment in your hand|Your gear with \\[Deploy\\]|Your spells|Bird, Cat, Dog, Poro, and Ivern units|Your units that are \\[Empowered\\]|They|It|Units you play this turn|Units you play to battlefields you control|Friendly units played from anywhere other than a player\'s hand)';
-function subjectTarget(s) {
+function subjectTarget(s0) {
+  let s = s0.trim();
   if (/^(I|Me|This)$/i.test(s)) return { ref: 'self', raw: s, ok: true };
-  if (/^(They|It)$/i.test(s)) return { ref: 'prev', raw: s, ok: true };
-  const t = parseNP(s.replace(/^Your (other )?/i, 'your $1').replace(/ each$/i, '').replace(/ you play( this turn| to battlefields you control)?$/i, ' you control').replace(/ played from anywhere other than a player's hand$/i, ''));
+  if (/^(They|It|Each)$/i.test(s)) return { ref: 'prev', raw: s, ok: true };
+  if (/^Your Equipment$/i.test(s)) return { types: ['equipment'], controller: 'friendly', count: 'all', raw: s, ok: true };
+  if (/^Each Equipment in your hand$/i.test(s)) return { types: ['equipment'], controller: 'friendly', count: 'all', location: 'hand', raw: s, ok: true };
+  if (/^Your spells$/i.test(s)) return { types: ['spell'], controller: 'friendly', count: 'all', raw: s, ok: true };
+  if (/^Sand Soldiers you play$/i.test(s)) return { types: ['unit'], tags: ['Sand Soldier'], controller: 'friendly', count: 'all', raw: s, ok: true };
+  if (/^Bird, Cat, Dog, Poro, and Ivern units$/i.test(s)) return { types: ['unit'], tags: ['Bird', 'Cat', 'Dog', 'Poro', 'Ivern'], controller: 'any', count: 'all', raw: s, ok: true };
+  if (/^Bird, Cat, Dog, Poro, and Ivern units here$/i.test(s)) return { types: ['unit'], tags: ['Bird', 'Cat', 'Dog', 'Poro', 'Ivern'], controller: 'any', count: 'all', location: 'here', raw: s, ok: true };
+  s = s.replace(/ each$/i, '').replace(/ you play( this turn| to battlefields you control)?$/i, ' you control').replace(/ played from anywhere other than a player's hand$/i, '');
+  const t = parseNP(s[0].toLowerCase() + s.slice(1));
   return t;
 }
 const STATIC = [
   // might modifiers
-  [new RegExp(`^${SUBJ}( each)?( here| there| at my battlefield| with \\[\\w+\\])?(?: here)? (?:have|has|get|gets) (?:an additional )?([+-]\\d+) \\[Might\\](?: and (${KWSEQ}))?( here)?(, to a minimum of \\d+ \\[Might\\])?( for each .+)?$`, 'i'), (m) => { const t = subjectTarget(m[1] + (m[3] && /with/.test(m[3]) ? m[3] : '')); if (m[3] && !/with/.test(m[3]) || m[6]) t.location = 'here'; const fx = [{ verb: 'might', amount: +m[4], target: t, ...(m[8] ? { perEach: m[8].replace(/^ for each /, '') } : {}), ok: t.ok }]; if (m[5]) fx.push({ verb: 'grantKeyword', keywords: kwList(m[5]), target: t, ok: t.ok }); return { staticType: 'might-mod', effects: fx }; }],
-  [/^My Might is increased by (.+)$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: { ref: 'count:' + m[1] }, target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
-  [/^I (?:get|have) \+1 \[Might\] for each (.+)$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: 1, perEach: m[1], target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
-  [new RegExp(`^${SUBJ}( each)?( here| there| at my battlefield| with \\[\\w+\\])? (?:have|has|give) (${KWSEQ})( here)?( equal to .+)?( if they didn't already)?$`, 'i'), (m) => { const t = subjectTarget(m[1] + (m[3] && /with/.test(m[3]) ? m[3] : '')); if ((m[3] && !/with/.test(m[3])) || m[5]) t.location = 'here'; return { staticType: 'keyword-grant', effects: [{ verb: 'grantKeyword', keywords: kwList(m[4]), target: t, ...(m[6] ? { amount: amountRef(m[6].replace(/^ equal to /, '')) || 'x' } : {}), ok: t.ok }] }; }],
-  [new RegExp(`^${SUBJ}( here)? (?:have|has) "(.+)"$`, 'i'), (m) => { const t = subjectTarget(m[1]); if (m[2]) t.location = 'here'; return { staticType: 'ability-grant', effects: [{ verb: 'grantAbility', grantedText: m[3], target: t, ok: t.ok }] }; }],
-  // enter ready / exhausted
+  [new RegExp(`^(.+?)(?: each)? (?:have|has|get|gets) (?:an additional )?([+-]\\d+) \\[Might\\](?: and (${KWSEQ}))?( here)?(, to a minimum of \\d+ \\[Might\\])?( for each .+)?$`, 'i'), (m) => { const t = subjectTarget(m[1]); if (!t.ok) return null; if (m[4]) t.location = 'here'; const fx = [{ verb: 'might', amount: +m[2], target: t, ...(m[6] ? { perEach: m[6].replace(/^ for each /, '') } : {}), ...(m[5] ? { minimum: 1 } : {}), ok: true }]; if (m[3]) fx.push({ verb: 'grantKeyword', keywords: kwList(m[3]), target: t, ok: true }); return { staticType: 'might-mod', effects: fx }; }],
+  [new RegExp(`^(.+?)(?: each)? (?:have|has|give) (${KWSEQ})( here)?( equal to .+)?( if they didn't already)?$`, 'i'), (m) => { const t = subjectTarget(m[1]); if (!t.ok) return null; if (m[3]) t.location = 'here'; return { staticType: 'keyword-grant', effects: [{ verb: 'grantKeyword', keywords: kwList(m[2]), target: t, ...(m[4] ? { amount: amountRef(m[4].replace(/^ equal to /, '')) || 'x' } : {}), ok: true }] }; }],
+  [new RegExp(`^(.+?) (?:have|has) (${KWSEQ}) ((?:\\[\\w+\\])+)$`, 'i'), (m) => { const t = subjectTarget(m[1]); if (!t.ok) return null; return { staticType: 'keyword-grant', effects: [{ verb: 'grantKeyword', keywords: kwList(m[2]), cost: parseResources(m[3]), target: t, ok: true }] }; }],
+  [/^(.+?) (?:have|has) "(.+)"$/i, (m) => { const t = subjectTarget(m[1]); if (!t.ok) return null; return { staticType: 'ability-grant', effects: [{ verb: 'grantAbility', grantedText: m[2], target: t, ok: true }] }; }],
+  [/^I have \+(\d+) \[Might\] and enter ready$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: +m[1], target: { ref: 'self', raw: 'I', ok: true }, ok: true }, { verb: 'enterReady', target: { ref: 'self', raw: 'I', ok: true }, ok: true }] })],
   [/^(?:I|This) enters? ready$/i, () => ({ staticType: 'enter-ready', effects: [{ verb: 'enterReady', target: { ref: 'self', raw: 'I', ok: true }, ok: true }] })],
   [/^(?:I|This) enters? exhausted$/i, () => ({ staticType: 'enter-exhausted', effects: [{ verb: 'enterExhausted', target: { ref: 'self', raw: 'I', ok: true }, ok: true }] })],
-  [new RegExp(`^${SUBJ} enter ready( this turn)?$`, 'i'), (m) => { const t = subjectTarget(m[1]); return { staticType: 'enter-ready', effects: [{ verb: 'enterReady', target: t, ok: t.ok, ...(m[2] ? { duration: 'turn' } : {}) }] }; }],
+  [/^(.+?) enter ready( this turn)?$/i, (m) => { const t = subjectTarget(m[1]); if (!t.ok) return null; return { staticType: 'enter-ready', effects: [{ verb: 'enterReady', target: t, ok: true, ...(m[2] ? { duration: 'turn' } : {}) }] }; }],
   [/^You may have me enter ready$/i, () => ({ staticType: 'enter-ready', effects: [{ verb: 'enterReady', target: { ref: 'self', raw: 'I', ok: true }, optional: true, ok: true }] })],
-  [/^I have \+(\d+) \[Might\] and enter ready$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: +m[1], target: { ref: 'self', raw: 'I', ok: true }, ok: true }, { verb: 'enterReady', target: { ref: 'self', raw: 'I', ok: true }, ok: true }] })],
+  [/^You may play me for ((?:\[\w+\])+)$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', altCost: parseResources(m[1]), target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
+  [/^You may pay ((?:\[\w+\])+) less to play a (gear|unit|spell)$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[1]), sign: '-', target: { types: [m[2]], controller: 'friendly', count: 1, raw: m[2], ok: true }, ok: true }] })],
+  [/^You may pay \[1\] to hide a card with \[Hidden\] instead of \[Rainbow\]$/i, () => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', what: 'hide', ok: true }] })],
+  [/^Your Gold add an additional ((?:\[\w+\])+)$/i, (m) => ({ staticType: 'resource-mod', effects: [{ verb: 'add', resources: parseResources(m[1]), bonus: true, ok: true }] })],
+  [/^prevent all damage that enemy spells and abilities would deal to me$/i, () => ({ staticType: 'protection', effects: [{ verb: 'prevent', amount: 'all', target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
+  [/^that player may hide an additional card here$/i, () => ({ staticType: 'play-permission', effects: [{ verb: 'permission', what: 'extra-hidden', ok: true }] })],
+  [/^My Might is increased by (.+)$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: { ref: 'count:' + m[1] }, target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
+  [/^I (?:get|have) \+1 \[Might\] for each (.+)$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: 1, perEach: m[1], target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
   // cost modifiers
   [/^(?:I|This) costs? ((?:\[\w+\])+) less(?: instead)?(?: to play)?( for each .+| if .+| to play from anywhere other than your hand)?(?:, to a minimum of \[\d+\])?$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[1]), sign: '-', target: { ref: 'self', raw: 'I', ok: true }, ...(m[2] ? (/^ for each/.test(m[2]) ? { perEach: m[2].replace(/^ for each /, '') } : /^ if/.test(m[2]) ? { conditions: [parseCondition(m[2].replace(/^ if /, ''))] } : { conditions: [{ type: 'played-from-not-hand', raw: m[2].trim(), ok: true }] }) : {}), ok: true }] })],
   [/^(?:I|This) costs? ((?:\[\w+\])+) less and enter ready$/i, (m) => ({ staticType: 'cost-mod', effects: [{ verb: 'costChange', amount: parseResources(m[1]), sign: '-', target: { ref: 'self', raw: 'I', ok: true }, ok: true }, { verb: 'enterReady', target: { ref: 'self', raw: 'I', ok: true }, ok: true }] })],
@@ -677,7 +801,7 @@ const STATIC = [
   [/^Increase the points needed to win the game by (\d+)$/i, (m) => ({ staticType: 'rule-mod', effects: [{ verb: 'ruleMod', what: 'victory-score', amount: +m[1], ok: true }] })],
   [/^Your deck can have any number of cards named (.+)$/i, (m) => ({ staticType: 'deckbuilding', effects: [{ verb: 'deckRule', what: 'unlimited-copies', ok: true }] })],
   [/^If Neeko is in your deck, choose up to 3 different legends in addition to your starting legend$/i, () => ({ staticType: 'deckbuilding', effects: [{ verb: 'deckRule', what: 'extra-legends', amount: 3, ok: true }] })],
-  [/^Buffs give an additional \+(\d+) \[Might\] to friendly units$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: +m[1], target: { types: ['unit'], controller: 'friendly', states: ['buffed'], count: 'all', raw: 'buffed friendly units', ok: true }, ok: true }] })],
+  [/^Buffs give an additional \+(\d+) \[Might\] to friendly units(?: this turn)?$/i, (m) => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: +m[1], target: { types: ['unit'], controller: 'friendly', states: ['buffed'], count: 'all', raw: 'buffed friendly units', ok: true }, ok: true }] })],
   [/^Each Equipment attached to me gives double its base Might bonus$/i, () => ({ staticType: 'might-mod', effects: [{ verb: 'might', amount: { ref: 'equipment.bonus' }, target: { ref: 'self', raw: 'me', ok: true }, ok: true }] })],
   [/^Any amount of your damage is enough to kill enemy units$/i, () => ({ staticType: 'rule-mod', effects: [{ verb: 'ruleMod', what: 'deathtouch', ok: true }] })],
   [/^You ignore \[Tank\] while assigning combat damage here$/i, () => ({ staticType: 'rule-mod', effects: [{ verb: 'ruleMod', what: 'ignore-tank', ok: true }] })],
@@ -799,7 +923,11 @@ function parseLine(line0, card, origin, options) {
       if (st.pre) ab.conditions.push(parseCondition(st.pre.replace(/^While /i, '')));
       let rest = st.rest; let mm;
       // intervening "if" (CR 383.2.a.1: part of the trigger condition)
-      while ((mm = /^if ([^,]+), (.+)$/i.exec(rest)) && !/^if (you do|they do)/i.test(rest)) { const c = parseCondition(mm[1]); ab.conditions.push(c); rest = mm[2]; }
+      while (/^if /i.test(rest) && !/^if (you do|they do)/i.test(rest)) {
+        let hit = null; for (let k = rest.indexOf(', '); k > 0; k = rest.indexOf(', ', k + 1)) { const c = parseCondition(rest.slice(3, k)); if (c.ok) { hit = [c, rest.slice(k + 2)]; break; } }
+        if (!hit) { mm = /^if ([^,]+), (.+)$/i.exec(rest); if (!mm) break; hit = [parseCondition(mm[1]), mm[2]]; }
+        ab.conditions.push(hit[0]); rest = hit[1];
+      }
       let status = pushEffects(ab, rest + '.');
       if (!st.trigger.ok) status = status === 'none' ? 'none' : 'partial';
       if (ab.conditions.some((c) => !c.ok)) status = worst(status, 'partial') === 'none' ? 'partial' : worst(status, 'partial');
@@ -811,14 +939,22 @@ function parseLine(line0, card, origin, options) {
     // replacement effects
     if (/\bwould\b/i.test(bare) && (m = /^(Once each turn, )?(?:If|The next time) (.+?) would (.+?), (.+?)(?: instead)?$/i.exec(bare))) {
       const ab = mkAbility('replacement', { trigger: { event: 'would-' + (/die/.test(m[3]) ? 'die' : /channel/.test(m[3]) ? 'channel' : /deal|dealt|damage/.test(m[3]) ? 'damage' : /reveal/.test(m[3]) ? 'reveal' : /play/.test(m[3]) ? 'play' : /score/.test(m[3]) ? 'score' : /go to your trash/.test(m[3]) ? 'trash' : 'other'), raw: `${m[2]} would ${m[3]}`, ok: true, ...(m[1] ? { frequency: 'once-each-turn' } : {}) } });
-      const status = pushEffects(ab, m[4] + '.'); sentences[sentences.length - 1].text = sent; done(ab, status, sent); current = ab; continue;
+      let fxText = m[4]; let mm2; if ((mm2 = /^if ([^,]+), (?:instead )?(.+)$/i.exec(fxText))) { ab.conditions.push(parseCondition(mm2[1])); fxText = mm2[2]; }
+      let status = pushEffects(ab, fxText + '.'); if (ab.conditions.some((c) => !c.ok) && status === 'full') status = 'partial'; sentences[sentences.length - 1].text = sent; sentences[sentences.length - 1].status = status; done(ab, status, sent); current = ab; continue;
     }
     // conditional static: "While C, X" / "If C, X"
     let cond = null; let body = bare;
     if ((m = /^(?:While|If|During) ([^,]+), (.+)$/i.exec(bare))) { cond = parseCondition(m[1]); body = m[2]; }
     else if ((m = /^(.+?) (?:while|if|unless) (.+)$/i.exec(bare)) && parseStatic(m[1])) { cond = parseCondition(m[2]); if (/ unless /.test(bare)) cond.negate = true; body = m[1]; }
-    const stt = parseStatic(body) || (cond ? null : parseStatic(bare));
-    if (stt && (card.type !== 'spell' || /^(This|I) |cost|can't be countered|Ignore/i.test(body))) {
+    const isSpellCard = card.type === 'spell';
+    const spellFx = isSpellCard ? parseEffects(sent) : null;
+    body = body.replace(/ instead$/i, '');
+    const stt = spellFx && spellFx.status === 'full' && !/^(This|I) (costs?|can't)|^Ignore \[/i.test(bare) ? null : (parseStatic(body) || (cond ? null : parseStatic(bare)));
+    if ((m = /^If (.+?) at the start of your Beginning Phase, (.+)$/i.exec(bare))) {
+      const ab = mkAbility('triggered', { trigger: { event: 'start-of-turn', scope: 'any', raw: 'at the start of your Beginning Phase', ok: true } }); const c = parseCondition(m[1]); ab.conditions.push(c);
+      let status = pushEffects(ab, m[2] + '.'); if (!c.ok) status = status === 'none' ? 'none' : 'partial'; sentences[sentences.length - 1].text = sent; done(ab, status, sent); current = ab; continue;
+    }
+    if (stt) {
       const ab = mkAbility('static', { staticType: stt.staticType, effects: stt.effects });
       if (cond) ab.conditions.push(cond);
       const ok = stt.effects.every((e) => e.ok !== false) && (!cond || cond.ok);
@@ -835,7 +971,7 @@ function parseLine(line0, card, origin, options) {
   }
   return { abilities, sentences };
 }
-function parseStatic(s) { for (const [re, f] of STATIC) { const m = re.exec(s); if (m) { const r = f(m); if (r) return r; } } return null; }
+function parseStatic(s0) { const s = s0.replace(/\[(Add|ADD)\]/g, 'add').replace(/ if they didn't already$/i, '').replace(/^Once each turn, /i, ''); for (const [re, f] of STATIC) { const m = re.exec(s); if (m) { const r = f(m); if (r) return r; } } return null; }
 function splitActivated(line) {
   // "<cost>: [Speed] — effect"  |  "<cost>: effect"
   const i = line.indexOf(': '); if (i < 0) return null;
@@ -854,7 +990,7 @@ export function cardText(card) {
   return { text, source };
 }
 export function parseCard(card) {
-  const { text, source } = cardText(card);
+  const { text, source } = cardText(card); SELF_NAME = card.name.split(',')[0];
   const abilities = []; const sentences = [];
   const run = (raw, origin) => {
     const lines = stripReminders(raw).split('\n').map((l) => l.trim()).filter(Boolean);

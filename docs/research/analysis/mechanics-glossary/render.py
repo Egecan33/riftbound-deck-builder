@@ -46,6 +46,8 @@ def sub(m):
     if head[0] == 'c': return cnt(out['systems'][head[2]])
     if head[0] == 'n' and head[1] == 'sys': return str(out['systems'][head[2]]['total'])
     if head[0] == 'n' and head[1] == 'kw': return str(out['keywords'][head[2]]['any']['total'])
+    if head[0] == 'own': return str(out['keywords'][head[2]]['has']['total'])
+    if head[0] == 'ref': return str(out['keywords'][head[2]]['ref']['total'])
     if head[0] == 'rx': return '`' + out['systems'][head[2]]['regex'].replace('|', '\\|') + '`'
     if head[0] == 'pool': 
         v = out['pool'][head[1]]

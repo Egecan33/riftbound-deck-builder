@@ -172,6 +172,13 @@ def run():
                    'typeFixed': sorted('%s %s' % (c['code'], c['typeFixed']) for c in cards if c.get('typeFixed')),
                    'energy': {str(k): v for k, v in sorted(collections.Counter(c['energy'] for c in cards if c['main']).items(), key=lambda kv: (kv[0] is None, kv[0] or 0))},
                    'power': {str(k): v for k, v in sorted(collections.Counter(c['power'] or 0 for c in cards if c['main']).items())},
+                   'units': sum(c['type'] == 'unit' and c['main'] for c in cards), 'spells': sum(c['type'] == 'spell' and c['main'] for c in cards), 'gear': sum(c['type'] == 'gear' and c['main'] for c in cards),
+                   'mightyUnits': sum(c['type'] == 'unit' and c['main'] and (c['might'] or 0) >= 5 for c in cards),
+                   'equipmentTag': sum(c['type'] == 'gear' and c['main'] and 'Equipment' in c['tags'] for c in cards),
+                   'spellAction': sum(c['type'] == 'spell' and c['main'] and bool(kw_has('Action').search(c['t'])) and not kw_has('Reaction').search(c['t']) for c in cards),
+                   'spellReaction': sum(c['type'] == 'spell' and c['main'] and bool(kw_has('Reaction').search(c['t'])) for c in cards),
+                   'spellSlow': sum(c['type'] == 'spell' and c['main'] and not kw_has('Reaction').search(c['t']) and not kw_has('Action').search(c['t']) for c in cards),
+                   'powerCards': sum(c['main'] and (c['power'] or 0) > 0 for c in cards),
                    'errataLog': sorted('%s [%s] %s' % (c['name'], c['errata']['source'], c['errata']['galleryStatus']) for c in cards if c['errata'])}
     for kid, kw, rule, valued in KEYWORDS:
         has = [c for c in cards if kw_has(kw).search(c['t'])]
