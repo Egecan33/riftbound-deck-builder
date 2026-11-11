@@ -1,0 +1,36 @@
+@import 'tailwindcss';
+
+/* Riftbound Forge: dark workbench surfaces so card art is the only saturated thing on screen. */
+@theme {
+  --color-void: #0e1116;
+  --color-slate: #171c24;
+  --color-edge: #2a323f;
+  --color-mist: #9aa6b8;
+  --color-bone: #e8edf4;
+  --color-rift: #5ec8d8;
+
+  --font-sans: 'Avenir Next', Avenir, 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background: var(--color-void);
+  color: var(--color-bone);
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.45;
+  font-feature-settings: 'tnum' 1;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rift);
+  outline-offset: 2px;
+}
