@@ -5,3 +5,6 @@ data/
 test-results/
 playwright-report/
 .DS_Store
+
+# raw downloads used by research scripts stay local
+docs/research/**/raw/
