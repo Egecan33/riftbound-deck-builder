@@ -2,7 +2,7 @@
 
 This file is the single place a new session reads to continue the build if the previous one was cut off. Update it at every stage boundary, in the same commit as the stage's work.
 
-Last updated: 2026-11-11, during Stage 0.
+Last updated: 2026-11-12. Design and plan written; build starts at plan Task 1.
 
 ## Owner's decisions (do not re-ask)
 
@@ -15,18 +15,21 @@ Last updated: 2026-11-11, during Stage 0.
 - Power target casual / focused / competitive replaces brackets; say plainly what is heuristic.
 - Scraping community sites (Piltover Archive and similar) is allowed and stays in the repo as a normal sync step.
 - Research files are pushed as written (local paths not scrubbed). Raw downloads stay local (`docs/research/**/raw/` is gitignored).
-- Quality over cost. Stages run as separate workflows, with a commit and push at every stage boundary.
+- Reuse the owner's Riftfoundry code (`decksofriftbound`): its card mine and knowledge network in `scoring.ts`, theory-deck generator and more (spec section 8.4). Look there first, port with tests, extend.
+- Understanding and evaluating cards correctly is the priority.
+- Keep token use modest, the way Commander Forge was built: small staged workflows, no extra research rounds.
+- Quality over cost was said earlier; the later instruction to spend less wins where they conflict. Stages run as separate workflows, with a commit and push at every stage boundary.
 
 ## Stages
 
 | # | Stage | State |
 |---|---|---|
-| 0 | Research with independent fact-checking | **in progress** |
-| 1 | Design doc (`docs/superpowers/specs/`) and implementation plan with shared types contract (`docs/superpowers/plans/`) | not started |
-| 2 | Foundation and data: scaffold, sync (cards incl. Radiance, images, legality, meta), fixtures | not started |
-| 3 | Engine: rules, mechanics parser, features, interaction graph, scoring, rating, builder, lines; adversarial reviewer after each part | not started |
-| 4 | API and UI | not started |
-| 5 | End-to-end tests | not started |
+| 0 | Research with independent fact-checking | done; 5 of 11 files verified, the rest are tested against real cards during the build (owner asked to stop spending on research) |
+| 1 | Design doc `docs/superpowers/specs/2026-11-12-riftbound-forge-design.md` and plan `docs/superpowers/plans/2026-11-12-riftbound-forge.md` | done |
+| 2 | Foundation and data: plan Tasks 1-2 | **in progress** |
+| 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | not started |
+| 4 | API and UI: plan Tasks 10-11 | not started |
+| 5 | End-to-end tests: plan Task 12 | not started |
 | 6 | Final review by driving the real UI and looking at screenshots | not started |
 
 ## Stage 0 detail
@@ -61,3 +64,7 @@ To resume Stage 0 in a new session: for each expected file that is missing or ha
 - Core Rules and Tournament Rules have a 2026-10-09 edition; rule numbers moved.
 - Ban list last updated 2026-09-18; 2v2 has its own list; FFA has none (use Standard, switchable).
 - Side deck maximum is 10.
+
+## Resume
+
+To continue: read the plan, run `git log --oneline | head -20` to see which task commits exist, and start at the first task without one. Each plan task ends in exactly one `feat`/`fix` commit naming the task.

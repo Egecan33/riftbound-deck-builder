@@ -69,8 +69,8 @@ The engine takes an in-memory card database and plain data, which keeps it fast 
 ## Roadmap
 
 - [x] Repository, license, agent guide
-- [ ] Verified research: deck rules for 1v1 / 2v2 / FFA, legality, meta sources, deck theory, interactions, win conditions
-- [ ] Design document and implementation plan
+- [x] Research: deck rules for 1v1 / 2v2 / FFA, legality, meta sources, deck theory, mechanics, interactions, win conditions
+- [x] Design document and implementation plan
 - [ ] Data sync: cards, images, legality, tournament lists
 - [ ] Engine: rules, card features, interaction graph, scoring, rating, builder, lines
 - [ ] API and UI
