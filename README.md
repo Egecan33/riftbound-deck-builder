@@ -2,7 +2,9 @@
 
 # ⚒️ Riftbound Forge
 
-**A local deck builder and theorycrafting bench for the Riftbound TCG.**
+### The open-source Riftbound TCG deck builder
+
+**Build, score, rate and theorycraft Riftbound decks on your own computer. Mac and Windows.**
 
 Pick a Legend. Get a legal deck, a score for every card, a rating for the whole list,<br>
 and lines that come from the cards you actually run.
@@ -75,8 +77,15 @@ The engine takes an in-memory card database and plain data, which keeps it fast 
 - [ ] Engine: rules, card features, interaction graph, scoring, rating, builder, lines
 - [ ] API and UI
 - [ ] End-to-end tests
+- [ ] Desktop downloads for macOS and Windows
 
-## Getting started
+## Download
+
+Ready-to-run apps for **macOS** and **Windows** will be attached to [Releases](https://github.com/Egecan33/riftbound-deck-builder/releases) once the app is finished. No release exists yet.
+
+The download contains no card data or images. On first start the app downloads them to your machine.
+
+## Run from source
 
 Not runnable yet. Once the data stage lands it will be:
 

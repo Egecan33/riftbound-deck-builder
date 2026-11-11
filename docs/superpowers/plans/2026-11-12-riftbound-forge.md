@@ -370,3 +370,18 @@ Routes (JSON): `GET /api/status`; `POST/GET /api/sync`; `GET /api/legends`; `GET
 - [ ] `pnpm tsx src/ingest/calibrate.ts`: for 8 legends print top 30 scored cards, the auto-build per format, its rating, routes and lines; fix what is plainly wrong.
 - [ ] Whole-branch review against the spec's goals and anti-goals by driving the real UI and reading screenshots; fix findings; `pnpm typecheck && pnpm test && pnpm e2e`.
 - [ ] `README.md`: real getting-started, screenshots, roadmap ticked. `docs/STATUS.md` final.
+
+### Task 13: Desktop downloads for macOS and Windows
+
+Owner, 2026-11-12: the app must be downloadable and usable directly, with executables for Mac and Windows. The GitHub repository is `Egecan33/riftbound-deck-builder` (renamed from `riftbound-forge` for discoverability; the product name stays Riftbound Forge and the local folder name is unchanged).
+
+**Files:** `desktop/` (Electron main process), `electron-builder.yml`, `.github/workflows/release.yml`, `package.json` scripts, `README.md`.
+
+- [ ] Next.js `output: 'standalone'`. An Electron main process starts the standalone server on a free localhost port and opens a window on it; quits the server on exit. The data directory moves to the per-user app data folder when packaged (`app.getPath('userData')`), and stays `./data` when run from source; one function decides this and everything reads it.
+- [ ] `better-sqlite3` rebuilt for Electron on each platform (`electron-builder install-app-deps`).
+- [ ] The packaged app ships code and `sync-data/` only. No card data, no images. First start opens the Data page, which runs the sync with progress.
+- [ ] `electron-builder`: macOS `dmg` (universal or arm64 + x64) and Windows `nsis` installer plus a portable `exe`.
+- [ ] `.github/workflows/release.yml`: on a `v*` tag, build on `macos-latest` and `windows-latest`, run `pnpm typecheck && pnpm test`, and attach the artifacts to a GitHub Release.
+- [ ] The builds are unsigned (no Apple Developer ID or Windows certificate). README states this and gives the one-time steps to open an unsigned app on each system. Do not claim otherwise.
+- [ ] Verify on this Mac: build the dmg locally, install, start, sync, auto-build a deck. The Windows build is verified by the CI job succeeding and its artifact existing; say plainly that it was not run on a Windows machine.
+- [ ] Tag `v0.1.0`, confirm the Release has both platforms' files, update README download links and screenshots. Commit.
