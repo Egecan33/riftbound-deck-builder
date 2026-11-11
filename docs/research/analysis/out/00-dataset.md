@@ -1,213 +1,270 @@
 # dataset
-- decks loaded: 257; valid (40 main incl. chosen champion, 12 runes, 3 battlefields, legend known): 241
-- by source: {"pa-2026-11-11":193,"gamelab-sample-2026-09-06":48}
-- by era: {"RAD":193,"VEN-preban":48}
-- placement class: {"event-only":103,"bestof":63,"win":18,"top8":48,"top64":9}
-- events: {"Stuttgart (RC Europe, Nov 6-8)":67,"other/unspecified":71,"Orlando 25K":44,"Hartford RQ":19,"Sacramento (LDXP)":12,"Shenzhen/Shanghai/Shenyang":2,"Melbourne":1,"Singapore RQ":1,"Utrecht RQ":13,"Vancouver RQ":7,"Sydney RQ":4}
-- decks containing a currently banned card: 31
-- invalid reasons sample: {"39/12/3/1":3,"39/12/3/0":1,"40/12/3/0":2,"41/12/3/1":6,"47/5/3/1":1,"52/0/3/1":1,"53/0/3/1":2}
+- decks loaded: 419; valid (40 main incl. chosen champion, 12 runes, 3 battlefields, legend known): 406
+- by source: {"pa-2026-11-11":351,"gamelab-sample-2026-09-06":55}
+- by era: {"RAD":254,"VEN-postban":55,"VEN-preban":97}
+- placement class: {"event-only":125,"bestof":153,"win":36,"top8":70,"top64":22}
+- events: {"Stuttgart (RC Europe, Nov 6-8)":67,"other/unspecified":146,"Orlando 25K":47,"Hartford RQ":24,"Sacramento (LDXP)":42,"Shenzhen/Shanghai/Shenyang":3,"Melbourne":10,"Singapore RQ":19,"Los Angeles RQ":17,"Chengdu":5,"Utrecht RQ":14,"Vancouver RQ":8,"Sydney RQ":4}
+- decks containing a currently banned card: 38
+- invalid reasons sample: {"39/12/3/1":5,"39/12/3/0":1,"40/12/3/0":3,"40/12/3/5":1,"47/5/3/1":1,"52/0/3/1":2}
 - cards not found in gallery (by name): []
 - kmeans: {
  "3": {
-  "inertia": 1781.2,
+  "inertia": 3077.8,
   "sizes": [
-   114,
-   80,
-   47
+   69,
+   195,
+   142
   ],
   "centroidsRaw": [
    {
-    "units": 16.69,
-    "avgEnergy": 2.64,
-    "e01": 8.55,
-    "e2": 16.12,
-    "e6p": 2.5,
-    "r_removal": 6.64,
-    "r_counterspells": 2.56,
-    "r_draw": 9.66,
-    "r_combat_tricks": 5.08,
-    "r_tempo": 8.13,
-    "x_topend": 2.36,
-    "gear": 6.69
+    "units": 17.01,
+    "avgEnergy": 3.91,
+    "e01": 6.54,
+    "e2": 10.71,
+    "e6p": 10.58,
+    "r_removal": 11.25,
+    "r_counterspells": 0.51,
+    "r_draw": 11.06,
+    "r_combat_tricks": 3.41,
+    "r_tempo": 3.35,
+    "x_topend": 7.26,
+    "gear": 3.77
    },
    {
-    "units": 24.76,
-    "avgEnergy": 2.88,
-    "e01": 4.17,
-    "e2": 14.66,
-    "e6p": 2.06,
-    "r_removal": 6.99,
-    "r_counterspells": 0.33,
-    "r_draw": 5.5,
-    "r_combat_tricks": 4.14,
-    "r_tempo": 12.63,
-    "x_topend": 2.65,
-    "gear": 2.95
+    "units": 16.11,
+    "avgEnergy": 2.61,
+    "e01": 8.78,
+    "e2": 16.65,
+    "e6p": 2.55,
+    "r_removal": 6.29,
+    "r_counterspells": 2.86,
+    "r_draw": 10.27,
+    "r_combat_tricks": 6.32,
+    "r_tempo": 7.03,
+    "x_topend": 2.35,
+    "gear": 6.47
    },
    {
-    "units": 16.89,
-    "avgEnergy": 3.87,
-    "e01": 6.81,
-    "e2": 10.64,
-    "e6p": 10.79,
-    "r_removal": 12.81,
+    "units": 24.04,
+    "avgEnergy": 2.84,
+    "e01": 4.6,
+    "e2": 14.68,
+    "e6p": 1.86,
+    "r_removal": 7.94,
     "r_counterspells": 0.36,
-    "r_draw": 10.87,
-    "r_combat_tricks": 3.02,
-    "r_tempo": 3.19,
-    "x_topend": 7.28,
-    "gear": 4.06
+    "r_draw": 5.35,
+    "r_combat_tricks": 4.75,
+    "r_tempo": 10.68,
+    "x_topend": 2.43,
+    "gear": 3.21
    }
   ]
  },
  "4": {
-  "inertia": 1578.9,
+  "inertia": 2735.1,
   "sizes": [
-   72,
-   77,
-   44,
-   48
+   66,
+   69,
+   139,
+   132
   ],
   "centroidsRaw": [
    {
-    "units": 17.92,
-    "avgEnergy": 2.71,
-    "e01": 7.58,
-    "e2": 16.9,
-    "e6p": 2.63,
-    "r_removal": 6.67,
+    "units": 17.56,
+    "avgEnergy": 3.93,
+    "e01": 6.3,
+    "e2": 10.67,
+    "e6p": 10.71,
+    "r_removal": 11.35,
+    "r_counterspells": 0.53,
+    "r_draw": 10.97,
+    "r_combat_tricks": 3.5,
+    "r_tempo": 3.32,
+    "x_topend": 7.41,
+    "gear": 3.3
+   },
+   {
+    "units": 14.04,
+    "avgEnergy": 2.56,
+    "e01": 10.19,
+    "e2": 14.64,
+    "e6p": 2.41,
+    "r_removal": 7.58,
+    "r_counterspells": 1.09,
+    "r_draw": 9.52,
+    "r_combat_tricks": 3.03,
+    "r_tempo": 5.07,
+    "x_topend": 1.67,
+    "gear": 10.67
+   },
+   {
+    "units": 17.19,
+    "avgEnergy": 2.65,
+    "e01": 8.09,
+    "e2": 17.33,
+    "e6p": 2.68,
+    "r_removal": 5.98,
     "r_counterspells": 3.51,
-    "r_draw": 9.96,
-    "r_combat_tricks": 6.63,
-    "r_tempo": 9.18,
-    "x_topend": 2.76,
-    "gear": 4.58
+    "r_draw": 10.47,
+    "r_combat_tricks": 7.52,
+    "r_tempo": 7.83,
+    "x_topend": 2.68,
+    "gear": 4.64
    },
    {
-    "units": 24.78,
-    "avgEnergy": 2.87,
-    "e01": 4.09,
-    "e2": 14.65,
-    "e6p": 2.04,
-    "r_removal": 7,
-    "r_counterspells": 0.27,
-    "r_draw": 5.42,
-    "r_combat_tricks": 4.1,
-    "r_tempo": 12.86,
-    "x_topend": 2.62,
-    "gear": 2.97
-   },
-   {
-    "units": 17.7,
-    "avgEnergy": 3.9,
-    "e01": 6.48,
-    "e2": 10.57,
-    "e6p": 11,
-    "r_removal": 13.07,
-    "r_counterspells": 0.39,
-    "r_draw": 10.73,
-    "r_combat_tricks": 3.14,
-    "r_tempo": 3.14,
-    "x_topend": 7.5,
-    "gear": 3.39
-   },
-   {
-    "units": 14.6,
-    "avgEnergy": 2.61,
-    "e01": 10.06,
-    "e2": 14.6,
-    "e6p": 2.65,
-    "r_removal": 6.75,
-    "r_counterspells": 0.92,
-    "r_draw": 9.29,
-    "r_combat_tricks": 2.52,
-    "r_tempo": 6.21,
-    "x_topend": 1.92,
-    "gear": 10.04
+    "units": 24.33,
+    "avgEnergy": 2.85,
+    "e01": 4.35,
+    "e2": 14.76,
+    "e6p": 1.86,
+    "r_removal": 7.77,
+    "r_counterspells": 0.34,
+    "r_draw": 5.21,
+    "r_combat_tricks": 4.98,
+    "r_tempo": 11.08,
+    "x_topend": 2.48,
+    "gear": 2.86
    }
   ]
  },
  "5": {
-  "inertia": 1420.1,
+  "inertia": 2513.4,
   "sizes": [
-   14,
+   62,
+   66,
+   139,
    73,
-   77,
-   32,
-   45
+   66
   ],
   "centroidsRaw": [
    {
-    "units": 5.14,
-    "avgEnergy": 4.02,
-    "e01": 8.43,
-    "e2": 9.86,
-    "e6p": 10,
-    "r_removal": 11.14,
-    "r_counterspells": 0.64,
-    "r_draw": 13.14,
-    "r_combat_tricks": 1.14,
-    "r_tempo": 1.5,
-    "x_topend": 3.79,
-    "gear": 10.93
+    "units": 24.34,
+    "avgEnergy": 2.84,
+    "e01": 3.53,
+    "e2": 17.26,
+    "e6p": 2.23,
+    "r_removal": 10.79,
+    "r_counterspells": 0.21,
+    "r_draw": 4.35,
+    "r_combat_tricks": 3.39,
+    "r_tempo": 7.35,
+    "x_topend": 1.95,
+    "gear": 2.9
    },
    {
-    "units": 17.79,
-    "avgEnergy": 2.72,
-    "e01": 7.64,
-    "e2": 16.75,
-    "e6p": 2.78,
-    "r_removal": 6.71,
-    "r_counterspells": 3.53,
-    "r_draw": 10.18,
-    "r_combat_tricks": 6.63,
-    "r_tempo": 9.03,
-    "x_topend": 2.95,
-    "gear": 4.52
+    "units": 17.56,
+    "avgEnergy": 3.93,
+    "e01": 6.3,
+    "e2": 10.67,
+    "e6p": 10.71,
+    "r_removal": 11.35,
+    "r_counterspells": 0.53,
+    "r_draw": 10.97,
+    "r_combat_tricks": 3.5,
+    "r_tempo": 3.32,
+    "x_topend": 7.41,
+    "gear": 3.3
    },
    {
-    "units": 24.79,
-    "avgEnergy": 2.86,
-    "e01": 4.13,
-    "e2": 14.75,
-    "e6p": 1.96,
-    "r_removal": 6.95,
-    "r_counterspells": 0.31,
-    "r_draw": 5.43,
-    "r_combat_tricks": 4.12,
-    "r_tempo": 12.81,
-    "x_topend": 2.57,
-    "gear": 2.97
+    "units": 17.19,
+    "avgEnergy": 2.66,
+    "e01": 8.07,
+    "e2": 17.4,
+    "e6p": 2.71,
+    "r_removal": 5.97,
+    "r_counterspells": 3.51,
+    "r_draw": 10.48,
+    "r_combat_tricks": 7.46,
+    "r_tempo": 7.83,
+    "x_topend": 2.7,
+    "gear": 4.65
    },
    {
-    "units": 22.25,
-    "avgEnergy": 3.84,
-    "e01": 5.84,
-    "e2": 10.88,
-    "e6p": 11.22,
-    "r_removal": 13.75,
-    "r_counterspells": 0,
-    "r_draw": 9.38,
-    "r_combat_tricks": 3.69,
-    "r_tempo": 4.22,
-    "x_topend": 8.66,
-    "gear": 1.19
+    "units": 24.05,
+    "avgEnergy": 2.84,
+    "e01": 5.19,
+    "e2": 12.53,
+    "e6p": 1.51,
+    "r_removal": 5.21,
+    "r_counterspells": 0.45,
+    "r_draw": 6.08,
+    "r_combat_tricks": 6.48,
+    "r_tempo": 14.07,
+    "x_topend": 2.86,
+    "gear": 2.96
    },
    {
-    "units": 15.24,
-    "avgEnergy": 2.55,
-    "e01": 9.96,
-    "e2": 14.8,
-    "e6p": 2.31,
-    "r_removal": 6.6,
-    "r_counterspells": 0.98,
-    "r_draw": 9.04,
-    "r_combat_tricks": 2.6,
-    "r_tempo": 6.36,
-    "x_topend": 1.78,
-    "gear": 9.78
+    "units": 13.88,
+    "avgEnergy": 2.56,
+    "e01": 10.32,
+    "e2": 14.61,
+    "e6p": 2.44,
+    "r_removal": 7.59,
+    "r_counterspells": 1.12,
+    "r_draw": 9.55,
+    "r_combat_tricks": 2.89,
+    "r_tempo": 4.98,
+    "x_topend": 1.68,
+    "gear": 10.85
    }
   ]
- }
+ },
+ "names": {
+  "0": "big-control",
+  "1": "gear-engine",
+  "2": "spell-tempo",
+  "3": "unit-aggro"
+ },
+ "zscale": {
+  "units": {
+   "mean": 19.039,
+   "sd": 6.459
+  },
+  "avgEnergy": {
+   "mean": 2.909,
+   "sd": 0.577
+  },
+  "e01": {
+   "mean": 6.938,
+   "sd": 3.347
+  },
+  "e2": {
+   "mean": 14.953,
+   "sd": 4.014
+  },
+  "e6p": {
+   "mean": 3.675,
+   "sd": 3.666
+  },
+  "r_removal": {
+   "mean": 7.707,
+   "sd": 4.39
+  },
+  "r_counterspells": {
+   "mean": 1.584,
+   "sd": 1.698
+  },
+  "r_draw": {
+   "mean": 8.682,
+   "sd": 3.735
+  },
+  "r_combat_tricks": {
+   "mean": 5.276,
+   "sd": 3.155
+  },
+  "r_tempo": {
+   "mean": 7.682,
+   "sd": 4.564
+  },
+  "x_topend": {
+   "mean": 3.214,
+   "sd": 2.763
+  },
+  "gear": {
+   "mean": 4.869,
+   "sd": 4.371
+  }
+ },
+ "ruleAgreement": 0.717
 }
-- rule archetypes: {"control":72,"aggro":27,"midrange":118,"ramp/big":24}; cluster x arch: {"c3:control":24,"c1:aggro":16,"c1:midrange":56,"c0:midrange":42,"c0:control":19,"c2:control":27,"c2:ramp/big":17,"c0:aggro":7,"c0:ramp/big":4,"c3:aggro":4,"c3:midrange":20,"c1:control":2,"c1:ramp/big":3}
+- archetypes (cluster names): {"gear-engine":69,"unit-aggro":132,"spell-tempo":139,"big-control":66}; rule agreement 0.717; arch x era: {"gear-engine:RAD":51,"unit-aggro:RAD":78,"spell-tempo:RAD":79,"big-control:RAD":46,"spell-tempo:VEN-postban":23,"gear-engine:VEN-postban":7,"unit-aggro:VEN-postban":18,"big-control:VEN-postban":7,"spell-tempo:VEN-preban":37,"unit-aggro:VEN-preban":36,"big-control:VEN-preban":13,"gear-engine:VEN-preban":11}; arch x placement: {"gear-engine:event-only":25,"unit-aggro:bestof":51,"unit-aggro:event-only":42,"spell-tempo:event-only":39,"spell-tempo:win":19,"big-control:bestof":28,"big-control:event-only":19,"spell-tempo:bestof":46,"big-control:top8":15,"big-control:win":2,"unit-aggro:win":9,"gear-engine:bestof":28,"unit-aggro:top64":8,"unit-aggro:top8":22,"gear-engine:top8":8,"spell-tempo:top8":25,"gear-engine:win":6,"spell-tempo:top64":10,"gear-engine:top64":2,"big-control:top64":2}

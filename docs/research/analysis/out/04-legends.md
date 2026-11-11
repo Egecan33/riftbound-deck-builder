@@ -1,76 +1,92 @@
 ### per legend detail
 | legend | n | pair | archetypes | chosen champion (share) | chosen copies p50 | rune splits | top battlefields (share of lists) |
 |---|---|---|---|---|---|---|---|
-| Kai'Sa | 19 | fury+mind | control 11, ramp/big 8 | Kai'Sa, Survivor 100% | 1 | 7 fury/5 mind ×16; 6 fury/6 mind ×3 | Void Gate 100%; Rockfall Path 95%; Frozen Fortress 95%; Vilemaw's Lair 5% |
-| Riven | 17 | calm+chaos | midrange 15, aggro 2 | Riven, Broken Blade 94%; Riven, Deserter 6% | 1 | 7 chaos/5 calm ×9; 6 calm/6 chaos ×7 | Star Spring 100%; Emperor's Dais 76%; Hunters' Circle 59%; Rakelstake 59% |
-| Kennen | 13 | chaos+order | midrange 13 | Kennen, Storm of Shuriken 100% | 1 | 9 chaos/3 order ×8; 6 chaos/6 order ×2 | Minefield 100%; Zaun Warrens 100%; Veiled Temple 54%; Ruined Monastery 31% |
-| Kha'Zix | 11 | body+chaos | midrange 7, aggro 4 | Kha'Zix, Mutating Horror 100% | 1 | 6 body/6 chaos ×10; 7 body/5 chaos ×1 | Star Spring 100%; Forbidding Waste 91%; Sandswept Tomb 91%; Packed Amphitheater 9% |
-| Rek'Sai | 11 | fury+order | midrange 10, aggro 1 | Rek'Sai, Breacher 100% | 1 | 8 fury/4 order ×6; 6 fury/6 order ×4 | The Candlelit Sanctum 100%; Ruined Monastery 45%; Hunters' Circle 45%; Rockfall Path 36% |
-| Viktor | 8 | mind+order | control 7, midrange 1 | Viktor, Leader 100% | 1 | 7 order/5 mind ×6; 6 mind/6 order ×2 | Rockfall Path 100%; Forbidding Waste 88%; Ravenbloom Conservatory 38%; The Arena's Greatest 25% |
-| Sett | 8 | body+order | aggro 5, midrange 2, control 1 | Sett, Kingpin 75%; Sett, Brawler 25% | 1 | 7 body/5 order ×6; 6 body/6 order ×1 | Valley of Idols 88%; Monastery of Hirana 88%; Grove of the God-Willow 75%; Sunken Temple 13% |
-| Master Yi | 8 | body+calm | midrange 4, ramp/big 2, aggro 2 | Master Yi, Tempered 100% | 1 | 7 body/5 calm ×5; 6 calm/6 body ×2 | Emperor's Dais 63%; Star Spring 63%; Seat of Power 50%; Grove of the God-Willow 25% |
-| Akali | 8 | calm+fury | midrange 8 | Akali, Deadly Weapon 100% | 1 | 7 fury/5 calm ×7; 6 fury/6 calm ×1 | Void Gate 100%; Sigil of the Storm 75%; Forgotten Monument 75%; Hunters' Circle 13% |
-| LeBlanc | 7 | mind+order | ramp/big 7 | LeBlanc, Fragmented 100% | 1 | 8 order/4 mind ×5; 7 order/5 mind ×2 | Windswept Hillock 100%; Star Spring 71%; Dusk Rose Lab 43%; Forbidding Waste 29% |
-| Evelynn | 7 | body+chaos | midrange 5, ramp/big 2 | Evelynn, Entrancing 100% | 1 | 8 chaos/4 body ×3; 6 body/6 chaos ×2 | Bandle Scouts' Academy 100%; Startipped Peak 86%; Rakelstake 86%; Bandle Tree 14% |
-| Jayce | 7 | body+mind | control 7 | Jayce, Brilliant Inventor 100% | 1 | 7 body/5 mind ×7 | Forgotten Monument 100%; Sigil of the Storm 100%; Dragon Roost 57%; The Papertree 43% |
-| Orianna | 6 | calm+mind | control 6 | Orianna, Exquisite 100% | 1 | 7 calm/5 mind ×3; 8 calm/4 mind ×2 | Rockfall Path 100%; Veiled Temple 100%; Ornn's Forge 83%; Void Gate 17% |
-| Ekko | 6 | fury+mind | midrange 5, ramp/big 1 | Ekko, Ingenious 100% | 1 | 6 fury/6 mind ×6 | Forbidding Waste 83%; Dusk Rose Lab 83%; Seat of Power 83%; Frozen Fortress 17% |
-| Irelia | 6 | calm+chaos | control 5, midrange 1 | Irelia, Fervent 83%; Irelia, Graceful 17% | 1 | 6 calm/6 chaos ×6 | Abandoned Hall 100%; Targon's Peak 83%; Sunken Temple 83%; Sandswept Tomb 17% |
-| Mordekaiser | 6 | fury+order | midrange 6 | Mordekaiser, Dominating 83%; Mordekaiser, Twice Slain 17% | 1 | 7 order/5 fury ×3; 7 fury/5 order ×1 | Zaun Warrens 83%; Minefield 83%; Ruined Monastery 67%; Black Rose Sanctum 33% |
-| Rengar | 6 | body+fury | midrange 4, aggro 2 | Rengar, Trophy Hunter 100% | 1 | 8 body/4 fury ×5; 7 body/5 fury ×1 | Emperor's Dais 100%; Star Spring 67%; Seat of Power 67%; Black Rose Sanctum 17% |
-| Diana | 5 | chaos+mind | midrange 4, control 1 | Diana, Lunari 100% | 1 | 7 chaos/5 mind ×3; 6 mind/6 chaos ×2 | Abandoned Hall 100%; Ravenbloom Conservatory 60%; Rockfall Path 40%; Targon's Peak 40% |
-| Vex | 5 | calm+chaos | midrange 3, control 2 | Vex, Apathetic 100% | 1 | 7 chaos/5 calm ×2; 7 calm/5 chaos ×2 | Startipped Peak 80%; Bandle Scouts' Academy 40%; Ravenbloom Conservatory 40%; Hunters' Circle 20% |
-| Ivern | 4 | calm+order | midrange 3, aggro 1 | Ivern, Nurturer 100% | 1.5 | 6 calm/6 order ×2; 8 calm/4 order ×1 | Rockfall Path 100%; Vilemaw's Lair 100%; Forbidding Waste 75%; Vaults of Helia 25% |
-| Ziggs | 4 | chaos+fury | aggro 2, control 1, midrange 1 | Ziggs, Explosive 75%; Ziggs, Short-Fused 25% | 1 | 7 fury/5 chaos ×1; 9 fury/3 chaos ×1 | Rakelstake 75%; Void Gate 75%; Sigil of the Storm 25%; Frozen Fortress 25% |
-| Vi | 4 | fury+order | midrange 2, aggro 2 | Vi, Peacekeeper 100% | 1.5 | 7 fury/5 order ×3; 8 fury/4 order ×1 | Star Spring 75%; Trapping Grounds 50%; Forge of the Fluft 50%; Sunken Temple 25% |
-| Ornn | 4 | calm+mind | control 4 | Ornn, Blacksmith 75%; Ornn, Forge God 25% | 1 | 7 calm/5 mind ×2; 9 calm/3 mind ×1 | Ornn's Forge 100%; Veiled Temple 50%; Seat of Power 50%; The Arena's Greatest 50% |
-| Pyke | 4 | chaos+fury | midrange 4 | Pyke, Dockside Butcher 75%; Pyke, Returned 25% | 1 | 7 fury/5 chaos ×2; 7 chaos/5 fury ×1 | Ripper's Bay 100%; Forbidding Waste 50%; Ruined Monastery 25%; Zaun Warrens 25% |
+| Kai'Sa | 23 | fury+mind | big-control 23 | Kai'Sa, Survivor 100% | 1 | 7 fury/5 mind ×20; 6 fury/6 mind ×3 | Void Gate 100%; Rockfall Path 96%; Frozen Fortress 96%; Vilemaw's Lair 4% |
+| Riven | 22 | calm+chaos | spell-tempo 22 | Riven, Broken Blade 95%; Riven, Deserter 5% | 1 | 7 chaos/5 calm ×12; 6 calm/6 chaos ×9 | Star Spring 100%; Emperor's Dais 73%; Hunters' Circle 59%; Rakelstake 55% |
+| Kennen | 17 | chaos+order | gear-engine 16, unit-aggro 1 | Kennen, Storm of Shuriken 100% | 1 | 9 chaos/3 order ×11; 6 chaos/6 order ×2 | Minefield 100%; Zaun Warrens 100%; Veiled Temple 41%; Ruined Monastery 35% |
+| Kha'Zix | 15 | body+chaos | unit-aggro 15 | Kha'Zix, Mutating Horror 100% | 1 | 6 body/6 chaos ×14; 7 body/5 chaos ×1 | Star Spring 93%; Forbidding Waste 87%; Sandswept Tomb 87%; Zaun Warrens 20% |
+| Rek'Sai | 15 | fury+order | unit-aggro 15 | Rek'Sai, Breacher 100% | 1 | 8 fury/4 order ×6; 6 fury/6 order ×6 | The Candlelit Sanctum 87%; Rockfall Path 40%; Forbidding Waste 40%; Ruined Monastery 33% |
+| Master Yi | 14 | body+calm | spell-tempo 14 | Master Yi, Tempered 100% | 1 | 7 body/5 calm ×11; 6 calm/6 body ×2 | Emperor's Dais 64%; Star Spring 50%; Seat of Power 36%; Grove of the God-Willow 36% |
+| Lillia | 14 | calm+mind | spell-tempo 14 | Lillia, Fae Fawn 100% | 1 | 6 calm/6 mind ×9; 7 calm/5 mind ×3 | Dusk Rose Lab 100%; Seat of Power 93%; Black Flame Altar 43%; Rockfall Path 29% |
+| Viktor | 13 | mind+order | gear-engine 7, unit-aggro 6 | Viktor, Leader 100% | 1 | 7 order/5 mind ×8; 6 mind/6 order ×5 | Rockfall Path 92%; Forbidding Waste 92%; Ravenbloom Conservatory 38%; Seat of Power 15% |
+| Irelia | 13 | calm+chaos | spell-tempo 13 | Irelia, Fervent 92%; Irelia, Graceful 8% | 1 | 6 calm/6 chaos ×11; 7 chaos/5 calm ×2 | Abandoned Hall 100%; Targon's Peak 77%; Sunken Temple 77%; Sandswept Tomb 15% |
+| Vex | 13 | calm+chaos | spell-tempo 12, gear-engine 1 | Vex, Apathetic 100% | 1 | 7 chaos/5 calm ×7; 6 calm/6 chaos ×3 | Startipped Peak 85%; Fortified Position 38%; Bandle Scouts' Academy 31%; Bandle Tree 31% |
+| Akali | 12 | calm+fury | spell-tempo 12 | Akali, Deadly Weapon 100% | 1 | 7 fury/5 calm ×9; 6 fury/6 calm ×3 | Void Gate 100%; Sigil of the Storm 83%; Forgotten Monument 75%; Forbidding Waste 17% |
+| Evelynn | 12 | body+chaos | unit-aggro 12 | Evelynn, Entrancing 100% | 1 | 8 chaos/4 body ×6; 6 body/6 chaos ×4 | Bandle Scouts' Academy 100%; Startipped Peak 75%; Rakelstake 75%; Grove of the God-Willow 25% |
+| LeBlanc | 11 | mind+order | big-control 10, unit-aggro 1 | LeBlanc, Fragmented 100% | 1 | 8 order/4 mind ×9; 7 order/5 mind ×2 | Windswept Hillock 100%; Star Spring 82%; Dusk Rose Lab 55%; Trifarian War Camp 18% |
+| Orianna | 10 | calm+mind | spell-tempo 6, gear-engine 4 | Orianna, Exquisite 90%; Orianna, Mechanical Marvel 10% | 1 | 7 calm/5 mind ×4; 8 calm/4 mind ×2 | Veiled Temple 100%; Ornn's Forge 80%; Rockfall Path 60%; Void Gate 20% |
+| Diana | 10 | chaos+mind | spell-tempo 10 | Diana, Lunari 100% | 1 | 7 chaos/5 mind ×5; 6 mind/6 chaos ×4 | Abandoned Hall 90%; Targon's Peak 70%; Ravenbloom Conservatory 50%; Rockfall Path 30% |
+| Rengar | 10 | body+fury | unit-aggro 10 | Rengar, Trophy Hunter 100% | 1 | 8 body/4 fury ×9; 7 body/5 fury ×1 | Emperor's Dais 100%; Star Spring 80%; Seat of Power 80%; Black Rose Sanctum 10% |
+| Ivern | 9 | calm+order | spell-tempo 7, unit-aggro 2 | Ivern, Nurturer 100% | 2 | 6 calm/6 order ×6; 7 calm/5 order ×2 | Vilemaw's Lair 100%; Rockfall Path 89%; Forbidding Waste 89%; Seat of Power 11% |
+| Jayce | 9 | body+mind | big-control 9 | Jayce, Brilliant Inventor 100% | 1 | 7 body/5 mind ×8; 8 body/4 mind ×1 | Forgotten Monument 100%; Sigil of the Storm 100%; Dragon Roost 56%; The Papertree 33% |
+| Sett | 8 | body+order | unit-aggro 6, gear-engine 1, spell-tempo 1 | Sett, Kingpin 75%; Sett, Brawler 25% | 1 | 7 body/5 order ×6; 6 body/6 order ×1 | Valley of Idols 88%; Monastery of Hirana 88%; Grove of the God-Willow 75%; Sunken Temple 13% |
+| Ekko | 8 | fury+mind | gear-engine 5, unit-aggro 2, big-control 1 | Ekko, Ingenious 100% | 1 | 6 fury/6 mind ×6; 7 fury/5 mind ×2 | Seat of Power 75%; Forbidding Waste 63%; Dusk Rose Lab 63%; Rockfall Path 38% |
+| Mordekaiser | 8 | fury+order | unit-aggro 8 | Mordekaiser, Dominating 88%; Mordekaiser, Twice Slain 13% | 1 | 7 order/5 fury ×3; 6 fury/6 order ×3 | Zaun Warrens 88%; Minefield 88%; Ruined Monastery 75%; Black Rose Sanctum 25% |
+| Ornn | 8 | calm+mind | gear-engine 8 | Ornn, Blacksmith 88%; Ornn, Forge God 13% | 1 | 8 calm/4 mind ×5; 7 calm/5 mind ×2 | Ornn's Forge 100%; Veiled Temple 75%; Seat of Power 75%; The Arena's Greatest 25% |
+| Jhin | 8 | fury+mind | big-control 8 | Jhin, Meticulous Killer 100% | 1 | 7 mind/5 fury ×5; 8 mind/4 fury ×2 | Frozen Fortress 88%; Sigil of the Storm 88%; Rockfall Path 63%; Aspirant's Climb 25% |
+| Azir | 7 | calm+order | gear-engine 7 | Azir, Sovereign 100% | 1 | 7 calm/5 order ×7 | Trifarian War Camp 100%; Hall of Legends 100%; Seat of Power 57%; Vilemaw's Lair 29% |
+| Vi | 7 | fury+order | unit-aggro 7 | Vi, Peacekeeper 100% | 1 | 7 fury/5 order ×4; 8 fury/4 order ×3 | Forge of the Fluft 57%; Star Spring 57%; Trapping Grounds 29%; Sunken Temple 29% |
+| Nasus | 7 | calm+mind | spell-tempo 4, big-control 3 | Nasus, Ascended 57%; Nasus, Guardian of Knowledge 43% | 1 | 6 calm/6 mind ×5; 7 mind/5 calm ×2 | Rockfall Path 71%; Vilemaw's Lair 43%; Ruined Monastery 43%; Ravenbloom Conservatory 29% |
+| Pyke | 7 | chaos+fury | unit-aggro 6, gear-engine 1 | Pyke, Dockside Butcher 86%; Pyke, Returned 14% | 1 | 7 fury/5 chaos ×3; 6 fury/6 chaos ×2 | Ripper's Bay 71%; Forbidding Waste 57%; Void Gate 43%; Frozen Fortress 29% |
+| Ziggs | 6 | chaos+fury | gear-engine 5, unit-aggro 1 | Ziggs, Explosive 83%; Ziggs, Short-Fused 17% | 1 | 8 fury/4 chaos ×3; 7 fury/5 chaos ×1 | Rakelstake 83%; Void Gate 83%; Forbidding Waste 50%; Sigil of the Storm 17% |
+| Poppy | 6 | body+order | big-control 4, unit-aggro 2 | Poppy, Paragon 100% | 1 | 6 body/6 order ×4; 7 body/5 order ×1 | Sigil of the Storm 67%; Threshold of the Gray 50%; Forgotten Monument 50%; Targon's Peak 17% |
+| K'Sante | 6 | body+calm | spell-tempo 6 | K'Sante, Courageous 50%; K'Sante, Dauntless 50% | 1 | 6 calm/6 body ×3; 7 calm/5 body ×2 | Fortified Position 67%; Grove of the God-Willow 50%; Amateur Recital 33%; Sandswept Tomb 33% |
+| Darius | 5 | fury+order | unit-aggro 5 | Darius, Trifarian 100% | 1 | 8 order/4 fury ×2; 6 fury/6 order ×1 | Emperor's Dais 80%; Seat of Power 60%; Trifarian War Camp 60%; Forbidding Waste 40% |
+| Zed | 5 | chaos+fury | unit-aggro 3, gear-engine 2 | Zed, Without a Sound 80%; Zed, From the Shadows 20% | 1 | 7 fury/5 chaos ×2; 8 chaos/4 fury ×2 | Zaun Warrens 100%; Minefield 80%; Forbidding Waste 80%; Sigil of the Storm 20% |
+| Draven | 5 | chaos+fury | unit-aggro 5 | Draven, Showboat 100% | 1 | 6 fury/6 chaos ×3; 6 chaos/6 fury ×1 | Grove of the God-Willow 60%; Star Spring 60%; Zaun Warrens 40%; Hunters' Circle 20% |
+| Ambessa | 5 | body+order | unit-aggro 5 | Ambessa, The Wolf 100% | 1 | 7 body/5 order ×3; 8 body/4 order ×2 | Risen Altar 100%; Sandswept Tomb 60%; Sunken Temple 60%; Star Spring 40% |
+| Fiora | 5 | body+order | big-control 3, unit-aggro 2 | Fiora, Victorious 60%; Fiora, Worthy 40% | 1 | 8 body/4 order ×2; 7 body/5 order ×2 | Sunken Temple 100%; Risen Altar 60%; Amateur Recital 40%; Valley of Idols 40% |
+| Ezreal | 4 | chaos+mind | gear-engine 4 | Ezreal, Prodigy 100% | 1 | 7 chaos/5 mind ×3; 6 chaos/6 mind ×1 | Sigil of the Storm 100%; Frozen Fortress 75%; Aspirant's Climb 50%; Forgotten Monument 25% |
+| Jarvan IV | 4 | body+order | unit-aggro 3, gear-engine 1 | Jarvan IV, Martial Paragon 75%; Jarvan IV, Royal Heir 25% | 1 | 7 body/5 order ×2; 6 body/6 order ×2 | Monastery of Hirana 100%; Seat of Power 75%; Packed Amphitheater 50%; Ornn's Forge 25% |
+| Seraphine | 4 | mind+order | gear-engine 3, big-control 1 | Seraphine, Inspiring 75%; Seraphine, Not Alone 25% | 1 | 7 order/5 mind ×3; 6 mind/6 order ×1 | Void Gate 75%; Forbidding Waste 75%; Vilemaw's Lair 50%; Piltovan Forge 25% |
+| Jax | 4 | body+calm | spell-tempo 4 | Jax, Unmatched 100% | 1 | 6 calm/6 body ×3; 6 body/6 calm ×1 | Ornn's Forge 100%; Sunken Temple 100%; Grove of the God-Willow 25%; Forbidding Waste 25% |
+| Shen | 4 | calm+order | spell-tempo 4 | Shen, Kinkou 75%; Shen, Scourge of Shadows 25% | 1 | 6 calm/6 order ×3; 7 order/5 calm ×1 | Kinkou Temple 100%; Trifarian War Camp 50%; Packed Amphitheater 25%; Startipped Peak 25% |
 
 ### battlefields overall (share of valid lists)
-- Rockfall Path: 24%
-- Star Spring: 20%
-- Forbidding Waste: 16%
-- Void Gate: 15%
-- Zaun Warrens: 13%
+- Rockfall Path: 22%
+- Forbidding Waste: 18%
+- Star Spring: 18%
+- Seat of Power: 15%
+- Void Gate: 13%
 - Sigil of the Storm: 12%
-- Emperor's Dais: 11%
-- Seat of Power: 10%
+- Zaun Warrens: 12%
+- Emperor's Dais: 10%
 - Frozen Fortress: 10%
-- Forgotten Monument: 9%
-- Minefield: 9%
-- Hunters' Circle: 8%
-- Rakelstake: 8%
-- Ruined Monastery: 7%
-- The Arena's Greatest: 7% (BANNED now)
-- Sandswept Tomb: 6%
-- Grove of the God-Willow: 6%
-- Veiled Temple: 6%
-- Abandoned Hall: 6%
+- Targon's Peak: 9%
+- Minefield: 8%
+- Sunken Temple: 7%
+- Forgotten Monument: 7%
+- Grove of the God-Willow: 7%
+- Dusk Rose Lab: 7%
+- Abandoned Hall: 7%
+- Rakelstake: 6%
 - Vilemaw's Lair: 6%
-- Targon's Peak: 6%
-- Sunken Temple: 5%
-- Bandle Scouts' Academy: 5%
-- Ornn's Forge: 5%
-- Dusk Rose Lab: 5%
+- Sandswept Tomb: 6%
+- Veiled Temple: 6%
+- Hunters' Circle: 6%
+- Ornn's Forge: 6%
+- Trifarian War Camp: 6%
+- Startipped Peak: 6%
+- Ruined Monastery: 6%
 
 ### battlefields RAD era
-- Rockfall Path: 25%
-- Star Spring: 22%
-- Void Gate: 17%
-- Forbidding Waste: 17%
-- Zaun Warrens: 12%
+- Rockfall Path: 23%
+- Star Spring: 21%
+- Forbidding Waste: 18%
+- Void Gate: 16%
 - Sigil of the Storm: 12%
+- Zaun Warrens: 11%
 - Emperor's Dais: 11%
-- Frozen Fortress: 11%
-- Minefield: 11%
-- Hunters' Circle: 10%
+- Seat of Power: 11%
 - Rakelstake: 10%
+- Frozen Fortress: 10%
+- Minefield: 10%
+- Hunters' Circle: 9%
 - Ruined Monastery: 9%
 - Forgotten Monument: 9%
-- Seat of Power: 9%
-- Sandswept Tomb: 8%
-- Veiled Temple: 8%
+- Bandle Scouts' Academy: 8%
+- Sandswept Tomb: 7%
+- Veiled Temple: 7%
+- Grove of the God-Willow: 7%
 - Vilemaw's Lair: 7%
-- Bandle Scouts' Academy: 6%
-- Grove of the God-Willow: 6%
-- Packed Amphitheater: 5%
+- Packed Amphitheater: 6%

@@ -71,6 +71,12 @@ def gallery_item_to_card(it):
     name = it['name'] + (', ' + it['subtitle'] if it.get('subtitle') else '')
     types = [t['id'] for t in (_val(it, 'cardType', 'type') or [])]
     supers = [t['id'] for t in (_val(it, 'cardType', 'superType') or [])]
+    type_recovered = False
+    if not types:
+        # 15 gallery items had an empty cardType on 2026-11-11; the accessibility text still names the type
+        m = re.match(r'^Riftbound (Unit|Spell|Gear|Battlefield|Legend|Rune)\b', _val(it, 'cardImage', 'accessibilityText') or '')
+        if m:
+            types, type_recovered = [m.group(1).lower()], True
     text = rich_to_plain(_val(it, 'text', 'richText', 'body') or '')
     effect = rich_to_plain(_val(it, 'effect', 'richText', 'body') or '')
     if effect:
@@ -86,6 +92,8 @@ def gallery_item_to_card(it):
         'energy': _val(it, 'energy', 'value', 'id'), 'power': _val(it, 'power', 'value', 'id'),
         'might': _val(it, 'might', 'value', 'id'), 'mightBonus': _val(it, 'mightBonus', 'value', 'id'),
         'rulesText': text, 'copyLimit': 3,
+        # incomplete gallery record: type came from the accessibility text and the domain list cannot be trusted
+        'galleryIncomplete': type_recovered,
     }
 
 
@@ -136,9 +144,17 @@ def load_pool(cards_json, gallery_json=None):
                     {'cardCode': rec['cardCode'], 'name': old['name'], 'old': old['rulesText'], 'new': rec['rulesText']})
             continue
         if rec['type'] == 'unknown':
-            meta.setdefault('galleryCardsWithoutType', []).append(
-                {'cardCode': rec['cardCode'], 'name': rec['name'], 'domains': rec['domains']})
-            continue  # the gallery has no card type for these yet (helper/token printings, or incomplete new cards)
+            continue  # helper pseudo-cards (Buff, XP Tracker)
+        if rec['galleryIncomplete']:
+            meta.setdefault('galleryIncompleteCards', []).append(
+                {'cardCode': rec['cardCode'], 'name': rec['name'], 'typeFromAccessibilityText': rec['type'], 'domains': rec['domains']})
+        same = [c for c in cards if c['type'] == rec['type'] and normalize_name(c['name']) == normalize_name(rec['name'])]
+        if same and same[0]['source'].startswith('cards.json'):
+            # reprint of an existing gameplay card in the new set (e.g. the six basic runes): one more printing code
+            if rec['cardCode'] not in same[0]['printingCodes']:
+                same[0]['printingCodes'] = sorted(same[0]['printingCodes'] + [rec['cardCode']])
+            by_code[rec['cardCode']] = same[0]
+            continue
         groups.setdefault((rec['set'], normalize_name(rec['name']), rec['type']), []).append(rec)
     for key in sorted(groups):
         prints = sorted(groups[key], key=lambda r: (not _is_base_printing(r), r['collectorNumber'] or 0, r['cardCode']))

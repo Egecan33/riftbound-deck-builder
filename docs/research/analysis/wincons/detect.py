@@ -174,8 +174,8 @@ ROUTES = {
     'HIDDEN': dict(label='Hidden / Ambush tempo (face-down reactions)', w=dict(hidden=0.25, hidden_unit=1.0, ambush=1.0, facedown_pay=1.5)),
     'ATTRITION': dict(label='Attrition / recursion control',  w=dict(removal=1.0, sweep=1.5, counter=0.75, recur=0.75, draw=0.5, displace=0.5, debuff=0.5)),
 }
-# Reference level per route = 75th percentile of the raw score over the 91 complete lists in the two
-# corpora (59 from 2026-09-06, 37 from 2026-11-11; recomputed by `python3 detect.py calibrate`).
+# Reference level per route = 75th percentile of the raw score over the 86 complete lists in the two
+# corpora (49 from 2026-09-06, 37 from 2026-11-11; recomputed by `python3 detect.py calibrate`).
 REF = {'WIDE': 10.5, 'TALL': 10.0, 'HOLD': 6.0, 'BURST': 12.5, 'POINTS': 6.0, 'ATTRITION': 19.0, 'HIDDEN': 7.5}  # POINTS: p75 is 0, so 6.0 = two copies of a point card
 LEGEND_CLOSER = {'HIDDEN': ('facedown_pay',), 'WIDE': ('token', 'widepay'), 'HOLD': ('holdpay',), 'BURST': ('ready', 'gank', 'move_friendly', 'enter_ready'), 'POINTS': ('point_self',)}
 LEGEND_WEIGHT = 4      # a legend ability is available every turn: counted as 4 copies

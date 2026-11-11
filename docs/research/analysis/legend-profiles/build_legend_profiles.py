@@ -215,6 +215,8 @@ def parse_ability(line):
         cond, eff = split_condition(body)
         head = re.match(r'^(?:Once each turn, )?(\w+)', body).group(1).lower()
         ab['kind'] = 'static' if head in ('while', 'as', 'if', 'for') else 'triggered'
+        if re.search(r'\bwould\b', cond) and 'instead' in eff:
+            ab['kind'] = 'replacement'
         m5 = re.match(r'^(.*?) (if you have [^.]*)\.(.*)$', eff)
         if m5:
             cond, eff = cond + ', ' + m5.group(2), (m5.group(1) + '.' + m5.group(3)).strip()
@@ -295,6 +297,8 @@ def champion_tag(legend, cards):
 
 def in_identity(card, legend):
     """Rule 103.1.b.3 / 103.1.b.4: every domain of the card must be in the legend's domains."""
+    if card.get('galleryIncomplete') and not card['domains']:
+        return False  # domain list missing in the gallery record: unknown, so never claimed as in-identity
     doms = [d for d in card['domains'] if d != 'colorless']
     return all(d in legend['domains'] for d in doms)
 
@@ -371,6 +375,9 @@ def battlefield_profile(bf):
     prof = {}
     for aid, frag in hits:
         prof[aid] = 'condition' if frag in cond and frag not in eff else 'effect'
+    # a battlefield that SPENDS a resource asks for it, even though the wording sits in the effect half
+    if re.search(r'spend (?:a|its|the) buff', text):
+        prof['buff'] = 'condition'
     return text, prof
 
 
@@ -503,7 +510,7 @@ def build_profile(legend, cards, engine):
             score += fit * a['weight']
             ltext = next(e['text'] for e in a['evidence'] if e['source'] == legend['cardCode'])
             reasons.append({'axis': aid, 'label': a['label'],
-                            'fit': ('battlefield %s it, legend %s it' % ('gives' if brole == 'effect' else 'triggers on', lrole)),
+                            'fit': ('battlefield %s it, legend %s it' % ('gives' if brole == 'effect' else 'asks for', lrole)),
                             'complementary': feeds, 'legendText': ltext, 'battlefieldText': btext})
         if reasons:
             entry = {'cardCode': bf['cardCode'], 'name': bf['name'], 'score': round(score, 2), 'reasons': reasons}

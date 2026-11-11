@@ -1,0 +1,175 @@
+3	none	Give a unit ±N [Might] this turn, to a minimum of N [Might].	OGN-090,OGN-093,OGN-095
+2	partial	Choose one and banish it, then play it, ignoring its cost.	OGN-025,RAD-018
+2	none	If you do, ignore this spell's cost.	OGN-146,OGN-207
+2	none	Until your next Ending Phase, you may play that card.	RAD-012,RAD-015
+1	partial	[Empower] costs of your units here cost [C] or [C] less.	VEN-163
+1	partial	[Stun] an enemy unit attacking here.	UNL-194
+1	none	a non-token gear, and a spell this turn, you score N point.	VEN-065
+1	none	Any player may pay [C] as an additional cost to play a Dragon.	VEN-157
+1	none	As an additional cost to play a spell, you may exhaust me and N friendly units to reduce the cost of that spell by [C].	RAD-151
+1	none	As I'm revealed from your deck, [Add] [C].	SFD-175
+1	none	As this is attached to a unit, choose another friendly unit.	VEN-137
+1	none	As this is attached to a unit, copy that unit's text to this Equipment's effect text for as long as this is attached to it.	SFD-059
+1	none	As you play me, add the Baron Pit battlefield token to the board if it's not there already.	UNL-147
+1	none	As you play me, choose Bird, Cat, Dog, or Poro.	UNL-177
+1	none	As you play this, name a tag.	UNL-138
+1	partial	Banish a unit with N [Might] or less or a gear.	RAD-124
+1	partial	Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.	RAD-140
+1	partial	Bird, Cat, Dog, Poro, and Ivern units here have ±N [Might].	UNL-T03
+1	none	Buffs give an additional ±N [Might] to friendly units this turn.	OGN-053
+1	partial	Choose a battlefield where you have units.	UNL-198
+1	partial	Choose a card from it, and they discard that card.	OGN-192
+1	partial	Choose a card revealed this way and banish it.	UNL-169
+1	partial	Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell.	VEN-040
+1	partial	Choose a non-unit card from it, and recycle that card.	OGN-156
+1	partial	Choose a unit you control and another unit you control at a different location.	UNL-083
+1	partial	Choose an occupied enemy battlefield.	RAD-007
+1	partial	choose one of those legends and add it to your Legend Zone while I'm on the board.	RAD-167
+1	partial	choose up to one enemy unit at each location.	UNL-118
+1	partial	Counter a spell if an opponent has played another spell this turn.	VEN-039
+1	partial	Deal N to an enemy unit here for each card with [Hidden], then recycle them.	OGN-121
+1	partial	Deal N to it for each Equipment attached to me.	VEN-041
+1	partial	Deal N to it unless its controller has you draw N.	OGN-033
+1	partial	discarded, or killed, draw N.	OGN-182
+1	none	Do one of the following based on its domain:	OGN-200
+1	none	Double all damage that would be dealt to it this turn.	UNL-013
+1	partial	draw N if your other units have total Might N or more.	UNL-097
+1	none	draw N or channel N rune exhausted.	OGN-155
+1	partial	During showdowns here, cards with [Reaction] cost [C] more to play.	VEN-160
+1	none	Each player chooses N units, N gear, N runes, and N cards in their hands.	OGN-244
+1	partial	Each player discards their hand, then draws N.	OGN-201
+1	none	Each player looks at the top N cards of their Main Deck, chooses one, then recycles the rest.	OGN-115
+1	none	each player must kill one of their units.	UNL-164
+1	none	For each opponent who did, you play a Gold gear token exhausted.	SFD-081
+1	partial	Friendly buffed units have [Deflect] if they didn't already.	OGN-063
+1	none	Friendly units enter ready this turn.	SFD-004
+1	none	gear, or activated ability with Energy cost [C] or more, you may exhaust me to ready up to N runes.	VEN-145
+1	partial	Give a friendly unit ±N [Might] this turn, then an additional ±N [Might] this turn if it is the only unit you control there.	OGN-046
+1	none	Give a friendly unit at a battlefield ±N [Might] this turn for each enemy unit there.	SFD-001
+1	none	Give a unit -[Might] this turn equal to the number of exhausted units you control.	RAD-048
+1	none	Give a unit [Assault] this turn equal to its Might.	RAD-004
+1	partial	Give a unit ±N [Might] this turn and another unit ±N [Might] this turn.	SFD-196
+1	none	give a unit ±N [Might] this turn, to a minimum of N [Might].	OGN-097
+1	partial	Give a unit at a battlefield or a gear [Temporary].	OGN-180
+1	partial	Give an enemy unit ±N [Might] this turn and a friendly unit ±N [Might] this turn.	RAD-144
+1	none	give an enemy unit here ±N [Might] this turn, to a minimum of N [Might].	OGN-119
+1	none	give enemy units ±N [Might] this turn, to a minimum of N [Might].	OGN-116
+1	none	Give friendly units there ±N [Might] this turn and enemy units there ±N [Might] this turn, to a minimum of N [Might].	OGN-266
+1	none	Give it ±N [Might] this turn for each of the following tags among your units — Bird, Cat, Dog, and Poro.	UNL-046
+1	none	give it ±N [Might] this turn, to a minimum of N [Might].	OGN-255
+1	partial	Give the next spell you play this turn [Repeat] equal to its cost.	SFD-078
+1	partial	give your next spell this turn [Repeat] equal to its base cost.	UNL-216
+1	partial	I don't deal combat damage unless I'm at a battlefield with exactly one other unit you control.	VEN-129
+1	none	I gain that tag.	UNL-177
+1	partial	I have [Shield N] while I'm at a battlefield with exactly one other unit you control.	VEN-117
+1	partial	I have ±N [Might] while I'm at a battlefield with exactly one other unit you control.	VEN-027
+1	none	I may be moved with it.	OGN-177
+1	partial	If a combat where you are the attacker ends in a tie, recall ALL units instead.	OGN-227
+1	partial	If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me ±N [Might] instead.	VEN-086
+1	none	If a spell or ability you control would give -[Might] to a unit it chooses, it gives an additional ±N [Might].	VEN-069
+1	partial	If a unit here would die during combat, its controller may pay [C] to heal it, exhaust it, and recall it instead.	UNL-206
+1	none	If another unit you control here would die, if it has less Might than me, instead heal it, exhaust it, and recall it.	SFD-173
+1	partial	If at least one of them has [Temporary], move each to the other's location.	UNL-083
+1	partial	If I would die, kill Guardian Angel instead.	SFD-051
+1	partial	If I'm [Empowered], they have ±N [Might] instead.	VEN-018
+1	partial	If it's equipped, you may attach one of its Equipment to me.	SFD-050
+1	partial	If it's your turn and you played this from face down, play N ready Gold gear tokens instead.	RAD-100
+1	partial	If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.	VEN-139
+1	partial	If Neeko is in your deck, choose up to N different legends in addition to your starting legend.	RAD-167
+1	partial	If the played card is a unit, you may play it here.	SFD-170
+1	partial	If they do, they play it to this battlefield.	VEN-157
+1	partial	If you control fewer runes than an opponent at the start of your Beginning Phase, give me ±N [Might] and [Ganking] this turn.	VEN-006
+1	partial	If you control fewer runes than an opponent at the start of your Beginning Phase, give me ±N [Might] this turn.	VEN-005
+1	partial	If you do, gain control of it and you may make new choices for it.	VEN-152
+1	none	If you do, I enter there.	UNL-147
+1	none	If you do, you may play a gear with Energy cost no more than [C] from hand this turn, ignoring its Energy cost.	SFD-084
+1	partial	If you play me to a battlefield, I enter ready.	UNL-194
+1	partial	If you revealed a card with the lowest Energy cost, draw it.	RAD-111
+1	none	If you would channel runes, channel that many runes plus N exhausted rune instead.	RAD-092
+1	none	If you would reveal cards from a deck, look at the top card first.	SFD-018
+1	partial	If you've spent [C] or more to play a spell this turn, you may play me for [C].	UNL-089
+1	none	It becomes a unit gear with Might equal to its Energy cost until you choose another gear with me.	RAD-145
+1	none	It can't be chosen by enemy spells and abilities this turn.	VEN-031
+1	none	It can't move this turn.	RAD-034
+1	none	Its controller can't play spells this turn.	UNL-190
+1	none	Its controller may play this spell again for [C].	UNL-020
+1	partial	Kill the rest.	VEN-090
+1	none	Lose control of that unit and recall it at end of turn.	SFD-202
+1	partial	Move an enemy unit that moved this turn.	RAD-098
+1	partial	Move any number of enemy units with the same controller and a total Might of N or less to a single location.	UNL-054
+1	partial	Move me and a Shadow Clone you control to each other's locations.	VEN-112
+1	partial	Move me to an occupied enemy battlefield if my Might is greater than the total Might of enemy units there.	UNL-144
+1	none	Once each turn, if you would play a token unit while I'm at a battlefield, you may play that token and an additional copy of it instead.	UNL-086
+1	none	Once each turn, while I'm at a battlefield, you may pay [C] less to play a gear.	RAD-068
+1	none	opponents can't play cards this turn.	OGN-026
+1	none	Opponents can't play spells this turn.	RAD-084
+1	partial	Otherwise, counter it.	VEN-152
+1	none	Play a N [Might] Sand Soldier unit token for each Equipment you control.	SFD-198
+1	none	Play a unit banished with this.	UNL-148
+1	none	Play a unit from your trash that costs no more Energy and no more Power than the killed unit, ignoring its cost.	UNL-142
+1	none	Play all units banished with this, ignoring their costs.	SFD-090
+1	none	Play up to N units and/or gear from your trash, each with Energy cost no more than [C] and Power cost no more than [C], ignoring their costs.	RAD-135
+1	none	Put a Teemo unit you own into your hand from your Champion Zone or the board.	OGN-263
+1	partial	ready me and give me +[Might] this turn equal to the Energy cost of the gear you returned.	RAD-066
+1	none	Recycle me to ready your runes.	OGN-110
+1	none	Recycle that spell after you play it.	SFD-140
+1	none	Reduce its Energy cost by the Might of the unit you recycled.	SFD-026
+1	partial	Reduce the cost of the next unit you play this turn by [C] and give it "Kill me at end of turn."	RAD-139
+1	partial	Return a friendly unit and an enemy unit to their owners' hands.	UNL-128
+1	partial	return another friendly unit and an enemy unit to their owners' hands.	SFD-132
+1	none	Return it to its owner's hand instead of putting it in their trash.	UNL-131
+1	none	reveal cards from the top of your Main Deck until you reveal a unit.	OGN-160
+1	partial	score N point if your units have all of the following tags among them — Bird, Cat, Dog, and Poro.	UNL-177
+1	none	Starting with the next player, each other player chooses a unit you don't control that hasn't been chosen for this spell.	OGN-237
+1	none	Starting with the next player, each player may return a unit to its owner's hand.	OGN-187
+1	none	Starting with the next player, each player plays those cards, ignoring Energy costs.	OGN-115
+1	partial	Stun a friendly unit and an enemy unit at the same battlefield.	OGN-220
+1	none	the attacker and defender each [Add] [C].	VEN-166
+1	none	The equipped unit becomes a copy of that unit for as long as this is attached to it.	VEN-137
+1	none	the next spell you play this turn costs [C] less.	OGN-031
+1	none	The next spell you play this turn deals N Bonus Damage.	OGN-032
+1	none	The next time it dies this turn, you may pay [C] to recall it exhausted instead.	OGN-023
+1	partial	the next time you play a unit this turn, ready it and [Buff] it.	UNL-052
+1	none	The next unit you play this turn can be played to any battlefield.	RAD-154
+1	none	The next unit you play this turn enters ready.	OGN-021
+1	none	the next unit you play this turn has [Accelerate].	RAD-162
+1	none	Then if you revealed a Bird, Cat, Dog, or Poro, do this: [Buff] a friendly unit.	UNL-051
+1	partial	Then ready N of them.	SFD-198
+1	none	Then reveal those cards.	SFD-018
+1	none	Then, do the following based on the discarded card's type:	UNL-080
+1	none	Then, if there are N spells banished with me, put each in its trash, channel N runes, and draw N.	UNL-181
+1	none	They can't move it this turn.	UNL-150
+1	none	They reveal their hand and you choose a Mind card from it.	VEN-085
+1	partial	This costs [C] less if you choose a Bird, Cat, Dog, or Poro.	UNL-168
+1	partial	This costs [C] less if you control something that's [Empowered].	VEN-059
+1	partial	unattach this and deal N to me.	UNL-019
+1	partial	Units here with [Tank] have ±N [Might].	VEN-159
+1	none	Units here with [Temporary] have [Shield].	UNL-208
+1	none	Units you play this turn enter ready.	OGN-129
+1	partial	While a friendly unit defends alone, it gets ±N [Might].	OGS-019
+1	partial	While a unit here is defending alone, it has ±N [Might].	UNL-210
+1	partial	While I'm [Empowered] N times, I have [Deflect N] and [Ganking].	VEN-134
+1	none	While I'm in a showdown, your spells have [Repeat] [C].	UNL-146
+1	none	While you control N or more runes, prevent all damage that enemy spells and abilities would deal to me.	VEN-025
+1	none	While you or an ally control this battlefield, that player may hide an additional card here.	RAD-108
+1	none	While your score is within N points of the Victory Score, your Gold [Add] an additional [C].	SFD-201
+1	none	you and each opponent may play a Gold gear token exhausted.	SFD-081
+1	none	You can hide ignoring costs this turn.	OGN-264
+1	none	You can look at their facedown cards this turn.	UNL-053
+1	none	You control it until I leave the board.	SFD-109
+1	partial	You may banish a unit from among them that has Might up to N more than the killed unit and play it, ignoring its cost.	OGN-242
+1	partial	You may banish one, then play it.	SFD-243
+1	partial	You may choose a unit from it.	UNL-139
+1	partial	you may deal N to a unit at a battlefield I moved to or from.	VEN-021
+1	none	you may draw N or buff me.	SFD-091
+1	none	you may exhaust me to replace that battlefield with a Brush battlefield token.	UNL-195
+1	none	you may have my base Might become equal to that card's Energy cost this turn.	RAD-057
+1	partial	you may kill a gear with Energy cost no more than my Might.	VEN-080
+1	partial	you may move me there.	SFD-126
+1	none	You may pay [C] to hide a card with [Hidden] instead of [C].	OGN-263
+1	none	you may play a spell from your trash with Energy cost less than your points without paying its Energy cost.	OGN-112
+1	none	You may play a unit with less Might than that unit had, ignoring its cost.	RAD-115
+1	none	you may replace this with the battlefield it replaced.	UNL-T03
+1	none	you may return your Chosen Champion from your trash to your Champion Zone if it is empty.	OGN-281
+1	none	your next card costs [C] less.	VEN-044
+1	none	your non-token units cost [C] more to play this turn.	UNL-219

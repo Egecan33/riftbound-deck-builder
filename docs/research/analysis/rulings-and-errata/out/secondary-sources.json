@@ -1,0 +1,548 @@
+{
+ "Arise!": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Astral Heron": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Ava Achiever": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Baited Hook": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Blind Fury": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Blood Rush": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Bone Skewer": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Clockwork Keeper": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Convergent Mutation": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Dark Child, Starter": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Dazzling Aurora": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Death from Below": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Deathgrip": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Diana, Lunari": {
+  "riftcodex": {
+   "OLD": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Disintegrate": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Dragon's Rage": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Draven, Vanquisher": {
+  "riftcodex": {
+   "OTHER": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Dune Drake": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Edge of Night": {
+  "riftcodex": {
+   "OTHER": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Elnuk Herd": {
+  "riftcodex": {},
+  "gamelab": {}
+ },
+ "Emperor's Dais": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Falling Star": {
+  "riftcodex": {
+   "OTHER": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Fizz, Trickster": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Forbidden Technique": {
+  "riftcodex": {},
+  "gamelab": {}
+ },
+ "Gangplank, Naval": {
+  "riftcodex": {
+   "OLD": 2,
+   "OTHER": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Guards!": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Highlander": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Icathian Rain": {
+  "riftcodex": {
+   "OTHER": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Janna, Savior": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Jax, Unmatched": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {}
+ },
+ "Karma, Channeler": {
+  "riftcodex": {
+   "OLD": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Kato the Arm": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Keeper of Masks": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Kinkou Monk": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Last Caress": {
+  "riftcodex": {},
+  "gamelab": {}
+ },
+ "Leblanc, Deceiver": {
+  "riftcodex": {
+   "OLD": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Mirror Image": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Neeko, Blending In": {
+  "riftcodex": {},
+  "gamelab": {}
+ },
+ "Nocturne, Horrifying": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Pack of Wonders": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Portal Rescue": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Promising Future": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Ravenborn Tome": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Reinforce": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Rek'Sai, Swarm Queen": {
+  "riftcodex": {
+   "OLD": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Relentless Pursuit": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Rell, Magnetic": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Rengar, Trophy Hunter": {
+  "riftcodex": {
+   "OTHER": 3,
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Resonating Strike": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Salvage": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Sigil of the Storm": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Sona, Harmonious": {
+  "riftcodex": {
+   "NEW": 2,
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Stalking Wolf": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Symbol of the Solari": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Targon's Peak": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Teemo, Strategist": {
+  "riftcodex": {
+   "OLD": 3
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "The Boss": {
+  "riftcodex": {
+   "OTHER": 2
+  },
+  "gamelab": {
+   "OTHER": 1
+  }
+ },
+ "The Dreaming Tree": {
+  "riftcodex": {
+   "NEW": 1
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "The Syren": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Tianna Crownguard": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Tideturner": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Unforgiven": {
+  "riftcodex": {
+   "NEW": 2
+  },
+  "gamelab": {
+   "NEW": 1
+  }
+ },
+ "Unlicensed Armory": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Unyielding Spirit": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Void Burrower": {
+  "riftcodex": {
+   "OLD": 1,
+   "NEW": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Void Gate": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Void Rush": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Wraith of Echoes": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Yone, Blademaster": {
+  "riftcodex": {
+   "OLD": 2
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ },
+ "Zhonya's Hourglass": {
+  "riftcodex": {
+   "OLD": 1
+  },
+  "gamelab": {
+   "OLD": 1
+  }
+ }
+}

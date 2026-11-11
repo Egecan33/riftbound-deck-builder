@@ -19,12 +19,14 @@ from collections import Counter, defaultdict
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import cardpool  # noqa: E402
+from fetch_pa_decks import has_marker  # noqa: E402  (same event-name pattern as the fetch selection)
 
 SCHEMA_VERSION = 1
 RADIANCE_RELEASE = '2026-10-23'
 # dataConfidence thresholds (HEURISTIC): complete lists in the newest dataset
 OK_MIN_LISTS, OK_MIN_EVENT_LISTS, THIN_MIN_LISTS = 5, 3, 2
 CORE_RATE, FLEX_RATE = 0.75, 0.25
+AVAIL_MIN_LISTS, AVAIL_MIN_EVENT_LISTS = 10, 3
 
 
 def load_index(cards):
@@ -200,7 +202,7 @@ def main():
     pa = read_pa(a.pa_decks, by_code, by_name, unresolved) if a.pa_decks else []
 
     # popularity among published lists
-    pop, pop_recent, views = Counter(), Counter(), Counter()
+    pop, pop_recent, pop_recent_event, views = Counter(), Counter(), Counter(), Counter()
     list_rows = 0
     pages = set()
     if a.pa_list and os.path.exists(a.pa_list):
@@ -211,7 +213,7 @@ def main():
                 continue
             seen.add(r['id'])
             pages.add(r.get('page'))
-            leg = by_code.get(r.get('legendCode') or '')
+            leg = by_code.get(r.get('legendCode') or '') or by_code.get((r.get('legendCode') or '').rstrip('*'))
             if not leg or leg['type'] != 'legend':
                 continue
             list_rows += 1
@@ -219,6 +221,8 @@ def main():
             views[leg['cardCode']] += r.get('views') or 0
             if (r.get('createdAt') or '')[:10] >= RADIANCE_RELEASE:
                 pop_recent[leg['cardCode']] += 1
+                if has_marker(r.get('name')):
+                    pop_recent_event[leg['cardCode']] += 1
     recent_total = sum(pop_recent.values())
     rank_recent = {c: i + 1 for i, (c, _k) in enumerate(sorted(pop_recent.items(), key=lambda kv: (-kv[1], kv[0])))}
 
@@ -247,8 +251,12 @@ def main():
         out_legends.append({
             'legendCode': code, 'name': l['name'], 'tags': l['tags'],
             'dataConfidence': conf, 'dataConfidenceReasons': reasons,
+            # could a bigger fetch fix it? 'scarce' = even the published-list index has too few recent lists
+            'dataAvailability': 'enough' if (pop_recent.get(code, 0) >= AVAIL_MIN_LISTS
+                                             and pop_recent_event.get(code, 0) >= AVAIL_MIN_EVENT_LISTS) else 'scarce',
             'popularity': {'dataset': 'pa-list-2026-11-11', 'lists': pop.get(code, 0),
                            'listsSinceRadiance': pop_recent.get(code, 0),
+                           'eventNamedListsSinceRadiance': pop_recent_event.get(code, 0),
                            'shareSinceRadiance': round(pop_recent.get(code, 0) / recent_total, 4) if recent_total else None,
                            'rankSinceRadiance': rank_recent.get(code), 'viewsSum': views.get(code, 0)},
             'results': res,
@@ -273,7 +281,7 @@ def main():
                                    'note': 'published lists, not tournament registrations; popularity here means builder interest'},
             'results': results['source'] if results else None,
         },
-        'thresholds': {'okMinLists': OK_MIN_LISTS, 'okMinEventLists': OK_MIN_EVENT_LISTS, 'thinMinLists': THIN_MIN_LISTS,
+        'thresholds': {'availMinLists': AVAIL_MIN_LISTS, 'availMinEventLists': AVAIL_MIN_EVENT_LISTS, 'okMinLists': OK_MIN_LISTS, 'okMinEventLists': OK_MIN_EVENT_LISTS, 'thinMinLists': THIN_MIN_LISTS,
                        'coreRate': CORE_RATE, 'flexRate': FLEX_RATE},
         'unresolvedDeckEntries': dict(unresolved.most_common(40)),
         'legends': out_legends,

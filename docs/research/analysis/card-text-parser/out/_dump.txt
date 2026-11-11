@@ -1,0 +1,1088 @@
+OGN-001|u|5|5|Blazing Scorcher: [Accelerate]
+OGN-002|u|6|5|Brazen Buccaneer: As you play me, you may discard a card as an additional cost. If you do, reduce my cost by [2].
+OGN-003|u|2|2|Chemtech Enforcer: [Assault 2] / When you play me, discard 1.
+OGN-004|s|1||Cleave: [Action] / Give a unit [Assault 3] this turn.
+OGN-005|s|4||Disintegrate: [Action] / Deal 3 to a unit at a battlefield. If this kills it, draw 1.
+OGN-006|u|3|3|Flame Chompers: When you discard me, you may pay [Fury] to play me.
+OGN-008|s|2+1||Get Excited!: [Action] / Discard 1. Deal its Energy cost as damage to a unit at a battlefield.
+OGN-009|s|1+1||Hextech Ray: [Action] / Deal 3 to a unit at a battlefield.
+OGN-010|u|2|2|Legion Rearguard: [Accelerate]
+OGN-011|u|8+1|8|Magma Wurm: Other friendly units enter ready.
+OGN-012|u|4|4|Noxus Hopeful: [Legion] — I cost [2] less.
+OGN-013|u|2|2|Pouty Poro: [Deflect]
+OGN-014|s|8+1||Sky Splitter: [Action] / This spell's Energy cost is reduced by the highest Might among units you control. / Deal 5 to a unit at a battlefield.
+OGN-015|u|4+1|5|Captain Farron: Other friendly units here have [Assault].
+OGN-016|u|3|3|Dangerous Duo: [Legion] — When you play me, give a unit +2 [Might] this turn.
+OGN-017|g|3||Iron Ballista: This enters exhausted. / [Exhaust]: Deal 2 to a unit at a battlefield.
+OGN-018|u|3|3|Noxus Saboteur: Your opponents' [Hidden] cards can't be revealed here.
+OGN-019|u|4|4|Raging Soul: If you've discarded a card this turn, I have [Assault] and [Ganking].
+OGN-020|u|5+1|5|Scrapyard Champion: [Legion] — When you play me, discard 2, then draw 2.
+OGN-021|g|2+1||Sun Disc: [Exhaust]: [Legion] — The next unit you play this turn enters ready.
+OGN-022|s|5+2||Thermo Beam: [Action] / Kill all gear.
+OGN-023|g|2||Unlicensed Armory: Discard 1, [Exhaust]: Choose a friendly unit. The next time it dies this turn, you may pay [Fury] to recall it exhausted instead.
+OGN-024|s|3+1||Void Seeker: [Action] / Deal 4 to a unit at a battlefield. Draw 1.
+OGN-025|s|4+2||Blind Fury: [Action] / Each opponent reveals the top card of their Main Deck. Choose one and banish it, then play it, ignoring its cost. Then recycle the rest.
+OGN-026|u|6|5|Brynhir Thundersong: When you play me, opponents can't play cards this turn.
+OGN-027|uc|5+1|5|Darius, Trifarian: When you play your second card in a turn, give me +2 [Might] this turn and ready me.
+OGN-028|uc|5+1|3|Draven, Showboat: My Might is increased by your points.
+OGN-029|s|2+2||Falling Star: Deal 3 to a unit. / Deal 3 to a unit.
+OGN-030|uc|3+1|4|Jinx, Demolitionist: [Accelerate] / [Assault 2] / When you play me, discard 2.
+OGN-031|u|6+1|4|Raging Firebrand: When you play me, the next spell you play this turn costs [5] less.
+OGN-032|g|3||Ravenborn Tome: [Exhaust]: The next spell you play this turn deals 1 Bonus Damage.
+OGN-033|s|2+1||Shakedown: [Reaction] / Choose an enemy unit. Deal 6 to it unless its controller has you draw 2.
+OGN-034|uc|7+2|8|Tryndamere, Barbarian: When I conquer after an attack, if you assigned 5 or more excess damage to enemy units, you score 1 point.
+OGN-035|uc|4+1|2|Vayne, Hunter: [Assault 3] / If an opponent controls a battlefield, I enter ready. / When I conquer, you may pay [1] to return me to my owner's hand.
+OGN-036|uc|2+1|3|Vi, Destructive: [Ganking] / Recycle 1 from your trash: Give me +1 [Might] this turn.
+OGN-037|u|3+1|3|Immortal Phoenix: [Assault 2] / When you kill a unit with a spell, you may pay [1][Fury] to play me from your trash.
+OGN-038|u|9+2|9|Kadregrin the Infernal: When you play me, draw 1 for each of your [Mighty] units.
+OGN-039|uc|4|4|Kai'Sa, Survivor: [Accelerate] / When I conquer, draw 1.
+OGN-040|g|0+1||Seal of Rage: [Exhaust]: [Reaction] — [Add] [Fury].
+OGN-041|uc|10+2|9|Volibear, Furious: [Deflect 2] / When I attack, deal 5 damage split among any number of enemy units here.
+OGN-043|s|1+1||Charm: Move an enemy unit.
+OGN-044|u|2|2|Clockwork Keeper: As you play me, you may pay [Calm] as an additional cost. If you do, draw 1.
+OGN-045|s|1+1||Defy: [Reaction] / Counter a spell that costs no more than [4] and no more than [Rainbow].
+OGN-046|s|1||En Garde: [Reaction] / Give a friendly unit +1 [Might] this turn, then an additional +1 [Might] this turn if it is the only unit you control there.
+OGN-047|s|3||Find Your Center: [Action] / If an opponent's score is within 3 points of the Victory Score, this costs [2] less. / Draw 1 and channel 1 rune exhausted.
+OGN-048|s|2||Meditation: [Reaction] / As an additional cost to play this, you may exhaust a friendly unit. If you do, draw 2. Otherwise, draw 1.
+OGN-050|s|2+1||Rune Prison: [Action] / Stun a unit.
+OGN-051|u|3|2|Solari Shieldbearer: When you play me, stun a unit.
+OGN-052|u|2|2|Stalwart Poro: [Shield]
+OGN-053|s|3||Stand United: [Hidden] / [Action] / Buff a friendly unit. Buffs give an additional +1 [Might] to friendly units this turn.
+OGN-054|u|3|3|Sunlit Guardian: [Shield] / [Tank]
+OGN-055|u|3|2|Wielder of Water: While I'm attacking or defending alone, I have +2 [Might].
+OGN-056|u|4|3|Adaptatron: When I conquer, you may kill a gear. If you do, buff me.
+OGN-057|s|2||Block: [Hidden] / [Action] / Give a unit [Shield 3] and [Tank] this turn.
+OGN-058|s|2||Discipline: [Reaction] / Give a unit +2 [Might] this turn. Draw 1.
+OGN-059|u|7+1|7|Eclipse Herald: When you stun an enemy unit, ready me and give me +1 [Might] this turn.
+OGN-060|g|2||Mask of Foresight: When a friendly unit attacks or defends alone, give it +1 [Might] this turn.
+OGN-061|u|3+1|3|Poro Herder: When you play me, if you control a Poro, buff me and draw 1.
+OGN-062|s|5||Reinforce: Look at the top 5 cards of your Main Deck. You may banish a unit from among them, then play it, reducing its cost by [5]. Recycle the remaining cards.
+OGN-063|g|2+1||Spirit's Refuge: When you play this, buff a friendly unit. / Friendly buffed units have [Deflect] if they didn't already.
+OGN-064|s|3+2||Wind Wall: [Reaction] / Counter a spell.
+OGN-065|u|4|4|Wizened Elder: While I'm buffed, I have an additional +1 [Might].
+OGN-066|uc|5+1|4|Ahri, Alluring: When I hold, you score 1 point.
+OGN-067|uc|5+1|5|Blitzcrank, Impassive: [Tank] / When you play me to a battlefield, you may move an enemy unit to here. / When I hold, return me to my owner's hand.
+OGN-068|uc|3+1|3|Caitlyn, Patrolling: I must be assigned combat damage last. / [Exhaust]: Deal damage equal to my Might to a unit at a battlefield. Use this ability only while I'm at a battlefield.
+OGN-069|s|3+1||Last Stand: [Action] / Double a friendly unit's Might this turn. Give it [Temporary].
+OGN-070|u|6+1|5|Mageseeker Warden: While I'm at a battlefield, opponents can only play units to their base. / While I'm at a battlefield, spells and abilities can't ready enemy units and gear.
+OGN-071|s|3||Party Favors: Each other player chooses Cards or Runes. For each player that chooses Cards, you and that player each draw 1. For each player that chooses Runes, you and that player each channel 1 rune exhausted.
+OGN-072|g|3||Solari Shrine: When you kill a stunned enemy unit, you may exhaust this to draw 1.
+OGN-074|uc|4+1|4|Taric, Protector: [Shield] / [Tank] / Other friendly units here have [Shield].
+OGN-075|u|7|6|Tasty Faefolk: [Accelerate] / [Deathknell] — Channel 2 runes exhausted and draw 1.
+OGN-076|uc|6+2|6|Yasuo, Remorseful: When I attack, deal damage equal to my Might to an enemy unit here.
+OGN-077|g|2||Zhonya's Hourglass: [Hidden] / The next time a friendly unit would die, kill this instead. Recall that unit exhausted.
+OGN-078|uc|5+1|5|Lee Sin, Ascetic: [Shield] / [Exhaust]: Buff me. / I can have any number of buffs.
+OGN-079|uc|6+1|6|Leona, Zealot: If an opponent's score is within 3 points of the Victory Score, I enter ready. / Stunned enemy units here have -8 [Might], to a minimum of 1 [Might].
+OGN-080|s|4+3||Mystic Reversal: [Reaction] / Gain control of a spell. You may make new choices for it.
+OGN-081|g|0+1||Seal of Focus: [Exhaust]: [Reaction] — [Add] [Calm].
+OGN-082|u|8+2|8|Whiteflame Protector: When you play me, give a unit +8 [Might] this turn.
+OGN-083|s|4||Consult the Past: [Hidden] / [Reaction] / Draw 2.
+OGN-084|u|3|3|Eager Apprentice: While I'm at a battlefield, the Energy costs for spells you play is reduced by [1], to a minimum of [1].
+OGN-085|s|5||Falling Comet: [Action] / Deal 6 to a unit at a battlefield.
+OGN-086|u|5|5|Jeweled Colossus: [Vision] / [Shield]
+OGN-087|u|3|2|Lecturing Yordle: [Tank] / When you play me, draw 1.
+OGN-090|g|1||Orb of Regret: [Exhaust]: Give a unit -1 [Might] this turn, to a minimum of 1 [Might].
+OGN-091|u|3|3|Pit Crew: When you play a gear, ready me.
+OGN-092|u|6+2|6|Riptide Rex: When you play me, deal 6 to an enemy unit at a battlefield.
+OGN-093|s|2+1||Smoke Screen: [Reaction] / Give a unit -4 [Might] this turn, to a minimum of 1 [Might].
+OGN-094|s|3||Sprite Call: [Hidden] / [Action] / Play a ready 3 [Might] Sprite unit token with [Temporary].
+OGN-095|s|1||Stupefy: [Reaction] / Give a unit -1 [Might] this turn, to a minimum of 1 [Might]. Draw 1.
+OGN-096|u|2|1|Watchful Sentry: [Deathknell] — Draw 1.
+OGN-097|u|2+1|2|Blastcone Fae: [Hidden] / When you play me, give a unit -2 [Might] this turn, to a minimum of 1 [Might].
+OGN-098|g|3||Energy Conduit: [Exhaust]: [Reaction] — [Add] [1].
+OGN-099|g|2||Garbage Grabber: Recycle 3 from your trash, [1], [Exhaust]: Draw 1.
+OGN-100|u|3+1|3|Gemcraft Seer: [Vision] / Other friendly units have [Vision].
+OGN-101|g|2||Mushroom Pouch: At the start of your Beginning Phase, if you control a facedown card at a battlefield, draw 1.
+OGN-102|s|3+1||Portal Rescue: [Action] / Banish a friendly unit, then play it to base, ignoring its cost.
+OGN-103|u|2|2|Ravenbloom Student: When you play a spell, give me +1 [Might] this turn.
+OGN-104|s|1||Retreat: [Reaction] / Return a friendly unit to its owner's hand. Its owner channels 1 rune exhausted.
+OGN-105|s|6+2||Singularity: Deal 6 to each of up to two units.
+OGN-106|u|4+1|3|Sprite Mother: When you play me, play a ready 3 [Might] Sprite unit token with [Temporary] here.
+OGN-107|u|5|4|Ava Achiever: When I attack, you may pay [Mind] to play a card with [Hidden] from your hand here, ignoring its cost.
+OGN-108|s|2+1||Convergent Mutation: [Reaction] / Choose a friendly unit. This turn, increase its Might to the Might of another friendly unit.
+OGN-109|uc|8+2|6|Dr. Mundo, Expert: My Might is increased by the number of cards in your trash. / At the start of your Beginning Phase, recycle 3 from your trash.
+OGN-110|uc|5+1|5|Ekko, Recurrent: [Accelerate] / [Deathknell] — Recycle me to ready your runes.
+OGN-111|uc|3+1|3|Heimerdinger, Inventor: I have all [Exhaust] abilities of all friendly legends, units, and gear.
+OGN-112|uc|6+1|6|Kai'Sa, Evolutionary: [Ganking] / When I conquer, you may play a spell from your trash with Energy cost less than your points without paying its Energy cost. Then recycle it.
+OGN-113|uc|4|3|Malzahar, Fanatic: Kill a friendly unit or gear, [Exhaust]: [Action] — [Add] [Rainbow][Rainbow].
+OGN-114|s|6+1||Progress Day: Draw 4.
+OGN-115|s|5+1||Promising Future: Each player looks at the top 5 cards of their Main Deck, chooses one, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs.
+OGN-116|u|7+1|7|Thousand-Tailed Watcher: [Accelerate] / When you play me, give enemy units -3 [Might] this turn, to a minimum of 1 [Might].
+OGN-117|uc|4+1|3|Viktor, Innovator: When you play a card on an opponent's turn, play a 1 [Might] Recruit unit token in your base.
+OGN-118|u|6+1|5|Wraith of Echoes: The first time a friendly unit dies each turn, draw 1.
+OGN-119|uc|3+1|3|Ahri, Inquisitive: When I attack or defend, give an enemy unit here -2 [Might] this turn, to a minimum of 1 [Might].
+OGN-120|g|0+1||Seal of Insight: [Exhaust]: [Reaction] — [Add] [Mind].
+OGN-121|uc|2+1|2|Teemo, Strategist: [Hidden] / When I defend or I'm played from [Hidden], reveal the top 5 cards of your Main Deck. Deal 1 to an enemy unit here for each card with [Hidden], then recycle them.
+OGN-122|s|10+4||Time Warp: Take a turn after this one. Banish this.
+OGN-123|s|7+2||Unchecked Power: Exhaust all friendly units, then deal 12 to all units at battlefields.
+OGN-124|g|3||Arena Bar: [Exhaust]: Buff an exhausted friendly unit.
+OGN-125|u|6|6|Bilgewater Bully: While I'm buffed, I have [Ganking].
+OGN-127|s|2+1||Cannon Barrage: [Reaction] / Deal 2 to all enemy units in combat.
+OGN-128|s|2+1||Challenge: [Action] / Choose a friendly unit and an enemy unit. They deal damage equal to their Mights to each other.
+OGN-129|s|2||Confront: [Action] / Units you play this turn enter ready. Draw 1.
+OGN-130|u|3|3|Crackshot Corsair: When I attack, deal 1 to an enemy unit here.
+OGN-131|u|5|5|Dune Drake: When I attack, give me +2 [Might] this turn if there is a ready enemy unit here.
+OGN-132|u|3|3|First Mate: When you play me, ready another unit.
+OGN-133|s|1||Flurry of Blades: [Reaction] / Deal 1 to all units at battlefields.
+OGN-134|s|2||Mobilize: Channel 1 rune exhausted. If you can't, draw 1.
+OGN-135|u|3|3|Pakaa Cub: [Hidden]
+OGN-136|u|2|2|Pit Rookie: When you play me, buff another friendly unit.
+OGN-137|u|7|6|Stormclaw Ursine: [Tank] / When you play me, channel 1 rune exhausted.
+OGN-138|s|4||Catalyst of Aeons: Channel 2 runes exhausted. If you couldn't channel 2 runes this way, draw 1.
+OGN-139|u|2|1|Cithria of Cloudfield: When you play another unit, buff me.
+OGN-140|u|4|3|Herald of Scales: Your Dragons' Energy costs are reduced by [2], to a minimum of [1].
+OGN-141|u|4+1|4|Kinkou Monk: When you play me, buff up to two other friendly units.
+OGN-143|g|3||Pirate's Haven: When you ready a friendly unit, give it +1 [Might] this turn.
+OGN-144|s|4+1||Spoils of War: [Reaction] / If an enemy unit has died this turn, this costs [2] less. / Draw 2.
+OGN-145|s|1+1||Unyielding Spirit: [Reaction] / Prevent all spell and ability damage this turn.
+OGN-146|s|2||Wallop: [Action] / As you play this, you may spend a buff as an additional cost. If you do, ignore this spell's cost. / Ready a unit.
+OGN-147|u|4|3|Wildclaw Shaman: When you play me, you may spend a buff to buff me and ready me.
+OGN-148|uc|7+2|8|Anivia, Primal: When I attack, deal 3 to all enemy units here.
+OGN-149|u|5+2|6|Carnivorous Snapvine: When you play me, choose an enemy unit at a battlefield. We deal damage equal to our Mights to each other.
+OGN-150|u|3+2|5|Kraken Hunter: [Accelerate] / [Assault] / As you play me, you may spend any number of buffs as an additional cost. Reduce my cost by [Body] for each buff you spend.
+OGN-151|uc|6|6|Lee Sin, Centered: [Accelerate] / Other buffed friendly units at my battlefield have +2 [Might].
+OGN-152|g|3||Mistfall: When you buff a friendly unit, you may pay [Body] and exhaust this to ready it.
+OGN-153|s|5+2||Overt Operation: [Action] / For each friendly unit, you may spend its buff to ready it. Then buff all friendly units.
+OGN-154|s|4+1||Primal Strength: [Action] / Give a unit +7 [Might] this turn.
+OGN-155|uc|4+1|4|Qiyana, Victorious: [Deflect] / When I conquer, draw 1 or channel 1 rune exhausted.
+OGN-156|s|1+1||Sabotage: Choose an opponent. They reveal their hand. Choose a non-unit card from it, and recycle that card.
+OGN-157|uc|6+1|6|Udyr, Wildman: Spend my buff: Choose one you've not chosen this turn — / - Deal 2 to a unit at a battlefield. / - Stun a unit at a battlefield. / - Ready me. / - Give me [Ganking] this turn.
+OGN-158|uc|12+2|10|Volibear, Imposing: [Shield 3] / [Tank] / When an opponent moves to a battlefield other than mine, draw 1.
+OGN-159|uc|6+1|5|Warwick, Hunter: I enter ready. / When I attack, kill all damaged enemy units here.
+OGN-160|g|9+2||Dazzling Aurora: At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit. Play it, ignoring its cost, and recycle the rest.
+OGN-161|u|8+2|8|Deadbloom Predator: [Deflect] / You may play me to an occupied enemy battlefield.
+OGN-162|uc|5+1|5|Miss Fortune, Captain: [Accelerate] / [Ganking] / The first time I move each turn, you may ready something else that's exhausted.
+OGN-163|g|0+1||Seal of Strength: [Exhaust]: [Reaction] — [Add] [Body].
+OGN-164|uc|5+1|4|Sett, Brawler: When I'm played and when I conquer, buff me. / Spend my buff: Give me +4 [Might] this turn.
+OGN-165|u|3+1|3|Cemetery Attendant: When you play me, return a unit from your trash to your hand.
+OGN-167|u|4|4|Ember Monk: When you play a card from [Hidden], give me +2 [Might] this turn.
+OGN-168|s|2||Fight or Flight: [Hidden] / [Action] / Move a unit from a battlefield to its base.
+OGN-169|s|1||Gust: [Reaction] / Return a unit at a battlefield with 3 [Might] or less to its owner's hand.
+OGN-170|s|2||Morbid Return: [Action] / Return a unit from your trash to your hand.
+OGN-171|u|2|2|Mystic Poro: [Vision]
+OGN-172|s|2+2||Rebuke: [Action] / Return a unit at a battlefield to its owner's hand.
+OGN-173|s|2+1||Ride the Wind: [Action] / Move a friendly unit and ready it.
+OGN-174|u|6|5|Sai Scout: [Vision] / You may play me to an open battlefield.
+OGN-176|u|3|2|Sneaky Deckhand: You may play me to an open battlefield.
+OGN-177|u|4+1|4|Stealthy Pursuer: When a friendly unit moves from my location, I may be moved with it.
+OGN-178|u|5+1|5|Undercover Agent: [Deathknell] — Discard 2, then draw 2.
+OGN-179|s|1||Acceptable Losses: [Action] / Each player kills one of their gear.
+OGN-180|s|4+1||Fading Memories: Give a unit at a battlefield or a gear [Temporary].
+OGN-181|g|2||Pack of Wonders: [Exhaust]: Return another friendly gear, unit, or [Hidden] card to its owner's hand.
+OGN-182|g|2||Scrapheap: When this is played, discarded, or killed, draw 1.
+OGN-183|s|1||Stacked Deck: [Action] / Look at the top 3 cards of your Main Deck. Put 1 into your hand and recycle the rest.
+OGN-184|g|2||The Syren: [1], [Exhaust]: Move a friendly unit at a battlefield to your base.
+OGN-185|u|2|2|Traveling Merchant: When I move, discard 1, then draw 1.
+OGN-186|g|2||Treasure Trove: When this leaves the board, draw 1 and channel 1 rune exhausted. / [Chaos], [Exhaust]: Kill this.
+OGN-187|s|4+1||Whirlwind: Starting with the next player, each player may return a unit to its owner's hand.
+OGN-188|u|4+2|2|Zaunite Bouncer: When you play me, return another unit at a battlefield to its owner's hand.
+OGN-189|uc|6+1|6|Kayn, Unleashed: [Ganking] / If I have moved twice this turn, I don't take damage.
+OGN-190|uc|3+1|1|Kog'Maw, Caustic: [Deathknell] — Deal 4 to all units at my battlefield.
+OGN-191|u|5|4|Maddened Marauder: [Tank] / When you play me, move a unit from a battlefield to its base.
+OGN-192|u|7+2|7|Mindsplitter: When you play me, choose an opponent. They reveal their hand. Choose a card from it, and they discard that card.
+OGN-193|uc|4+1|4|Miss Fortune, Buccaneer: You may play me to an open battlefield. / Friendly units may be played to open battlefields.
+OGN-194|uc|4+1|4|Nocturne, Horrifying: [Ganking] / When you look at cards from the top of your deck and see me, you may play me for [Rainbow].
+OGN-195|u|10+1|6|Rhasa the Sunderer: I cost [1] less for each card in your trash.
+OGN-196|u|8+2|5|Soulgorger: When you play me, you may play a unit from your trash, ignoring its Energy cost.
+OGN-197|uc|2|1|Teemo, Scout: [Hidden] / When you play me, give me +3 [Might] this turn.
+OGN-198|s|6+2||The Harrowing: Play a unit from your trash, ignoring its Energy cost.
+OGN-199|u|2|2|Tideturner: [Hidden] / When you play me, you may choose a friendly unit. Move me to its location and it to my original location.
+OGN-200|uc|4|4|Twisted Fate, Gambler: When I attack, reveal the top rune of your rune deck, then recycle it. Do one of the following based on its domain: / - [Fury] — Deal 2 to an enemy unit here and 1 to all other enemy units here. / - [Mind] — Draw 1. / - [Order] — Stun an enemy unit.
+OGN-201|s|3+1||Invert Timelines: Each player discards their hand, then draws 4.
+OGN-202|uc|5+1|5|Jinx, Rebel: When you discard one or more cards, ready me and give me +1 [Might] this turn.
+OGN-203|s|8+3||Possession: [Action] / Choose an enemy unit at a battlefield. Take control of it and recall it.
+OGN-204|g|0+1||Seal of Discord: [Exhaust]: [Reaction] — [Add] [Chaos].
+OGN-205|uc|5+1|4|Yasuo, Windrider: [Ganking] / The third time I move in a turn, you score 1 point.
+OGN-206|s|3||Back to Back: [Reaction] / Give two friendly units each +2 [Might] this turn.
+OGN-207|s|3||Call to Glory: [Reaction] / As you play this, you may spend a buff as an additional cost. If you do, ignore this spell's cost. / Give a unit +3 [Might] this turn.
+OGN-208|u|4|6|Cruel Patron: As an additional cost to play me, kill a friendly unit.
+OGN-209|s|2+1||Cull the Weak: Each player kills one of their units.
+OGN-210|u|2|2|Daring Poro: [Assault]
+OGN-211|u|3|2|Faithful Manufactor: When you play me, play a 1 [Might] Recruit unit token here.
+OGN-212|g|2||Forge of the Future: When you play this, play a 1 [Might] Recruit unit token at your base. / Kill this: Recycle up to 4 cards from trashes.
+OGN-213|s|2+1||Hidden Blade: [Hidden] / [Action] / Kill a unit at a battlefield. Its controller draws 2.
+OGN-215|u|5|5|Petty Officer: [Assault]
+OGN-216|u|2|1|Soaring Scout: [Deathknell] — Channel 1 rune exhausted.
+OGN-217|u|2|2|Trifarian Gloryseeker: [Legion] — When you play me, buff me.
+OGN-218|u|3+1|3|Vanguard Captain: [Legion] — When you play me, play two 1 [Might] Recruit unit tokens here.
+OGN-220|s|2||Facebreaker: [Hidden] / [Action] / Stun a friendly unit and an enemy unit at the same battlefield.
+OGN-221|s|5+2||Imperial Decree: [Action] / When any unit takes damage this turn, kill it.
+OGN-222|u|3|3|Noxian Drummer: When I move to a battlefield, play a 1 [Might] Recruit unit token here.
+OGN-223|u|6+1|5|Peak Guardian: When you play me, buff me. Then, if I am at a battlefield, buff all other friendly units there.
+OGN-224|s|2+1||Salvage: [Action] / You may kill a gear. Draw 1.
+OGN-225|u|5+1|4|Solari Chief: When you play me, choose an enemy unit. If it is stunned, kill it. Otherwise, stun it.
+OGN-226|u|4+2|4|Spectral Matron: When you play me, you may play a unit costing no more than [3] and no more than [Rainbow] from your trash, ignoring its cost.
+OGN-227|g|1||Symbol of the Solari: If a combat where you are the attacker ends in a tie, recall ALL units instead.
+OGN-228|g|2||Vanguard Helm: When a buffed friendly unit dies, buff another friendly unit.
+OGN-229|s|4+2||Vengeance: Kill a unit.
+OGN-230|u|4|3|Albus Ferros: When you play me, spend any number of buffs. For each buff spent, channel 1 rune exhausted.
+OGN-231|u|6+4|8|Commander Ledros: As you play me, you may kill any number of friendly units as an additional cost. Reduce my cost by [Order] for each killed this way. / [Deflect] / [Ganking]
+OGN-232|uc|4|4|Fiora, Victorious: While I'm [Mighty], I have [Deflect], [Ganking], and [Shield].
+OGN-233|s|6+3||Grand Strategem: [Action] / Give friendly units +5 [Might] this turn.
+OGN-234|u|8+2|6|Harnessed Dragon: When you play me, kill an enemy unit.
+OGN-235|uc|6+1|6|Karma, Channeler: [Vision] / When you recycle one or more cards, buff a friendly unit.
+OGN-236|uc|3+1|3|Karthus, Eternal: Your [Deathknell] effects trigger an additional time.
+OGN-237|s|6+2||King's Edict: Starting with the next player, each other player chooses a unit you don't control that hasn't been chosen for this spell. Kill those units.
+OGN-238|uc|4+1|4|Leona, Determined: [Shield] / When I attack, stun an enemy unit here.
+OGN-239|u|5+1|4|Machine Evangel: [Deathknell] — Play three 1 [Might] Recruit unit tokens into your base.
+OGN-240|uc|4+1|5|Sett, Kingpin: [Tank] / I get +1 [Might] for each buffed friendly unit at my battlefield.
+OGN-241|uc|3+1|3|Shen, Kinkou: [Reaction] / [Shield 2] / [Tank]
+OGN-242|g|3||Baited Hook: [1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.
+OGN-243|uc|6+1|6|Darius, Executioner: [Legion] — When you play me, ready me. / Other friendly units have +1 [Might] here.
+OGN-244|s|7+2||Divine Judgment: Each player chooses 2 units, 2 gear, 2 runes, and 2 cards in their hands. Recycle the rest.
+OGN-245|g|0+1||Seal of Unity: [Exhaust]: [Reaction] — [Add] [Order].
+OGN-246|uc|4+1|4|Viktor, Leader: When another non-Recruit unit you control dies, play a 1 [Might] Recruit unit token into your base.
+OGN-247|l|||Daughter of the Void: [Exhaust]: [Reaction] — [Add] [Rainbow]. Use only to play spells.
+OGN-248|ss|7+3||Icathian Rain: Deal 2 to a unit. / Deal 2 to a unit. / Deal 2 to a unit. / Deal 2 to a unit. / Deal 2 to a unit. / Deal 2 to a unit.
+OGN-249|l|||Relentless Storm: When you play a [Mighty] unit, you may exhaust me to channel 1 rune exhausted.
+OGN-250|ss|6+2||Stormbringer: Choose a friendly unit in your base. Deal damage equal to its Might to all enemy units at a battlefield, then move your unit there.
+OGN-251|l|||Loose Cannon: At start of your Beginning Phase, draw 1 if you have one or fewer cards in your hand.
+OGN-252|ss|4+1||Super Mega Death Rocket!: Deal 5 to a unit. / When you conquer, you may discard 1 to return this from your trash to your hand.
+OGN-253|l|||Hand of Noxus: [Exhaust]: [Reaction], [Legion] — [Add] [1].
+OGN-254|ss|4+1||Noxian Guillotine: [Action] / Choose a unit. Kill it the next time it takes damage this turn. / [Legion] — Kill it now instead.
+OGN-255|l|||Nine-Tailed Fox: When an enemy unit attacks a battlefield you control, give it -1 [Might] this turn, to a minimum of 1 [Might].
+OGN-256|ss|3||Fox-Fire: [Hidden] / [Action] / Kill any number of units at a battlefield with total Might 4 or less.
+OGN-257|l|||Blind Monk: [1], [Exhaust]: Buff a friendly unit.
+OGN-258|ss|4+1||Dragon's Rage: Move an enemy unit. Then choose another enemy unit at its destination. They deal damage equal to their Mights to each other.
+OGN-259|l|||Unforgiven: [2], [Exhaust]: Move a friendly unit to or from your base.
+OGN-260|ss|3+2||Last Breath: [Action] / Ready a friendly unit. It deals damage equal to its Might to an enemy unit at a battlefield.
+OGN-261|l|||Radiant Dawn: When you stun one or more enemy units, buff a friendly unit.
+OGN-262|ss|3+2||Zenith Blade: [Action] / Stun an enemy unit at a battlefield. You may move a friendly unit to that enemy unit's battlefield.
+OGN-263|l|||Swift Scout: You may pay [1] to hide a card with [Hidden] instead of [Rainbow]. / [1], [Exhaust]: Put a Teemo unit you own into your hand from your Champion Zone or the board.
+OGN-264|ss|2+1||Guerilla Warfare: Return up to two cards with [Hidden] from your trash to your hand. You can hide ignoring costs this turn.
+OGN-265|l|||Herald of the Arcane: [1], [Exhaust]: Play a 1 [Might] Recruit unit token.
+OGN-266|ss|2+1||Siphon Power: [Reaction] / Choose a battlefield. Give friendly units there +1 [Might] this turn and enemy units there -1 [Might] this turn, to a minimum of 1 [Might].
+OGN-267|l|||Bounty Hunter: [Exhaust]: Give a unit [Ganking] this turn.
+OGN-268|ss|1||Bullet Time: [Action] / Pay any amount of [Rainbow] to deal that much damage to all enemy units at a battlefield.
+OGN-269|l|||The Boss: When a buffed unit you control would die, you may pay [Rainbow] and exhaust me to spend its buff and recall it exhausted instead. / When you conquer, ready me.
+OGN-270|ss|1+1||Showstopper: Buff a friendly unit in your base, then move it to a battlefield.
+OGN-274|ut||3|Sprite: [Temporary]
+OGN-275|b|||Altar to Unity: When you hold here, play a 1 [Might] Recruit unit token in your base.
+OGN-276|b|||Aspirant's Climb: Increase the points needed to win the game by 1.
+OGN-277|b|||Back-Alley Bar: When a unit moves from here, give it +1 [Might] this turn.
+OGN-278|b|||Bandle Tree: You may hide an additional card here.
+OGN-279|b|||Fortified Position: When you defend here, choose a unit. It gains [Shield 2] this combat.
+OGN-280|b|||Grove of the God-Willow: When you hold here, draw 1.
+OGN-281|b|||Hallowed Tomb: When you hold here, you may return your Chosen Champion from your trash to your Champion Zone if it is empty.
+OGN-282|b|||Monastery of Hirana: When you conquer here, you may spend a buff to draw 1.
+OGN-283|b|||Navori Fighting Pit: When you hold here, buff a unit here.
+OGN-284|b|||Obelisk of Power: At the start of each player's first Beginning Phase, that player channels 1 rune.
+OGN-285|b|||Reaver's Row: When you defend here, you may move a friendly unit here to base.
+OGN-286|b|||Reckoner's Arena: When you hold here, activate the conquer effects of units here.
+OGN-287|b|||Sigil of the Storm: When you conquer here, recycle one of your runes.
+OGN-288|b|||Startipped Peak: When you hold here, you may channel 1 rune exhausted.
+OGN-289|b|||Targon's Peak: When you conquer here, ready 2 runes at the end of this turn.
+OGN-290|b|||The Arena's Greatest: At the start of each player's first Beginning Phase, that player gains 1 point.
+OGN-291|b|||The Candlelit Sanctum: When you conquer here, look at the top two cards of your Main Deck. You may recycle one or both of them. Put those you don't back in any order.
+OGN-292|b|||The Dreaming Tree: When a player chooses a friendly unit here with a spell for the first time each turn, they draw 1.
+OGN-293|b|||The Grand Plaza: When you hold here, if you have 7+ units here, you win the game.
+OGN-294|b|||Trifarian War Camp: Units here have +1 [Might].
+OGN-295|b|||Vilemaw's Lair: Units can't move from here to base.
+OGN-296|b|||Void Gate: Spells and abilities affecting units here each deal 1 Bonus Damage.
+OGN-297|b|||Windswept Hillock: Units here have [Ganking].
+OGN-298|b|||Zaun Warrens: When you conquer here, discard 1, then draw 1.
+OGS-001|uc|5+1|4|Annie, Fiery: Your spells and abilities deal 1 Bonus Damage.
+OGS-002|s|6+1||Firestorm: Deal 3 to all enemy units at a battlefield.
+OGS-003|s|2||Incinerate: [Action] / Deal 2 to a unit at a battlefield.
+OGS-004|uc|5+1|4|Master Yi, Meditative: While you have 8+ runes, I have +4 [Might].
+OGS-005|u|6+1|6|Zephyr Sage: [Shield]
+OGS-006|uc|6+1|5|Lux, Illuminated: When you play a spell that costs [5] or more, give me +3 [Might] this turn.
+OGS-007|uc|6+1|5|Garen, Rugged: [Assault 2], [Shield 2]
+OGS-008|s|6+1||Gentlemen's Duel: [Action] / Give a friendly unit +3 [Might] this turn. Then choose an enemy unit. They deal damage equal to their Mights to each other.
+OGS-009|uc|7+1|6|Master Yi, Honed: [Ganking] / I enter ready.
+OGS-010|uc|4+1|3|Annie, Stubborn: When you play me, return a spell from your trash to your hand.
+OGS-011|s|2||Flash: [Reaction] / Move up to 2 friendly units to base.
+OGS-012|s|6+1||Blast of Power: [Action] / Kill a unit at a battlefield.
+OGS-013|uc|6+1|5|Garen, Commander: Other friendly units have +1 [Might] here.
+OGS-014|uc|4|2|Lux, Crownguard: [Exhaust]: [Reaction] — [Add] [2]. Use only to play spells.
+OGS-015|s|6||Recruit the Vanguard: [Action] / Play four 1 [Might] Recruit unit tokens.
+OGS-016|u|6+1|5|Vanguard Attendant: I enter ready.
+OGS-017|lc|||Dark Child, Starter: At the end of your turn, ready 2 runes.
+OGS-018|us|8+2|7|Tibbers: When you play me, deal 3 to all units at battlefields.
+OGS-019|lc|||Wuju Bladesman, Starter: While a friendly unit defends alone, it gets +2 [Might].
+OGS-020|ss|4||Highlander: [Reaction] / Choose a friendly unit. The next time it dies this turn, recall it exhausted instead.
+OGS-021|lc|||Lady of Luminosity, Starter: When you play a spell that costs [5] or more, draw 1.
+OGS-022|ss|8||Final Spark: [Action] / Deal 8 to a unit.
+OGS-023|lc|||Might of Demacia, Starter: When you conquer, if you have 4+ units at that battlefield, draw 2.
+OGS-024|ss|5+1||Decisive Strike: [Action] / Give friendly units +2 [Might] this turn.
+RAD-001|u|2|1|Amateur Demolitionist: When you play me, play a Bomb gear token to a battlefield.
+RAD-002|g|1+1||Banner of Conquest: [Deploy] / Friendly units here have [Assault].
+RAD-003|u|3|3|Bilgewater Tracker: When you play me, deal 1 to each of up to 2 units.
+RAD-004|s|3+1||Brawl: [Action] / Give a unit [Assault] this turn equal to its Might.
+RAD-005|u|2|2|Lingering Animus: I enter ready if a friendly unit or gear died this turn.
+RAD-006|s|4+1||Scorched Earth: [Action] / Deal 5 damage split among units at a single battlefield.
+RAD-007|g|3+1||Rally for War: Choose an occupied enemy battlefield. Play three 1 [Might] Recruit unit tokens there.
+RAD-008|u|3|2|War Scout: [Accelerate] / When you play me, give a unit +2 [Might] this turn.
+RAD-009|u|6+1|3|Antagonistic Apparatus: I enter ready. / When you play me, play a ready 3 [Might] Mech unit token here.
+RAD-010|s|2||Forbidden Technique: Ready a unit. / When you play a card with Energy cost [7] or more, you may play this from your trash for [1][Fury][Fury]. Banish this.
+RAD-011|u|4|4|Incorrigible Construct: [Show Off] a Mech. / I enter ready if you showed off.
+RAD-012|u|1||Runeblade Anvil: When you play this or when this leaves the board, banish the top card of your Main Deck. Until your next Ending Phase, you may play that card. / [2][Chaos], [Exhaust]: Kill this.
+RAD-013|s|3+1||Lost to the Sands: [Action] / Choose one — / - Deal 4 to a unit at a battlefield. / - Kill a gear.
+RAD-014|u|3|3|Shimmering Swimmer: You may kill a friendly unit or gear as an additional cost to play me. / When you play me, if you paid the additional cost, deal 2 to a unit.
+RAD-015|uc|5+1|5|Akali, Brash: The first time I move each turn, [Add] [1][Rainbow]. / The second time I move each turn, banish the top card of your Main Deck. Until your next Ending Phase, you may play that card.
+RAD-016|s|4+2|4|Coalesced Energy: At the end of your turn, recycle all your runes, then channel 4 runes exhausted.
+RAD-017|g|4+1||Detonation Amplifier: [Deploy] / When you play this, you may kill another friendly unit or gear to draw 1. / Friendly [Deathknell] effects here trigger an additional time.
+RAD-018|u|9+2|9|Drakehound Packmaster: When you play me, reveal the top card of each opponent's Main Deck. Choose one and banish it, then play it, ignoring its cost. Recycle the rest.
+RAD-019|u|6+1|6|Firebrand Raider: I enter ready. / When you play me, ready all enemy units. / Other units enter ready. / Units don't ready during the Awaken Phase.
+RAD-020|uc|7+1|5|Mordekaiser, Twice Slain: [Accelerate] / [Assault 3] / Once each turn, if I would die, you may kill a friendly unit to heal me, exhaust me, and recall me instead.
+RAD-021|uc|5+1|4|Ekko, Revolutionary: I enter ready. / [Assault] / [Action][>] Discard 1, [1][Fury]: Banish me, then play me to your base, ignoring my cost.
+RAD-022|s|4+1||Whirling Twirligig: [Exhaust]: Play a Gold gear token exhausted. / Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token. / Kill a friendly unit, [Exhaust]: Play a 3 [Might] Mech unit token.
+RAD-023|uc|5+1|5|Ziggs, Short-Fused: When you play me, play a Bomb gear token to a battlefield. / Abilities of friendly gear deal 1 Bonus Damage.
+RAD-024|g|2||Blossoming Dreamroot: [Deploy] / When you win a combat here, draw 1.
+RAD-025|u|1||Consult the Heavens: [Reaction] / Give a unit [Shield 2] this turn. / [Predict].
+RAD-026|u|2|2|Entrenched Boar: You may have me enter ready. If you do, I can't move this turn.
+RAD-027|u|3|3|Iridescent Avian: [Exhaust]: [Buff] a unit. If it's already buffed, give it +2 [Might] this turn instead.
+RAD-028|s|1||Ki Burst: [Action] / As an additional cost to play this, exhaust a friendly unit. / [Stun] a unit.
+RAD-029|s|1||Life from Stone: [Reaction] / As an additional cost to play this, exhaust a friendly unit. / Draw 1 and channel 1 rune exhausted.
+RAD-030|u|5|5|Sanctum Conservator: When you play a card with Energy cost [7] or more, ready me.
+RAD-031|u|4|2|Stoic Ferryman: [Shield 3] / When you play me to a battlefield, you may move another unit you control here to your base.
+RAD-032|s|2||Battle Preparations: [Reaction] / [Show Off] a gear. / Give a unit +2 [Might] this turn. If you showed off, ready up to 2 runes.
+RAD-033|g|1+1||Command: Attack: Choose one — / - Move a friendly gear with [Deploy] to a battlefield. / - Look at the top 5 cards of your Main Deck. You may reveal a gear from among them and draw it. Recycle the rest.
+RAD-034|s|1||Hunker Down: [Reaction] / Ready a friendly unit. It can't move this turn. Draw 1.
+RAD-035|u|3||Invigorating Bloom: When you play this, give a friendly unit +3 [Might] this turn. / Exhaust a friendly [Mighty] unit, [Exhaust]: Draw 1.
+RAD-036|u|6|6|Storm Raptor: [Deflect] / When a stunned enemy unit here dies, draw 1.
+RAD-037|u|3+1|4|Watchful Curator: Your gear have [Deflect].
+RAD-038|uc|4+1|4|Ahri, Confident: [Disarm] / When you reduce the Might of an enemy unit here by 1 or more, give me +1 [Might] this turn.
+RAD-039|u|4+2||Ephemeral Ward: Your units have +2 [Might]. / When you play a unit, kill this.
+RAD-040|u|7+1|7|Heartening Soul: When you play me, ready a friendly legend. / Friendly legends have "[Exhaust]: Give a unit +3 [Might] this turn."
+RAD-041|s|1+2||Hush: [Reaction] / Counter a spell with Power cost [Rainbow][Rainbow] or more.
+RAD-042|uc|3|4|Orianna, Exquisite: [Shield] / I don't deal combat damage unless there's a friendly gear here.
+RAD-043|uc|4|4|Riven, Broken Blade: When I become exhausted, choose one that hasn't been chosen this turn — / - [Buff] me. / - Spend my buff to [Stun] an enemy unit. / - Spend my buff to ready me.
+RAD-044|g|4+2||Hunting Blind: [Deploy] / When you play this, you may move an enemy unit to this battlefield. / Friendly units here have [Shield 2].
+RAD-045|uc|4+1|4|K'Sante, Dauntless: [Shield] / When I attack or defend, double the [Shield] of a unit you control here this turn.
+RAD-046|s|8+1||Resplendent Rostrum: [Exhaust]: Draw 1 and channel 1 rune exhausted. / When I become exhausted, give a friendly unit +3 [Might] this turn.
+RAD-047|s|3||Fanfare: The next three times you play a unit this turn, draw 1.
+RAD-048|s|3||High Note: [Reaction] / Give a unit –[Might] this turn equal to the number of exhausted units you control.
+RAD-049|u|4|1|Industrious Mechsmith: When you play me, play a 3 [Might] Mech unit token here.
+RAD-050|u|5|4|Mysterious Chronomancer: When you play me, [Predict 2]. / [Disarm 2]
+RAD-051|s|2+1||Parallel Convergence: As an additional cost to play this, return a friendly unit to its owner's hand. / Deal 5 to a unit at a battlefield.
+RAD-052|g|1||Resource Extractor: [Deploy] / At the end of your turn, if you control this battlefield, play a Gold gear token exhausted.
+RAD-053|u|2|2|Strigian Oracle: When I become exhausted, [Predict].
+RAD-054|u|3|3|Trinket Peddler: [Disarm]
+RAD-055|u|3|2|Clanging Sentry: Your Mechs have [Disarm].
+RAD-056|g|3+1||Improvised Projectile: [Action] / Choose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.
+RAD-057|u|4|3|Piltovan Guidebot: When you play a card, you may have my base Might become equal to that card's Energy cost this turn.
+RAD-058|u|4+1|3|Riptide Mage: [Accelerate] / When you play me, give an enemy unit -3 [Might] this turn.
+RAD-059|u|9+1||Supernova: Deal 10 to a unit. Draw 2.
+RAD-060|u|8|8|The Empyrean: [Show Off] a card. / When you play me, if you showed off a card, [Predict] equal to its Power cost, then draw 2.
+RAD-061|uc|3|4|Ekko, Ingenious: As an additional cost to play me, return a friendly unit to its owner's hand. / [Ganking]
+RAD-062|g|5+1||Gravity Field: [Deploy] / Opponents must pay [1][Rainbow] to move one or more units to this battlefield. / [Deathknell][>] Draw 1.
+RAD-063|uc|5+1|5|Kai'Sa, Rebel: [Disarm]. / While I'm in a showdown, your spells have [Reaction].
+RAD-064|s|2||Scrutinizing Scope: [1], [Exhaust]: Choose an opponent. They guess a card type. Reveal the top card of your Main Deck. If it has that type, recycle it. Otherwise, draw it.
+RAD-065|uc|4+1|3|Seraphine, Inspiring: [Disarm 2] / Once each turn, when you exhaust three or more friendly units at the same time, you may draw 1.
+RAD-066|u|6+1|4|Spirit of the Forge: You may return a friendly gear to its owner's hand as an additional cost to play me. / When you play me, if you paid the additional cost, ready me and give me +[Might] this turn equal to the Energy cost of the gear you returned.
+RAD-067|u|8+2|8|Clocktower Guardian: When you play me or when I hold, [Predict 3]. / [Deathknell][>] Banish the top card of your Main Deck. You may play it, ignoring its Energy cost.
+RAD-068|uc|5|5|Orianna, Mechanical Marvel: Once each turn, while I'm at a battlefield, you may pay [1][Rainbow] less to play a gear.
+RAD-069|s|9+2||Zero Point Inflection: When you play a card, draw 2. / When you draw 1 or more cards with 9 or more other cards in your hand, discard your hand, kill this, and choose an opponent. They score 1 point.
+RAD-070|s|3||Hold 'Em: [Action] / This costs [2] less if you've played a unit or gear to a battlefield this turn. / Give a unit +3 [Might] this turn.
+RAD-071|g|1|0|Nazuman Ntofo: Equip [1] {{EFFECT: [Shield 2]}}
+RAD-072|s|2|2|Overloaded Traveler: While there's a friendly gear with [Deploy] at my battlefield, I have +1 [Might].
+RAD-073|g|1||Pillaged Armory: [Deploy] / When you play this or when you conquer here, [Buff] a friendly unit.
+RAD-074|u|3|3|Raving Witness: When I move, reveal the top card of your Main Deck. If it's [Mighty], draw it. Otherwise, recycle it.
+RAD-075|u|5|4|Skystrike Squadron: You may return a friendly gear to its owner's hand as an additional cost to play me. If you do, I cost [2] less. / [Deflect]
+RAD-076|u|2|1|Sneaky Zeebles: When I conquer, [Add] [Rainbow].
+RAD-077|u|9|7|Wrath of the Freljord: I enter ready. / [Shield 3]
+RAD-078|u|6+1|4|Armored Tusker: [Shield 3] / [Tank] / When I move, you may deal damage equal to my [Shield] to a unit at a battlefield.
+RAD-079|s|5+2||Avalanche: Deal 3 to all units in bases.
+RAD-080|u|8+2|8|Bloodscent Swarm: I cost [2] less for each battlefield you've conquered this turn.
+RAD-081|u|6|5|Elnuk Herd: [Hidden] / When you play me, give another friendly unit +3 [Might] this turn, then recycle me if I was played from face down.
+RAD-082|s|4+2||Primordial Roar: [Show Off] a unit. / If you showed off a unit, deal damage equal to that unit's Might to a unit.
+RAD-083|u|4|2|Stalwart Goatherd: [Shield 2] / When you play me, you may kill a gear with Energy cost [4] or less.
+RAD-084|s|4+1||Cataclysm: Opponents can't play spells this turn. / Move a friendly unit to an occupied enemy battlefield.
+RAD-085|uc|5+1|4|Graves, Blasting Through: When I attack or defend, deal damage equal to my Might to all enemy units here. / I don't deal combat damage.
+RAD-086|uc|5|4|K'Sante, Courageous: [Accelerate] / [Shield 2] / When I hold, channel 1 rune.
+RAD-087|g|2||Portable Portal: [Deploy] / When you play this, you may pay [Body] to ready a unit here. / Friendly units here have [Ganking].
+RAD-088|u|2+1|2|Staunch Survivor: [Assault 2], [Shield 2]
+RAD-089|g|3||Titanic Shrine: When you play a unit with Might greater than each other unit on the board, exhaust me to draw 1.
+RAD-090|uc|5+1|5|Evelynn, Consuming: [Ambush] / When you play a card from face down, ready me and give me +1 [Might] this turn.
+RAD-091|uc|4+1|4|Jarvan IV, Martial Paragon: Your gear with [Deploy] have [Action]. / When I conquer, if there is a friendly gear with [Deploy] here, channel 1 rune exhausted.
+RAD-092|u|7|7|Seraphic Wyvern: If you would channel runes, channel that many runes plus 1 exhausted rune instead.
+RAD-093|u|4|3|Disposal Expert: I enter ready if you control no other units. / [Disarm 2]
+RAD-094|u|6|6|Explosimian: When I hold, play three Bomb gear tokens to a single battlefield.
+RAD-095|u|4|4|Momentary Companion: [Hidden] / When you play me, if it's not your turn, give me [Temporary].
+RAD-096|s|3+1||Satchel Charge: [Action] / Move a friendly unit, then play a Bomb gear token to a battlefield.
+RAD-097|s|2|1|Siren of the Shallows: [Disarm] / [Ganking]
+RAD-098|s|2||Siren's Song: [Reaction] / Move an enemy unit that moved this turn.
+RAD-099|u|3|3|Suave Negotiator: When you play me, choose an opponent. You and that player each draw 1.
+RAD-100|s|1||The Waters' Wage: [Hidden] / Play a Gold gear token exhausted. If it's your turn and you played this from face down, play three ready Gold gear tokens instead.
+RAD-101|g|2||An Offer You Can't Refuse: [Action] / Kill a gear. Its controller plays a Gold gear token exhausted.
+RAD-102|s|3||Demon Shade: [Hidden] / Choose a friendly unit, then choose one — / - Move it to an open battlefield. / - Give it [Ganking] this turn if there are no open battlefields.
+RAD-103|u|3|3|Gutter Guardian: [Hidden] / [Show Off] a card with [Hidden]. / When you play me, if you showed off, [Add] [Rainbow].
+RAD-104|u|5+1|5|Pitiless Stalker: [Exhaust]: [Stun] an enemy unit.
+RAD-105|u|3|3|Reckless Innovator: [Accelerate] / When I become exhausted, choose one — / - Play a Gold gear token exhausted. / - Pay [Chaos] to draw 1.
+RAD-106|g|3+1||The Good Stuff: [Deploy] / When you play this, discard 1, then draw 3. / When you hold here, return this to its owner's hand.
+RAD-107|u|2|2|Bedeviling Stranger: [Hidden] / When you play me, choose a battlefield. If there are 4 or more units there, you may return an enemy unit there to its owner's hand.
+RAD-108|g|1||Bushwhack Trap: [Deploy] / While you or an ally control this battlefield, that player may hide an additional card here.
+RAD-109|uc|4+1|4|Evelynn, In Control: [Disarm] / When I hold, if you control a facedown card here, score 1 point.
+RAD-110|uc|3|3|Lulu, Whimsical: When I move, you may have another unit's base Might become 4 this turn.
+RAD-111|g|4+1||Mechanical Bandit: At the start of your Beginning Phase, each player reveals the top card of their Main Deck. If you revealed a card with the lowest Energy cost, draw it. Recycle the rest.
+RAD-112|uc|4|4|Ziggs, Explosive: [1], [Exhaust]: Play a Bomb gear token to a battlefield. / When I defend, you may kill a friendly gear to give me +2 [Might] this turn.
+RAD-113|u|8|8|Angler Wyrm: [Deflect] / [Exhaust]: Choose an opponent. They must move a unit they control to my battlefield.
+RAD-114|uc|5+1|5|Riven, Deserter: When another friendly unit becomes exhausted, give me +1 [Might] this turn. / Exhaust a friendly unit: Ready a unit. Use this ability only once each turn.
+RAD-115|u|6|4|Transpositionist: [Chaos], [Exhaust]: Return a friendly unit to its owner's hand. You may play a unit with less Might than that unit had, ignoring its cost.
+RAD-116|g|1||Concert Poster: [Deploy] / When you play this or when you conquer here, you may pay [1] to play a 1 [Might] Recruit unit token to your base.
+RAD-117|s|3||For Demacia!: [Reaction] / Choose a battlefield. Give friendly units there [Shield 2] this turn.
+RAD-118|u|5|3|Herald of the Emperor: When you play me, choose a friendly unit. Its base Might becomes 5 this turn.
+RAD-119|u|3|3|Hunting Dog: [Deathknell][>] Play a 1 [Might] Bird unit token with [Deflect] to your base.
+RAD-120|g|2|2|Meticulous Restorationist: When you play a card with Energy cost [7] or more, you may play me from your trash for [Order].
+RAD-121|s|3||One-Two Punch: [Action] / [Buff] a friendly unit and [Stun] an enemy unit.
+RAD-122|u|9+1|6|Party Crasher: I cost [1] less for each exhausted unit you control. / [Tank]
+RAD-123|g|2+1|1|Protector's Shield: [Quick-Draw] / [Equip] [1] {{EFFECT: [Tank]}}
+RAD-124|g|3+1||Burn Away: Banish a unit with 3 [Might] or less or a gear. [Burn 2].
+RAD-125|u|7+1|7|Dune Devourer: You may kill a friendly unit as an additional cost to play me. If you do, I cost [2] less. / [Deflect]
+RAD-126|u|4|1|Mournful Spirit: [Deathknell][>] You may kill a unit or gear here.
+RAD-127|s|5||Rousing Display: [Show Off] a card with Energy cost [7] or more. / Play two 1 [Might] Recruit unit tokens to your base. If you showed off, play four to your base instead.disa
+RAD-128|u|4|3|Steadfast Outrider: [Tank] / While there are 2 or more other friendly units and/or gear at my battlefield, I have +2 [Might].
+RAD-129|u|2|1|Trifarian Captain: When you play me, look at the top 4 cards of your Main Deck. You may reveal from among them a unit or gear with Energy cost no more than [3] and with Power cost no more than [Rainbow] and draw it. Recycle the rest.
+RAD-130|s|3|3|Battlefield Armorer: When a friendly gear at a battlefield dies, you may pay [1] to return it to its owner's hand.
+RAD-131|s|3+1|3|Demacian Illuminators: When one or more friendly units die, [Buff] a friendly unit.
+RAD-132|uc|6+1|5|Heimerdinger, Academy Instructor: If you would play a unit token to a location while I'm at a battlefield, you may play a 3 [Might] Mech unit token to that same location instead.
+RAD-133|uc|7+1|7|Jarvan IV, Royal Heir: [Assault] / [Tank] / When I attack, you may move a unit you control to my battlefield.
+RAD-134|s|7+1||Raucous Anthem: Ready your units and give them +3 [Might] this turn.
+RAD-135|s|8+2||Remember the Fallen: Play up to 3 units and/or gear from your trash, each with Energy cost no more than [3] and Power cost no more than [Rainbow], ignoring their costs.
+RAD-136|g|6+2||Dockside Lock-Up: [Deploy] / When you play this, banish a unit here. / When you hold here, kill this to play the banished card, ignoring its cost.
+RAD-137|uc|9+2|8|Mordekaiser, Dominating: When you play me or when I attack, you may discard 1 to kill a unit or gear.
+RAD-138|uc|5+1|1|Seraphine, Not Alone: When you play me or when I become exhausted, play a 1 [Might] Recruit unit token to your base. / I have +1 [Might] for each other exhausted unit you control.
+RAD-139|l|||Boy Who Shattered Time: [Empower] —  [1], [Exhaust] / Disempower me, [Exhaust]: Reduce the cost of the next unit you play this turn by [2][Rainbow] and give it "Kill me at end of turn."
+RAD-140|ss|2||Chronobreak: As an additional cost to play this, pay any amount of Power. / Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.
+RAD-141|l|||Hexplosives Expert: [1][Rainbow], [Exhaust]: Play a Bomb gear token to a battlefield.
+RAD-142|ss|2+1||Hexplosive Minefield: [Action] / Kill any number of friendly Bomb tokens. At end of turn, play that many Bomb tokens to a single battlefield.
+RAD-143|l|||Iron Revenant: [Reaction][>] Banish a unit or gear from your trash, [Exhaust]: [Add] [Rainbow]. Spend this Power only to play units or gear.
+RAD-144|ss|2+1||Realm of Death: Give an enemy unit -2 [Might] this turn and a friendly unit +2 [Might] this turn. They deal damage equal to their Mights to each other.
+RAD-145|l|||Lady of Clockwork: At the start of your Main Phase, you may pay [1] to choose a friendly gear. It becomes a unit gear with Might equal to its Energy cost until you choose another gear with me.
+RAD-146|gs|5+1||The Ball: [Deploy] / [Ganking] / When you play or move this, choose one — / - Draw 1. / - Deal 2 to enemy units here.
+RAD-147|l|||Pride of Nazumah: [1], [Exhaust]: Give a friendly unit "I have [Assault] equal to my [Shield]" this turn.
+RAD-148|ss|2+1||Ntofo Strikes: [Action] / Give a friendly unit [Shield 2] this turn, then deal damage equal to its [Shield] to an enemy unit.
+RAD-149|l|||The Exile: Units you play to battlefields you control enter ready.
+RAD-150|gs|3+1|3|Blade of the Exile: [Equip] — [Rainbow] or exhaust a friendly unit. {{EFFECT: [Ganking]}}
+RAD-151|l|||Starry-Eyed Songstress: As an additional cost to play a spell, you may exhaust me and three friendly units to reduce the cost of that spell by [2].
+RAD-152|ss|3+1||Encore: Choose two — / - Deal 2 to a unit. / - Play two 1 [Might] Recruit unit tokens. / - Give up to two units each +1 [Might] this turn. / - Look at the top 2 cards of your Main Deck, draw 1 and recycle the other.
+RAD-153|l|||Agony's Embrace: Once each turn, when you play a card from face down, draw 1. Then, if it's not your turn, discard 1.
+RAD-154|ss|2||Last Caress: [Reaction] / The next unit you play this turn can be played to any battlefield. When you play it, [Buff] it.
+RAD-155|l|||Exemplar of Demacia: When you play a gear with [Deploy], you may exhaust me and pay [Rainbow] to move a friendly unit to that battlefield.
+RAD-156|gs|2+1||Demacian Standard: [Deploy] / When one or more friendly units attack here, give one of them +2 [Might] this turn. / When you hold here, you may return this to its owner's hand.
+RAD-157|b|||Bandle Scouts' Academy: When you hide a card here, play a Gold gear token exhausted.
+RAD-158|b|||Black Market: [Rainbow][Rainbow]: Draw 1. Each player may use this ability once on their turn.
+RAD-159|b|||Black Rose Sanctum: For each player, the first time each turn a non-token unit they control dies here, they play a 1 [Might] Recruit unit token to their base.
+RAD-160|b|||Cosmic Vista: When you hold here, if your Rune Deck is empty, you score 1 point.
+RAD-161|b|||Durand Memorial: When you defend here, choose a unit you control here. Give it [Tank] this combat.
+RAD-162|b|||Firelights' Hideout: When you conquer here, the next unit you play this turn has [Accelerate].
+RAD-163|b|||Hunters' Circle: For each player, the first unit or gear they play here on their turn costs [1] less.
+RAD-164|b|||Packed Amphitheater: Champion units here have +1 [Might].
+RAD-165|b|||Rakelstake: For each player, the first time they play a unit or gear here each turn, they [Predict].
+RAD-166|b|||Ruined Monastery: When you conquer here, you may discard 1 and channel 1 rune exhausted.
+RAD-167|uc|6+1|4|Neeko, Blending In:  / If Neeko is in your deck, choose 3 different legends in addition to your starting legend. / When you play me, choose one of those legends and add it to your Legend Zone while I'm on the board.
+RAD-179|uc|4+1|4|Aphelios, Exalted: When you attach an Equipment to me, choose one that hasn't been chosen this turn — / - Ready 2 runes. / - Channel 1 rune exhausted. / - [Buff] a friendly unit.
+SFD-001|s|2||Against the Odds: [Reaction] / Give a friendly unit at a battlefield +2 [Might] this turn for each enemy unit there.
+SFD-002|u|6+1|6|Armed Assailant: [Accelerate] / [Weaponmaster]
+SFD-003|s|1||Blood Rush: [Action] / [Repeat] [1] / Give a unit [Assault 2].
+SFD-004|s|2+1||Bushwhack: [Hidden] / Friendly units enter ready this turn. Play a Gold gear token exhausted.
+SFD-005|s|1+1||Detonate: Kill a gear. Its controller draws 2.
+SFD-006|u|3+1|3|Eager Drakehound: I enter ready.
+SFD-007|u|2|2|Gem Jammer: When you play me, give a unit [Ganking] this turn.
+SFD-008|u|3|3|Sentinel Adept: [Weaponmaster]
+SFD-009|g|1|0|Serrated Dirk: [Equip] [Fury] {{EFFECT: [Assault 2]}}
+SFD-010|u|3|3|Void Drone: I cost [2] less to play from anywhere other than your hand.
+SFD-011|s|2||Angle Shot: [Reaction] / Choose a unit and an Equipment with the same controller. Attach that Equipment to that unit or detach that Equipment from that unit. Draw 1.
+SFD-012|u|5|5|Battering Ram: I cost [1] less for each card you've played this turn, to a minimum of [1].
+SFD-013|u|2|2|Blast Corps Cadet: You may pay [1][Fury] as an additional cost to play me. / When you play me, if you paid the additional cost, deal 2 to a unit at a battlefield.
+SFD-014|u|5|5|Minotaur Reckoner: Units can't move to base.
+SFD-015|u|4|5|Perched Grimwyrm: Play me only to a battlefield you conquered this turn.
+SFD-016|g|2|0|Recurve Bow: [Equip] [Fury] {{EFFECT: When I attack or defend, deal 2 to an enemy unit here.}}
+SFD-017|s|3||Sudden Storm: [Hidden] / [Action] / Deal 2 to a unit at a battlefield. If it's attacking, deal 4 to it instead.
+SFD-018|u|2|2|Void Hatchling: If you would reveal cards from a deck, look at the top card first. You may recycle it. Then reveal those cards.
+SFD-019|g|4||Assembly Rig: [1][Fury], Recycle a unit from your trash, [Exhaust]: Play a 3 [Might] Mech unit token to your base.
+SFD-020|uc|4|4|Draven, Vanquisher: When I win a combat, play a Gold gear token exhausted. / When I attack or defend, you may pay [Fury]. If you do, give me +2 [Might] this turn.
+SFD-021|u|6+1|6|Ferrous Forerunner: [Deathknell] — Play two 3 [Might] Mech unit tokens to your base.
+SFD-022|g|2+1|2|Long Sword: [Quick-Draw] / [Equip] [Fury]
+SFD-023|s|2+1||Piercing Light: [Repeat] [2][Fury] / Deal 2 to a unit at a battlefield, then deal 2 to up to one other unit.
+SFD-024|uc|4|4|Rell, Magnetic: [Tank] / When I attack, you may play an Equipment with Energy cost no more than [2], ignoring its cost, and attach it to me.
+SFD-025|uc|3+1|3|Rengar, Pouncing: [Reaction] / [Assault 2] / I can be played to a battlefield you're attacking.
+SFD-026|uc|4|4|Rumble, Hotheaded: Your Mechs each have [Assault]. / When I conquer, you may recycle another friendly unit to play a Mech from your trash. Reduce its Energy cost by the Might of the unit you recycled.
+SFD-027|u|7+1|7|Dunebreaker: If you have two or fewer cards in your hand, I enter ready. / When I hold, draw 2.
+SFD-028|uc|3|2|Lucian, Gunslinger: [Assault] / When I attack, deal damage equal to my [Assault] to an enemy unit here.
+SFD-029|uc|3|3|Rek'Sai, Breacher: [Accelerate] / [Assault] / Friendly units played from anywhere other than a player's hand have [Accelerate].
+SFD-030|g|3|2|Skyfall of Areion: [Equip] [1][Fury] {{EFFECT: My hold effects are also conquer effects, and vice versa.}}
+SFD-031|s|2||Desert's Call: [Repeat] [2] / Play a 2 [Might] Sand Soldier unit token.
+SFD-032|u|3+1|2|Disarming Rake: When you play me, you may kill a gear.
+SFD-033|g|1|1|Doran's Shield: [Equip] [Calm] {{EFFECT: [Tank]}}
+SFD-034|s|2||Feral Strength: [Reaction] / [Repeat] [2] / Give a unit +2 [Might] this turn.
+SFD-035|u|6|6|Guardian of the Passage: When I hold, you may return a unit or gear from your trash to your hand.
+SFD-036|u|2|2|Lonely Poro: [Deathknell] — If I died alone, draw 1.
+SFD-037|u|4|4|Navori Scout: [Deflect]
+SFD-038|u|3|3|Ribbon Dancer: When I move to a battlefield, give another friendly unit +1 [Might] this turn.
+SFD-039|u|3+1|4|Royal Entourage: When you play me, ready or exhaust a legend.
+SFD-040|s|2||Thwonk!: [Action] / [Repeat] [2] / Stun an attacking unit.
+SFD-041|u|2|2|Apprentice Smith: When I move, reveal the top card of your Main Deck. If it's a gear, draw it. Otherwise, recycle it.
+SFD-042|g|2|1|Brutalizer: [Equip] [Calm] {{EFFECT: If this was attached to me this turn, I have an additional +2 [Might].}}
+SFD-043|s|2||Emperor's Divide: [Hidden] / [Action] / Move any number of friendly units at a battlefield to their base.
+SFD-044|u|3|4|Legion Quartermaster: As an additional cost to play me, return a friendly gear to its owner's hand.
+SFD-045|s|2+1||Not So Fast: [Reaction] / Counter an enemy spell or ability that chooses a friendly unit or gear.
+SFD-046|g|1+1||Poro Snax: When you play this, draw 1. / [1][Calm], [Exhaust], Kill this: Draw 1.
+SFD-047|u|5+1|5|Simian Ancestor: When you buff me, ready me.
+SFD-048|u|4|3|Stellacorn Herder: When I move, draw 1.
+SFD-050|uc|6+1|6|Azir, Ascendant: [Calm]: [Action] — Choose a unit you control. Move me to its location and it to my original location. If it's equipped, you may attach one of its Equipment to me. Use only once per turn.
+SFD-051|g|2|1|Guardian Angel: [Equip] [Calm] {{EFFECT: If I would die, kill Guardian Angel instead. Heal me, exhaust me, and recall me.}}
+SFD-052|g|3+1||Heart of Dark Ice: [Exhaust]: Give a unit +3 [Might] this turn.
+SFD-053|uc|3+1|3|Janna, Savior: [Reaction] / When you play me, heal your units here, then move an enemy unit from here to its base.
+SFD-054|uc|5+1|5|Jax, Unmatched: [Deflect] / Each Equipment in your hand has [Quick-Draw].
+SFD-055|u|10+3|5|Needlessly Large Yordle: [Shield 5] / [Tank] / I cost [2][Calm] less for each point you scored from holding this turn.
+SFD-056|g|3+2|3|Sterak's Gage: [Quick-Draw] / [Equip] [Calm]
+SFD-057|uc|5|4|Irelia, Fervent: [Deflect] / When you choose or ready me, give me +1 [Might] this turn.
+SFD-058|uc|5+1|5|Ornn, Blacksmith: When you play me or when I hold, look at the top 4 cards of your Main Deck. You may reveal a gear from among them and draw it. Then recycle the rest.
+SFD-059|g|3+1|0|Svellsongur: [Equip] [1][Calm] / As this is attached to a unit, copy that unit's text to this Equipment's effect text for as long as this is attached to it.
+SFD-060|u|7+2|4|Tianna Crownguard: [Deflect] / While I'm at a battlefield, opponents can't score points.
+SFD-061|u|3+1|3|Aspiring Engineer: When you play me, return a gear from your trash to your hand.
+SFD-062|u|3|3|Bubble Bot: When you play me, ready another friendly Mech.
+SFD-063|g|1||Chemtech Cask: When you play a spell on an opponent's turn, you may exhaust me to play a Gold gear token exhausted.
+SFD-064|g|1|0|Cloth Armor: [Quick-Draw] / [Equip] [Mind] {{EFFECT: [Shield 2]}}
+SFD-065|u|2|2|Forecaster: Your Mechs have [Vision].
+SFD-066|s|2||Frigid Touch: [Reaction] / [Repeat] [2] / Give a unit -2 [Might] this turn.
+SFD-067|u|3|3|Frostcoat Cub: You may pay [Mind] as an additional cost to play me. / When you play me, if you paid the additional cost, give a unit -2 [Might] this turn.
+SFD-068|u|5|3|Gearhead: [Accelerate] / Each Equipment attached to me gives double its base Might bonus.
+SFD-069|u|2|2|Plundering Poro: When I conquer, play a Gold gear token exhausted.
+SFD-070|s|3||Wages of Pain: [Hidden] / [Action] / Deal 3 to a unit at a battlefield. Play a Gold gear token exhausted.
+SFD-071|u|8+2|7|Breakneck Mech: Your Mechs have [Deflect] and [Ganking]. / I enter ready if you control another Mech.
+SFD-072|u|4|4|Dropboarder: When you play me, if you control two or more gear, ready me.
+SFD-073|g|1|1|Experimental Hexplate: [Equip] [Mind] {{EFFECT: I am a Mech.}}
+SFD-074|u|3|3|Pickpocket: When you play me, you may kill a gear with Energy cost no more than [1]. If you do, play a Gold gear token exhausted.
+SFD-075|u|4+1|3|Prize of Progress: When you use an activated ability of a gear, give me +1 [Might] this turn.
+SFD-076|s|4+1||Production Surge: This costs [2] less if you control a Mech. / Play a 3 [Might] Mech unit token to your base. / Draw 1.
+SFD-077|s|4+1||Rocket Barrage: [Repeat] [4][Mind] / Choose one — / - Deal 4 to a unit in a base. / - Kill a gear.
+SFD-078|g|3||Temporal Portal: [Rainbow], [Exhaust]: Give the next spell you play this turn [Repeat] equal to its cost.
+SFD-079|uc|4+1|4|Bard, Mercurial: You may exhaust your legend as an additional cost to play me. / When you play me, if you paid the additional cost, move any number of your units to an open battlefield.
+SFD-080|s|1+1||Bellows Breath: [Action] / [Repeat] [1][Mind] / Deal 1 to up to three units at the same location.
+SFD-081|u|3|3|Card Sharp: When you play me, you and each opponent may play a Gold gear token exhausted. For each opponent who did, you play a Gold gear token exhausted.
+SFD-082|uc|4+1|3|Ezreal, Dashing: When I attack or defend, deal damage equal to my Might to an enemy unit here. / I don't deal combat damage. / [Mind]: [Action] — Move me to your base.
+SFD-083|g|3+1||Hextech Anomaly: [Exhaust]: [Reaction] — Pay any amount of [Rainbow] to [Add] that much Energy.
+SFD-084|uc|4|4|Jayce, Man of Progress: When you play me, you may kill a friendly gear. If you do, you may play a gear with Energy cost no more than [7] from hand this turn, ignoring its Energy cost.
+SFD-085|uc|6|4|Ornn, Forge God: [Deflect 2] / [Weaponmaster] / I have +1 [Might] for each friendly gear.
+SFD-086|g|3|2|World Atlas: [Equip] [Mind] {{EFFECT: When I hold, play two Gold gear tokens exhausted.}}
+SFD-087|s|2+3||Premonition: [Reaction] / Draw 3.
+SFD-088|uc|5|4|Renata Glasc, Mastermind: [1][Mind]: Draw 1. / [4][Mind][Mind][Mind][Mind], [Exhaust]: Score 1 point. / Use my abilities only while I'm at a battlefield.
+SFD-089|uc|5+1|4|Rumble, Scrapper: Your Mechs have +1 [Might]. / When I hold, play a 3 [Might] Mech unit token to your base.
+SFD-090|g|3|2|The Zero Drive: [Equip] [1][Mind] / [3][Mind], Banish this: Play all units banished with this, ignoring their costs. {{EFFECT: [Deathknell] — Banish me.}}
+SFD-091|u|3+1|3|Buhru Captain: When you play me, you may draw 1 or buff me.
+SFD-092|u|5|5|Combat Chef: [Weaponmaster]
+SFD-093|u|4+1|4|Dauntless Vanguard: You may play me to an occupied enemy battlefield.
+SFD-094|u|7|7|Direwing: I enter ready if you control another Dragon.
+SFD-095|g|2|2|Doran's Blade: [Equip] [Body]
+SFD-096|u|3|3|Laurent Bladekeeper: Ganking
+SFD-097|s|1+2||Punch First: [Action] / Give a unit +5 [Might] this turn.
+SFD-098|u|2|2|Sea Monkey: You may pay [1] as an additional cost to play me. / When you play me, if you paid the additional cost, buff me.
+SFD-099|u|2|2|Veteran Poro: [Weaponmaster]
+SFD-100|u|4|4|Yordle Explorer: When you play a card with Power cost [Rainbow][Rainbow] or more, draw 1.
+SFD-101|u|7+1|7|Fae Dragon: When you play me, buff up to four friendly units. / When you spend a buff, play a Gold gear token exhausted.
+SFD-102|g|2|1|Hexdrinker: [Equip] [Body] {{EFFECT: [Deflect]}}
+SFD-103|u|7+2|6|Jaull-Fish: [Accelerate] / I cost [2] less for each of your [Mighty] units.
+SFD-104|g|2||Petricite Monument: [Temporary] / Friendly units have [Deflect].
+SFD-105|u|6|5|Ruin Runner: I can't be chosen by enemy spells and abilities.
+SFD-106|s|2+1||Show of Strength: [Reaction] / Draw 1 for each of your [Mighty] units.
+SFD-107|s|3+1||Strike Down: Choose an equipped friendly unit. It deals damage equal to its Might to an enemy unit. Then detach an Equipment from it.
+SFD-108|g|1|1|Warmog's Armor: [Equip] [Body] {{EFFECT: When I conquer, buff me.}}
+SFD-109|uc|4|4|Akshan, Mischievous: [Weaponmaster] / You may pay [Body][Body] as an additional cost to play me. / When you play me, if you paid the additional cost, move an enemy gear to your base. You control it until I leave the board. If it's an Equipment, attach it to me.
+SFD-110|uc|3+1|3|Fiora, Peerless: When I attack or defend one on one, double my Might this combat.
+SFD-111|s|2+1||Here to Help: [Hidden] / [Action] / You may play a unit from hand to a battlefield you control, reducing its cost by [3].
+SFD-112|u|4+1|3|Kato the Arm: [Deflect] / When I move to a battlefield, give a friendly unit my keywords and +[Might] equal to my Might this turn.
+SFD-113|uc|3|3|Lucian, Merciless: [Weaponmaster] / The first time I conquer each turn, ready me.
+SFD-114|s|3||Marching Orders: [Action] / [Repeat] [3] / Choose a friendly unit anywhere and an enemy unit at a battlefield. They deal damage equal to their Mights to each other.
+SFD-115|g|4|2|Trinity Force: [Equip] [Body] {{EFFECT: When I hold, score 1 point.}}
+SFD-116|uc|5+1|5|Yone, Blademaster: [Weaponmaster] / When I conquer an open battlefield, deal damage equal to my Might to an enemy unit in a base.
+SFD-117|g|2+1||Ancient Henge: [Exhaust]: [Reaction] — Pay any amount of Energy to [Add] that much [Rainbow].
+SFD-118|g|3|2|Boneshiver: [Equip] [1][Body] {{EFFECT: When I conquer, channel 1 rune exhausted.}}
+SFD-119|uc|4+1|3|Jax, Unrelenting: [Weaponmaster] / When you attach an Equipment to me, you may pay [1] to draw 1.
+SFD-120|uc|6+3|7|Sivir, Ambitious: [Deflect 2] / When I conquer after an attack, if you assigned 5 or more excess damage to enemy units, you may deal that much to an enemy unit.
+SFD-121|u|3|3|Black Market Broker: When you play a card from face down, play a Gold gear token exhausted.
+SFD-122|s|0+1||Called Shot: [Action] / [Repeat] [Chaos] / Look at the top 2 cards of your Main Deck. Draw one and recycle the other.
+SFD-123|u|3+1|4|Corrupt Enforcer: When I move to a battlefield, discard 1. / When I win a combat, draw 1.
+SFD-124|g|1|1|Doran's Ring: [Equip] [Chaos] {{EFFECT: When I conquer, discard 1, then draw 1.}}
+SFD-125|u|4|4|Fae Porter: When I move to a battlefield, you may pay [Chaos] to move a unit you control to the same battlefield.
+SFD-126|u|3|3|Loyal Pup: When you defend at a battlefield, you may move me there.
+SFD-127|u|6|6|Master Bingwen: [Weaponmaster]
+SFD-128|u|2|2|Overzealous Fan: When I defend, you may kill me to move an attacking unit to its base.
+SFD-129|s|2||Temptation: [Repeat] [2] / Move an enemy unit to a location where there's a unit with the same controller.
+SFD-130|u|2|1|Treasure Hunter: When I move, play a Gold gear token exhausted.
+SFD-131|u|5|4|Ancient Warmonger: [Accelerate] / I have [Assault] equal to the number of enemy units here.
+SFD-132|u|7+2|8|Beast Below: When you play me, return another friendly unit and an enemy unit to their owners' hands.
+SFD-133|g|3|2|Boots of Swiftness: [Equip] [Chaos] {{EFFECT: [Ganking]}}
+SFD-134|g|1|1|Cull: [Equip] [Chaos] {{EFFECT: When I conquer, play a Gold gear token exhausted.}}
+SFD-135|s|1||Factory Recall: [Action] / Return a gear to its owner's hand.
+SFD-136|s|2||Hard Bargain: [Reaction] / [Repeat] [2] / Counter a spell unless its controller pays [2].
+SFD-137|u|4|4|Harpoon Squad: When I move from a battlefield, give me +2 [Might] this turn.
+SFD-138|u|2|1|Windsinger: Hidden / When you play me, you may return another unit at a battlefield with 3 [Might] or less to its owner's hand.
+SFD-139|g|3|2|Edge of Night: [Hidden] / When you play this from face down, attach it to a unit you control here. / [Equip] [Chaos]
+SFD-140|uc|3+1|3|Fizz, Trickster: When you play me, you may play a spell from your trash with Energy cost no more than [3], ignoring its Energy cost. Recycle that spell after you play it.
+SFD-141|uc|4+1|4|Irelia, Graceful: Your spells that choose me cost [1] or [Rainbow] less.
+SFD-142|u|5+2|5|Jae Medarda: When you choose me with a spell, draw 1.
+SFD-143|uc|4+1|4|Sivir, Mercenary: [Accelerate] / If you've spent at least [Rainbow][Rainbow] this turn, I have +2 [Might] and [Ganking].
+SFD-144|g|2||Spirit Wheel: When you choose a friendly unit, you may pay [1] and exhaust this to draw 1.
+SFD-145|s|2+2||Switcheroo: [Hidden] / [Action] / Swap the Mights of two units at the same battlefield this turn.
+SFD-146|uc|5+1|5|Vex, Cheerless: While I'm in combat, friendly spells cost [1][Rainbow] less to a minimum of [1], and enemy spells cost [1][Rainbow] more.
+SFD-147|s|8+2||Downwell: Return all units and gear to their owners' hands.
+SFD-148|uc|6+1|6|Draven, Audacious: [Deflect] / The first time I win a combat each turn, you score 1 point. / When I die in combat, choose an opponent. They score 1 point.
+SFD-149|uc|3+1|3|Ezreal, Prodigy: When you play me, discard 1, then draw 2. / Optional additional costs you pay cost [1] or [Rainbow] less.
+SFD-150|g|3|2|Last Rites: [Equip] — [Chaos], Recycle 2 cards from your trash {{EFFECT: When I conquer or hold, you may play a unit from your trash.}}
+SFD-151|s|2||Bonds of Strength: [Reaction] / [Repeat] [2] / Give two friendly units each +1 [Might] this turn.
+SFD-152|u|6|5|Eminent Benefactor: When I hold, play two Gold gear tokens exhausted.
+SFD-153|g|1|0|Eye of the Herald: [Equip] [Order] {{EFFECT: When I move, play a 1 [Might] Recruit unit token here.}}
+SFD-154|s|3||Guards!: [Hidden] / Play a 2 [Might] Sand Soldier unit token. You may pay [Order] to ready it.
+SFD-155|u|2|2|Honest Broker: [Deathknell] — Play a Gold gear token exhausted.
+SFD-156|u|4|3|Laurent Duelist: [Assault 2]
+SFD-157|u|4|2|Royal Guard: When you play me, play a 2 [Might] Sand Soldier unit token here.
+SFD-158|u|5+2|6|Sandshifter: When you play me, kill an enemy unit with 3 [Might] or less.
+SFD-159|u|2|2|Trusty Ramhound: While you have another unit here, I have +1 [Might].
+SFD-160|u|3|3|Zaun Punk: You may kill a friendly gear as an additional cost to play me. / When you play me, if you paid the additional cost, kill a gear.
+SFD-161|g|4|3|B.F. Sword: [Equip] [Order]
+SFD-162|s|2||Blood Money: [Action] / Kill a unit at a battlefield with 2 [Might] or less. If it was an enemy unit, play a Gold gear token exhausted. If it was a friendly unit, play two Gold gear tokens exhausted.
+SFD-163|s|2||Deathgrip: [Reaction] / Kill a friendly unit to give +[Might] equal to its Might to another friendly unit this turn. Draw 1.
+SFD-164|s|5+1||Drag Under: [Action] / I cost [2] less to play from anywhere other than your hand. / Kill a unit at a battlefield.
+SFD-165|u|5+1|5|Glasc Mixologist: [Deathknell] — You may play a unit with cost no more than [3] and no more than [Rainbow] from your trash, ignoring its cost.
+SFD-166|s|2||Rally the Troops: [Action] / When a friendly unit is played this turn, buff it. / Draw 1.
+SFD-167|u|2|2|Unsung Hero: [Deathknell] — If I was [Mighty], draw 2.
+SFD-168|g|7+1||Vanguard Armory: [Exhaust]: Play three 1 [Might] Recruit unit tokens.
+SFD-169|g|2||Altar of Memories: When a friendly unit dies, you may exhaust me to draw 1, then put a card from your hand on the top or bottom of your Main Deck.
+SFD-170|uc|5+1|5|Rek'Sai, Swarm Queen: When I attack, you may reveal the top 2 cards of your Main Deck. You may play one. Then recycle the rest. If the played card is a unit, you may play it here.
+SFD-171|uc|4+1|4|Renata Glasc, Industrialist: Your tokens enter ready.
+SFD-172|g|2+1|1|Sacred Shears: [Equip] [Order] {{EFFECT: [Deathknell] — Draw 1.}}
+SFD-173|uc|4+1|4|Soraka, Wanderer: I must be assigned combat damage last. / If another unit you control here would die, if it has less Might than me, instead heal it, exhaust it, and recall it.
+SFD-174|u|8+2|9|Trove Golem: When you play me, play four Gold gear tokens exhausted.
+SFD-175|u|6+1|5|Undertitan: When you play me, give your other units +2 [Might] this turn. / As I'm revealed from your deck, [Add] [2].
+SFD-176|uc|3+1|4|Xin Zhao, Vigilant: [Tank] / I enter ready if you have two or more other units in your base.
+SFD-177|uc|4|4|Azir, Sovereign: [Accelerate] / When I attack, you may move any number of your token units to this battlefield.
+SFD-178|g|3+1|4|Blade of the Ruined King: [Equip] — [Order], Kill a friendly unit
+SFD-179|u|7+1|6|Corina Veraza: [Accelerate] / When I move to a battlefield, play three 1 [Might] Recruit unit tokens here.
+SFD-180|uc|3|3|Fiora, Worthy: When a unit you control becomes [Mighty], you may pay [Order] to ready it.
+SFD-181|l|||Mechanized Menace: Your Mechs have [Shield].
+SFD-182|ss|1+1||Danger Zone: [Reaction] / [Repeat] [1][Rainbow] / Give your Mechs +1 [Might] this turn.
+SFD-183|l|||Purifier: Your Equipment each give [Assault].
+SFD-184|ss|2+1||Relentless Pursuit: [Action] / Move a friendly unit. You may attach an Equipment with the same controller to it. This turn, that unit has "When I conquer, you may move me to my base."
+SFD-185|l|||Glorious Executioner: When you win a combat, draw 1.
+SFD-186|gs|2+1|3|Spinning Axe: [Quick-Draw] / [Equip] [Rainbow] / [Temporary]
+SFD-188|ss|2+1||Void Rush: Reveal the top 2 cards of your Main Deck. You may play one of them, reducing its cost by [2]. Draw any you did not play this way.
+SFD-189|l|||Fire Below the Mountain: [Exhaust]: [Reaction] — [Add] [Rainbow]. Use only to play gear or use gear abilities.
+SFD-190|gs|4+2|3|Forgefire Cape: [Unique] / [Equip] [Rainbow] {{EFFECT: When I attack or defend, deal 2 to all enemy units here.}}
+SFD-191|gs|4+2|3|Rabadon's Deathcrown: [Unique] / [Equip] [Rainbow] {{EFFECT: Your spells and abilities deal 3 Bonus Damage.}}
+SFD-192|gs|4+2|2|Shurelya's Requiem: [Unique] / [Equip] [Rainbow] / When you play this, ready your units. {{EFFECT: Your units here have [Ganking].}}
+SFD-193|l|||Grandmaster at Arms: [1], [Exhaust]: Attach a detached Equipment you control to a unit you control. / [Exhaust]: Attach an attached Equipment you control to a unit you control.
+SFD-194|ss|2+1||Counter Strike: [Reaction] / Choose a unit. The next time that unit would be dealt damage this turn, prevent it. Draw 1.
+SFD-195|l|||Blade Dancer: When you choose a friendly unit, you may exhaust me and pay [Rainbow] to ready it. / When you conquer, you may pay [1] to ready me.
+SFD-196|ss|1+1||Defiant Dance: [Reaction] / Give a unit +2 [Might] this turn and another unit -2 [Might] this turn.
+SFD-198|ss|6+1||Arise!: Play a 2 [Might] Sand Soldier unit token for each Equipment you control. Then ready two of them.
+SFD-199|l|||Prodigal Explorer: [Exhaust]: [Reaction] — Draw 1. Use only if you've chosen enemy units and/or gear twice this turn with spells or unit abilities.
+SFD-200|ss|3+1||Arcane Shift: [Action] / Banish a friendly unit, then its owner plays it, ignoring its cost. Deal 3 to an enemy unit at a battlefield. Banish this.
+SFD-201|l|||Chem-Baroness: When you or an ally hold, you may exhaust me to play a Gold gear token exhausted. / While your score is within 3 points of the Victory Score, your Gold [Add] an additional [1].
+SFD-202|ss|5+2||Hostile Takeover: [Hidden] / Take control of an enemy unit at a battlefield. Ready it. / Lose control of that unit and recall it at end of turn.
+SFD-203|l|||Battle Mistress: When you recycle a rune, you may exhaust me to play a Gold gear token exhausted. / When one or more enemy units die, ready me.
+SFD-204|ss|1+2||On the Hunt: Ready your units.
+SFD-205|l|||Grand Duelist: When one of your units becomes [Mighty], you may exhaust me to channel 1 rune exhausted.
+SFD-206|ss|2+2||Riposte: [Reaction] / Choose a friendly unit and a spell. Counter that spell and give that unit +[Might] equal to that spell's Energy cost this turn.
+SFD-207|b|||Emperor's Dais: When you conquer here, you may pay [1] and return a unit you control here to its owner's hand. If you do, play a 2 [Might] Sand Soldier unit token here.
+SFD-208|b|||Forge of the Fluft: While you control this battlefield, friendly legends have "[Exhaust]: Attach an Equipment you control to a unit you control."
+SFD-209|b|||Forgotten Monument: Players can't score here until their third turn.
+SFD-210|b|||Hall of Legends: When you conquer here, you may pay [1] to ready your legend.
+SFD-211|b|||Marai Spire: While you control this battlefield, friendly [Repeat] costs cost [1] less.
+SFD-212|b|||Minefield: When you conquer here, put the top 2 cards of your Main Deck into your trash.
+SFD-213|b|||Ornn's Forge: While you control this battlefield, the first friendly non-token gear played each turn costs [1] less.
+SFD-214|b|||Power Nexus: When you hold here, you may pay [Rainbow][Rainbow][Rainbow][Rainbow] to score 1 point.
+SFD-215|b|||Ravenbloom Conservatory: When you defend here, reveal the top card of your Main Deck. If it's a spell, put it in your hand. Otherwise, recycle it.
+SFD-216|b|||Rockfall Path: Units can't be played here.
+SFD-217|b|||Seat of Power: When you conquer here, draw 1 for each other battlefield you or allies control.
+SFD-218|b|||Sunken Temple: When you conquer here with one or more [Mighty] units, you may pay [1] to draw 1.
+SFD-219|b|||The Papertree: When you hold here, each player channels 1 rune exhausted.
+SFD-220|b|||Treasure Hoard: When you conquer here, you may pay [1] to play a Gold gear token exhausted.
+SFD-221|b|||Veiled Temple: When you conquer here, you may ready a friendly gear. If it's an Equipment, you may detach it.
+SFD-243|l|||Void Burrower: When you conquer, you may exhaust me to reveal the top 2 cards of your Main Deck. You may banish one, then play it. Recycle the rest.
+SFD-247|l|||Emperor of the Sands: Sand Soldiers you play have [Weaponmaster]. / [1], [Exhaust]: Play a 2 [Might] Sand Soldier unit token to your base. Use only if you've played an Equipment this turn.
+UNL-001|u|5|3|Arena Kingpin: I enter ready. / [Exhaust]: Give a unit +3 [Might] this turn.
+UNL-002|u|2|1|Inferna: [Ambush] / [Assault 2]
+UNL-003|u|2|2|Mischievous Marai: [Hidden] / When you play me to a battlefield, deal 2 to an enemy unit here.
+UNL-004|u|3|1|Prepared Neophyte: If you've spent [4] or more to play a spell this turn, I have +4 [Might].
+UNL-005|u|7+1|7|Revna the Lorekeeper: [Ganking] / When you play a spell, if you spent [4] or more, ready me.
+UNL-006|u|3|1|Sharkling: [Accelerate] / [Assault 4]
+UNL-007|s|2+1||Smite: [Action] / Deal 3 to a unit at a battlefield. If it would die this turn, banish it instead.
+UNL-008|u|6|6|Towering Pairofant: [Assault] / If a unit died this turn, I enter ready.
+UNL-009|s|2||Upstage Comedy: [Repeat] [2] / Ready a unit.
+UNL-010|s|1+1||Vault Breaker: [Action] / Give a unit [Assault 2] and [Ganking] this turn.
+UNL-011|g|2||Fresh Beans: When you play a unit during a showdown, you may exhaust this to draw 1.
+UNL-012|u|5+1|5|Lord Broadmane: [Ambush] / When you play me, give your other units here [Assault] this turn.
+UNL-013|s|2||Lotus Trap: [Hidden] / [Reaction] / Choose a unit. Double all damage that would be dealt to it this turn.
+UNL-014|s|1+1||Monster Harpoon: [Action] / Deal 2 to a unit at a battlefield. If you control a facedown card, deal 4 to it instead.
+UNL-015|s|3+1||Right of Conquest: Draw 1, then draw 1 for each battlefield you or allies control.
+UNL-016|u|3+1|3|Scorchclaw: [Hunt 2] / [Level 3][>] I have +1 [Might] and enter ready.
+UNL-017|s|4||Square Up: [Repeat] — Discard 1 / Give a unit [Assault 4] this turn.
+UNL-018|u|6|6|Yeti Brawler: When I conquer, if you assigned 3 or more excess damage, play two Gold gear tokens exhausted.
+UNL-019|g|4|4|Blighted Battleaxe: [Equip] [1][Fury] {{EFFECT: At the end of your turn, if I didn't conquer this turn, unattach this and deal 4 to me.}}
+UNL-020|s|2+1||Dancing Grenade: Deal 2 to a unit. Its controller may play this spell again for [Rainbow]. If they do, this deals 1 additional Bonus Damage for each time this spell has dealt damage this turn.
+UNL-021|u|3|3|Grim Apothecary: [Ambush] / When you play me, you may return a friendly unit at a battlefield to its owner's hand.
+UNL-022|uc|4+1|4|Jhin, Murderous Artist: [Deflect] / [Ganking] / When I move, [Add] [1][Rainbow].
+UNL-023|uc|5+1|5|Katarina, Reckless: When you hide a card, ready me. / When you play a card from face down, deal 2 to an enemy unit.
+UNL-024|uc|4+1|4|Rengar, Unseen: [Accelerate] / [Assault 2] / [Deflect] / [Ganking]
+UNL-025|u|3|3|Undying Legion: [Legion][>] You may play me from your trash for [3][Fury].
+UNL-026|uc|5|5|Xerath, Freed: [Fury], [Exhaust]: Deal 3 to a unit. Use this ability only while I'm at a battlefield.
+UNL-027|u|8+2|8|Inviolus Vox: When I conquer, give a friendly unit +8 [Might] this turn.
+UNL-028|uc|3|2|Pyke, Dockside Butcher: [Hidden] / [Ganking] / You may pay [Fury] as an additional cost to play me. / When you play me, if you paid the additional cost, ready me and give me +2 [Might] this turn.
+UNL-029|u|4+1|4|Red Brambleback: [Accelerate] / Your conquer effects for conquering here trigger an additional time. / When I conquer, [Buff] a friendly unit.
+UNL-030|uc|4|3|Vi, Hotheaded: [Deflect] / [2][Fury]: Double my Might this turn.
+UNL-031|s|1||Combat Experience: [Reaction] / Give a unit +1 [Might] this turn. / [Level 6][>] Give it +3 [Might] this turn instead.
+UNL-032|s|2||Double Trouble: [Repeat] [2] / Look at the top 3 cards of your Main Deck. You may reveal a unit from among them and draw it. Recycle the rest.
+UNL-033|u|4|3|Frisky Hunter: When you play me, play a 1 [Might] Bird unit token with [Deflect] here.
+UNL-034|u|4+1|4|Herald of Spring: [Hunt] / When you play me, gain 2 XP.
+UNL-035|u|6|6|Monch: If an opponent controls a stunned unit, I cost [2] less and enter ready.
+UNL-036|u|2|1|Mutated Mouser: [Shield 2] / [Tank]
+UNL-037|u|4+1|5|Shadow Watcher: If a friendly unit died during your Beginning Phase this turn, I enter ready.
+UNL-038|s|2+1||Skyward Strike: Move an enemy unit. / [Level 6][>] [Stun] an enemy unit.
+UNL-039|g|1|1|Soul Sword: [Equip] [Calm] {{EFFECT: [Level 3][>] I have an additional +1 [Might].}}
+UNL-040|u|2|2|Wuju Apprentice: [Hunt] / [Level 6][>] When you play me, draw 1.
+UNL-041|u|3|3|Allay, Eager Admirer: [Deflect] / While I'm at a battlefield, your other units here have [Deflect].
+UNL-042|s|3||Back Off: [Hidden] / [Action] / [Stun] a unit. / If you played this from your hand, draw 1.
+UNL-043|u|3|2|Enthusiastic Promoter: [Backline] / When I hold, [Buff] all units here.
+UNL-044|s|4+2||Flurry of Feathers: [Reaction] / Choose one — / - Counter a spell. / - Play four 1 [Might] Bird unit tokens with [Deflect].
+UNL-045|g|2||Forgotten Signpost: [Action][>] Exhaust a unit you control, [Exhaust]: Move a different unit you control to the location of the unit you exhausted to pay for this ability.
+UNL-046|s|1||Friendship: [Reaction] / Choose a unit. Give it +1 [Might] this turn for each of the following tags among your units — Bird, Cat, Dog, and Poro.
+UNL-047|u|3+1|3|Mosstomper: [Hunt 2] / [Level 3][>] I have +1 [Might] and [Deflect].
+UNL-048|u|3|3|Trevor Snoozebottom: [Shield] / When I hold, play a ready 3 [Might] Sprite unit token with [Temporary] here.
+UNL-049|g|2||Honeyfruit: This enters exhausted. / [Reaction][>] [Exhaust]: [Add] [Rainbow]. / [Level 6][>] [>>][Reaction][>] [Exhaust]: [Add] [1][Rainbow].
+UNL-050|u|7+1|6|Iascylla: When I hold, at the start of your next Main Phase, you may move an enemy unit to this battlefield.
+UNL-051|uc|5+1|4|Ivern, Nurturer: When you play me or when I hold, look at the top 3 cards of your Main Deck. You may reveal a unit from among them and draw it. Recycle the rest. Then if you revealed a Bird, Cat, Dog, or Poro, do this: [Buff] a friendly unit.
+UNL-052|uc|3|3|Nami, Headstrong: You may pay [Calm] as an additional cost to play me. / When you play me, if you paid the additional cost, [Stun] an enemy unit. / When I hold, the next time you play a unit this turn, ready it and [Buff] it.
+UNL-053|u|2|0|Scuttle Crab:  / When you play me, draw 1. / [Deathknell][>] Choose an opponent. They reveal their hand. You can look at their facedown cards this turn. Gain 1 XP.
+UNL-054|s|4+1||Tricksy Tentacles: Move any number of enemy units with the same controller and a total Might of 8 or less to a single location.
+UNL-055|uc|5+1|5|Vex, Mocking: [Shield] / [Tank] / When you [Stun] an enemy unit at a battlefield, you may move me to that battlefield.
+UNL-056|uc|3+1|1|Yuumi, Magical Cat: When I attack or defend, give one of your other units here +3 [Might] and [Tank] this turn.
+UNL-057|u|6+2|7|Alpha Wildclaw: [Tank] / Your units here with less Might than me can't be chosen by enemy spells and abilities.
+UNL-058|uc|5|4|Lillia, Protector of Dreams: When you play a token unit, give me +1 [Might] this turn. / Your token units have [Tank].
+UNL-059|uc|12+3|12|Master Yi, Unstoppable: [Level 3][>] I cost [2][Calm] less. / [Level 6][>] I cost [4][Calm][Calm] less instead. / [Level 11][>] I cost [6][Calm][Calm][Calm] less instead. / [Level 16][>] I can't be chosen by enemy spells and abilities.
+UNL-060|u|8+2|8|Vilemaw: [Ambush] / Enemy units here with less Might than me don't deal combat damage. / When I hold, draw 1.
+UNL-061|s|2||Downstage Dramatics: [Reaction] / [Repeat] [2] / Draw 1.
+UNL-062|u|4|4|Dramatic Visionary: [Deathknell][>] [Predict 2].
+UNL-063|s|3||Eclipse: [Reaction] / Give a unit -4 [Might] this turn. / [Predict].
+UNL-064|u|5|4|Fate Weaver: When you play me, look at the top 4 cards of your Main Deck. You may reveal a spell with Energy cost [4] or more from among them and draw it. Recycle the rest.
+UNL-065|u|2|2|Icevale Archer: When I attack, you may pay [1] to give a unit here -1 [Might] this turn.
+UNL-066|s|7||Moonlight Affliction: [Reaction] / Give a unit -10 [Might] this turn.
+UNL-067|u|6+1|6|Ruined Rex: [Deathknell][>] Deal 4 to an enemy unit.
+UNL-068|u|6|5|Spectral Centaur: When another friendly unit dies, give me +2 [Might] this turn.
+UNL-069|s|5||Sprite Burst: Play two ready 3 [Might] Sprite unit tokens with [Temporary].
+UNL-070|s|2||Turn to Dust: Give a gear [Temporary].
+UNL-071|u|3|3|Chakram Dancer: [Ambush] / When you play me, give your other units here [Shield] this turn.
+UNL-072|s|3+1||Crescent Strike: [Action] / Choose a battlefield and an enemy unit there. Deal 4 to that unit and 1 to each other enemy unit there.
+UNL-073|s|4||Deadly Flourish: Deal 3 to an enemy unit. When it dies this turn, play a Gold gear token exhausted.
+UNL-074|g|2||Frigid Jewel: When you draw your second card each turn, give a friendly unit +2 [Might] this turn.
+UNL-075|u|3+1|3|Gustwalker: [Hunt 2] / [Level 3][>] I have +1 [Might] and [Ganking].
+UNL-076|u|2|2|Petal Pixie: I have +1 [Might] for each of your units with [Temporary] at my battlefield.
+UNL-077|u|5|3|Soul Shepherd: Your token units have +1 [Might].
+UNL-078|g|2+1||Sprite Fountain: [Temporary] / When you play this, play a ready 3 [Might] Sprite unit token with [Temporary] to your base. / [Deathknell][>] Repeat this gear's play effect.
+UNL-079|uc|3|3|Diana, Lunari: When a showdown begins here, you may pay [1]. If you do, [Predict], then reveal the top card of your Main Deck. If it's a spell, draw it.
+UNL-080|uc|5+1|5|Hwei, Brooding Painter: When I move, draw 1, then discard 1. Then, do the following based on the discarded card's type: / - Spell — Draw 1. / - Gear — Ready up to 2 runes. / - Unit — Give me +3 [Might] this turn.
+UNL-081|u|2|1|Keeper of Masks: [Hidden] / [Temporary] / When you play me, play two Reflection unit tokens here. They become copies of me.
+UNL-082|uc|3|3|Lillia, Fae Fawn: [Accelerate] / When I move from a location, play a 3 [Might] Sprite unit token with [Temporary] there.
+UNL-083|s|2||Smoke and Mirrors: [Hidden] / [Action] / Choose a unit you control and another unit you control at a different location. If at least one of them has [Temporary], move each to the other's location. Draw 1.
+UNL-084|u|7+1|6|Sprite Queen: When you play me or at the start of your Beginning Phase, play a ready 3 [Might] Sprite unit token with [Temporary] to your base.
+UNL-085|g|2||Sumpworks Map: [Reaction] / [Temporary] / When an opponent scores, draw 1.
+UNL-086|uc|5+1|5|Zilean, Time Mage: Once each turn, if you would play a token unit while I'm at a battlefield, you may play that token and an additional copy of it instead.
+UNL-087|u|4+1|4|Blue Sentinel: [Shield 2] / Your hold effects for holding here trigger an additional time. / When I hold, [Add] [Rainbow] at the start of your next Main Phase.
+UNL-088|g|4||Gutter Palace: At the start of your Beginning Phase, if you have exactly 4 cards in hand and exactly 4 units at battlefields, you win the game. / Discard 1, [Exhaust]: Play a 1 [Might] Bird unit token with [Deflect].
+UNL-089|uc|4|4|Jhin, Meticulous Killer: [Vision] / If you've spent [4] or more to play a spell this turn, you may play me for [Mind].
+UNL-090|uc|4|4|LeBlanc, Everywhere at Once: [Backline] / Your [Temporary] effects at my battlefield don't trigger.
+UNL-091|s|5||Concentrate: Draw 2. / [Level 6][>] This costs [2] less. / [Level 11][>] This costs [4] less instead.
+UNL-092|u|2|2|Demacian Diplomat: When you play me, gain 1 XP.
+UNL-093|u|2|1|Dragonsoul Sage: [Reaction][>] [Exhaust]: [Add] [1].
+UNL-094|u|2|2|Gemhand Hunter: [Hunt] / [Level 6][>] I have +1 [Might].
+UNL-095|s|2||Grim Resolve: [Action] / Give a friendly unit +3 [Might] this turn. When it wins a combat this turn, gain 2 XP.
+UNL-096|g|3|2|Hunter's Machete: [Equip] [Body] {{EFFECT: [Hunt]}}
+UNL-097|u|3|3|Kinkou Initiate: When you play me, draw 1 if your other units have total Might 5 or more.
+UNL-098|u|6|6|Targonian Visionary: [Level 11][>] I have +4 [Might].
+UNL-099|u|4|3|Towering Combatant: [Shield 2] / [Tank]
+UNL-100|u|5|5|Voracious Gromp: [Hunt 3]
+UNL-101|s|3||Call to Battle: Move a unit you control to a battlefield you control. Then, choose an opponent. They move a unit they control to the same battlefield.
+UNL-102|u|3|3|Crowd Favorite: [Hunt] / Spend 2 XP: [Buff] me.
+UNL-103|s|2||Disposal Order: [Reaction] / Choose one — / - Choose up to 3 cards from opponents' trashes. Their owners recycle them. / - Draw 1.
+UNL-104|u|8|8|Gentle Gemdragon: When you play me or another Dragon, ready up to 2 runes.
+UNL-105|u|5|5|Imposing Challenger: When I move, you may move an enemy unit here with less Might than me to a different battlefield.
+UNL-106|s|1+1||Repulse: [Reaction] / Choose a friendly unit at a battlefield. Counter an enemy spell or ability that chooses it and no other friendly unit.
+UNL-107|s|2||Stare Down: Choose a friendly unit and a battlefield. Move all enemy units at that battlefield with less Might than the chosen unit to their base. Gain 1 XP.
+UNL-108|u|4|4|Wily Newtfish: If you've gained XP this turn, I have +1 [Might] and [Ganking].
+UNL-109|g|1||Blood Rose: When you play a unit, you may pay [1] to gain 1 XP. / Spend 3 XP, [Exhaust]: Ready a unit.
+UNL-110|s|6+2||Clash of Giants: Choose two units. They deal damage equal to their Mights to each other.
+UNL-111|u|1|1|Determined Sentry: I can't move to base.
+UNL-112|u|2|1|Irresistible Faefolk: When I move to a battlefield, you may move an enemy unit to that battlefield.
+UNL-113|uc|4|4|Master Yi, Tempered: [Hunt 2] / [Level 6][>] I have [Deflect] and [Ganking].
+UNL-114|uc|3+1|4|Nidalee, Cat Form: [Ambush] / When I win a combat, draw 1.
+UNL-115|uc|3+1|4|Nilah, Joyful Ascetic: [Accelerate] / [Ganking] / When I move, gain 1 XP.
+UNL-116|uc|5|5|Poppy, Paragon: [Deflect] / When you play me, if an opponent's score is within 3 points of the Victory Score, ready me and gain 3 XP.
+UNL-117|u|6+1|6|Arachnoid Horror: [Hunt 2] / I can be played to an occupied battlefield if an enemy unit is alone there. / Friendly units can be played to an occupied battlefield if an enemy unit is alone there.
+UNL-118|u|12+4|10|Elder Dragon: Any amount of your damage is enough to kill enemy units. / When you play me, choose up to one enemy unit at each location. Deal 1 to them.
+UNL-119|uc|5+1|5|Kha'Zix, Evolving Hunter: [Hunt] / When I attack, you may spend 3 XP to deal damage equal to my Might to an enemy unit here.
+UNL-120|uc|5+1|6|Rengar, Trophy Hunter: [Ambush] / I can be played to a battlefield where there are enemy units.
+UNL-121|u|3|2|Bewitching Spirit: When you play me, choose a player. They discard 1.
+UNL-122|u|4|4|Crescent Guardian: If you've played a spell this turn, you may pay [Chaos] as an additional cost to play me. If you do, I enter ready.
+UNL-123|u|3|3|Evershade Stalker: When you play me, discard 1, then draw 1.
+UNL-124|s|2||Isolate: Move an enemy unit from a battlefield to its base. Then, if there's an enemy unit alone at that battlefield, draw 1.
+UNL-125|s|3||Lunar Boon: [Reaction] / Discard 1, then draw 2.
+UNL-126|u|6|6|Megatusk: Spend 3 XP: Give your units here [Ganking] this turn.
+UNL-127|u|2|1|Mister Root: [Accelerate] / When I move to a battlefield, gain 2 XP.
+UNL-128|s|3+1||Star-Crossed: [Reaction] / Return a friendly unit and an enemy unit to their owners' hands.
+UNL-129|u|5|5|Vicious Snapjaws: When another friendly unit dies, gain 1 XP.
+UNL-130|u|5|6|Walking Roost: [Deflect] / When you play me, choose an opponent. They play a 1 [Might] Bird unit token with [Deflect].
+UNL-131|s|2||Abandon: [Reaction] / Counter a spell. Return it to its owner's hand instead of putting it in their trash. / [Predict].
+UNL-132|u|5+1|5|Angler Beast: When you play me, return all units with 2 [Might] or less to their owners' hands.
+UNL-133|g|4+1||Blast Cone: When you play this, you may move an enemy unit. / When you move an enemy unit, you may exhaust this to [Stun] it.
+UNL-134|s|1+1||Existential Dread: [Action] / [Repeat] [2] / [Stun] an attacking enemy unit. If it's already stunned, return it to its owner's hand instead.
+UNL-135|u|3|3|Insightful Investigator: When you play me, choose an opponent. They reveal their hand. You may pay 2 XP to choose a card from their hand. If you do, they discard that card and draw 1.
+UNL-136|g|1||Scryer's Bloom: This enters exhausted. / Kill this, [1], [Exhaust]: [Predict 2], then draw 1. Gain 1 XP.
+UNL-137|u|2+1|1|Sinister Poro: When I attack, you may pay [1] to move an enemy unit here to its base.
+UNL-138|g|1||The List: As you play this, name a tag. / [Exhaust]: Give a unit with the named tag -2 [Might] this turn.
+UNL-139|s|2+1||Bone Skewer: [Hidden] / Choose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs. When they do, [Stun] it.
+UNL-140|s|5+2||Conscription: You may spend 5 XP as an additional cost to play this. / Choose an enemy unit at a battlefield with 3 [Might] or less. If you paid the additional cost, choose any enemy unit at a battlefield instead. Take control of it, exhaust it, and recall it.
+UNL-141|uc|2|2|Evelynn, Entrancing: [Hidden] / [Backline] / When you play me from face down on your turn, you may move an enemy unit at a different location to my battlefield.
+UNL-142|s|2+1||Heedless Resurrection: [Reaction] / As an additional cost to play this, kill a friendly unit. / Play a unit from your trash that costs no more Energy and no more Power than the killed unit, ignoring its cost.
+UNL-143|uc|4+1|4|Kha'Zix, Mutating Horror: [Ambush] / When I attack or defend, if an enemy unit is alone here, give me +2 [Might] this turn and gain 2 XP.
+UNL-144|u|7+1|6|Maduli the Gatekeeper: I can't be readied. / [Chaos]: Move me to an occupied enemy battlefield if my Might is greater than the total Might of enemy units there.
+UNL-145|uc|3|3|Pyke, Returned: [Hidden] / [Backline] / Once each turn, when an enemy unit dies while I'm at a battlefield, play a Gold gear token exhausted.
+UNL-146|uc|6+1|6|Syndra, Transcendent: While I'm in a showdown, your spells have [Repeat] [2][Chaos].
+UNL-147|u|10+3|12|Baron Nashor: As you play me, add the Baron Pit battlefield token to the board if it's not there already. If you do, I enter there. / I can't be chosen by enemy spells and abilities. / Other friendly units have +2 [Might].
+UNL-148|g|4+1||Cursed Sarcophagus: When you play this, banish all units from your trash. / [Exhaust]: Play a unit banished with this.
+UNL-149|uc|4+1|3|Diana, No Longer Human: [Ambush] / When you play a spell, give me +2 [Might] this turn.
+UNL-150|uc|4|4|Vex, Apathetic: [Deflect] / When an opponent plays a unit while I'm at a battlefield, [Stun] it. They can't move it this turn.
+UNL-151|u|4+1|5|Bandle Soldier: [Level 3][>] I enter ready.
+UNL-152|u|3|2|Black Rose Dignitary: [Assault] / [Deathknell][>] Channel 1 rune exhausted.
+UNL-153|u|2|1|Carrion Dredger: [Deathknell][>] Play a 1 [Might] Bird unit token with [Deflect] to your base.
+UNL-154|u|3|3|Crimson Pigeons: I have +2 [Might] while I'm attacking with another unit.
+UNL-155|s|3||Heroic Charge: [Action] / Give a friendly unit +1 [Might] this turn and [Stun] an enemy unit at its location.
+UNL-156|u|3|3|Loyal Poro: [Deathknell][>] If I didn't die alone, draw 1.
+UNL-157|u|6|6|Scrutinizing Sergeant: When you play me, gain 1 XP for each friendly unit.
+UNL-158|g|2|2|Shepherd's Heirloom: When you play this, gain 1 XP. / [Equip] — Spend 1 XP
+UNL-159|s|2+1||Soul Harvest: Kill a unit at a battlefield with 3 [Might] or less.
+UNL-160|u|5|5|Ultrasoft Poro: [Exhaust]: Play two 1 [Might] Bird unit tokens with [Deflect]. Use this ability only while I'm at a battlefield.
+UNL-161|g|2||Divining Shells: [Vision] / [Action][>] Kill this, [Exhaust]: Give a unit +2 [Might] this turn.
+UNL-162|u|2|2|Enthralling Protector: [Hunt] / Spend 2 XP: [Buff] me.
+UNL-163|u|4|4|Mageseeker Investigator: Opponents must pay [Rainbow] for each unit beyond the first to move multiple units to my battlefield at the same time.
+UNL-164|u|5+1|3|Safety Inspector: You may spend 3 XP as an additional cost to play me. / When you play me, each player must kill one of their units. If you paid my additional cost, you don't kill a unit this way.
+UNL-165|s|2||Shadow's Call: Choose a friendly unit without [Temporary]. Give it [Temporary]. Draw 2.
+UNL-166|u|4+1|6|Stalking Wolf: [Ambush] / As an additional cost to play me, kill a Bird, Cat, Dog, or Poro you control. You may play me to its battlefield.
+UNL-167|u|5+1|6|Starhound: When you play me, return a Bird, Cat, Dog, or Poro from your trash to your hand.
+UNL-168|s|2+1||Undying Loyalty: This costs [2] less if you choose a Bird, Cat, Dog, or Poro. / Play a unit with cost no more than [2] and no more than [Rainbow] from your trash, ignoring its cost.
+UNL-169|uc|5+1|4|Ashe, Focused: When you play me, choose an opponent. They reveal their hand. Choose a card revealed this way and banish it. When they hold, return it to their hand.
+UNL-170|u|10+3|7|Atakhan: You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs. / [Ganking] / When I attack, the defender must kill one of their units here.
+UNL-171|uc|3+1|6|Galio, Indefatigable: [Deflect] / [Tank] / I don't deal combat damage.
+UNL-172|uc|3+1|3|LeBlanc, Fragmented: [Assault] / [Deathknell][>] Draw 1. If it's your Beginning Phase, draw 2 instead.
+UNL-173|s|1||Sacrifice: [Reaction] / As an additional cost to play this, kill a friendly [Mighty] unit. / Draw 2 and channel 1 rune exhausted.
+UNL-174|g|6||Shard of Undoing: The first time a friendly unit dies during your Beginning Phase each turn, each opponent must kill one of their units.
+UNL-175|s|2||Tactical Retreat: [Reaction] / Choose a friendly unit. The next time it would die this turn, heal it, exhaust it, and recall it instead.
+UNL-176|uc|5+1|5|Vi, Peacekeeper: [Ambush] / When I attack, [Stun] an enemy unit here.
+UNL-177|uc|6|6|Ivern, Friend to All: As you play me, choose Bird, Cat, Dog, or Poro. I gain that tag. / When I conquer or hold, score 1 point if your units have all of the following tags among them — Bird, Cat, Dog, and Poro.
+UNL-178|uc|6+1|5|Poppy, Defender of the Meek: You may spend 3 XP as an additional cost to play me. If you do, I cost [3] less. / [Ambush] / [Tank]
+UNL-179|u|8+1|7|Rift Herald: When I move to a battlefield, look at the top 3 cards of your Main Deck. You may reveal a unit from among them and draw it. Recycle the rest. / [Deathknell][>] Play a unit from your hand to your base, ignoring its Energy cost.
+UNL-180|s|9+3||The Ruination: Kill all units.
+UNL-181|l|||Virtuoso: When you play a spell, if you spent [4] or more, you may banish it. Then, if there are four spells banished with me, put each in its trash, channel 4 runes, and draw 1.
+UNL-182|ss|4||Curtain Call: [Repeat] — [1] / [Rainbow] / [1][Rainbow] / Choose one you haven't already chosen — / - Draw 1. / - Deal 2 to a unit at a battlefield. / - Deal 3 to a unit at a base. / - Give a unit at a battlefield -4 [Might] this turn.
+UNL-183|l|||Pridestalker: When you play a unit, give a unit +1 [Might] this turn.
+UNL-184|ss|2+1||Thrill of the Hunt: [Reaction] / Banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.
+UNL-185|l|||Bloodharbor Ripper: [1], [Exhaust]: Return a friendly unit at a battlefield to its owner's hand. Play a Gold gear token exhausted.
+UNL-186|ss|4+1||Death from Below: Kill a unit at a battlefield. Then, if it had 3 [Might] or less, you may play this from your trash for [Rainbow].
+UNL-187|l|||Piltover Enforcer: When you conquer, if you assigned 3 or more excess damage, you may exhaust me to ready a unit.
+UNL-188|gs|3|3|Hextech Gauntlets: [Equip] [3][Rainbow]. This ability's Energy cost is reduced by the Might of the unit you choose. {{EFFECT: When I conquer, if you assigned 3 or more excess damage, draw 1.}}
+UNL-189|l|||Bashful Bloom: [4], [Exhaust]: Play a ready 3 [Might] Sprite unit token with [Temporary]. This ability costs [1] less for each friendly unit with [Temporary].
+UNL-190|ss|2+2||Lilting Lullaby: [Reaction] / Counter a spell. Its controller can't play spells this turn.
+UNL-191|l|||Wuju Master: [Level 6][>] Your units have +1 [Might]. / [Level 11][>] Your units enter ready.
+UNL-192|ss|3+1||Alpha Strike: [Action] / Choose a friendly unit. It deals damage equal to its Might split among enemy units at battlefields. Then for each unit this kills, do this: Gain 1 XP.
+UNL-193|l|||Gloomist: When you or an ally hold, you may exhaust me to draw 1.
+UNL-194|us|3|3|Shadow: If you play me to a battlefield, I enter ready. / [Action][>] [1][Rainbow], [Exhaust]: [Stun] an enemy unit attacking here.
+UNL-195|l|||Green Father: When you conquer or hold, you may exhaust me to replace that battlefield with a Brush battlefield token.
+UNL-196|us|9+2|8|Daisy!: I enter ready. / Reduce my cost by [1] for each of the following tags among your units — Bird, Cat, Dog, and Poro. / When I attack while your units have all 4 tags, [Stun] an enemy unit here.
+UNL-197|l|||Scorn of the Moon: [Reaction][>] [Exhaust]: [Add] [1]. Spend this Energy only during showdowns.
+UNL-198|ss|3+1||Moonfall: [Action] / Choose a battlefield where you have units. You may move up to one enemy unit to that battlefield. Then give enemy units there -2 [Might] this turn.
+UNL-199|l|||Deceiver: When you conquer or hold, you may discard 1 and exhaust me to play a ready Reflection unit token there. It becomes a copy of another unit there. Give it [Temporary].
+UNL-200|ss|3+2||Mirror Image: Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary].
+UNL-201|l|||Voidreaver: When you win a combat, gain 1 XP. / Spend 1 XP, [Exhaust]: [Buff] a unit. / Spend 2 XP, [Exhaust]: Move an exhausted friendly unit from a battlefield to its base.
+UNL-202|ss|2+1||Void Assault: Move a friendly unit, then move an enemy unit.
+UNL-203|l|||Keeper of the Hammer: When you hold, gain 1 XP. / Spend 3 XP, [Exhaust]: Draw 1.
+UNL-204|ss|2+2||Keeper's Verdict: [Action] / Choose an enemy unit at a battlefield. Its owner places it on the top or bottom of their Main Deck.
+UNL-205|b|||Abandoned Hall: When a player plays a spell, they may give a unit they control here +1 [Might] this turn.
+UNL-206|b|||Altar of Blood: If a unit here would die during combat, its controller may pay [Rainbow][Rainbow][Rainbow] to heal it, exhaust it, and recall it instead.
+UNL-207|b|||Amateur Recital: When you hold here, you may move a unit at a battlefield to its base.
+UNL-208|b|||Black Flame Altar: Units here with [Temporary] have [Shield].
+UNL-209|b|||Dusk Rose Lab: At the start of your Beginning Phase, you may kill a unit you control here to draw 1.
+UNL-210|b|||Forbidding Waste: While a unit here is defending alone, it has -2 [Might].
+UNL-211|b|||Forgotten Library: While you control this battlefield, when you play a spell, if you spent [4] or more, [Predict].
+UNL-212|b|||Frozen Fortress: At the start of each player's Beginning Phase, deal 1 to each unit here.
+UNL-213|b|||Gardens of Becoming: Units here have "[Exhaust]: Gain 1 XP."
+UNL-214|b|||Ripper's Bay: When a unit here is returned to a player's hand, that player may pay [1] to channel 1 rune exhausted.
+UNL-215|b|||Star Spring: The first time a player plays a non-token unit here each turn, they may move another unit they control here to its base.
+UNL-216|b|||The Academy: When you hold here, give your next spell this turn [Repeat] equal to its base cost.
+UNL-217|b|||Trapping Grounds: When you conquer here, if you assigned 3 or more excess damage, play a 1 [Might] Bird unit token with [Deflect].
+UNL-218|b|||Valley of Idols: When a player plays a unit here, they may pay [1] to [Buff] it.
+UNL-219|b|||Vaults of Helia: When you hold here, your non-token units cost [1] more to play this turn.
+UNL-T01|bt|||Baron Pit:  / Units can move here from anywhere.
+UNL-T02|ut||1|Bird: [Deflect]
+UNL-T03|bt|||Brush: Bird, Cat, Dog, Poro, and Ivern units here have +1 [Might]. / When you score here, you may replace this with the battlefield it replaced.
+UNL-T04|ut||1|Buff: A unit may have no more than one buff at a time.
+UNL-T05|gt|||Gold: [Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].
+UNL-T06|ut||0|Reflection: 
+UNL-T08|st|||XP Tracker: Track gained XP here. / Some cards get bonuses based on your [Level]. / Some cards can spend XP for powerful effects.
+VEN-001|u|6|6|Baccai Sandspinner: [Empower] [5]. This ability costs [3] less if you control 4 or fewer runes. / [Empowered][>] I have [Deflect] and [Assault 2].
+VEN-002|u|4|4|Blade Twirler: The first time I move each turn, choose a player. They [Burn 1].
+VEN-003|s|2+1||Brittle Steel: Kill a gear. / [Flow] [4][Fury]
+VEN-004|u|3|3|Dune Surfer: You ignore [Tank] while assigning combat damage here.
+VEN-005|u|2|2|Forsaken Baccai: If you control fewer runes than an opponent at the start of your Beginning Phase, give me +1 [Might] this turn.
+VEN-006|u|4|4|Oasis Raider: If you control fewer runes than an opponent at the start of your Beginning Phase, give me +2 [Might] and [Ganking] this turn.
+VEN-007|u|2|2|Punching Poro: [Empower] — Discard 1 / [Empowered][>] I have +1 [Might].
+VEN-008|s|3||Ruthless Strike: [Action] / As an additional cost to play this, you may discard 1. / Deal 3 to a unit at a battlefield. If you paid the additional cost, deal 5 to it instead.
+VEN-009|u|3+1|4|Baccai Reaper: When I attack, you may pay [Fury] to give me [Assault 2] this turn.
+VEN-010|s|2||Consuming Curse: [Action] / Deal 2 to a unit at a battlefield. This deals 1 Bonus Damage for each card with this name in your trash.
+VEN-011|g|3|1|Pendulum Blade: [Equip] [Fury] {{EFFECT: When I move to a battlefield, give me +2 [Might] this turn.}}
+VEN-012|s|3+1||Perfect Execution: Ready a unit and give it [Assault 3] this turn. / [Flow] [3][Fury]
+VEN-013|u|5|5|Shadow Assassin: I enter ready if you have a card with my name in your trash.
+VEN-014|u|2|2|Shadow Fiend: [Empower] [2][Fury] / [Empowered][>] I have [Assault 3].
+VEN-015|s|1+1||Decree of Rage: [Action] / This can't be countered. / Deal 4 to an enemy Calm unit.
+VEN-016|u|8|8|Eclipse Dragon: [Accelerate] / When I move, if you control 4 or fewer runes, draw 1.
+VEN-017|uc|5+1|5|Morgana, Vindictive: [Ambush] / When you play me, deal damage to a unit equal to the damage marked on it.
+VEN-018|g|4+1||Rage Amplifier: [Empower] [6][Fury] / Your units have +1 [Might]. If I'm [Empowered], they have +2 [Might] instead.
+VEN-019|uc|6|6|Renekton, Rage Fueled: [Accelerate] / When I attack, if you control 4 or fewer runes, deal 2 to all enemy units here.
+VEN-020|u|3|3|Twilight Reveler: When I attack, ready another friendly unit.
+VEN-021|uc|3|3|Akali, Deadly Weapon: [Empower] [2][Fury] / When I move, you may deal 1 to a unit at a battlefield I moved to or from. If I'm [Empowered], deal 2 instead. / [Empowered][>] I have +1 [Might].
+VEN-022|g|5+1||Endless Riches: When you play this, banish your hand and trash, then [Burn 7]. / Skip your Draw Phase. / You may play cards from your trash. / If a card would go to your trash from anywhere other than your Main Deck, banish it instead.
+VEN-023|uc|4+1|4|Zed, From the Shadows: You may discard 1 as an additional cost to play me. / When you play me, if you paid the additional cost, play a 0 [Might] Shadow Clone unit token.
+VEN-024|u|3|3|Affectionate Poro: When a combat that I was in ends, if I haven't been dealt damage this turn, draw 1.
+VEN-025|u|5|5|Esteemed Hierophant: While you control 7 or more runes, prevent all damage that enemy spells and abilities would deal to me.
+VEN-026|u|4|3|Field Musicians: When you play me, give a unit +3 [Might] this turn.
+VEN-027|g|2|1|Hand Hammer: [Equip] [Calm] {{EFFECT: I have +2 [Might] while I'm at a battlefield with exactly one other unit you control.}}
+VEN-028|u|2|2|Mournful Witness: When a combat that I was in ends, empower me. / [Empowered][>] I have +2 [Might].
+VEN-029|u|2|4|Ol' Poro: I can't be played on your first, second, or third turns.
+VEN-030|u|3|3|Serene Ascetic: [Empower] [3] / [Empowered][>] I have [Deflect] and [Shield 3].
+VEN-031|s|1||Twilight Shroud: Give a friendly unit +1 [Might] this turn. It can't be chosen by enemy spells and abilities this turn. / [Flow] [2]
+VEN-032|u|3|3|Frostcoat Mother: [Empower] [12]. This ability costs [1] less for each rune you control. / [Empowered][>] I have +3 [Might].
+VEN-033|u|5|4|Pakaa Protector: When I move, reveal the top card of your Main Deck. If it's a unit, draw it. Otherwise, put it in your trash and give me +2 [Might] this turn.
+VEN-034|s|2+1||Resonating Strike: [Hidden] / [Reaction] / Choose a battlefield you control and a unit you control at a different location. Move that unit to that battlefield and give it +2 [Might] this turn.
+VEN-035|s|3+1||Sanction: [Reaction] / Choose one — / - Empower a unit. Disempower it at end of turn. / - Disempower a unit that's [Empowered]. Empower it at end of turn.
+VEN-036|u|7+2|8|Sandstone Chimera: While I'm at a battlefield, players only channel 1 rune at the start of their Channel Phase.
+VEN-037|u|4|4|Tomb-Raider Barbara: When you play me, if you control 7 or more runes, choose an enemy gear. If it's [Empowered], disempower it. Otherwise, kill it.
+VEN-038|uc|4+1|4|Akali, Silent: I can't be chosen by enemy spells and abilities unless I'm in combat. / When I move to a battlefield, give me +2 [Might] this turn.
+VEN-039|s|1+1||Crumbling Sands: [Reaction] / Counter a spell if an opponent has played another spell this turn.
+VEN-040|s|1||Decree of Focus: [Reaction] / Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 [Might] this turn.
+VEN-041|uc|3+1|3|Riven, Shattered: [Weaponmaster] / When I attack, choose an enemy unit here. Deal 2 to it for each Equipment attached to me.
+VEN-042|uc|5+1|6|Shen, Scourge of Shadows: When I hold, if there is exactly one other unit you control here, draw 1.
+VEN-043|u|1|0|Steel Paws: [Deflect] / [Empower] [7] / [Empowered][>] I have +7 [Might].
+VEN-044|u|7|7|Astral Heron: When you play your first card each turn, if I'm at a battlefield, your next card costs [2][Rainbow][Rainbow] less.
+VEN-045|g|4+1||Helm of Suppression: [Empower] [4][Calm] / Opponents' spells cost [1] more. If this is [Empowered], they cost [1][Rainbow] more instead.
+VEN-046|uc|8+1|8|Nasus, Ascended: [Deflect 2] / [Empower] [8] / [Empowered][>] When I conquer, you score 1 point.
+VEN-047|u|3|3|Apprentice Mage: [Empower] [2] / When I become [Empowered], [Predict 2]. / [Empowered][>] I have +1 [Might].
+VEN-048|u|6|5|Cloud Drake: When you play me, draw 1.
+VEN-049|s|2||Dredge Up: Draw 1. / [Flow] [2]
+VEN-050|u|4|4|Grumpy Rockbear: [Empower] [12]. This ability costs [1] less for each rune you control. / [Empowered][>] I have [Deflect] and [Shield 3].
+VEN-051|s|4||Iterative Design: Play a 3 [Might] Mech unit token. / [Flow] [2][Mind]
+VEN-052|s|1+1||Mesmerize: [Reaction] / Choose one — / - Return a friendly unit to its owner's hand. / - Give an enemy unit -2 [Might] this turn.
+VEN-053|u|2|2|Otterpus: If a player would score 1 point from conquering or holding during their first or second turn, they draw 1 instead.
+VEN-054|g|3||Questionable Tome: [Empower] —  [Exhaust] / Disempower this, [1], [Exhaust]: Draw 1.
+VEN-055|u|4|4|Applied Researchers: [Empower] [3] / [Empowered][>] Your spells cost [1][Rainbow] less, to a minimum of [1].
+VEN-056|s|7||Clairvoyance: [Reaction] / [Predict 5]. / Draw 2.
+VEN-057|u|3+1|4|Covert Informant: [Empower] [3] / [Empowered][>] When I move, draw 1.
+VEN-058|u|2|2|Patched Porobot:  / When you play me, if you control 3 or more other gear, draw 1.
+VEN-059|s|3+1||Shock Blast: [Action] / This costs [2] less if you control something that's [Empowered]. / Deal 4 to a unit at a battlefield.
+VEN-060|u|4+1|3|Sky Cruiser: Discard a gear, [1], [Exhaust]: Deal 4 to a unit at a battlefield.
+VEN-061|s|1||Decree of Insight: [Reaction] / Ignore [Deflect] while paying this spell's cost. / Give an enemy Body unit -5 [Might] this turn.
+VEN-062|g|2||Hextech Formula: This enters exhausted. / [Exhaust]: Empower another gear.
+VEN-063|uc|5+1|6|Nasus, Guardian of Knowledge: Once each turn, when an enemy unit here dies, channel 1 rune exhausted.
+VEN-064|u|10|8|Plaza Guardian: I cost [1] less for each gear you control. / [Deflect]
+VEN-065|uc|6+1|6|Swain, Visionary: [Vision] / When I conquer, if you've played a non-token unit, a non-token gear, and a spell this turn, you score 1 point.
+VEN-066|s|2+1||Temporal Breach: [Hidden] / Banish a unit, then its owner plays it to the same location, ignoring its cost.
+VEN-067|g|10+2||Bottled Constellation: At the start of your Main Phase, you may kill 3 other friendly units and/or gear to score 1 point.
+VEN-068|uc|6+1|6|Jayce, Brilliant Inventor: When you play me or the first time you play a non-token gear each turn, you may ready something besides me that's exhausted.
+VEN-069|uc|4+1|4|Mel, Newly Awakened: When you play me, draw 1. / [Empower] [3] / [Empowered][>] Your spells and abilities can't be countered. If a spell or ability you control would give -[Might] to a unit it chooses, it gives an additional -1 [Might].
+VEN-070|u|3+1|4|Brutal Hunter: [Empower] [3] / [Empowered][>] I have +2 [Might] and [Ganking].
+VEN-071|u|6|5|Fretful Feline: When I become ready, give me +2 [Might] this turn.
+VEN-072|s|2||Guttural Roar: [Action] / Give a unit +2 [Might] this turn. If it's [Empowered], give it +4 [Might] this turn instead.
+VEN-073|g|3|2|Jagged Cutlass: Equip [Body] {{EFFECT: I can't be moved by enemy spells and abilities.}}
+VEN-074|u|2|2|Legion Marauder: [Empower] — [1] or [Body] / [Empowered][>] I have +1 [Might].
+VEN-075|g|3||Platewyrm Egg: This enters exhausted. / [Empower] — [1], [Exhaust] / [Reaction][>] [Exhaust]: [Add] [1]. If this is [Empowered], [Add] [2] instead.
+VEN-076|u|3|3|Repair Specialist: I have [Assault] equal to the number of gear you control.
+VEN-077|g|4||Tools of Empire: [Empower] [2] / [Exhaust]: Give a unit +2 [Might] this turn. If this is [Empowered], give that unit +4 [Might] this turn instead.
+VEN-078|u|4|4|Baccai Witherclaw: [Empower] [1][Rainbow][Rainbow] / [Empowered][>] I have +2 [Might]. / [Empowered][>][>>][Deathknell][>] Channel 2 runes exhausted.
+VEN-079|u|5|5|Dame the Despoiler: [Empower] [5][Body] / [Empowered][>] When I attack or defend, choose a unit here. Increase my Might to its Might this turn, then give me +1 [Might] this turn.
+VEN-080|u|2|1|Noxian Demolitionist: When I conquer, you may kill a gear with Energy cost no more than my Might.
+VEN-081|s|4||Onslaught: Give a unit +6 [Might] this turn. / [Flow] [4]
+VEN-082|u|4|4|Profiteer: When you play me, you may disempower something you control to empower a legend, unit, or gear.
+VEN-083|s|3||Rampage: As you play this, you may pay [Body] as an additional cost. / Choose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 [Might] this turn. They deal damage equal to their Mights to each other.
+VEN-084|uc|4|4|Ambessa, The Wolf: [Empower] [3][Body] / [Empowered][>] I have +3 [Might] and can't be dealt damage unless I'm in combat.
+VEN-085|s|1||Decree of Strength: Choose an opponent. They reveal their hand and you choose a Mind card from it. They recycle that card.
+VEN-086|uc|6|6|Gangplank, Naval: [Empower] [Body][Body] / [Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] instead.
+VEN-087|g|4+1||Hextech Disc: [Empower] — [Exhaust] / Disempower this, [1], [Exhaust]: Play a 3 [Might] Mech unit token to your base.
+VEN-088|uc|4+1|5|Jayce, Hammer in Hand: When I become ready, choose one to give me this turn — / - [Assault 2] / - [Deflect 2] / - [Ganking]
+VEN-089|s|7+1||Wild Claw: Look at the top 5 cards of your Main Deck. You may banish a unit or gear from among them and play it, reducing its Energy cost by [5]. Recycle the rest. Then you may do this: Empower it.
+VEN-090|s|8+3||Cataclysmic Duel: Each player chooses a unit they control. Kill the rest.
+VEN-091|u|10+2|10|Corrupted Dragon: If your score is not within 3 points of the Victory Score, I enter ready. / When I attack, you may move any number of enemy units here each with 5 [Might] or less to their base.
+VEN-092|uc|5|4|Renekton, Brute: [1]: Give me +1 [Might] this turn. / When my Might becomes 10 or more, empower me. / [Empowered][>] I have [Deflect] and [Ganking].
+VEN-093|u|4|4|Kinkou Lifeblade: [Empower] [2] / [Empowered][>] I have +1 [Might] and [Ganking].
+VEN-094|u|3|3|Mask Mother: When you discard me, you may pay [1] to give a friendly unit +2 [Might] this turn.
+VEN-095|u|2|2|Shadow Order Disciple: When I move, you may [Burn 1] to give me +1 [Might] this turn.
+VEN-096|u|5|5|Shadowblade Lurker: I cost [2] less for each card with my name in your trash.
+VEN-097|u|3|1|Spiderling: [Hidden] / I have +1 [Might] for each other unit you control here with my name. / Your deck can have any number of cards named Spiderling.
+VEN-098|u|5|4|Stargazer: Spells with [Flow] you play from your trash cost [2] less, to a minimum of [1].
+VEN-099|u|3|3|Tornado Warrior: [Hidden] / When you play me from face down, you may empower something here. Disempower it at end of turn.
+VEN-100|s|3||Up from the Deep: Play two 1 [Might] Tentacle unit tokens from Bilgewater. / [Flow] [3]
+VEN-101|u|2|2|Gust Monk: You may pay [1] as an additional cost to play me. / When you play me, if you paid the additional cost, banish a card from any trash to give a unit [Assault 2] this turn.
+VEN-102|u|3|3|Ravenbloom Prefect: When an opponent plays a gear, you may banish me to banish it.
+VEN-103|s|3+1||Shadows of the Past: Return up to 2 units from trashes to their owners' hands. {{EFFECT: 1}}
+VEN-104|u|4|4|Tail-Cloaked Matriarch: [Empower] [2][Chaos] / When I become [Empowered], you may choose a unit in your trash with Energy cost no more than [3] and Power cost no more than [Rainbow]. Play it to your base, ignoring its cost.
+VEN-105|s|2+1||Twilight Step: Move a unit with 3 [Might] or less. / [Flow] [4][Chaos]
+VEN-106|s|3+1||Wind and Ghosts: [Action] / Choose a unit at a battlefield. If it has 3 [Might] or less, banish it. Otherwise, return it to its owner's hand.
+VEN-107|s|1+1||Decree of Discord: Return any number of enemy Order units with total Might 5 or less to their owners' hands.
+VEN-108|g|5||Forgotten Relic: When you play this or at the start of your Beginning Phase, [Burn 1]. When you burn a unit this way, do this: Give a friendly unit +[Might] equal to the burned card's Might this turn.
+VEN-109|uc|6|4|Illaoi, Prophet of the Great Kraken: When you play me or when I score, play a [1] [Might] Tentacle unit token from Bilgewater. / I have +1 [Might] for each token unit you control.
+VEN-110|uc|5|4|Mel, Defiant Soul: [Empower] — Discard a spell / When I become [Empowered], banish an enemy unit at a battlefield with 3 [Might] or less.
+VEN-111|u|6+1|6|Minah Swiftfoot: When I move to a battlefield, choose one — / - Each player discards 1. / - Each player draws 1.
+VEN-112|uc|5|5|Zed, Without a Sound: When I conquer, play a 0 [Might] Shadow Clone unit token to your base. / [Action][>] [1][Chaos]: Move me and a Shadow Clone you control to each other's locations.
+VEN-113|uc|3+1|4|Kennen, Storm of Shuriken: When you play me, [Burn 2]. / When I conquer, give a spell in your trash [Flow] equal to its cost this turn.
+VEN-114|u|6|5|Kharox: [Empower] [6][Chaos][Chaos] / When I become [Empowered], choose an opponent. They [Burn 3]. Then you may do this: Choose a unit in their trash and play it, ignoring its cost.
+VEN-115|u|8+2|7|Ocean Drake: You may play me to an open battlefield. / When you play me, you may return a non-Dragon unit to its owner's hand.
+VEN-116|s|3||Dragon Form: Choose a unit. Its base Might becomes 5 this turn. / [Flow] [3]
+VEN-117|u|2|1|Disciple of Shen: [Hidden] / I have [Shield 3] while I'm at a battlefield with exactly one other unit you control.
+VEN-118|u|6|6|Horns of the Dragon: [Tank]
+VEN-119|u|5+1|5|Keeper of Law: I cost [2][Order] less if you control a battlefield with exactly two units there.
+VEN-120|u|4|4|Masa, Crashing Thunder: You may pay [Order] as an additional cost to play me. / When you play me, if you paid the additional cost, [Stun] an enemy unit at a battlefield.
+VEN-121|u|4+1|3|Reluctant Leader: When you play another unit, give me +2 [Might] this turn.
+VEN-122|u|3|3|Solari Sunhawk: [Empower] [2] / [Empowered][>] I have +1 [Might] and [Deflect 2].
+VEN-123|u|3|3|Soulspinner: [Ambush]
+VEN-124|u|3|3|Escaped Grayback: [Empower] — Kill a friendly unit / [Empowered][>] I have +2 [Might].
+VEN-125|u|4|4|Hungry Wolf: [Order]: Ready me and give me +1 [Might] this turn. Use only if you've chosen an enemy unit this turn and only once each turn.
+VEN-126|s|2+1||Ki Barrier: [Reaction] / Choose a unit. Prevent the next 7 damage that would be dealt to it this turn.
+VEN-127|s|2+1||Lacerate: Choose a unit. If it's [Empowered], disempower it. Then kill it if it has 3 [Might] or less. / [Flow] [4][Order][Order]
+VEN-128|u|2|2|Noxian Emissary: [Empower] [1][Order] / [Empowered][>][>>][Deathknell][>] Play two 1 [Might] Recruit unit tokens to your base.
+VEN-129|u|4+1|6|Sacred Protector: I don't deal combat damage unless I'm at a battlefield with exactly one other unit you control.
+VEN-130|u|5|5|Aurok General: [Empower] [3][Order] / [Empowered][>] Your units that are [Empowered] have +2 [Might].
+VEN-131|s|2+1||Decree of Unity: Kill an enemy Chaos unit or gear.
+VEN-132|u|2+1|3|Fallen Feline: When you play me, name a spell. / While I'm at a battlefield, opponents can't play spells with that name.
+VEN-133|g|2||Glowstone: [Empower] [Rainbow][Rainbow] / Disempower this, [Exhaust]: Choose a player. They gain control of this and recall it. / At the end of your turn, kill this and deal 5 to all units you control.
+VEN-134|uc|3|3|Kayle, Justified: [Empower] [3] / I can be [Empowered] up to three times. / I have +2 [Might] for each time I'm [Empowered]. / While I'm [Empowered] three times, I have [Deflect 3] and [Ganking].
+VEN-135|uc|3|2|Kennen, Keeper of Balance: [Hidden] / When you play me or I attack, you may pay [2] to [Stun] a unit. / While there's a stunned enemy unit here, I have +2 [Might].
+VEN-136|uc|5|5|Ambessa, Respected and Feared: [Empower] [1][Order][Order] / [Empowered][>] I have [Assault 2]. / [Empowered][>] When I attack, kill an enemy unit here with less Might than me.
+VEN-137|g|4|0|Shady Spectacles: [Equip] [1][Order] / As this is attached to a unit, choose another friendly unit. The equipped unit becomes a copy of that unit for as long as this is attached to it. {{EFFECT: }}
+VEN-138|uc|6+2|7|Shen, Leader of the Kinkou Order: [Shield] / When I hold, if there is exactly one other unit you control here, you score 1 point.
+VEN-139|l|||Rogue Assassin: [Empower] [3][Rainbow] / [Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.
+VEN-140|ss|1+1||Shuriken Flip: Deal 2 to up to one enemy unit at a battlefield, then move a friendly unit. / [Flow] [3][Rainbow]
+VEN-141|l|||Butcher of the Sands: [Reaction][>] [Rainbow][Rainbow], [Exhaust]: [Add] [2]. Spend this Energy only to play units or activated abilities of units.
+VEN-142|ss|4||Dominus: [Action] / This turn, double a unit's Might and give it "[Rainbow][Rainbow]: Ready me."
+VEN-143|l|||Master of Shadows: When you banish a card you own, empower me. / [Action][>] Disempower me, [Exhaust]: Discard 1, then draw 1.
+VEN-144|ss|2+1||Death Mark: [Burn 3]. / Play a 0 [Might] Shadow Clone unit token. / [Flow] [1][Rainbow][Rainbow]
+VEN-145|l|||Curator of the Sands: When you play a unit, gear, or activated ability with Energy cost [7] or more, you may exhaust me to ready up to 2 runes.
+VEN-146|ss|4||Siphoning Strike: Deal 4 to a unit at a battlefield. If you control 7 or more runes, deal 7 to it instead. When it dies this turn, channel 1 rune exhausted.
+VEN-147|l|||Eye of Twilight: [Action][>] [Exhaust]: Give a friendly unit [Tank] this turn.
+VEN-148|ss|2+1||Shadow Dash: Move an enemy unit to a battlefield where you have units. If you have exactly two units there, they each get +1 [Might] this turn. / [Flow] [5][Rainbow][Rainbow]
+VEN-149|l|||Defender of Tomorrow: [Empower] [2][Rainbow][Rainbow] / [1], [Exhaust]: Ready a gear. / [Empowered][>] [1], [Exhaust]: Ready 2 gear.
+VEN-150|ss|3+1||Acceleration Gate: Ready up to 4 units, gear, and/or runes.
+VEN-151|l|||Soul's Reflection: When you empower something else, empower me. / Disempower me, [Exhaust]: Give a unit at a battlefield -2 [Might] this turn.
+VEN-152|ss|1+1||Rebuttal: [Reaction] / Choose a spell with Energy cost no more than [4].  You may pay [Rainbow]. If you do, gain control of it and you may make new choices for it. Otherwise, counter it.
+VEN-153|l|||Matriarch of War: When you empower something else, empower me. / Disempower me, [Rainbow], [Exhaust]: Ready a unit.
+VEN-154|ss|2+1||Public Execution: Choose a friendly unit. Kill an enemy unit with less Might than it. / [Flow] [5][Rainbow][Rainbow]
+VEN-155|l|||Heart of the Tempest: When you play a card from anywhere other than your hand, empower me. / [Action][>] Disempower me, [Exhaust]: Give a unit [Assault 2] this turn.
+VEN-156|ss|1||Lightning Rush: Look at the top 3 cards of your Main Deck. You may choose a card from among them and draw it. Put the rest into your trash. / [Flow] [2][Rainbow]
+VEN-157|b|||Dragon Roost: Any player may pay [Rainbow][Rainbow] as an additional cost to play a Dragon. If they do, they play it to this battlefield.
+VEN-158|b|||Heisho, Shell of the World: Players ignore [Deflect] while paying for spells and abilities choosing something here.
+VEN-159|b|||Kinkou Temple: Units here with [Tank] have +1 [Might].
+VEN-160|b|||Mystic Vortex: During showdowns here, cards with [Reaction] cost [Rainbow] more to play.
+VEN-161|b|||Piltovan Forge: While you control this battlefield, the first friendly gear activated ability played each turn costs [1] less.
+VEN-162|b|||Protective Sands: When you conquer here, if you control 4 or fewer runes, you may pay [1] to draw 1.
+VEN-163|b|||Risen Altar: [Empower] costs of your units here cost [1] or [Rainbow] less.
+VEN-164|b|||Sandswept Tomb: Each spell that chooses one or more units here that are friendly to it costs [Rainbow] less.
+VEN-165|b|||Shadow Temple: When you hold here, [Burn 3].
+VEN-166|b|||Threshold of the Gray: When combat starts here, the attacker and defender each [Add] [1].
+VEN-SP2|uc|4+1|4|Sona, Harmonious: At the end of your turn, if I'm at a battlefield, ready up to 4 friendly runes.

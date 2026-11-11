@@ -57,7 +57,12 @@ if (existsSync(localPath)) {
     const look = (code) => byCode.get(code) || byCode.get(code.replace(/[a-z*]+$/, ''));
     const ent = (x) => { const g = look(x.cardCode); return g ? { q: x.count, c: cardInfo({ name: g.name, type: g.type, code: g.code }) } : { q: x.count, c: cardInfo({ name: x.name || x.cardCode, type: x.type, code: x.cardCode }) }; };
     const champG = d.chosenChampion && look(d.chosenChampion);
-    let main = d.main.map(ent);
+    // some sample rows were imported with the legend and the 12 runes inside `main`; move them out by gallery type
+    const typeOf = (x) => look(x.cardCode)?.type;
+    const strayLegend = d.main.find((x) => typeOf(x) === 'legend'); const strayRunes = d.main.filter((x) => typeOf(x) === 'rune');
+    if (strayLegend && !d.legend) d.legend = strayLegend.cardCode;
+    if (strayRunes.length && !(d.runes || []).length) d.runes = strayRunes;
+    let main = d.main.filter((x) => !['legend', 'rune', 'battlefield'].includes(typeOf(x))).map(ent);
     // the sample stores the chosen champion inside main; split one copy out to mirror the PA shape
     const champ = [];
     if (champG) { const e = main.find((m) => m.c.name === champG.name); if (e) { e.q -= 1; champ.push({ q: 1, c: e.c }); main = main.filter((m) => m.q > 0); } }
@@ -162,12 +167,21 @@ const kmOut = {};
 for (const k of [3, 4, 5]) { const km = kmeans(Z, k); kmOut[k] = { inertia: +km.inertia.toFixed(1), sizes: Array.from({ length: k }, (_, i) => km.asg.filter((a) => a === i).length), centroidsRaw: km.cent.map((c) => Object.fromEntries(CL_FEATS.map((f, i) => [f, +(c[i] * sg[i] + mu[i]).toFixed(2)]))) }; if (k === 4) valid.forEach((d, i) => (d.cluster = km.asg[i])); }
 // Rule-based archetype label (HEURISTIC, thresholds chosen after reading the k=4 centroids; see deck-theory.md 2.1)
 function archetype(f) {
-  if (f.avgEnergy <= 2.75 && f.units >= 20 && f.e6p <= 2) return 'aggro';
-  if (f.units <= 15 || (f.spells >= 20 && f.r_removal + f.r_counterspells >= 12)) return 'control';
-  if (f.avgEnergy >= 3.5 || f.e6p >= 6) return 'ramp/big';
-  return 'midrange';
+  if (f.e6p >= 6 || f.avgEnergy >= 3.4) return 'big-control';
+  if (f.gear >= 8) return 'gear-engine';
+  if (f.units >= 22) return 'unit-aggro';
+  return 'spell-tempo';
 }
-for (const d of valid) d.arch = archetype(d.f);
+for (const d of valid) d.archRule = archetype(d.f);
+// Archetype = k-means (k=4) cluster, named from its centroid: most 6+ energy -> big-control, most gear -> gear-engine, most units -> unit-aggro, rest -> spell-tempo.
+{
+  const cents = kmOut[4].centroidsRaw.map((c, i) => ({ i, ...c })); const names = {};
+  const take = (key) => { const c = cents.filter((x) => !(x.i in names)).sort((x, y) => y[key] - x[key])[0]; return c.i; };
+  names[take('e6p')] = 'big-control'; names[take('gear')] = 'gear-engine'; names[take('units')] = 'unit-aggro'; names[cents.find((x) => !(x.i in names)).i] = 'spell-tempo';
+  for (const d of valid) d.arch = names[d.cluster];
+  kmOut.names = names; kmOut.zscale = Object.fromEntries(CL_FEATS.map((f, i) => [f, { mean: +mu[i].toFixed(3), sd: +sg[i].toFixed(3) }]));
+  kmOut.ruleAgreement = +(valid.filter((d) => d.arch === d.archRule).length / valid.length).toFixed(3);
+}
 
 // ---------- stats helpers ----------
 const q = (arr, p) => { if (!arr.length) return NaN; const a = arr.slice().sort((x, y) => x - y); const i = (a.length - 1) * p; const lo = Math.floor(i), hi = Math.ceil(i); return a[lo] + (a[hi] - a[lo]) * (i - lo); };
@@ -190,19 +204,27 @@ out.push(`- decks containing a currently banned card: ${valid.filter((d) => d.f.
 out.push(`- invalid reasons sample: ${JSON.stringify(tally(decks.filter((d) => !d.valid).map((d) => `${d.f.mainTotal}/${d.f.runeTotal}/${d.f.bfTotal}/${d.champ.length}`)))}`);
 out.push(`- cards not found in gallery (by name): ${JSON.stringify(top(tally(valid.flatMap((d) => d.f.notInGallery)), 15))}`);
 out.push(`- kmeans: ${JSON.stringify(kmOut, null, 1)}`);
-out.push(`- rule archetypes: ${JSON.stringify(tally(valid.map((d) => d.arch)))}; cluster x arch: ${JSON.stringify(tally(valid.map((d) => `c${d.cluster}:${d.arch}`)))}`);
+out.push(`- archetypes (cluster names): ${JSON.stringify(tally(valid.map((d) => d.arch)))}; rule agreement ${kmOut.ruleAgreement}; arch x era: ${JSON.stringify(tally(valid.map((d) => `${d.arch}:${d.era}`)))}; arch x placement: ${JSON.stringify(tally(valid.map((d) => `${d.arch}:${d.p.cls}`)))}`);
 writeFileSync('out/00-dataset.md', out.join('\n'));
 
 const T = [table(valid, 'ALL valid lists')];
 for (const era of ['RAD', 'VEN-postban', 'VEN-preban']) T.push(table(valid.filter((d) => d.era === era), `era ${era}`));
 T.push(table(valid.filter((d) => ['win', 'top8'].includes(d.p.cls)), 'placement win/top8 only'));
 writeFileSync('out/01-overall.md', T.join('\n\n'));
-writeFileSync('out/02-archetype.md', ['aggro', 'midrange', 'control', 'ramp/big'].map((a) => table(valid.filter((d) => d.arch === a), `archetype ${a}`)).join('\n\n'));
+writeFileSync('out/02-archetype.md', ['unit-aggro', 'spell-tempo', 'gear-engine', 'big-control'].map((a) => table(valid.filter((d) => d.arch === a), `archetype ${a}`)).join('\n\n'));
 
+// bands: p25-p75 (p10-p90) per archetype, for the doc
+{
+  const ARCH = ['unit-aggro', 'spell-tempo', 'gear-engine', 'big-control'];
+  const cell = (rows, m) => { const a = rows.map((d) => d.f[m]); const r = (p) => (m === 'avgEnergy' ? q(a, p).toFixed(2) : Math.round(q(a, p))); return `${r(0.25)}–${r(0.75)} (${r(0.1)}–${r(0.9)})`; };
+  const o = [`| metric | ALL n=${valid.length} | ${ARCH.map((a) => `${a} n=${valid.filter((d) => d.arch === a).length}`).join(' | ')} | placed win/top8 n=${valid.filter((d) => ['win', 'top8'].includes(d.p.cls)).length} | RAD era n=${valid.filter((d) => d.era === 'RAD').length} |`, `|---|---|${ARCH.map(() => '---').join('|')}|---|---|`];
+  for (const m of METRICS) o.push(`| ${m} | ${cell(valid, m)} | ${ARCH.map((a) => cell(valid.filter((d) => d.arch === a), m)).join(' | ')} | ${cell(valid.filter((d) => ['win', 'top8'].includes(d.p.cls)), m)} | ${cell(valid.filter((d) => d.era === 'RAD'), m)} |`);
+  writeFileSync('out/10-bands.md', o.join('\n'));
+}
 // compact per-group table: selected metrics, p25-p50-p75
 const SEL = ['units', 'spells', 'gear', 'avgEnergy', 'e01', 'e2', 'e3', 'e4', 'e5', 'e6p', 'powerPips', 'runeMajor', 'chosenCopies', 'championUnits', 'signature', 'r_removal', 'r_card_flow', 'r_tempo', 'r_combat_tricks', 'r_counterspells', 'r_finishers', 'x3'];
 const compact = (groups, title, minN = 5) => { const o = [`### ${title}`, `| group | n | ${SEL.join(' | ')} |`, `|---|---|${SEL.map(() => '---').join('|')}|`]; for (const [k, rows] of [...groups].sort((a, b) => b[1].length - a[1].length)) { if (rows.length < minN) continue; o.push(`| ${k} | ${rows.length} | ${SEL.map((m) => { const a = rows.map((d) => d.f[m]); return m === 'avgEnergy' ? `${q(a, 0.5).toFixed(2)}` : `${q(a, 0.25).toFixed(0)}-${q(a, 0.5).toFixed(0)}-${q(a, 0.75).toFixed(0)}`; }).join(' | ')} |`); } return o.join('\n'); };
-writeFileSync('out/03-groups.md', [compact(groupBy(valid, (d) => d.legendTag), 'per legend (champion tag), p25-p50-p75'), compact(groupBy(valid, (d) => d.pair), 'per domain pair'), compact(groupBy(valid, (d) => d.arch), 'per rule archetype', 1), compact(groupBy(valid, (d) => 'cluster' + d.cluster), 'per k-means cluster (k=4)', 1), compact(groupBy(valid, (d) => d.era), 'per era', 1), compact(groupBy(valid, (d) => d.p.cls), 'per placement class', 1)].join('\n\n'));
+writeFileSync('out/03-groups.md', [compact(groupBy(valid, (d) => d.legendTag), 'per legend (champion tag), p25-p50-p75'), compact(groupBy(valid, (d) => d.pair), 'per domain pair'), compact(groupBy(valid, (d) => d.arch), 'per archetype (k-means cluster)', 1), compact(groupBy(valid, (d) => d.era), 'per era', 1), compact(groupBy(valid, (d) => d.p.cls), 'per placement class', 1)].join('\n\n'));
 
 // legend detail: archetype mix, chosen champion, battlefields, rune splits
 const L = ['### per legend detail', '| legend | n | pair | archetypes | chosen champion (share) | chosen copies p50 | rune splits | top battlefields (share of lists) |', '|---|---|---|---|---|---|---|---|'];
@@ -245,7 +267,7 @@ const S = []; const withSide = valid.filter((d) => d.f.sideTotal > 0);
 S.push(`### sideboard size: ${JSON.stringify(tally(valid.map((d) => d.f.sideTotal)))}`);
 const catTot = {}; let tot = 0; for (const d of withSide) for (const e of d.side) { const k = sideCat(e.c); catTot[k] = (catTot[k] || 0) + e.q; tot += e.q; }
 S.push('### sideboard slots by category, all lists with a sideboard (n=' + withSide.length + ')', ...top(catTot, 12).map(([k, v]) => `- ${k}: ${(100 * v / tot).toFixed(1)}% of slots, ${(v / withSide.length).toFixed(2)} cards/deck`));
-for (const a of ['aggro', 'midrange', 'control', 'ramp/big']) { const rows = withSide.filter((d) => d.arch === a); const ct = {}; let t = 0; for (const d of rows) for (const e of d.side) { const k = sideCat(e.c); ct[k] = (ct[k] || 0) + e.q; t += e.q; } S.push(`- ${a} (n=${rows.length}): ` + top(ct, 6).map(([k, v]) => `${k} ${(v / rows.length).toFixed(1)}`).join('; ')); }
+for (const a of ['unit-aggro', 'spell-tempo', 'gear-engine', 'big-control']) { const rows = withSide.filter((d) => d.arch === a); const ct = {}; let t = 0; for (const d of rows) for (const e of d.side) { const k = sideCat(e.c); ct[k] = (ct[k] || 0) + e.q; t += e.q; } S.push(`- ${a} (n=${rows.length}): ` + top(ct, 6).map(([k, v]) => `${k} ${(v / rows.length).toFixed(1)}`).join('; ')); }
 const sc = {}; for (const d of withSide) for (const e of d.side) sc[e.c.name] = (sc[e.c.name] || 0) + 1;
 S.push('### most common sideboard cards (share of lists with a sideboard)', ...top(sc, 25).map(([k, v]) => { const c = roleCache.get(k); return `- ${k}: ${(100 * v / withSide.length).toFixed(0)}% [${(c?.roles || []).join(',')}]`; }));
 const mc = {}; for (const d of valid) for (const e of [...d.champ, ...d.main]) mc[e.c.name] = (mc[e.c.name] || 0) + 1;

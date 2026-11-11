@@ -1,0 +1,146 @@
+[
+ {
+  "name": "origins-errata",
+  "title": "Riftbound: Origins Card Errata",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-origins-card-errata/",
+  "published": "2025-10-28T01:00:00.000Z",
+  "rev": "P2jdEKc6GZf6O4yCyb7qAi",
+  "chars": 13026,
+  "sha256": "2de3a9131c4d7507"
+ },
+ {
+  "name": "origins-faq",
+  "title": "Riftbound Origins FAQ",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-origins-faq/",
+  "published": "2025-10-16T19:00:00.000Z",
+  "rev": "K6OBYVD123yLLpF7jBugK5",
+  "chars": 62537,
+  "sha256": "b1752608799f8b83"
+ },
+ {
+  "name": "patch-notes-origins",
+  "title": "Riftbound Core Rules: Patch Notes",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-core-rules-patch-notes/",
+  "published": "2025-10-24T01:00:00.000Z",
+  "rev": "P2jdEKc6GZf6O4yCyb7qAi",
+  "chars": 22321,
+  "sha256": "990c1763cbe6f3cd"
+ },
+ {
+  "name": "patch-notes-radiance",
+  "title": "Core Rules: Radiance Patch Notes (Effective October 16, 2026)",
+  "url": "https://playriftbound.com/en-us/news/announcements/core-rules-radiance-patch-notes-effective-october-16-2026/",
+  "published": "2026-10-09T16:00:00.000Z",
+  "rev": "ry10dByU7EEFU2qpX6EE6c",
+  "chars": 24789,
+  "sha256": "7c9ab9cd21c108c7"
+ },
+ {
+  "name": "patch-notes-spiritforged",
+  "title": "Riftbound Core Rules: Spiritforged Patch Notes",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-core-rules-spiritforged-patch-notes/",
+  "published": "2025-12-05T02:00:00.000Z",
+  "rev": "P2jdEKc6GZf6O4yCyb7qAi",
+  "chars": 13913,
+  "sha256": "8bee306aa07c402a"
+ },
+ {
+  "name": "patch-notes-unleashed",
+  "title": "Riftbound Core Rules: Unleashed Patch Notes",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-core-rules-unleashed-patch-notes/",
+  "published": "2026-03-30T16:00:00.000Z",
+  "rev": "XCTgZQwSGIOEwOvRbvMYKc",
+  "chars": 27406,
+  "sha256": "e39d2c7225c2a46f"
+ },
+ {
+  "name": "patch-notes-vendetta",
+  "title": "Core Rules: Vendetta Patch Notes",
+  "url": "https://playriftbound.com/en-us/news/announcements/core-rules-vendetta-patch-notes/",
+  "published": "2026-07-17T00:30:00.000Z",
+  "rev": "JxwKjQ4plLez7JxHpqarfH",
+  "chars": 27086,
+  "sha256": "5bf07f0a1b432b2c"
+ },
+ {
+  "name": "radiance-errata",
+  "title": "Radiance Errata Updates",
+  "url": "https://playriftbound.com/en-us/news/announcements/radiance-errata-updates/",
+  "published": "2026-10-09T16:00:00.000Z",
+  "rev": "xazD1NydBvxtmIxXWIWiO4",
+  "chars": 2354,
+  "sha256": "6e80353c96b715bb"
+ },
+ {
+  "name": "radiance-faq",
+  "title": "Radiance Rules FAQ and Clarifications",
+  "url": "https://playriftbound.com/en-us/news/organizedplay/radiance-rules-faq-and-clarifications/",
+  "published": "2026-10-26T16:00:00.000Z",
+  "rev": "6LbxA4c5p2VL183RwYVb7m",
+  "chars": 9305,
+  "sha256": "6ed96921760cfbd1"
+ },
+ {
+  "name": "rules-hub",
+  "title": "Rules Hub",
+  "url": "https://playriftbound.com/en-us/rules-hub/",
+  "published": "2026-07-17T00:30:00.000Z",
+  "rev": "T4xYXIZ0qoV31nY2YA0myb",
+  "chars": 3114,
+  "sha256": "eb7630bbb8902c88"
+ },
+ {
+  "name": "spiritforged-errata",
+  "title": "Riftbound Spiritforged Errata",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-spiritforged-errata/",
+  "published": "2026-01-14T02:00:00.000Z",
+  "rev": "lUOsIMoAHmGZdg2cOiAhmD",
+  "chars": 7110,
+  "sha256": "52d6d2ecf9526df6"
+ },
+ {
+  "name": "spiritforged-faq",
+  "title": "Riftbound Spiritforged FAQ",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/riftbound-spiritforged-faq/",
+  "published": "2026-01-14T02:00:00.000Z",
+  "rev": "5xgDHibkxp25pk3FnVT0MH",
+  "chars": 26881,
+  "sha256": "be71c112f0232b0a"
+ },
+ {
+  "name": "unleashed-errata",
+  "title": "Unleashed Errata Updates",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/unleashed-errata-updates/",
+  "published": "2026-04-03T01:00:00.000Z",
+  "rev": "CBOnzl0gEDUl3TLD2Ros2W",
+  "chars": 4102,
+  "sha256": "d1770bee0897d244"
+ },
+ {
+  "name": "unleashed-faq",
+  "title": "Unleashed Rules FAQ and Clarifications",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/unleashed-rules-faq-and-clarifications/",
+  "published": "2026-04-29T16:00:00.000Z",
+  "rev": "juolGRHVtjOsRLFYBEaf3Z",
+  "chars": 41673,
+  "sha256": "5a3568b03d532216"
+ },
+ {
+  "name": "vendetta-errata",
+  "title": "Vendetta Errata Updates",
+  "url": "https://playriftbound.com/en-us/news/announcements/vendetta-errata-updates/",
+  "published": "2026-07-23T16:00:00.000Z",
+  "rev": "M4hdb3GDOMuirfurf2K1C0",
+  "chars": 4088,
+  "sha256": "e972c20fa36c5c0b"
+ },
+ {
+  "name": "vendetta-faq",
+  "title": "Vendetta Rules FAQ and Clarifications",
+  "url": "https://playriftbound.com/en-us/news/rules-and-releases/vendetta-rules-faq-and-clarifications/",
+  "published": "2026-08-14T01:00:00.000Z",
+  "rev": "xOUhMZ9vc49S6GmzdkrIRK",
+  "chars": 35629,
+  "sha256": "cb24a198c3bcb14c"
+ }
+]
