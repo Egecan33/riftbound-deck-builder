@@ -1,0 +1,581 @@
+{
+ "pool": 1095,
+ "deckable": 953,
+ "counts": {
+  "removal_single": {
+   "all": 120,
+   "deckable": 119,
+   "byType": {
+    "unit": 44,
+    "spell": 71,
+    "gear": 4,
+    "legend": 1,
+    "battlefield": 0
+   },
+   "rad": 17,
+   "why": {
+    "deal:unit": 66,
+    "kill:unit": 20,
+    "kill:gear": 13,
+    "fight:unit": 8,
+    "banish:unit": 5,
+    "grant-Temporary": 3,
+    "takeControl:unit": 3,
+    "edict-symmetric": 2,
+    "takeControl:gear": 1,
+    "banish:gear": 1
+   }
+  },
+  "removal_sweeper": {
+   "all": 25,
+   "deckable": 24,
+   "byType": {
+    "unit": 8,
+    "spell": 14,
+    "gear": 2,
+    "legend": 0,
+    "battlefield": 1
+   },
+   "rad": 4,
+   "why": {
+    "deal:unit": 21,
+    "kill:unit": 3,
+    "kill:gear": 1
+   }
+  },
+  "combat_trick": {
+   "all": 65,
+   "deckable": 63,
+   "byType": {
+    "unit": 1,
+    "spell": 61,
+    "gear": 1,
+    "legend": 2,
+    "battlefield": 0
+   },
+   "rad": 10,
+   "why": {
+    "might": 36,
+    "stun": 10,
+    "grantKeyword": 9,
+    "ready": 5,
+    "prevent": 3,
+    "doubleMight": 2,
+    "setMight": 1,
+    "swapMight": 1
+   }
+  },
+  "counter_protection": {
+   "all": 33,
+   "deckable": 31,
+   "byType": {
+    "unit": 8,
+    "spell": 19,
+    "gear": 4,
+    "legend": 1,
+    "battlefield": 1
+   },
+   "rad": 3,
+   "why": {
+    "counter": 12,
+    "death-replacement": 8,
+    "grant-Deflect": 5,
+    "prevent": 4,
+    "retarget": 2,
+    "grant-immunity": 2,
+    "untargetable-others": 1
+   }
+  },
+  "card_flow": {
+   "all": 152,
+   "deckable": 132,
+   "byType": {
+    "unit": 58,
+    "spell": 48,
+    "gear": 26,
+    "legend": 10,
+    "battlefield": 10
+   },
+   "rad": 26,
+   "why": {
+    "draw": 135,
+    "toHand": 10,
+    "tutorTop": 7
+   }
+  },
+  "card_selection": {
+   "all": 54,
+   "deckable": 49,
+   "byType": {
+    "unit": 28,
+    "spell": 14,
+    "gear": 7,
+    "legend": 1,
+    "battlefield": 4
+   },
+   "rad": 15,
+   "why": {
+    "look": 44,
+    "Vision": 8,
+    "banishTop": 3
+   }
+  },
+  "rune_ramp": {
+   "all": 96,
+   "deckable": 72,
+   "byType": {
+    "unit": 39,
+    "spell": 14,
+    "gear": 20,
+    "legend": 14,
+    "battlefield": 9
+   },
+   "rad": 17,
+   "why": {
+    "channel": 32,
+    "add": 29,
+    "gold-token": 28,
+    "readyRune": 9
+   }
+  },
+  "cost_reducer": {
+   "all": 15,
+   "deckable": 9,
+   "byType": {
+    "unit": 9,
+    "spell": 0,
+    "gear": 0,
+    "legend": 1,
+    "battlefield": 5
+   },
+   "rad": 2,
+   "why": {
+    "others": 15
+   }
+  },
+  "finisher": {
+   "all": 76,
+   "deckable": 73,
+   "byType": {
+    "unit": 62,
+    "spell": 8,
+    "gear": 3,
+    "legend": 0,
+    "battlefield": 3
+   },
+   "rad": 14,
+   "why": {
+    "big-body": 52,
+    "score": 14,
+    "mass-pump": 10,
+    "win": 2,
+    "extraTurn": 1
+   }
+  },
+  "token_maker": {
+   "all": 66,
+   "deckable": 58,
+   "byType": {
+    "unit": 32,
+    "spell": 17,
+    "gear": 9,
+    "legend": 5,
+    "battlefield": 3
+   },
+   "rad": 17,
+   "why": {
+    "unit:Recruit": 20,
+    "unit:Mech": 10,
+    "unit:Sprite": 8,
+    "gear:Bomb": 7,
+    "unit:Bird": 7,
+    "unit:Sand Soldier": 6,
+    "unit:Reflection": 3,
+    "unit:Shadow Clone": 3,
+    "unit:Tentacle": 2,
+    "unit:(same)": 1,
+    "unit:(copy)": 1
+   }
+  },
+  "buff_source": {
+   "all": 122,
+   "deckable": 106,
+   "byType": {
+    "unit": 47,
+    "spell": 6,
+    "gear": 53,
+    "legend": 8,
+    "battlefield": 8
+   },
+   "rad": 18,
+   "why": {
+    "equipment": 43,
+    "buff-counter": 40,
+    "keyword-anthem": 25,
+    "anthem": 16,
+    "permanent-might": 1
+   }
+  },
+  "mobility": {
+   "all": 98,
+   "deckable": 91,
+   "byType": {
+    "unit": 61,
+    "spell": 21,
+    "gear": 9,
+    "legend": 5,
+    "battlefield": 2
+   },
+   "rad": 14,
+   "why": {
+    "move": 32,
+    "grant-Ganking": 23,
+    "Ganking": 18,
+    "play-anywhere": 13,
+    "recall": 7,
+    "swapPlaces": 4,
+    "equip-Ganking": 2
+   }
+  },
+  "haste": {
+   "all": 68,
+   "deckable": 65,
+   "byType": {
+    "unit": 62,
+    "spell": 2,
+    "gear": 1,
+    "legend": 2,
+    "battlefield": 1
+   },
+   "rad": 15,
+   "why": {
+    "Accelerate": 31,
+    "self": 29,
+    "others": 8,
+    "grant-Accelerate": 2
+   }
+  },
+  "recursion": {
+   "all": 42,
+   "deckable": 42,
+   "byType": {
+    "unit": 15,
+    "spell": 25,
+    "gear": 2,
+    "legend": 0,
+    "battlefield": 0
+   },
+   "rad": 3,
+   "why": {
+    "play": 17,
+    "Flow": 15,
+    "returnToHand": 9,
+    "self-from-trash": 1,
+    "play-from-trash-permission": 1
+   }
+  },
+  "disruption": {
+   "all": 121,
+   "deckable": 112,
+   "byType": {
+    "unit": 55,
+    "spell": 50,
+    "gear": 7,
+    "legend": 2,
+    "battlefield": 7
+   },
+   "rad": 13,
+   "why": {
+    "move-enemy": 28,
+    "stun": 25,
+    "shrink": 23,
+    "bounce": 16,
+    "restriction": 15,
+    "reveal-hand": 7,
+    "tax": 4,
+    "discard": 3,
+    "discard-symmetric": 2,
+    "mill": 2,
+    "exhaust": 1,
+    "trash-hate": 1
+   }
+  }
+ },
+ "noRoleDeckable": 184,
+ "speed": {
+  "card": {
+   "unit:normal": 547,
+   "spell:action": 91,
+   "gear:normal": 131,
+   "spell:normal": 109,
+   "spell:reaction": 71,
+   "unit:reaction": 3,
+   "gear:reaction": 1
+  },
+  "interactive": 201,
+  "hidden": 45
+ },
+ "conditionality": {
+  "anyConditional": 210,
+  "gates": {
+   "legion": 10,
+   "level": 15,
+   "empowered": 36
+  },
+  "types": {
+   "kills-target": 1,
+   "legion": 10,
+   "turn-event": 16,
+   "opponent-choice": 1,
+   "excess-damage": 6,
+   "opponent-controls": 2,
+   "alone": 6,
+   "opponent-near-win": 3,
+   "control": 13,
+   "other": 4,
+   "state": 13,
+   "at-battlefield": 8,
+   "exists": 11,
+   "if-you-cant": 2,
+   "combat-tie": 1,
+   "mighty": 2,
+   "hand-size": 2,
+   "unit-count-here": 2,
+   "rune-count": 9,
+   "showed-off": 6,
+   "paid-additional-cost": 17,
+   "if-you-do": 1,
+   "control-here": 7,
+   "in-combat": 5,
+   "guessed-type": 1,
+   "played-from-face-down": 1,
+   "your-turn": 3,
+   "and": 1,
+   "lowest-revealed": 1,
+   "rune-deck-empty": 1,
+   "played-from-not-hand": 2,
+   "died-alone": 2,
+   "target-is": 4,
+   "was-mighty": 1,
+   "you-have": 3,
+   "you-near-win": 2,
+   "level": 15,
+   "if-they-do": 2,
+   "played-from-hand": 1,
+   "target-has": 1,
+   "exact-board": 1,
+   "total-might": 1,
+   "might-compare": 1,
+   "not-present": 1,
+   "attacking-with-other": 1,
+   "phase": 1,
+   "tag-set": 1,
+   "target-might": 3,
+   "played-to-battlefield": 1,
+   "empowered": 36,
+   "exactly-one-other-here": 3
+  },
+  "optionalCosts": 39,
+  "selfCostReduction": 35
+ },
+ "curve": [
+  {
+   "energy": 1,
+   "n": 2,
+   "median": 0.5,
+   "mean": 0.5,
+   "min": 0,
+   "max": 1
+  },
+  {
+   "energy": 2,
+   "n": 76,
+   "median": 2,
+   "mean": 1.76,
+   "min": 0,
+   "max": 4
+  },
+  {
+   "energy": 3,
+   "n": 126,
+   "median": 3,
+   "mean": 2.96,
+   "min": 1,
+   "max": 6
+  },
+  {
+   "energy": 4,
+   "n": 117,
+   "median": 4,
+   "mean": 3.73,
+   "min": 1,
+   "max": 6
+  },
+  {
+   "energy": 5,
+   "n": 95,
+   "median": 5,
+   "mean": 4.63,
+   "min": 1,
+   "max": 6
+  },
+  {
+   "energy": 6,
+   "n": 70,
+   "median": 6,
+   "mean": 5.53,
+   "min": 3,
+   "max": 8
+  },
+  {
+   "energy": 7,
+   "n": 27,
+   "median": 7,
+   "mean": 6.7,
+   "min": 4,
+   "max": 8
+  },
+  {
+   "energy": 8,
+   "n": 20,
+   "median": 8,
+   "mean": 7.5,
+   "min": 5,
+   "max": 9
+  },
+  {
+   "energy": 9,
+   "n": 7,
+   "median": 8,
+   "mean": 8.14,
+   "min": 6,
+   "max": 10
+  },
+  {
+   "energy": 10,
+   "n": 7,
+   "median": 8,
+   "mean": 8.14,
+   "min": 5,
+   "max": 12
+  },
+  {
+   "energy": 12,
+   "n": 3,
+   "median": 10,
+   "mean": 10.67,
+   "min": 10,
+   "max": 12
+  }
+ ],
+ "fit": {
+  "b0": 0.233,
+  "b1": 0.849,
+  "b2": 0.241,
+  "r2": 0.81,
+  "sd": 0.818,
+  "n": 550
+ },
+ "fitVanilla": null,
+ "bigBodyThreshold": 7,
+ "recall": {
+  "card_flow": {
+   "regexHits": 135,
+   "withRole": 134,
+   "missing": [
+    "OGN-033"
+   ]
+  },
+  "removal": {
+   "regexHits": 174,
+   "withRole": 133,
+   "missing": [
+    "OGN-025",
+    "OGN-032",
+    "OGN-037",
+    "OGN-062",
+    "OGN-072",
+    "OGN-102",
+    "OGN-113",
+    "OGN-208",
+    "OGN-231",
+    "OGN-242",
+    "OGN-296",
+    "OGS-001",
+    "RAD-017",
+    "RAD-018",
+    "RAD-020",
+    "RAD-022",
+    "RAD-023",
+    "RAD-112",
+    "RAD-125",
+    "RAD-140",
+    "RAD-142",
+    "RAD-143",
+    "SFD-084",
+    "SFD-163",
+    "SFD-178",
+    "SFD-191",
+    "UNL-019",
+    "UNL-142",
+    "UNL-148",
+    "UNL-166",
+    "UNL-169",
+    "UNL-173",
+    "UNL-181",
+    "UNL-184",
+    "UNL-209",
+    "VEN-022",
+    "VEN-089",
+    "VEN-101",
+    "VEN-124",
+    "VEN-133",
+    "VEN-143"
+   ]
+  },
+  "counter_protection": {
+   "regexHits": 16,
+   "withRole": 16,
+   "missing": []
+  },
+  "rune_ramp": {
+   "regexHits": 66,
+   "withRole": 65,
+   "missing": [
+    "VEN-036"
+   ]
+  },
+  "token_maker": {
+   "regexHits": 60,
+   "withRole": 58,
+   "missing": [
+    "RAD-159",
+    "UNL-130"
+   ]
+  },
+  "recursion": {
+   "regexHits": 33,
+   "withRole": 24,
+   "missing": [
+    "OGN-036",
+    "OGN-099",
+    "OGN-109",
+    "OGN-112",
+    "OGN-281",
+    "RAD-143",
+    "SFD-019",
+    "UNL-148",
+    "VEN-098"
+   ]
+  },
+  "finisher": {
+   "regexHits": 19,
+   "withRole": 16,
+   "missing": [
+    "OGN-276",
+    "RAD-069",
+    "VEN-053"
+   ]
+  }
+ }
+}

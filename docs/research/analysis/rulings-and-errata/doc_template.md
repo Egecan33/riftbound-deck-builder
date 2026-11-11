@@ -19,18 +19,22 @@ Completeness check. **DATA** (official sitemap https://playriftbound.com/sitemap
 Precedence. **FACT** (FAQ-RAD, FAQ-VEN, same wording): "In places where the FAQ differs from the Core Rules Document, the FAQ takes precedence. When a new Core Rules Document is released, it will take precedence over any points that differ from this document." Consequence on 2026-11-11:
 
 1. FAQ-RAD (2026-10-26) is newer than CR 2026-10-09 and wins over it.
-2. CR 2026-10-09 wins over every older FAQ (Origins, Spiritforged, Unleashed, Vendetta). Older FAQ rulings are still correct where the CR says the same thing; several were reversed (section 2.9).
+2. CR 2026-10-09 wins over every older FAQ (Origins, Spiritforged, Unleashed, Vendetta). Older FAQ rulings are still correct where the CR says the same thing; several were reversed (section 2.10).
 3. Card errata are separate from rules precedence: the latest errata text of a card is its text.
 
 Official card text ("Watcher"). **FACT** (TR 420.2): "A player may call a judge at any time to get the Watcher wording for any card". **FACT** (FAQ-OGN, FAQ-SFD): Watcher is the planned database of official wordings; FAQ-SFD (2026-01-14) says "These plans are still in the works". **UNCONFIRMED**: no public Watcher endpoint was found on playriftbound.com on 2026-11-11 (not in the sitemap, not linked from the Rules Hub). Until it exists, the errata articles are the only primary source of corrected text.
 
 Local copies. `~/github_repositories/GameLab/docs/research/official-faq/*` and `docs/research/rulings/*` were fetched 2026-09-06. They contain no Radiance material and their errata ledger (`rulings/errata.md`, 65 cards) misses Keeper of Masks and the four Radiance errata. This file supersedes that ledger.
 
+Third text source. **DATA** (`cr_quotes.py`, `out/cr-quotes.json`): the Core Rules quote card text in their examples ("X reads ..."). 127 such quotes naming 101 gallery cards were extracted from CR 2026-10-09 and compared (keyword brackets and symbols normalised). For the cards with errata, 16 quotes of 12 cards give the errata text and 0 give the pre-errata text: {{Teemo, Strategist}}, {{Rek'Sai, Swarm Queen}}, {{Targon's Peak}}, {{Zhonya's Hourglass}}, {{Deathgrip}}, {{Nocturne, Horrifying}}, {{Wraith of Echoes}}, {{Sona, Harmonious}}, {{Tideturner}}, {{Ravenborn Tome}}, {{Astral Heron}}, {{Rengar, Trophy Hunter}} (rule numbers per quote in the JSON). The CR is therefore usable as a cross-check that an erratum is in force, and as a detector of rewordings that no errata article lists (one found: section 2.1 P14). The 29 quotes on non-errata cards that match no gallery printing were read by hand: 27 are the script attaching a quote to the wrong card name or symbol formatting, 2 are the Draven wording of P14.
+
+Complete FAQ index. **DATA** (`faq_index.py`, `out/faq-rulings.json`): the five FAQ articles contain 180 question blocks (FAQ-OGN 90, FAQ-SFD 27, FAQ-UNL 13, FAQ-VEN 34, FAQ-RAD 16). Each is stored with article, date, section, question, full answer, the "Relevant rules" numbers as printed, and the gallery cards it names (167 distinct cards; 60 blocks name no card). Card matching is by full card name and is a **HEURISTIC** (legends match by title; a few generic words such as Vilemaw produce false matches). Section 2 summarises the rulings that change an interaction; the JSON is the full list a sync job should diff.
+
 ## 1. Errata table
 
 **FACT**: 67 errata blocks in the five errata articles (31 + 16 + 8 + 8 + 4), covering 67 distinct cards (no card appears in two errata articles). Three more cards were given revised text only in FAQ-OGN (2025-10-16) and are absent from ERR-OGN (2025-10-28): Unyielding Spirit, Symbol of the Solari, Wraith of Echoes. Total 70 rows.
 
-**UNCONFIRMED** for those three: ERR-OGN says "the Core Rules FAQ is now obsolete and will be retired on November 4, 2025" and does not list them, so their revised wording has no standing source after that date. The rulings behind two of them survive in the rules anyway (a unit does not see its own death unless it has Deathknell; Symbol of the Solari's scope is explained in the same FAQ). Treat the FAQ text as the working text, flagged `status: "faq-only"`.
+Standing of those three. **FACT** for Wraith of Echoes: CR 383.1.b (edition 2026-10-09) quotes the card as "The first time another friendly unit dies each turn, draw 1.", so the revised wording is in force. **UNCONFIRMED** for Unyielding Spirit and Symbol of the Solari: ERR-OGN says "the Core Rules FAQ is now obsolete and will be retired on November 4, 2025" and does not list them, and the current CR does not quote either card (0 occurrences of either name), so their revised wording has no standing source after that date. Treat the FAQ text as the working text, flagged `status: "faq-only"`; the article is still online on 2026-11-11.
 
 Effective date. **HEURISTIC**: no errata article states an effective date other than its publication; the table uses the publication date (UTC). FAQ-SFD says its clarifications "take effect immediately". ERR-RAD was published 2026-10-09, two weeks before Radiance released (2026-10-23).
 
@@ -87,6 +91,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | P11 | Dependent keywords (`[Legion][>]`, `[Level N][>]`, `[Empowered][>]`): the whole line after the arrow is switched off until the condition holds, but other effects can still read it | CR 812.1.b; CR 828.1.b, 828.1.c; FAQ-VEN (Heimerdinger) | PARSE. EDGE+ {{Heimerdinger, Inventor}} gains the exhaust ability of an unempowered {{Defender of Tomorrow}} |
 | P12 | Printed rules text of an attached Equipment is inactive; text granted to it is active | CR 135.4, 135.4.a; FAQ-UNL (Turn to Dust) | EDGE+ {{Turn to Dust}} kills an attached Equipment at its controller's next Beginning Phase |
 | P13 | A facedown card has no readable front: no name, cost, Might or keywords, and it is not "a card with Hidden". It can still be targeted as "a facedown card" because its presence is public | CR 129.4; CR 811.5.a; CR 107.3.f; FAQ-OGN appendix; PN-RAD (Gutter Guardian) | EDGE- {{Gutter Guardian}} cannot Show Off a facedown card. EDGE+ {{Pack of Wonders}} can return one |
+| P14 | "Score N point(s)" as a card instruction means gain points by an effect, not Score in the rules sense (conquer or hold). Such points do not need a battlefield, do not trigger conquer or hold abilities, and are exempt from the final-point restriction. **DATA**: 15 gallery cards use "score 1 point" as an effect (gallery snapshot 2026-11-11, text search: Ahri, Alluring; Bottled Constellation; Cosmic Vista; Draven, Audacious; Evelynn, In Control; Ivern, Friend to All; Nasus, Ascended; Otterpus; Power Nexus; Renata Glasc, Mastermind; Shen, Leader of the Kinkou Order; Swain, Visionary; Tryndamere, Barbarian; Yasuo, Windrider; Zero Point Inflection), 1 uses "gains 1 point" (The Arena's Greatest). CR 429.1.a.1.b and 808.1.d.1 quote {{Draven, Audacious}} as "They gain 1 point" where both gallery printings say "They score 1 point": **UNCONFIRMED** whether this is an unpublished rewording; no errata article lists it. Same direction as the Tianna Crownguard erratum ("can't gain points") | CR 194.1.c; CR 473.1.a.1; CR 472; ERR-SFD (Tianna) | PARSE: map card-text "score N point" to the gain-points effect family. STR+ for these cards at Victory Score minus 1 |
 
 ### 2.2 Costs: Deflect, discounts, payment
 
@@ -116,7 +121,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | T3 | Played from facedown: a unit or gear must be played to that battlefield; every target of a hidden spell or of a hidden permanent's play effect must be at that battlefield, each target checked separately; units it plays enter there. Non-targeting effects are not limited | CR 811.1.d.1, 811.1.d.2, 811.1.d.3; PN-VEN "Hidden Targeting" | STR- for hidden removal (one battlefield only). EDGE+ hidden {{Zhonya's Hourglass}} saves a unit anywhere; hidden {{Stand United}} buffs only there but its global part applies everywhere |
 | T4 | A card cannot be played the turn it was hidden; from the next turn it has Reaction and can be played at any Reaction timing, not only in showdowns there | CR 811.1.b; FAQ-OGN | PARSE |
 | T5 | Untargetable units are illegal targets; if a unit becomes untargetable after being chosen, the spell misses it | CR 758; FAQ-VEN ({{Akali, Silent}} moved out of combat by Flash) | EDGE+ movement as protection |
-| T6 | Pending chain items are not legal targets | PN-RAD "Pending Item Target Legality" (rule number not located by text search: **UNCONFIRMED** number) | PARSE |
+| T6 | Pending chain items are not legal targets: a spell or ability on the chain is a valid target only once finalized | CR 355.9.a; PN-RAD "Pending Item Target Legality" | PARSE |
 | T7 | Effects that count a spell's targets include targets that became illegal but are still on the board, not ones that left the board | PN-VEN "Counting Targets"; FAQ-UNL (Repulse against Alpha Strike) | EDGE- moving two targets to base does not enable {{Repulse}} |
 | T8 | Split damage: if less damage is available at resolution than targets, the controller drops targets, and may not keep fewer targets than damage | CR 355.14.h.1 | PARSE |
 | T9 | Fox-Fire's targets are legal as a group (total Might 4 or less); if they outgrow it, the controller keeps a subset of the original targets | FAQ-OGN | STR- against Might pump in response |
@@ -157,7 +162,7 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | D10 | "When you kill a unit with a spell": your spell must itself kill it or deal the damage that kills it in the cleanup right after. Not: a unit dealing damage because of your spell, Might reduction, delayed death, or another player doing the killing. A delayed trigger created by your spell counts | FAQ-OGN ({{Immortal Phoenix}}); FAQ-VEN (Imperial Decree) | EDGE+ Hidden Blade on your own Immortal Phoenix returns it. EDGE+ {{Imperial Decree}}. EDGE- {{Challenge}}, {{Stupefy}} |
 | D11 | Bonus Damage adds to each instance of damage; Void Gate's applies only to units at Void Gate | ERR-OGN (Void Gate); PN-OGN | PARSE: multi-instance spells scale per instance |
 | D12 | {{Elder Dragon}}: any damage marked by its controller is lethal to enemy units, including damage marked before it arrived; in combat one damage per enemy unit is enough. Fully prevented damage is not dealt | CR 142.4.c; FAQ-UNL | EDGE+ Elder Dragon plus wide small damage. EDGE- against prevention ({{Counter Strike}}) |
-| D13 | Hold-on-death timing: control of a battlefield cannot be lost while an item is on the chain or a combat or showdown is ongoing there | FAQ-UNL (old 187.4.c); PN-UNL "Control of Battlefields" | EDGE+ {{Cruel Patron}}, {{Baited Hook}}, {{Arcane Shift}}, {{Glasc Mixologist}}: kill or banish your only unit at a battlefield and play the new unit to that same battlefield |
+| D13 | Hold-on-death timing: control of a battlefield cannot be lost while an item is on the chain or a combat or showdown is ongoing there | CR 190.4.b, 190.4.c, 323.5; FAQ-UNL (old 187.4.c); PN-UNL "Control of Battlefields" | EDGE+ {{Cruel Patron}}, {{Baited Hook}}, {{Arcane Shift}}, {{Glasc Mixologist}}: kill or banish your only unit at a battlefield and play the new unit to that same battlefield |
 
 ### 2.6 Replacement effects, copies, tokens, attachments
 
@@ -204,7 +209,34 @@ Columns: **Rule** = current CR number where we found the rule in the 2026-10-09 
 | M4 | A battlefield ability that has one player make a choice is controlled by that player, whoever controls the battlefield | CR 190.6.c | PARSE ({{Abandoned Hall}}) |
 | M5 | "Relevant players" and the invite mechanic were removed from free-for-all; everyone may always act in showdowns | PN-OGN | PARSE |
 
-### 2.9 Official rulings that were later reversed
+### 2.9 Further card-specific rulings
+
+Rulings read from the FAQ index that the tables above do not cover. Rule numbers printed inside FAQ-VEN and older articles belong to older editions (for example FAQ-VEN cites 419.4.b for what is CR 420.4.b today) and are not repeated.
+
+| ID | Ruling | Rule / source | Graph |
+|---|---|---|---|
+| F1 | A player told to move a unit must move one that can move; a unit that cannot move cannot be picked to satisfy the instruction. If none can move the instruction is negated | FAQ-RAD (Angler Wyrm against Hunker Down) | EDGE- "make my unit immovable so the forced move does nothing" unless every unit is immovable |
+| F2 | {{Riven, Broken Blade}} spends the buff at resolution, because the cost is not the first part of the effect | CR 383.3.b; FAQ-RAD | PARSE (instance of P5): the opponent can remove the buff in response |
+| F3 | Several replacement effects on one unit's combat damage: its controller orders them. Ki Barrier before Lotus Trap leaves prevention unused; the other order uses it up | CR 373; CR 467.2.c.5; FAQ-VEN | STR: order matters for the valuation of prevention plus damage increase |
+| F4 | {{Crumbling Sands}} counts spells an opponent finalized, including countered ones, and can counter the first of two spells | CR 420.4.b; FAQ-VEN | EDGE+ |
+| F5 | {{Fallen Feline}} names a spell when its play effect resolves; spells already on the chain are unaffected and the opponent must react before the name is known. A named card must exist in Riftbound and be legal in the format | CR 761, 762; FAQ-VEN | STR- for the lock against Reaction-speed answers |
+| F6 | {{Kayle, Justified}} holds up to 3 Empowered statuses; disempowering removes one; her Empower can be activated while empowered | CR 002; FAQ-VEN; PN-RAD multi-empower | PARSE: Empowered is a counter on Kayle, a flag elsewhere |
+| F7 | You control your own legend, so effects on "something you control" can pick it ({{Profiteer}} disempowering Ambessa's legend to empower another unit) | FAQ-VEN | EDGE+ |
+| F8 | {{Mel, Newly Awakened}}: her extra -1 Might applies only to the unit a spell chooses, not to units hit without being chosen (Moonfall: chosen -3, others -2). An uncounterable spell targeted by Abandon is neither countered nor returned | FAQ-VEN | STR- for Mel with area effects. EDGE- Abandon as a bounce for your own uncounterable spell |
+| F9 | {{Elder Dragon}}'s play effect has one target slot per location; a unit moved to another location is no longer hit | FAQ-UNL | EDGE+ movement as protection (instance of T1) |
+| F10 | Granted Temporary on an attached Equipment is active and kills it (the printed, inactive copy does not matter) | CR 135.4; CR 816.2.a; FAQ-UNL (Spinning Axe) | instance of P12 |
+| F11 | A battlefield replaced by a Brush token: when the replacement removes a Victory Score modifier (Aspirant's Climb), both players can sit at the Victory Score without winning; each further conquer point is then a final point | CR 474; CR 473.1.b; FAQ-UNL | PARSE |
+| F12 | No cleanup happens during finalization; cleanups run after an item is added, after it is finalized and after it resolves | FAQ-UNL | PARSE |
+| F13 | Tokens are recycled to the deck of their type and then cease to exist; the effect can still read the recycled token ({{Rumble, Hotheaded}}). A token's cost is 0, so {{Pickpocket}} can kill a Gold token | CR 185.2.e; CR 185.3.a.1; FAQ-SFD | EDGE+ |
+| F14 | {{Kato the Arm}} gives his current keywords and current Might (including gained ones), locked in at resolution | FAQ-SFD | STR+ with Equipment and pump on Kato |
+| F15 | Weaponmaster is optional | FAQ-SFD | PARSE |
+| F16 | {{Hallowed Tomb}} returns any copy of the exact full card name of the Chosen Champion, not another card with the same champion tag. A played Chosen Champion is an ordinary Main Deck card afterwards | FAQ-OGN | PARSE: "your Chosen Champion" = full name match |
+| F17 | {{Sun Disc}}'s activated ability can be used the turn Sun Disc is played: the ability is not Sun Disc, so Sun Disc itself is the other card for Legion | FAQ-OGN; CR 812.1.b.1 | EDGE+ |
+| F18 | "Card with Hidden" counts only cards that have the keyword, not cards that mention it (Ember Monk, Noxus Saboteur do not count for {{Teemo, Strategist}}) | FAQ-OGN | PARSE: keyword presence, not word match |
+| F19 | Ganking is not an extra move; it widens the Standard Move to battlefield-to-battlefield. Seals produce Power only, by exhausting, and are reusable each turn | FAQ-OGN | PARSE |
+| F20 | Combat where both sides survive (stun, damage immunity): attackers are recalled, defender keeps control, nobody scores | FAQ-OGN; CR 468.1.a.2 | PARSE |
+
+### 2.10 Official rulings that were later reversed
 
 A tool that stores rulings must store the date range, because guides written between the two dates describe the old behaviour.
 
@@ -379,11 +411,11 @@ Combos the same articles confirm (useful as positive edges, already listed in se
 ## 6. Open items
 
 - **UNCONFIRMED**: official definition of "excess damage" (section 2.5 D2).
-- **UNCONFIRMED**: standing of the three FAQ-only errata (Unyielding Spirit, Symbol of the Solari, Wraith of Echoes).
+- **UNCONFIRMED**: standing of two FAQ-only errata (Unyielding Spirit, Symbol of the Solari). Wraith of Echoes is confirmed by CR 383.1.b.
+- **UNCONFIRMED**: whether Draven, Audacious and the other 14 "score 1 point" cards have been officially reworded to "gain" (section 2.1 P14).
 - **UNCONFIRMED**: which Emperor of the Sands wording is current.
 - **UNCONFIRMED**: a public Watcher database.
 - **UNCONFIRMED**: effective dates of PN-OGN and PN-UNL (articles give none) and of each errata article.
-- **UNCONFIRMED**: rule number for "pending items are not legal targets" in CR 2026-10-09.
 - Not done: card-by-card check that the GameLab engine implements each functional erratum; reading rules cited by FAQ-OGN, FAQ-SFD and FAQ-UNL rulings against the current CR beyond the numbers listed in section 2 (rows that cite only an article were not re-located in the CR and inherit the precedence caveat of section 0).
 - The whole numbering changes with the Legacy rules rewrite announced for January 2027.
 
@@ -396,5 +428,8 @@ node sitemap.mjs                 # raw/sitemap-en-us.txt
 python3 -I extract.py            # raw/*.txt, manifest.json
 python3 -I build_errata.py       # out/errata.json, out/errata-table.md
 python3 -I community_scan.py     # out/community-scan.json
+python3 -I cr_quotes.py          # out/cr-quotes.json: card text quoted in the Core Rules vs gallery and errata
+python3 -I faq_index.py          # out/faq-rulings.json: all 180 FAQ question blocks, by card
 python3 -I assemble.py           # writes ../../rulings-and-errata.md from doc_template.md
+python3 -I check_citations.py    # every CR number cited above must exist in the cached edition (exit 1 if not)
 ```

@@ -1,0 +1,171 @@
+127 quotes; 101 cards; Counter({(False, 'gallery'): 80, (False, 'neither'): 29, (True, 'errata'): 16, (True, 'neither'): 1, (True, 'both'): 1})
+
+[errata ERRATA-CARD] CR 135.2.b.5.a Teemo, Strategist ['OGN-121/298', 'SFD-230*/221', 'OGN-121a/298'] match=[]
+   CR: When I defend, choose an enemy unit here and reveal the top 5 cards of your Main Deck. Deal 1 to that unit for each card with Hidden revealed this way, then recycle the revealed cards.
+
+[neither] CR 178.3 Rocket Barrage ['SFD-077/221'] match=[]
+   CR: Kill a unit,
+   GAL: repeat [4]c (you may pay the additional cost to repeat this spell's effect, and may make different choices.) choose one - - deal 4 to a unit in a base. - kill a gear. repeat [4]c (you may pay the additional cost to repeat this spell's effect, and may make different choices.) choose one - deal 4 to a unit in a base. kill a gear.
+
+[neither] CR 178.3 Thermo Beam ['OGN-022/298'] match=[]
+   CR: Kill all units,
+   GAL: action (play on your turn or in showdowns.) kill all gear. action (play on your turn or in showdowns.) kill all gear.
+
+[neither] CR 178.3 Vengeance ['OGN-229/298'] match=[]
+   CR: Kill a unit,
+   GAL: kill a unit. kill a unit.
+
+[neither] CR 187.11 Shadow ['UNL-194/219'] match=[]
+   CR: When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn.
+   GAL: if you play me to a battlefield, i enter ready. action - [1]a, e: stun an enemy unit attacking here. (it doesn't deal combat damage this turn.) if you play me to a battlefield, i enter ready. action - [1]a, e: stun an enemy unit attacking here. (it doesn't deal combat damage this turn.)
+
+[neither] CR 190.6.c Abandoned Hall ['UNL-205/219'] match=[]
+   CR: When a player plays a spell, they may give a unit they control here +1 might this turn.
+   GAL: when a player plays a spell, they may give a unit they control here +1 m this turn. when a player plays a spell, they may give a unit they control here +1 m this turn.
+
+[neither] CR 204.1.b Legion Marauder ['VEN-074/166'] match=[]
+   CR: [Empower] — [1] or [C].
+   GAL: empower - [1] or c (pay either cost: empower me. use only if not empowered.) empowered - i have +1 m. empower - [1] or c (pay either cost: empower me. use only if not empowered.) empowered - i have +1 m.
+
+[neither] CR 204.3.a Ancient Henge ['SFD-117/221'] match=[]
+   CR: [Reaction][>] [E]: Pay any amount of Energy to Add that much [A].
+   GAL: e: reaction - pay any amount of energy to add that much a. (abilities that add resources can't be reacted to.) e: reaction - pay any amount of energy to add that much a. (abilities that add resources can't be reacted to.)
+
+[neither] CR 206 Lux, Illuminated ['OGS-006/024'] match=[]
+   CR: When you play a spell that costs 5 or more, give me +3 [M] this turn.
+   GAL: when you play a spell that costs [5] or more, give me +3 m this turn. when you play a spell that costs [5] or more, give me +3 m this turn.
+
+[neither] CR 206 Sky Splitter ['OGN-014/298'] match=[]
+   CR: Counter a spell that costs no more than [4] and no more than [A].
+   GAL: action (play on your turn or in showdowns.) this spell's energy cost is reduced by the highest might among units you control. deal 5 to a unit at a battlefield. action (play on your turn or in showdowns.) this spell's energy cost is reduced by the highest might among units you control. deal 5 to a unit at a battlefield.
+
+[neither] CR 206 Defy ['OGN-045/298'] match=[]
+   CR: You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Y] less for each Power it costs.
+   GAL: reaction (play any time, even before spells and abilities resolve.) counter a spell that costs no more than [4] and no more than a. reaction (play any time, even before spells and abilities resolve.) counter a spell that costs no more than [4] and no more than a.
+
+[errata ERRATA-CARD] CR 355.5.b Targon's Peak ['OGN-289/298'] match=[]
+   CR: When you conquer here, ready up to 2 runes at the end of this turn.
+
+[errata ERRATA-CARD] CR 355.17 Rek'Sai, Swarm Queen ['SFD-170a/221', 'SFD-170/221'] match=[]
+   CR: When I attack, you may reveal the top 2 cards of your Main Deck. You may banish one, then play it. If it is a unit, you may play it here. Recycle the rest.
+
+[neither] CR 355.17 Here to Help ['SFD-111/221'] match=[]
+   CR: You may play a unit from your hand to a battlefield you control.
+   GAL: hidden (hide now for a to react with later for [0].) action (play on your turn or in showdowns.) you may play a unit from hand to a battlefield you control, reducing its cost by [3]. hidden (hide now for a to react with later for [0].) action (play on your turn or in showdowns.) you may play a unit from hand to a battlefield you control, reducing its cost by [3].
+
+[neither] CR 355.17.b Perched Grimwyrm ['SFD-015/221'] match=[]
+   CR: While I'm at a battlefield, opponents can only play units to their base.
+   GAL: play me only to a battlefield you conquered this turn. (you can't play me anywhere else.) play me only to a battlefield you conquered this turn. (you can't play me anywhere else.)
+
+[errata ERRATA-CARD] CR 357.2.a Zhonya's Hourglass ['OGN-077/298'] match=[]
+   CR: If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it.
+
+[errata ERRATA-CARD] CR 359.3.e.14.b Deathgrip ['SFD-163/221'] match=[]
+   CR: Kill a friendly unit. If you do, give +[M] equal to its Might to another friendly unit this turn.
+
+[neither] CR 359.3.e.16 Thrill of the Hunt ['UNL-184/219'] match=[]
+   CR: Take control of an enemy unit at a battlefield. Ready it.
+   GAL: reaction (play any time, even before spells and abilities resolve.) banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost. reaction (play any time, even before spells and abilities resolve.) banish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.
+
+[errata ERRATA-CARD] CR 359.3.e.16 Targon's Peak ['OGN-289/298'] match=[]
+   CR: When you conquer here, ready up to 2 runes at the end of this turn.
+
+[neither] CR 359.3.f.3 Lillia, Fae Fawn ['UNL-082/219', 'UNL-082a/219'] match=[]
+   CR: when I move from a location, play a 3 [M] Sprite token with Temporary there.
+   GAL: accelerate (you may pay [1]c as an additional cost to have me enter ready.) when i move from a location, play a 3 m sprite unit token with temporary there. (kill it at the start of its controller's beginning phase, before scoring.) accelerate (you may pay [1]c as an additional cost to have me enter ready.) when i move from a location, play a 3 m sprite unit token with temporary there. (kill it at 
+
+[neither] CR 359.3.f.4 Yasuo, Remorseful ['OGN-076a/298', 'OGN-076/298'] match=[]
+   CR: [Reaction]. Gain control of a triggered ability. You may make new choices for it.
+   GAL: when i attack, deal damage equal to my might to an enemy unit here. when i attack, deal damage equal to my might to an enemy unit here.
+
+[errata ERRATA-CARD] CR 370.1.a.1 Zhonya's Hourglass ['OGN-077/298'] match=[]
+   CR: If a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it.
+
+[neither ERRATA-CARD] CR 370.1.a.1 Zhonya's Hourglass ['OGN-077/298'] match=[]
+   CR: The next time an enemy unit would become Mighty this turn, banish it instead. Its controller plays a 3 [M] Mech unit token to its location.
+
+[errata ERRATA-CARD] CR 370.1.c.1 Nocturne, Horrifying ['OGN-194/298'] match=[]
+   CR: As you look at or reveal me from the top of your deck, you may banish me. If you do, you may play me for [A].
+
+[neither] CR 373.2 Recruit ['VEN-T04'] match=[]
+   CR: If I would die, kill Guardian Angel instead. Heal me, exhaust me, and recall me
+   GAL: riftbound unit: recruit.
+
+[neither] CR 375 Treasure Hunter ['SFD-130/221'] match=[]
+   CR: play a ready 3 [M] Mech token. Then do this: Give it Temporary.
+   GAL: when i move, play a gold gear token exhausted. when i move, play a gold gear token exhausted.
+
+[errata ERRATA-CARD] CR 383.1.b Wraith of Echoes ['OGN-118/298'] match=[]
+   CR: The first time another friendly unit dies each turn, draw 1.
+
+[errata ERRATA-CARD] CR 383.2.a.1 Sona, Harmonious ['OGN-073/298', 'VEN-SP2/006'] match=['VEN-SP2/006']
+   CR: At the end of your turn, if I'm at a battlefield, ready up to 4 friendly runes.
+
+[neither] CR 383.2.a.1 Loose Cannon ['OGN-251/298', 'OGN-301*/298', 'OGN-301/298'] match=[]
+   CR: At the start of your Beginning Phase, draw 1 if you have one or fewer cards in your hand.
+   GAL: at start of your beginning phase, draw 1 if you have one or fewer cards in your hand. at start of your beginning phase, draw 1 if you have one or fewer cards in your hand.
+
+[neither] CR 383.2.c.3 Treasure Trove ['OGN-186/298'] match=[]
+   CR: leaves the board.
+   GAL: when this leaves the board, draw 1 and channel 1 rune exhausted. c, e: kill this. when this leaves the board, draw 1 and channel 1 rune exhausted. c, e: kill this.
+
+[errata ERRATA-CARD] CR 383.3.a Tideturner ['OGN-199/298'] match=[]
+   CR: When you play me, you may choose a unit you control at another location. Move me to its location and it to my original location.
+
+[errata ERRATA-CARD] CR 392 Ravenborn Tome ['OGN-032/298'] match=['OGN-032/298']
+   CR: The next spell you play this turn deals 1 Bonus Damage.
+
+[neither] CR 396 The Zero Drive ['SFD-090/221'] match=[]
+   CR: [Deathnkell][>] Banish me.
+   GAL: equip [1]c ([1]c: attach this to a unit you control.) [3]c, banish this: play all units banished with this, ignoring their costs. (use only if unattached.) equip [1]c ([1]c: attach this to a unit you control.) [3]c, banish this: play all units banished with this, ignoring their costs. (use only if unattached.) deathknell - banish me. (when i die, get the effect.)
+
+[errata ERRATA-CARD] CR 420.3.b.2 Rek'Sai, Swarm Queen ['SFD-170a/221', 'SFD-170/221'] match=[]
+   CR: When I attack, you may reveal the top 2 cards of your Main Deck. You may banish one, then play it. If it is a unit, you may play it here. Recycle the rest.
+
+[both ERRATA-CARD] CR 420.3.b.2 Bone Skewer ['UNL-139/219'] match=['UNL-139/219']
+   CR: Choose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs.
+
+[errata ERRATA-CARD] CR 420.5 Astral Heron ['VEN-044/166'] match=[]
+   CR: When you play your first card each turn, if I'm at a battlefield, the next card you play this turn costs [2][A][A] less.
+
+[neither] CR 429.1.a.1.b Draven, Audacious ['SFD-148/221', 'SFD-148a/221'] match=[]
+   CR: When I die in combat, choose an opponent. They gain 1 point.
+   GAL: deflect (opponents must pay a to choose me with a spell or ability.) the first time i win a combat each turn, you score 1 point. when i die in combat, choose an opponent. they score 1 point. deflect (opponents must pay a to choose me with a spell or ability.) the first time i win a combat each turn, you score 1 point. when i die in combat, choose an opponent. they score 1 point.
+
+[neither] CR 478.1.c Siphon Power ['OGN-266/298'] match=[]
+   CR: Choose a battlefield. Give friendly units there +1 [M] this turn, and enemy units there -1 [M] this turn, to a minimum of 1 [M].
+   GAL: reaction (play any time, even before spells and abilities resolve.) choose a battlefield. give friendly units there +1 m this turn and enemy units there - 1 m this turn, to a minimum of 1 m. reaction (play any time, even before spells and abilities resolve.) choose a battlefield. give friendly units there +1 m this turn and enemy units there - 1 m this turn, to a minimum of 1 m.
+
+[neither] CR 715.2 Singularity ['OGN-105/298'] match=[]
+   CR: Your spells and abilities deal 1 Bonus Damage.
+   GAL: deal 6 to each of up to two units. deal 6 to each of up to two units.
+
+[neither] CR 715.3 Volibear, Furious ['OGN-041/298', 'OGN-041a/298'] match=[]
+   CR: Your spells and abilities deal 1 Bonus Damage.
+   GAL: deflect 2 (opponents must pay aa to choose me with a spell or ability.) when i attack, deal 5 damage split among any number of enemy units here. deflect 2 (opponents must pay aa to choose me with a spell or ability.) when i attack, deal 5 damage split among any number of enemy units here.
+
+[errata ERRATA-CARD] CR 715.4 Teemo, Strategist ['OGN-121/298', 'SFD-230*/221', 'OGN-121a/298'] match=[]
+   CR: When I defend, choose an enemy unit here and reveal the top 5 cards of your Main Deck. Deal 1 to that unit for each card with Hidden revealed this way, then recycle the revealed cards.
+
+[neither] CR 808.1.d.1 Draven, Audacious ['SFD-148/221', 'SFD-148a/221'] match=[]
+   CR: When I die in combat, choose an opponent. They gain 1 point.
+   GAL: deflect (opponents must pay a to choose me with a spell or ability.) the first time i win a combat each turn, you score 1 point. when i die in combat, choose an opponent. they score 1 point. deflect (opponents must pay a to choose me with a spell or ability.) the first time i win a combat each turn, you score 1 point. when i die in combat, choose an opponent. they score 1 point.
+
+[neither] CR 811.1.d.3 Blastcone Fae ['OGN-097/298'] match=[]
+   CR: When you play me, you may choose a unit you control at another location. Move me to its location and it to my original location.
+   GAL: hidden (hide now for a to react with later for [0].) when you play me, give a unit - 2 m this turn, to a minimum of 1 m. hidden (hide now for a to react with later for [0].) when you play me, give a unit - 2 m this turn, to a minimum of 1 m.
+
+[neither] CR 811.2 Stand United ['OGN-053/298'] match=[]
+   CR: Buff a friendly unit. Buffs give an additional +1 might to friendly units this turn.
+   GAL: hidden (hide now for a to react with later for [0].) action (play on your turn or in showdowns.) buff a friendly unit. buffs give an additional +1 m to friendly units this turn. (to buff a unit, give it a +1 m buff if it doesn't already have one.) hidden (hide now for a to react with later for [0].) action (play on your turn or in showdowns.) buff a friendly unit. buffs give an additional +1 m to 
+
+[neither] CR 820.2.a Rocket Barrage ['SFD-077/221'] match=[]
+   CR: Choose one — Deal 4 to a unit in a base. [or] Kill a gear.
+   GAL: repeat [4]c (you may pay the additional cost to repeat this spell's effect, and may make different choices.) choose one - - deal 4 to a unit in a base. - kill a gear. repeat [4]c (you may pay the additional cost to repeat this spell's effect, and may make different choices.) choose one - deal 4 to a unit in a base. kill a gear.
+
+[errata ERRATA-CARD] CR 822.1.d Rengar, Trophy Hunter ['VEN-179/166', 'UNL-120a/219', 'UNL-120/219'] match=[]
+   CR: I can [Ambush] to a battlefield where there are enemy units, even if you don't have units there.
+
+[neither] CR 832.1.d Primordial Roar ['RAD-082/167'] match=[]
+   CR: [Show Off] a unit,
+   GAL: show off a unit. (as you play this, you may reveal a unit from hand or pick a friendly unit.) if you showed off a unit, deal damage equal to that unit's might to a unit. show off a unit. (as you play this, you may reveal a unit from hand or pick a friendly unit.) if you showed off a unit, deal damage equal to that unit's might to a unit.

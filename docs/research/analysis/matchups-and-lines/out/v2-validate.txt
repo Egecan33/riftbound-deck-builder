@@ -1,0 +1,15 @@
+row | col | published | estimate (hand weights) | lists row/col | same side of 50
+Riven | Kai'Sa | 53 | 49.2 | 22/19 | NO
+Kennen | Riven | 49.5 | 50.1 | 15/22 | -
+Jayce | Riven | 64 | 46.8 | 7/22 | NO
+Kai'Sa | Kennen | 52 | 50.7 | 19/15 | -
+Rengar | Riven | 31 | 50.4 | 5/22 | NO
+Rengar | Kennen | 28 | 50.6 | 5/15 | NO
+Akali | Kennen | 53 | 49.1 | 9/15 | NO
+Kennen | Jayce | 73 | 52.3 | 15/7 | yes
+Kennen | Rek'Sai | 45 | 46.8 | 15/9 | yes
+cells=9; sign agreement on cells at least 2.5 points from 50: 2/7; MAE hand weights 10.2, MAE of always-50 10.2
+Pearson r(estimate, published) = -0.01
+leave-one-out ridge fit (lambda 0.05) of the six weights on these cells: MAE 15.3 (always-50: 10.2)
+weights fitted on all cells: wide vs sweepers +9.9, tall vs spot removal -51.2, protection vs spot removal +40.0, speed vs interaction -2.2, reach -18.1, counters vs key spells -7.9
+spread of the hand-weight estimate over all 1225 legend pairs: min 43.1, median 49.9, max 58.4

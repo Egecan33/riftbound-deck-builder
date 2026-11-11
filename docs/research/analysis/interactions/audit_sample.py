@@ -2,16 +2,17 @@
 """Draws the 40-edge hand-audit sample (deterministic, seed 40) and prints both cards' full rules text.
 Stratum A: 20 edges from the 500 strongest specific edges. Stratum B: 20 from the remaining specific edges with strength >= 1.2.
 At most 2 sampled edges per payoff card and 3 per rule per stratum, so one legend or rule cannot fill the sample.
-Run: python3 audit_sample.py > out/audit-sample.txt ; verdicts are recorded by hand in audit-verdicts.json"""
+Sample 1 (pre-suppression graph): EDGES=out-pre/edges.json python3 audit_sample.py > out/audit-sample.txt
+Sample 2 (post-suppression graph): SEED=41 python3 audit_sample.py > out/audit-sample-2.txt ; verdicts are recorded by hand in audit-verdicts.json"""
 import json, os, random, re
 from collections import Counter
 HERE = os.path.dirname(os.path.abspath(__file__))
 GAMELAB = os.environ.get('GAMELAB', os.path.expanduser('~/github_repositories/GameLab'))
 txt = {c['cardCode']: (c['name'], c['type'], c['energy'], c['might'], c['rulesText'] or '') for c in json.load(open(os.path.join(GAMELAB, 'data/cards/cards.json')))['cards']}
 txt.update({c['code']: (c['name'], c['type'], c['energy'], c['might'], c['text']) for c in json.load(open(os.path.join(HERE, 'data/rad-cards.json')))['cards']})
-E = [e for e in json.load(open(os.path.join(HERE, 'out/edges.json')))['edges'] if e['cls'] == 'specific']
+E = [e for e in json.load(open(os.path.join(HERE, os.environ.get('EDGES', 'out/edges.json'))))['edges'] if e['cls'] == 'specific']
 E.sort(key=lambda e: (-e['s'], e['a'], e['b'], e['rule']))
-rnd = random.Random(40)
+rnd = random.Random(int(os.environ.get('SEED', '40')))
 def draw(pool, n):
     pool = pool[:]; rnd.shuffle(pool); out = []; pc = Counter(); rc = Counter()
     for e in pool:

@@ -1,0 +1,45 @@
+### JAYCE 7TH ORLANDO 25K SHOWDOWN  1/11/2026
+identity: ATTRITION
+legend: Jayce, Defender of Tomorrow | champion: Jayce, Brilliant Inventor | main 40 | RAD top8 | https://piltoverarchive.com/decks/view/1ef0b23e-8dac-4d2e-8cce-44f2c7ca4d02
+win-condition sub-score 0.569  parts {'closer': 0.656, 'depth': 0.7, 'plan_b': 0.48, 'final_point': 0.25, 'resilience': 0.75}
+speed: slow - goldfish win turn 9 (first conquer T3, 1.2 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.25, 'double_conquer': 0.08, 'direct': 0.0} | FFA triple conquer 0.06
+1. ATTRITION Attrition / recursion control  norm 1.05 (raw 22.5, rank 0.905) | closers 4 copies / 2 names, P(closer by T5) 0.656
+   closers: 3x Flurry of Blades, 1x Avalanche
+   enablers: 3x Dredge Up, 3x Garbage Grabber, 3x Bellows Breath, 3x Catalyst of Aeons, 3x Clairvoyance, 3x Mobilize (+2 more)
+2. TALL Go-tall single threat  norm 0.48 (raw 5.5, rank 0.48) | closers 4 copies / 2 names, P(closer by T5) 1.0 [champion]
+   closers: 1x Jayce, Brilliant Inventor, 3x Elder Dragon
+   enablers: 3x Gutter Palace
+3. WIDE Go-wide flood (both battlefields)  norm 0.33 (raw 3.0, rank 0.27) | closers 3 copies / 1 names, P(closer by T5) 0.545
+   closers: 3x Gutter Palace
+   enablers: -
+*  ALTWIN: Alternate win: Gutter Palace (exactly 4 cards in hand and 4 units at battlefields at your Beginning Phase) strength 0.55 | Gutter Palace | 3 copies
+folds to (most common answer class in the RAD-era corpus first):
+   - two-battlefield pressure: 4 unit copies to contest 2 battlefields; answers are 4 kill/damage, 0 displacement, 0 Might-reduction, 0 counterspell, 4 sweeper copies; Deflect / can't-be-chosen taxes every targeted answer (main-decked by 70% of 201 RAD-era lists, mean 2.2 copies) - e.g. Vex, Apathetic (104), Carrion Dredger (63), Ruin Runner (45), Baron Nashor (33)
+   - counterspell / removal on the few closers (4 copies, no champion or legend closer; counterspells main-decked by 47% of 201 RAD-era lists, mean 1.2 copies)
+modes:
+   - 2v2: Victory 11 lengthens the game; spells may be played on the teammate's turn when invited (489.8.a)
+   - FFA: 4 one-for-one answers against 2-3 boards; only 4 sweeper copies scale with the number of opponents
+
+### Yasuo - RC Stuttgart 2v2 5-0
+identity: POINTS
+legend: Yasuo, Unforgiven | champion: Yasuo, Windrider | main 40 | RAD event-only | https://piltoverarchive.com/decks/view/a8f30ad9-c76b-4047-b35d-1217f1195d0e
+win-condition sub-score 0.967  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.78, 'final_point': 1.0, 'resilience': 1.0}
+speed: slow - goldfish win turn 8 (first conquer T3, 1.4 pts/turn, 1.0 bonus pts) | final point reach {'hold': 0.25, 'double_conquer': 1.0, 'direct': 1.0} | FFA triple conquer 0.72
+1. POINTS Direct point gain  norm 2.17 (raw 13.0, rank 2.17) | closers 1 copies / 1 names, P(closer by T5) 1.0 [champion] | battlefields: Reckoner's Arena
+   closers: 1x Yasuo, Windrider
+   enablers: -
+2. BURST Burst conquer (ready/haste/move)  norm 0.78 (raw 11.5, rank 0.78) | closers 3 copies / 1 names, P(closer by T5) 1.0 [legend] | legend: move_friendly | battlefields: Targon's Peak
+   closers: 3x Ride the Wind | shared, counted above: Yasuo, Windrider (POINTS)
+   enablers: 2x Flash, 1x Akali, Silent
+3. ATTRITION Attrition / recursion control  norm 0.94 (raw 20.25, rank 0.716) | closers 2 copies / 1 names, P(closer by T5) 0.404
+   closers: 2x Downwell
+   enablers: 3x Defy, 2x An Offer You Can't Refuse, 2x Abandon, 3x Discipline, 2x Fizz, Trickster, 3x Gust (+6 more)
+*  COMBO: Combo finisher: Yasuo, Windrider third move in a turn (+1 point, not a conquer) strength 1 | Yasuo, Windrider, 3x Ride the Wind, 2x Flash | 12 move / ready enabler copies (legend counted as 4); needs 2 extra moves after his own
+folds to (most common answer class in the RAD-era corpus first):
+   - single-target removal/bounce on Yasuo, Windrider (0% of the 1 closer copies have Deflect or can't-be-chosen; main-decked by 72% of 201 RAD-era lists, mean 4.8 copies) - e.g. Falling Star (136), Decree of Rage (99), Bellows Breath (96), Decree of Unity (94)
+   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage; stun main-decked by 58% of 201 RAD-era lists, mean 1.4 copies; Shield main-decked by 22% of 201 RAD-era lists, mean 0.9 copies) - e.g. Back Off (59), Ki Burst (15), Existential Dread (9), One-Two Punch (8)
+   - point denial - Tianna Crownguard (0): while she is at a battlefield opponents can't gain points (errata wording)
+modes:
+   - 2v2: points are shared (489.8.d) and Victory is 11: 1 point-card copies work for the team
+   - FFA: gained points ignore the 3-battlefield final-point condition (471.1.a.1)
+

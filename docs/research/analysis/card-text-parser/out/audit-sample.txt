@@ -1,0 +1,288 @@
+OGN-144 Spoils of War [spell body E4 P1 M- reaction] kw:Reaction
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / If an enemy unit has died this turn, this costs [2] less. / Draw 2.
+   - keyword:Reaction
+   - static(cost-mod) IF[turn-event=enemy-unit-died] => costChange (undefined) <self>
+   - on-play => draw 2
+
+OGN-101 Mushroom Pouch [gear mind E2 P- M- normal] kw:
+  TEXT: At the start of your Beginning Phase, if you control a facedown card at a battlefield, draw 1.
+   - triggered @start-of-turn/any IF[control=facedown card at a battlefield] => draw 1
+
+OGN-038 Kadregrin the Infernal [unit fury E9 P2 M9 normal] kw:
+  TEXT: When you play me, draw 1 for each of your [Mighty] units. (A unit is Mighty while it has 5+ [Might].)
+   - triggered @when-played/self => draw 1 per(of your [Mighty] units)
+
+OGN-111 Heimerdinger, Inventor [unit/champion mind E3 P1 M3 normal] kw:
+  TEXT: I have all [Exhaust] abilities of all friendly legends, units, and gear.
+   - static(ability-grant) => copy
+
+OGN-063 Spirit's Refuge [gear calm E2 P1 M- normal] kw:
+  TEXT: When you play this, buff a friendly unit. (If it doesn't have a buff, it gets a +1 [Might] buff.) / Friendly buffed units have [Deflect] if they didn't already. (Opponents must pay [Rainbow] to choose those units with a spell or ability.)
+   - triggered @when-played/self => buff <friendly unit>
+   - static(keyword-grant) IF[other !] => grantKeyword [Deflect] <all friendly buffed unit>  ##partial
+
+OGN-152 Mistfall [gear body E3 P- M- normal] kw:
+  TEXT: When you buff a friendly unit, you may pay [Body] and exhaust this to ready it.
+   - triggered @when-you-buff/any => may ready{body1,exh} <prev>
+
+OGN-153 Overt Operation [spell body E5 P2 M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / For each friendly unit, you may spend its buff to ready it. Then buff all friendly units. (Each one that doesn't have a buff gets a +1 [Might] buff.)
+   - keyword:Action
+   - on-play => may ready{spendBuff1} <prev> per(friendly unit); buff <all friendly unit>
+
+OGN-150 Kraken Hunter [unit body E3 P2 M5 normal] kw:Accelerate,Assault
+  TEXT: [Accelerate] (You may pay [1][Body] as an additional cost to have me enter ready.) / [Assault] (+1 [Might] while I'm an attacker.) / As you play me, you may spend any number of buffs as an additional cost. Reduce my cost by [Body] for each buff you spend.
+   - keyword:Accelerate
+   - keyword:Assault
+   - static(additional-cost) {spendBuffx} IF[optional] => costChange (undefined) <self> per(buff you spend) IF[if-you-do]
+
+OGN-087 Lecturing Yordle [unit mind E3 P- M2 normal] kw:Tank
+  TEXT: [Tank] (I must be assigned combat damage first.) / When you play me, draw 1.
+   - keyword:Tank
+   - triggered @when-played/self => draw 1
+
+OGN-265 Herald of the Arcane [legend mind+order E- P- M- normal] kw:
+  TEXT: [1], [Exhaust]: Play a 1 [Might] Recruit unit token.
+   - activated {E1,exh} => createToken 1xRecruit1
+
+OGN-160 Dazzling Aurora [gear body E9 P2 M- normal] kw:
+  TEXT: At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit. Play it, ignoring its cost, and recycle the rest.
+   - triggered @end-of-turn/any => look x; play <prev> free; recycle from:looked
+
+OGN-035 Vayne, Hunter [unit/champion fury E4 P1 M2 normal] kw:Assault3
+  TEXT: [Assault 3] (+3 [Might] while I'm an attacker.) / If an opponent controls a battlefield, I enter ready. / When I conquer, you may pay [1] to return me to my owner's hand.
+   - keyword:Assault3
+   - static(enter-ready) IF[opponent-controls=battlefield] => enterReady <self>
+   - triggered @when-i-conquer/self => may returnToHand{E1} <self> from:board
+
+OGN-180 Fading Memories [spell chaos E4 P1 M- normal] kw:
+  TEXT: Give a unit at a battlefield or a gear [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)
+   - on-play => grantKeyword [Temporary] <any unit/gear @battlefield>
+
+OGS-010 Annie, Stubborn [unit/champion chaos E4 P1 M3 normal] kw:
+  TEXT: When you play me, return a spell from your trash to your hand.
+   - triggered @when-played/self => returnToHand <any spell @trash> from:trash
+
+OGS-005 Zephyr Sage [unit calm E6 P1 M6 normal] kw:Shield
+  TEXT: [Shield] (+1 [Might] while I'm a defender.)
+   - keyword:Shield
+
+OGS-015 Recruit the Vanguard [spell order E6 P- M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / Play four 1 [Might] Recruit unit tokens. (They can be played to your base or to battlefields you control.)
+   - keyword:Action
+   - on-play => createToken 4xRecruit1
+
+SFD-045 Not So Fast [spell calm E2 P1 M- reaction] kw:Reaction
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Counter an enemy spell or ability that chooses a friendly unit or gear.
+   - keyword:Reaction
+   - on-play => counter <enemy spell/ability chooses=a friendly unit or gear>
+
+SFD-114 Marching Orders [spell body E3 P- M- action] kw:Action,Repeat
+  TEXT: [Action] (Play on your turn or in showdowns.) / [Repeat] [3] (You may pay the additional cost to repeat this spell's effect.) / Choose a friendly unit anywhere and an enemy unit at a battlefield. They deal damage equal to their Mights to each other.
+   - keyword:Action
+   - keyword:Repeat {E3}
+   - on-play => choose <friendly unit @anywhere>; choose <enemy unit @battlefield>; fight <prev>
+
+SFD-059 Svellsongur [gear calm E3 P1 M0 normal] kw:Equip
+  TEXT: [Equip] [1][Calm] ([1][Calm]: Attach this to a unit you control.) / As this is attached to a unit, copy that unit's text to this Equipment's effect text for as long as this is attached to it.
+   - keyword:Equip {E1,calm1}
+   - triggered @when-attached/self => unknown !!  ##none
+
+SFD-091 Buhru Captain [unit body E3 P1 M3 normal] kw:
+  TEXT: When you play me, you may draw 1 or buff me. (To buff a unit, give it a +1 [Might] buff if it doesn't already have one.)
+   - triggered @when-played/self => may chooseOne {draw 1 | buff <self>}
+
+SFD-141 Irelia, Graceful [unit/champion chaos E4 P1 M4 normal] kw:
+  TEXT: Your spells that choose me cost [1] or [Rainbow] less.
+   - static(cost-mod) => costChange (undefined) <all friendly spell>
+
+SFD-018 Void Hatchling [unit fury E2 P- M2 normal] kw:
+  TEXT: If you would reveal cards from a deck, look at the top card first. You may recycle it. Then reveal those cards.
+   - replacement @would-reveal => look 1; may recycle from:looked; look x
+
+SFD-083 Hextech Anomaly [gear mind E3 P1 M- normal] kw:
+  TEXT: [Exhaust]: [Reaction] — Pay any amount of [Rainbow] to [Add] that much Energy. (Abilities that add resources can't be reacted to.)
+   - activated {exh} <reaction> => add{var} x{}
+
+SFD-159 Trusty Ramhound [unit order E2 P- M2 normal] kw:
+  TEXT: While you have another unit here, I have +1 [Might].
+   - static(might-mod) IF[control=another unit] => might 1 <self>
+
+SFD-062 Bubble Bot [unit mind E3 P- M3 normal] kw:
+  TEXT: When you play me, ready another friendly Mech.
+   - triggered @when-played/self => ready <other friendly #Mech unit>
+
+SFD-166 Rally the Troops [spell order E2 P- M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / When a friendly unit is played this turn, buff it. (If it doesn't have a buff, it gets a +1 [Might] buff.) / Draw 1.
+   - keyword:Action
+   - triggered @when-you-play-unit/any => buff <prev>
+   - on-play => draw 1
+
+UNL-170 Atakhan [unit order E10 P3 M7 normal] kw:Ganking
+  TEXT: You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs. / [Ganking] (I can move from battlefield to battlefield.) / When I attack, the defender must kill one of their units here.
+   - static(additional-cost) {killFriendly1} IF[optional] => costChange (undefined) <self> per(Energy it costs and [Order] less for each Power it costs) IF[if-you-do]
+   - keyword:Ganking
+   - triggered @when-i-attack/self => chosen-player:kill <friendly unit @here>
+
+UNL-207 Amateur Recital [battlefield colorless E- P- M- normal] kw:
+  TEXT: When you hold here, you may move a unit at a battlefield to its base.
+   - triggered @when-you-hold/here => may move <any unit @battlefield> to:base
+
+UNL-137 Sinister Poro [unit chaos E2 P1 M1 normal] kw:
+  TEXT: When I attack, you may pay [1] to move an enemy unit here to its base.
+   - triggered @when-i-attack/self => may move{E1} <enemy unit @here> to:base
+
+UNL-025 Undying Legion [unit fury E3 P- M3 normal] kw:Legion
+  TEXT: [Legion][>] You may play me from your trash for [3][Fury]. (Get the effect if you've played another card this turn.)
+   - static(effect-text) IF[legion] => may play{E3,fury1} <self> from:trash
+
+UNL-095 Grim Resolve [spell body E2 P- M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / Give a friendly unit +3 [Might] this turn. When it wins a combat this turn, gain 2 XP.
+   - keyword:Action
+   - on-play => might 3 <friendly unit> ~turn
+   - triggered @when-a-unit-wins-combat/any => gainXp 2
+
+UNL-081 Keeper of Masks [unit mind E2 P- M1 normal] kw:Hidden,Temporary
+  TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Temporary] (Kill me at the start of my controller's Beginning Phase, before scoring.) / When you play me, play two Reflection unit tokens here. They become copies of me.
+   - keyword:Hidden
+   - keyword:Temporary
+   - triggered @when-played/self => createToken 2xReflection@here; copy <self>
+
+UNL-055 Vex, Mocking [unit/champion calm E5 P1 M5 normal] kw:Shield,Tank
+  TEXT: [Shield] (+1 [Might] while I'm a defender.) / [Tank] (I must be assigned combat damage first.) / When you [Stun] an enemy unit at a battlefield, you may move me to that battlefield.
+   - keyword:Shield
+   - keyword:Tank
+   - triggered @when-you-stun/any => may move <self> to:there
+
+UNL-038 Skyward Strike [spell calm E2 P1 M- normal] kw:Level6
+  TEXT: Move an enemy unit. / [Level 6][>] [Stun] an enemy unit. (While you have 6+ XP, get the effect. A stunned unit doesn't deal combat damage this turn.)
+   - on-play => move <enemy unit> to:any
+   - on-play IF[level=6] => stun <enemy unit>
+
+UNL-066 Moonlight Affliction [spell mind E7 P- M- reaction] kw:Reaction
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Give a unit -10 [Might] this turn.
+   - keyword:Reaction
+   - on-play => might -10 <any unit> ~turn
+
+UNL-109 Blood Rose [gear body E1 P- M- normal] kw:
+  TEXT: When you play a unit, you may pay [1] to gain 1 XP. / Spend 3 XP, [Exhaust]: Ready a unit.
+   - triggered @when-you-play-unit/any => may gainXp{E1} 1
+   - activated {exh,spendXp3} => ready <any unit>
+
+VEN-053 Otterpus [unit mind E2 P- M2 normal] kw:
+  TEXT: If a player would score 1 point from conquering or holding during their first or second turn, they draw 1 instead.
+   - replacement @would-score => chosen-player:draw 1
+
+VEN-001 Baccai Sandspinner [unit fury E6 P- M6 normal] kw:Empower,Empowered
+  TEXT: [Empower] [5]. This ability costs [3] less if you control 4 or fewer runes. (Pay the cost: Empower me. Use only if not Empowered.) / [Empowered][>] I have [Deflect] and [Assault 2]. (Opponents must pay [Rainbow] to choose me with a spell or ability. +2 [Might] while I'm an attacker.)
+   - keyword:Empower {E5} => costChange (undefined) <self> IF[rune-count=<=4]
+   - static(keyword-grant) IF[empowered] => grantKeyword [Deflect,Assault2] <self>
+
+VEN-027 Hand Hammer [gear calm E2 P- M1 normal] kw:Equip
+  TEXT: [Equip] [Calm] ([Calm]: Attach this to a unit you control.)
+   - keyword:Equip {calm1}
+   - static(might-mod) (eq) IF[exactly-one-other-here] => might 2 <self>
+
+VEN-023 Zed, From the Shadows [unit/champion fury E4 P1 M4 normal] kw:
+  TEXT: You may discard 1 as an additional cost to play me. / When you play me, if you paid the additional cost, play a 0 [Might] Shadow Clone unit token. (It has "When I attack, you may banish a unit from your trash. If you do, give me [Assault 4] this turn.")
+   - static(additional-cost) {discard1} IF[optional]
+   - triggered @when-played/self IF[paid-additional-cost] => createToken 1xShadow Clone0
+
+VEN-063 Nasus, Guardian of Knowledge [unit/champion mind E5 P1 M6 normal] kw:
+  TEXT: Once each turn, when an enemy unit here dies, channel 1 rune exhausted.
+   - triggered @when-a-unit-dies~once-each-turn/here => channel 1
+
+VEN-164 Sandswept Tomb [battlefield colorless E- P- M- normal] kw:
+  TEXT: Each spell that chooses one or more units here that are friendly to it costs [Rainbow] less.
+   - static(cost-mod) => costChange (undefined) <all any spell>
+
+VEN-050 Grumpy Rockbear [unit mind E4 P- M4 normal] kw:Empower,Empowered
+  TEXT: [Empower] [12]. This ability costs [1] less for each rune you control. (Pay the cost: Empower me. Use only if not Empowered.) / [Empowered][>] I have [Deflect] and [Shield 3]. (Opponents must pay [Rainbow] to choose me with a spell or ability.+3 [Might] while I'm a defender.)
+   - keyword:Empower {E12} => costChange (undefined) <self> per(rune you control.)
+   - static(keyword-grant) IF[empowered] => grantKeyword [Deflect,Shield3] <self>
+
+VEN-018 Rage Amplifier [gear fury E4 P1 M- normal] kw:Empower,Empowered
+  TEXT: [Empower] [6][Fury] ([6][Fury]: Empower this. Use only if not Empowered.) / Your units have +1 [Might]. If I'm [Empowered], they have +2 [Might] instead.
+   - keyword:Empower {E6,fury1}
+   - static(might-mod) => might 1 <all friendly unit>
+   - static(might-mod) IF[empowered] => might 2 <prev>
+
+RAD-072 Overloaded Traveler [unit body E2 P- M2 normal] kw:
+  TEXT: While there's a friendly gear with [Deploy] at my battlefield, I have +1 [Might].
+   - static(might-mod) IF[exists=a friendly gear with [Deploy] at my battlefield] => might 1 <self>
+
+RAD-049 Industrious Mechsmith [unit  E4 P- M1 normal] kw:
+  TEXT: When you play me, play a 3 [Might] Mech unit token here.
+   - triggered @when-played/self => createToken 1xMech3@here
+
+RAD-154 Last Caress [spell/signature body+chaos E2 P- M- reaction] kw:Reaction
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / The next unit you play this turn (even from face down) can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [Might] buff if it doesn't have one.)
+   - keyword:Reaction
+   - on-play => playPermission ~turn @next-unit
+   - triggered @when-played/any => buff <prev>
+
+RAD-095 Momentary Companion [unit chaos E4 P- M4 normal] kw:Hidden
+  TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / When you play me, if it's not your turn, give me [Temporary]. (Kill me at the start of my controller's Beginning Phase, before scoring.)
+   - keyword:Hidden
+   - triggered @when-played/self IF[!your-turn] => grantKeyword [Temporary] <self>
+
+RAD-160 Cosmic Vista [battlefield colorless E- P- M- normal] kw:
+  TEXT: When you hold here, if your Rune Deck is empty, you score 1 point.
+   - triggered @when-you-hold/here IF[rune-deck-empty] => score 1
+
+RAD-162 Firelights' Hideout [battlefield colorless E- P- M- normal] kw:
+  TEXT: When you conquer here, the next unit you play this turn has [Accelerate]. (You may pay [1] and a Power of its Domain as an additional cost to have it enter ready.)
+   - triggered @when-you-conquer/here => grantKeyword [Accelerate] <friendly unit> ~turn @next-unit
+
+RAD-004 Brawl [spell chaos E3 P1 M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / Give a unit [Assault] this turn equal to its Might. (+1 [Might] for each instance of Assault while it's an attacker.)
+   - keyword:Action
+   - on-play => grantKeyword (target.might) [Assault] <any unit> ~turn
+
+RAD-059 Supernova [spell order E9 P1 M- normal] kw:
+  TEXT: Deal 10 to a unit. Draw 2.
+   - on-play => deal 10 <any unit>; draw 2
+
+RAD-145 Lady of Clockwork [legend calm+mind E- P- M- normal] kw:
+  TEXT: At the start of your Main Phase, you may pay [1] to choose a friendly gear. It becomes a unit gear with Might equal to its Energy cost until you choose another gear with me.
+   - triggered @start-of-main/any => may choose{E1} <friendly gear>; unknown !!  ##partial
+
+RAD-022 Whirling Twirligig [gear  E4 P1 M- normal] kw:
+  TEXT: [Exhaust]: Play a Gold gear token exhausted. (It has "[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].") / Kill a friendly gear, [Exhaust]: Play a 1 [Might] Recruit unit token. / Kill a friendly unit, [Exhaust]: Play a 3 [Might] Mech unit token.
+   - activated {exh} => createToken 1xGold
+   - activated {exh,killFriendly1} => createToken 1xRecruit1
+   - activated {exh,killFriendly1} => createToken 1xMech3
+
+RAD-032 Battle Preparations [spell calm E2 P- M- reaction] kw:Reaction,Show Off
+  TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / [Show Off] a gear. (As you play this, you may reveal a gear from hand or pick a friendly gear.) / Give a unit +2 [Might] this turn. If you showed off, ready up to 2 runes.
+   - keyword:Reaction
+   - keyword:Show Off => may showOff <any gear>
+   - on-play => might 2 <any unit> ~turn; readyRune 2 IF[showed-off]
+
+RAD-042 Orianna, Exquisite [unit/champion calm E3 P- M4 normal] kw:Shield
+  TEXT: [Shield] (+1 [Might] while I'm a defender.) / I don't deal combat damage unless there's a friendly gear here.
+   - keyword:Shield
+   - static(drawback) IF[!exists=a friendly gear here] => restrict <self>
+
+RAD-150 Blade of the Exile [gear/signature calm+chaos E3 P1 M3 normal] kw:Equip,Ganking
+  TEXT: [Equip] — [Rainbow] or exhaust a friendly unit. (Pay the cost: Attach this to a unit you control.)
+   - keyword:Equip {}
+   - keyword:Ganking (eq)
+
+RAD-019 Firebrand Raider [unit fury E6 P1 M6 normal] kw:
+  TEXT: I enter ready. / When you play me, ready all enemy units. / Other units enter ready. / Units don't ready during the Awaken Phase.
+   - static(enter-ready) => enterReady <self>
+   - triggered @when-played/self => ready <all enemy unit>
+   - static(enter-ready) => enterReady <all other any unit>
+   - static(restriction) => restrict <any ?>
+
+RAD-082 Primordial Roar [spell body E4 P2 M- normal] kw:Show Off
+  TEXT: [Show Off] a unit. (As you play this, you may reveal a unit from hand or pick a friendly unit.) / If you showed off a unit, deal damage equal to that unit's Might to a unit.
+   - keyword:Show Off => may showOff <any unit>
+   - on-play => deal (shown.might) <any unit> IF[showed-off]
+
+RAD-101 An Offer You Can't Refuse [spell chaos E2 P- M- action] kw:Action
+  TEXT: [Action] (Play on your turn or in showdowns.) / Kill a gear. Its controller plays a Gold gear token exhausted. (It has "[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].")
+   - keyword:Action
+   - on-play => kill <any gear>; controller:createToken 1xGold
+

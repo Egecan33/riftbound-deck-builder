@@ -1,0 +1,1017 @@
+{
+ "generated": "2026-11-11",
+ "source": "gallery snapshot 2026-11-11 (https://playriftbound.com/en-us/card-gallery/), errata applied",
+ "note": "PROPOSAL. roles.add / roles.remove patch the output of features.mjs; \"ability\" is the intended reading for whoever writes the structured override.",
+ "cards": [
+  {
+   "code": "OGN-063",
+   "name": "Spirit's Refuge",
+   "type": "gear",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "When you play this, buff a friendly unit. / Friendly buffed units have [Deflect] if they didn't already.",
+   "derivedRoles": [
+    "buff_source",
+    "counter_protection"
+   ],
+   "roles": {},
+   "why": "Clause \"if they didn't already\" is a no-op qualifier; the parse is otherwise right.",
+   "ability": "Treat as full."
+  },
+  {
+   "code": "OGN-112",
+   "name": "Kai'Sa, Evolutionary",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[Ganking] / When I conquer, you may play a spell from your trash with Energy cost less than your points without paying its Energy cost. Then recycle it.",
+   "derivedRoles": [
+    "mobility"
+   ],
+   "roles": {
+    "add": [
+     "recursion"
+    ]
+   },
+   "why": "Free-cast of a spell from trash limited by \"Energy cost less than your points\".",
+   "ability": "trigger when-i-conquer; play spell from trash, energy free, filter energy < your points; then recycle it"
+  },
+  {
+   "code": "OGN-115",
+   "name": "Promising Future",
+   "type": "spell",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "Each player looks at the top 5 cards of their Main Deck, chooses one, then recycles the rest. Starting with the next player, each player plays those cards, ignoring Energy costs.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "card_selection"
+    ]
+   },
+   "why": "Symmetric \"each player looks at top 5, chooses one, ... plays those cards, ignoring Energy costs\".",
+   "ability": "each-player: look 5, keep 1, recycle rest; then each plays it energy-free"
+  },
+  {
+   "code": "OGN-227",
+   "name": "Symbol of the Solari",
+   "type": "gear",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "If a combat where you are the attacker ends in a tie, recall ALL units instead.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Replacement on a tied combat: \"recall ALL units instead\".",
+   "ability": "replacement @combat-tie (you attacker): recall all units"
+  },
+  {
+   "code": "OGN-242",
+   "name": "Baited Hook",
+   "type": "gear",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.",
+   "derivedRoles": [
+    "card_selection"
+   ],
+   "roles": {
+    "add": [
+     "card_selection"
+    ]
+   },
+   "why": "Sacrifice-and-upgrade: unit from top 5 with \"Might up to 1 more than the killed unit\".",
+   "ability": "activated {E1, order1, exhaust}: kill friendly unit (as effect); look 5; may play unit with might <= killed+1 free; recycle rest"
+  },
+  {
+   "code": "OGN-244",
+   "name": "Divine Judgment",
+   "type": "spell",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "Each player chooses 2 units, 2 gear, 2 runes, and 2 cards in their hands. Recycle the rest.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "removal_sweeper",
+     "disruption"
+    ]
+   },
+   "why": "Symmetric keep-N sweeper over units, gear, runes and hands.",
+   "ability": "each player keeps 2 units, 2 gear, 2 runes, 2 cards in hand; everything else is recycled"
+  },
+  {
+   "code": "OGN-263",
+   "name": "Swift Scout",
+   "type": "legend",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "You may pay [1] to hide a card with [Hidden] instead of [Rainbow]. / [1], [Exhaust]: Put a Teemo unit you own into your hand from your Champion Zone or the board.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Returns a named champion (\"a Teemo unit you own\") from Champion Zone or board to hand.",
+   "ability": "static: alternative hide cost [1]; activated {E1, exhaust}: Teemo unit -> hand"
+  },
+  {
+   "code": "OGN-281",
+   "name": "Hallowed Tomb",
+   "type": "battlefield",
+   "class": "unparsed",
+   "parseStatus": "none",
+   "text": "When you hold here, you may return your Chosen Champion from your trash to your Champion Zone if it is empty.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "recursion"
+    ]
+   },
+   "why": "Chosen Champion from trash to Champion Zone.",
+   "ability": "trigger when-you-hold here; optional; condition Champion Zone empty"
+  },
+  {
+   "code": "RAD-068",
+   "name": "Orianna, Mechanical Marvel",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "none",
+   "text": "Once each turn, while I'm at a battlefield, you may pay [1][Rainbow] less to play a gear.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "cost_reducer"
+    ]
+   },
+   "why": "Cost reduction phrased as \"you may pay ... less to play a gear\", once each turn, while at a battlefield.",
+   "ability": "static cost-mod: gear, -[1][Rainbow], once each turn, condition at-battlefield"
+  },
+  {
+   "code": "RAD-140",
+   "name": "Chronobreak",
+   "type": "spell",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "As an additional cost to play this, pay any amount of Power. / Banish that many units you control, then for each, its owner plays that unit back to the same location or to their base, ignoring its cost.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Variable-X blink: banish X of your units, owners replay them free.",
+   "ability": "additional cost: any amount of Power (X); banish X friendly units; each is replayed free to same location or base (re-triggers when-played abilities)"
+  },
+  {
+   "code": "RAD-145",
+   "name": "Lady of Clockwork",
+   "type": "legend",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "At the start of your Main Phase, you may pay [1] to choose a friendly gear. It becomes a unit gear with Might equal to its Energy cost until you choose another gear with me.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Type-changing effect: a gear \"becomes a unit gear with Might equal to its Energy cost\".",
+   "ability": "trigger start-of-main; may pay [1]; chosen friendly gear is also a unit with might = its energy until another is chosen"
+  },
+  {
+   "code": "RAD-151",
+   "name": "Starry-Eyed Songstress",
+   "type": "legend",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "As an additional cost to play a spell, you may exhaust me and three friendly units to reduce the cost of that spell by [2].",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "cost_reducer"
+    ]
+   },
+   "why": "Cost reduction paid by exhausting the legend and three friendly units.",
+   "ability": "optional additional cost on any of your spells: exhaust me + 3 friendly units -> that spell costs [2] less"
+  },
+  {
+   "code": "RAD-167",
+   "name": "Neeko, Blending In",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "/ If Neeko is in your deck, choose up to 3 different legends in addition to your starting legend. / When you play me, choose one of those legends and add it to your Legend Zone while I'm on the board.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Deckbuilding rule plus Legend Zone change. Errata text used (Radiance Errata Updates, 2026-10-09). See rules.md 8.3.",
+   "ability": "deck rule: up to 3 extra legends; when-played: add one of them to Legend Zone while on board"
+  },
+  {
+   "code": "SFD-059",
+   "name": "Svellsongur",
+   "type": "gear",
+   "class": "dynamic",
+   "parseStatus": "partial",
+   "text": "[Equip] [1][Calm] / As this is attached to a unit, copy that unit's text to this Equipment's effect text for as long as this is attached to it.",
+   "derivedRoles": [
+    "buff_source"
+   ],
+   "roles": {},
+   "why": "Copies the equipped unit's text into its own effect text; what it does depends on the wearer.",
+   "ability": "cannot be scored statically; score per deck from the units it can equip"
+  },
+  {
+   "code": "SFD-146",
+   "name": "Vex, Cheerless",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "While I'm in combat, friendly spells cost [1][Rainbow] less to a minimum of [1], and enemy spells cost [1][Rainbow] more.",
+   "derivedRoles": [
+    "disruption"
+   ],
+   "roles": {
+    "add": [
+     "cost_reducer"
+    ]
+   },
+   "why": "Two-sided cost modifier with a floor, gated on being in combat.",
+   "ability": "static IF in-combat: friendly spells -[1][Rainbow] (min [1]); enemy spells +[1][Rainbow]"
+  },
+  {
+   "code": "SFD-173",
+   "name": "Soraka, Wanderer",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "I must be assigned combat damage last. / If another unit you control here would die, if it has less Might than me, instead heal it, exhaust it, and recall it.",
+   "derivedRoles": [
+    "counter_protection",
+    "mobility"
+   ],
+   "roles": {
+    "remove": [
+     "mobility"
+    ]
+   },
+   "why": "Death replacement for another unit with a Might comparison; the recall is part of the save, not movement.",
+   "ability": "replacement @would-die (other friendly unit here, might < mine): heal, exhaust, recall"
+  },
+  {
+   "code": "UNL-054",
+   "name": "Tricksy Tentacles",
+   "type": "spell",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "Move any number of enemy units with the same controller and a total Might of 8 or less to a single location.",
+   "derivedRoles": [
+    "disruption"
+   ],
+   "roles": {},
+   "why": "Target set limited by \"same controller\" and \"total Might of 8 or less\".",
+   "ability": "move any number of enemy units (one controller, total might <= 8) to one location"
+  },
+  {
+   "code": "VEN-040",
+   "name": "Decree of Focus",
+   "type": "spell",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[Reaction] / Choose a friendly unit that's in combat with an enemy Fury unit or that's being chosen by an enemy Fury spell. Give it +4 [Might] this turn.",
+   "derivedRoles": [
+    "combat_trick"
+   ],
+   "roles": {},
+   "why": "Target must be in combat with an enemy Fury unit or chosen by an enemy Fury spell.",
+   "ability": "conditional combat trick (+4 Might this turn), only versus Fury"
+  },
+  {
+   "code": "VEN-069",
+   "name": "Mel, Newly Awakened",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "When you play me, draw 1. / [Empower] [3] / [Empowered][>] Your spells and abilities can't be countered. If a spell or ability you control would give -[Might] to a unit it chooses, it gives an additional -1 [Might].",
+   "derivedRoles": [
+    "card_flow",
+    "counter_protection"
+   ],
+   "roles": {},
+   "why": "Replacement that increases -Might effects by 1.",
+   "ability": "Empowered: your spells/abilities cannot be countered; your -Might effects give an additional -1"
+  },
+  {
+   "code": "VEN-086",
+   "name": "Gangplank, Naval",
+   "type": "unit",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[Empower] [Body][Body] / [Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] instead.",
+   "derivedRoles": [
+    "buff_source"
+   ],
+   "roles": {
+    "remove": [
+     "buff_source"
+    ],
+    "add": [
+     "counter_protection"
+    ]
+   },
+   "why": "Self-protection replacement (stun / -Might / return to hand become +3 Might). Not a buff source for others.",
+   "ability": "Empowered replacement on self"
+  },
+  {
+   "code": "VEN-137",
+   "name": "Shady Spectacles",
+   "type": "gear",
+   "class": "dynamic",
+   "parseStatus": "partial",
+   "text": "[Equip] [1][Order] / As this is attached to a unit, choose another friendly unit. The equipped unit becomes a copy of that unit for as long as this is attached to it.",
+   "derivedRoles": [
+    "buff_source"
+   ],
+   "roles": {},
+   "why": "Equipped unit \"becomes a copy of\" another friendly unit.",
+   "ability": "cannot be scored statically"
+  },
+  {
+   "code": "VEN-139",
+   "name": "Rogue Assassin",
+   "type": "legend",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[Empower] [3][Rainbow] / [Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.",
+   "derivedRoles": [
+    "mobility"
+   ],
+   "roles": {},
+   "why": "Nested condition (\"if I'm Empowered, ready it\") inside an activated ability.",
+   "ability": "activated <action> {exhaust}: your turn only; move friendly unit in a showdown to base; if Empowered ready it"
+  },
+  {
+   "code": "VEN-157",
+   "name": "Dragon Roost",
+   "type": "battlefield",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "Any player may pay [Rainbow][Rainbow] as an additional cost to play a Dragon. If they do, they play it to this battlefield.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Any player may pay an additional cost to play a Dragon to this battlefield.",
+   "ability": "symmetric play-permission for Dragon units, cost [Rainbow][Rainbow]"
+  },
+  {
+   "code": "VEN-160",
+   "name": "Mystic Vortex",
+   "type": "battlefield",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "During showdowns here, cards with [Reaction] cost [Rainbow] more to play.",
+   "derivedRoles": [
+    "disruption"
+   ],
+   "roles": {},
+   "why": "Tax on cards with [Reaction] during showdowns here.",
+   "ability": "static tax, symmetric"
+  },
+  {
+   "code": "VEN-163",
+   "name": "Risen Altar",
+   "type": "battlefield",
+   "class": "unparsed",
+   "parseStatus": "partial",
+   "text": "[Empower] costs of your units here cost [1] or [Rainbow] less.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "cost_reducer"
+    ]
+   },
+   "why": "Reduces [Empower] costs of your units here.",
+   "ability": "static cost-mod on Empower costs, -[1] or -[Rainbow]"
+  },
+  {
+   "code": "UNL-170",
+   "name": "Atakhan",
+   "type": "unit",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs. / [Ganking] / When I attack, the defender must kill one of their units here.",
+   "derivedRoles": [
+    "removal_single",
+    "mobility",
+    "finisher"
+   ],
+   "roles": {},
+   "why": "Two-part cost reduction merged into one phrase; actor of the forced kill is \"the defender\".",
+   "ability": "cost -[1] per Energy and -[Order] per Power of the killed unit; when-i-attack: defending player kills one of their units here"
+  },
+  {
+   "code": "VEN-044",
+   "name": "Astral Heron",
+   "type": "unit",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "When you play your first card each turn, if I'm at a battlefield, your next card costs [2][Rainbow][Rainbow] less.",
+   "derivedRoles": [
+    "cost_reducer",
+    "finisher"
+   ],
+   "roles": {},
+   "why": "Trigger is \"your first card each turn\" and the reduction applies to the next card; frequency is lost.",
+   "ability": "trigger first-card-each-turn IF at-battlefield: next card -[2][Rainbow][Rainbow]"
+  },
+  {
+   "code": "SFD-198",
+   "name": "Arise!",
+   "type": "spell",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "Play a 2 [Might] Sand Soldier unit token for each Equipment you control. Then ready two of them.",
+   "derivedRoles": [
+    "token_maker"
+   ],
+   "roles": {},
+   "why": "Token count scales with Equipment you control; \"ready two of them\".",
+   "ability": "createToken Sand Soldier x(count: Equipment you control); ready 2 of them"
+  },
+  {
+   "code": "SFD-039",
+   "name": "Royal Entourage",
+   "type": "unit",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "When you play me, ready or exhaust a legend.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Modal \"ready or exhaust a legend\" parsed as ready only (found against the GameLab script).",
+   "ability": "when-played: choose one: ready a legend | exhaust a legend"
+  },
+  {
+   "code": "VEN-053",
+   "name": "Otterpus",
+   "type": "unit",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "If a player would score 1 point from conquering or holding during their first or second turn, they draw 1 instead.",
+   "derivedRoles": [
+    "card_flow"
+   ],
+   "roles": {
+    "remove": [
+     "card_flow"
+    ],
+    "add": [
+     "disruption"
+    ]
+   },
+   "why": "Symmetric replacement of early points by a draw; the \"first or second turn\" and \"from conquering or holding\" conditions are lost, and it is not card flow for its owner.",
+   "ability": "replacement @would-score (any player, turns 1-2, conquer/hold): that player draws 1 instead"
+  },
+  {
+   "code": "UNL-081",
+   "name": "Keeper of Masks",
+   "type": "unit",
+   "class": "silent-loss",
+   "parseStatus": "full",
+   "text": "[Hidden] / [Temporary] / When you play me, play two Reflection unit tokens here. They become copies of me.",
+   "derivedRoles": [
+    "token_maker"
+   ],
+   "roles": {},
+   "why": "\"They become copies of me\": parser points the copy at the source instead of the tokens.",
+   "ability": "when-played: 2 Reflection tokens here, each a copy of this card"
+  },
+  {
+   "code": "OGN-033",
+   "name": "Shakedown",
+   "type": "spell",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "[Reaction] / Choose an enemy unit. Deal 6 to it unless its controller has you draw 2.",
+   "derivedRoles": [
+    "removal_single"
+   ],
+   "roles": {
+    "note": "removal_single and card_flow are both opponent-choice"
+   },
+   "why": "Punisher: the opponent chooses between taking 6 and letting you draw 2. Neither outcome is guaranteed.",
+   "ability": "deal 6 to enemy unit UNLESS its controller has you draw 2"
+  },
+  {
+   "code": "VEN-101",
+   "name": "Gust Monk",
+   "type": "unit",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "You may pay [1] as an additional cost to play me. / When you play me, if you paid the additional cost, banish a card from any trash to give a unit [Assault 2] this turn.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "disruption"
+    ]
+   },
+   "why": "\"banish a card from any trash to give ...\" is a cost-shaped clause, so the trash hate is not seen.",
+   "ability": "when-played IF paid: banish a card from any trash; a unit gets Assault 2 this turn"
+  },
+  {
+   "code": "RAD-110",
+   "name": "Lulu, Whimsical",
+   "type": "unit",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "When I move, you may have another unit's base Might become 4 this turn.",
+   "derivedRoles": [],
+   "roles": {
+    "add": [
+     "combat_trick"
+    ]
+   },
+   "why": "Sets another unit's base Might to 4: a buff or a shrink depending on the target.",
+   "ability": "when-i-move: may set another unit's base Might to 4 this turn"
+  },
+  {
+   "code": "OGN-111",
+   "name": "Heimerdinger, Inventor",
+   "type": "unit",
+   "class": "dynamic",
+   "parseStatus": "full",
+   "text": "I have all [Exhaust] abilities of all friendly legends, units, and gear.",
+   "derivedRoles": [],
+   "roles": {},
+   "why": "Has all [Exhaust] abilities of all friendly legends, units and gear.",
+   "ability": "cannot be scored statically"
+  },
+  {
+   "code": "UNL-200",
+   "name": "Mirror Image",
+   "type": "spell",
+   "class": "dynamic",
+   "parseStatus": "full",
+   "text": "Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary].",
+   "derivedRoles": [
+    "token_maker"
+   ],
+   "roles": {},
+   "why": "Reflection token becomes a copy of a chosen unit.",
+   "ability": "value depends on the copied unit"
+  },
+  {
+   "code": "UNL-086",
+   "name": "Zilean, Time Mage",
+   "type": "unit",
+   "class": "dynamic",
+   "parseStatus": "full",
+   "text": "Once each turn, if you would play a token unit while I'm at a battlefield, you may play that token and an additional copy of it instead.",
+   "derivedRoles": [
+    "token_maker"
+   ],
+   "roles": {},
+   "why": "Doubles token-unit plays; the token is whatever the other card makes.",
+   "ability": "replacement @would-play token unit, once each turn, while at a battlefield"
+  },
+  {
+   "code": "UNL-148",
+   "name": "Cursed Sarcophagus",
+   "type": "gear",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "When you play this, banish all units from your trash. / [Exhaust]: Play a unit banished with this.",
+   "derivedRoles": [
+    "disruption"
+   ],
+   "roles": {
+    "add": [
+     "recursion"
+    ]
+   },
+   "why": "Reanimation through an intermediate zone: banishes all units from your trash, then plays \"a unit banished with this\".",
+   "ability": "when-played: banish all units from your trash; activated {exhaust}: play a unit banished with this"
+  },
+  {
+   "code": "SFD-175",
+   "name": "Undertitan",
+   "type": "unit",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "When you play me, give your other units +2 [Might] this turn. / As I'm revealed from your deck, [Add] [2].",
+   "derivedRoles": [
+    "finisher",
+    "rune_ramp"
+   ],
+   "roles": {
+    "note": "rune_ramp is conditional on reveal effects"
+   },
+   "why": "The [Add] happens only \"as I'm revealed from your deck\"; it is not a repeatable resource source.",
+   "ability": ""
+  },
+  {
+   "code": "OGN-276",
+   "name": "Aspirant's Climb",
+   "type": "battlefield",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "Increase the points needed to win the game by 1.",
+   "derivedRoles": [],
+   "roles": {
+    "note": "rule-mod victory-score +1"
+   },
+   "why": "Changes the points needed to win; no scorer role fits.",
+   "ability": ""
+  },
+  {
+   "code": "VEN-022",
+   "name": "Endless Riches",
+   "type": "gear",
+   "class": "role-fix",
+   "parseStatus": "full",
+   "text": "When you play this, banish your hand and trash, then [Burn 7]. / Skip your Draw Phase. / You may play cards from your trash. / If a card would go to your trash from anywhere other than your Main Deck, banish it instead.",
+   "derivedRoles": [
+    "recursion"
+   ],
+   "roles": {
+    "note": "recursion via permission; treat as build-around"
+   },
+   "why": "Whole-card engine: banish hand and trash, burn 7, skip draws, play from trash.",
+   "ability": ""
+  }
+ ],
+ "tokens": {
+  "why": "Tokens with no gallery row get their Might and abilities only from the reminder text of the cards that create them; the parser strips reminder text.",
+  "needDefinition": [
+   "Mech (unit, 3 Might)",
+   "Sand Soldier (unit, 2 Might)",
+   "Shadow Clone (unit, 0 Might, ability in reminder text of VEN-023)",
+   "Tentacle (unit, 1 Might)",
+   "Bomb (gear)"
+  ],
+  "haveGalleryRow": [
+   "OGN-271 Recruit (DE)",
+   "OGN-272 Recruit (NX)",
+   "OGN-273 Recruit (ZN)",
+   "OGN-274 Sprite",
+   "UNL-T01 Baron Pit",
+   "UNL-T02 Bird",
+   "UNL-T03 Brush",
+   "UNL-T05 Gold",
+   "UNL-T06 Reflection",
+   "VEN-T04 Recruit"
+  ]
+ },
+ "dataFixes": {
+  "type": [
+   {
+    "code": "RAD-006",
+    "name": "Scorched Earth",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-007",
+    "name": "Rally for War",
+    "galleryType": "gear",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-009",
+    "name": "Antagonistic Apparatus",
+    "galleryType": null,
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-012",
+    "name": "Runeblade Anvil",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-016",
+    "name": "Coalesced Energy",
+    "galleryType": "spell",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-022",
+    "name": "Whirling Twirligig",
+    "galleryType": null,
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-025",
+    "name": "Consult the Heavens",
+    "galleryType": "unit",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-026",
+    "name": "Entrenched Boar",
+    "galleryType": null,
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-033",
+    "name": "Command: Attack",
+    "galleryType": "gear",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-034",
+    "name": "Hunker Down",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-035",
+    "name": "Invigorating Bloom",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-039",
+    "name": "Ephemeral Ward",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-041",
+    "name": "Hush",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-044",
+    "name": "Hunting Blind",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-046",
+    "name": "Resplendent Rostrum",
+    "galleryType": "spell",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-047",
+    "name": "Fanfare",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-049",
+    "name": "Industrious Mechsmith",
+    "galleryType": null,
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-056",
+    "name": "Improvised Projectile",
+    "galleryType": "gear",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-059",
+    "name": "Supernova",
+    "galleryType": "unit",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-064",
+    "name": "Scrutinizing Scope",
+    "galleryType": "spell",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-069",
+    "name": "Zero Point Inflection",
+    "galleryType": "spell",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-072",
+    "name": "Overloaded Traveler",
+    "galleryType": "spell",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-087",
+    "name": "Portable Portal",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-097",
+    "name": "Siren of the Shallows",
+    "galleryType": "spell",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-101",
+    "name": "An Offer You Can't Refuse",
+    "galleryType": "gear",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-104",
+    "name": "Pitiless Stalker",
+    "galleryType": null,
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-108",
+    "name": "Bushwhack Trap",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-120",
+    "name": "Meticulous Restorationist",
+    "galleryType": "gear",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-121",
+    "name": "One-Two Punch",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-123",
+    "name": "Protector's Shield",
+    "galleryType": null,
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-124",
+    "name": "Burn Away",
+    "galleryType": "gear",
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-127",
+    "name": "Rousing Display",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-130",
+    "name": "Battlefield Armorer",
+    "galleryType": "spell",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-131",
+    "name": "Demacian Illuminators",
+    "galleryType": "spell",
+    "resolvedType": "unit",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-134",
+    "name": "Raucous Anthem",
+    "galleryType": null,
+    "resolvedType": "spell",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   },
+   {
+    "code": "RAD-136",
+    "name": "Dockside Lock-Up",
+    "galleryType": "unit",
+    "resolvedType": "gear",
+    "evidence": "image alt text type word; Might / [Equip] / [Deploy] structure"
+   }
+  ],
+  "domainMissing": [
+   {
+    "code": "RAD-006",
+    "name": "Scorched Earth",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-009",
+    "name": "Antagonistic Apparatus",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-022",
+    "name": "Whirling Twirligig",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-026",
+    "name": "Entrenched Boar",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-041",
+    "name": "Hush",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-047",
+    "name": "Fanfare",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-049",
+    "name": "Industrious Mechsmith",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-104",
+    "name": "Pitiless Stalker",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-121",
+    "name": "One-Two Punch",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-123",
+    "name": "Protector's Shield",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   },
+   {
+    "code": "RAD-134",
+    "name": "Raucous Anthem",
+    "domains": null,
+    "status": "UNCONFIRMED: gallery row has no domain; needs a second source"
+   }
+  ],
+  "text": [
+   {
+    "code": "RAD-048",
+    "name": "High Note",
+    "kind": "fix"
+   },
+   {
+    "code": "RAD-071",
+    "name": "Nazuman Ntofo",
+    "kind": "fix"
+   },
+   {
+    "code": "RAD-127",
+    "name": "Rousing Display",
+    "kind": "fix"
+   },
+   {
+    "code": "RAD-167",
+    "name": "Neeko, Blending In",
+    "kind": "errata"
+   },
+   {
+    "code": "SFD-096",
+    "name": "Laurent Bladekeeper",
+    "kind": "fix"
+   },
+   {
+    "code": "SFD-138",
+    "name": "Windsinger",
+    "kind": "fix"
+   },
+   {
+    "code": "VEN-073",
+    "name": "Jagged Cutlass",
+    "kind": "fix"
+   },
+   {
+    "code": "VEN-109",
+    "name": "Illaoi, Prophet of the Great Kraken",
+    "kind": "fix"
+   }
+  ]
+ }
+}

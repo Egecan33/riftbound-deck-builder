@@ -1,0 +1,201 @@
+pa  0 | Viktor, Herald of the Arcane   | WIDE      2.28 | ATTRITION 1.29 | hid 0.18 | cl  8 | T7 medium | 0.78 | event-only |                | Stuttgart Viktor
+pa  1 | Kha'Zix, Voidreaver            | BURST      1.2 | TALL      0.83 | hid 0.97 | cl  3 | T7 medium | 0.79 | bestof     |                | K67 (Best of Khazix combined)
+pa  2 | Teemo, Swift Scout             | WIDE      1.17 | HOLD      1.46 | hid 3.44 | cl  3 | T6 fast   | 0.57 | event-only |                | Teemo - RC Stuttgart
+pa  3 | Orianna, Lady of Clockwork     | WIDE      1.11 | BURST     0.58 | hid 0.53 | cl  5 | T7 medium | 0.62 | bestof     |                | Orianna - RC Stuttgart 2026
+pa  4 | Sett, The Boss                 | TALL      1.96 | BURST     1.02 | hid 0.12 | cl  2 | T6 fast   | 0.70 | event-only |                | Skirmish 13.11.2026
+pa  5 | Riven, The Exile               | TALL       1.0 | BURST     0.86 | hid 0.82 | cl  4 | T6 fast   | 0.75 | event-only |                | Riven Post Stuttgart
+pa  6 | Riven, The Exile               | TALL       1.0 | BURST     0.78 | hid 0.85 | cl  4 | T8 slow   | 0.72 | event-only |                | RazylDazyl Skirmish Riven
+pa  7 | Master Yi, Wuju Bladesman      | TALL      1.28 | ATTRITION 0.71 | hid 0.76 | cl  5 | T6 fast   | 0.69 | win        |                | [RAD] Yi - Skirmish Winner 11/9 [Archive
+pa  8 | Lillia, Bashful Bloom          | WIDE      2.83 | BURST     0.98 | hid 0.09 | cl  9 | T7 medium | 0.97 | win        |                | Radiance Lillia Skirmish Winner
+pa  9 | Kai'Sa, Daughter of the Void   | ATTRITION 1.24 | TALL      0.43 | hid 0.12 | cl  5 | T9 slow   | 0.50 | top8       |                | Best of Orlando
+pa 10 | LeBlanc, Deceiver              | ATTRITION 1.48 | WIDE      1.17 | hid 0.44 | cl 13 | T7 medium | 0.93 | event-only |                | Hooker LeRad Final
+pa 11 | Diana, Scorn of the Moon       | BURST     0.68 | ATTRITION 0.84 | hid 0.97 | cl  4 | T7 medium | 0.53 | event-only |                | Diana de la Luz
+pa 12 | Akali, Rogue Assassin          | BURST     1.15 | TALL      0.74 | hid 0.47 | cl  3 | T8 slow   | 0.83 | bestof     |                | Best of Akali - RC Stuttgart (Employee 4
+pa 13 | Riven, The Exile               | BURST     1.08 | HOLD      1.23 | hid 0.82 | cl  6 | T6 fast   | 0.82 | bestof     |                | Best of riven guaranteed Priven Oriented
+pa 14 | Kai'Sa, Daughter of the Void   | ATTRITION  1.2 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.57 | event-only |                | Kai'sa Nov Skirmish
+pa 15 | Ekko, Boy Who Shattered Time   | WIDE       2.0 | ATTRITION 0.95 | hid 0.03 | cl  8 | T6 fast   | 0.77 | top8       |                | EKKO 4TH WUHAN CITY CHALLENGE 08/11/2026
+pa 16 | LeBlanc, Deceiver              | HOLD      1.46 | ATTRITION 1.42 | hid  0.5 | cl  1 | T7 medium | 0.96 | win        |                | LEBLANC 1ST WUHAN CITY CHALLENGE 08/11/2
+pa 17 | Ivern, Green Father            | HOLD       4.0 | WIDE      1.56 | hid 0.38 | cl  4 | T6 fast   | 0.96 | event-only |                | 20.06.26 - Hartford RQ
+pa 18 | Kha'Zix, Voidreaver            | BURST     1.17 | TALL      0.87 | hid 1.85 | cl  1 | T6 fast   | 0.75 | event-only |                | Kha'Zix [2026-09-18]
+pa 19 | Master Yi, Wuju Master         | WIDE      1.39 | TALL      1.39 | hid 0.44 | cl  1 | T6 fast   | 0.90 | event-only |                | XP Yi - RC Stuttgart 2v2 5-0
+pa 20 | Yasuo, Unforgiven              | POINTS    2.17 | BURST     0.78 | hid 0.06 | cl  1 | T8 slow   | 0.97 | event-only | COMBO          | Yasuo - RC Stuttgart 2v2 5-0
+pa 21 | Riven, The Exile               | BURST     0.95 | HOLD      1.15 | hid 1.32 | cl  4 | T6 fast   | 0.82 | event-only |                | Riven Stuttgart
+pa 22 | Kai'Sa, Daughter of the Void   | ATTRITION  1.1 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.54 | event-only |                | Kaisa (HXN Milan - Day 2 Stuttgart)
+pa 23 | Evelynn, Agony's Embrace       | TALL      1.17 | HOLD      0.92 | hid 3.59 | cl  6 | T8 slow   | 0.57 | win        |                | Evelynn Skirmish Winner
+pa 24 | Sett, The Boss                 | TALL      2.04 | BURST     1.19 | hid 0.47 | cl  6 | T6 fast   | 0.96 | bestof     |                | best of Sett Stuttgart
+pa 25 | Ziggs, Hexplosives Expert      | ATTRITION  1.0 | WIDE      0.61 | hid 0.09 | cl  2 | T9 slow   | 0.39 | event-only |                | Ziggs sacramento test
+pa 26 | Riven, The Exile               | TALL       1.0 | BURST     0.76 | hid 1.21 | cl  4 | T6 fast   | 0.72 | event-only |                | Riven Skirmish 1.0
+pa 27 | LeBlanc, Deceiver              | ATTRITION 1.49 | HOLD      1.23 | hid 0.41 | cl 13 | T6 fast   | 0.93 | top8       |                | Leblanc 6th place scg showdown
+pa 28 | Rek'Sai, Void Burrower         | WIDE      1.61 | BURST     0.61 | hid 0.47 | cl  6 | T6 fast   | 0.72 | bestof     |                | Stuttgart 26 by Bolun Zhang
+pa 29 | Ezreal, Prodigal Explorer      | ATTRITION 1.22 | TALL      0.26 | hid 0.15 | cl  2 | T10 slow   | 0.42 | event-only |                | Ezreal  Pack (Post Stuttgart)
+pa 30 | Irelia, Blade Dancer           | BURST     1.19 | TALL      0.89 | hid 1.03 | cl  2 | T7 medium | 0.78 | win        |                | Around the World! (Other Champion)
+pa 31 | Riven, The Exile               | TALL       1.0 | BURST     0.81 | hid 1.32 | cl  4 | T6 fast   | 0.73 | event-only |                | Riven Stuttgart test
+pa 32 | Master Yi, Wuju Bladesman      | TALL      1.24 | WIDE      0.78 | hid 0.97 | cl  5 | T6 fast   | 0.74 | event-only |                | yi radiance final boss
+pa 33 | Mordekaiser, Iron Revenant     | WIDE       1.5 | ATTRITION 1.22 | hid 0.29 | cl  3 | T6 fast   | 0.81 | event-only |                | Morde Dominates the Nexus night
+pa 34 | Yasuo, Unforgiven              | POINTS     2.0 | HOLD      1.77 | hid 0.68 | cl  1 | T7 medium | 0.91 | event-only | COMBO          | Yas for Worlds
+pa 35 | Ziggs, Hexplosives Expert      | ATTRITION 0.92 | WIDE      0.89 | hid 0.21 | cl  2 | T7 medium | 0.33 | bestof     |                | Best-Of Afghanistan
+pa 36 | Vex, Gloomist                  | HOLD      1.62 | TALL      0.83 | hid 2.26 | cl  1 | T8 slow   | 0.92 | event-only |                | Vex Day 3 Stuttgart
+pa 37 | Rek'Sai, Void Burrower         | WIDE      2.28 | BURST     0.85 | hid 0.35 | cl  6 | T6 fast   | 0.82 | top64      |                | 52nd @ RC Stuttgart - MICE xTacio
+pa 38 | Rek'Sai, Void Burrower         | WIDE       2.0 | BURST     0.47 | hid 0.35 | cl  5 | T6 fast   | 0.76 | event-only |                | Radiance Skirmish I
+pa 39 | Leona, Radiant Dawn            | TALL      1.52 | HOLD      1.46 | hid 1.26 | cl  3 | T6 fast   | 0.84 | win        |                | Leona champion units + raptor
+pa 40 | Viktor, Herald of the Arcane   | WIDE      1.72 | ATTRITION 1.15 | hid 0.35 | cl  4 | T7 medium | 0.77 | event-only |                | Rednaxell - Viktor EU Championship
+pa 41 | Azir, Emperor of the Sands     | WIDE      1.28 | TALL      1.41 | hid 0.38 | cl  1 | T7 medium | 0.67 | event-only |                | Azir RC Stuttgart
+pa 42 | Ekko, Boy Who Shattered Time   | BURST     0.93 | WIDE      0.94 | hid 0.29 | cl  7 | T6 fast   | 0.69 | bestof     |                | Best Of EKKO | Showdown Orlando
+pa 43 | Volibear, Relentless Storm     | TALL      2.26 | BURST     0.95 | hid 0.24 | cl 17 | T8 slow   | 0.86 | event-only |                | Skirmish Voli
+pa 44 | Sett, The Boss                 | TALL      1.65 | BURST      1.1 | hid 0.35 | cl  4 | T6 fast   | 0.94 | event-only |                | b03 nexus night sett smile
+pa 45 | Kha'Zix, Voidreaver            | BURST      1.0 | TALL      1.02 | hid 1.06 | cl  0 | T6 fast   | 0.77 | event-only |                | Jun Kha RC Stuttgart
+pa 46 | Kennen, Heart of the Tempest   | BURST     0.83 | TALL      0.52 | hid 0.94 | cl  4 | T6 fast   | 0.57 | win        |                | Kennen Win Regional Europe
+pa 47 | Mordekaiser, Iron Revenant     | WIDE      3.67 | ATTRITION 1.31 | hid 0.06 | cl 13 | T6 fast   | 0.78 | top8       |                | 8/11/2026 Ricky Riftbound League - Bolas
+pa 48 | Evelynn, Agony's Embrace       | TALL      0.63 | ATTRITION 0.42 | hid 4.26 | cl  2 | T8 slow   | 0.33 | top8       |                | 8/11/2026 Ricky Riftbound League - Tosta
+pa 49 | Jarvan IV, Exemplar of Demacia | BURST     0.75 | TALL      1.09 | hid 0.59 | cl  0 | T7 medium | 0.57 | top8       |                | 8/11/2026 Ricky Riftbound League - Conni
+pa 50 | Akali, Rogue Assassin          | BURST      1.2 | TALL       1.0 | hid  0.5 | cl  5 | T7 medium | 0.86 | top8       |                | 8/11/2026 Ricky Riftbound League - xMort
+pa 51 | Riven, The Exile               | BURST     1.14 | HOLD      1.08 | hid 1.12 | cl  4 | T6 fast   | 0.84 | win        |                | 8/11/2026 Ricky Riftbound League - JoseW
+pa 52 | Lucian, Purifier               | TALL       1.2 | BURST     1.07 | hid  0.0 | cl  3 | T7 medium | 0.61 | top8       |                | 8/11/2026 Ricky Riftbound League - Sabot
+pa 53 | Kai'Sa, Daughter of the Void   | ATTRITION 1.13 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.56 | top8       |                | 8/11/2026 Ricky Riftbound League - Cute 
+pa 54 | Riven, The Exile               | TALL       1.0 | BURST     0.78 | hid 1.09 | cl  4 | T6 fast   | 0.72 | top8       |                | 2nd Sonecon - Riftbound Regional Champio
+pa 55 | Vi, Piltover Enforcer          | BURST     2.19 | TALL      1.02 | hid 1.24 | cl 10 | T6 fast   | 0.85 | bestof     |                | Vi, The best of Piltover
+pa 56 | Kai'Sa, Daughter of the Void   | ATTRITION 1.15 | BURST     0.41 | hid 0.09 | cl  5 | T9 slow   | 0.55 | top8       |                | RC Stuttgart Top 8 Best of Kaisa Challen
+pa 57 | Riven, The Exile               | BURST      0.9 | HOLD      1.08 | hid 1.03 | cl  1 | T6 fast   | 0.78 | event-only |                | Riven Stuttgard
+pa 58 | Kai'Sa, Daughter of the Void   | ATTRITION 1.17 | BURST     0.41 | hid 0.09 | cl  5 | T9 slow   | 0.55 | event-only |                | S5 post RC updated Kai'Sa
+pa 59 | Irelia, Blade Dancer           | BURST     1.12 | TALL      1.26 | hid 1.03 | cl  3 | T8 slow   | 0.82 | event-only |                | Irelia Rad Skirmish 1
+pa 60 | Ziggs, Hexplosives Expert      | ATTRITION 0.81 | BURST     0.27 | hid 0.21 | cl  0 | T9 slow   | 0.21 | bestof     |                | Sacremento Showdown 7-4 Best-Of Ziggs
+pa 61 | Orianna, Lady of Clockwork     | WIDE      1.11 | BURST     0.58 | hid 0.53 | cl  5 | T7 medium | 0.62 | bestof     |                | STUTTGARD BEST OF ORIANNA
+pa 62 | Azir, Emperor of the Sands     | WIDE      1.28 | TALL      1.48 | hid 0.35 | cl  1 | T7 medium | 0.67 | event-only |                | RC Stuttgart Giovanni's Azir
+pa 63 | Nasus, Curator of the Sands    | POINTS     2.0 | TALL      1.17 | hid 0.47 | cl  1 | T6 fast   | 0.98 | event-only |                | NASUS TEST RC
+pa 64 | Ziggs, Hexplosives Expert      | WIDE      1.89 | BURST     1.34 | hid 0.62 | cl  9 | T7 medium | 0.88 | event-only |                | Ziggs - Cooking for RQ JB
+pa 65 | Vi, Piltover Enforcer          | BURST     1.95 | TALL      1.02 | hid 1.24 | cl 10 | T6 fast   | 0.83 | event-only |                | Vi final de la liga gourmet
+pa 66 | Kai'Sa, Daughter of the Void   | ATTRITION 1.23 | BURST     0.34 | hid 0.09 | cl  4 | T8 slow   | 0.52 | event-only |                | NRW Rocklho Kaisa Stuttgart
+pa 67 | Kai'Sa, Daughter of the Void   | ATTRITION 1.16 | BURST     0.34 | hid 0.09 | cl  4 | T8 slow   | 0.50 | event-only |                | Stuttgart
+pa 68 | Master Yi, Wuju Bladesman      | TALL      1.28 | HOLD      0.54 | hid 1.06 | cl  5 | T6 fast   | 0.69 | event-only |                | Arneej - Riftbound Regional Championship
+pa 69 | Kai'Sa, Daughter of the Void   | ATTRITION 1.15 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.56 | event-only |                | Kaisa Stuttgart
+pa 70 | Kai'Sa, Daughter of the Void   | ATTRITION 1.13 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.56 | event-only |                | Stuttgart Kai'sa
+pa 71 | Riven, The Exile               | TALL       1.0 | BURST     0.75 | hid 1.41 | cl  4 | T6 fast   | 0.74 | event-only |                | Riven Stuttgart
+pa 72 | Kennen, Heart of the Tempest   | BURST     0.88 | TALL      0.52 | hid 1.09 | cl  4 | T6 fast   | 0.59 | event-only |                | Kennen-RC Stugart
+pa 73 | Ornn, Fire Below the Mountain  | WIDE      0.83 | ATTRITION 0.84 | hid 0.53 | cl  3 | T6 fast   | 0.52 | top8       |                | Ornn deck top 8
+pa 74 | Renekton, Butcher of the Sands | TALL      1.09 | BURST     0.88 | hid 0.71 | cl  4 | T6 fast   | 0.71 | win        |                | BEST OF ORLANDO RENEKTON - Just win I gu
+pa 75 | LeBlanc, Deceiver              | HOLD      1.38 | ATTRITION 1.31 | hid 0.29 | cl  1 | T6 fast   | 0.91 | event-only |                | LeBlanc Stuttgart
+pa 76 | Mordekaiser, Iron Revenant     | BURST     1.36 | ATTRITION 1.15 | hid 0.53 | cl  5 | T6 fast   | 0.89 | event-only |                | mort v3 Might be final soon
+pa 77 | Sett, The Boss                 | TALL       2.0 | HOLD      1.08 | hid 0.62 | cl  3 | T6 fast   | 0.87 | event-only |                | Sett Stuttgart
+pa 78 | Darius, Hand of Noxus          | WIDE      1.22 | BURST     0.68 | hid  0.0 | cl  5 | T7 medium | 0.65 | event-only |                | Darius Stuttgart
+pa 79 | Kennen, Heart of the Tempest   | BURST     0.86 | TALL      0.39 | hid  1.0 | cl  5 | T7 medium | 0.60 | event-only |                | kennen stuttgart
+pa 80 | Viktor, Herald of the Arcane   | WIDE       2.0 | BURST     0.71 | hid 0.09 | cl  7 | T7 medium | 0.81 | event-only |                | Viktor Stuttgart
+pa 81 | Kai'Sa, Daughter of the Void   | ATTRITION 1.23 | BURST     0.41 | hid 0.09 | cl  4 | T8 slow   | 0.55 | event-only |                | Kaisa stuttgart
+pa 82 | Sett, The Boss                 | TALL      2.04 | BURST     0.97 | hid 0.47 | cl  4 | T7 medium | 0.83 | event-only |                | SETT Deck Stuttgart Sideevents - BULUTIV
+pa 83 | Master Yi, Wuju Bladesman      | TALL      1.37 | ATTRITION 0.59 | hid 0.94 | cl  5 | T6 fast   | 0.70 | event-only |                | Stuttgart yi
+pa 84 | Akali, Rogue Assassin          | HOLD      1.31 | BURST     0.93 | hid 0.68 | cl  2 | T8 slow   | 0.73 | event-only |                | Playing Riftbound Properly RC Stuttgart
+pa 85 | LeBlanc, Deceiver              | ATTRITION 1.49 | TALL      1.22 | hid 0.24 | cl 13 | T7 medium | 0.79 | event-only |                | LeBlanc Stuttgart
+pa 86 | Kha'Zix, Voidreaver            | BURST     1.17 | WIDE      1.11 | hid 0.53 | cl  1 | T6 fast   | 0.86 | event-only |                | Kha'Zix Stuttgart
+pa 87 | Rengar, Pridestalker           | TALL      0.93 | BURST      0.8 | hid 1.74 | cl  2 | T6 fast   | 0.64 | event-only |                | rengar RC Stuttgart zozo
+pa 88 | Diana, Scorn of the Moon       | BURST     0.95 | WIDE      0.78 | hid 0.56 | cl  6 | T6 fast   | 0.69 | event-only |                | Diana Stuttgart (Set 5)
+pa 89 | Ivern, Green Father            | HOLD      4.31 | TALL      0.83 | hid 0.15 | cl  3 | T6 fast   | 0.83 | bestof     |                | Best Of List Radiance
+pa 90 | LeBlanc, Deceiver              | HOLD      1.38 | ATTRITION 1.36 | hid 0.29 | cl  0 | T6 fast   | 0.91 | event-only |                | LB RAD Hook Stuttgart
+pa 91 | Evelynn, Agony's Embrace       | TALL      0.89 | HOLD      0.85 | hid 2.82 | cl  1 | T8 slow   | 0.35 | event-only |                | Evelynn Stuttgart Jusi
+pa 92 | Vi, Piltover Enforcer          | BURST     1.78 | WIDE      0.67 | hid 1.06 | cl  7 | T6 fast   | 0.79 | bestof     |                | Best of Vi?
+pa 93 | Poppy, Keeper of the Hammer    | HOLD      1.15 | TALL      1.07 | hid 0.79 | cl  0 | T7 medium | 0.83 | event-only |                | Poppy - Showdown Orlando 2026
+pa 94 | Seraphine, Starry-Eyed Songstr | WIDE      2.33 | ATTRITION 1.23 | hid 0.09 | cl 11 | T7 medium | 0.58 | event-only |                | Seraphine prueba Stuttgart
+pa 95 | Jayce, Defender of Tomorrow    | ATTRITION 0.94 | WIDE      0.67 | hid 0.06 | cl  2 | T9 slow   | 0.45 | top8       | ALTWIN         | JAYCE 8TH ORLANDO 25K SHOWDOWN  1/11/202
+pa 96 | Jayce, Defender of Tomorrow    | ATTRITION 1.05 | TALL      0.48 | hid 0.03 | cl  4 | T9 slow   | 0.57 | top8       | ALTWIN         | JAYCE 7TH ORLANDO 25K SHOWDOWN  1/11/202
+pa 97 | Kha'Zix, Voidreaver            | BURST     1.17 | WIDE      1.11 | hid 0.53 | cl  1 | T6 fast   | 0.86 | top8       |                | KHAZIX 3TH ORLANDO 25K SHOWDOWN  1/11/20
+pa 98 | Kai'Sa, Daughter of the Void   | ATTRITION 1.22 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.57 | event-only |                | Kaisa Stuttgart
+pa 99 | Viktor, Herald of the Arcane   | WIDE      2.17 | ATTRITION 1.19 | hid 0.21 | cl  9 | T7 medium | 0.80 | event-only |                | Viktor Stuttgart
+pa100 | Zed, Master of Shadows         | WIDE      0.83 | TALL      0.46 | hid 0.79 | cl  2 | T7 medium | 0.57 | bestof     |                | [BEST OF ZED] INCOMING ANVILS (PURPLE VE
+pa101 | Zed, Master of Shadows         | WIDE      0.61 | TALL      0.52 | hid 0.62 | cl  1 | T7 medium | 0.47 | bestof     |                | [BEST OF ZED] INCOMING ANVILS (GUIDE) (U
+pa102 | Mordekaiser, Iron Revenant     | WIDE      1.94 | BURST     1.08 | hid 0.12 | cl  5 | T6 fast   | 0.91 | event-only |                | Final mord
+pa103 | Kai'Sa, Daughter of the Void   | ATTRITION 1.26 | TALL      0.43 | hid 0.09 | cl  5 | T9 slow   | 0.51 | event-only |                | Kaisa Stuttgart. You say it's gone cold,
+pa104 | Riven, The Exile               | BURST     0.83 | TALL      0.96 | hid 1.35 | cl  1 | T6 fast   | 0.80 | win        |                | Riven Stuttgart
+pa105 | Sett, The Boss                 | TALL       2.2 | BURST     1.19 | hid 0.41 | cl  2 | T6 fast   | 0.96 | event-only |                | Sett RC VOTB
+pa106 | Akali, Rogue Assassin          | BURST      1.1 | HOLD      1.23 | hid 0.32 | cl  3 | T8 slow   | 0.80 | top8       |                | RC Stuttgart Sideevents
+pa107 | Kennen, Heart of the Tempest   | BURST     1.05 | TALL      0.46 | hid 0.56 | cl  6 | T6 fast   | 0.72 | event-only |                | Kennen - Stuttgart
+pa108 | Kennen, Heart of the Tempest   | BURST     1.12 | ATTRITION 0.65 | hid 0.35 | cl  6 | T6 fast   | 0.70 | event-only |                | Kennen stuttgart
+pa109 | Ahri, Nine-Tailed Fox          | ATTRITION  1.0 | TALL      0.65 | hid 0.18 | cl  3 | T7 medium | 0.55 | event-only |                | Ahri Stuttgart
+pa110 | Akali, Rogue Assassin          | BURST      1.2 | TALL      0.89 | hid 0.41 | cl  4 | T8 slow   | 0.86 | event-only |                | Akali Stuttgart
+pa111 | Evelynn, Agony's Embrace       | HOLD      1.62 | TALL      0.78 | hid  3.0 | cl  3 | T8 slow   | 0.67 | event-only |                | Evelynn Stuttgart
+pa112 | Sivir, Battle Mistress         | BURST     0.66 | ATTRITION 0.71 | hid 0.06 | cl  3 | T8 slow   | 0.67 | event-only |                | Garvins Skirmish deck
+pa113 | Jax, Grandmaster at Arms       | TALL      1.35 | BURST     0.73 | hid 0.35 | cl  1 | T8 slow   | 0.83 | top8       |                | Surprise, I'm Back - Jax go 2nd + GUIDE
+pa114 | Vex, Gloomist                  | HOLD      1.38 | TALL      1.15 | hid 3.12 | cl  1 | T7 medium | 0.91 | top64      |                | 25th place Best of Vex CoolStuffCon Orla
+pa115 | Rengar, Pridestalker           | TALL      0.85 | BURST     0.78 | hid 2.03 | cl  1 | T6 fast   | 0.60 | top64      |                | 28th place Best of Rengar CoolStuffCon O
+pa116 | Miss Fortune, Bounty Hunter    | BURST     0.66 | ATTRITION  0.7 | hid 0.06 | cl  3 | T8 slow   | 0.67 | top64      |                | 29th place Best Of Miss Fortune CoolStuf
+pa117 | Akali, Rogue Assassin          | BURST     1.17 | ATTRITION 1.16 | hid 0.82 | cl  4 | T8 slow   | 0.81 | top64      |                | 20th Place Best of Akali CoolStuffCon Or
+pa118 | Evelynn, Agony's Embrace       | TALL      0.72 | ATTRITION  0.4 | hid 3.74 | cl  2 | T9 slow   | 0.31 | top64      |                | 42nd Place Best of Evelynn CoolStuffCon 
+pa119 | Nasus, Curator of the Sands    | TALL      1.04 | ATTRITION 1.12 | hid 0.68 | cl  9 | T6 fast   | 0.64 | top64      |                | 45th Place Best of Nasus CoolStuffCon Or
+pa120 | Orianna, Lady of Clockwork     | HOLD      1.23 | TALL      1.15 | hid 0.18 | cl  3 | T8 slow   | 0.82 | top64      |                | 59th Place Best of Orianna CoolStuffCon 
+pa121 | Mordekaiser, Iron Revenant     | BURST     1.42 | WIDE      1.67 | hid 0.53 | cl  9 | T6 fast   | 0.90 | bestof     |                | 67th Place Best of Mordekaiser CoolStuff
+pa122 | Jhin, Virtuoso                 | WIDE      1.39 | ATTRITION 1.28 | hid 0.09 | cl  5 | T8 slow   | 0.59 | bestof     |                | Best of Jhin 77th Place CoolStuffCon Orl
+pa123 | Ornn, Fire Below the Mountain  | WIDE      0.83 | TALL      0.83 | hid 0.53 | cl  3 | T6 fast   | 0.48 | event-only |                | Stuttgart side YV80
+pa124 | Rumble, Mechanized Menace      | BURST     1.14 | WIDE      1.11 | hid 0.06 | cl  6 | T7 medium | 0.77 | event-only |                | Rumble - NN @ LDXP Sacramento 2026
+pa125 | Mordekaiser, Iron Revenant     | WIDE       1.5 | ATTRITION 1.05 | hid 0.38 | cl  3 | T6 fast   | 0.80 | bestof     |                | Mordekaiser (slightly varied from Best o
+pa126 | Lee Sin, Blind Monk            | TALL      1.48 | BURST     0.71 | hid 0.41 | cl  5 | T8 slow   | 0.84 | top64      |                | LEE SIN 12TH SHENZHEN CITY CHALLENGE  31
+pa127 | Rek'Sai, Void Burrower         | WIDE      1.72 | BURST     0.54 | hid 0.35 | cl  6 | T6 fast   | 0.75 | top8       |                | REK'SAI 8TH SHENZHEN CITY CHALLENGE  31/
+pa128 | Irelia, Blade Dancer           | BURST     1.14 | TALL      1.09 | hid 1.03 | cl  4 | T8 slow   | 0.78 | top8       |                | Irelia — Arito 2nd Convergence IV
+pa129 | Kennen, Heart of the Tempest   | BURST      1.0 | TALL       0.5 | hid 0.71 | cl  5 | T6 fast   | 0.68 | event-only |                | Miracle Kennen 2.0 (Update Radiance) My 
+pa130 | Rengar, Pridestalker           | TALL      0.93 | BURST      0.8 | hid  2.0 | cl  2 | T6 fast   | 0.64 | event-only |                | rengar stuttgart
+pa131 | K'Sante, Pride of Nazumah      | HOLD      4.23 | BURST     1.44 | hid 0.12 | cl  1 | T8 slow   | 0.99 | bestof     |                | semi upgraded best of orlando
+pa132 | Riven, The Exile               | TALL       1.0 | BURST     0.76 | hid 1.35 | cl  4 | T6 fast   | 0.73 | event-only |                | Riven Stuttgart
+pa133 | Orianna, Lady of Clockwork     | ATTRITION 0.94 | TALL       0.7 | hid 0.15 | cl  2 | T7 medium | 0.40 | top8       |                | 2nd Best Of Orianna - Orlando Showdown
+pa134 | Riven, The Exile               | BURST     0.76 | TALL      0.87 | hid 1.41 | cl  1 | T6 fast   | 0.76 | win        |                | 2nd Place - Felipe - Orlando Showdown
+pa135 | Darius, Hand of Noxus          | WIDE      1.56 | BURST     0.78 | hid 0.56 | cl  3 | T6 fast   | 0.72 | win        |                | Darius Top 1 Stuttgard
+pa136 | Jarvan IV, Exemplar of Demacia | TALL      1.26 | BURST     1.15 | hid 0.59 | cl  6 | T6 fast   | 0.86 | bestof     |                | Jarvan Best Of 25k
+pa137 | Kennen, Heart of the Tempest   | BURST     0.86 | WIDE      0.67 | hid 1.18 | cl  5 | T7 medium | 0.60 | event-only |                | Undefeated Kennen Radiance Deck Profile
+pa138 | Akali, Rogue Assassin          | HOLD      1.46 | BURST      1.0 | hid 0.32 | cl  2 | T8 slow   | 0.77 | top8       |                | Akali Gorica Sacramento 3rd Edited
+pa139 | Riven, The Exile               | TALL       1.0 | BURST     0.83 | hid 0.88 | cl  4 | T6 fast   | 0.73 | win        |                | 1st Orlando 5k Riven CTCG Relivia
+pa140 | Kennen, Heart of the Tempest   | BURST     0.69 | TALL      0.43 | hid 1.03 | cl  5 | T8 slow   | 0.55 | bestof     |                | KENNEN BEST OF REGIONALS, 88% WINRATE
+pa141 | Diana, Scorn of the Moon       | BURST     0.92 | WIDE      0.78 | hid 0.44 | cl  6 | T6 fast   | 0.68 | event-only |                | Diana Melbourne
+pa142 | Draven, Glorious Executioner   | WIDE      1.06 | TALL      0.59 | hid 2.21 | cl  2 | T6 fast   | 0.54 | win        |                | 🔴 Draven - (Best Of Draven #1 NA) 🔴
+pa143 | Kai'Sa, Daughter of the Void   | ATTRITION 1.17 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.56 | top8       |                | Kai'Sa - Stuttgart
+pa144 | K'Sante, Pride of Nazumah      | HOLD      4.54 | BURST     1.56 | hid 0.88 | cl  1 | T7 medium | 0.99 | event-only |                | K'Sante Midrange (Final Version)
+pa145 | Viktor, Herald of the Arcane   | WIDE      2.39 | ATTRITION 1.14 | hid 0.35 | cl 10 | T7 medium | 0.78 | top8       |                | 5th place Viktor Riftbound Showdown 25k 
+pa146 | Evelynn, Agony's Embrace       | HOLD      1.15 | TALL      0.87 | hid 3.74 | cl  2 | T9 slow   | 0.56 | top64      |                | Evelynn Sacramento
+pa147 | Pyke, Bloodharbor Ripper       | WIDE      0.72 | BURST     0.68 | hid  2.0 | cl  1 | T6 fast   | 0.34 | top8       |                | Set 5 - Tempo Pyke - 3rd Best Pyke MEL S
+pa148 | Rengar, Pridestalker           | TALL      0.93 | BURST     0.95 | hid 1.88 | cl  2 | T6 fast   | 0.69 | top8       |                | Daniel Vu - 8th Place - LDXP Sacramento 
+pa149 | Poppy, Keeper of the Hammer    | WIDE      1.78 | HOLD       1.0 | hid  0.0 | cl 11 | T8 slow   | 0.80 | bestof     |                | Best of Poppy 287th place LDXP Sacrament
+pa150 | Shen, Eye of Twilight          | HOLD      1.77 | TALL      1.46 | hid 0.47 | cl  3 | T6 fast   | 0.75 | bestof     |                | Best of Shen 247th place LDXP Sacramento
+pa151 | Zed, Master of Shadows         | BURST     1.41 | WIDE       1.0 | hid 0.62 | cl  8 | T6 fast   | 0.90 | bestof     |                | Best of Zed 233rd place LDXP Sacramento 
+pa152 | Pyke, Bloodharbor Ripper       | BURST     0.68 | ATTRITION 0.55 | hid 2.26 | cl  0 | T6 fast   | 0.24 | bestof     |                | Best of Pyke 232 place LDXP Sacramento b
+pa153 | Ivern, Green Father            | HOLD      2.77 | WIDE      1.78 | hid 0.18 | cl  1 | T6 fast   | 0.97 | bestof     |                | Best of Ivern 217th place LDXP Sacrament
+pa154 | Jayce, Defender of Tomorrow    | ATTRITION 1.06 | WIDE      0.61 | hid 0.09 | cl  2 | T8 slow   | 0.47 | bestof     | ALTWIN         | Best of Jayce 190th place LDXP Sacrament
+pa155 | K'Sante, Pride of Nazumah      | HOLD      3.38 | BURST     1.27 | hid 0.88 | cl  1 | T7 medium | 1.00 | bestof     |                | Best of K'Sante 146th place LDXP Sacrame
+pa156 | Orianna, Lady of Clockwork     | HOLD      1.46 | TALL      1.24 | hid 0.88 | cl  5 | T8 slow   | 0.90 | bestof     |                | Best of Orianna 134th place LDXP Sacrame
+pa157 | Mel, Soul's Reflection         | WIDE       1.0 | ATTRITION 1.07 | hid 0.03 | cl  3 | T8 slow   | 0.57 | bestof     |                | Best of Mel 121st place LDXP Sacramento 
+pa158 | Seraphine, Starry-Eyed Songstr | WIDE      2.39 | ATTRITION 0.95 | hid 0.44 | cl 11 | T7 medium | 0.69 | bestof     |                | Best of Seraphine 107th place LDXP Sacra
+pa159 | Mordekaiser, Iron Revenant     | WIDE       1.5 | ATTRITION 1.13 | hid 0.29 | cl  3 | T6 fast   | 0.81 | bestof     |                | Best of Mordekaiser 89th place LDXP Sacr
+pa160 | Jarvan IV, Exemplar of Demacia | TALL      1.35 | BURST     0.88 | hid 0.71 | cl  5 | T6 fast   | 0.76 | bestof     |                | Best of Jarvin IV 77th place LDXP Sacram
+pa161 | Diana, Scorn of the Moon       | BURST     0.98 | ATTRITION 0.88 | hid 0.29 | cl  3 | T7 medium | 0.54 | top64      |                | Best of Diana 63rd place LDXP Sacramento
+pa162 | Ekko, Boy Who Shattered Time   | BURST     1.32 | ATTRITION  0.9 | hid 0.35 | cl  9 | T7 medium | 0.73 | top64      |                | Best of Ekko 60th place LDXP Sacramento 
+pa163 | Vi, Piltover Enforcer          | BURST     2.02 | TALL      0.76 | hid 1.26 | cl 10 | T6 fast   | 0.80 | top64      |                | Best of Vi 57th place LDXP Sacramento by
+pa164 | Azir, Emperor of the Sands     | WIDE      1.44 | TALL       1.2 | hid  0.5 | cl  1 | T7 medium | 0.71 | top64      |                | Best of Azir 40th place LDXP Sacramento 
+pa165 | Nasus, Curator of the Sands    | ATTRITION  1.3 | TALL      0.87 | hid 0.59 | cl  7 | T7 medium | 0.76 | top64      |                | Best of Nasus 34th place LDXP Sacramento
+pa166 | Kha'Zix, Voidreaver            | BURST     1.19 | TALL      1.04 | hid 0.59 | cl  1 | T6 fast   | 0.81 | top64      |                | Best of Kha'Zix 32nd place LDXP Sacramen
+pa167 | Jhin, Virtuoso                 | WIDE      1.39 | ATTRITION 1.23 | hid 0.09 | cl  5 | T8 slow   | 0.59 | top64      |                | Best of Jhin 27th place LDXP Sacramento 
+pa168 | Vex, Gloomist                  | HOLD      2.23 | TALL      0.78 | hid 2.62 | cl  1 | T7 medium | 0.91 | top64      |                | Best of Vex 26th place LDXP Sacramento b
+pa169 | LeBlanc, Deceiver              | ATTRITION 1.49 | HOLD      1.15 | hid 0.38 | cl 13 | T6 fast   | 0.89 | bestof     |                | Best of Leblanc LDXP Sacramento by Zach
+pa170 | Jhin, Virtuoso                 | ATTRITION 1.36 | WIDE       1.0 | hid 0.09 | cl  4 | T8 slow   | 0.61 | bestof     |                | Best of Jhin - Melbourne Showdown 2026
+pa171 | Kennen, Heart of the Tempest   | BURST     1.22 | TALL      0.54 | hid 0.41 | cl  6 | T6 fast   | 0.77 | top8       |                | KENNEN SACRAMENTO 25K SHOWDOWN 7TH 24/10
+pa172 | Lillia, Bashful Bloom          | WIDE      2.83 | BURST     0.88 | hid 0.59 | cl  7 | T6 fast   | 0.97 | event-only |                | Lilia 3º Hartford 10k Tournament
+pa173 | Vex, Gloomist                  | HOLD      3.85 | ATTRITION 0.78 | hid 1.62 | cl  3 | T7 medium | 0.83 | win        |                | Vex Skirmish Winner 20.06.2026 + 11.07.2
+pa174 | Orianna, Lady of Clockwork     | TALL      0.89 | ATTRITION 0.76 | hid 0.09 | cl  2 | T8 slow   | 0.42 | bestof     |                | FAF_Team Orianna best of
+pa175 | Lillia, Bashful Bloom          | WIDE      2.94 | BURST     1.12 | hid 0.06 | cl 10 | T7 medium | 0.97 | bestof     |                | LDXP Sacramento / Best Of Lillia / Michа
+pa176 | Shen, Eye of Twilight          | HOLD       4.0 | ATTRITION 0.65 | hid 1.62 | cl  5 | T6 fast   | 0.75 | bestof     |                | BEST OF SHEN MElBOURNE SHOWDOWN (signpos
+pa177 | Vi, Piltover Enforcer          | BURST     2.15 | TALL      1.39 | hid 0.56 | cl  9 | T6 fast   | 0.82 | event-only |                | Best Vi - Melbourne showdown
+pa178 | Seraphine, Starry-Eyed Songstr | WIDE      2.39 | BURST     0.81 | hid 0.15 | cl 12 | T7 medium | 0.82 | bestof     |                | Best of Seraphine Melbourne Showdown
+pa179 | Kha'Zix, Voidreaver            | TALL      0.96 | WIDE      0.89 | hid 1.38 | cl  2 | T6 fast   | 0.52 | win        |                | Best of Kha'zix Melbourne Showdown
+pa180 | Poppy, Keeper of the Hammer    | TALL      1.09 | ATTRITION 1.08 | hid  0.0 | cl  9 | T9 slow   | 0.69 | bestof     |                | Best Of Poppy - Melbourne Showdown
+pa181 | Orianna, Lady of Clockwork     | ATTRITION 1.21 | TALL      0.57 | hid 0.09 | cl  3 | T7 medium | 0.52 | bestof     |                | Melbourne Showdown Best of Orianna
+pa182 | Evelynn, Agony's Embrace       | HOLD      1.62 | TALL      0.78 | hid 3.59 | cl  3 | T8 slow   | 0.63 | bestof     |                | mimi’s best of evelynn melbourne showdow
+pa183 | Volibear, Relentless Storm     | TALL      1.91 | ATTRITION 0.76 | hid 0.35 | cl 14 | T9 slow   | 0.67 | bestof     |                | Best of Volibear LDXP Sacramento Showdow
+pa184 | Darius, Hand of Noxus          | WIDE      1.61 | BURST     0.64 | hid 0.21 | cl  6 | T6 fast   | 0.74 | bestof     |                | DARIUS RAD - BEST OF
+pa185 | K'Sante, Pride of Nazumah      | HOLD      6.15 | BURST     1.59 | hid 0.65 | cl  5 | T7 medium | 0.97 | win        |                | K'sante 1st attempt
+pa186 | Vex, Gloomist                  | HOLD      2.69 | POINTS     1.0 | hid 0.91 | cl  2 | T7 medium | 0.73 | event-only |                | 94.6% WINRATE, NEXUS NIGHT VEX
+pa187 | Irelia, Blade Dancer           | BURST     1.34 | TALL      0.96 | hid 0.97 | cl  5 | T6 fast   | 0.82 | top64      |                | Irelia - Billy Willing - OS5 Radiance Pr
+pa188 | Viktor, Herald of the Arcane   | WIDE      1.78 | BURST     1.07 | hid 0.56 | cl  4 | T6 fast   | 0.97 | event-only |                | It's Probably Viktor (I won skrimish)
+pa189 | Poppy, Keeper of the Hammer    | TALL       1.0 | HOLD       1.0 | hid  0.0 | cl  9 | T9 slow   | 0.73 | bestof     |                | Poppy Aurora 4.3 (Best of Singapore)
+pa190 | Riven, The Exile               | BURST      0.8 | HOLD       1.0 | hid 1.41 | cl  1 | T6 fast   | 0.75 | top8       |                | 5th – DGmanisch – RRO25
+pa191 | Riven, The Exile               | BURST     1.07 | TALL      0.98 | hid 1.26 | cl  3 | T7 medium | 0.86 | top8       |                | 4th – McBiggs- RRO25
+pa192 | Riven, The Exile               | TALL      1.07 | BURST     0.75 | hid 1.18 | cl  4 | T7 medium | 0.75 | top8       |                | 3rd - AA Romomo - RRO 25
+pa193 | Kai'Sa, Daughter of the Void   | ATTRITION 1.17 | BURST     0.41 | hid 0.09 | cl  5 | T8 slow   | 0.56 | top8       |                | 2nd - Art3mis - RRO 25
+pa194 | Ekko, Boy Who Shattered Time   | BURST     1.64 | ATTRITION 0.74 | hid  1.0 | cl 10 | T6 fast   | 0.75 | top8       |                | 6th - Yaw - RRO 25
+pa195 | Kennen, Heart of the Tempest   | BURST     0.81 | ATTRITION 0.62 | hid 0.97 | cl  5 | T7 medium | 0.55 | win        |                | 1st - Simple - RRO 25
+pa196 | K'Sante, Pride of Nazumah      | HOLD      4.15 | BURST     1.42 | hid 0.59 | cl  4 | T7 medium | 0.95 | event-only |                | ANTI KENNEN KSANTE PLAY THIS TO WIN RC
+pa197 | Evelynn, Agony's Embrace       | TALL      0.85 | BURST     0.51 | hid 3.79 | cl  2 | T8 slow   | 0.45 | top8       |                | Example Evelynn - HOCS #5 Best-of
+pa198 | Irelia, Blade Dancer           | TALL      1.09 | BURST     0.81 | hid 1.26 | cl  4 | T8 slow   | 0.75 | top64      |                | Heron Baron Irelia :3 14th RQ LA
+pa199 | K'Sante, Pride of Nazumah      | HOLD      4.85 | BURST     1.46 | hid 0.56 | cl  1 | T7 medium | 1.00 | bestof     |                | Ksante - best offense, good defense
+pa200 | Orianna, Lady of Clockwork     | WIDE      0.61 | BURST     0.59 | hid 0.06 | cl  3 | T8 slow   | 0.50 | bestof     |                | Orianna Set 5 - Best of Deck -

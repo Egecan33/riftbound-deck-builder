@@ -1,0 +1,39 @@
+Riven, The Exile                   n  8 | BURST 5, TALL 3                    | delivery>=1:  7 | clock 6.2 | closers 2.8 | score 0.78
+Kai'Sa, Daughter of the Void       n  5 | ATTRITION 5                        | delivery>=1:  0 | clock 8.4 | closers 5.0 | score 0.55
+Evelynn, Agony's Embrace           n  3 | TALL 3                             | delivery>=1:  3 | clock 8.0 | closers 3.3 | score 0.45
+Kennen, Heart of the Tempest       n  3 | BURST 3                            | delivery>=1:  0 | clock 6.3 | closers 5.0 | score 0.63
+Akali, Rogue Assassin              n  3 | BURST 2, HOLD 1                    | delivery>=1:  0 | clock 7.7 | closers 3.3 | score 0.81
+Ekko, Boy Who Shattered Time       n  2 | WIDE 1, BURST 1                    | delivery>=1:  1 | clock 6.0 | closers 9.0 | score 0.76
+LeBlanc, Deceiver                  n  2 | HOLD 1, ATTRITION 1                | delivery>=1:  0 | clock 6.5 | closers 7.0 | score 0.94
+Irelia, Blade Dancer               n  2 | BURST 2                            | delivery>=1:  2 | clock 7.5 | closers 3.0 | score 0.78
+Jayce, Defender of Tomorrow        n  2 | ATTRITION 2                        | delivery>=1:  0 | clock 9.0 | closers 3.0 | score 0.51
+Kha'Zix, Voidreaver                n  2 | BURST 1, TALL 1                    | delivery>=1:  1 | clock 6.0 | closers 1.5 | score 0.69
+Master Yi, Wuju Bladesman          n  1 | TALL 1                             | delivery>=1:  0 | clock 6.0 | closers 5.0 | score 0.69
+Lillia, Bashful Bloom              n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 9.0 | score 0.97
+Leona, Radiant Dawn                n  1 | TALL 1                             | delivery>=1:  1 | clock 6.0 | closers 3.0 | score 0.84
+Mordekaiser, Iron Revenant         n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 13.0 | score 0.78
+Jarvan IV, Exemplar of Demacia     n  1 | BURST 1                            | delivery>=1:  0 | clock 7.0 | closers 0.0 | score 0.57
+Lucian, Purifier                   n  1 | TALL 1                             | delivery>=1:  0 | clock 7.0 | closers 3.0 | score 0.61
+Ornn, Fire Below the Mountain      n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.52
+Renekton, Butcher of the Sands     n  1 | TALL 1                             | delivery>=1:  0 | clock 6.0 | closers 4.0 | score 0.71
+Jax, Grandmaster at Arms           n  1 | TALL 1                             | delivery>=1:  0 | clock 8.0 | closers 1.0 | score 0.83
+Rek'Sai, Void Burrower             n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 6.0 | score 0.75
+Orianna, Lady of Clockwork         n  1 | ATTRITION 1                        | delivery>=1:  0 | clock 7.0 | closers 2.0 | score 0.40
+Darius, Hand of Noxus              n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.72
+Draven, Glorious Executioner       n  1 | WIDE 1                             | delivery>=1:  1 | clock 6.0 | closers 2.0 | score 0.54
+Viktor, Herald of the Arcane       n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 10.0 | score 0.78
+Pyke, Bloodharbor Ripper           n  1 | WIDE 1                             | delivery>=1:  1 | clock 6.0 | closers 1.0 | score 0.34
+Rengar, Pridestalker               n  1 | TALL 1                             | delivery>=1:  1 | clock 6.0 | closers 2.0 | score 0.69
+Vex, Gloomist                      n  1 | HOLD 1                             | delivery>=1:  1 | clock 7.0 | closers 3.0 | score 0.83
+K'Sante, Pride of Nazumah          n  1 | HOLD 1                             | delivery>=1:  0 | clock 7.0 | closers 5.0 | score 0.97
+primary route totals [('BURST', 15), ('TALL', 13), ('WIDE', 9), ('ATTRITION', 9), ('HOLD', 4)] n 50
+secondary route totals [('BURST', 18), ('TALL', 13), ('ATTRITION', 10), ('HOLD', 6), ('WIDE', 3)]
+hidden delivery (norm >= 1): 19
+specials [('ALTWIN', 2)]
+point cards in main decks: []
+by primary route: n, mean clock, median closers, median interaction, mean sub-score
+  WIDE      n   9 | clock 6.2 (6-7) | closers 6 | interaction 11 | score 0.69
+  TALL      n  13 | clock 6.8 (6-8) | closers 3 | interaction 10 | score 0.65
+  HOLD      n   4 | clock 7.2 (7-8) | closers 3 | interaction 16 | score 0.88
+  BURST     n  15 | clock 6.6 (6-8) | closers 3 | interaction 11 | score 0.75
+  ATTRITION n   9 | clock 8.1 (6-9) | closers 5 | interaction 13 | score 0.56

@@ -25,9 +25,9 @@ export const ROLE_RULES = {
   // --- board / tempo ---
   movement: (t) => /\bmove (an? |another |up to \w+ |any number of |all |each |that |those |target |it\b|them\b|me\b)|\[ganking\]|\bswap\b[^.]*\blocations?\b/i.test(t.replace(/can't move[^.]*/gi, '')),
   tempo_ready: (t) => /\bready (me|it|them|an? |another |up to \w+ (friendly |other )?units?|all |each |that |those )(?!runes?)|enters? ready|\[accelerate\]|\[ambush\]/i.test(t.replace(/when you (choose or )?ready me/gi, '')),
-  combat_trick: (t, c) => c.type === 'spell' && /(give|gives|gets?|has|have)[^.]*[+-]\d+ \[might\]|\+\[might\] equal|\[(assault|shield|tank|deflect)( \d+)?\][^.]*this turn|\bprevent\b|double[^.]*might|swap the mights|\[buff\]|\bbuff (an?|another|up to|each|all|it)/i.test(t),
+  combat_trick: (t, c) => c.type === 'spell' && /(give|gives|gets?|has|have)[^.]*[+-]\d+ \[might\]|\+\[might\] equal|\[(assault|shield|tank|deflect)( \d+)?\][^.]*this turn|\bprevent\b|double[^.]*might|swap the mights|\[buff\]|\bbuff (an?|another|up to|each|all|it)\b/i.test(t),
   protection: (t) => sentences(t).some((s) => !/\bignore \[deflect/i.test(s) && (/can't be chosen|\bprevent\b|can't be (killed|dealt|damaged)|give[^.]*\[(deflect|shield)( \d+)?\]|\[deflect( \d+)?\]/i.test(s.replace(/tokens? with \[deflect\]/gi, '')) || /\b(friendly unit|i|me|unit you control)\b[^.]*would die[^.]*instead/i.test(s))),
-  buff: (t) => /\[buff\]|\bbuffs?\b (an?|me|another|it|each|all|up to|that|them|two|three)/i.test(t),
+  buff: (t) => /\[buff\]|\bbuffs?\b (an?|me|another|it|each|all|up to|that|them|two|three)\b/i.test(t),
   token_maker: (t) => /\bunit tokens?\b/i.test(t),
   // --- win pressure ---
   points: (t) => /\bscores? \d+ points?|\byou score\b|gains? \d+ points?|win the game|take (a|an extra|another) turn/i.test(t.replace(/would score \d+ points?/gi, '')),

@@ -4154,38 +4154,28 @@
    "regex": "costs? (\\[[^\\]]+\\])+ less|cost (\\[[^\\]]+\\])+ less|costs? \\d+ less|reduce (my|its|their|the) cost|cost[^.]*\\bless\\b"
   },
   "cost-increase": {
-   "total": 15,
-   "main": 11,
-   "unit": 6,
-   "spell": 4,
-   "gear": 1,
-   "legend": 2,
+   "total": 6,
+   "main": 4,
+   "unit": 2,
+   "spell": 0,
+   "gear": 2,
+   "legend": 0,
    "battlefield": 2,
    "bySet": {
-    "VEN": 3,
-    "UNL": 3,
-    "RAD": 5,
-    "OGS": 2,
-    "SFD": 2
+    "RAD": 1,
+    "VEN": 2,
+    "UNL": 2,
+    "SFD": 1
    },
    "names": [
-    "Curator of the Sands",
-    "Fate Weaver",
-    "Forbidden Technique",
-    "Heedless Resurrection",
+    "Gravity Field",
     "Helm of Suppression",
-    "Hush",
-    "Lady of Luminosity, Starter",
-    "Lux, Illuminated",
-    "Meticulous Restorationist",
+    "Mageseeker Investigator",
     "Mystic Vortex",
-    "Rousing Display",
-    "Sanctum Conservator",
     "Vaults of Helia",
-    "Vex, Cheerless",
-    "Yordle Explorer"
+    "Vex, Cheerless"
    ],
-   "regex": "costs? (\\[[^\\]]+\\])+ more|cost[^.]*\\bmore\\b(?! than)"
+   "regex": "costs? (\\[[^\\]]+\\])+( or (\\[[^\\]]+\\])+)? more\\b(?! than)|costs? \\d+ more\\b|must pay (\\[[^\\]]+\\])+"
   },
   "ignore-cost": {
    "total": 23,
@@ -5833,32 +5823,27 @@
    "regex": "\\brecall"
   },
   "bounce": {
-   "total": 41,
-   "main": 39,
-   "unit": 19,
-   "spell": 17,
+   "total": 32,
+   "main": 30,
+   "unit": 14,
+   "spell": 13,
    "gear": 3,
    "legend": 1,
    "battlefield": 1,
    "bySet": {
-    "UNL": 8,
-    "OGS": 1,
-    "SFD": 8,
+    "UNL": 6,
     "RAD": 9,
-    "OGN": 10,
-    "VEN": 5
+    "SFD": 6,
+    "VEN": 5,
+    "OGN": 6
    },
    "names": [
-    "Abandon",
     "Angler Beast",
-    "Annie, Stubborn",
     "Ashe, Focused",
-    "Aspiring Engineer",
     "Battlefield Armorer",
     "Beast Below",
     "Bedeviling Stranger",
     "Bloodharbor Ripper",
-    "Cemetery Attendant",
     "Decree of Discord",
     "Demacian Standard",
     "Downwell",
@@ -5867,12 +5852,9 @@
     "Existential Dread",
     "Factory Recall",
     "Grim Apothecary",
-    "Guardian of the Passage",
-    "Guerilla Warfare, Teemo",
     "Gust",
     "Legion Quartermaster",
     "Mesmerize",
-    "Morbid Return",
     "Ocean Drake",
     "Pack of Wonders",
     "Parallel Convergence",
@@ -5882,8 +5864,6 @@
     "Skystrike Squadron",
     "Spirit of the Forge",
     "Star-Crossed",
-    "Starhound",
-    "Super Mega Death Rocket!, Jinx",
     "The Good Stuff",
     "Transpositionist",
     "Whirlwind",
@@ -5891,7 +5871,7 @@
     "Windsinger",
     "Zaunite Bouncer"
    ],
-   "regex": "return[^.]*to (its|their) owners?'s? hand|return[^.]*to (your|their|its owner's) hand|to their owners' hands"
+   "regex": "return (?![^.]*\\btrash\\b)[^.]*to (its|their) owners?'s? hand|return (?![^.]*\\btrash\\b)[^.]*to (your|their|its owner's) hand|to their owners' hands"
   },
   "ready-unit": {
    "total": 59,
@@ -6612,6 +6592,42 @@
    "regex": "\\bhold(s|ing)?\\b|\\bheld\\b"
   },
   "score-points": {
+   "total": 17,
+   "main": 14,
+   "unit": 11,
+   "spell": 0,
+   "gear": 3,
+   "legend": 0,
+   "battlefield": 3,
+   "bySet": {
+    "OGN": 4,
+    "VEN": 5,
+    "RAD": 3,
+    "SFD": 4,
+    "UNL": 1
+   },
+   "names": [
+    "Ahri, Alluring",
+    "Bottled Constellation",
+    "Cosmic Vista",
+    "Draven, Audacious",
+    "Evelynn, In Control",
+    "Ivern, Friend to All",
+    "Nasus, Ascended",
+    "Otterpus",
+    "Power Nexus",
+    "Renata Glasc, Mastermind",
+    "Shen, Leader of the Kinkou Order",
+    "Swain, Visionary",
+    "The Arena's Greatest",
+    "Trinity Force",
+    "Tryndamere, Barbarian",
+    "Yasuo, Windrider",
+    "Zero Point Inflection"
+   ],
+   "regex": "\\bscores? \\d+ points?|gains? \\d+ points?|score a point"
+  },
+  "point-ref": {
    "total": 27,
    "main": 22,
    "unit": 18,
@@ -6655,7 +6671,7 @@
     "Yasuo, Windrider",
     "Zero Point Inflection"
    ],
-   "regex": "\\bscores? \\d+ points?|gains? \\d+ points?|\\byou score\\b|score a point|\\bpoints?\\b"
+   "regex": "\\bpoints?\\b"
   },
   "score-ref": {
    "total": 25,
@@ -7421,16 +7437,17 @@
    "regex": "\\bdiscard"
   },
   "burn": {
-   "total": 9,
+   "total": 10,
    "main": 8,
    "unit": 4,
    "spell": 2,
    "gear": 2,
    "legend": 0,
-   "battlefield": 1,
+   "battlefield": 2,
    "bySet": {
     "VEN": 8,
-    "RAD": 1
+    "RAD": 1,
+    "SFD": 1
    },
    "names": [
     "Blade Twirler",
@@ -7440,10 +7457,11 @@
     "Forgotten Relic",
     "Kennen, Storm of Shuriken",
     "Kharox",
+    "Minefield",
     "Shadow Order Disciple",
     "Shadow Temple"
    ],
-   "regex": "\\[burn( \\d+)?\\]|\\bburn(s|ed)?\\b(?! out)"
+   "regex": "\\[burn( \\d+)?\\]|\\bburn(s|ed)?\\b(?! out)(?! away)|put the top (\\d+ )?cards? of (your|their) main deck into (your|their) trash"
   },
   "burn-out": {
    "total": 0,
@@ -7458,28 +7476,23 @@
    "regex": "burn(s|ed)? out"
   },
   "play-from-trash": {
-   "total": 41,
-   "main": 41,
-   "unit": 16,
+   "total": 35,
+   "main": 35,
+   "unit": 11,
    "spell": 21,
-   "gear": 4,
+   "gear": 3,
    "legend": 0,
    "battlefield": 0,
    "bySet": {
-    "OGS": 1,
-    "SFD": 6,
-    "VEN": 19,
-    "OGN": 6,
-    "UNL": 6,
-    "RAD": 3
+    "SFD": 5,
+    "VEN": 18,
+    "UNL": 4,
+    "RAD": 3,
+    "OGN": 5
    },
    "names": [
-    "Annie, Stubborn",
-    "Aspiring Engineer",
     "Assembly Rig",
     "Brittle Steel",
-    "Cemetery Attendant",
-    "Cursed Sarcophagus",
     "Death Mark",
     "Death from Below",
     "Dragon Form",
@@ -7488,7 +7501,6 @@
     "Fizz, Trickster",
     "Forbidden Technique",
     "Glasc Mixologist",
-    "Gust Monk",
     "Heedless Resurrection",
     "Immortal Phoenix",
     "Iterative Design",
@@ -7508,7 +7520,6 @@
     "Soulgorger",
     "Spectral Matron",
     "Stargazer",
-    "Starhound",
     "The Harrowing",
     "Twilight Shroud",
     "Twilight Step",
@@ -7516,7 +7527,7 @@
     "Undying Loyalty",
     "Up from the Deep"
    ],
-   "regex": "play[^.\\n]*from (your|their|a|any|an opponent\\'s|its owner\\'s)[^.\\n]*trash|from your trash[^.\\n]*play|\\[flow\\]"
+   "regex": "\\bplay(ed)? [^.,\\n]*from (your|their|a|any|an opponent\\'s|its owner\\'s)[^.,\\n]*trash|from your trash[^.\\n]*\\bplay\\b|\\bplay cards from your trash|\\[flow\\]|play (it|this|me)( again)? from (your|the|their) trash"
   },
   "return-from-trash": {
    "total": 9,

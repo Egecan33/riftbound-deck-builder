@@ -79,3 +79,18 @@ BAN = {'SFD-122', 'SFD-020', 'OGN-168', 'OGN-182', 'OGN-177', 'OGN-110', 'OGN-18
 bn = {by[b]['name'] for b in BAN}
 def names(x): return {card(e)['name'] for e in x['main'] + x['sideboard'] if card(e)} | {by[b]['name'] for b in x['battlefields'] if b in by}
 print('complete decks containing a card banned on 2026-11-11', sum(1 for x in comp if names(x) & bn), 'of', len(comp))
+print('== third pass (per-printing checks) ==')
+it = [dict(code=i.get('publicCode'), name=i['name'], sub=i.get('subtitle'), type=[t['id'] for t in i['cardType'].get('type', [])],
+           sup=[t['id'] for t in i['cardType'].get('superType', []) or []], dom=[t['id'] for t in i['domain'].get('values', [])],
+           tags=(i.get('tags') or {}).get('tags') or []) for i in items]
+UP = [s for s in it if s['type'] == ['unit'] and 'champion' in s['sup']]
+print('champion-unit printings', len(UP), 'with short name among tags', sum(s['name'] in s['tags'] for s in UP), '| exceptions', [(s['code'], s['name'], s['sub'], s['tags']) for s in UP if s['name'] not in s['tags']])
+print('champion-unit printings carrying another champion short name', [(s['code'], s['name'], s['tags']) for s in UP if (set(s['tags']) & shorts) - {s['name']}])
+fulls = {s['name'] + ', ' + s['sub'] for s in UP}
+print('champion units whose printings disagree on tags', sum(1 for n in fulls if len({tuple(sorted(s['tags'])) for s in UP if s['name'] + ', ' + s['sub'] == n}) > 1), 'of', len(fulls))
+print('legend tag lists per printing that differ', {n: v for n, v in {s['name']: {tuple(x['tags']) for x in it if 'legend' in x['type'] and x['name'] == s['name']} for s in it if 'legend' in s['type']}.items() if len(v) > 1})
+print('Yordle champion units inside order/chaos, not Kennen', sorted({s['name'] + ', ' + s['sub'] for s in UP if 'Yordle' in s['tags'] and s['name'] != 'Kennen' and set(s['dom']) <= {'order', 'chaos'}}))
+print('Ziggs unit tags', sorted({tuple(s['tags']) for s in UP if s['name'] == 'Ziggs'}))
+print('types per printing', dict(C(len(s['type']) for s in it)))
+LU = [c for c in cards if c['type'] == 'unit' and 'champion' in c['superTypes']]
+print('L-CARDS champion units', len(LU), 'short name not among tags', [(c['cardCode'], c['name'], c['tags']) for c in LU if c['name'].split(',')[0] not in c['tags']])

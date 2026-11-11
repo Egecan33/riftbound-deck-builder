@@ -1,104 +1,146 @@
-### LDXP Sacramento / Best Of Viktor / Calvin Jin
-legend: Viktor, Herald of the Arcane | champion: Viktor, Leader | main 40 | https://piltoverarchive.com/decks/view/60b43a42-2794-4ecf-bd74-6d14c6dba81b
-win-condition sub-score 0.835  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.629, 'final_point': 0.58, 'resilience': 0.75}
-speed: medium - goldfish win turn 7 (first conquer T3, 2.0 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.25, 'double_conquer': 0.58, 'direct': 0.0}
-1. WIDE Go-wide flood (both battlefields)  norm 2.05 (raw 21.5) | closers 10 copies / 4 names, P(closer by T5) 1.0 [champion] [legend] | legend: token
-   closers: 3x Sprite Burst, 3x Concert Poster, 3x Sprite Fountain, 1x Viktor, Leader
+### Kennen Win Regional Europe
+identity: BURST
+legend: Kennen, Heart of the Tempest | champion: Kennen, Storm of Shuriken | main 40 | RAD win | https://piltoverarchive.com/decks/view/65a88af2-cb6a-4871-8bf5-9a212580690d
+win-condition sub-score 0.568  parts {'closer': 0.656, 'depth': 0.553, 'plan_b': 0.283, 'final_point': 0.67, 'resilience': 0.562}
+speed: fast - goldfish win turn 6 (first conquer T2, 1.75 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.0, 'double_conquer': 0.67, 'direct': 0.0} | FFA triple conquer 0.44
+1. BURST Burst conquer (ready/haste/move)  norm 0.83 (raw 12.25, rank 0.716) | closers 4 copies / 2 names, P(closer by T5) 0.656 | legend: assault | battlefields: Minefield, Veiled Temple, Zaun Warrens
+   closers: 3x Nocturne, Horrifying, 1x Ride the Wind
+   enablers: 1x Kennen, Storm of Shuriken, 2x Reckless Innovator, 3x Traveling Merchant, 1x Tideturner
+2. TALL Go-tall single threat  norm 0.52 (raw 6.0, rank 0.425) | closers 3 copies / 1 names, P(closer by T5) 0.545
+   closers: 3x Rhasa the Sunderer
+   enablers: 2x Edge of Night, 2x Last Rites
+3. ATTRITION Attrition / recursion control  norm 0.67 (raw 14.5, rank 0.402) | closers 0 copies / 0 names, P(closer by T5) 0.0 | battlefields: Zaun Warrens
+   closers: -
+   enablers: 1x Kennen, Storm of Shuriken, 3x Lightning Rush, 2x Last Rites, 3x Traveling Merchant, 1x An Offer You Can't Refuse, 2x Bedeviling Stranger (+7 more)
+delivery: HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 0.94 (raw 8.0, rank 0.716) | closers 2 copies / 1 names, P(closer by T5) 0.404
+   closers: 2x Edge of Night
+   enablers: 2x Bedeviling Stranger, 1x Tideturner, 2x Switcheroo, 1x Hidden Blade
+folds to (most common answer class in the RAD-era corpus first):
+   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage; stun main-decked by 58% of 201 RAD-era lists, mean 1.4 copies; Shield main-decked by 22% of 201 RAD-era lists, mean 0.9 copies) - e.g. Back Off (59), Ki Burst (15), Existential Dread (9), One-Two Punch (8)
+   - counterspell / removal on the few closers (4 copies, no champion or legend closer; counterspells main-decked by 47% of 201 RAD-era lists, mean 1.2 copies)
+   - sweepers (average unit Might 3.1, 0 token-maker copies; main-decked by 9% of 201 RAD-era lists, mean 0.2 copies) - e.g. Unchecked Power (28), Flurry of Blades (24), Angler Beast (16), Avalanche (12), Downwell (6)
+   - Hidden hate (8 Hidden copies): Noxus Saboteur (2) stops reveals at its battlefield, Mystic Vortex (0) taxes Reaction cards in showdowns there; losing control of the battlefield removes your face-down cards there (rule 466.5.c)
+modes:
+   - 2v2: Ganking and move effects lose every teammate-occupied destination (447.2.b); 3 Ganking copies, 2 move copies
+   - FFA: the final conquer needs all 3 battlefields in one turn (471.1.b.1): triple-conquer reach 0.44 vs 0.67 in 1v1; a battlefield with a pending combat between two other players can't be entered (447.2.a)
+
+### 5th place Viktor Riftbound Showdown 25k - LDXP Sacramento by Cаlvin Jin
+identity: WIDE + ATTRITION
+legend: Viktor, Herald of the Arcane | champion: Viktor, Leader | main 40 | RAD top8 | https://piltoverarchive.com/decks/view/fc8db44f-6da3-45f8-842e-04678b1dcae3
+win-condition sub-score 0.775  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.225, 'final_point': 0.58, 'resilience': 0.75}
+speed: medium - goldfish win turn 7 (first conquer T3, 2.0 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.25, 'double_conquer': 0.58, 'direct': 0.0} | FFA triple conquer 0.39
+1. WIDE Go-wide flood (both battlefields)  norm 2.39 (raw 21.5, rank 2.39) | closers 10 copies / 4 names, P(closer by T5) 1.0 [champion] [legend] | legend: token
+   closers: 1x Viktor, Leader, 3x Sprite Burst, 3x Concert Poster, 3x Sprite Fountain
    enablers: 3x Carrion Dredger
-2. ATTRITION Attrition / recursion control  norm 1.29 (raw 24.5) | closers 1 copies / 1 names, P(closer by T5) 0.225 | battlefields: Forbidding Waste
+2. ATTRITION Attrition / recursion control  norm 1.14 (raw 24.5, rank 0.787) | closers 1 copies / 1 names, P(closer by T5) 0.225 | battlefields: Forbidding Waste
    closers: 1x Thousand-Tailed Watcher
    enablers: 3x Bellows Breath, 3x Hidden Blade, 3x Imperial Decree, 3x Stupefy, 3x Wages of Pain, 3x Carrion Dredger (+4 more)
-3. BURST Burst conquer (ready/haste/move)  norm 0.68 (raw 8.5) | closers 7 copies / 3 names, P(closer by T5) 0.859
-   closers: 3x Sprite Burst, 3x Sprite Fountain, 1x Thousand-Tailed Watcher
+3. BURST Burst conquer (ready/haste/move)  norm 0.58 (raw 8.5, rank 0.547) | closers 0 copies / 0 names, P(closer by T5) 0.0
+   closers: - | shared, counted above: Sprite Burst (WIDE), Sprite Fountain (WIDE), Thousand-Tailed Watcher (ATTRITION)
    enablers: 3x Concert Poster
-folds to:
-   - sweepers (average unit Might 2.7, 13 token-maker copies) - e.g. Downwell (3), Unchecked Power (2), Flurry of Blades (0), Cannon Barrage (0), Glowstone (0)
-   - Hidden hate (8 Hidden copies): Noxus Saboteur (your Hidden cards can't be revealed at its battlefield), Mystic Vortex (Reaction cards cost [Any] more in showdowns there); a lost combat removes your face-down cards there (rule 466.5.c)
-
-### Best Of List Radiance
-legend: Ivern, Green Father | champion: Ivern, Nurturer | main 40 | https://piltoverarchive.com/decks/view/f0b46fab-c82e-4ad1-9254-8fdfe4171ff3
-win-condition sub-score 0.829  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.193, 'final_point': 1.0, 'resilience': 0.5}
-speed: fast - goldfish win turn 6 (first conquer T2, 1.8 pts/turn, 0.0 bonus pts) | final point reach {'hold': 1.0, 'double_conquer': 0.33, 'direct': 0.0}
-1. HOLD Hold-and-defend  norm 4.67 (raw 28.0) | closers 3 copies / 2 names, P(closer by T5) 1.0 [champion] [legend] | legend: holdpay | battlefields: Forbidding Waste
-   closers: 2x Ivern, Nurturer, 1x Blitzcrank, Impassive
-   enablers: 3x Mutated Mouser, 2x Block, 3x Stalwart Poro, 3x Back Off, 1x For Demacia!, 1x Daisy!
-2. TALL Go-tall single threat  norm 0.95 (raw 9.5) | closers 1 copies / 1 names, P(closer by T5) 0.225
-   closers: 1x Daisy!
-   enablers: 2x Iridescent Avian, 3x Discipline, 2x Ivern, Nurturer, 3x Raucous Anthem, 2x Friendship, 1x Frisky Hunter
-3. WIDE Go-wide flood (both battlefields)  norm 0.62 (raw 6.5) | closers 1 copies / 1 names, P(closer by T5) 0.225
-   closers: 1x Frisky Hunter
-   enablers: 3x Mutated Mouser, 3x Stalwart Poro, 3x Trusty Ramhound, 2x Fallen Feline
-folds to:
-   - single-target removal/bounce on Ivern, Nurturer (0% of closer copies have Deflect or can't-be-chosen) - e.g. Decree of Rage (25), Falling Star (25), Decree of Unity (16), Temporal Breach (14)
-   - sweepers (average unit Might 2.9, 1 token-maker copies) - e.g. Downwell (3), Unchecked Power (2), Flurry of Blades (0), Cannon Barrage (0), Glowstone (0)
-   - displacement of the holder before your Beginning Phase - e.g. Bedeviling Stranger (20), Star-Crossed (20), Gust (19), Charm (16), Irresistible Faefolk (12)
-
-### Ekko Ingenious Theorycraft
-legend: Ekko, Boy Who Shattered Time | champion: Ekko, Ingenious | main 40 | https://piltoverarchive.com/decks/view/7c358ad1-68c7-4f94-9ad3-a1a6f4159dc4
-win-condition sub-score 0.805  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.281, 'final_point': 1.0, 'resilience': 0.125}
-speed: fast - goldfish win turn 6 (first conquer T2, 2.0 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.0, 'double_conquer': 1.0, 'direct': 0.0}
-1. BURST Burst conquer (ready/haste/move)  norm 2.88 (raw 36.0) | closers 11 copies / 5 names, P(closer by T5) 1.0 [champion] | battlefields: Emperor's Dais, Seat of Power, The Candlelit Sanctum
-   closers: 3x Vayne, Hunter, 2x Ekko, Revolutionary, 2x Kai'Sa, Survivor, 3x Thousand-Tailed Watcher, 1x Ekko, Ingenious
-   enablers: 3x Antagonistic Apparatus, 3x Pyke, Dockside Butcher, 2x War Scout, 3x Inferna
-2. HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 0.9 (raw 6.75) | closers 0 copies / 0 names, P(closer by T5) 0.0
-   closers: -
-   enablers: 3x Pyke, Dockside Butcher, 3x Inferna
-3. ATTRITION Attrition / recursion control  norm 0.89 (raw 17.0) | closers 3 copies / 1 names, P(closer by T5) 0.545 | battlefields: Emperor's Dais, Seat of Power
-   closers: 3x Thousand-Tailed Watcher
-   enablers: 3x Stupefy, 2x Void Seeker, 2x Watchful Sentry, 2x Shock Blast, 1x Falling Star, 2x Kai'Sa, Survivor (+2 more)
-folds to:
-   - sweepers (average unit Might 3.0, 3 token-maker copies) - e.g. Downwell (3), Unchecked Power (2), Flurry of Blades (0), Cannon Barrage (0), Glowstone (0)
-   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage) - e.g. Back Off (18), Ki Burst (5), Existential Dread (3), Facebreaker (1)
-   - any faster racer: only 7 interaction copies in the main deck
-
-### DRAGONSTORM - Radaince
-legend: Volibear, Relentless Storm | champion: Volibear, Furious | main 40 | https://piltoverarchive.com/decks/view/342e3f0f-815a-4b9a-8ebc-c36d47208645
-win-condition sub-score 0.781  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.371, 'final_point': 0.75, 'resilience': 0.25}
-speed: slow - goldfish win turn 8 (first conquer T3, 1.7 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.08, 'double_conquer': 0.75, 'direct': 0.0}
-1. TALL Go-tall single threat  norm 2.75 (raw 27.5) | closers 15 copies / 7 names, P(closer by T5) 1.0 [champion] | legend: mightypay
-   closers: 3x Kadregrin the Infernal, 3x Gentle Gemdragon, 3x Seraphic Wyvern, 2x Direwing, 2x Elder Dragon, 1x Volibear, Furious (+1 more)
-   enablers: 3x Show of Strength, 3x Dune Drake, 1x Vi, Destructive
-2. BURST Burst conquer (ready/haste/move)  norm 1.02 (raw 12.75) | closers 8 copies / 3 names, P(closer by T5) 0.897 | battlefields: Sigil of the Storm
-   closers: 3x Dune Drake, 3x Blazing Scorcher, 2x Direwing
-   enablers: 1x Vi, Destructive, 1x Confront, 1x Volibear, Furious
-3. ATTRITION Attrition / recursion control  norm 0.39 (raw 7.5) | closers 4 copies / 2 names, P(closer by T5) 0.656
-   closers: 3x Kadregrin the Infernal, 1x Ferrous Forerunner
-   enablers: 3x Mobilize, 3x Show of Strength, 1x Sky Splitter, 1x Vi, Destructive, 1x Confront
-folds to:
-   - single-target removal/bounce on Kadregrin the Infernal (7% of closer copies have Deflect or can't-be-chosen) - e.g. Decree of Rage (25), Falling Star (25), Decree of Unity (16), Temporal Breach (14)
-   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage) - e.g. Back Off (18), Ki Burst (5), Existential Dread (3), Facebreaker (1)
-   - any faster racer: only 1 interaction copies in the main deck
+folds to (most common answer class in the RAD-era corpus first):
+   - its own tokens at 7 points: 6 of 13 token-maker copies make Temporary tokens, which are killed at the start of your Beginning Phase before scoring, so they never hold; the last point needs a double conquer (reach 0.58) or a non-token holder (hold reach 0.25)
+   - sweepers (average unit Might 2.7, 13 token-maker copies; main-decked by 9% of 201 RAD-era lists, mean 0.2 copies) - e.g. Unchecked Power (28), Flurry of Blades (24), Angler Beast (16), Avalanche (12), Downwell (6)
+   - Hidden hate (8 Hidden copies): Noxus Saboteur (2) stops reveals at its battlefield, Mystic Vortex (0) taxes Reaction cards in showdowns there; losing control of the battlefield removes your face-down cards there (rule 466.5.c)
+modes:
+   - 2v2: a unit can't move to a battlefield a teammate occupies (447.2.b), so 6 unit copies + 13 token makers share the battlefields your partner leaves free
+   - FFA: P(at least one opponent main-decks a sweeper) = 0.18 with 2 opponents, 0.26 with 3 (from 9% per list)
 
 ### RC Stuttgart Top 8 Best of Kaisa ChallengerTCG Daniel Zidenberg
-legend: Kai'Sa, Daughter of the Void | champion: Kai'Sa, Survivor | main 40 | https://piltoverarchive.com/decks/view/8e8dd2b6-eeba-4fd8-9d26-0fe2bec4df96
-win-condition sub-score 0.54  parts {'closer': 0.742, 'depth': 0.867, 'plan_b': 0.192, 'final_point': 0.33, 'resilience': 0.062}
-speed: slow - goldfish win turn 9 (first conquer T3, 1.35 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.17, 'double_conquer': 0.33, 'direct': 0.0}
-1. ATTRITION Attrition / recursion control  norm 1.3 (raw 24.75) | closers 5 copies / 2 names, P(closer by T5) 0.742
+identity: ATTRITION
+legend: Kai'Sa, Daughter of the Void | champion: Kai'Sa, Survivor | main 40 | RAD top8 | https://piltoverarchive.com/decks/view/8e8dd2b6-eeba-4fd8-9d26-0fe2bec4df96
+win-condition sub-score 0.548  parts {'closer': 0.742, 'depth': 0.767, 'plan_b': 0.41, 'final_point': 0.33, 'resilience': 0.062}
+speed: slow - goldfish win turn 9 (first conquer T3, 1.35 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.17, 'double_conquer': 0.33, 'direct': 0.0} | FFA triple conquer 0.22
+1. ATTRITION Attrition / recursion control  norm 1.15 (raw 24.75, rank 1.031) | closers 5 copies / 2 names, P(closer by T5) 0.742
    closers: 3x Thousand-Tailed Watcher, 2x The Empyrean
-   enablers: 3x Bilgewater Tracker, 3x Falling Star, 3x Hextech Ray, 3x Stupefy, 3x Temporal Breach, 2x Singularity (+5 more)
-2. TALL Go-tall single threat  norm 0.5 (raw 5.0) | closers 5 copies / 2 names, P(closer by T5) 0.742
-   closers: 3x Thousand-Tailed Watcher, 2x The Empyrean
-   enablers: -
-3. BURST Burst conquer (ready/haste/move)  norm 0.48 (raw 6.0) | closers 4 copies / 2 names, P(closer by T5) 1.0 [champion]
-   closers: 3x Thousand-Tailed Watcher, 1x Kai'Sa, Survivor
+   enablers: 1x Kai'Sa, Survivor, 3x Bilgewater Tracker, 3x Falling Star, 3x Hextech Ray, 3x Stupefy, 3x Temporal Breach (+5 more)
+2. BURST Burst conquer (ready/haste/move)  norm 0.41 (raw 6.0, rank 0.41) | closers 1 copies / 1 names, P(closer by T5) 1.0 [champion]
+   closers: 1x Kai'Sa, Survivor | shared, counted above: Thousand-Tailed Watcher (ATTRITION)
    enablers: 3x Plundering Poro
-folds to:
-   - two-battlefield pressure: 20 unit copies to contest 2 battlefields, 16 single-target answers vs 0 sweepers; Deflect taxes every targeted answer - e.g. Vex, Apathetic (18), Carrion Dredger (12), Ruin Runner (11), Fiora, Victorious (5)
-   - discard / counterspell on the few closers (5 copies)
+3. TALL Go-tall single threat  norm 0.43 (raw 5.0, rank 0.386) | closers 0 copies / 0 names, P(closer by T5) 0.0
+   closers: - | shared, counted above: Thousand-Tailed Watcher (ATTRITION), The Empyrean (ATTRITION)
+   enablers: -
+folds to (most common answer class in the RAD-era corpus first):
+   - two-battlefield pressure: 20 unit copies to contest 2 battlefields; answers are 16 kill/damage, 0 displacement, 8 Might-reduction, 0 counterspell, 0 sweeper copies; Deflect / can't-be-chosen taxes every targeted answer (main-decked by 70% of 201 RAD-era lists, mean 2.2 copies) - e.g. Vex, Apathetic (104), Carrion Dredger (63), Ruin Runner (45), Baron Nashor (33)
+   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage; stun main-decked by 58% of 201 RAD-era lists, mean 1.4 copies; Shield main-decked by 22% of 201 RAD-era lists, mean 0.9 copies) - e.g. Back Off (59), Ki Burst (15), Existential Dread (9), One-Two Punch (8)
+   - counterspell / removal on the few closers (5 copies, no champion or legend closer; counterspells main-decked by 47% of 201 RAD-era lists, mean 1.2 copies)
+modes:
+   - 2v2: Victory 11 lengthens the game; spells may be played on the teammate's turn when invited (489.8.a)
+   - FFA: 16 one-for-one answers against 2-3 boards; only 0 sweeper copies scale with the number of opponents
 
-### mimi’s best of evelynn melbourne showdown
-legend: Evelynn, Agony's Embrace | champion: Evelynn, Entrancing | main 40 | https://piltoverarchive.com/decks/view/c9ef3662-b6ff-44e0-b640-636eefb56a25
-win-condition sub-score 0.786  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 0.43, 'final_point': 0.67, 'resilience': 0.375}
-speed: slow - goldfish win turn 8 (first conquer T3, 1.5 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.67, 'double_conquer': 0.42, 'direct': 0.0}
-1. HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 4.07 (raw 30.5) | closers 13 copies / 7 names, P(closer by T5) 1.0 [champion] [legend] | legend: facedown_pay | battlefields: Bandle Tree, Bandle Scouts' Academy
-   closers: 3x Momentary Companion, 1x Evelynn, Entrancing, 2x Gutter Guardian, 2x Pyke, Returned, 2x Nidalee, Cat Form, 2x Rengar, Trophy Hunter (+1 more)
-   enablers: 3x Bedeviling Stranger, 2x Switcheroo
-2. HOLD Hold-and-defend  norm 1.75 (raw 10.5) | closers 3 copies / 1 names, P(closer by T5) 0.545 | battlefields: Grove of the God-Willow
-   closers: 3x K'Sante, Courageous
-   enablers: 2x Vex, Apathetic, 1x Existential Dread
-3. TALL Go-tall single threat  norm 0.9 (raw 9.0) | closers 2 copies / 1 names, P(closer by T5) 0.404
-   closers: 2x Rengar, Trophy Hunter
-   enablers: 2x Boots of Swiftness, 2x Hold 'Em, 2x Punch First, 2x Rampage, 2x Vex, Apathetic, 1x Edge of Night (+1 more)
-folds to:
-   - Hidden hate (14 Hidden copies): Noxus Saboteur (your Hidden cards can't be revealed at its battlefield), Mystic Vortex (Reaction cards cost [Any] more in showdowns there); a lost combat removes your face-down cards there (rule 466.5.c)
+### K'sante 1st attempt
+identity: HOLD + BURST
+legend: K'Sante, Pride of Nazumah | champion: K'Sante, Dauntless | main 40 | RAD win | https://piltoverarchive.com/decks/view/78bf038f-f7df-4e0c-85be-93f334ed0b33
+win-condition sub-score 0.969  parts {'closer': 1.0, 'depth': 1.0, 'plan_b': 1.0, 'final_point': 1.0, 'resilience': 0.688}
+speed: medium - goldfish win turn 7 (first conquer T2, 1.55 pts/turn, 0.0 bonus pts) | final point reach {'hold': 1.0, 'double_conquer': 0.33, 'direct': 0.0} | FFA triple conquer 0.22
+1. HOLD Hold-and-defend  norm 6.15 (raw 40.0, rank 6.15) | closers 5 copies / 3 names, P(closer by T5) 1.0 [champion] | legend: shield | battlefields: Fortified Position, Amateur Recital, Grove of the God-Willow
+   closers: 1x K'Sante, Dauntless, 2x Blitzcrank, Impassive, 2x Armored Tusker
+   enablers: 3x Mutated Mouser, 2x Block, 3x Ntofo Strikes, 3x Stalwart Poro, 2x Consult the Heavens, 2x Stoic Ferryman (+1 more)
+2. BURST Burst conquer (ready/haste/move)  norm 1.59 (raw 23.5, rank 1.59) | closers 0 copies / 0 names, P(closer by T5) 1.0 [legend] | legend: assault+shield+shield_to_assault | battlefields: Fortified Position
+   closers: - | shared, counted above: K'Sante, Dauntless (HOLD), Armored Tusker (HOLD)
+   enablers: 3x Mutated Mouser, 3x Ntofo Strikes, 3x Stalwart Poro, 2x Block, 2x Consult the Heavens, 2x Stoic Ferryman (+1 more)
+3. TALL Go-tall single threat  norm 0.57 (raw 6.5, rank 0.466) | closers 3 copies / 1 names, P(closer by T5) 0.545
+   closers: 3x Astral Heron
+   enablers: 3x Discipline, 2x Punch First, 2x Zhonya's Hourglass
+delivery: HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 0.65 (raw 5.5, rank 0.532) | closers 3 copies / 1 names, P(closer by T5) 0.545
+   closers: 3x Scuttle Crab
+   enablers: 2x Block, 2x Zhonya's Hourglass
+folds to (most common answer class in the RAD-era corpus first):
+   - single-target removal/bounce on K'Sante, Dauntless (0% of the 5 closer copies have Deflect or can't-be-chosen; main-decked by 72% of 201 RAD-era lists, mean 4.8 copies) - e.g. Falling Star (136), Decree of Rage (99), Bellows Breath (96), Decree of Unity (94)
+   - displacement of the holder before your Beginning Phase (main-decked by 60% of 201 RAD-era lists, mean 2.9 copies) - e.g. Star-Crossed (138), Gust (122), Bedeviling Stranger (101), Charm (80), Rebuke (59)
+   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage; stun main-decked by 58% of 201 RAD-era lists, mean 1.4 copies; Shield main-decked by 22% of 201 RAD-era lists, mean 0.9 copies) - e.g. Back Off (59), Ki Burst (15), Existential Dread (9), One-Two Punch (8)
+   - sweepers (average unit Might 2.5, 0 token-maker copies; main-decked by 9% of 201 RAD-era lists, mean 0.2 copies) - e.g. Unchecked Power (28), Flurry of Blades (24), Angler Beast (16), Avalanche (12), Downwell (6)
+modes:
+   - 2v2: a battlefield is held only by its controller on that controller's turn; teammate-controlled battlefields can't be scored by you that turn (469.1.a)
+   - FFA: the holder must survive 2-3 opposing turns per round; hold reach 1.00 is computed for one
+
+### Evelynn Skirmish Winner
+identity: HIDDEN tempo that scores by TALL
+legend: Evelynn, Agony's Embrace | champion: Evelynn, Entrancing | main 40 | RAD win | https://piltoverarchive.com/decks/view/aa57a31e-e360-424b-adac-0080beb0c9bd
+win-condition sub-score 0.575  parts {'closer': 0.808, 'depth': 0.78, 'plan_b': 0.0, 'final_point': 0.5, 'resilience': 0.375}
+speed: slow - goldfish win turn 8 (first conquer T3, 1.5 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.5, 'double_conquer': 0.25, 'direct': 0.0} | FFA triple conquer 0.17
+1. TALL Go-tall single threat  norm 1.17 (raw 13.5, rank 1.08) | closers 6 copies / 2 names, P(closer by T5) 0.808
+   closers: 3x Rengar, Trophy Hunter, 3x Ruin Runner
+   enablers: 3x Boots of Swiftness, 3x Edge of Night, 3x Hold 'Em, 3x Punch First, 3x Rampage
+2. HOLD Hold-and-defend  norm 0.92 (raw 6.0, rank 0.552) | closers 0 copies / 0 names, P(closer by T5) 0.0 | battlefields: Startipped Peak
+   closers: -
+   enablers: 3x The Good Stuff
+3. ATTRITION Attrition / recursion control  norm 0.33 (raw 7.0, rank 0.198) | closers 0 copies / 0 names, P(closer by T5) 0.0 | legend: draw
+   closers: -
+   enablers: 1x Evelynn, Entrancing, 3x Bedeviling Stranger, 3x Reckless Innovator, 3x The Good Stuff
+delivery: HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 3.59 (raw 30.5, rank 3.59) | closers 13 copies / 5 names, P(closer by T5) 1.0 [champion] [legend] | legend: facedown_pay | battlefields: Bandle Scouts' Academy
+   closers: 1x Evelynn, Entrancing, 3x Edge of Night, 3x Gutter Guardian, 3x Pyke, Returned, 3x Rengar, Trophy Hunter
+   enablers: 3x Bedeviling Stranger, 3x Switcheroo
+folds to (most common answer class in the RAD-era corpus first):
+   - any faster racer: only 4 interaction copies in the main deck
+   - gear removal (6 Equipment copies carry the Might)
+   - Hidden hate (16 Hidden copies): Noxus Saboteur (2) stops reveals at its battlefield, Mystic Vortex (0) taxes Reaction cards in showdowns there; losing control of the battlefield removes your face-down cards there (rule 466.5.c)
+modes:
+   - 2v2: the partner covers the other battlefields; friendly buffs may target a teammate's unit (489.8.e)
+   - FFA: 6 closer copies face about 10-14 single-target answers across 2-3 opposing main decks (mean 4.8 per list)
+
+### 8/11/2026 Ricky Riftbound League - JoseWolf - 1st
+identity: BURST + HOLD
+legend: Riven, The Exile | champion: Riven, Deserter | main 40 | RAD win | https://piltoverarchive.com/decks/view/73744918-222e-48c9-8f20-1b24f9e5c67f
+win-condition sub-score 0.838  parts {'closer': 1.0, 'depth': 0.76, 'plan_b': 0.404, 'final_point': 1.0, 'resilience': 0.875}
+speed: fast - goldfish win turn 6 (first conquer T2, 2.0 pts/turn, 0.0 bonus pts) | final point reach {'hold': 0.5, 'double_conquer': 1.0, 'direct': 0.0} | FFA triple conquer 0.78
+1. BURST Burst conquer (ready/haste/move)  norm 1.14 (raw 16.75, rank 1.14) | closers 4 copies / 2 names, P(closer by T5) 1.0 [champion] [legend] | legend: enter_ready | battlefields: Emperor's Dais
+   closers: 1x Riven, Deserter, 3x Riven, Broken Blade
+   enablers: 3x Reckless Innovator, 3x Tideturner, 3x Stellacorn Herder, 3x Treasure Hunter
+2. HOLD Hold-and-defend  norm 1.08 (raw 7.0, rank 0.822) | closers 2 copies / 1 names, P(closer by T5) 0.404
+   closers: 2x Blitzcrank, Impassive
+   enablers: 3x Riven, Broken Blade, 1x Ki Burst
+3. TALL Go-tall single threat  norm 0.98 (raw 11.25, rank 0.676) | closers 1 copies / 1 names, P(closer by T5) 0.225
+   closers: 1x Baron Nashor
+   enablers: 1x Riven, Deserter, 3x Boots of Swiftness, 3x Riven, Broken Blade, 3x Battle Preparations, 3x Discipline, 1x Twilight Shroud (+1 more)
+delivery: HIDDEN Hidden / Ambush tempo (face-down reactions)  norm 1.12 (raw 9.5, rank 0.966) | closers 4 copies / 2 names, P(closer by T5) 0.656
+   closers: 3x Scuttle Crab, 1x Pyke, Returned
+   enablers: 3x Tideturner
+folds to (most common answer class in the RAD-era corpus first):
+   - stun on the readied attacker and Shield/Tank defenders (a stunned unit deals no combat damage; stun main-decked by 58% of 201 RAD-era lists, mean 1.4 copies; Shield main-decked by 22% of 201 RAD-era lists, mean 0.9 copies) - e.g. Back Off (59), Ki Burst (15), Existential Dread (9), One-Two Punch (8)
+   - sweepers (average unit Might 3.0, 0 token-maker copies; main-decked by 9% of 201 RAD-era lists, mean 0.2 copies) - e.g. Unchecked Power (28), Flurry of Blades (24), Angler Beast (16), Avalanche (12), Downwell (6)
+   - Hidden hate (4 Hidden copies): Noxus Saboteur (2) stops reveals at its battlefield, Mystic Vortex (0) taxes Reaction cards in showdowns there; losing control of the battlefield removes your face-down cards there (rule 466.5.c)
+modes:
+   - 2v2: Ganking and move effects lose every teammate-occupied destination (447.2.b); 0 Ganking copies, 3 move copies
+   - FFA: the final conquer needs all 3 battlefields in one turn (471.1.b.1): triple-conquer reach 0.78 vs 1.00 in 1v1; a battlefield with a pending combat between two other players can't be entered (447.2.a)
 

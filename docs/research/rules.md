@@ -1,4 +1,4 @@
-# Riftbound deck-construction rules as a validation spec (fact-checked 2026-11-11; independently re-verified 2026-11-11, see the Verification log at the end)
+# Riftbound deck-construction rules as a validation spec (fact-checked 2026-11-11; re-verified twice on 2026-11-11 by independent passes, see the two verification logs at the end; the last one is authoritative)
 
 Scope: every official mode that changes how a deck is built or what a deck is worth: 1v1 Constructed (best-of-1 "Duel", best-of-3 "Match"), 2v2, free-for-all with 3 or 4 players, and Limited (Sealed / Draft) as an optional extra.
 
@@ -26,9 +26,10 @@ Labels used throughout:
 | TRC-JUL | https://playriftbound.com/en-us/news/announcements/july-2026-tournament-rules-update-changelog/ (published 2026-07-17) | fetched 2026-11-11 |
 | TEST-SOG | https://playriftbound.com/en-us/news/organizedplay/testing-start-of-game-rules/ (published 2026-10-15) | fetched 2026-11-11 |
 | PRIMER | https://playriftbound.com/en-us/news/rules-and-releases/deckbuilding-primer/ (published 2025-07-28) | fetched 2026-11-11 |
+| PN-CORE | Core Rules Patch Notes (the first one; linked from HUB under "Patch Notes"), https://playriftbound.com/en-us/news/rules-and-releases/riftbound-core-rules-patch-notes/ (published 2025-10-24). Source of the 2v2 battlefield rule, see 10 | fetched 2026-11-11 |
 | SETS-27 | https://playriftbound.com/en-us/news/announcements/products-and-sets-into-2027/ (published 2026-08-03) | fetched 2026-11-11 |
 | L-CR | Local copy of the Core Rules, edition 2026-07-16: `~/github_repositories/GameLab/data/rules/core-rules.md` | **STALE**, see 0.1 |
-| L-CARDS | `~/github_repositories/GameLab/data/cards/cards.json` (931 cards, built 2026-09-06, sets OGN/OGS/SFD/UNL/VEN) | **STALE**, no Radiance |
+| L-CARDS | `~/github_repositories/GameLab/data/cards/cards.json` (931 cards, built 2026-09-06, sets OGN/OGS/SFD/UNL/VEN) | **STALE**, no Radiance; 3 champion units have a wrong tag or name, see 3 |
 | L-BAN | `~/github_repositories/Untitled/config/current-constructed-rules.json` (snapshot 2026-08-10) | **STALE**, see 9 |
 | L-DECKS | `~/github_repositories/GameLab/data/decks/samples/piltover-archive-2026-09-06.json` (59 decklists, 49 flagged complete; source https://piltoverarchive.com/decks) | community data, September 2026 |
 
@@ -91,11 +92,13 @@ Labels used throughout:
 - **FACT (CR 103.3.b.1):** the Chosen Champion counts toward the 3-copy limit ("A deck could include Volibear, Furious as its Chosen Champion and still include 2 more copies").
 - **FACT (CR 103.3.a.3, CR 132.4):** Chosen Champion status follows the full name. Other champion units of the same character with a different subtitle are ordinary Main Deck cards and have their own 3-copy limit.
 - **FACT (CR 103.3.c):** subject to Domain Identity like any Main Deck card.
-- **Which tag is the "champion tag" (HEURISTIC, backed by DATA):** the rules do not mark which tag on a card is the champion tag. Some legends carry extra tags: Heart of the Tempest has `[Yordle, Kennen]`, Hexplosives Expert `[Yordle, Ziggs]`, Curator of the Sands `[Dog, Shurima, Nasus]` (GAL). Eight champions carry the `Yordle` tag (Fizz, Heimerdinger, Kennen, Lulu, Poppy, Rumble, Teemo, Vex). Read literally, "a champion tag that matches the tag on your Champion Legend" must not let Teemo lead a Kennen deck through `Yordle`; CR 133.8.b limits champion tags to the linking tags. Our rule:
-  - champion tag of a champion unit = the tag equal to its short name (the part of the name before the comma). DATA (GAL): true for 177 of 177 distinct champion units.
+- **Which tag is the "champion tag" (HEURISTIC, backed by DATA):** the rules do not mark which tag on a card is the champion tag. Some legends carry extra tags: Heart of the Tempest has `[Yordle, Kennen]`, Hexplosives Expert `[Yordle, Ziggs]`, and one of the three Curator of the Sands printings (VEN-192*) has `[Dog, Shurima, Nasus]` while the other two have `[Nasus]` only (GAL). Eight champions carry the `Yordle` tag (Fizz, Heimerdinger, Kennen, Lulu, Poppy, Rumble, Teemo, Vex); the two Ziggs units do not (`[Bandle City, Ziggs]`) although the Ziggs legend does (GAL as stored). Read literally, "a champion tag that matches the tag on your Champion Legend" must not let Teemo lead a Kennen deck through `Yordle`; CR 133.8.b limits champion tags to the linking tags. Our rule:
+  - champion tag of a champion unit = its short name (the part of the name before the comma), which should also appear among its tags. DATA (GAL, corrected 2026-11-11): the short name is a tag on 348 of 349 champion-unit printings, and on at least one printing of all 177 distinct champion units. The exception is printing OGN-235 Karma, Channeler, stored with tags `[Vi, Ionia]`; the SFD-237 printings of the same card have `[Karma]`.
+  - **Data errors that break a naive tag match (DATA, corrected 2026-11-11):** L-CARDS stores Karma, Channeler (OGN-235) with tags `[Vi, Ionia]`, and names the two OGS Master Yi units "Yi, Meditative" and "Yi, Honed" (GAL: "Master Yi" + "Meditative" / "Honed"), so in L-CARDS the short name is a tag on only 149 of 152 champion units. Karma, Channeler is Order and the Vi legend Piltover Enforcer is Fury/Order, so "any tag of the unit equals the legend's champion tag" would accept Karma as Chosen Champion of a Vi deck, and a short-name comparison would reject "Yi, Meditative" under a Master Yi legend. Which stored value is wrong is our inference (HEURISTIC; same-named printings cannot have different tags). The validator must: take the short name as the champion tag, union tags across all printings of a name, keep an override table (OGN-235 -> Karma; "Yi, ..." -> "Master Yi, ..."), and report a champion unit whose tags lack its short name as a data error instead of trusting the tags.
+  - Tags are not stable across printings (DATA, GAL): 38 of the 177 champion units have printings with different tag lists (region tags dropped on promo printings, e.g. Teemo, Strategist SFD-230 has no `Bandle City`). Never compare whole tag lists.
   - champion tag of a legend = the one tag that equals some champion unit's short name. DATA (GAL): exactly one such tag for 58 of 58 legends.
   - UNCONFIRMED: no official ruling was found that states this explicitly for `Yordle`.
-- **One champion tag, two legends (DATA, GAL):** Master Yi has two legends, Wuju Bladesman (OGS-019) and Wuju Master (UNL-191), both Calm/Body. All four Master Yi champion units qualify under either.
+- **One champion tag, two legends (DATA, GAL):** Master Yi has two legends, Wuju Bladesman (OGS-019) and Wuju Master (UNL-191), both Calm/Body. All four Master Yi champion units (Meditative OGS-004, Honed OGS-009, Unstoppable UNL-059, Tempered UNL-113) qualify under either. L-CARDS names the first two "Yi, Meditative" / "Yi, Honed" (see the data-error note above).
 - **Champions without a legend (DATA, GAL):** 47 champion short names have no legend (e.g. Heimerdinger, Nocturne, Neeko, Tryndamere). They can be played in the Main Deck but can never be a Chosen Champion in Constructed.
 - **Off-domain champion (DATA, GAL):** no champion unit that matches a legend's champion tag falls outside that legend's domains. The check is still needed (data errors, future cards).
 
@@ -106,7 +109,7 @@ Labels used throughout:
 - **Contents. FACT (CR 103.3, CR 133.4):** only Units, Gear and Spells. Runes, battlefields and legends are not Main Deck cards (CR 133.5, 133.6, 161.1). Tokens are not cards (CR 185) and cannot be in a deck.
 - **Copy limit. FACT (CR 103.3.b):** "up to 3 copies of the same named card".
   - Keyed on **name**, not card code or printing. CR 132.4: the name of a card with a subtitle is "[Short Name], [Subtitle]". CR 103.3.b.2: Yasuo, Remorseful and Yasuo, Windrider are different cards, 3 of each allowed.
-  - CR 132.3: the same card in another language has the same name. Alternate art, promo, overnumbered and signature-variant printings are the same card. DATA (L-CARDS `printings[].variant`): base 928, promo 133, alt 102, overnumbered 92, signature 45, token 8, rune 6, special 6. Note: the printing variant called "signature" (a signed alternate printing) has nothing to do with the Signature supertype.
+  - CR 132.3: the same card in another language has the same name. Alternate art, promo, overnumbered and signature-variant printings are the same card (inference from the limit being per name, CR 103.3.b and 132.1; the rules do not list printing variants). DATA (L-CARDS `printings[].variant`): base 928, promo 133, alt 102, overnumbered 92, signature 45, token 8, rune 6, special 6. Note: the printing variant called "signature" (a signed alternate printing) has nothing to do with the Signature supertype.
   - With a sideboard, the limit applies to Main Deck + sideboard combined (TR 403.3, TR 601.1.c.3).
 - **Unique. FACT (CR 825.3.a):** "A deck can contain only one card of a given name if the card has Unique". Reminder text on the cards: "(Your deck can have only 1 card with this name.)". DATA (GAL): three cards have it: Forgefire Cape (SFD-190), Rabadon's Deathcrown (SFD-191), Shurelya's Requiem (SFD-192), all Ornn signature gear. L-CARDS stores this as `copyLimit: 1` and keyword `Unique`.
   - HEURISTIC: with a sideboard, the one copy is counted across Main Deck + sideboard. Basis: the card says "Your deck", and TR 403.3 combines named-copy limits across both.
@@ -181,7 +184,7 @@ Sideboards exist only in the Tournament Rules; the Core Rules do not mention the
 
 ### 8.3 Neeko, Blending In (additional deckbuilding choice)
 - **FACT (GAL, RAD-167, champion unit, no domain, tags Ixtal + Neeko), printed text:** "If Neeko is in your deck, choose 3 different legends in addition to your starting legend. (Different means none match names.)"
-- **FACT (ERR-RAD), current text after errata (corrected 2026-11-11):** "If Neeko is in your deck, choose **up to 3** different legends in addition to your starting legend. (Different means none match names.)" So 0, 1, 2 or 3 extra legends are legal; 3 is a maximum, not a requirement. PN-RAD (same day) still says "you pick three legends"; the errata is the card's text and card text wins (CR 002).
+- **FACT (ERR-RAD), current text after errata (corrected 2026-11-11):** "If Neeko is in your deck, choose **up to 3** different legends in addition to your starting legend. (Different means none match names.)" So 0, 1, 2 or 3 extra legends are legal; 3 is a maximum, not a requirement. PN-RAD (same day) still says "you pick three legends", the example in CR 103.1 still quotes "choose 3 different legends" and TR 401.2.a speaks of "The three Legends selected for Neeko"; the errata is the card's current text and card text wins (CR 002). No official source says in so many words that registering fewer than 3 is allowed; that follows from the plain meaning of "up to 3".
 - **FACT (CR 103.1; PN-RAD "So how does Neeko, Blending In actually work?"):**
   - the choice is made during deck building;
   - it applies if the Main Deck **or the sideboard** has one or more copies;
@@ -254,7 +257,7 @@ More FACTs that affect card value rather than legality:
 - **Final point (CR 473.1.b):** when one point short, a Conquer only gives the final point if the player has scored **every** battlefield that turn; otherwise they draw a card. With 3 battlefields on board (FFA, 2v2) this is harder than with 2. 2v2 adjusts it: battlefields occupied by the ally at that turn's beginning-phase scoring step are excepted (491.8.g.1).
 - **2v2 (CR 491.8):** a battlefield scores once per team per turn (491.8.b); control is not shared (491.8.c); "Friendly" includes the teammate's objects (491.8.e), which makes "friendly unit" effects stronger; players may act on a teammate's turn by invitation (491.8.a); turn order alternates teams (491.5.c, TR 603.7.a).
 - **2v2 in tournaments (TR 603):** a 2v2 competition "can be either constructed or sealed" (603.6); in sealed the team shares 8 packs. Each player brings a full deck of their own. UNCONFIRMED: whether sanctioned 2v2 Constructed uses sideboards or multi-game matches. CR 491.6 says best of 1; TR 603.7.c.1 mentions "games after the first game of a match". HEURISTIC: allow an optional 0-10 sideboard in 2v2, default empty.
-- **"Same Battlefields" for teammates (CR 491.8.i):** HEURISTIC: read as "no battlefield name may appear in both teammates' sets of three". UNCONFIRMED whether a looser reading (not the identical set) is intended.
+- **"Same Battlefields" for teammates (CR 491.8.i). FACT (PN-CORE, corrected 2026-11-11, was HEURISTIC/UNCONFIRMED):** "New Rule: In 2v2, partners cannot include the same battlefield across both of their decks." The article adds that the intent is undermined "if both players bring the same battlefield". So no battlefield name may appear in both teammates' sets of three.
 - **Hypothetical modes:** CR 103.1 gives an example of a mode rule that adds a second Chosen Champion with a different tag and domain and widens the Domain Identity. No sanctioned mode in CR 487-491 does this. Not implemented; noted so the data model keeps `chosenChampions` as a list and `domainIdentity` as a computed set.
 
 ### 10.1 Limited (Sealed / Draft): optional mode, different deck rules
@@ -273,7 +276,7 @@ HEURISTIC: out of scope for v1 of a constructed deck builder; keep the format sw
 
 ## 11. Card types, supertypes and the fields the rules key on
 
-**Card types (FACT, CR 133.4-133.6):** Main Deck cards: Unit, Gear (both permanents), Spell. Rune Deck cards: Rune. Other cards: Battlefield, Legend. A game object can have several types (CR 178), e.g. a gear that becomes a unit in play; printed cards in GAL have one type each.
+**Card types (FACT, CR 133.4-133.6):** Main Deck cards: Unit, Gear (both permanents), Spell. Rune Deck cards: Rune. Other cards: Battlefield, Legend. A game object can have several types (CR 178), e.g. a gear that becomes a unit in play; no GAL printing has more than one type (1393 of 1408 have exactly one; 15 have none: the 13 unfinished Radiance entries plus Buff and XP Tracker).
 
 **Supertypes (FACT, CR 133.7):** Champion (units only), Signature (any type). Also in data: Basic (the six runes, CR 164) and Token (not a card, CR 185).
 
@@ -286,8 +289,8 @@ HEURISTIC: out of scope for v1 of a constructed deck builder; keep the format sw
 | `type` | zone assignment | `unit`/`gear`/`spell` -> main or sideboard; `rune` -> rune deck; `battlefield` -> battlefields; `legend` -> legend slot |
 | `superTypes` | Chosen Champion, signature limit, token exclusion | `champion` only meaningful with `type == "unit"`; `signature`; `token` -> never deckable; `basic` |
 | `domains` | Domain Identity | `["colorless"]` means no domain: always allowed |
-| `tags` | champion tag match | champion tag = tag equal to a champion short name (section 3) |
-| `name` | copy limits, bans, battlefield uniqueness, Neeko "different legends" | full name including subtitle ("Ekko, Recurrent"); strip the " - Starter" suffix on OGS legends or use codes |
+| `tags` | champion tag match | champion tag = tag equal to a champion short name (section 3). Wrong in L-CARDS for Karma, Channeler (`[Vi, Ionia]`); needs the override table |
+| `name` | copy limits, bans, battlefield uniqueness, Neeko "different legends" | full name including subtitle ("Ekko, Recurrent"); strip the " - Starter" suffix on OGS legends or use codes; L-CARDS has "Yi, Meditative" / "Yi, Honed" where GAL has "Master Yi, ..." |
 | `copyLimit` | copy limit | 3 default, 1 = Unique; treat Spiderling's 10 as unlimited |
 | `keywords` | Unique | cross-check with `copyLimit == 1` |
 | `rulesText` | deckbuilding text | "Your deck can have any number of cards named X"; "If [Name] is in your deck, choose 3 different legends" (printed) / "choose up to 3 different legends" (ERR-RAD). Match both wordings; card data carries printed text, so keep an errata override table |
@@ -307,7 +310,7 @@ Input: `{ format, legend, chosenChampion, main[] (including the Chosen Champion 
 | 3 | `LEGEND_BANNED` | E | TR 601.2.d, HUB | legend name not on the format's ban list (2v2: Wuju Bladesman) |
 | 4 | `CHAMPION_MISSING` | E | CR 103.3 | a Chosen Champion is set |
 | 5 | `CHAMPION_NOT_CHAMPION_UNIT` | E | CR 103.3.a.2, 103.3.d.3 | `type == "unit"` and `superTypes` has `champion` (signature units fail) |
-| 6 | `CHAMPION_TAG_MISMATCH` | E | CR 103.3.a.2, 133.8.b | champion's champion tag == legend's champion tag (not region/species tags) |
+| 6 | `CHAMPION_TAG_MISMATCH` | E | CR 103.3.a.2, 133.8.b | champion's champion tag (= its short name, after the name/tag overrides of section 3) == legend's champion tag (not region/species tags, not a stray tag such as `Vi` on Karma OGN-235) |
 | 7 | `CHAMPION_NOT_IN_MAIN` | E | CR 103.3, TR 402.1 | the Chosen Champion is one of the counted Main Deck cards (at least 1 copy of that name in `main`) |
 | 8 | `MAIN_TOO_SMALL` | E | CR 103.3 | `count(main) >= 40` |
 | 9 | `MAIN_NOT_EXACT_40` | E (tournament formats) / off (casual) | TR 402.1, 601.1.b | `count(main) == 40` |
@@ -333,7 +336,7 @@ Input: `{ format, legend, chosenChampion, main[] (including the Chosen Champion 
 | 29 | `NEEKO_LEGENDS_UNUSED` | W | HEURISTIC | extra legends listed but no Neeko in the deck |
 | 30 | `NEEKO_LEGEND_BANNED` | W | UNCONFIRMED (8.3) | an extra legend is on the format's ban list |
 | 31 | `TEAM_SAME_LEGEND` | E (2v2 with teammate deck) | CR 491.8.h | teammates' Champion Legends differ (by name) |
-| 32 | `TEAM_SAME_BATTLEFIELD` | E (2v2 with teammate deck) | CR 491.8.i | no battlefield name in both teammates' sets (reading is HEURISTIC, section 10) |
+| 32 | `TEAM_SAME_BATTLEFIELD` | E (2v2 with teammate deck) | CR 491.8.i, PN-CORE | no battlefield name in both teammates' sets (FACT, section 10) |
 | 33 | `ALT_CHAMPION_AVAILABLE` | info | TR 403.4.a | list other eligible champion units in combined that could become Chosen Champion while sideboarding |
 | 34 | `DATA_STALE` | W | 0.1 | card not found in the local card data (e.g. Radiance cards) or ban snapshot older than HUB date |
 
@@ -347,7 +350,7 @@ Not checks (HEURISTIC, deliberately absent): rune split, minimum unit count, ene
 4. **Signature total.** 3 copies of the legend's signature spell + 1 signature gear of the same champion = 4 -> `SIGNATURE_TOTAL_EXCEEDED` even though each name is within 3 (CR 103.3.d.1). With 2 in main and 2 in sideboard we also flag it (HEURISTIC, combined counting).
 5. **Unique signature gear.** Ornn deck: Forgefire Cape x1, Rabadon's Deathcrown x1, Shurelya's Requiem x1 -> legal (CR 825.3.b). Forgefire Cape x2 -> `UNIQUE_LIMIT_EXCEEDED`. All three plus any fourth signature card -> `SIGNATURE_TOTAL_EXCEEDED`.
 6. **Signature unit as Chosen Champion.** Legend Dark Child (Annie) with Tibbers as Chosen Champion -> `CHAMPION_NOT_CHAMPION_UNIT` (CR 103.3.a.2 example, 103.3.d.3).
-7. **Shared non-champion tag.** Legend Heart of the Tempest (tags Yordle, Kennen; Order/Chaos) with Teemo or Vex as Chosen Champion: both share the tag Yordle. -> `CHAMPION_TAG_MISMATCH` under our champion-tag rule (HEURISTIC + CR 133.8.b; official confirmation UNCONFIRMED). Heimerdinger, Inventor (Mind) would also fail `DOMAIN_VIOLATION`; Heimerdinger, Academy Instructor (RAD-132, Order), Teemo, Scout (Chaos) and Vex, Apathetic (Chaos) are inside the domains, so for them the champion-tag check is the only guard (DATA, GAL).
+7. **Shared non-champion tag.** Legend Heart of the Tempest (tags Yordle, Kennen; Order/Chaos) with Teemo or Vex as Chosen Champion: both share the tag Yordle. -> `CHAMPION_TAG_MISMATCH` under our champion-tag rule (HEURISTIC + CR 133.8.b; official confirmation UNCONFIRMED). Heimerdinger, Inventor (Mind) would also fail `DOMAIN_VIOLATION`. Seven non-Kennen Yordle champion units are inside Order/Chaos (corrected 2026-11-11, DATA GAL): Fizz, Trickster; Heimerdinger, Academy Instructor (RAD-132); Lulu, Whimsical; Poppy, Defender of the Meek; Teemo, Scout; Vex, Apathetic; Vex, Cheerless. For them the champion-tag check is the only guard.
 8. **Two-domain card vs legend domains.** A Fury/Chaos signature card in a Fury/Mind legend's deck -> `DOMAIN_VIOLATION`: all of the card's domains must be in the identity (CR 103.2.b.4).
 9. **Legend with one domain.** None exists (DATA, GAL). If one is printed: identity = that single domain; all 12 runes must be that domain's rune; multi-domain cards are never legal; no-domain cards stay legal (CR 103.2.b.3-.5, 103.4.a.1, 176). The validator handles this with the same subset test.
 10. **No-domain main-deck card.** Neeko, Blending In in any deck: passes `DOMAIN_VIOLATION` (CR 103.2.b.5). It then triggers checks 27-28. 3 Neekos still mean one shared set of up to 3 extra legends (PN-RAD, ERR-RAD); listing only 2 is legal (ERR-RAD "up to 3"). A Neeko only in the sideboard still requires the legends (PN-RAD: "Main Deck or sideboard").
@@ -361,6 +364,7 @@ Not checks (HEURISTIC, deliberately absent): rune split, minimum unit count, ene
 18. **Token in list.** An imported list containing "Recruit" or "Gold" -> `TOKEN_IN_DECK`; the importer should drop tokens with a notice.
 19. **2v2 team.** Both teammates on the same Champion Legend -> `TEAM_SAME_LEGEND` (CR 491.8.h). Same champion via different legends (Wuju Master + Wuju Bladesman) is a different card name; Wuju Bladesman is banned in 2v2 anyway. Both lists containing the same battlefield name -> `TEAM_SAME_BATTLEFIELD` (CR 491.8.i).
 20. **Stale card data.** A list with Ekko, Revolutionary (RAD-021) fails lookup in L-CARDS -> `DATA_STALE`, not an illegal-card error. Radiance must be ingested from GAL before validation is trustworthy.
+21. **Wrong tag in the data.** Legend Piltover Enforcer (Vi, Fury/Order) with Chosen Champion Karma, Channeler (Order; stored tags `[Vi, Ionia]` in L-CARDS and on GAL printing OGN-235) -> must be `CHAMPION_TAG_MISMATCH`: her champion tag is Karma (short name; GAL SFD-237). A validator that matches on the raw tag list passes this illegal deck (DATA, added 2026-11-11). Reverse case: Master Yi legend with "Yi, Meditative" (L-CARDS name) must pass.
 
 ## 14. Open items
 
@@ -372,13 +376,14 @@ Not checks (HEURISTIC, deliberately absent): rune split, minimum unit count, ene
 | Neeko's extra legends: format legality, teammate overlap, sideboard count | UNCONFIRMED (their number is settled: up to 3, ERR-RAD) |
 | FFA ban list and FFA tournament structure | UNCONFIRMED; TR has no FFA section |
 | Sideboard / match length in sanctioned 2v2 Constructed | UNCONFIRMED |
-| Exact meaning of "same Battlefields" for teammates (CR 491.8.i) | UNCONFIRMED; we forbid any shared name |
+| Exact meaning of "same Battlefields" for teammates (CR 491.8.i) | settled 2026-11-11: FACT (PN-CORE), no battlefield in both teammates' decks |
+| Karma, Channeler tag `Vi` (OGN-235, GAL and L-CARDS); "Yi, ..." names in L-CARDS | data errors (which value is wrong is HEURISTIC); override table needed |
 | Start-of-game playtest (TEST-SOG) | not a rule; decision due with the Legacy patch notes, January 2027 |
 | Radiance card data | GAL had 13 RAD entries without a type (11 also without domains) on 2026-11-11; re-fetch before ingest. GAL text is printed text; apply ERR-RAD and earlier errata on top |
 
-## Verification log (2026-11-11)
+## Earlier verification log (2026-11-11, second pass)
 
-Independent pass by a second agent. Method: every source was fetched again on 2026-11-11 (not read from `analysis/raw/`), both PDFs were converted with `pdftotext -layout` and each cited rule was read in full, and every DATA number was recomputed from the live gallery JSON, L-CARDS and L-DECKS. The recomputation is saved as `analysis/verify-rules.py` (run: `python3 analysis/verify-rules.py`); its output matched every number left in this document. About 215 separate claims were checked (source rows, rule citations and quotes, ban rows, table cells, data counts, edge cases).
+Superseded where the final Verification log below says so (its corrections 1-6). Independent pass by a second agent. Method: every source was fetched again on 2026-11-11 (not read from `analysis/raw/`), both PDFs were converted with `pdftotext -layout` and each cited rule was read in full, and every DATA number was recomputed from the live gallery JSON, L-CARDS and L-DECKS. The recomputation is saved as `analysis/verify-rules.py` (run: `python3 analysis/verify-rules.py`); its output matched every number left in this document. About 215 separate claims were checked (source rows, rule citations and quotes, ban rows, table cells, data counts, edge cases).
 
 ### Corrections made
 
@@ -396,7 +401,7 @@ Independent pass by a second agent. Method: every source was fetched again on 20
 | 10 | 0.1 table | Win check 472 -> 474 with no note | Wording also changed: "any opponent" -> "every opponent" | L-CR 472 vs CR 474 |
 | 11 | Section 1 | "the only card that does so is Neeko" presented under a FACT label | Marked DATA (GAL text search) | Search of all 1408 GAL texts for deck-building wording finds Neeko, Spiderling and the three Unique cards only |
 
-Additions that are not corrections: edge case 7 now names the three Yordle champions that are inside Kennen's domains (so only the tag check stops them); GAL source row notes that the gallery shows printed text without errata.
+Additions that are not corrections: edge case 7 named three Yordle champions that are inside Kennen's domains (there are seven; fixed by the third pass); GAL source row notes that the gallery shows printed text without errata.
 
 ### Confirmed without change
 
@@ -405,7 +410,7 @@ Additions that are not corrections: edge case 7 now names the three Yordle champ
 - **Tournament Rules citations**, read in full: 104.1, 401.2, 401.2.a, 402.1, 403.1-403.10, 404.2, 406.1.b, 406.1.h, 407.4, 601.1.b-d, 601.2.a-d.2, 601.3.c (incl. 601.3.c.6.a "Release Date: October 23rd, 2026"), 602.1.a.2, 602.1.b, 602.3.d, 602.3.g, 602.4.a.2-a.7.a, 602.4.b.3-b.4, 603.6, 603.7.a, 603.7.c.1.
 - **Ban lists.** HUB (both lists "Last updated: September 18, 2026"), BAN-MAR (2026-03-30, effective March 31), BAN-JUL (timestamp 2026-07-17T00:30Z, effective July 24, 2v2 list = Standard list plus Master Yi, Wuju Bladesman), BAN-SEP (2026-09-15, Ekko, Recurrent and Stacked Deck, both formats). All 12 + 1 names, zones, dates and card codes match HUB, the articles, GAL and L-CARDS. No ban or rules article newer than FAQ-RAD (2026-10-26) is in the news index.
 - **Other articles.** PN-RAD (2026-10-09, effective October 16; Neeko section and "Relevant rules: 103.1."), FAQ-RAD (2026-10-26), TRC-JUL (sideboard 8 -> 10, quote exact), TRC-OCT ("Added 401.2.a.", "Added 601.3.c.6. - 601.3.c.6.a.", "Added 602.3.g."), TEST-SOG (2026-10-15; "Is this a rules update? ... No."; decision in the Legacy patch notes), PRIMER (2025-07-28; "You can go higher than 40 if you really want to"), SETS-27 (2026-08-03; "Set 6: Legacy", "Arriving in January 2027").
-- **GAL numbers (recomputed):** 1408 printings; RAD 219, 13 untyped; 145 legend printings, 58 distinct, all two-domain; 4 legend printings with `champion`; three legends with extra tags (Heart of the Tempest, Hexplosives Expert, Curator of the Sands); 8 Yordle champions; 74 non-token battlefields, all `colorless`; Brush and Baron Pit tokens; 177 distinct champion units, short name is a tag on 177; exactly one champion tag on 58 of 58 legends; 47 champion short names without a legend; Master Yi the only tag with two legends, 4 Master Yi units, all Calm or Body; no off-domain champion; 60 signature cards = 49 spells, 8 gear, 3 units, all matching their legends' domains; 3 Unique cards; 6 rune names (30 printings); Buff and XP Tracker untyped; no multi-domain card outside legends and signature cards; Spiderling and Neeko texts as quoted.
+- **GAL numbers (recomputed):** 1408 printings; RAD 219, 13 untyped; 145 legend printings, 58 distinct, all two-domain; 4 legend printings with `champion`; three legends with extra tags (Heart of the Tempest, Hexplosives Expert, Curator of the Sands); 8 Yordle champions; 74 non-token battlefields, all `colorless`; Brush and Baron Pit tokens; 177 distinct champion units, short name is a tag on 177 (only if tags are unioned across printings, see the third pass); exactly one champion tag on 58 of 58 legends; 47 champion short names without a legend; Master Yi the only tag with two legends, 4 Master Yi units, all Calm or Body; no off-domain champion; 60 signature cards = 49 spells, 8 gear, 3 units, all matching their legends' domains; 3 Unique cards; 6 rune names (30 printings); Buff and XP Tracker untyped; no multi-domain card outside legends and signature cards; Spiderling and Neeko texts as quoted.
 - **L-CARDS numbers (recomputed):** 931 cards, built 2026-09-06, type / superType / domain-count / `copyLimit` / printing-variant / printing-set counts all as stated; 9 legends with `champion`; 4 " - Starter" names; 7 tokens.
 - **L-DECKS numbers (recomputed):** 59 lists, 49 complete; sideboard 8 in 47 of 49 (the other two: 7 and 10); signature totals 21 / 7 / 3 / 18; rune splits 29 / 18 / 7 / 1 over 55 lists; 32 of 49 complete lists contain a card banned today; 6 lists with 41 main cards, all flagged incomplete; first sample uses OGN-290.
 - **L-BAN:** snapshot date 2026-08-10, 10 entries, lowercase `gameplayId` keys, no September bans, no 2v2 list.
@@ -418,7 +423,7 @@ Additions that are not corrections: edge case 7 now names the three Yordle champ
 4. Neeko's extra legends: must they be format-legal, may they equal a 2v2 teammate's Champion Legend, do they count toward the 10 sideboard cards.
 5. Any ban list or tournament structure for free-for-all.
 6. Sideboards and match length in sanctioned 2v2 Constructed (CR 491.6 "Best of 1" vs TR 603.7.c.1 "games after the first game of a match").
-7. Exact scope of "Teammates may not utilize the same Battlefields" (CR 491.8.i).
+7. Exact scope of "Teammates may not utilize the same Battlefields" (CR 491.8.i). (Resolved by the third pass: PN-CORE.)
 8. Whether Radiance contains neutral cards other than Neeko, and the types/domains of the 13 incomplete gallery entries.
 9. Whether signature gear or units get the Limited allowance that TR 602.4.a.3.b gives to signature spells.
 10. Why 6 scraped lists show 41 main cards (not investigated by either pass).
@@ -430,7 +435,7 @@ Additions that are not corrections: edge case 7 now names the three Yordle champ
 - Bans keyed by name across all printings.
 - Any rune split being legal (reading by absence of a rule).
 - FFA using the Standard ban list; optional sideboard in 2v2 and none in FFA/casual.
-- "No battlefield name shared between 2v2 teammates".
+- "No battlefield name shared between 2v2 teammates". (No longer heuristic: PN-CORE, see the third pass.)
 - Neeko's extra legends: warn rather than block on banned legends or teammate overlap; not counted in the sideboard.
 - `copyLimit: 10` for Spiderling is a dataset placeholder (card text says "any number"); card data carries printed text, so errata (Neeko today) need an override layer.
 - Every deck-quality statement (battlefield slot value, sideboard usage in sample lists) is judgement or September 2026 community data, not rules.
@@ -438,3 +443,58 @@ Additions that are not corrections: edge case 7 now names the three Yordle champ
 ### Not re-run
 
 `analysis/crawl-list.mjs`, `fetch-cards.mjs` and the other scripts in `analysis/` are not cited by this document and were not executed. `raw/pa-list.jsonl` and the riftcodex endpoint are not used by any claim here.
+
+## Verification log (2026-11-11)
+
+Third pass, independent of the two before it. Nothing was taken from `analysis/raw/` or from the earlier log. Fetched fresh on 2026-11-11: HUB, GAL, both PDFs (sha256 recomputed, `pdftotext -layout`, every cited rule read in full), the eleven articles in the source table, the news index, the official sitemap (138 en-us URLs), and 22 further official articles that the document did not use (every Core Rules patch notes, FAQ, errata and Tournament Rules changelog article in the sitemap, plus the 2027 organized-play articles). `analysis/verify-rules.py` was re-run against the fresh gallery page and its output was compared line by line with the document; a second, separately written script recomputed the same numbers per printing instead of per name, which is how corrections 2-4 were found. `verify-rules.py` now also prints those per-printing checks (section "third pass"). About 240 claims were checked: 19 source rows, 10 renumbering rows, about 95 rule citations and quotes (CR and TR), 13 ban rows, about 40 mode-table cells, about 45 data counts, 21 edge cases.
+
+### Corrections made in this pass
+
+| # | Where | Was | Now | Evidence |
+|---|---|---|---|---|
+| 1 | Section 10 (2v2 "same Battlefields"), check 32, section 14, source table | HEURISTIC reading, listed as UNCONFIRMED | FACT: no battlefield may be in both teammates' decks. New source row PN-CORE | Core Rules Patch Notes, playriftbound.com, 2025-10-24, linked from HUB: "New Rule: In 2v2, partners cannot include the same battlefield across both of their decks." and "that is undermined if both players bring the same battlefield". Same article: "Clarified: Players cannot have duplicate battlefields among their 3 battlefields." (matches CR 103.5.c) |
+| 2 | Section 3 (champion-tag rule), check 6, `tags` row in 11, new edge case 21, section 14, L-CARDS source row | "champion tag of a unit = the tag equal to its short name. DATA (GAL): true for 177 of 177" | True for 348 of 349 printings. GAL printing OGN-235 Karma, Channeler has tags `[Vi, Ionia]` (SFD-237 printings: `[Karma]`), and L-CARDS stores the card with `[Vi, Ionia]`. A raw tag match lets Karma, Channeler (Order) be the Chosen Champion of the Vi legend Piltover Enforcer (Fury/Order). Override table and data-error check required | GAL 2026-11-11: `OGN-235/298 Karma / Channeler tags ['Vi','Ionia']`; `SFD-237/221` and `SFD-237*/221` tags `['Karma']`. L-CARDS: `OGN-235 'Karma, Channeler' tags ['Vi','Ionia']`. The 177 of 177 in `verify-rules.py` came from keeping only the last printing of each name |
+| 3 | Section 3, `name` row in 11 | Not mentioned | L-CARDS names the OGS Master Yi units "Yi, Meditative" (OGS-004) and "Yi, Honed" (OGS-009); GAL has name "Master Yi" with subtitles "Meditative" / "Honed". In L-CARDS the short name is a tag on 149 of 152 champion units (these two and Karma fail) | L-CARDS and GAL records for OGS-004, OGS-009 |
+| 4 | Section 3 | "Curator of the Sands `[Dog, Shurima, Nasus]`"; nothing about tag variation | Only printing VEN-192* has those three tags; VEN-145 and VEN-192 have `[Nasus]`. 38 of 177 champion units have printings with different tag lists. The two Ziggs units lack `Yordle` although the Ziggs legend has it | GAL per-printing tag comparison |
+| 5 | Edge case 7 | Three Yordle champion units inside Kennen's Order/Chaos (earlier log presented them as the full set) | Seven: Fizz, Trickster; Heimerdinger, Academy Instructor; Lulu, Whimsical; Poppy, Defender of the Meek; Teemo, Scout; Vex, Apathetic; Vex, Cheerless | GAL: champion units with tag `Yordle`, short name not Kennen, domains inside {order, chaos} |
+| 6 | Section 11 | "printed cards in GAL have one type each" | 1393 of 1408 printings have exactly one type, 15 have none, none has two | GAL count of `cardType.type` |
+| 7 | Section 4 | "Alternate art, promo, overnumbered and signature-variant printings are the same card" read as part of CR 132.3 | Marked as inference from the per-name limit | CR 132.3 only speaks of languages; CR 103.3.b and 132.1 give the per-name basis |
+| 8 | Section 8.3 | Only PN-RAD named as still saying "three" | CR 103.1's example and TR 401.2.a also still say 3 / "three"; "fewer than 3 is legal" rests on the plain meaning of the errata text, no source spells it out | CR 103.1 example; TR 401.2.a; ERR-RAD NEW TEXT "choose up to 3 different legends" |
+
+### Confirmed (re-verified, no change)
+
+- **Editions.** HUB links exactly two PDFs, `5c7946f7...` and `861752...`; sha256 `94d41fee86f88b61c4157c0389c0595d990b98e5b42555c99d9f649ee64d1fec` and `ce07da4fb632526afbbce7f058287a57e7444fa6bde17b0938ff52ce3fab3d07`; first pages read "Last Updated: 2026-10-09" and "Last Updated October 9, 2026". No newer edition: the newest rules items in the news index and sitemap are FAQ-RAD (2026-10-26) and TEST-SOG (2026-10-15); the newest news item of any kind is dated 2026-11-06 and is a product drawing. The local Core Rules (2026-07-16) and the TR hash in `GameLab/data/rules/meta.json` are both superseded.
+- **Renumbering table (0.1).** All ten rows, read from L-CR (103.1-103.4, 103.1.b.5 as the old "irrespective of domain" rule, 472 "more points than any opponent", 481-489, 825, tokens end at 187.11) and from CR (103.1-103.5, 103.2.b.5-6, 474 "every opponent", 483-491, 187.12 Bomb). The three stale cross-references (133.7.a, 133.7.b, 161.2.a) are in the current PDF as described.
+- **Core Rules citations and quotes:** 002, 103, 103.1 (both examples), 103.2-103.2.b.6, 103.3-103.3.e, 103.4-103.4.b, 103.5.a-c, 107.4.d.1, 132.1, 132.3, 132.4, 133.4, 133.5, 133.6.a-b, 133.7.a-b, 133.8.a-b, 134.1-134.2.f, 161.1, 161.2.a, 164.1, 172, 176, 178, 180, 181, 185, 186, 187.1-187.12, 473.1.b (the text is in 473.1.b.1), 474, 487-491 with every sub-rule used in sections 6 and 10, 825.1-825.3.b. "sideboard" occurs 0 times in CR.
+- **Tournament Rules citations and quotes:** 104.1, 401.2, 401.2.a, 402.1, 403.1-403.10, 404.2, 406.1.b, 406.1.h (h.1-h.7), 407.4, 601.1.a-d, 601.2.a-d.2.a, 601.3.c.1-6.a, 602.1.a.2, 602.1.b, 602.3.d, 602.3.e.3, 602.3.g, 602.4.a.2-a.7.a, 602.4.b.3-b.8.a (every draft number in 10.1 is right), 603.1-603.7.c.1, 604, 703.3.a. "free-for-all", "FFA", "Skirmish" and "multiplayer" occur 0 times in TR.
+- **Ban lists.** HUB text (both lists "Last updated: September 18, 2026"), BAN-MAR, BAN-JUL, BAN-SEP; 12 Standard names plus the 2v2-only legend; every code checked in GAL and L-CARDS; "Dreaming Tree" is "The Dreaming Tree" in both datasets. Note on dates: BAN-JUL and TRC-JUL carry the timestamp 2026-07-17T00:30Z, which is 16 July in US time zones; "published 2026-07-17" is the UTC date.
+- **Articles.** PN-RAD (all six Neeko statements quoted in 8.3; "Relevant rules: 103.1."), ERR-RAD (NEW/OLD text exactly as quoted), FAQ-RAD (its only Neeko ruling repeats "in the Main Deck or the sideboard"), TRC-OCT, TRC-JUL (quote exact), TEST-SOG (turn order before battlefields; one of three go-second perks; "No."; decision in the Legacy patch notes), PRIMER, SETS-27 ("Set 6: Legacy", "Arriving in January 2027").
+- **Data, reproduced:** every GAL, L-CARDS and L-DECKS number left in the document (see the list in the earlier log) came out the same from the fresh gallery fetch, except the items corrected above. Extra checks: Neeko RAD-167 and Spiderling VEN-097 texts, the three Unique cards, the two example untyped Radiance entries (RAD-009, RAD-041), RAD-021, RAD-132, Vilemaw's Lair, Windswept Hillock, Defy, Daughter of the Void (Fury/Mind), Loose Cannon and Dark Child (Fury/Chaos), Tibbers (Fury/Chaos, tag Annie), the Ornn legend (Calm/Mind), Heimerdinger / Nocturne / Neeko / Tryndamere without a legend, L-BAN (snapshot 2026-08-10, 10 entries, 5 main + 5 battlefield), L-DECKS first list (Hartford #1, legend OGS-019, battlefield OGN-290).
+
+### Left UNCONFIRMED (no primary source found, also not in the 22 extra articles)
+
+1. Whether the limit of 3 Signature cards counts Main Deck + sideboard together.
+2. Whether Unique's one copy counts Main Deck + sideboard together (TR 403.3 and 601.1.c.3 cover "copies of named cards", which arguably includes it; no explicit statement).
+3. That a shared non-champion tag (Yordle) cannot satisfy CR 103.3.a.2. No ruling exists; CR 133.8.b is the only support.
+4. Neeko's extra legends: whether they must be format-legal, may equal a 2v2 teammate's Champion Legend, or count toward the 10 sideboard cards; and any explicit statement that fewer than 3 may be registered.
+5. Any ban list or tournament structure for free-for-all. (A 2025-07-28 organized-play article says events "can be played 1v1, 2v2 or 3/4 player free for all"; nothing more.)
+6. Sideboards and match length in sanctioned 2v2 Constructed (CR 491.6 "Best of 1" vs TR 603.7.c.1).
+7. Whether Radiance has neutral cards other than Neeko; types and domains of the 13 incomplete gallery entries.
+8. Whether signature gear or units get the Limited allowance of TR 602.4.a.3.b / 602.4.b.4.b.
+9. Why 6 scraped lists show 41 main cards.
+10. Which stored value is the error for Karma, Channeler (tag `Vi` on OGN-235 vs `Karma` on SFD-237) and for "Yi, Meditative" vs "Master Yi, Meditative". GAL's SFD-237 and "Master Yi" are taken as right; no physical card was checked.
+
+### What the design must treat as heuristic
+
+- The champion-tag derivation (short name = champion tag). It is our rule, not Riot's, and the tag data it would otherwise lean on is wrong for at least one card in both datasets. Ship it with an override table and a data-error check.
+- Combined main + sideboard counting for the Signature total and for Unique.
+- Bans keyed by name across all printings.
+- Any rune split being legal (reading by absence of a rule).
+- FFA using the Standard ban list; optional sideboard in 2v2; none in FFA/casual.
+- Neeko: fewer than 3 extra legends is legal (plain reading of the errata); extra legends are not sideboard cards; warn rather than block on banned or teammate-duplicated extra legends.
+- "Printing variants are the same card" (per-name reading).
+- `copyLimit: 10` for Spiderling is a dataset placeholder; card data carries printed text, so errata need an override layer.
+- Tags, names and domains in GAL and L-CARDS are data, not rules: tag lists differ between printings, 13 Radiance entries are incomplete, an empty domain list means missing.
+- Every deck-quality statement (battlefield slot value, sideboard usage in sample lists) is judgement or September 2026 community data.
+
+No longer heuristic: "no battlefield shared between 2v2 teammates" (correction 1).

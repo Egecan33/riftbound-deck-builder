@@ -13,8 +13,9 @@ This document is generated: section 9 (the per-legend appendix) and every table 
 
 - **58 Legends exist today, not 49.** FACT: the local `cards.json` (built 2026-09-06) has 49. The official card gallery on 2026-11-11 adds the set **Radiance (RAD, released 2026-10-23)** with **9 new Legends** (section 2.1).
 - **Every one of the 58 has a text profile.** The generator parsed all 58 ability texts into kind / cost / condition / effect and found at least one theme axis for each. Against the GameLab engine's hand-scripted legends the ability kinds agree for {{ENGINE_AGREE}} of {{ENGINE_TOTAL}} (section 4.5).
-- **Data coverage is uneven and must be shown as such.** DATA: {{N_PA_COMPLETE}} complete lists fetched on 2026-11-11 ({{PER_LEGEND_DIST}}). With our thresholds: {{CONF_OK}} `ok`, {{CONF_THIN}} `thin`, {{CONF_INSUFF}} `insufficient`; the fetch was cut at 200 pages for time, so `thin` here mostly means "we fetched 3", not "only 3 exist". Independently of how much we fetched, **{{N_SCARCE}} legends are `scarce`**: the published-list index itself has fewer than 10 Radiance-era lists or fewer than 3 event-named ones for them (section 6).
-- **Published-list popularity and tournament share are different things.** DATA: the most-built legends on Piltover Archive since Radiance are {{TOP_POP}} (lists). The Europe Regional Championship field was 43.3% Riven (riftbound.gg report). The app must never present list counts as "meta share".
+- **Data coverage is uneven and must be shown as such.** DATA: {{N_POOLED}} distinct complete lists from four sources ({{N_POOL_RAD}} Radiance-era, {{N_POOL_PRE}} older; section 5.1). Radiance-era {{PER_LEGEND_DIST}}. With our thresholds on Radiance-era lists: {{CONF_OK}} `ok`, {{CONF_THIN}} `thin`, {{CONF_INSUFF}} `insufficient`. So for {{N_WEAK}} of 58 legends the app must print n and say that current-format evidence is thin (section 6).
+- **Three different popularity measures exist and they disagree.** DATA: most-built on Piltover Archive since Radiance (lists): {{TOP_POP}}. FACT counts: largest Day 1 share over the last three official Regional Qualifier field tables (Barcelona, Singapore, Los Angeles; all before Radiance): {{TOP_OFFICIAL}}. DATA: most first places in riftbound.one's top-3 archive: {{TOP_PODIUM}}. The Europe Regional Championship field was 43.3% Riven (riftbound.gg report). The app must never present list counts as "meta share", and must date every share.
+- **Official results exist per legend, but only up to 2026-09-30.** FACT: eleven official "Top Decks" articles give Day 1 and Day 2 pilot counts per legend; best Day 2 conversion over the last three (30+ pilots): {{TOP_CONVERSION}}; whole field {{FIELD_CONVERSION}}. No official field table for a Radiance-era event was published by 2026-11-11 (UNCONFIRMED whether one will be for the Europe Regional Championship).
 - **Local card data is incomplete in a way that matters for text analysis.** FACT: for {{N_EFFECT}} Equipment cards `cards.json` holds only the Equip line; the granted effect lives in a separate gallery field (`effect`) that the September build dropped (section 2.3).
 
 ## 2. What changed since the local September 2026 snapshot
@@ -125,41 +126,64 @@ Two texts that merely produce the same thing do not count. Each reason stores bo
 
 Scripts: `fetch_pa_decks.py` (network, polite, resumable), `build_legend_meta.py` (no network). Output: `data/legend-profiles.meta.json`.
 
-### 5.1 Datasets (DATA)
+### 5.1 Datasets (DATA unless marked)
 
 | Id | What | n | Caveat |
 |---|---|---|---|
-| `pa-sample-2026-09-06` | `GameLab/data/decks/samples/piltover-archive-2026-09-06.json`: 59 lists saved from https://piltoverarchive.com/decks on 2026-09-06 | {{N_LOCAL}} lists with a legend, covering {{N_LOCAL_LEGENDS}} legends | Unleashed-era Regional Qualifier "best of" lists; before Radiance and before the 2026-09-18 bans |
+| `official-rq-2026` | FACT source: eleven official "Top Decks" articles on playriftbound.com (table below), parsed by the shared `analysis/meta-sources/official-parse.mjs`; local copy `raw/official-rq-top-decks-2026-11-11.json` | per-legend Day 1 and Day 2 pilot counts for 11 Regional Qualifiers; {{N_OFF_PARSED}} printed lists with a resolvable legend, {{N_OFF_COMPLETE}} complete | All before Radiance (newest: Los Angeles, published 2026-09-30). One list per legend per event: that legend's best-placed pilot, not a top-8 list. Lists in the Bologna article print no legend or champion line and are skipped unless resolvable |
+| `r1-top3-2026-11-11` | https://www.riftbound.one/decklists, one page fetched 2026-11-11 by the meta-sources task; local copies `raw/riftbound-one-decklists-*.json` | {{N_R1_PARSED}} first, second and third place lists (2026-04 to 2026-10), {{N_R1_COMPLETE}} complete (the others have no rune section) | Community archive; many small events (Chinese City Challenges are the largest group); dates are month and year only; UNCONFIRMED how the site collects placements |
+| `pa-fetch-2026-11-11` | Deck pages https://piltoverarchive.com/decks/view/<id> fetched 2026-11-11 | {{N_PA_PARSED}} parsed ({{N_PA_OWN}} from the per-legend fetch of this task, {{N_PA_SHARED}} more from the shared event-named fetch `analysis/raw/pa-decks.jsonl`), {{N_PA_COMPLETE}} complete (40+ main, 12 runes) | Published lists; placements are whatever the uploader wrote in the name. Per-legend fetch: up to 10 per legend, event-named Radiance-era lists first, round-robin |
+| `pa-sample-2026-09-06` | `GameLab/data/decks/samples/piltover-archive-2026-09-06.json`: 59 lists saved from https://piltoverarchive.com/decks on 2026-09-06 | {{N_LOCAL}} lists with a legend, {{N_LOCAL_COMPLETE}} complete | Unleashed-era Regional Qualifier "best of" lists; before Radiance and before the 2026-09-18 bans |
 | `pa-list-2026-11-11` | Deck index rows (id, name, legend code, views, dates) from https://piltoverarchive.com/decks?page=N, pages 1 to {{N_LIST_PAGES}} of about 417, crawled 2026-11-11 by the shared `analysis/crawl-list.mjs` | {{N_LIST_ROWS}} rows, {{N_LIST_RECENT}} created on or after 2026-10-23 | Site default order; published lists, not registrations |
-| `pa-fetch-2026-11-11` | Deck pages https://piltoverarchive.com/decks/view/<id> fetched 2026-11-11 | {{N_PA_PARSED}} parsed, {{N_PA_COMPLETE}} complete (40+ main, 12 runes), {{N_PA_EVENT}} with an event marker in the name | Up to 6 per legend, event-named Radiance-era lists first; placements are whatever the uploader wrote in the name |
-| `results` | riftbound.gg "Meta Tier List, Radiance, Week 2" (updated 2026-11-06; 13 tournaments, 2026-10-30 to 2026-11-04) and "Europe Regional Championship" report (updated 2026-11-08) | 21 legends in the tier list; 19 with a win rate over more than 10 matches | Hand-transcribed into `data/results-riftboundgg-2026-11.json` from the copies in `analysis/matchups-and-lines/raw/`. Reported per champion name, so the two Master Yi legends cannot be separated |
+| `results` | riftbound.gg "Meta Tier List, Radiance, Week 2" (updated 2026-11-06; 13 tournaments, 2026-10-30 to 2026-11-04) and "Europe Regional Championship" report (updated 2026-11-08) | 21 legends in the tier list; 19 with a win rate over more than 10 matches | Hand-transcribed into `data/results-riftboundgg-2026-11.json` from the copies in `analysis/matchups-and-lines/raw/`. Reported per champion name, so legends that share a champion cannot be separated |
 
-Source policy notes (FACT, robots.txt files fetched 2026-11-11):
+Official field tables used (FACT, fetched 2026-11-11 by the meta-sources task; counts are sums of the per-legend rows):
 
-- piltoverarchive.com allows `/` and plain `/decks?page=`; it disallows `/api/` and filtered `/decks?` queries. Only deck view pages and plain pagination were requested, serially, 3 s apart, generic User-Agent, no cookies.
+{{OFFICIAL_EVENTS_TABLE}}
+
+Not included: the Houston article (https://playriftbound.com/en-us/news/announcements/from-garen-to-annie-rq-houstons-top-decks/, December 2025) was not parsed.
+
+**Pooling (DATA).** {{N_COMPLETE_ALL}} complete lists in total; {{N_DUPES}} are exact duplicates of another list of the same legend (same main deck, runes and battlefields, usually the same list on two sites) and are dropped, leaving {{N_POOLED}}. Each list gets an era by a fixed rule: `radiance` if it holds a RAD card or its source date is on or after 2026-10-23, otherwise `pre-radiance`. Result: {{N_POOL_RAD}} Radiance-era, {{N_POOL_PRE}} older. HEURISTIC limit: riftbound.one gives only the month, so an October list without a RAD card counts as older even if it was played after the release.
+
+Source policy notes (FACT, robots.txt files fetched 2026-11-11, copies in `analysis/meta-sources/raw/robots-*.txt`):
+
+- playriftbound.com: official site; the articles are public news pages.
+- piltoverarchive.com allows `/` and plain `/decks?page=`; it disallows `/api/` and filtered `/decks?` queries. Only deck view pages and plain pagination were requested, serially, 2.5 to 3 s apart, generic User-Agent, no cookies.
+- riftbound.one: `User-agent: * Allow: /`, `Crawl-delay: 1`. One page was fetched once.
 - riftdecks.com disallows AI crawlers by name (including `ClaudeBot` and `anthropic-ai`) and states that scraping for a competing service is not allowed. **Not fetched, not used.** It has per-legend metagame pages; if the owner wants them, that is a manual decision.
 - riftbound.gg disallows the user agents `anthropic-ai` and `Claude-Web` while allowing `*`. This research did not fetch it; it read the two article copies another research task had already saved. HEURISTIC: treat riftbound.gg numbers as hand-entered input, not as a sync source.
-- No source gives per-legend win rates for all 58 legends. UNCONFIRMED: whether Piltover Archive's tournaments page exposes structured results (the HTML is rendered client-side; nothing usable was in the page payload).
+- No source gives per-legend win rates for all 58 legends. UNCONFIRMED: whether Piltover Archive's tournament pages expose structured standings (the saved page `analysis/meta-sources/raw/pa-tourn-1.html` has no placement fields in its payload).
 
 ### 5.2 What is counted per legend
 
-- `popularity`: lists in the index, lists since 2026-10-23, share and rank among the 58, event-named lists since 2026-10-23, summed views.
+- `popularity`: lists in the Piltover Archive index, lists since 2026-10-23, share and rank among the 58, event-named lists since 2026-10-23, summed views.
+- `officialField`: for every official field table the legend appears in: Day 1 pilots, Day 2 pilots, shares, Day 2 conversion and the whole field's conversion; plus `recent`, the sum over the last 3 tables. A conversion rate is only flagged usable from 30 Day 1 pilots (HEURISTIC threshold).
+- `podiums`: first, second and third places in `r1-top3-2026-11-11`, for all lists and for Radiance-era lists.
 - `results`: tier, wins and top cuts (week-2 report); win rate and matches (Europe Regional Championship).
-- per dataset: Chosen Champion distribution, rune split distribution, battlefield inclusion, `coreCards` (in at least 75% of lists), `flexCards` (25% to 74%), top 25 cards with inclusion rate and average copies, side deck cards, average main-deck type counts, and `variants`: lists grouped by Chosen Champion with the cards that are at least 50 points more common in that group than outside it.
-- `dataConfidence` (HEURISTIC thresholds): `ok` = at least 5 complete fetched lists of which at least 3 are event-named; `thin` = 2 to 4 (or 5+ without enough event-named ones); `insufficient` = fewer than 2.
-- `dataAvailability` (HEURISTIC thresholds): `enough` if the index shows at least 10 lists and at least 3 event-named lists since 2026-10-23, else `scarce`. This separates "we fetched too little" from "there is too little".
-- Deck entries are matched to the pool by printing code, then by name. Unresolved entries in this run: {{UNRESOLVED}}.
+- `samples.radiance` and `samples.preRadiance`, each over the pooled lists of that era: source mix, newest set per list, how many lists hold a card that is banned today, Chosen Champion distribution, rune split distribution, battlefield inclusion, `coreCards` (in at least 75% of lists), `flexCards` (25% to 74%), top 25 cards with inclusion rate and average copies, side deck cards, average main-deck type counts, `variants` (lists grouped by Chosen Champion with the cards that are at least 50 points more common in that group than outside it; only for groups of 2+ lists), and `archetypeLabels` (below). A card that is banned today keeps its row and gets `bannedFrom`.
+- `dataConfidence` (HEURISTIC thresholds, **Radiance-era lists only**): `ok` = at least 5 complete lists of which at least 3 have tournament provenance (event-named on Piltover Archive, a riftbound.one podium, or an official list); `thin` = 2 to 4 (or 5+ without enough provenance); `insufficient` = fewer than 2.
+- `adviceBasis`: `radiance-lists` when `dataConfidence` is `ok` or `thin`; `pre-radiance-lists-only` when it is `insufficient` but at least 2 older lists exist; `text-only` otherwise.
+- `dataAvailability` (HEURISTIC thresholds): `enough` if the Piltover Archive index shows at least 10 lists and at least 3 event-named lists since 2026-10-23, else `scarce`. This separates "we fetched too little" from "there is too little".
+- Deck entries are matched to the pool by printing code, then by name. Showcase rune printings `<SET>-R01` to `R06` are mapped by number in the order Fury, Calm, Mind, Body, Chaos, Order (the gallery lists the VEN ones; the script stops if they contradict the order). Unresolved entries in this run: {{UNRESOLVED}}. A list with an unresolved main-deck or rune entry falls below 40 or 12 and is not counted as complete.
 
-Archetypes are deliberately not clustered beyond the Chosen Champion split. With at most 6 lists per legend any clustering would be noise (HEURISTIC). The sync should raise the per-legend budget before adding clustering.
+**Archetypes (DATA join, HEURISTIC labels).** This task does not cluster. `archetypeLabels` joins, by deck id, the four shape labels (`unit-aggro`, `spell-tempo`, `gear-engine`, `big-control`) that the deck-theory task assigned with k-means over role counts (`analysis/out/results.json`, see `deck-theory.md`). Only Piltover Archive lists that are in both datasets have a label ({{N_ARCH_LABELLED}} of the {{N_POOL_RAD}} Radiance-era lists). Inside one legend the useful split is the Chosen Champion split (`variants`) together with core and flex cards; the shape label says which of the four broad shapes those lists fall in. With most legends under 10 Radiance-era lists, finer clustering inside a legend would be noise (HEURISTIC).
 
 ## 6. Which legends have too little data
 
-- **By what we fetched** (DATA, thresholds above): `ok` {{CONF_OK}} ({{CONF_OK_LIST}}); `thin` {{CONF_THIN}}; `insufficient` {{CONF_INSUFF}} ({{CONF_INSUFF_LIST}}). The fetch was stopped for time; it was ordered round-robin so every legend got its first list before any got a second. A full run (6 per legend, 348 pages) takes about an hour at the polite rate.
-- **By what exists** (DATA, `pa-list-2026-11-11`): {{N_SCARCE}} legends are `scarce`: {{SCARCE_LIST}}.
-- **No result line in either report** ({{N_NO_RESULTS}} legends): {{NO_RESULTS_LIST}}.
-- **Scarce lists and no results at all** ({{N_NO_DATA_ADVICE}} legends): {{NO_DATA_ADVICE_LIST}}. For these the app should say "not enough tournament data for this legend; the advice below comes from card text only" and show the text half.
+Thresholds are in section 5.2. Counts are Radiance-era lists unless stated.
 
-HEURISTIC for the app: show data-driven statements only when `dataConfidence` is `ok`; show them with "from n lists" when `thin`; hide them when `insufficient`. Always print n next to any rate.
+- **`ok` ({{CONF_OK}} legends):** {{CONF_OK_LIST}}.
+- **`thin` ({{CONF_THIN}} legends):** {{CONF_THIN_LIST}}.
+- **`insufficient` ({{CONF_INSUFF}}):** {{CONF_INSUFF_DETAIL}}.
+- **Advice basis:** {{BASIS_RAD}} legends `radiance-lists`, {{BASIS_PRE}} `pre-radiance-lists-only`, {{BASIS_TEXT}} `text-only`.
+- **By what exists on Piltover Archive** (DATA, `pa-list-2026-11-11`): {{N_SCARCE}} legends are `scarce`, so a bigger fetch will not help them: {{SCARCE_LIST}}.
+- **No official field data at all** ({{N_NO_OFFICIAL}} legends, i.e. the Radiance legends): {{NO_OFFICIAL_LIST}}. Legends that exist in older tables but are absent from the last three: {{NOT_RECENT_OFFICIAL_LIST}} (UNCONFIRMED whether absent means zero pilots or an omitted row). Fewer than 30 Day 1 pilots over the last three tables, so no conversion rate (Day 1 pilots in brackets): {{SMALL_OFFICIAL_LIST}}.
+- **No podium in the riftbound.one archive:** {{N_NO_PODIUM}} legends.
+- **No result line in either riftbound.gg report** ({{N_NO_RESULTS}} legends): {{NO_RESULTS_LIST}}.
+- **Not `ok` and no Radiance-era result line** ({{N_NO_DATA_ADVICE}} legends; Radiance-era lists in brackets): {{NO_DATA_ADVICE_LIST}}. For these the app should say "not enough current tournament data for this legend" and show (a) the text half, (b) the few current lists with n, and (c) older lists labelled with their date range and the banned cards struck out.
+
+HEURISTIC for the app: show data-driven statements without a warning only when `dataConfidence` is `ok`; show them with "from n lists" when `thin`; when `insufficient`, show only the text half plus, if `adviceBasis` is `pre-radiance-lists-only`, the older sample under a "before Radiance" heading. Always print n and the sample's era next to any rate. Never mix the two eras in one rate.
+
 
 ## 7. Overview tables (generated)
 
@@ -171,7 +195,7 @@ Role abbreviations: rew = rewards, nee = needs, ena = enables.
 
 ### 7.2 Data half (DATA)
 
-Columns: lists since Radiance in `pa-list-2026-11-11`; riftbound.gg week-2 tier, wins, top cuts; Europe Regional Championship win rate and matches; complete fetched lists and how many are event-named; lists in the September sample.
+Columns: lists since Radiance in `pa-list-2026-11-11`; official Regional Qualifier field over the last three tables (Barcelona, Singapore, Los Angeles; before Radiance); riftbound.one podiums; riftbound.gg week-2 tier, wins, top cuts; Europe Regional Championship win rate and matches; pooled Radiance-era lists and how many have tournament provenance; pooled older lists.
 
 {{OVERVIEW_DATA}}
 
@@ -220,8 +244,10 @@ interface CardRef { cardCode: string; name: string; type: string; energy: number
 
 // legend-profiles.meta.json  (rebuilt on every meta sync)
 interface MetaFile {
-  schemaVersion: 1;
+  schemaVersion: 2;
   datasets: Record<string, { source: string; note: string; [k: string]: unknown }>;
+  pooling: { completeLists: number; duplicatesDropped: number; pooledLists: number;
+             radianceEra: number; preRadiance: number; eraRule: string };
   thresholds: Record<string, number>;
   unresolvedDeckEntries: Record<string, number>;
   legends: LegendMeta[];
@@ -229,26 +255,44 @@ interface MetaFile {
 interface LegendMeta {
   legendCode: string; name: string; tags: string[];
   dataConfidence: 'ok' | 'thin' | 'insufficient'; dataConfidenceReasons: string[];
+  adviceBasis: 'radiance-lists' | 'pre-radiance-lists-only' | 'text-only';
   dataAvailability: 'enough' | 'scarce';
   popularity: { dataset: string; lists: number; listsSinceRadiance: number; eventNamedListsSinceRadiance: number;
                 shareSinceRadiance: number | null; rankSinceRadiance: number | null; viewsSum: number };
+  officialField: { dataset: string; events: FieldRow[];
+                   recent: { events: string[]; day1: number; day2: number; day1Share: number | null; day2Share: number | null;
+                             day2Conversion: number | null; fieldDay2Conversion: number | null;
+                             enoughForConversion: boolean } | null } | null;
+  podiums: { dataset: string; all: Podium; radianceEra: Podium };
   results: { tierList?: { tier: string; wins: number; topCuts: number };
              euRegional?: { winRatePct: number | null; matches: number | null; finish?: string; day1FieldSharePct?: number };
              sharedWithLegends: string[] } | null;
   asAdditionalLegend: { dataset: string; decks: number; note: string };
-  samples: Record<string, SampleSummary | null>;   // keyed by dataset id
+  samples: { radiance: SampleSummary | null; preRadiance: SampleSummary | null };
 }
+interface FieldRow { event: string; publishedAt: string; day1: number | null; day2: number | null; day1Share: number | null;
+                     day2Share: number | null; day2Conversion: number | null; fieldDay2Conversion: number | null }
+interface Podium { first: number; second: number; third: number }
 interface SampleSummary {
   n: number; nEventMarker: number; nComplete: number;
-  chosenChampions: { cardCode: string; name: string; decks: number; share: number }[];
+  sources: Record<string, number>;               // dataset id -> lists
+  newestSetInList: Record<string, number>;       // set code -> lists
+  nWithCurrentlyBannedCard: number;
+  podiums: Podium & { dataset: string };
+  archetypeLabels: { dataset: string; nLabelled: number; labels: { label: string; decks: number }[] };
+  chosenChampions: { cardCode: string; name: string; decks: number; share: number }[]; nChosenChampionKnown: number;
   runeSplits: { split: string; decks: number; share: number }[];
-  battlefields: Rate[]; coreCards: Rate[]; flexCards: Rate[]; topCards: Rate[]; sideDeck: Rate[];
+  battlefields: Rate[]; nWithBattlefields: number;
+  coreCards: Rate[]; flexCards: Rate[]; topCards: Rate[];
+  sideDeck: Rate[]; nWithSideDeck: number;
   avgMainTypeCounts: Record<string, number>;
   variants: { chosenChampion: string; name: string; decks: number; share: number;
               distinctiveCards: { cardCode: string; name: string; rateHere: number; rateElsewhere: number }[]; deckIds: string[] }[];
-  decks: { id: string; name: string; url: string; eventMarker: boolean; createdAt: string | null; complete: boolean }[];
+  decks: { id: string; dataset: string; name: string; url: string; eventMarker: boolean; placement: 1 | 2 | 3 | null;
+           createdAt: string | null; newestSet: string | null; bannedCards: string[] }[];
 }
-interface Rate { cardCode: string; name: string; decks: number; inclusionRate: number; avgCopiesWhenPlayed: number; type?: string }
+interface Rate { cardCode: string; name: string; decks: number; inclusionRate: number; avgCopiesWhenPlayed: number;
+                 type?: string; bannedFrom?: string }
 ```
 
 Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/example.json`:
@@ -259,8 +303,9 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
 
 Changes we recommend before this becomes the app's schema (HEURISTIC):
 
-- Split era out of the dataset id: `samples` should be keyed by `{source, window}` so that a new ban or set opens a new window instead of mixing eras.
-- Store `results` per source with its own `scope` and date, and allow several; today's two reports are a week apart and measure different things.
+- Eras are two fixed buckets here (`radiance`, `preRadiance`). The app should key samples by `{window}` where a window opens at every set release and every ban date, so that the next ban does not silently mix formats. `newestSetInList` and `nWithCurrentlyBannedCard` are the stopgap that lets the UI warn today.
+- Store `results` per source with its own `scope` and date, and allow several; today's two riftbound.gg reports are a week apart and measure different things, and `officialField` is a third, older measure.
+- `officialField.events[].event` is the article slug; add the event's own date and player count from an events table (the meta-sources task has one) instead of the publication date.
 - Add `legality` per legend per format (Wuju Bladesman is banned in 2v2 only) from the legality file rather than from this profile.
 - Keep `poolSupport.cardCodes` as codes only (as now); names and text come from the card table.
 
@@ -270,6 +315,9 @@ Changes we recommend before this becomes the app's schema (HEURISTIC):
 - **Rewards drive counts.** For a `rewards` axis the builder counts the deck's enablers for it and compares with the legal pool; for a `needs` axis a count of zero is an error-level warning (the legend ability is dead); for an `enables` axis it looks for payoffs in the deck.
 - **Chosen Champion choice is a comparison of the listed units' own axes** against the deck's axis counts, plus the data half's distribution when `dataConfidence` allows.
 - **Battlefields**: offer the text-fit list with both quoted fragments; add the data half's most-registered battlefields with n; drop anything with `bannedFrom` on or before today.
+- **Data sentences name the era and n.** Example built from the record, not a template about archetypes: "13 of 14 Radiance-era Heart of the Tempest lists choose Kennen, Storm of Shuriken; 9 of 14 run 9 Chaos / 3 Order; your list runs <its own split>." When `adviceBasis` is `pre-radiance-lists-only` the same sentence must start with "Before Radiance (n lists, newest set VEN)" and must strike out cards with `bannedFrom`.
+- **Rune split advice** = compare the deck's own split with `runeSplits` of the era sample, then explain the difference from the deck's own Power costs per domain (computed from its cards), never from the sample alone.
+- **Field numbers are context, not advice.** `officialField.recent.day2Conversion` against `fieldDay2Conversion` tells how the legend did before Radiance; show it with the event names and only when `enoughForConversion` is true.
 - **Never** print a rate without its n and dataset, and never call list counts "meta share".
 
 ## 9. Per-legend profiles (generated from the two JSON files)
@@ -289,25 +337,30 @@ All under `docs/research/analysis/legend-profiles/`:
 | `fetch_pa_decks.py` | Network: per-legend sample of Piltover Archive deck pages into `data/pa-decks.jsonl` (resumable, round-robin) |
 | `build_legend_meta.py` | Data half: `data/legend-profiles.meta.json` |
 | `report.py`, `assemble_doc.py`, `doc_template.md` | Render this document |
-| `run_all.sh` | Rebuild both halves and the fragments without network |
+| `run_all.sh` | Rebuild both halves, the fragments and this document without network |
 | `data/bans-known.json` | Ban flags used here (source: `Untitled/config/current-constructed-rules.json` plus the 2026-09-18 announcement) |
 | `data/results-riftboundgg-2026-11.json` | Hand-transcribed results |
+| `raw/official-rq-top-decks-2026-11-11.json` | Copy of `analysis/meta-sources/raw/official-events.json` (official field tables and printed lists, input) |
+| `raw/riftbound-one-decklists-parsed-2026-11-11.json`, `raw/riftbound-one-decklists-qty-2026-11-11.json` | Copies of `analysis/meta-sources/raw/r1-parsed.json` and `r1-decks.json` (riftbound.one top-3 lists, input) |
+| `../raw/pa-decks.jsonl`, `../out/results.json` | Shared inputs read in place: event-named Piltover Archive lists; deck-theory shape labels |
 | `raw/gallery-2026-11-11.json` | Official gallery items as fetched (input) |
 | `raw/riftcodex-p*.json` | Riftcodex pages as fetched (only used to show it is stale) |
 
 ```
 cd docs/research/analysis/legend-profiles
-python3 fetch_pa_decks.py --list ../raw/pa-list.jsonl --per-legend 6 --out data/pa-decks.jsonl   # optional, network
-sh run_all.sh
-python3 assemble_doc.py --out ../../legend-profiles.md
+python3 fetch_pa_decks.py --list ../raw/pa-list.jsonl --per-legend 10 --out data/pa-decks.jsonl   # optional, network, resumable
+sh run_all.sh    # text half, data half, fragments, ../../legend-profiles.md
 ```
 
 ## 11. Open items
 
-- UNCONFIRMED: domains of the 11 RAD cards whose gallery record has no domain list. Until fixed they are outside every pool.
+- UNCONFIRMED: domains of the RAD cards whose gallery record has no domain list. Until fixed they are outside every pool.
 - UNCONFIRMED: the parse of the 9 RAD legends has no engine script to check against. They were read by eye once (section 2.1 table against section 9).
-- UNCONFIRMED: placements written in list names ("1st", "Top 8", "Best of") are self-reported by uploaders. No structured tournament source was reachable.
-- UNCONFIRMED: which Master Yi legend the riftbound.gg "Master Yi" lines refer to.
+- UNCONFIRMED: placements written in Piltover Archive list names ("1st", "Top 8", "Best of") are self-reported by uploaders; how riftbound.one collects its podium lists is not documented on the page we saved.
+- UNCONFIRMED: no official field table or official list exists yet for any Radiance-era event, so every Radiance-era number here comes from community sites.
+- UNCONFIRMED: which Master Yi legend the riftbound.gg "Master Yi" lines refer to. The official tables do split them from Sydney (2026-05-21) on; before that only OGS-019 existed.
+- UNCONFIRMED: why OGN-251 Jinx, OGN-253 Darius and OGN-259 Yasuo have no row in the last three official tables (zero pilots or omitted).
 - UNCONFIRMED: whether the `pa-list` default order biases the popularity counts (only the first {{N_LIST_PAGES}} of about 417 pages were crawled).
-- Not done: clustering into archetypes beyond the Chosen Champion split; matchup data; side deck advice (other research tasks).
+- Not done: the Houston 2025 official article; matchup data; side deck advice beyond inclusion counts (other research tasks).
+- Not done: a per-ban-window split of the older sample. Older lists are flagged, not separated.
 - Not done: a port of the generator to the app's language. The Python scripts are the reference behaviour; the regular expressions and constants are the specification.

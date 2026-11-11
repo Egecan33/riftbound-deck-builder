@@ -1,0 +1,66 @@
+Riven, The Exile                   n 17 | TALL 9, BURST 8                    | delivery>=1: 13 | clock 6.2 | closers 3.4 | score 0.77
+Kai'Sa, Daughter of the Void       n 17 | ATTRITION 17                       | delivery>=1:  0 | clock 8.1 | closers 4.7 | score 0.55
+Kennen, Heart of the Tempest       n 11 | BURST 11                           | delivery>=1:  4 | clock 6.5 | closers 4.8 | score 0.62
+Lillia, Bashful Bloom              n 10 | WIDE 10                            | delivery>=1:  0 | clock 6.9 | closers 7.8 | score 0.96
+Vex, Gloomist                      n 10 | HOLD 10                            | delivery>=1:  9 | clock 7.1 | closers 0.9 | score 0.87
+LeBlanc, Deceiver                  n  9 | ATTRITION 6, HOLD 3                | delivery>=1:  0 | clock 6.4 | closers 8.3 | score 0.90
+Akali, Rogue Assassin              n  9 | BURST 7, HOLD 2                    | delivery>=1:  0 | clock 7.9 | closers 3.6 | score 0.82
+Viktor, Herald of the Arcane       n  8 | WIDE 8                             | delivery>=1:  0 | clock 6.9 | closers 6.4 | score 0.82
+Kha'Zix, Voidreaver                n  8 | BURST 7, TALL 1                    | delivery>=1:  4 | clock 6.1 | closers 1.2 | score 0.77
+Orianna, Lady of Clockwork         n  8 | WIDE 3, HOLD 2, ATTRITION 2, TALL 1 | delivery>=1:  0 | clock 7.5 | closers 3.5 | score 0.60
+Evelynn, Agony's Embrace           n  8 | TALL 5, HOLD 3                     | delivery>=1:  8 | clock 8.2 | closers 2.6 | score 0.49
+Irelia, Blade Dancer               n  8 | BURST 6, TALL 2                    | delivery>=1:  7 | clock 7.6 | closers 3.5 | score 0.79
+Master Yi, Wuju Bladesman          n  7 | TALL 7                             | delivery>=1:  1 | clock 6.0 | closers 4.9 | score 0.69
+Ivern, Green Father                n  7 | HOLD 7                             | delivery>=1:  0 | clock 6.3 | closers 2.6 | score 0.92
+Rek'Sai, Void Burrower             n  7 | WIDE 7                             | delivery>=1:  0 | clock 6.0 | closers 6.7 | score 0.75
+Mordekaiser, Iron Revenant         n  7 | WIDE 5, BURST 2                    | delivery>=1:  0 | clock 6.0 | closers 5.9 | score 0.84
+Sett, The Boss                     n  6 | TALL 6                             | delivery>=1:  0 | clock 6.2 | closers 3.5 | score 0.88
+Diana, Scorn of the Moon           n  6 | BURST 6                            | delivery>=1:  0 | clock 6.5 | closers 4.3 | score 0.59
+Vi, Piltover Enforcer              n  6 | BURST 6                            | delivery>=1:  4 | clock 6.0 | closers 8.7 | score 0.83
+Nasus, Curator of the Sands        n  6 | POINTS 4, TALL 1, ATTRITION 1      | delivery>=1:  0 | clock 6.2 | closers 3.3 | score 0.88
+Rengar, Pridestalker               n  6 | TALL 6                             | delivery>=1:  6 | clock 6.0 | closers 1.8 | score 0.65
+Jhin, Virtuoso                     n  6 | WIDE 5, ATTRITION 1                | delivery>=1:  0 | clock 7.5 | closers 5.3 | score 0.62
+K'Sante, Pride of Nazumah          n  6 | HOLD 6                             | delivery>=1:  0 | clock 7.2 | closers 2.2 | score 0.98
+Azir, Emperor of the Sands         n  5 | WIDE 5                             | delivery>=1:  0 | clock 7.0 | closers 1.0 | score 0.69
+Ornn, Fire Below the Mountain      n  5 | WIDE 5                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.52
+Jayce, Defender of Tomorrow        n  5 | ATTRITION 5                        | delivery>=1:  0 | clock 8.8 | closers 2.4 | score 0.47
+Zed, Master of Shadows             n  5 | WIDE 4, BURST 1                    | delivery>=1:  0 | clock 6.4 | closers 4.8 | score 0.78
+Ekko, Boy Who Shattered Time       n  4 | BURST 3, WIDE 1                    | delivery>=1:  1 | clock 6.2 | closers 8.5 | score 0.73
+Ziggs, Hexplosives Expert          n  4 | ATTRITION 3, WIDE 1                | delivery>=1:  0 | clock 8.0 | closers 3.2 | score 0.45
+Darius, Hand of Noxus              n  4 | WIDE 4                             | delivery>=1:  0 | clock 6.2 | closers 5.0 | score 0.70
+Poppy, Keeper of the Hammer        n  4 | TALL 2, HOLD 1, WIDE 1             | delivery>=1:  0 | clock 8.2 | closers 7.2 | score 0.76
+Pyke, Bloodharbor Ripper           n  4 | WIDE 3, BURST 1                    | delivery>=1:  2 | clock 6.2 | closers 2.0 | score 0.42
+Shen, Eye of Twilight              n  4 | HOLD 4                             | delivery>=1:  2 | clock 6.8 | closers 3.5 | score 0.77
+Ambessa, Matriarch of War          n  4 | TALL 4                             | delivery>=1:  0 | clock 6.0 | closers 4.2 | score 0.75
+Fiora, Grand Duelist               n  4 | TALL 4                             | delivery>=1:  0 | clock 7.5 | closers 9.2 | score 0.72
+Master Yi, Wuju Master             n  3 | WIDE 3                             | delivery>=1:  0 | clock 6.0 | closers 1.7 | score 0.90
+Jarvan IV, Exemplar of Demacia     n  3 | TALL 2, BURST 1                    | delivery>=1:  0 | clock 6.3 | closers 3.7 | score 0.73
+Seraphine, Starry-Eyed Songstress  n  3 | WIDE 3                             | delivery>=1:  0 | clock 7.0 | closers 11.3 | score 0.69
+Jax, Grandmaster at Arms           n  3 | TALL 3                             | delivery>=1:  0 | clock 7.7 | closers 3.0 | score 0.77
+Draven, Glorious Executioner       n  3 | WIDE 3                             | delivery>=1:  3 | clock 6.0 | closers 2.7 | score 0.65
+Yasuo, Unforgiven                  n  2 | POINTS 2                           | delivery>=1:  0 | clock 7.5 | closers 1.0 | score 0.94
+Ezreal, Prodigal Explorer          n  2 | ATTRITION 2                        | delivery>=1:  0 | clock 9.5 | closers 2.0 | score 0.42
+Volibear, Relentless Storm         n  2 | TALL 2                             | delivery>=1:  0 | clock 8.5 | closers 15.5 | score 0.77
+Lucian, Purifier                   n  2 | TALL 1, BURST 1                    | delivery>=1:  0 | clock 7.0 | closers 3.0 | score 0.66
+Renekton, Butcher of the Sands     n  2 | TALL 2                             | delivery>=1:  0 | clock 6.0 | closers 5.0 | score 0.78
+Sivir, Battle Mistress             n  2 | BURST 2                            | delivery>=1:  1 | clock 7.5 | closers 2.0 | score 0.63
+Rumble, Mechanized Menace          n  2 | BURST 1, WIDE 1                    | delivery>=1:  0 | clock 6.5 | closers 6.5 | score 0.80
+Mel, Soul's Reflection             n  2 | WIDE 1, ATTRITION 1                | delivery>=1:  0 | clock 7.5 | closers 1.5 | score 0.44
+Teemo, Swift Scout                 n  1 | WIDE 1                             | delivery>=1:  1 | clock 6.0 | closers 3.0 | score 0.57
+Leona, Radiant Dawn                n  1 | TALL 1                             | delivery>=1:  1 | clock 6.0 | closers 3.0 | score 0.84
+Ahri, Nine-Tailed Fox              n  1 | ATTRITION 1                        | delivery>=1:  0 | clock 7.0 | closers 3.0 | score 0.55
+Miss Fortune, Bounty Hunter        n  1 | BURST 1                            | delivery>=1:  0 | clock 8.0 | closers 3.0 | score 0.67
+Lee Sin, Blind Monk                n  1 | TALL 1                             | delivery>=1:  0 | clock 8.0 | closers 5.0 | score 0.84
+Jinx, Loose Cannon                 n  1 | BURST 1                            | delivery>=1:  0 | clock 6.0 | closers 1.0 | score 0.46
+primary route totals [('WIDE', 74), ('BURST', 65), ('TALL', 60), ('ATTRITION', 39), ('HOLD', 38), ('POINTS', 6)] n 282
+secondary route totals [('BURST', 95), ('TALL', 78), ('ATTRITION', 50), ('WIDE', 33), ('HOLD', 25), ('POINTS', 1)]
+hidden delivery (norm >= 1): 67
+specials [('ALTWIN', 5), ('COMBO', 2), ('BF_SYMMETRIC', 1)]
+point cards in main decks: [('Nasus, Ascended', 4), ('Yasuo, Windrider', 2), ('Draven, Audacious', 1), ('Ahri, Alluring', 1), ('Shen, Leader of the Kinkou Order', 1)]
+by primary route: n, mean clock, median closers, median interaction, mean sub-score
+  WIDE      n  74 | clock 6.6 (6-8) | closers 5 | interaction 9 | score 0.74
+  TALL      n  60 | clock 6.8 (6-9) | closers 4 | interaction 6 | score 0.71
+  HOLD      n  38 | clock 7.1 (6-9) | closers 2 | interaction 11 | score 0.87
+  BURST     n  65 | clock 6.6 (6-8) | closers 4 | interaction 10 | score 0.73
+  POINTS    n   6 | clock 6.5 (6-8) | closers 1 | interaction 11 | score 0.96
+  ATTRITION n  39 | clock 7.9 (6-10) | closers 4 | interaction 13 | score 0.56

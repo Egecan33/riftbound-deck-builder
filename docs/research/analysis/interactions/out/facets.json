@@ -6248,9 +6248,7 @@
 "name": "Recruit (DE)",
 "type": "unit",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": 1,
 "source": "engine",
@@ -6266,9 +6264,7 @@
 "name": "Sprite",
 "type": "unit",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": 3,
 "source": "engine",
@@ -6278,9 +6274,7 @@
 "name": "Altar to Unity",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6306,9 +6300,7 @@
 "name": "Aspirant's Climb",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6318,9 +6310,7 @@
 "name": "Back-Alley Bar",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6341,9 +6331,7 @@
 "name": "Bandle Tree",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6353,9 +6341,7 @@
 "name": "Fortified Position",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6376,9 +6362,7 @@
 "name": "Grove of the God-Willow",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6399,9 +6383,7 @@
 "name": "Hallowed Tomb",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6417,9 +6399,7 @@
 "name": "Monastery of Hirana",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6445,9 +6425,7 @@
 "name": "Navori Fighting Pit",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6468,9 +6446,7 @@
 "name": "Obelisk of Power",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6486,9 +6462,7 @@
 "name": "Reaver's Row",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6514,9 +6488,7 @@
 "name": "Reckoner's Arena",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6532,9 +6504,7 @@
 "name": "Sigil of the Storm",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6555,9 +6525,7 @@
 "name": "Startipped Peak",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6578,9 +6546,7 @@
 "name": "Targon's Peak",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6601,9 +6567,7 @@
 "name": "The Arena's Greatest",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6619,9 +6583,7 @@
 "name": "The Candlelit Sanctum",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6642,9 +6604,7 @@
 "name": "The Dreaming Tree",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6660,9 +6620,7 @@
 "name": "The Grand Plaza",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6683,9 +6641,7 @@
 "name": "Trifarian War Camp",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6695,9 +6651,7 @@
 "name": "Vilemaw's Lair",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6707,9 +6661,7 @@
 "name": "Void Gate",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6719,9 +6671,7 @@
 "name": "Windswept Hillock",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -6731,9 +6681,7 @@
 "name": "Zaun Warrens",
 "type": "battlefield",
 "set": "OGN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -7320,9 +7268,7 @@
 "name": "Gold",
 "type": "gear",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12164,9 +12110,7 @@
 "name": "Emperor's Dais",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12197,9 +12141,7 @@
 "name": "Forge of the Fluft",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12209,9 +12151,7 @@
 "name": "Forgotten Monument",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12221,9 +12161,7 @@
 "name": "Hall of Legends",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12244,9 +12182,7 @@
 "name": "Marai Spire",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12256,9 +12192,7 @@
 "name": "Minefield",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12279,9 +12213,7 @@
 "name": "Ornn's Forge",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12302,9 +12234,7 @@
 "name": "Power Nexus",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12325,9 +12255,7 @@
 "name": "Ravenbloom Conservatory",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12348,9 +12276,7 @@
 "name": "Rockfall Path",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12360,9 +12286,7 @@
 "name": "Seat of Power",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12383,9 +12307,7 @@
 "name": "Sunken Temple",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12406,9 +12328,7 @@
 "name": "The Papertree",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12429,9 +12349,7 @@
 "name": "Treasure Hoard",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12452,9 +12370,7 @@
 "name": "Veiled Temple",
 "type": "battlefield",
 "set": "SFD",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12508,9 +12424,7 @@
 "name": "Baron Pit",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12532,9 +12446,7 @@
 "name": "Bird",
 "type": "unit",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": 1,
 "source": "engine",
@@ -12572,9 +12484,7 @@
 "name": "Brush",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -12672,9 +12582,7 @@
 "name": "Reflection",
 "type": "unit",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": 0,
 "source": "engine",
@@ -17720,9 +17628,7 @@
 "name": "Abandoned Hall",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17748,9 +17654,7 @@
 "name": "Altar of Blood",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17760,9 +17664,7 @@
 "name": "Amateur Recital",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17793,9 +17695,7 @@
 "name": "Black Flame Altar",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17811,9 +17711,7 @@
 "name": "Dusk Rose Lab",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17834,9 +17732,7 @@
 "name": "Forbidding Waste",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17852,9 +17748,7 @@
 "name": "Forgotten Library",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17875,9 +17769,7 @@
 "name": "Frozen Fortress",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17893,9 +17785,7 @@
 "name": "Gardens of Becoming",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17905,9 +17795,7 @@
 "name": "Ripper's Bay",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17923,9 +17811,7 @@
 "name": "Star Spring",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17951,9 +17837,7 @@
 "name": "The Academy",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -17969,9 +17853,7 @@
 "name": "Trapping Grounds",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -18002,9 +17884,7 @@
 "name": "Valley of Idols",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -18020,9 +17900,7 @@
 "name": "Vaults of Helia",
 "type": "battlefield",
 "set": "UNL",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22138,9 +22016,7 @@
 "name": "Dragon Roost",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22156,9 +22032,7 @@
 "name": "Heisho, Shell of the World",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22168,9 +22042,7 @@
 "name": "Kinkou Temple",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22180,9 +22052,7 @@
 "name": "Mystic Vortex",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22192,9 +22062,7 @@
 "name": "Piltovan Forge",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22210,9 +22078,7 @@
 "name": "Protective Sands",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22238,9 +22104,7 @@
 "name": "Risen Altar",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22250,9 +22114,7 @@
 "name": "Sandswept Tomb",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22262,9 +22124,7 @@
 "name": "Shadow Temple",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",
@@ -22285,9 +22145,7 @@
 "name": "Threshold of the Gray",
 "type": "battlefield",
 "set": "VEN",
-"domains": [
-"colorless"
-],
+"domains": [],
 "energy": null,
 "might": null,
 "source": "engine",

@@ -13,8 +13,9 @@ This document is generated: section 9 (the per-legend appendix) and every table 
 
 - **58 Legends exist today, not 49.** FACT: the local `cards.json` (built 2026-09-06) has 49. The official card gallery on 2026-11-11 adds the set **Radiance (RAD, released 2026-10-23)** with **9 new Legends** (section 2.1).
 - **Every one of the 58 has a text profile.** The generator parsed all 58 ability texts into kind / cost / condition / effect and found at least one theme axis for each. Against the GameLab engine's hand-scripted legends the ability kinds agree for 44 of 49 (section 4.5).
-- **Data coverage is uneven and must be shown as such.** DATA: 195 complete lists fetched on 2026-11-11 (lists per legend: 1 (x1 legends), 2 (x3 legends), 3 (x41 legends), 4 (x6 legends), 5 (x1 legends), 6 (x6 legends)). With our thresholds: 1 `ok`, 56 `thin`, 1 `insufficient`; the fetch was cut at 200 pages for time, so `thin` here mostly means "we fetched 3", not "only 3 exist". Independently of how much we fetched, **31 legends are `scarce`**: the published-list index itself has fewer than 10 Radiance-era lists or fewer than 3 event-named ones for them (section 6).
-- **Published-list popularity and tournament share are different things.** DATA: the most-built legends on Piltover Archive since Radiance are Evelynn 100, Mordekaiser 77, Riven 76, Orianna 70, Ekko 59, Kai'Sa 49, Kennen 41, Ziggs 40 (lists). The Europe Regional Championship field was 43.3% Riven (riftbound.gg report). The app must never present list counts as "meta share".
+- **Data coverage is uneven and must be shown as such.** DATA: 970 distinct complete lists from four sources (381 Radiance-era, 589 older; section 5.1). Radiance-era lists per legend: 3 (x3 legends), 4 (x11 legends), 5 (x8 legends), 6 (x15 legends), 7 (x7 legends), 8 (x8 legends), 9 (x3 legends), 14 (x1 legends), 18 (x1 legends), 26 (x1 legends). With our thresholds on Radiance-era lists: 27 `ok`, 31 `thin`, 0 `insufficient`. So for 31 of 58 legends the app must print n and say that current-format evidence is thin (section 6).
+- **Three different popularity measures exist and they disagree.** DATA: most-built on Piltover Archive since Radiance (lists): Evelynn 100, Mordekaiser 77, Riven 76, Orianna 70, Ekko 59, Kai'Sa 49, Kennen 41, Ziggs 40. FACT counts: largest Day 1 share over the last three official Regional Qualifier field tables (Barcelona, Singapore, Los Angeles; all before Radiance): Kennen 10.9%, Irelia 8.3%, Master Yi 6.7%, Rengar 5.1%, LeBlanc 5.0%, Jayce 4.7%, Rek'Sai 4.2%, Azir 4.2%. DATA: most first places in riftbound.one's top-3 archive: Master Yi 32, Irelia 24, Diana 20, LeBlanc 11, Azir 9, Ezreal 8, Fiora 7, Viktor 6. The Europe Regional Championship field was 43.3% Riven (riftbound.gg report). The app must never present list counts as "meta share", and must date every share.
+- **Official results exist per legend, but only up to 2026-09-30.** FACT: eleven official "Top Decks" articles give Day 1 and Day 2 pilot counts per legend; best Day 2 conversion over the last three (30+ pilots): Kennen 31% (653 pilots), Azir 24% (250 pilots), LeBlanc 24% (298 pilots), Ezreal 23% (150 pilots), Jayce 23% (282 pilots), Rengar 23% (305 pilots), Master Yi 22% (398 pilots), Kha'Zix 22% (190 pilots); whole field 18%. No official field table for a Radiance-era event was published by 2026-11-11 (UNCONFIRMED whether one will be for the Europe Regional Championship).
 - **Local card data is incomplete in a way that matters for text analysis.** FACT: for 32 Equipment cards `cards.json` holds only the Equip line; the granted effect lives in a separate gallery field (`effect`) that the September build dropped (section 2.3).
 
 ## 2. What changed since the local September 2026 snapshot
@@ -84,7 +85,7 @@ Rule numbers are from the current Core Rules, edition 2026-10-09 (`docs/research
 - **Battlefields.** CR 103.5.c: no two battlefields of the same name. Three are registered in every sanctioned mode (`rules.md` section 6). Battlefields have no domain, so any legend may take any battlefield that is not banned.
 - **Costs inside triggered abilities.** CR 383.3.b: a cost at the start of a triggered ability's effect, or right after "you may", is the base cost of that ability. This is why the parser moves "you may exhaust me to ..." and "you may pay [1] to ..." out of the effect and into `cost`.
 - **Paying Power is recycling a rune.** CR 164.2.b: a Basic Rune has "[Reaction][>] Recycle this: Add [C]". So a legend that triggers on "When you recycle a rune" (SFD-203 Battle Mistress) triggers whenever a rune is recycled for Power. The axis `recycle` therefore counts every card with a Power cost as an enabler.
-- **Extra legends.** CR 107.4.d.1: legends added to the Legend Zone by effects are not Champion Legends. RAD-167 Neeko, Blending In lets a deck register up to 3 additional legends (`rules.md` section 8.3). A profile is therefore also relevant when its legend is someone else's extra legend. DATA: in the fetched lists these legends were registered as extra legends: OGN-267 Miss Fortune x3, OGN-269 Sett x3, OGN-257 Lee Sin x2, OGS-017 Annie x2, SFD-185 Draven x2, UNL-193 Vex x2, OGN-261 Leona x1, OGN-265 Viktor x1, RAD-149 Riven x1, SFD-195 Irelia x1, SFD-201 Renata Glasc x1, UNL-181 Jhin x1, UNL-183 Rengar x1, UNL-185 Pyke x1, UNL-199 LeBlanc x1, VEN-147 Shen x1.
+- **Extra legends.** CR 107.4.d.1: legends added to the Legend Zone by effects are not Champion Legends. RAD-167 Neeko, Blending In lets a deck register up to 3 additional legends (`rules.md` section 8.3). A profile is therefore also relevant when its legend is someone else's extra legend. DATA: in the fetched lists these legends were registered as extra legends: OGN-267 Miss Fortune x3, OGN-269 Sett x3, SFD-185 Draven x3, OGN-255 Ahri x2, OGN-257 Lee Sin x2, OGS-017 Annie x2, RAD-149 Riven x2, SFD-201 Renata Glasc x2, UNL-185 Pyke x2, UNL-193 Vex x2, UNL-199 LeBlanc x2, OGN-261 Leona x1, OGN-265 Viktor x1, RAD-153 Evelynn x1, SFD-195 Irelia x1, UNL-181 Jhin x1, UNL-183 Rengar x1, UNL-201 Kha'Zix x1, VEN-147 Shen x1.
 
 ## 4. The text-derived half
 
@@ -134,7 +135,7 @@ Two texts that merely produce the same thing do not count. Each reason stores bo
 ### 4.5 Checks and known misreads
 
 - DATA (cross-check against the engine): `docs/research/analysis/interactions/engine-scripts.json` is a dump of the GameLab engine's scripted cards (`GameLab/packages/cards`). After mapping the engine's `passive`, `costMod` and `globalMod` to our `static`, the multiset of ability kinds is identical for 44 of the 49 legends the engine scripts. Differences: UNL-191 (ours static+static, engine replacement+static); UNL-199 (ours triggered, engine triggered+triggered); VEN-139 (ours activated+activated, engine activated); VEN-145 (ours triggered, engine triggered+triggered+triggered); VEN-149 (ours activated+activated+activated, engine activated+activated). All are counting conventions (the engine splits "conquer or hold" into two triggers and "unit, gear, or activated ability" into three, and treats the `[Empower]` cost line as a keyword rather than an ability), not different readings of the text. The 9 RAD legends have no engine script, so their parse is unchecked.
-- DATA (does the text half agree with what people register?): 29 of 55 legends with fetched lists and a text-fit list have at least one of their top-5 text-fit battlefields registered in a fetched list; 96 of 546 registered battlefield slots (18%) are battlefields the text fit lists at all. 56 of 79 rewarded or needed axes have at least one of their pool cards among that legend's core cards (75%+ of fetched lists). Reading: the axis pools do capture cards people actually build around, but **text fit explains only a minority of battlefield choices**. Most registered battlefields are generic picks. Across all fetched lists the most registered battlefields are: SFD-216 Rockfall Path 37/195, UNL-210 Forbidding Waste 30/195, OGN-298 Zaun Warrens 28/195, OGN-296 Void Gate 27/195, OGN-287 Sigil of the Storm 27/195, SFD-217 Seat of Power 27/195, UNL-215 Star Spring 23/195, OGN-280 Grove of the God-Willow 21/195, OGN-295 Vilemaw's Lair 20/195, OGN-282 Monastery of Hirana 19/195. HEURISTIC for the app: rank battlefields by registered frequency first (with n), and use the text fit as the explanation layer and as the tie-breaker, not the other way round.
+- DATA (does the text half agree with what people register?): 36 of 55 legends with fetched lists and a text-fit list have at least one of their top-5 text-fit battlefields registered in a fetched list; 213 of 1091 registered battlefield slots (20%) are battlefields the text fit lists at all. 55 of 79 rewarded or needed axes have at least one of their pool cards among that legend's core cards (75%+ of fetched lists). Reading: the axis pools do capture cards people actually build around, but **text fit explains only a minority of battlefield choices**. Most registered battlefields are generic picks. Across all fetched lists the most registered battlefields are: SFD-216 Rockfall Path 70/381, UNL-215 Star Spring 61/381, OGN-298 Zaun Warrens 51/381, OGN-296 Void Gate 49/381, OGN-287 Sigil of the Storm 42/381, SFD-217 Seat of Power 42/381, UNL-210 Forbidding Waste 40/381, SFD-207 Emperor's Dais 38/381, RAD-163 Hunters' Circle 37/381, UNL-212 Frozen Fortress 36/381. HEURISTIC for the app: rank battlefields by registered frequency first (with n), and use the text fit as the explanation layer and as the tie-breaker, not the other way round.
 - HEURISTIC limits that the builder must know about:
   1. Axes overlap (`defend` contains `shield` and `tank`; `movement` contains `ganking`; `gold` is inside `gear-token`). A battlefield matching two overlapping axes is scored twice. Example: RAD-147 Pride of Nazumah with UNL-208 Black Flame Altar scores 2.0.
   2. `unit` enablers are "units costing 2 Energy or less"; `low-hand` and `legion` enablers are "cards costing 1 or less"; `mighty` sources are units with 5+ printed Might or a text mention. These cut-offs are ours.
@@ -147,41 +148,76 @@ Two texts that merely produce the same thing do not count. Each reason stores bo
 
 Scripts: `fetch_pa_decks.py` (network, polite, resumable), `build_legend_meta.py` (no network). Output: `data/legend-profiles.meta.json`.
 
-### 5.1 Datasets (DATA)
+### 5.1 Datasets (DATA unless marked)
 
 | Id | What | n | Caveat |
 |---|---|---|---|
-| `pa-sample-2026-09-06` | `GameLab/data/decks/samples/piltover-archive-2026-09-06.json`: 59 lists saved from https://piltoverarchive.com/decks on 2026-09-06 | 51 lists with a legend, covering 32 legends | Unleashed-era Regional Qualifier "best of" lists; before Radiance and before the 2026-09-18 bans |
+| `official-rq-2026` | FACT source: eleven official "Top Decks" articles on playriftbound.com (table below), parsed by the shared `analysis/meta-sources/official-parse.mjs`; local copy `raw/official-rq-top-decks-2026-11-11.json` | per-legend Day 1 and Day 2 pilot counts for 11 Regional Qualifiers; 409 printed lists with a resolvable legend, 401 complete | All before Radiance (newest: Los Angeles, published 2026-09-30). One list per legend per event: that legend's best-placed pilot, not a top-8 list. Lists in the Bologna article print no legend or champion line and are skipped unless resolvable |
+| `r1-top3-2026-11-11` | https://www.riftbound.one/decklists, one page fetched 2026-11-11 by the meta-sources task; local copies `raw/riftbound-one-decklists-*.json` | 534 first, second and third place lists (2026-04 to 2026-10), 238 complete (the others have no rune section) | Community archive; many small events (Chinese City Challenges are the largest group); dates are month and year only; UNCONFIRMED how the site collects placements |
+| `pa-fetch-2026-11-11` | Deck pages https://piltoverarchive.com/decks/view/<id> fetched 2026-11-11 | 523 parsed (353 from the per-legend fetch of this task, 170 more from the shared event-named fetch `analysis/raw/pa-decks.jsonl`), 516 complete (40+ main, 12 runes) | Published lists; placements are whatever the uploader wrote in the name. Per-legend fetch: up to 10 per legend, event-named Radiance-era lists first, round-robin |
+| `pa-sample-2026-09-06` | `GameLab/data/decks/samples/piltover-archive-2026-09-06.json`: 59 lists saved from https://piltoverarchive.com/decks on 2026-09-06 | 51 lists with a legend, 49 complete | Unleashed-era Regional Qualifier "best of" lists; before Radiance and before the 2026-09-18 bans |
 | `pa-list-2026-11-11` | Deck index rows (id, name, legend code, views, dates) from https://piltoverarchive.com/decks?page=N, pages 1 to 144 of about 417, crawled 2026-11-11 by the shared `analysis/crawl-list.mjs` | 3456 rows, 1442 created on or after 2026-10-23 | Site default order; published lists, not registrations |
-| `pa-fetch-2026-11-11` | Deck pages https://piltoverarchive.com/decks/view/<id> fetched 2026-11-11 | 201 parsed, 195 complete (40+ main, 12 runes), 135 with an event marker in the name | Up to 6 per legend, event-named Radiance-era lists first; placements are whatever the uploader wrote in the name |
-| `results` | riftbound.gg "Meta Tier List, Radiance, Week 2" (updated 2026-11-06; 13 tournaments, 2026-10-30 to 2026-11-04) and "Europe Regional Championship" report (updated 2026-11-08) | 21 legends in the tier list; 19 with a win rate over more than 10 matches | Hand-transcribed into `data/results-riftboundgg-2026-11.json` from the copies in `analysis/matchups-and-lines/raw/`. Reported per champion name, so the two Master Yi legends cannot be separated |
+| `results` | riftbound.gg "Meta Tier List, Radiance, Week 2" (updated 2026-11-06; 13 tournaments, 2026-10-30 to 2026-11-04) and "Europe Regional Championship" report (updated 2026-11-08) | 21 legends in the tier list; 19 with a win rate over more than 10 matches | Hand-transcribed into `data/results-riftboundgg-2026-11.json` from the copies in `analysis/matchups-and-lines/raw/`. Reported per champion name, so legends that share a champion cannot be separated |
 
-Source policy notes (FACT, robots.txt files fetched 2026-11-11):
+Official field tables used (FACT, fetched 2026-11-11 by the meta-sources task; counts are sums of the per-legend rows):
 
-- piltoverarchive.com allows `/` and plain `/decks?page=`; it disallows `/api/` and filtered `/decks?` queries. Only deck view pages and plain pagination were requested, serially, 3 s apart, generic User-Agent, no cookies.
+| Published | Article (FACT source) | Legends in field table | Day 1 pilots | Day 2 pilots | Lists printed |
+|---|---|---|---|---|---|
+| 2026-02-25 | [The Best Decks out of Bologna](https://playriftbound.com/en-us/news/organizedplay/the-best-decks-out-of-bologna/) | 28 | 1466 | 246 | 36 |
+| 2026-03-04 | [Vegas' Top Decks](https://playriftbound.com/en-us/news/organizedplay/vegas-top-decks/) | 28 | 1417 | 235 | 36 |
+| 2026-04-22 | [Lille's Top Decks](https://playriftbound.com/en-us/news/organizedplay/lilles-top-decks/) | 28 | 1736 | 319 | 36 |
+| 2026-05-01 | [Atlanta's Top Decks](https://playriftbound.com/en-us/news/organizedplay/atlantas-top-decks/) | 28 | 1510 | 295 | 36 |
+| 2026-05-21 | [Sydney's Top Decks](https://playriftbound.com/en-us/news/organizedplay/sydneys-top-decks/) | 40 | 1235 | 193 | 48 |
+| 2026-06-04 | [Vancouver's Top Decks](https://playriftbound.com/en-us/news/organizedplay/vancouvers-top-decks/) | 40 | 1496 | 265 | 48 |
+| 2026-06-17 | [Utrecht's Top Decks](https://playriftbound.com/en-us/news/organizedplay/utrechts-top-decks/) | 40 | 1812 | 321 | 48 |
+| 2026-06-24 | [Hartford's Top Decks](https://playriftbound.com/en-us/news/hartfords-top-decks/) | 40 | 1663 | 307 | 48 |
+| 2026-08-26 | [Barcelona's Top Decks](https://playriftbound.com/en-us/news/organizedplay/barcelonas-top-decks/) | 41 | 2130 | 379 | 41 |
+| 2026-09-09 | [Singapore's Top Decks](https://playriftbound.com/en-us/news/organizedplay/singapores-top-decks/) | 43 | 1893 | 303 | 41 |
+| 2026-09-30 | [Los Angeles' Top Decks](https://playriftbound.com/en-us/news/organizedplay/los-angeles-top-decks/) | 44 | 1962 | 371 | 41 |
+
+Not included: the Houston article (https://playriftbound.com/en-us/news/announcements/from-garen-to-annie-rq-houstons-top-decks/, December 2025) was not parsed.
+
+**Pooling (DATA).** 1204 complete lists in total; 234 are exact duplicates of another list of the same legend (same main deck, runes and battlefields, usually the same list on two sites) and are dropped, leaving 970. Each list gets an era by a fixed rule: `radiance` if it holds a RAD card or its source date is on or after 2026-10-23, otherwise `pre-radiance`. Result: 381 Radiance-era, 589 older. HEURISTIC limit: riftbound.one gives only the month, so an October list without a RAD card counts as older even if it was played after the release.
+
+Source policy notes (FACT, robots.txt files fetched 2026-11-11, copies in `analysis/meta-sources/raw/robots-*.txt`):
+
+- playriftbound.com: official site; the articles are public news pages.
+- piltoverarchive.com allows `/` and plain `/decks?page=`; it disallows `/api/` and filtered `/decks?` queries. Only deck view pages and plain pagination were requested, serially, 2.5 to 3 s apart, generic User-Agent, no cookies.
+- riftbound.one: `User-agent: * Allow: /`, `Crawl-delay: 1`. One page was fetched once.
 - riftdecks.com disallows AI crawlers by name (including `ClaudeBot` and `anthropic-ai`) and states that scraping for a competing service is not allowed. **Not fetched, not used.** It has per-legend metagame pages; if the owner wants them, that is a manual decision.
 - riftbound.gg disallows the user agents `anthropic-ai` and `Claude-Web` while allowing `*`. This research did not fetch it; it read the two article copies another research task had already saved. HEURISTIC: treat riftbound.gg numbers as hand-entered input, not as a sync source.
-- No source gives per-legend win rates for all 58 legends. UNCONFIRMED: whether Piltover Archive's tournaments page exposes structured results (the HTML is rendered client-side; nothing usable was in the page payload).
+- No source gives per-legend win rates for all 58 legends. UNCONFIRMED: whether Piltover Archive's tournament pages expose structured standings (the saved page `analysis/meta-sources/raw/pa-tourn-1.html` has no placement fields in its payload).
 
 ### 5.2 What is counted per legend
 
-- `popularity`: lists in the index, lists since 2026-10-23, share and rank among the 58, event-named lists since 2026-10-23, summed views.
+- `popularity`: lists in the Piltover Archive index, lists since 2026-10-23, share and rank among the 58, event-named lists since 2026-10-23, summed views.
+- `officialField`: for every official field table the legend appears in: Day 1 pilots, Day 2 pilots, shares, Day 2 conversion and the whole field's conversion; plus `recent`, the sum over the last 3 tables. A conversion rate is only flagged usable from 30 Day 1 pilots (HEURISTIC threshold).
+- `podiums`: first, second and third places in `r1-top3-2026-11-11`, for all lists and for Radiance-era lists.
 - `results`: tier, wins and top cuts (week-2 report); win rate and matches (Europe Regional Championship).
-- per dataset: Chosen Champion distribution, rune split distribution, battlefield inclusion, `coreCards` (in at least 75% of lists), `flexCards` (25% to 74%), top 25 cards with inclusion rate and average copies, side deck cards, average main-deck type counts, and `variants`: lists grouped by Chosen Champion with the cards that are at least 50 points more common in that group than outside it.
-- `dataConfidence` (HEURISTIC thresholds): `ok` = at least 5 complete fetched lists of which at least 3 are event-named; `thin` = 2 to 4 (or 5+ without enough event-named ones); `insufficient` = fewer than 2.
-- `dataAvailability` (HEURISTIC thresholds): `enough` if the index shows at least 10 lists and at least 3 event-named lists since 2026-10-23, else `scarce`. This separates "we fetched too little" from "there is too little".
-- Deck entries are matched to the pool by printing code, then by name. Unresolved entries in this run: UNL-R02a x1, UNL-R04a x1, UNL-R05a x1.
+- `samples.radiance` and `samples.preRadiance`, each over the pooled lists of that era: source mix, newest set per list, how many lists hold a card that is banned today, Chosen Champion distribution, rune split distribution, battlefield inclusion, `coreCards` (in at least 75% of lists), `flexCards` (25% to 74%), top 25 cards with inclusion rate and average copies, side deck cards, average main-deck type counts, `variants` (lists grouped by Chosen Champion with the cards that are at least 50 points more common in that group than outside it; only for groups of 2+ lists), and `archetypeLabels` (below). A card that is banned today keeps its row and gets `bannedFrom`.
+- `dataConfidence` (HEURISTIC thresholds, **Radiance-era lists only**): `ok` = at least 5 complete lists of which at least 3 have tournament provenance (event-named on Piltover Archive, a riftbound.one podium, or an official list); `thin` = 2 to 4 (or 5+ without enough provenance); `insufficient` = fewer than 2.
+- `adviceBasis`: `radiance-lists` when `dataConfidence` is `ok` or `thin`; `pre-radiance-lists-only` when it is `insufficient` but at least 2 older lists exist; `text-only` otherwise.
+- `dataAvailability` (HEURISTIC thresholds): `enough` if the Piltover Archive index shows at least 10 lists and at least 3 event-named lists since 2026-10-23, else `scarce`. This separates "we fetched too little" from "there is too little".
+- Deck entries are matched to the pool by printing code, then by name. Showcase rune printings `<SET>-R01` to `R06` are mapped by number in the order Fury, Calm, Mind, Body, Chaos, Order (the gallery lists the VEN ones; the script stops if they contradict the order). Unresolved entries in this run: official:Master Yi, Honed x5, official:Trapping Ground x3, official:Ruin Runner2 Se x1, official:Factory Recall1 x1, official:Si vir, Mercenary x1. A list with an unresolved main-deck or rune entry falls below 40 or 12 and is not counted as complete.
 
-Archetypes are deliberately not clustered beyond the Chosen Champion split. With at most 6 lists per legend any clustering would be noise (HEURISTIC). The sync should raise the per-legend budget before adding clustering.
+**Archetypes (DATA join, HEURISTIC labels).** This task does not cluster. `archetypeLabels` joins, by deck id, the four shape labels (`unit-aggro`, `spell-tempo`, `gear-engine`, `big-control`) that the deck-theory task assigned with k-means over role counts (`analysis/out/results.json`, see `deck-theory.md`). Only Piltover Archive lists that are in both datasets have a label (200 of the 381 Radiance-era lists). Inside one legend the useful split is the Chosen Champion split (`variants`) together with core and flex cards; the shape label says which of the four broad shapes those lists fall in. With most legends under 10 Radiance-era lists, finer clustering inside a legend would be noise (HEURISTIC).
 
 ## 6. Which legends have too little data
 
-- **By what we fetched** (DATA, thresholds above): `ok` 1 (OGN-247 Kai'Sa); `thin` 56; `insufficient` 1 (VEN-153 Ambessa). The fetch was stopped for time; it was ordered round-robin so every legend got its first list before any got a second. A full run (6 per legend, 348 pages) takes about an hour at the polite rate.
-- **By what exists** (DATA, `pa-list-2026-11-11`): 31 legends are `scarce`: OGS-021 Lux (4 lists, 0 event-named), OGS-023 Garen (5 lists, 0 event-named), OGN-253 Darius (8 lists, 2 event-named), SFD-197 Azir (8 lists, 2 event-named), SFD-201 Renata Glasc (8 lists, 0 event-named), SFD-203 Sivir (8 lists, 0 event-named), VEN-153 Ambessa (8 lists, 1 event-named), OGS-017 Annie (9 lists, 0 event-named), UNL-187 Vi (9 lists, 2 event-named), VEN-147 Shen (10 lists, 2 event-named), OGN-251 Jinx (11 lists, 0 event-named), UNL-191 Master Yi (11 lists, 2 event-named), OGN-257 Lee Sin (12 lists, 2 event-named), OGN-259 Yasuo (12 lists, 1 event-named), SFD-183 Lucian (12 lists, 2 event-named), UNL-203 Poppy (12 lists, 2 event-named), SFD-199 Ezreal (13 lists, 0 event-named), UNL-181 Jhin (13 lists, 2 event-named), SFD-181 Rumble (14 lists, 0 event-named), VEN-141 Renekton (14 lists, 1 event-named), SFD-193 Jax (15 lists, 1 event-named), VEN-151 Mel (15 lists, 2 event-named), OGN-267 Miss Fortune (16 lists, 1 event-named), OGN-261 Leona (18 lists, 1 event-named), SFD-185 Draven (18 lists, 0 event-named), UNL-195 Ivern (18 lists, 2 event-named), SFD-205 Fiora (20 lists, 0 event-named), OGN-263 Teemo (24 lists, 2 event-named), UNL-185 Pyke (24 lists, 2 event-named), OGN-255 Ahri (27 lists, 1 event-named), OGN-249 Volibear (28 lists, 1 event-named).
-- **No result line in either report** (28 legends): OGN-249 Volibear, OGN-251 Jinx, OGN-253 Darius, OGN-255 Ahri, OGN-259 Yasuo, OGN-261 Leona, OGS-017 Annie, OGS-023 Garen, RAD-139 Ekko, RAD-141 Ziggs, RAD-147 K'Sante, RAD-153 Evelynn, RAD-155 Jarvan IV, SFD-181 Rumble, SFD-185 Draven, SFD-193 Jax, SFD-201 Renata Glasc, SFD-203 Sivir, SFD-205 Fiora, UNL-181 Jhin, UNL-185 Pyke, UNL-187 Vi, UNL-195 Ivern, VEN-141 Renekton, VEN-143 Zed, VEN-147 Shen, VEN-151 Mel, VEN-153 Ambessa.
-- **Scarce lists and no results at all** (26 legends): OGN-249 Volibear, OGN-251 Jinx, OGN-253 Darius, OGN-255 Ahri, OGN-257 Lee Sin, OGN-259 Yasuo, OGN-261 Leona, OGN-263 Teemo, OGS-017 Annie, OGS-021 Lux, OGS-023 Garen, SFD-181 Rumble, SFD-185 Draven, SFD-193 Jax, SFD-201 Renata Glasc, SFD-203 Sivir, SFD-205 Fiora, UNL-181 Jhin, UNL-185 Pyke, UNL-187 Vi, UNL-195 Ivern, UNL-203 Poppy, VEN-141 Renekton, VEN-147 Shen, VEN-151 Mel, VEN-153 Ambessa. For these the app should say "not enough tournament data for this legend; the advice below comes from card text only" and show the text half.
+Thresholds are in section 5.2. Counts are Radiance-era lists unless stated.
 
-HEURISTIC for the app: show data-driven statements only when `dataConfidence` is `ok`; show them with "from n lists" when `thin`; hide them when `insufficient`. Always print n next to any rate.
+- **`ok` (27 legends):** OGN-247 Kai'Sa, OGN-253 Darius, OGN-259 Yasuo, OGN-265 Viktor, OGN-269 Sett, OGS-019 Master Yi, RAD-141 Ziggs, RAD-143 Mordekaiser, RAD-145 Orianna, RAD-147 K'Sante, RAD-149 Riven, RAD-151 Seraphine, RAD-153 Evelynn, RAD-155 Jarvan IV, SFD-189 Ornn, SFD-195 Irelia, SFD-197 Azir, UNL-181 Jhin, UNL-187 Vi, UNL-193 Vex, UNL-197 Diana, UNL-199 LeBlanc, UNL-201 Kha'Zix, UNL-203 Poppy, VEN-139 Akali, VEN-143 Zed, VEN-155 Kennen.
+- **`thin` (31 legends):** OGN-249 Volibear (8 RAD-era, 2 with provenance; 6 older), OGN-251 Jinx (7 RAD-era, 0 with provenance; 8 older), OGN-255 Ahri (7 RAD-era, 1 with provenance; 8 older), OGN-257 Lee Sin (7 RAD-era, 2 with provenance; 7 older), OGN-261 Leona (6 RAD-era, 1 with provenance; 6 older), OGN-263 Teemo (4 RAD-era, 1 with provenance; 6 older), OGN-267 Miss Fortune (6 RAD-era, 1 with provenance; 7 older), OGS-017 Annie (6 RAD-era, 0 with provenance; 7 older), OGS-021 Lux (6 RAD-era, 0 with provenance; 9 older), OGS-023 Garen (6 RAD-era, 0 with provenance; 7 older), RAD-139 Ekko (4 RAD-era, 4 with provenance; 0 older), SFD-181 Rumble (6 RAD-era, 1 with provenance; 8 older), SFD-183 Lucian (4 RAD-era, 1 with provenance; 11 older), SFD-185 Draven (4 RAD-era, 1 with provenance; 20 older), SFD-187 Rek'Sai (4 RAD-era, 4 with provenance; 17 older), SFD-193 Jax (5 RAD-era, 1 with provenance; 11 older), SFD-199 Ezreal (6 RAD-era, 1 with provenance; 18 older), SFD-201 Renata Glasc (6 RAD-era, 0 with provenance; 9 older), SFD-203 Sivir (6 RAD-era, 1 with provenance; 8 older), SFD-205 Fiora (5 RAD-era, 0 with provenance; 15 older), UNL-183 Rengar (4 RAD-era, 4 with provenance; 12 older), UNL-185 Pyke (4 RAD-era, 3 with provenance; 10 older), UNL-189 Lillia (4 RAD-era, 4 with provenance; 12 older), UNL-191 Master Yi (4 RAD-era, 1 with provenance; 8 older), UNL-195 Ivern (3 RAD-era, 2 with provenance; 11 older), VEN-141 Renekton (6 RAD-era, 1 with provenance; 5 older), VEN-145 Nasus (4 RAD-era, 3 with provenance; 9 older), VEN-147 Shen (6 RAD-era, 2 with provenance; 3 older), VEN-149 Jayce (3 RAD-era, 3 with provenance; 7 older), VEN-151 Mel (4 RAD-era, 2 with provenance; 5 older), VEN-153 Ambessa (3 RAD-era, 0 with provenance; 5 older).
+- **`insufficient` (0):** none.
+- **Advice basis:** 58 legends `radiance-lists`, 0 `pre-radiance-lists-only`, 0 `text-only`.
+- **By what exists on Piltover Archive** (DATA, `pa-list-2026-11-11`): 31 legends are `scarce`, so a bigger fetch will not help them: OGS-021 Lux (4 lists, 0 event-named), OGS-023 Garen (5 lists, 0 event-named), OGN-253 Darius (8 lists, 2 event-named), SFD-197 Azir (8 lists, 2 event-named), SFD-201 Renata Glasc (8 lists, 0 event-named), SFD-203 Sivir (8 lists, 0 event-named), VEN-153 Ambessa (8 lists, 1 event-named), OGS-017 Annie (9 lists, 0 event-named), UNL-187 Vi (9 lists, 2 event-named), VEN-147 Shen (10 lists, 2 event-named), OGN-251 Jinx (11 lists, 0 event-named), UNL-191 Master Yi (11 lists, 2 event-named), OGN-257 Lee Sin (12 lists, 2 event-named), OGN-259 Yasuo (12 lists, 1 event-named), SFD-183 Lucian (12 lists, 2 event-named), UNL-203 Poppy (12 lists, 2 event-named), SFD-199 Ezreal (13 lists, 0 event-named), UNL-181 Jhin (13 lists, 2 event-named), SFD-181 Rumble (14 lists, 0 event-named), VEN-141 Renekton (14 lists, 1 event-named), SFD-193 Jax (15 lists, 1 event-named), VEN-151 Mel (15 lists, 2 event-named), OGN-267 Miss Fortune (16 lists, 1 event-named), OGN-261 Leona (18 lists, 1 event-named), SFD-185 Draven (18 lists, 0 event-named), UNL-195 Ivern (18 lists, 2 event-named), SFD-205 Fiora (20 lists, 0 event-named), OGN-263 Teemo (24 lists, 2 event-named), UNL-185 Pyke (24 lists, 2 event-named), OGN-255 Ahri (27 lists, 1 event-named), OGN-249 Volibear (28 lists, 1 event-named).
+- **No official field data at all** (9 legends, i.e. the Radiance legends): RAD-139 Ekko, RAD-141 Ziggs, RAD-143 Mordekaiser, RAD-145 Orianna, RAD-147 K'Sante, RAD-149 Riven, RAD-151 Seraphine, RAD-153 Evelynn, RAD-155 Jarvan IV. Legends that exist in older tables but are absent from the last three: OGN-251 Jinx, OGN-253 Darius, OGN-259 Yasuo (UNCONFIRMED whether absent means zero pilots or an omitted row). Fewer than 30 Day 1 pilots over the last three tables, so no conversion rate (Day 1 pilots in brackets): OGN-249 Volibear (2), OGN-255 Ahri (1), OGN-257 Lee Sin (1), OGN-261 Leona (1), OGN-263 Teemo (7), OGN-267 Miss Fortune (5), OGN-269 Sett (8), OGS-017 Annie (9), OGS-021 Lux (29), OGS-023 Garen (1).
+- **No podium in the riftbound.one archive:** 23 legends.
+- **No result line in either riftbound.gg report** (28 legends): OGN-249 Volibear, OGN-251 Jinx, OGN-253 Darius, OGN-255 Ahri, OGN-259 Yasuo, OGN-261 Leona, OGS-017 Annie, OGS-023 Garen, RAD-139 Ekko, RAD-141 Ziggs, RAD-147 K'Sante, RAD-153 Evelynn, RAD-155 Jarvan IV, SFD-181 Rumble, SFD-185 Draven, SFD-193 Jax, SFD-201 Renata Glasc, SFD-203 Sivir, SFD-205 Fiora, UNL-181 Jhin, UNL-185 Pyke, UNL-187 Vi, UNL-195 Ivern, VEN-141 Renekton, VEN-143 Zed, VEN-147 Shen, VEN-151 Mel, VEN-153 Ambessa.
+- **Not `ok` and no Radiance-era result line** (22 legends; Radiance-era lists in brackets): OGN-249 Volibear (8), OGN-251 Jinx (7), OGN-255 Ahri (7), OGN-257 Lee Sin (7), OGN-261 Leona (6), OGN-263 Teemo (4), OGS-017 Annie (6), OGS-021 Lux (6), OGS-023 Garen (6), RAD-139 Ekko (4), SFD-181 Rumble (6), SFD-185 Draven (4), SFD-193 Jax (5), SFD-201 Renata Glasc (6), SFD-203 Sivir (6), SFD-205 Fiora (5), UNL-185 Pyke (4), UNL-195 Ivern (3), VEN-141 Renekton (6), VEN-147 Shen (6), VEN-151 Mel (4), VEN-153 Ambessa (3). For these the app should say "not enough current tournament data for this legend" and show (a) the text half, (b) the few current lists with n, and (c) older lists labelled with their date range and the banned cards struck out.
+
+HEURISTIC for the app: show data-driven statements without a warning only when `dataConfidence` is `ok`; show them with "from n lists" when `thin`; when `insufficient`, show only the text half plus, if `adviceBasis` is `pre-radiance-lists-only`, the older sample under a "before Radiance" heading. Always print n and the sample's era next to any rate. Never mix the two eras in one rate.
+
 
 ## 7. Overview tables (generated)
 
@@ -252,68 +288,68 @@ Role abbreviations: rew = rewards, nee = needs, ena = enables.
 
 ### 7.2 Data half (DATA)
 
-Columns: lists since Radiance in `pa-list-2026-11-11`; riftbound.gg week-2 tier, wins, top cuts; Europe Regional Championship win rate and matches; complete fetched lists and how many are event-named; lists in the September sample.
+Columns: lists since Radiance in `pa-list-2026-11-11`; official Regional Qualifier field over the last three tables (Barcelona, Singapore, Los Angeles; before Radiance); riftbound.one podiums; riftbound.gg week-2 tier, wins, top cuts; Europe Regional Championship win rate and matches; pooled Radiance-era lists and how many have tournament provenance; pooled older lists.
 
-| Legend | Lists since RAD (rank, share) | Tier / wins / top cuts | EU RC win rate (matches) | Fetched lists (event-named) | Sept sample | Confidence | Typical Chosen Champion | Typical rune split |
-|---|---|---|---|---|---|---|---|---|
-| OGN-247 Kai'Sa | 49 (#6, 3.4%) | 1 / 0 / 12 | 49% (300) | 6 (6) | 2 | ok | Kai'Sa, Survivor 6/6 | 7 Fury / 5 Mind 5/6 |
-| OGN-249 Volibear | 28 (#19, 1.9%) | not listed | not listed | 6 (1) | 1 | thin | Volibear, Furious 6/6 | 7 Body / 5 Fury 3/6 |
-| OGN-251 Jinx | 11 (#47, 0.8%) | not listed | not listed | 6 (0) | 1 | thin | Jinx, Rebel 5/6 | 7 Chaos / 5 Fury 3/6 |
-| OGN-253 Darius | 8 (#52, 0.5%) | not listed | not listed | 6 (2) | 1 | thin | Darius, Trifarian 6/6 | 6 Fury / 6 Order 5/6 |
-| OGN-255 Ahri | 27 (#20, 1.9%) | not listed | not listed | 6 (1) | 2 | thin | Ahri, Confident 5/6 | 6 Calm / 6 Mind 4/6 |
-| OGN-257 Lee Sin | 12 (#43, 0.8%) | not listed | <=10 matches | 6 (2) | 0 | thin | Lee Sin, Centered 5/6 | 7 Body / 5 Calm 3/6 |
-| OGN-259 Yasuo | 12 (#44, 0.8%) | not listed | not listed | 5 (1) | 0 | thin | Yasuo, Windrider 5/5 | 6 Calm / 6 Chaos 5/5 |
-| OGN-261 Leona | 18 (#29, 1.2%) | not listed | not listed | 4 (1) | 0 | thin | Leona, Zealot 4/4 | 6 Calm / 6 Order 3/4 |
-| OGN-263 Teemo | 24 (#22, 1.7%) | not listed | <=10 matches | 3 (2) | 1 | thin | Teemo, Strategist 3/3 | 7 Mind / 5 Chaos 3/3 |
-| OGN-265 Viktor | 26 (#21, 1.8%) | 3 / 0 / 1 | 32% (25) | 4 (4) | 2 | thin | Viktor, Leader 4/4 | 7 Order / 5 Mind 4/4 |
-| OGN-267 Miss Fortune | 16 (#34, 1.1%) | 4 / 0 / 0 | not listed | 4 (1) | 0 | thin | Miss Fortune, Captain 2/4 | 6 Body / 6 Chaos 1/4 |
-| OGN-269 Sett | 32 (#14, 2.2%) | 3 / 0 / 4 | 61% (18) | 4 (4) | 2 | thin | Sett, Kingpin 3/4 | 7 Body / 5 Order 4/4 |
-| OGS-017 Annie | 9 (#50, 0.6%) | not listed | not listed | 4 (0) | 2 | thin | Annie, Fiery 3/4 | 8 Fury / 4 Chaos 2/4 |
-| OGS-019 Master Yi | 19 (#28, 1.3%) | 2 / 2 / 5 (shared with UNL-191) | 46% (106) (shared with UNL-191) | 4 (4) | 2 | thin | Master Yi, Tempered 4/4 | 7 Body / 5 Calm 3/4 |
-| OGS-021 Lux | 4 (#58, 0.3%) | not listed | <=10 matches | 3 (0) | 1 | thin | Lux, Crownguard 3/3 | 6 Mind / 6 Order 3/3 |
-| OGS-023 Garen | 5 (#57, 0.4%) | not listed | not listed | 3 (0) | 0 | thin | Garen, Rugged 2/3 | 6 Body / 6 Order 1/3 |
-| RAD-139 Ekko | 59 (#5, 4.1%) | not listed | not listed | 3 (3) | 0 | thin | Ekko, Ingenious 3/3 | 6 Fury / 6 Mind 2/3 |
-| RAD-141 Ziggs | 40 (#8, 2.8%) | not listed | not listed | 3 (3) | 0 | thin | Ziggs, Explosive 3/3 | 8 Fury / 4 Chaos 3/3 |
-| RAD-143 Mordekaiser | 77 (#2, 5.3%) | not listed | <=10 matches | 3 (3) | 0 | thin | Mordekaiser, Dominating 3/3 | 6 Fury / 6 Order 2/3 |
-| RAD-145 Orianna | 70 (#4, 4.9%) | 4 / 0 / 2 | 50% (24) | 3 (3) | 0 | thin | Orianna, Exquisite 2/3 | 8 Mind / 4 Calm 1/3 |
-| RAD-147 K'Sante | 36 (#11, 2.5%) | not listed | not listed | 3 (3) | 0 | thin | K'Sante, Dauntless 2/3 | 6 Calm / 6 Body 2/3 |
-| RAD-149 Riven | 76 (#3, 5.3%) | S / 5 / 16 | 54% (524) | 3 (3) | 0 | thin | Riven, Broken Blade 3/3 | 7 Chaos / 5 Calm 3/3 |
-| RAD-151 Seraphine | 40 (#9, 2.8%) | 4 / 0 / 0 | not listed | 3 (3) | 0 | thin | Seraphine, Inspiring 3/3 | 7 Order / 5 Mind 3/3 |
-| RAD-153 Evelynn | 100 (#1, 6.9%) | not listed | not listed | 3 (3) | 0 | thin | Evelynn, Entrancing 3/3 | 8 Chaos / 4 Body 2/3 |
-| RAD-155 Jarvan IV | 36 (#12, 2.5%) | not listed | not listed | 3 (3) | 0 | thin | Jarvan IV, Martial Paragon 2/3 | 6 Body / 6 Order 2/3 |
-| SFD-181 Rumble | 14 (#38, 1.0%) | not listed | not listed | 3 (1) | 0 | thin | Rumble, Hotheaded 3/3 | 7 Fury / 5 Mind 2/3 |
-| SFD-183 Lucian | 12 (#45, 0.8%) | not listed | 38% (16) | 2 (2) | 0 | thin | Lucian, Merciless 2/2 | 6 Fury / 6 Body 1/2 |
-| SFD-185 Draven | 18 (#30, 1.2%) | not listed | not listed | 3 (3) | 2 | thin | Draven, Showboat 3/3 | 6 Fury / 6 Chaos 3/3 |
-| SFD-187 Rek'Sai | 37 (#10, 2.6%) | 3 / 0 / 4 | 53% (85) | 3 (3) | 2 | thin | Rek'Sai, Breacher 3/3 | 8 Fury / 4 Order 2/3 |
-| SFD-189 Ornn | 15 (#35, 1.0%) | not listed | 50% (12) | 3 (3) | 2 | thin | Ornn, Blacksmith 3/3 | 9 Calm / 3 Mind 2/3 |
-| SFD-193 Jax | 15 (#36, 1.0%) | not listed | not listed | 3 (2) | 1 | thin | Jax, Unmatched 3/3 | 6 Calm / 6 Body 3/3 |
-| SFD-195 Irelia | 20 (#26, 1.4%) | 2 / 1 / 2 | 38% (45) | 3 (3) | 2 | thin | Irelia, Fervent 2/3 | 6 Calm / 6 Chaos 3/3 |
-| SFD-197 Azir | 8 (#53, 0.5%) | 4 / 0 / 2 | 50% (16) | 3 (3) | 1 | thin | Azir, Sovereign 3/3 | 7 Calm / 5 Order 3/3 |
-| SFD-199 Ezreal | 13 (#41, 0.9%) | 3 / 0 / 0 | <=10 matches | 3 (1) | 2 | thin | Ezreal, Prodigy 3/3 | 6 Mind / 6 Chaos 2/3 |
-| SFD-201 Renata Glasc | 8 (#54, 0.5%) | not listed | not listed | 3 (0) | 0 | thin | Renata Glasc, Mastermind 2/3 | 7 Order / 5 Mind 1/3 |
-| SFD-203 Sivir | 8 (#55, 0.5%) | not listed | not listed | 3 (1) | 1 | thin | Sivir, Mercenary 3/3 | 6 Body / 6 Chaos 2/3 |
-| SFD-205 Fiora | 20 (#27, 1.4%) | not listed | not listed | 3 (1) | 1 | thin | Fiora, Victorious 3/3 | 8 Body / 4 Order 1/3 |
-| UNL-181 Jhin | 13 (#42, 0.9%) | not listed | not listed | 3 (3) | 2 | thin | Jhin, Meticulous Killer 3/3 | 7 Mind / 5 Fury 3/3 |
-| UNL-183 Rengar | 14 (#39, 1.0%) | 2 / 0 / 3 | 45% (29) | 3 (3) | 2 | thin | Rengar, Trophy Hunter 3/3 | 8 Body / 4 Fury 3/3 |
-| UNL-185 Pyke | 24 (#23, 1.7%) | not listed | not listed | 3 (3) | 2 | thin | Pyke, Returned 2/3 | 7 Chaos / 5 Fury 1/3 |
-| UNL-187 Vi | 9 (#51, 0.6%) | not listed | not listed | 3 (3) | 1 | thin | Vi, Peacekeeper 2/3 | 7 Fury / 5 Order 2/3 |
-| UNL-189 Lillia | 18 (#31, 1.2%) | 4 / 0 / 1 | <=10 matches | 2 (2) | 1 | thin | Lillia, Fae Fawn 2/2 | 7 Calm / 5 Mind 1/2 |
-| UNL-191 Master Yi | 11 (#48, 0.8%) | 2 / 2 / 5 (shared with OGS-019) | 46% (106) (shared with OGS-019) | 2 (2) | 1 | thin | Master Yi, Tempered 2/2 | 6 Calm / 6 Body 1/2 |
-| UNL-193 Vex | 29 (#17, 2.0%) | 2 / 1 / 6 | 36% (11) | 3 (3) | 3 | thin | Vex, Apathetic 3/3 | 7 Chaos / 5 Calm 2/3 |
-| UNL-195 Ivern | 18 (#32, 1.2%) | not listed | not listed | 3 (3) | 2 | thin | Ivern, Nurturer 3/3 | 6 Calm / 6 Order 2/3 |
-| UNL-197 Diana | 22 (#24, 1.5%) | not listed | <=10 matches | 3 (3) | 2 | thin | Diana, Lunari 3/3 | 6 Mind / 6 Chaos 2/3 |
-| UNL-199 LeBlanc | 17 (#33, 1.2%) | 3 / 0 / 1 | 36% (28) | 3 (3) | 1 | thin | LeBlanc, Fragmented 3/3 | 8 Order / 4 Mind 3/3 |
-| UNL-201 Kha'Zix | 31 (#15, 2.1%) | 3 / 0 / 0 | 55% (11) | 3 (3) | 2 | thin | Kha'Zix, Mutating Horror 3/3 | 6 Body / 6 Chaos 3/3 |
-| UNL-203 Poppy | 12 (#46, 0.8%) | not listed | <=10 matches | 3 (3) | 1 | thin | Poppy, Paragon 3/3 | 6 Body / 6 Order 2/3 |
-| VEN-139 Akali | 33 (#13, 2.3%) | 2 / 0 / 2 | 44% (16) | 3 (3) | 0 | thin | Akali, Deadly Weapon 3/3 | 7 Fury / 5 Calm 3/3 |
-| VEN-141 Renekton | 14 (#40, 1.0%) | not listed | not listed | 3 (1) | 0 | thin | Renekton, Rage Fueled 3/3 | 7 Fury / 5 Body 2/3 |
-| VEN-143 Zed | 31 (#16, 2.1%) | not listed | not listed | 3 (3) | 0 | thin | Zed, Without a Sound 2/3 | 7 Fury / 5 Chaos 2/3 |
-| VEN-145 Nasus | 21 (#25, 1.5%) | 4 / 0 / 1 | 53% (17) | 3 (3) | 0 | thin | Nasus, Guardian of Knowledge 3/3 | 6 Calm / 6 Mind 2/3 |
-| VEN-147 Shen | 10 (#49, 0.7%) | not listed | not listed | 3 (2) | 0 | thin | Shen, Kinkou 3/3 | 6 Calm / 6 Order 1/3 |
-| VEN-149 Jayce | 29 (#18, 2.0%) | 2 / 1 / 1 | 68% (47) | 3 (3) | 0 | thin | Jayce, Brilliant Inventor 3/3 | 7 Body / 5 Mind 3/3 |
-| VEN-151 Mel | 15 (#37, 1.0%) | not listed | not listed | 3 (3) | 0 | thin | Mel, Defiant Soul 2/3 | 7 Mind / 5 Chaos 1/3 |
-| VEN-153 Ambessa | 8 (#56, 0.5%) | not listed | not listed | 1 (1) | 0 | insufficient | Ambessa, The Wolf 1/1 | 8 Body / 4 Order 1/1 |
-| VEN-155 Kennen | 41 (#7, 2.8%) | 1 / 0 / 10 | 50% (237) | 3 (3) | 0 | thin | Kennen, Storm of Shuriken 3/3 | 9 Chaos / 3 Order 2/3 |
+| Legend | PA lists since RAD (rank, share) | Official RQ field, last 3 events: Day 1 pilots (share); Day 2 conversion | riftbound.one podiums 1st/2nd/3rd: all (RAD era) | Tier / wins / top cuts | EU RC win rate (matches) | RAD-era lists (with provenance) | Pre-RAD lists | Confidence, basis | Typical Chosen Champion (RAD era) | Typical rune split (RAD era) |
+|---|---|---|---|---|---|---|---|---|---|---|
+| OGN-247 Kai'Sa | 49 (#6, 3.4%) | 38 (0.6%); 13% vs field 18% | 3/10/5 (0/2/1) | 1 / 0 / 12 | 49% (300) | 18 (18) | 15 | ok, radiance-lists | Kai'Sa, Survivor 18/18 | 7 Fury / 5 Mind 15/18 |
+| OGN-249 Volibear | 28 (#19, 1.9%) | 2 (0.0%); n<30 | 0/0/0 (0/0/0) | not listed | not listed | 8 (2) | 6 | thin, radiance-lists | Volibear, Furious 8/8 | 7 Body / 5 Fury 4/8 |
+| OGN-251 Jinx | 11 (#47, 0.8%) | not in the last 3 tables | 0/0/1 (0/0/0) | not listed | not listed | 7 (0) | 8 | thin, radiance-lists | Jinx, Rebel 5/7 | 7 Chaos / 5 Fury 3/7 |
+| OGN-253 Darius | 8 (#52, 0.5%) | not in the last 3 tables | 0/0/0 (0/0/0) | not listed | not listed | 8 (3) | 8 | ok, radiance-lists | Darius, Trifarian 8/8 | 6 Fury / 6 Order 5/8 |
+| OGN-255 Ahri | 27 (#20, 1.9%) | 1 (0.0%); n<30 | 0/0/0 (0/0/0) | not listed | not listed | 7 (1) | 8 | thin, radiance-lists | Ahri, Confident 5/7 | 6 Calm / 6 Mind 4/7 |
+| OGN-257 Lee Sin | 12 (#43, 0.8%) | 1 (0.0%); n<30 | 0/0/0 (0/0/0) | not listed | <=10 matches | 7 (2) | 7 | thin, radiance-lists | Lee Sin, Centered 6/7 | 7 Body / 5 Calm 3/7 |
+| OGN-259 Yasuo | 12 (#44, 0.8%) | not in the last 3 tables | 0/0/1 (0/0/1) | not listed | not listed | 8 (3) | 7 | ok, radiance-lists | Yasuo, Windrider 8/8 | 6 Calm / 6 Chaos 6/8 |
+| OGN-261 Leona | 18 (#29, 1.2%) | 1 (0.0%); n<30 | 0/0/0 (0/0/0) | not listed | not listed | 6 (1) | 6 | thin, radiance-lists | Leona, Zealot 6/6 | 6 Calm / 6 Order 4/6 |
+| OGN-263 Teemo | 24 (#22, 1.7%) | 7 (0.1%); n<30 | 0/0/0 (0/0/0) | not listed | <=10 matches | 4 (1) | 6 | thin, radiance-lists | Teemo, Strategist 3/4 | 7 Mind / 5 Chaos 2/4 |
+| OGN-265 Viktor | 26 (#21, 1.8%) | 56 (0.9%); 11% vs field 18% | 6/5/9 (1/0/0) | 3 / 0 / 1 | 32% (25) | 8 (8) | 16 | ok, radiance-lists | Viktor, Leader 8/8 | 7 Order / 5 Mind 6/8 |
+| OGN-267 Miss Fortune | 16 (#34, 1.1%) | 5 (0.1%); n<30 | 2/1/3 (0/0/0) | 4 / 0 / 0 | not listed | 6 (1) | 7 | thin, radiance-lists | Miss Fortune, Captain 4/6 | 7 Chaos / 5 Body 2/6 |
+| OGN-269 Sett | 32 (#14, 2.2%) | 8 (0.1%); n<30 | 5/0/3 (0/0/0) | 3 / 0 / 4 | 61% (18) | 8 (6) | 5 | ok, radiance-lists | Sett, Kingpin 6/8 | 7 Body / 5 Order 5/8 |
+| OGS-017 Annie | 9 (#50, 0.6%) | 9 (0.1%); n<30 | 6/5/4 (0/0/0) | not listed | not listed | 6 (0) | 7 | thin, radiance-lists | Annie, Fiery 3/6 | 8 Fury / 4 Chaos 2/6 |
+| OGS-019 Master Yi | 19 (#28, 1.3%) | 398 (6.7%); 22% vs field 18% | 32/22/33 (0/0/1) | 2 / 2 / 5 (shared with UNL-191) | 46% (106) (shared with UNL-191) | 8 (6) | 82 | ok, radiance-lists | Master Yi, Tempered 8/8 | 7 Body / 5 Calm 7/8 |
+| OGS-021 Lux | 4 (#58, 0.3%) | 29 (0.5%); n<30 | 2/0/2 (0/0/0) | not listed | <=10 matches | 6 (0) | 9 | thin, radiance-lists | Lux, Crownguard 6/6 | 6 Mind / 6 Order 5/6 |
+| OGS-023 Garen | 5 (#57, 0.4%) | 1 (0.0%); n<30 | 0/0/0 (0/0/0) | not listed | not listed | 6 (0) | 7 | thin, radiance-lists | Garen, Commander 3/6 | 6 Body / 6 Order 2/6 |
+| RAD-139 Ekko | 59 (#5, 4.1%) | not in any table | 0/0/0 (0/0/0) | not listed | not listed | 4 (4) | 0 | thin, radiance-lists | Ekko, Ingenious 4/4 | 7 Fury / 5 Mind 2/4 |
+| RAD-141 Ziggs | 40 (#8, 2.8%) | not in any table | 0/0/0 (0/0/0) | not listed | not listed | 6 (6) | 0 | ok, radiance-lists | Ziggs, Explosive 3/5 | 6 Fury / 6 Chaos 2/6 |
+| RAD-143 Mordekaiser | 77 (#2, 5.3%) | not in any table | 0/0/0 (0/0/0) | not listed | <=10 matches | 9 (9) | 0 | ok, radiance-lists | Mordekaiser, Dominating 8/9 | 6 Fury / 6 Order 3/9 |
+| RAD-145 Orianna | 70 (#4, 4.9%) | not in any table | 0/0/0 (0/0/0) | 4 / 0 / 2 | 50% (24) | 9 (9) | 0 | ok, radiance-lists | Orianna, Exquisite 8/9 | 7 Calm / 5 Mind 3/9 |
+| RAD-147 K'Sante | 36 (#11, 2.5%) | not in any table | 0/0/0 (0/0/0) | not listed | not listed | 7 (7) | 0 | ok, radiance-lists | K'Sante, Dauntless 4/7 | 6 Calm / 6 Body 4/7 |
+| RAD-149 Riven | 76 (#3, 5.3%) | not in any table | 5/2/1 (5/2/1) | S / 5 / 16 | 54% (524) | 26 (26) | 0 | ok, radiance-lists | Riven, Broken Blade 25/26 | 7 Chaos / 5 Calm 13/26 |
+| RAD-151 Seraphine | 40 (#9, 2.8%) | not in any table | 0/0/0 (0/0/0) | 4 / 0 / 0 | not listed | 5 (5) | 0 | ok, radiance-lists | Seraphine, Not Alone 3/5 | 6 Mind / 6 Order 3/5 |
+| RAD-153 Evelynn | 100 (#1, 6.9%) | not in any table | 0/0/0 (0/0/0) | not listed | not listed | 9 (9) | 0 | ok, radiance-lists | Evelynn, Entrancing 9/9 | 6 Body / 6 Chaos 4/9 |
+| RAD-155 Jarvan IV | 36 (#12, 2.5%) | not in any table | 0/0/0 (0/0/0) | not listed | not listed | 6 (4) | 0 | ok, radiance-lists | Jarvan IV, Martial Paragon 5/6 | 7 Body / 5 Order 3/6 |
+| SFD-181 Rumble | 14 (#38, 1.0%) | 77 (1.3%); 5% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 6 (1) | 8 | thin, radiance-lists | Rumble, Hotheaded 5/6 | 8 Fury / 4 Mind 3/6 |
+| SFD-183 Lucian | 12 (#45, 0.8%) | 88 (1.5%); 12% vs field 18% | 0/1/0 (0/0/0) | not listed | 38% (16) | 4 (1) | 11 | thin, radiance-lists | Lucian, Merciless 4/4 | 6 Fury / 6 Body 3/4 |
+| SFD-185 Draven | 18 (#30, 1.2%) | 181 (3.0%); 10% vs field 18% | 6/6/7 (0/0/0) | not listed | not listed | 4 (1) | 20 | thin, radiance-lists | Draven, Showboat 3/4 | 6 Fury / 6 Chaos 3/4 |
+| SFD-187 Rek'Sai | 37 (#10, 2.6%) | 252 (4.2%); 18% vs field 18% | 4/4/4 (0/0/0) | 3 / 0 / 4 | 53% (85) | 4 (4) | 17 | thin, radiance-lists | Rek'Sai, Breacher 4/4 | 6 Fury / 6 Order 2/4 |
+| SFD-189 Ornn | 15 (#35, 1.0%) | 140 (2.3%); 16% vs field 18% | 1/0/2 (0/0/0) | not listed | 50% (12) | 5 (3) | 10 | ok, radiance-lists | Ornn, Blacksmith 5/5 | 9 Calm / 3 Mind 2/5 |
+| SFD-193 Jax | 15 (#36, 1.0%) | 68 (1.1%); 6% vs field 18% | 0/0/1 (0/0/0) | not listed | not listed | 5 (1) | 11 | thin, radiance-lists | Jax, Unmatched 5/5 | 6 Calm / 6 Body 3/5 |
+| SFD-195 Irelia | 20 (#26, 1.4%) | 500 (8.3%); 21% vs field 18% | 24/25/18 (0/2/0) | 2 / 1 / 2 | 38% (45) | 7 (7) | 50 | ok, radiance-lists | Irelia, Fervent 5/6 | 6 Calm / 6 Chaos 6/7 |
+| SFD-197 Azir | 8 (#53, 0.5%) | 250 (4.2%); 24% vs field 18% | 9/9/7 (0/0/0) | 4 / 0 / 2 | 50% (16) | 5 (3) | 16 | ok, radiance-lists | Azir, Sovereign 5/5 | 7 Calm / 5 Order 5/5 |
+| SFD-199 Ezreal | 13 (#41, 0.9%) | 150 (2.5%); 23% vs field 18% | 8/5/4 (0/0/0) | 3 / 0 / 0 | <=10 matches | 6 (1) | 18 | thin, radiance-lists | Ezreal, Prodigy 6/6 | 6 Mind / 6 Chaos 3/6 |
+| SFD-201 Renata Glasc | 8 (#54, 0.5%) | 60 (1.0%); 0% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 6 (0) | 9 | thin, radiance-lists | Renata Glasc, Mastermind 5/6 | 6 Mind / 6 Order 2/6 |
+| SFD-203 Sivir | 8 (#55, 0.5%) | 53 (0.9%); 13% vs field 18% | 5/5/4 (0/0/0) | not listed | not listed | 6 (1) | 8 | thin, radiance-lists | Sivir, Mercenary 6/6 | 6 Body / 6 Chaos 6/6 |
+| SFD-205 Fiora | 20 (#27, 1.4%) | 140 (2.3%); 12% vs field 18% | 7/6/9 (0/0/0) | not listed | not listed | 5 (0) | 15 | thin, radiance-lists | Fiora, Victorious 3/5 | 6 Body / 6 Order 3/5 |
+| UNL-181 Jhin | 13 (#42, 0.9%) | 56 (0.9%); 9% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 5 (3) | 7 | ok, radiance-lists | Jhin, Meticulous Killer 5/5 | 7 Mind / 5 Fury 5/5 |
+| UNL-183 Rengar | 14 (#39, 1.0%) | 305 (5.1%); 23% vs field 18% | 5/6/5 (0/0/0) | 2 / 0 / 3 | 45% (29) | 4 (4) | 12 | thin, radiance-lists | Rengar, Trophy Hunter 4/4 | 8 Body / 4 Fury 3/4 |
+| UNL-185 Pyke | 24 (#23, 1.7%) | 92 (1.5%); 5% vs field 18% | 0/0/1 (0/0/0) | not listed | not listed | 4 (3) | 10 | thin, radiance-lists | Pyke, Returned 2/4 | 7 Chaos / 5 Fury 2/4 |
+| UNL-187 Vi | 9 (#51, 0.6%) | 105 (1.8%); 0% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 8 (6) | 6 | ok, radiance-lists | Vi, Peacekeeper 6/7 | 8 Fury / 4 Order 4/8 |
+| UNL-189 Lillia | 18 (#31, 1.2%) | 152 (2.5%); 14% vs field 18% | 3/3/3 (0/0/0) | 4 / 0 / 1 | <=10 matches | 4 (4) | 12 | thin, radiance-lists | Lillia, Fae Fawn 4/4 | 6 Calm / 6 Mind 3/4 |
+| UNL-191 Master Yi | 11 (#48, 0.8%) | 77 (1.3%); 6% vs field 18% | 0/1/1 (0/0/0) | 2 / 2 / 5 (shared with OGS-019) | 46% (106) (shared with OGS-019) | 4 (1) | 8 | thin, radiance-lists | Master Yi, Tempered 3/3 | 6 Calm / 6 Body 2/4 |
+| UNL-193 Vex | 29 (#17, 2.0%) | 165 (2.8%); 19% vs field 18% | 4/7/7 (0/0/0) | 2 / 1 / 6 | 36% (11) | 6 (6) | 12 | ok, radiance-lists | Vex, Apathetic 6/6 | 6 Calm / 6 Chaos 3/6 |
+| UNL-195 Ivern | 18 (#32, 1.2%) | 81 (1.4%); 4% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 3 (2) | 11 | thin, radiance-lists | Ivern, Nurturer 3/3 | 7 Calm / 5 Order 2/3 |
+| UNL-197 Diana | 22 (#24, 1.5%) | 190 (3.2%); 19% vs field 18% | 20/25/14 (0/0/1) | not listed | <=10 matches | 6 (5) | 17 | ok, radiance-lists | Diana, Lunari 6/6 | 6 Mind / 6 Chaos 3/6 |
+| UNL-199 LeBlanc | 17 (#33, 1.2%) | 298 (5.0%); 24% vs field 18% | 11/8/10 (0/0/0) | 3 / 0 / 1 | 36% (28) | 7 (7) | 9 | ok, radiance-lists | LeBlanc, Fragmented 7/7 | 8 Order / 4 Mind 5/7 |
+| UNL-201 Kha'Zix | 31 (#15, 2.1%) | 190 (3.2%); 22% vs field 18% | 0/2/3 (0/0/0) | 3 / 0 / 0 | 55% (11) | 7 (7) | 8 | ok, radiance-lists | Kha'Zix, Mutating Horror 7/7 | 6 Body / 6 Chaos 7/7 |
+| UNL-203 Poppy | 12 (#46, 0.8%) | 51 (0.9%); 6% vs field 18% | 0/1/1 (0/0/0) | not listed | <=10 matches | 5 (3) | 6 | ok, radiance-lists | Poppy, Paragon 5/5 | 6 Body / 6 Order 2/5 |
+| VEN-139 Akali | 33 (#13, 2.3%) | 220 (3.7%); 12% vs field 18% | 4/1/0 (1/0/0) | 2 / 0 / 2 | 44% (16) | 8 (8) | 5 | ok, radiance-lists | Akali, Deadly Weapon 8/8 | 7 Fury / 5 Calm 6/8 |
+| VEN-141 Renekton | 14 (#40, 1.0%) | 50 (0.8%); 2% vs field 18% | 0/0/1 (0/0/0) | not listed | not listed | 6 (1) | 5 | thin, radiance-lists | Renekton, Rage Fueled 6/6 | 6 Fury / 6 Body 3/6 |
+| VEN-143 Zed | 31 (#16, 2.1%) | 78 (1.3%); 3% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 5 (3) | 4 | ok, radiance-lists | Zed, Without a Sound 3/5 | 7 Fury / 5 Chaos 2/5 |
+| VEN-145 Nasus | 21 (#25, 1.5%) | 207 (3.5%); 11% vs field 18% | 3/1/0 (0/0/0) | 4 / 0 / 1 | 53% (17) | 4 (3) | 9 | thin, radiance-lists | Nasus, Guardian of Knowledge 2/4 | 7 Mind / 5 Calm 2/4 |
+| VEN-147 Shen | 10 (#49, 0.7%) | 65 (1.1%); 0% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 6 (2) | 3 | thin, radiance-lists | Shen, Kinkou 6/6 | 6 Calm / 6 Order 4/6 |
+| VEN-149 Jayce | 29 (#18, 2.0%) | 282 (4.7%); 23% vs field 18% | 1/2/1 (0/0/0) | 2 / 1 / 1 | 68% (47) | 3 (3) | 7 | thin, radiance-lists | Jayce, Brilliant Inventor 3/3 | 7 Body / 5 Mind 3/3 |
+| VEN-151 Mel | 15 (#37, 1.0%) | 56 (0.9%); 5% vs field 18% | 0/0/2 (0/0/0) | not listed | not listed | 4 (2) | 5 | thin, radiance-lists | Mel, Defiant Soul 3/4 | 6 Mind / 6 Chaos 2/4 |
+| VEN-153 Ambessa | 8 (#56, 0.5%) | 97 (1.6%); 4% vs field 18% | 0/0/0 (0/0/0) | not listed | not listed | 3 (0) | 5 | thin, radiance-lists | Ambessa, The Wolf 3/3 | 7 Body / 5 Order 2/3 |
+| VEN-155 Kennen | 41 (#7, 2.8%) | 653 (10.9%); 31% vs field 18% | 6/13/9 (1/0/1) | 1 / 0 / 10 | 50% (237) | 14 (14) | 31 | ok, radiance-lists | Kennen, Storm of Shuriken 13/14 | 9 Chaos / 3 Order 9/14 |
 
 ## 8. JSON output shape (proposal)
 
@@ -360,8 +396,10 @@ interface CardRef { cardCode: string; name: string; type: string; energy: number
 
 // legend-profiles.meta.json  (rebuilt on every meta sync)
 interface MetaFile {
-  schemaVersion: 1;
+  schemaVersion: 2;
   datasets: Record<string, { source: string; note: string; [k: string]: unknown }>;
+  pooling: { completeLists: number; duplicatesDropped: number; pooledLists: number;
+             radianceEra: number; preRadiance: number; eraRule: string };
   thresholds: Record<string, number>;
   unresolvedDeckEntries: Record<string, number>;
   legends: LegendMeta[];
@@ -369,26 +407,44 @@ interface MetaFile {
 interface LegendMeta {
   legendCode: string; name: string; tags: string[];
   dataConfidence: 'ok' | 'thin' | 'insufficient'; dataConfidenceReasons: string[];
+  adviceBasis: 'radiance-lists' | 'pre-radiance-lists-only' | 'text-only';
   dataAvailability: 'enough' | 'scarce';
   popularity: { dataset: string; lists: number; listsSinceRadiance: number; eventNamedListsSinceRadiance: number;
                 shareSinceRadiance: number | null; rankSinceRadiance: number | null; viewsSum: number };
+  officialField: { dataset: string; events: FieldRow[];
+                   recent: { events: string[]; day1: number; day2: number; day1Share: number | null; day2Share: number | null;
+                             day2Conversion: number | null; fieldDay2Conversion: number | null;
+                             enoughForConversion: boolean } | null } | null;
+  podiums: { dataset: string; all: Podium; radianceEra: Podium };
   results: { tierList?: { tier: string; wins: number; topCuts: number };
              euRegional?: { winRatePct: number | null; matches: number | null; finish?: string; day1FieldSharePct?: number };
              sharedWithLegends: string[] } | null;
   asAdditionalLegend: { dataset: string; decks: number; note: string };
-  samples: Record<string, SampleSummary | null>;   // keyed by dataset id
+  samples: { radiance: SampleSummary | null; preRadiance: SampleSummary | null };
 }
+interface FieldRow { event: string; publishedAt: string; day1: number | null; day2: number | null; day1Share: number | null;
+                     day2Share: number | null; day2Conversion: number | null; fieldDay2Conversion: number | null }
+interface Podium { first: number; second: number; third: number }
 interface SampleSummary {
   n: number; nEventMarker: number; nComplete: number;
-  chosenChampions: { cardCode: string; name: string; decks: number; share: number }[];
+  sources: Record<string, number>;               // dataset id -> lists
+  newestSetInList: Record<string, number>;       // set code -> lists
+  nWithCurrentlyBannedCard: number;
+  podiums: Podium & { dataset: string };
+  archetypeLabels: { dataset: string; nLabelled: number; labels: { label: string; decks: number }[] };
+  chosenChampions: { cardCode: string; name: string; decks: number; share: number }[]; nChosenChampionKnown: number;
   runeSplits: { split: string; decks: number; share: number }[];
-  battlefields: Rate[]; coreCards: Rate[]; flexCards: Rate[]; topCards: Rate[]; sideDeck: Rate[];
+  battlefields: Rate[]; nWithBattlefields: number;
+  coreCards: Rate[]; flexCards: Rate[]; topCards: Rate[];
+  sideDeck: Rate[]; nWithSideDeck: number;
   avgMainTypeCounts: Record<string, number>;
   variants: { chosenChampion: string; name: string; decks: number; share: number;
               distinctiveCards: { cardCode: string; name: string; rateHere: number; rateElsewhere: number }[]; deckIds: string[] }[];
-  decks: { id: string; name: string; url: string; eventMarker: boolean; createdAt: string | null; complete: boolean }[];
+  decks: { id: string; dataset: string; name: string; url: string; eventMarker: boolean; placement: 1 | 2 | 3 | null;
+           createdAt: string | null; newestSet: string | null; bannedCards: string[] }[];
 }
-interface Rate { cardCode: string; name: string; decks: number; inclusionRate: number; avgCopiesWhenPlayed: number; type?: string }
+interface Rate { cardCode: string; name: string; decks: number; inclusionRate: number; avgCopiesWhenPlayed: number;
+                 type?: string; bannedFrom?: string }
 ```
 
 Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/example.json`:
@@ -593,9 +649,10 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
    "Leona"
   ],
   "dataConfidence": "thin",
+  "adviceBasis": "radiance-lists",
   "dataConfidenceReasons": [
-   "4 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name)",
-   "0 lists in pa-sample-2026-09-06"
+   "6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official)",
+   "6 complete pre-Radiance lists"
   ],
   "dataAvailability": "scarce",
   "popularity": {
@@ -607,6 +664,49 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
    "rankSinceRadiance": 29,
    "viewsSum": 71963
   },
+  "officialField": {
+   "dataset": "official-rq-2026",
+   "events": [
+    {
+     "event": "los-angeles-top-decks",
+     "publishedAt": "2026-09-30",
+     "day1": 1,
+     "day2": 0,
+     "day1Share": 0.0005,
+     "day2Share": 0.0,
+     "day2Conversion": 0.0,
+     "fieldDay2Conversion": 0.189
+    },
+    "..."
+   ],
+   "recent": {
+    "events": [
+     "barcelonas-top-decks",
+     "singapores-top-decks",
+     "los-angeles-top-decks"
+    ],
+    "day1": 1,
+    "day2": 0,
+    "day1Share": 0.0002,
+    "day2Share": 0.0,
+    "day2Conversion": 0.0,
+    "fieldDay2Conversion": 0.176,
+    "enoughForConversion": false
+   }
+  },
+  "podiums": {
+   "dataset": "r1-top3-2026-11-11",
+   "all": {
+    "first": 0,
+    "second": 0,
+    "third": 0
+   },
+   "radianceEra": {
+    "first": 0,
+    "second": 0,
+    "third": 0
+   }
+  },
   "results": null,
   "asAdditionalLegend": {
    "dataset": "pa-fetch-2026-11-11",
@@ -614,28 +714,57 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
    "note": "lists that register this legend as one of the extra legends of Neeko, Blending In (RAD-167)"
   },
   "samples": {
-   "pa-fetch-2026-11-11": {
-    "n": 4,
+   "radiance": {
+    "n": 6,
     "nEventMarker": 1,
-    "nComplete": 4,
+    "nComplete": 6,
+    "sources": {
+     "pa-fetch-2026-11-11": 6
+    },
+    "newestSetInList": {
+     "RAD": 6
+    },
+    "nWithCurrentlyBannedCard": 0,
+    "podiums": {
+     "dataset": "r1-top3-2026-11-11",
+     "first": 0,
+     "second": 0,
+     "third": 0
+    },
+    "archetypeLabels": {
+     "dataset": "deck-theory k-means labels (../out/results.json)",
+     "nLabelled": 1,
+     "labels": [
+      {
+       "label": "spell-tempo",
+       "decks": 1
+      }
+     ]
+    },
     "chosenChampions": [
      {
       "cardCode": "OGN-079",
       "name": "Leona, Zealot",
-      "decks": 4,
+      "decks": 6,
       "share": 1.0
      }
     ],
+    "nChosenChampionKnown": 6,
     "runeSplits": [
      {
       "split": "6 Calm / 6 Order",
-      "decks": 3,
-      "share": 0.75
+      "decks": 4,
+      "share": 0.67
      },
      {
       "split": "7 Calm / 5 Order",
       "decks": 1,
-      "share": 0.25
+      "share": 0.17
+     },
+     {
+      "split": "8 Calm / 4 Order",
+      "decks": 1,
+      "share": 0.17
      }
     ],
     "battlefields": [
@@ -643,30 +772,31 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
       "cardCode": "OGN-282",
       "name": "Monastery of Hirana",
       "decks": 4,
-      "inclusionRate": 1.0,
+      "inclusionRate": 0.67,
       "avgCopiesWhenPlayed": 1.0
      },
      "..."
     ],
+    "nWithBattlefields": 6,
     "coreCards": [
      {
       "cardCode": "OGN-045",
       "name": "Defy",
-      "decks": 4,
+      "decks": 6,
       "inclusionRate": 1.0,
-      "avgCopiesWhenPlayed": 3.0,
+      "avgCopiesWhenPlayed": 2.67,
       "type": "spell"
      },
      "..."
     ],
     "flexCards": [
      {
-      "cardCode": "UNL-053",
-      "name": "Scuttle Crab",
-      "decks": 2,
-      "inclusionRate": 0.5,
-      "avgCopiesWhenPlayed": 3.0,
-      "type": "unit"
+      "cardCode": "RAD-028",
+      "name": "Ki Burst",
+      "decks": 4,
+      "inclusionRate": 0.67,
+      "avgCopiesWhenPlayed": 2.25,
+      "type": "spell"
      },
      "..."
     ],
@@ -674,56 +804,205 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
      {
       "cardCode": "OGN-045",
       "name": "Defy",
-      "decks": 4,
+      "decks": 6,
       "inclusionRate": 1.0,
-      "avgCopiesWhenPlayed": 3.0,
+      "avgCopiesWhenPlayed": 2.67,
       "type": "spell"
      },
      "..."
     ],
     "sideDeck": [
      {
-      "cardCode": "SFD-032",
-      "name": "Disarming Rake",
-      "decks": 3,
-      "inclusionRate": 0.75,
-      "avgCopiesWhenPlayed": 2.0
+      "cardCode": "SFD-045",
+      "name": "Not So Fast",
+      "decks": 4,
+      "inclusionRate": 0.67,
+      "avgCopiesWhenPlayed": 1.75
      },
      "..."
     ],
+    "nWithSideDeck": 6,
     "avgMainTypeCounts": {
-     "gear": 1.8,
-     "spell": 18.0,
-     "unit": 20.2
+     "gear": 2.0,
+     "spell": 17.0,
+     "unit": 21.0
     },
     "variants": [
      {
       "chosenChampion": "OGN-079",
       "name": "Leona, Zealot",
-      "decks": 4,
+      "decks": 6,
       "share": 1.0,
       "distinctiveCards": [],
       "deckIds": [
        "f0e744f3-d166-44ca-b724-ec4c1bd69042",
-       "dc079e5c-9ed3-4826-ba9d-6533d4004ad6",
-       "16fcf2f4-8852-4805-bd4f-8aaba4620efb",
-       "1d67b993-61a2-4da8-872d-a48efedbf43f"
+       "..."
       ]
      }
     ],
     "decks": [
      {
       "id": "f0e744f3-d166-44ca-b724-ec4c1bd69042",
+      "dataset": "pa-fetch-2026-11-11",
       "name": "Leona champion units + raptor",
       "url": "https://piltoverarchive.com/decks/view/f0e744f3-d166-44ca-b724-ec4c1bd69042",
       "eventMarker": true,
+      "placement": null,
       "createdAt": "2026-11-07",
-      "complete": true
+      "newestSet": "RAD",
+      "bannedCards": []
      },
      "..."
     ]
    },
-   "pa-sample-2026-09-06": null
+   "preRadiance": {
+    "n": 6,
+    "nEventMarker": 6,
+    "nComplete": 6,
+    "sources": {
+     "official-rq-2026": 6
+    },
+    "newestSetInList": {
+     "SFD": 3,
+     "UNL": 3
+    },
+    "nWithCurrentlyBannedCard": 3,
+    "podiums": {
+     "dataset": "r1-top3-2026-11-11",
+     "first": 0,
+     "second": 0,
+     "third": 0
+    },
+    "archetypeLabels": {
+     "dataset": "deck-theory k-means labels (../out/results.json)",
+     "nLabelled": 0,
+     "labels": []
+    },
+    "chosenChampions": [
+     {
+      "cardCode": "OGN-238",
+      "name": "Leona, Determined",
+      "decks": 3,
+      "share": 0.5
+     },
+     {
+      "cardCode": "OGN-079",
+      "name": "Leona, Zealot",
+      "decks": 3,
+      "share": 0.5
+     }
+    ],
+    "nChosenChampionKnown": 6,
+    "runeSplits": [
+     {
+      "split": "6 Calm / 6 Order",
+      "decks": 3,
+      "share": 0.5
+     },
+     {
+      "split": "7 Calm / 5 Order",
+      "decks": 3,
+      "share": 0.5
+     }
+    ],
+    "battlefields": [
+     {
+      "cardCode": "SFD-218",
+      "name": "Sunken Temple",
+      "decks": 5,
+      "inclusionRate": 1.0,
+      "avgCopiesWhenPlayed": 1.0
+     },
+     "..."
+    ],
+    "nWithBattlefields": 5,
+    "coreCards": [
+     {
+      "cardCode": "OGN-058",
+      "name": "Discipline",
+      "decks": 6,
+      "inclusionRate": 1.0,
+      "avgCopiesWhenPlayed": 2.67,
+      "type": "spell"
+     },
+     "..."
+    ],
+    "flexCards": [
+     {
+      "cardCode": "SFD-057",
+      "name": "Irelia, Fervent",
+      "decks": 4,
+      "inclusionRate": 0.67,
+      "avgCopiesWhenPlayed": 2.0,
+      "type": "unit"
+     },
+     "..."
+    ],
+    "topCards": [
+     {
+      "cardCode": "OGN-058",
+      "name": "Discipline",
+      "decks": 6,
+      "inclusionRate": 1.0,
+      "avgCopiesWhenPlayed": 2.67,
+      "type": "spell"
+     },
+     "..."
+    ],
+    "sideDeck": [
+     {
+      "cardCode": "OGN-224",
+      "name": "Salvage",
+      "decks": 4,
+      "inclusionRate": 0.67,
+      "avgCopiesWhenPlayed": 1.75
+     },
+     "..."
+    ],
+    "nWithSideDeck": 6,
+    "avgMainTypeCounts": {
+     "gear": 4.7,
+     "spell": 16.5,
+     "unit": 18.8
+    },
+    "variants": [
+     {
+      "chosenChampion": "OGN-238",
+      "name": "Leona, Determined",
+      "decks": 3,
+      "share": 0.5,
+      "distinctiveCards": [
+       {
+        "cardCode": "SFD-045",
+        "name": "Not So Fast",
+        "rateHere": 1.0,
+        "rateElsewhere": 0.0
+       }
+      ],
+      "deckIds": [
+       "vegas-top-decks-3",
+       "..."
+      ]
+     },
+     "..."
+    ],
+    "decks": [
+     {
+      "id": "vegas-top-decks-3",
+      "dataset": "official-rq-2026",
+      "name": "Vegas’ Top Decks: best Radiant Dawn (Lafinte)",
+      "url": "https://playriftbound.com/en-us/news/organizedplay/vegas-top-decks/",
+      "eventMarker": true,
+      "placement": null,
+      "createdAt": "2026-03-04",
+      "newestSet": "SFD",
+      "bannedCards": [
+       "OGN-284"
+      ]
+     },
+     "..."
+    ]
+   }
   }
  }
 }
@@ -731,8 +1010,9 @@ Real excerpt (OGN-261 Radiant Dawn, lists truncated with "..."), file `data/md/e
 
 Changes we recommend before this becomes the app's schema (HEURISTIC):
 
-- Split era out of the dataset id: `samples` should be keyed by `{source, window}` so that a new ban or set opens a new window instead of mixing eras.
-- Store `results` per source with its own `scope` and date, and allow several; today's two reports are a week apart and measure different things.
+- Eras are two fixed buckets here (`radiance`, `preRadiance`). The app should key samples by `{window}` where a window opens at every set release and every ban date, so that the next ban does not silently mix formats. `newestSetInList` and `nWithCurrentlyBannedCard` are the stopgap that lets the UI warn today.
+- Store `results` per source with its own `scope` and date, and allow several; today's two riftbound.gg reports are a week apart and measure different things, and `officialField` is a third, older measure.
+- `officialField.events[].event` is the article slug; add the event's own date and player count from an events table (the meta-sources task has one) instead of the publication date.
 - Add `legality` per legend per format (Wuju Bladesman is banned in 2v2 only) from the legality file rather than from this profile.
 - Keep `poolSupport.cardCodes` as codes only (as now); names and text come from the card table.
 
@@ -742,6 +1022,9 @@ Changes we recommend before this becomes the app's schema (HEURISTIC):
 - **Rewards drive counts.** For a `rewards` axis the builder counts the deck's enablers for it and compares with the legal pool; for a `needs` axis a count of zero is an error-level warning (the legend ability is dead); for an `enables` axis it looks for payoffs in the deck.
 - **Chosen Champion choice is a comparison of the listed units' own axes** against the deck's axis counts, plus the data half's distribution when `dataConfidence` allows.
 - **Battlefields**: offer the text-fit list with both quoted fragments; add the data half's most-registered battlefields with n; drop anything with `bannedFrom` on or before today.
+- **Data sentences name the era and n.** Example built from the record, not a template about archetypes: "13 of 14 Radiance-era Heart of the Tempest lists choose Kennen, Storm of Shuriken; 9 of 14 run 9 Chaos / 3 Order; your list runs <its own split>." When `adviceBasis` is `pre-radiance-lists-only` the same sentence must start with "Before Radiance (n lists, newest set VEN)" and must strike out cards with `bannedFrom`.
+- **Rune split advice** = compare the deck's own split with `runeSplits` of the era sample, then explain the difference from the deck's own Power costs per domain (computed from its cards), never from the sample alone.
+- **Field numbers are context, not advice.** `officialField.recent.day2Conversion` against `fieldDay2Conversion` tells how the legend did before Radiance; show it with the event names and only when `enoughForConversion` is true.
 - **Never** print a rate without its n and dataset, and never call list counts "meta share".
 
 ## 9. Per-legend profiles (generated from the two JSON files)
@@ -763,9 +1046,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** spell-matters 1.00 [rewards] pool 75; energy-ramp 0.60 [enables] pool 8
 - **Battlefields by text (HEURISTIC):** OGN-296 Void Gate (1.0; Spells); SFD-215 Ravenbloom Conservatory (1.0; Spells); UNL-216 The Academy (1.0; Spells); VEN-158 Heisho, Shell of the World (1.0; Spells); VEN-164 Sandswept Tomb (1.0; Spells)
 - **Popularity and results (DATA):** 49 published lists since 2026-10-23 (rank 6 of 58, 3.4%); riftbound.gg week-2 tier 1, 0 wins, 12 top cuts; EU Regional Championship 49% over 300 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 6 event-named):** champion Kai'Sa, Survivor 6/6; runes 7 Fury / 5 Mind 5/6, 6 Fury / 6 Mind 1/6; battlefields Void Gate 6/6, Rockfall Path 6/6, Frozen Fortress 6/6; core (>=75%) Noxus Hopeful 6/6 x3.0, Brynhir Thundersong 6/6 x3.0, Falling Star 6/6 x3.0, Stupefy 6/6 x3.0, Bilgewater Tracker 6/6 x3.0, Temporal Breach 6/6 x3.0, Hextech Ray 6/6 x2.8, Thousand-Tailed Watcher 6/6 x2.8, Lecturing Yordle 6/6 x2.5, Smoke Screen 6/6 x2.0, The Empyrean 6/6 x2.0, Time Warp 6/6 x1.8; flex (25-74%) Brittle Steel 4/6, Plundering Poro 3/6, Watchful Sentry 2/6, Consult the Past 2/6, Orb of Regret 2/6
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Kai'Sa, Survivor 2/2; runes 6 Fury / 6 Mind 1/2, 7 Fury / 5 Mind 1/2; battlefields The Arena's Greatest 2/2, Void Gate 2/2, Rockfall Path 1/2, Star Spring 1/2; core (>=75%) Hextech Ray 2/2 x3.0, Falling Star 2/2 x3.0, Stupefy 2/2 x3.0, Watchful Sentry 2/2 x3.0, Thousand-Tailed Watcher 2/2 x3.0, Ferrous Forerunner 2/2 x3.0, Lecturing Yordle 2/2 x2.5, Ravenbloom Student 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: ok** (6 complete lists in pa-fetch-2026-11-11 (6 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 38 Day 1 pilots = 0.6% of the field, 5 in Day 2 = 0.5% of Day 2; Day 2 conversion 13% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 3 first, 10 second, 5 third; with a Radiance card in the list: 0 / 2 / 1
+- **Radiance-era lists (DATA, n=18, 18 with tournament provenance; sources: pa-fetch 16, r1-top3 2):** champion Kai'Sa, Survivor 18/18; runes 7 Fury / 5 Mind 15/18, 6 Fury / 6 Mind 3/18; battlefields Void Gate 18/18, Frozen Fortress 18/18, Rockfall Path 17/18, Vilemaw's Lair 1/18; core (>=75%) Brynhir Thundersong 18/18 x3.0, Stupefy 18/18 x3.0, Temporal Breach 18/18 x3.0, Falling Star 18/18 x2.9, Thousand-Tailed Watcher 18/18 x2.9, Noxus Hopeful 18/18 x2.7, Bilgewater Tracker 18/18 x2.6, Hextech Ray 18/18 x2.6, Lecturing Yordle 18/18 x2.1, Smoke Screen 18/18 x2.0, The Empyrean 18/18 x1.8, Kai'Sa, Survivor 18/18 x1.0; flex (25-74%) Watchful Sentry 13/18, Singularity 8/18, Orb of Regret 7/18, Brittle Steel 6/18, Lost to the Sands 5/18; side deck Decree of Rage 17/18, Brittle Steel 17/18, Ferrous Forerunner 16/18, Decree of Insight 14/18, Icathian Rain 10/18; shape labels from the deck-theory clustering (15 labelled): big-control 15
+- **Pre-Radiance lists (DATA, n=15, 15 with tournament provenance; sources: official-rq 7, pa-fetch 2, pa-sample 1, r1-top3 5; newest set in list: SFD 3, UNL 5, VEN 7; 6 of them hold a card that is banned today):** champion Kai'Sa, Survivor 15/15; runes 7 Fury / 5 Mind 11/15, 6 Fury / 6 Mind 3/15, 7 Mind / 5 Fury 1/15; battlefields Void Gate 14/14, Rockfall Path 8/14, Frozen Fortress 6/14, The Arena's Greatest 5/14 (BANNED since 2026-07-24), The Candlelit Sanctum 2/14; core (>=75%) Falling Star 15/15 x3.0, Stupefy 15/15 x3.0, Watchful Sentry 15/15 x3.0, Thousand-Tailed Watcher 15/15 x2.9, Lecturing Yordle 15/15 x2.8, Noxus Hopeful 15/15 x2.4, Time Warp 15/15 x1.9, Kai'Sa, Survivor 15/15 x1.0; flex (25-74%) Plundering Poro 11/15, Bellows Breath 11/15, Brynhir Thundersong 8/15, Retreat 8/15, Temporal Breach 7/15, Ravenbloom Student 7/15, Smoke Screen 7/15, Smite 5/15; side deck Thermo Beam 11/15, Bellows Breath 8/15, Progress Day 7/15, Decree of Rage 6/15, Decree of Insight 6/15; shape labels from the deck-theory clustering (3 labelled): big-control 3
+- **Data confidence: ok; advice basis: radiance-lists** (18 complete Radiance-era lists (18 with tournament provenance: event-named, podium or official); 15 complete pre-Radiance lists)
 
 ### OGN-249 Relentless Storm (Volibear), Fury/Body
 
@@ -781,9 +1066,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** mighty 1.00 [rewards] pool 77; channel-rune 0.60 [enables] pool 9; movement 0.32 [champion or signature text only] pool 42
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend); SFD-218 Sunken Temple (0.5; Mighty (5+ Might))
 - **Popularity and results (DATA):** 28 published lists since 2026-10-23 (rank 19 of 58, 1.9%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 1 event-named):** champion Volibear, Furious 6/6; runes 7 Body / 5 Fury 3/6, 6 Fury / 6 Body 3/6; battlefields Dragon Roost 6/6, Sigil of the Storm 5/6, Vilemaw's Lair 2/6, Forgotten Monument 2/6, Black Market 1/6; core (>=75%) Sky Splitter 6/6 x3.0, Kadregrin the Infernal 6/6 x3.0, Elder Dragon 6/6 x3.0, Gentle Gemdragon 6/6 x2.8, Volibear, Furious 6/6 x1.0, Blazing Scorcher 5/6 x3.0, Bilgewater Tracker 5/6 x3.0, Seraphic Wyvern 5/6 x3.0, Rengar, Trophy Hunter 5/6 x3.0, Dune Drake 5/6 x2.6, Challenge 5/6 x2.0; flex (25-74%) Herald of Scales 4/6, Minotaur Reckoner 4/6, Portable Portal 4/6, Falling Star 4/6, Mobilize 3/6, Kinkou Initiate 3/6, Flurry of Blades 2/6, Dazzling Aurora 2/6
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Volibear, Furious 1/1; runes 6 Fury / 6 Body 1/1; battlefields Aspirant's Climb 1/1, Sigil of the Storm 1/1, The Papertree 1/1; core (>=75%) Sky Splitter 1/1 x3.0, Kadregrin the Infernal 1/1 x3.0, Mobilize 1/1 x3.0, Catalyst of Aeons 1/1 x3.0, Sabotage 1/1 x3.0, Dazzling Aurora 1/1 x3.0, Ferrous Forerunner 1/1 x3.0, Gentle Gemdragon 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (6 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 10 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 2 Day 1 pilots = 0.0% of the field, 1 in Day 2 = 0.1% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=8, 2 with tournament provenance; sources: pa-fetch 8):** champion Volibear, Furious 8/8; runes 7 Body / 5 Fury 4/8, 6 Fury / 6 Body 4/8; battlefields Dragon Roost 8/8, Sigil of the Storm 7/8, Forgotten Monument 4/8, Vilemaw's Lair 2/8, Black Market 1/8; core (>=75%) Sky Splitter 8/8 x3.0, Kadregrin the Infernal 8/8 x3.0, Elder Dragon 8/8 x3.0, Gentle Gemdragon 8/8 x2.9, Volibear, Furious 8/8 x1.0, Blazing Scorcher 7/8 x3.0, Rengar, Trophy Hunter 7/8 x2.9, Dune Drake 7/8 x2.7, Bilgewater Tracker 6/8 x3.0, Seraphic Wyvern 6/8 x3.0, Herald of Scales 6/8 x2.2, Challenge 6/8 x2.0; flex (25-74%) Minotaur Reckoner 5/8, Portable Portal 5/8, Falling Star 5/8, Mobilize 4/8, Kinkou Initiate 4/8, Direwing 4/8, Dazzling Aurora 3/8, Stormbringer 3/8; side deck Thermo Beam 7/8, Repulse 6/8, Avalanche 6/8, Punch First 4/8, Minotaur Reckoner 4/8; shape labels from the deck-theory clustering (2 labelled): big-control 2
+- **Pre-Radiance lists (DATA, n=6, 6 with tournament provenance; sources: official-rq 6; newest set in list: SFD 3, UNL 3; 5 of them hold a card that is banned today):** champion Volibear, Furious 6/6; runes 6 Fury / 6 Body 6/6; battlefields Aspirant's Climb 5/5 (BANNED since 2026-07-24), Sigil of the Storm 4/5, The Papertree 3/5, Vilemaw's Lair 2/5, Obelisk of Power 1/5 (BANNED since 2026-03-31); core (>=75%) Kadregrin the Infernal 6/6 x3.0, Mobilize 6/6 x3.0, Dazzling Aurora 6/6 x3.0, Sky Splitter 6/6 x2.8, Catalyst of Aeons 6/6 x2.8, Challenge 6/6 x2.3, Ferrous Forerunner 6/6 x2.3, Stormbringer 6/6 x1.8; flex (25-74%) Deadbloom Predator 4/6, Falling Star 4/6, Get Excited! 4/6, Gentle Gemdragon 3/6, Elder Dragon 3/6, Rengar, Trophy Hunter 3/6, Void Seeker 3/6, Confront 2/6; side deck Unyielding Spirit 4/6, Punch First 4/6, Akshan, Mischievous 3/6, Repulse 3/6, Thermo Beam 3/6
+- **Data confidence: thin; advice basis: radiance-lists** (8 complete Radiance-era lists (2 with tournament provenance: event-named, podium or official); 6 complete pre-Radiance lists)
 
 ### OGN-251 Loose Cannon (Jinx), Fury/Chaos
 
@@ -799,9 +1085,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** low-hand 1.00 [rewards] pool 25; draw 0.60 [enables] pool 30; discard 0.50 [champion or signature text only] pool 26
 - **Battlefields by text (HEURISTIC):** no battlefield text interacts with this legend text; use the data below
 - **Popularity and results (DATA):** 11 published lists since 2026-10-23 (rank 47 of 58, 0.8%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 0 event-named):** champion Jinx, Rebel 5/6, Jinx, Demolitionist 1/6; runes 7 Chaos / 5 Fury 3/6, 6 Fury / 6 Chaos 2/6, 12 Chaos 1/6; battlefields Zaun Warrens 6/6, Ruined Monastery 5/6, Targon's Peak 2/6, Void Gate 2/6, Minefield 2/6; core (>=75%) Traveling Merchant 6/6 x2.7, Jinx, Rebel 6/6 x1.7, Super Mega Death Rocket! 5/6 x2.0; flex (25-74%) Seal of Discord 4/6, Falling Star 4/6, Detonate 4/6, Ride the Wind 4/6, Gust 4/6, Rhasa the Sunderer 3/6, Treasure Trove 3/6, Punching Poro 3/6
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Jinx, Rebel 1/1; runes 7 Fury / 5 Chaos 1/1; battlefields Zaun Warrens 1/1, Minefield 1/1, Rockfall Path 1/1; core (>=75%) Noxus Hopeful 1/1 x3.0, Traveling Merchant 1/1 x3.0, Super Mega Death Rocket! 1/1 x3.0, Punching Poro 1/1 x3.0, Shadow Order Disciple 1/1 x3.0, Cleave 1/1 x2.0, Unlicensed Armory 1/1 x2.0, Falling Star 1/1 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (6 complete lists in pa-fetch-2026-11-11 (0 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 8 of the 11 official field tables (first 2026-02-25, last 2026-06-24); not listed in the last 3 tables
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=7, 0 with tournament provenance; sources: pa-fetch 7):** champion Jinx, Rebel 5/7, Jinx, Demolitionist 2/7; runes 7 Chaos / 5 Fury 3/7, 6 Fury / 6 Chaos 2/7, 12 Chaos 1/7; battlefields Zaun Warrens 6/7, Ruined Monastery 6/7, Minefield 3/7, Targon's Peak 2/7, Void Gate 2/7; core (>=75%) Traveling Merchant 7/7 x2.7, Jinx, Rebel 7/7 x1.6, Super Mega Death Rocket! 6/7 x1.8; flex (25-74%) Falling Star 5/7, Ride the Wind 5/7, Rhasa the Sunderer 4/7, Punching Poro 4/7, Seal of Discord 4/7, Detonate 4/7, Fizz, Trickster 4/7, Gust 4/7; side deck Star-Crossed 4/7, Thermo Beam 4/7, Decree of Discord 3/7, Super Mega Death Rocket! 3/7, Gust 3/7
+  - Builds by Chosen Champion (DATA): Jinx, Rebel 5/7 sets itself apart with Seal of Discord, Detonate, Acceptable Losses, Treasure Trove, Treasure Hunter; Jinx, Demolitionist 2/7 sets itself apart with Flash, Hard Bargain, Fizz, Trickster, Punching Poro, Kai'Sa, Survivor
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 6, pa-fetch 1, pa-sample 1; newest set in list: SFD 3, UNL 4, VEN 1; 6 of them hold a card that is banned today):** champion Jinx, Demolitionist 5/8, Jinx, Rebel 3/8; runes 6 Fury / 6 Chaos 3/8, 9 Fury / 3 Chaos 2/8, 8 Chaos / 4 Fury 1/8; battlefields Zaun Warrens 6/7, The Arena's Greatest 4/7 (BANNED since 2026-07-24), Minefield 3/7, The Candlelit Sanctum 2/7, Trifarian War Camp 1/7; core (>=75%) Noxus Hopeful 8/8 x3.0, Traveling Merchant 8/8 x3.0, Stacked Deck 6/8 x2.8 (BANNED since 2026-09-18), Falling Star 6/8 x1.5, Gust 6/8 x1.5; flex (25-74%) Cleave 5/8, Jinx, Demolitionist 5/8, Overzealous Fan 4/8, Tideturner 4/8, Rebuke 4/8, Switcheroo 4/8, Hard Bargain 4/8, Seal of Rage 3/8; side deck Brynhir Thundersong 6/8, Gust 5/8, Switcheroo 5/8, Hard Bargain 4/8, Star-Crossed 4/8; shape labels from the deck-theory clustering (2 labelled): unit-aggro 2
+- **Data confidence: thin; advice basis: radiance-lists** (7 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### OGN-253 Hand of Noxus (Darius), Fury/Order
 
@@ -817,9 +1106,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** legion 1.00 [rewards] pool 26; energy-ramp 0.60 [enables] pool 6
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend); VEN-166 Threshold of the Gray (0.6; Adding resources)
 - **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 52 of 58, 0.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 2 event-named):** champion Darius, Trifarian 6/6; runes 6 Fury / 6 Order 5/6, 8 Order / 4 Fury 1/6; battlefields Trifarian War Camp 4/6, Emperor's Dais 3/6, Vilemaw's Lair 2/6, Black Rose Sanctum 2/6, Seat of Power 2/6; core (>=75%) Trifarian Captain 6/6 x2.7, Darius, Trifarian 6/6 x1.2, Noxus Hopeful 5/6 x3.0, Hidden Blade 5/6 x2.6, Imperial Decree 5/6 x2.2; flex (25-74%) Vanguard Captain 4/6, Cleave 4/6, Falling Star 4/6, Baited Hook 3/6, Concert Poster 3/6, Honest Broker 3/6, Trifarian Gloryseeker 3/6, Seal of Unity 3/6
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Darius, Trifarian 1/1; runes 8 Order / 4 Fury 1/1; battlefields The Arena's Greatest 1/1, Trifarian War Camp 1/1, Emperor's Dais 1/1; core (>=75%) Noxus Hopeful 1/1 x3.0, Hidden Blade 1/1 x3.0, Vanguard Captain 1/1 x3.0, Spectral Matron 1/1 x3.0, Baited Hook 1/1 x3.0, Honest Broker 1/1 x3.0, Rally the Troops 1/1 x3.0, Xin Zhao, Vigilant 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (6 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 8 of the 11 official field tables (first 2026-02-25, last 2026-06-24); not listed in the last 3 tables
+- **Radiance-era lists (DATA, n=8, 3 with tournament provenance; sources: pa-fetch 8):** champion Darius, Trifarian 8/8; runes 6 Fury / 6 Order 5/8, 8 Order / 4 Fury 2/8, 9 Order / 3 Fury 1/8; battlefields Trifarian War Camp 6/8, Emperor's Dais 4/8, Seat of Power 4/8, Vilemaw's Lair 2/8, Black Rose Sanctum 2/8; core (>=75%) Trifarian Captain 8/8 x2.8, Darius, Trifarian 8/8 x1.1, Noxus Hopeful 7/8 x3.0, Hidden Blade 6/8 x2.7, Imperial Decree 6/8 x2.2; flex (25-74%) Vanguard Captain 5/8, Cleave 5/8, Baited Hook 4/8, Concert Poster 4/8, Carrion Dredger 4/8, Safety Inspector 4/8, Spectral Matron 4/8, Seal of Unity 4/8; side deck Salvage 6/8, Decree of Unity 4/8, Decree of Rage 3/8, Imperial Decree 3/8, Burn Away 2/8; shape labels from the deck-theory clustering (3 labelled): unit-aggro 3
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 7, pa-fetch 1; newest set in list: SFD 3, UNL 4, VEN 1; 4 of them hold a card that is banned today):** champion Darius, Trifarian 8/8; runes 8 Order / 4 Fury 3/8, 6 Fury / 6 Order 2/8, 7 Order / 5 Fury 1/8; battlefields Seat of Power 6/7, Trifarian War Camp 4/7, The Arena's Greatest 3/7 (BANNED since 2026-07-24), Monastery of Hirana 2/7, Emperor's Dais 2/7; core (>=75%) Darius, Trifarian 8/8 x1.1, Noxus Hopeful 7/8 x3.0, Honest Broker 7/8 x2.9, Hidden Blade 7/8 x2.7, Ferrous Forerunner 6/8 x1.7; flex (25-74%) Vanguard Captain 5/8, Rally the Troops 5/8, Baited Hook 4/8, Xin Zhao, Vigilant 4/8, Cleave 4/8, Seal of Unity 4/8, Spectral Matron 4/8, Falling Star 4/8; side deck Salvage 8/8, Ashe, Focused 5/8, Brynhir Thundersong 4/8, Ferrous Forerunner 4/8, Grand Strategem 4/8; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### OGN-255 Nine-Tailed Fox (Ahri), Calm/Mind
 
@@ -835,10 +1125,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** OGN-256 Fox-Fire (spell, 3 Energy): "[Hidden] (Hide now for [Any] to react with later for [0].) // [Action] (Play on your turn or in showdowns.) // Kill any number of units at a battlefield with total Might 4 or less."
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** defend 1.00 [rewards] pool 32; might-reduction 0.73 [enables] pool 20
 - **Battlefields by text (HEURISTIC):** UNL-208 Black Flame Altar (1.0; Defending); VEN-159 Kinkou Temple (1.0; Defending); OGN-279 Fortified Position (0.5; Defending); RAD-161 Durand Memorial (0.5; Defending); SFD-215 Ravenbloom Conservatory (0.5; Defending)
-- **Popularity and results (DATA):** 27 published lists since 2026-10-23 (rank 20 of 58, 1.9%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 1 event-named):** champion Ahri, Confident 5/6, Ahri, Alluring 1/6; runes 6 Calm / 6 Mind 4/6, 7 Calm / 5 Mind 1/6, 8 Calm / 4 Mind 1/6; battlefields Grove of the God-Willow 3/6, Startipped Peak 3/6, Vilemaw's Lair 2/6, Ravenbloom Conservatory 2/6, Rockfall Path 2/6; core (>=75%) Ravenbloom Student 6/6 x3.0, Defy 6/6 x2.8, Discipline 6/6 x2.8, Stupefy 6/6 x2.8, Stalwart Poro 5/6 x2.0, Ahri, Confident 5/6 x1.4; flex (25-74%) Zhonya's Hourglass 4/6, Back Off 4/6, Charm 4/6, Thousand-Tailed Watcher 4/6, Not So Fast 4/6, Mutated Mouser 3/6, Mournful Witness 3/6, Sona, Harmonious 3/6
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Ahri, Inquisitive 2/2; runes 7 Mind / 5 Calm 1/2, 7 Calm / 5 Mind 1/2; battlefields The Arena's Greatest 1/2, The Grand Plaza 1/2, Zaun Warrens 1/2, Abandoned Hall 1/2, Amateur Recital 1/2; core (>=75%) Defy 2/2 x3.0, Discipline 2/2 x3.0, Ravenbloom Student 2/2 x3.0, Charm 2/2 x2.5, Stupefy 2/2 x2.5, Desert's Call 2/2 x2.5, Plundering Poro 2/2 x2.5, Flurry of Feathers 2/2 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (6 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 27 published lists since 2026-10-23 (rank 20 of 58, 1.9%); registered as an extra Neeko legend in 2 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 9 of the 11 official field tables (first 2026-02-25, last 2026-09-09); last 3 events (Barcelona, Singapore, Los Angeles): 1 Day 1 pilots = 0.0% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=7, 1 with tournament provenance; sources: pa-fetch 7):** champion Ahri, Confident 5/7, Ahri, Alluring 1/7, Ahri, Inquisitive 1/7; runes 6 Calm / 6 Mind 4/7, 7 Calm / 5 Mind 1/7, 8 Calm / 4 Mind 1/7; battlefields Grove of the God-Willow 3/7, Startipped Peak 3/7, Vilemaw's Lair 2/7, Ravenbloom Conservatory 2/7, Rockfall Path 2/7; core (>=75%) Ravenbloom Student 7/7 x3.0, Defy 7/7 x2.9, Discipline 7/7 x2.9, Stupefy 7/7 x2.9, Ahri, Confident 6/7 x1.5; flex (25-74%) Stalwart Poro 5/7, Zhonya's Hourglass 5/7, Thousand-Tailed Watcher 5/7, Charm 5/7, Fox-Fire 4/7, Back Off 4/7, Blitzcrank, Impassive 4/7, Not So Fast 4/7; side deck Decree of Insight 4/5, Disarming Rake 3/5, Singularity 2/5, Hush 2/5, Temporal Breach 1/5; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 7, pa-sample 1; newest set in list: SFD 3, UNL 5; 2 of them hold a card that is banned today):** champion Ahri, Inquisitive 6/8, Ahri, Alluring 2/8; runes 6 Calm / 6 Mind 4/8, 7 Calm / 5 Mind 2/8, 7 Mind / 5 Calm 2/8; battlefields Grove of the God-Willow 4/7, Trifarian War Camp 3/7, Marai Spire 2/7, Power Nexus 2/7, Aspirant's Climb 1/7 (BANNED since 2026-07-24); core (>=75%) Discipline 8/8 x3.0, Defy 8/8 x2.8, Thousand-Tailed Watcher 8/8 x2.0, Desert's Call 7/8 x2.7, Charm 7/8 x2.1, Ravenbloom Student 6/8 x3.0, Sona, Harmonious 6/8 x2.0, Emperor's Divide 6/8 x1.8; flex (25-74%) Back Off 5/8, Zhonya's Hourglass 5/8, Time Warp 5/8, Not So Fast 5/8, Blitzcrank, Impassive 4/8, Sunlit Guardian 3/8, Stupefy 3/8, Plundering Poro 3/8; side deck Disarming Rake 6/8, Not So Fast 4/8, Ahri, Alluring 4/8, Wind Wall 3/8, Unchecked Power 2/8; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Data confidence: thin; advice basis: radiance-lists** (7 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### OGN-257 Blind Monk (Lee Sin), Calm/Body
 
@@ -853,9 +1144,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** buff 0.80 [enables] pool 32
 - **Battlefields by text (HEURISTIC):** OGN-282 Monastery of Hirana (0.8; Buffs); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 12 published lists since 2026-10-23 (rank 43 of 58, 0.8%); registered as an extra Neeko legend in 2 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=6, 2 event-named):** champion Lee Sin, Centered 5/6, Monastery of Hirana 1/6; runes 7 Body / 5 Calm 3/6, 6 Calm / 6 Body 2/6, 8 Body / 4 Calm 1/6; battlefields Monastery of Hirana 4/6, Windswept Hillock 3/6, Sunken Temple 3/6, Forbidding Waste 2/6, Grove of the God-Willow 1/6; core (>=75%) Defy 6/6 x3.0, Discipline 6/6 x3.0, Punch First 6/6 x2.5, Scuttle Crab 6/6 x2.3, Lee Sin, Centered 5/6 x1.0; flex (25-74%) Pit Rookie 4/6, Zhonya's Hourglass 4/6, Charm 4/6, First Mate 3/6, Lonely Poro 3/6, Rampage 3/6, Riven, Broken Blade 3/6, Sett, Brawler 3/6
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (6 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 9 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 1 Day 1 pilots = 0.0% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=7, 2 with tournament provenance; sources: pa-fetch 7):** champion Lee Sin, Centered 6/7, Monastery of Hirana 1/7; runes 7 Body / 5 Calm 3/7, 6 Calm / 6 Body 2/7, 8 Body / 4 Calm 1/7; battlefields Monastery of Hirana 5/7, Windswept Hillock 3/7, Sunken Temple 3/7, Forbidding Waste 2/7, Grove of the God-Willow 1/7; core (>=75%) Defy 7/7 x3.0, Discipline 7/7 x3.0, Punch First 7/7 x2.6, Scuttle Crab 6/7 x2.3, Lee Sin, Centered 6/7 x1.0; flex (25-74%) Pit Rookie 5/7, Lonely Poro 4/7, Riven, Broken Blade 4/7, Zhonya's Hourglass 4/7, Charm 4/7, First Mate 3/7, Iridescent Avian 3/7, Irresistible Faefolk 3/7; side deck Decree of Strength 4/7, Hush 4/7, Ruin Runner 3/7, Decree of Focus 3/7, Vilemaw 3/7; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 7; newest set in list: SFD 3, UNL 4; 2 of them hold a card that is banned today):** champion Lee Sin, Centered 7/7; runes 7 Body / 5 Calm 4/7, 6 Calm / 6 Body 3/7; battlefields Monastery of Hirana 5/6, Sunken Temple 3/6, Star Spring 2/6, Aspirant's Climb 1/6 (BANNED since 2026-07-24), Grove of the God-Willow 1/6; core (>=75%) Defy 7/7 x3.0, Discipline 7/7 x2.7, Charm 7/7 x2.6, Lee Sin, Centered 7/7 x1.0, Zhonya's Hourglass 6/7 x2.3; flex (25-74%) Punch First 5/7, First Mate 5/7, Lonely Poro 5/7, Irelia, Fervent 5/7, Sabotage 5/7, Challenge 4/7, Not So Fast 4/7, Doran's Blade 4/7; side deck Sabotage 7/7, Akshan, Mischievous 6/7, Not So Fast 5/7, Unyielding Spirit 4/7, Disarming Rake 3/7
+- **Data confidence: thin; advice basis: radiance-lists** (7 complete Radiance-era lists (2 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### OGN-259 Unforgiven (Yasuo), Calm/Chaos
 
@@ -871,9 +1163,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** movement 0.70 [enables] pool 63
 - **Battlefields by text (HEURISTIC):** OGN-277 Back-Alley Bar (0.7; Moving units); UNL-206 Altar of Blood (0.7; Moving units); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 12 published lists since 2026-10-23 (rank 44 of 58, 0.8%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=5, 1 event-named):** champion Yasuo, Windrider 5/5; runes 6 Calm / 6 Chaos 5/5; battlefields Targon's Peak 4/5, Back-Alley Bar 2/5, Hunters' Circle 2/5, Reckoner's Arena 1/5, Vilemaw's Lair 1/5; core (>=75%) Defy 5/5 x3.0, Discipline 5/5 x3.0, Ride the Wind 5/5 x2.6, Star-Crossed 5/5 x2.0, Yasuo, Windrider 5/5 x1.0, Gust 4/5 x2.5, Akali, Silent 4/5 x1.8, Flash 4/5 x1.5; flex (25-74%) Tideturner 3/5, Scuttle Crab 3/5, En Garde 3/5, Zhonya's Hourglass 3/5, Fizz, Trickster 3/5, Charm 3/5, Mask of Foresight 2/5, Traveling Merchant 2/5
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (5 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 8 of the 11 official field tables (first 2026-02-25, last 2026-06-24); not listed in the last 3 tables
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 1 third; with a Radiance card in the list: 0 / 0 / 1
+- **Radiance-era lists (DATA, n=8, 3 with tournament provenance; sources: pa-fetch 7, r1-top3 1):** champion Yasuo, Windrider 8/8; runes 6 Calm / 6 Chaos 6/8, 7 Chaos / 5 Calm 2/8; battlefields Targon's Peak 4/8, Back-Alley Bar 2/8, Vilemaw's Lair 2/8, Hunters' Circle 2/8, Rockfall Path 2/8; core (>=75%) Yasuo, Windrider 8/8 x1.0, Defy 7/8 x2.9, Star-Crossed 7/8 x2.0, Discipline 6/8 x3.0, Ride the Wind 6/8 x2.5; flex (25-74%) Gust 5/8, Flash 5/8, Charm 5/8, Lonely Poro 4/8, Scuttle Crab 4/8, En Garde 4/8, Zhonya's Hourglass 4/8, Fizz, Trickster 4/8; side deck Angler Beast 2/5, Decree of Focus 2/5, Hush 2/5, Hard Bargain 2/5, Star-Crossed 2/5; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 7; newest set in list: SFD 3, UNL 4; 4 of them hold a card that is banned today):** champion Yasuo, Remorseful 4/7, Yasuo, Windrider 3/7; runes 6 Calm / 6 Chaos 6/7, 7 Calm / 5 Chaos 1/7; battlefields Targon's Peak 5/6, Rockfall Path 2/6, Seat of Power 2/6, Sunken Temple 2/6, Aspirant's Climb 1/6 (BANNED since 2026-07-24); core (>=75%) Discipline 7/7 x3.0, Defy 7/7 x2.9, Stellacorn Herder 7/7 x2.7, En Garde 7/7 x2.6, Zhonya's Hourglass 7/7 x2.1, Ride the Wind 7/7 x1.9; flex (25-74%) Tideturner 5/7, Lonely Poro 5/7, Mask of Foresight 4/7, Charm 4/7, Irelia, Fervent 4/7, Stacked Deck 4/7 (BANNED since 2026-09-18), Star-Crossed 4/7, Vex, Apathetic 4/7; side deck Adaptatron 5/7, Irelia, Fervent 3/7, Zhonya's Hourglass 3/7, Rebuke 2/7, Sneaky Deckhand 2/7
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### OGN-261 Radiant Dawn (Leona), Calm/Order
 
@@ -889,9 +1183,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** stun 1.00 [rewards] pool 22; buff 0.60 [enables] pool 24
 - **Battlefields by text (HEURISTIC):** OGN-282 Monastery of Hirana (0.6; Buffs)
 - **Popularity and results (DATA):** 18 published lists since 2026-10-23 (rank 29 of 58, 1.2%); registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 1 event-named):** champion Leona, Zealot 4/4; runes 6 Calm / 6 Order 3/4, 7 Calm / 5 Order 1/4; battlefields Monastery of Hirana 4/4, Sunken Temple 2/4, Grove of the God-Willow 1/4, Windswept Hillock 1/4, Zaun Warrens 1/4; core (>=75%) Defy 4/4 x3.0, Discipline 4/4 x3.0, Back Off 4/4 x2.8, Call to Glory 4/4 x2.5, Leona, Zealot 4/4 x1.0, Vi, Peacekeeper 3/4 x3.0, Ki Burst 3/4 x2.7, Mournful Witness 3/4 x2.7, Zhonya's Hourglass 3/4 x2.3, Riven, Broken Blade 3/4 x2.3, Zenith Blade 3/4 x2.0; flex (25-74%) Scuttle Crab 2/4, Stellacorn Herder 2/4, Nami, Headstrong 2/4, Vex, Mocking 2/4, Kennen, Keeper of Balance 2/4, Charm 2/4, En Garde 2/4, Clockwork Keeper 1/4
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 9 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 1 Day 1 pilots = 0.0% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Leona, Zealot 6/6; runes 6 Calm / 6 Order 4/6, 7 Calm / 5 Order 1/6, 8 Calm / 4 Order 1/6; battlefields Monastery of Hirana 4/6, Packed Amphitheater 3/6, Sunken Temple 2/6, Fortified Position 1/6, Grove of the God-Willow 1/6; core (>=75%) Defy 6/6 x2.7, Discipline 6/6 x2.7, Back Off 6/6 x2.3, Call to Glory 6/6 x2.2, Leona, Zealot 6/6 x1.0, Vi, Peacekeeper 5/6 x2.6, Mournful Witness 5/6 x2.6, Zhonya's Hourglass 5/6 x2.4, Zenith Blade 5/6 x2.2; flex (25-74%) Ki Burst 4/6, Riven, Broken Blade 4/6, Nami, Headstrong 4/6, Kennen, Keeper of Balance 4/6, Scuttle Crab 3/6, Stellacorn Herder 3/6, Vex, Mocking 3/6, Astral Heron 3/6; side deck Not So Fast 4/6, Hush 4/6, Disarming Rake 3/6, Salvage 3/6, Charm 2/6; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Pre-Radiance lists (DATA, n=6, 6 with tournament provenance; sources: official-rq 6; newest set in list: SFD 3, UNL 3; 3 of them hold a card that is banned today):** champion Leona, Determined 3/6, Leona, Zealot 3/6; runes 6 Calm / 6 Order 3/6, 7 Calm / 5 Order 3/6; battlefields Sunken Temple 5/5, Monastery of Hirana 4/5, The Arena's Greatest 2/5 (BANNED since 2026-07-24), Trifarian War Camp 2/5, Obelisk of Power 1/5 (BANNED since 2026-03-31); core (>=75%) Discipline 6/6 x2.7, Defy 6/6 x2.5, Fiora, Victorious 6/6 x2.5, Zenith Blade 6/6 x2.0, Lonely Poro 5/6 x3.0, Call to Glory 5/6 x2.2, Zhonya's Hourglass 5/6 x2.0, Emperor's Divide 5/6 x1.8; flex (25-74%) Irelia, Fervent 4/6, Charm 4/6, Stalwart Poro 3/6, Back Off 3/6, Nami, Headstrong 3/6, Vi, Peacekeeper 3/6, Leona, Determined 3/6, Stellacorn Herder 3/6; side deck Salvage 4/6, Ashe, Focused 3/6, Disarming Rake 3/6, Solari Shieldbearer 3/6, Not So Fast 3/6
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 6 complete pre-Radiance lists)
 
 ### OGN-263 Swift Scout (Teemo), Mind/Chaos
 
@@ -908,9 +1203,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** hidden 1.00 [enables/needs] pool 26; bounce-own 0.80 [enables/needs] pool 55
 - **Battlefields by text (HEURISTIC):** OGN-278 Bandle Tree (1.0; Hidden / face-down cards); SFD-207 Emperor's Dais (0.8; Returning own units to hand); SFD-210 Hall of Legends (0.6; Readies the legend); RAD-157 Bandle Scouts' Academy (0.5; Hidden / face-down cards)
 - **Popularity and results (DATA):** 24 published lists since 2026-10-23 (rank 22 of 58, 1.7%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 2 event-named):** champion Teemo, Strategist 3/3; runes 7 Mind / 5 Chaos 3/3; battlefields Grove of the God-Willow 3/3, Bandle Scouts' Academy 3/3, Packed Amphitheater 3/3; core (>=75%) Sprite Call 3/3 x3.0, Teemo, Strategist 3/3 x3.0, Nocturne, Horrifying 3/3 x3.0, Teemo, Scout 3/3 x3.0, Switcheroo 3/3 x3.0, Sprite Fountain 3/3 x3.0, Pyke, Returned 3/3 x3.0, The Good Stuff 3/3 x2.7, Sneaky Deckhand 3/3 x2.0, Bedeviling Stranger 3/3 x2.0, Kha'Zix, Mutating Horror 3/3 x2.0, Vex, Apathetic 3/3 x2.0; flex (25-74%) Singularity 2/3, An Offer You Can't Refuse 2/3, Guerilla Warfare 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Teemo, Strategist 1/1; runes 7 Mind / 5 Chaos 1/1; battlefields Grove of the God-Willow 1/1, Startipped Peak 1/1, The Arena's Greatest 1/1; core (>=75%) Consult the Past 1/1 x3.0, Sprite Call 1/1 x3.0, Teemo, Strategist 1/1 x3.0, Nocturne, Horrifying 1/1 x3.0, Teemo, Scout 1/1 x3.0, Tideturner 1/1 x3.0, Windsinger 1/1 x3.0, Switcheroo 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 7 Day 1 pilots = 0.1% of the field, 1 in Day 2 = 0.1% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=4, 1 with tournament provenance; sources: pa-fetch 4):** champion Teemo, Strategist 3/4, Teemo, Scout 1/4; runes 7 Mind / 5 Chaos 2/4, 6 Mind / 6 Chaos 1/4, 7 Chaos / 5 Mind 1/4; battlefields Grove of the God-Willow 4/4, Bandle Scouts' Academy 4/4, Bandle Tree 2/4, Packed Amphitheater 2/4; core (>=75%) Switcheroo 4/4 x2.8, Consult the Past 4/4 x2.2, Thousand-Tailed Watcher 4/4 x1.2, Sprite Call 3/4 x3.0, Sprite Fountain 3/4 x3.0, Teemo, Strategist 3/4 x2.7, Pyke, Returned 3/4 x2.7, Teemo, Scout 3/4 x2.3, The Good Stuff 3/4 x2.3, Bedeviling Stranger 3/4 x2.0, Kha'Zix, Mutating Horror 3/4 x2.0; flex (25-74%) Nocturne, Horrifying 2/4, Sneaky Deckhand 2/4, Siren's Song 2/4, Edge of Night 2/4, Vex, Apathetic 2/4, Temporal Breach 2/4, Downwell 2/4, Evelynn, Entrancing 2/4; side deck An Offer You Can't Refuse 4/4, Baron Nashor 3/4, Singularity 2/4, Ember Monk 2/4, Tideturner 2/4; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Pre-Radiance lists (DATA, n=6, 6 with tournament provenance; sources: official-rq 5, pa-sample 1; newest set in list: SFD 3, UNL 3; 5 of them hold a card that is banned today):** champion Teemo, Scout 4/6, Teemo, Strategist 2/6; runes 7 Chaos / 5 Mind 3/6, 7 Mind / 5 Chaos 2/6, 6 Mind / 6 Chaos 1/6; battlefields Bandle Tree 3/5, Grove of the God-Willow 2/5, The Arena's Greatest 2/5 (BANNED since 2026-07-24), Obelisk of Power 1/5 (BANNED since 2026-03-31), Startipped Peak 1/5; core (>=75%) Switcheroo 6/6 x2.8, Tideturner 6/6 x2.5, Teemo, Scout 6/6 x1.8, Guerilla Warfare 5/6 x1.4; flex (25-74%) Consult the Past 4/6, Sprite Call 4/6, Teemo, Strategist 4/6, Stacked Deck 4/6 (BANNED since 2026-09-18), Nocturne, Horrifying 4/6, Edge of Night 4/6, Ride the Wind 4/6, Sprite Fountain 3/6; side deck Rebuke 6/6, Acceptable Losses 3/6, Turn to Dust 3/6, Singularity 3/6, Unchecked Power 3/6; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 6 complete pre-Radiance lists)
 
 ### OGN-265 Herald of the Arcane (Viktor), Mind/Order
 
@@ -925,9 +1221,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** token 0.80 [enables] pool 32; tag:Recruit 0.60 [enables] pool 14
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 26 published lists since 2026-10-23 (rank 21 of 58, 1.8%); riftbound.gg week-2 tier 3, 0 wins, 1 top cuts; EU Regional Championship 32% over 25 matches; registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 4 event-named):** champion Viktor, Leader 4/4; runes 7 Order / 5 Mind 4/4; battlefields Rockfall Path 4/4, Forbidding Waste 4/4, Ravenbloom Conservatory 3/4, Void Gate 1/4; core (>=75%) Stupefy 4/4 x3.0, Cull the Weak 4/4 x3.0, Hidden Blade 4/4 x3.0, Imperial Decree 4/4 x3.0, Wages of Pain 4/4 x3.0, Bellows Breath 4/4 x3.0, Sprite Fountain 4/4 x3.0, Carrion Dredger 4/4 x3.0, Concert Poster 4/4 x2.8, Sprite Burst 4/4 x2.8, Shadow's Call 4/4 x2.8, Thousand-Tailed Watcher 4/4 x1.0; flex (25-74%) Hunting Dog 1/4, Singularity 1/4, Eclipse 1/4, Dragon Form 1/4
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Viktor, Leader 2/2; runes 7 Order / 5 Mind 1/2, 6 Mind / 6 Order 1/2; battlefields The Arena's Greatest 2/2, Rockfall Path 2/2, Forbidding Waste 2/2; core (>=75%) Stupefy 2/2 x3.0, Cull the Weak 2/2 x3.0, Hidden Blade 2/2 x3.0, Imperial Decree 2/2 x3.0, Honest Broker 2/2 x3.0, Xin Zhao, Vigilant 2/2 x3.0, Carrion Dredger 2/2 x3.0, Wages of Pain 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (4 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 56 Day 1 pilots = 0.9% of the field, 6 in Day 2 = 0.6% of Day 2; Day 2 conversion 11% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 6 first, 5 second, 9 third; with a Radiance card in the list: 1 / 0 / 0
+- **Radiance-era lists (DATA, n=8, 8 with tournament provenance; sources: pa-fetch 7, r1-top3 1):** champion Viktor, Leader 8/8; runes 7 Order / 5 Mind 6/8, 6 Mind / 6 Order 2/8; battlefields Rockfall Path 7/8, Forbidding Waste 7/8, Trifarian War Camp 2/8, Ravenbloom Conservatory 2/8, Seat of Power 2/8; core (>=75%) Imperial Decree 8/8 x3.0, Cull the Weak 8/8 x2.9, Carrion Dredger 8/8 x2.8, Hidden Blade 8/8 x2.6, Bellows Breath 8/8 x2.5, Viktor, Leader 8/8 x1.0, Stupefy 7/8 x3.0, Sprite Fountain 7/8 x3.0, Salvage 7/8 x1.0, Wages of Pain 6/8 x2.7, Shadow's Call 6/8 x2.3, Sprite Burst 6/8 x1.8; flex (25-74%) Concert Poster 5/8, Eclipse 5/8, Facebreaker 5/8, B.F. Sword 5/8, Xin Zhao, Vigilant 4/8, Vi, Peacekeeper 4/8, Blood Money 4/8, Kennen, Keeper of Balance 4/8; side deck Decree of Insight 8/8, Salvage 7/8, Decree of Unity 6/8, Pickpocket 4/8, Dockside Lock-Up 4/8; shape labels from the deck-theory clustering (6 labelled): gear-engine 4, unit-aggro 2
+- **Pre-Radiance lists (DATA, n=16, 16 with tournament provenance; sources: official-rq 7, pa-fetch 2, r1-top3 7; newest set in list: SFD 4, UNL 6, VEN 6; 6 of them hold a card that is banned today):** champion Viktor, Leader 15/16, Viktor, Innovator 1/16; runes 6 Mind / 6 Order 11/16, 7 Order / 5 Mind 5/16; battlefields Forbidding Waste 12/15, Rockfall Path 11/15, The Arena's Greatest 6/15 (BANNED since 2026-07-24), Void Gate 6/15, Treasure Hoard 5/15; core (>=75%) Cull the Weak 16/16 x3.0, Hidden Blade 16/16 x3.0, Stupefy 16/16 x2.9, Imperial Decree 16/16 x2.9, Bellows Breath 16/16 x2.5, Wages of Pain 15/16 x2.9, Xin Zhao, Vigilant 15/16 x2.8, Viktor, Leader 15/16 x1.0; flex (25-74%) Carrion Dredger 11/16, Vi, Peacekeeper 11/16, Salvage 11/16, Shadow's Call 9/16, Thousand-Tailed Watcher 8/16, Eclipse 7/16, Plundering Poro 5/16, Blood Money 5/16; side deck Salvage 16/16, Pickpocket 10/16, Thousand-Tailed Watcher 7/16, Decree of Insight 6/16, Bellows Breath 6/16; shape labels from the deck-theory clustering (2 labelled): unit-aggro 2
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (8 with tournament provenance: event-named, podium or official); 16 complete pre-Radiance lists)
 
 ### OGN-267 Bounty Hunter (Miss Fortune), Body/Chaos
 
@@ -942,9 +1240,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** ganking 0.70 [enables] pool 19; movement 0.70 [enables] pool 63
 - **Battlefields by text (HEURISTIC):** OGN-277 Back-Alley Bar (0.7; Moving units); UNL-206 Altar of Blood (0.7; Moving units); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 16 published lists since 2026-10-23 (rank 34 of 58, 1.1%); riftbound.gg week-2 tier 4, 0 wins, 0 top cuts; registered as an extra Neeko legend in 3 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 1 event-named):** champion Miss Fortune, Captain 2/4, Miss Fortune, Buccaneer 2/4; runes 6 Body / 6 Chaos 1/4, 7 Body / 5 Chaos 1/4, 7 Chaos / 5 Body 1/4; battlefields Back-Alley Bar 2/4, Firelights' Hideout 2/4, Sigil of the Storm 1/4, Vilemaw's Lair 1/4, Void Gate 1/4; core (>=75%) Ride the Wind 4/4 x2.5, Bullet Time 4/4 x1.8, Punch First 3/4 x1.7, Miss Fortune, Captain 3/4 x1.0; flex (25-74%) Staunch Survivor 2/4, Bedeviling Stranger 2/4, Flurry of Blades 2/4, Gust 2/4, First Mate 2/4, Reckless Innovator 2/4, Rengar, Trophy Hunter 2/4, Miss Fortune, Buccaneer 2/4
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 10 of the 11 official field tables (first 2026-02-25, last 2026-09-09); last 3 events (Barcelona, Singapore, Los Angeles): 5 Day 1 pilots = 0.1% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 2 first, 1 second, 3 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Miss Fortune, Captain 4/6, Miss Fortune, Buccaneer 2/6; runes 7 Chaos / 5 Body 2/6, 8 Body / 4 Chaos 2/6, 6 Body / 6 Chaos 1/6; battlefields Back-Alley Bar 3/6, Firelights' Hideout 2/6, Grove of the God-Willow 1/6, Sigil of the Storm 1/6, Vilemaw's Lair 1/6; core (>=75%) Ride the Wind 6/6 x2.5, Miss Fortune, Captain 5/6 x1.0; flex (25-74%) Reckless Innovator 4/6, First Mate 4/6, Bullet Time 4/6, Punch First 4/6, Staunch Survivor 3/6, Traveling Merchant 3/6, Gust 3/6, The Good Stuff 3/6; side deck An Offer You Can't Refuse 2/4, Sabotage 2/4, Ruin Runner 2/4, Hard Bargain 2/4, Unyielding Spirit 2/4; shape labels from the deck-theory clustering (1 labelled): gear-engine 1
+  - Builds by Chosen Champion (DATA): Miss Fortune, Captain 4/6 sets itself apart with Gust, Sabotage, Tideturner, Flash, Hard Bargain; Miss Fortune, Buccaneer 2/6 sets itself apart with Staunch Survivor, Confront, First Mate, Warwick, Hunter, Sneaky Deckhand
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 7; newest set in list: SFD 3, UNL 4; 7 of them hold a card that is banned today):** champion Miss Fortune, Captain 7/7; runes 6 Body / 6 Chaos 5/7, 7 Body / 5 Chaos 2/7; battlefields Aspirant's Climb 6/6 (BANNED since 2026-07-24), Sigil of the Storm 5/6, Vilemaw's Lair 2/6, Forgotten Monument 2/6, Obelisk of Power 1/6 (BANNED since 2026-03-31); core (>=75%) Mobilize 7/7 x3.0, Catalyst of Aeons 7/7 x3.0, Dazzling Aurora 7/7 x3.0, Stacked Deck 7/7 x3.0 (BANNED since 2026-09-18), Gust 7/7 x2.7, Mindsplitter 7/7 x2.1, Last Rites 7/7 x2.0, Bullet Time 7/7 x1.9; flex (25-74%) Sabotage 5/7, Invert Timelines 5/7, Elder Dragon 4/7, Scryer's Bloom 4/7, Lunar Boon 4/7, Challenge 4/7, Flurry of Blades 4/7, Volibear, Imposing 3/7; side deck Unyielding Spirit 7/7, Fading Memories 5/7, Factory Recall 4/7, Sabotage 3/7, Miss Fortune, Buccaneer 3/7
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### OGN-269 The Boss (Sett), Body/Order
 
@@ -961,9 +1262,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** buff 1.00 [enables/rewards] pool 29; conquer 1.00 [rewards] pool 12; protection 1.00 [rewards] pool 20; movement 0.70 [enables] pool 39
 - **Battlefields by text (HEURISTIC):** UNL-206 Altar of Blood (1.2; Moving units, Saving own units from death); SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); OGN-282 Monastery of Hirana (1.0; Buffs, Conquering battlefields); OGN-283 Navori Fighting Pit (1.0; Buffs); UNL-218 Valley of Idols (1.0; Buffs)
 - **Popularity and results (DATA):** 32 published lists since 2026-10-23 (rank 14 of 58, 2.2%); riftbound.gg week-2 tier 3, 0 wins, 4 top cuts; EU Regional Championship 61% over 18 matches; registered as an extra Neeko legend in 3 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 4 event-named):** champion Sett, Kingpin 3/4, Sett, Brawler 1/4; runes 7 Body / 5 Order 4/4; battlefields Monastery of Hirana 4/4, Valley of Idols 3/4, Grove of the God-Willow 2/4, Hunters' Circle 1/4, Packed Amphitheater 1/4; core (>=75%) Pit Rookie 4/4 x3.0, Call to Glory 4/4 x2.8, Pillaged Armory 4/4 x2.8, Rampage 4/4 x2.8, First Mate 4/4 x2.5, Fiora, Victorious 4/4 x2.5, Showstopper 4/4 x2.5, Punch First 4/4 x2.5, Rengar, Trophy Hunter 4/4 x1.8, Vi, Peacekeeper 4/4 x1.5, Trifarian Captain 3/4 x3.0, Kinkou Initiate 3/4 x3.0; flex (25-74%) Irresistible Faefolk 2/4, Cithria of Cloudfield 2/4, Sacrifice 2/4, Sabotage 2/4, Arena Bar 2/4, Hidden Blade 2/4, Nidalee, Cat Form 2/4, Kayle, Justified 1/4
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Sett, Kingpin 2/2; runes 7 Body / 5 Order 2/2; battlefields Grove of the God-Willow 2/2, Monastery of Hirana 2/2, Valley of Idols 2/2; core (>=75%) Arena Bar 2/2 x3.0, First Mate 2/2 x3.0, Pit Rookie 2/2 x3.0, Sabotage 2/2 x3.0, Call to Glory 2/2 x3.0, Fiora, Victorious 2/2 x3.0, Showstopper 2/2 x3.0, Punch First 2/2 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (4 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 8 Day 1 pilots = 0.1% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 5 first, 0 second, 3 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=8, 6 with tournament provenance; sources: pa-fetch 8):** champion Sett, Kingpin 6/8, Sett, Brawler 2/8; runes 7 Body / 5 Order 5/8, 8 Body / 4 Order 1/8, 6 Body / 6 Order 1/8; battlefields Monastery of Hirana 7/8, Valley of Idols 6/8, Grove of the God-Willow 4/8, Packed Amphitheater 3/8, Hunters' Circle 1/8; core (>=75%) Pit Rookie 8/8 x2.9, Pillaged Armory 8/8 x2.9, Showstopper 8/8 x2.8, Punch First 8/8 x2.5, Call to Glory 7/8 x2.9, Rampage 7/8 x2.7, First Mate 7/8 x2.4, Vi, Peacekeeper 7/8 x1.7, Sett, Kingpin 7/8 x1.1, Trifarian Captain 6/8 x2.8, Kinkou Initiate 6/8 x2.8, Fiora, Victorious 6/8 x2.7; flex (25-74%) Cithria of Cloudfield 5/8, Sabotage 5/8, Irresistible Faefolk 4/8, Nidalee, Cat Form 4/8, Arena Bar 3/8, Ruin Runner 2/8, Sacrifice 2/8, Ki Barrier 2/8; side deck Decree of Unity 5/8, Salvage 5/8, Repulse 5/8, Decree of Strength 4/8, Ruin Runner 3/8; shape labels from the deck-theory clustering (6 labelled): unit-aggro 4, spell-tempo 1, gear-engine 1
+  - Builds by Chosen Champion (DATA): Sett, Kingpin 6/8 sets itself apart with Irresistible Faefolk, Call to Glory, Rampage; Sett, Brawler 2/8 sets itself apart with Hold 'Em, Repulse, Ki Barrier, Arena Bar, Challenge
+- **Pre-Radiance lists (DATA, n=5, 5 with tournament provenance; sources: official-rq 5; newest set in list: SFD 2, UNL 3; 0 of them hold a card that is banned today):** champion Sett, Kingpin 4/5, Sett, Brawler 1/5; runes 7 Body / 5 Order 4/5, 9 Body / 3 Order 1/5; battlefields Monastery of Hirana 4/4, Grove of the God-Willow 3/4, Sunken Temple 2/4, Valley of Idols 2/4, Seat of Power 1/4; core (>=75%) First Mate 5/5 x3.0, Pit Rookie 5/5 x3.0, Fiora, Victorious 5/5 x3.0, Showstopper 5/5 x3.0, Punch First 5/5 x3.0, Sabotage 5/5 x2.6, Call to Glory 5/5 x2.6, Challenge 5/5 x2.2; flex (25-74%) Irresistible Faefolk 3/5, Lucian, Merciless 3/5, Repulse 3/5, Vi, Peacekeeper 3/5, Rengar, Trophy Hunter 2/5, Akshan, Mischievous 2/5; side deck Akshan, Mischievous 5/5, Ashe, Focused 3/5, Repulse 3/5, Vi, Peacekeeper 3/5, Lucian, Merciless 2/5
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (6 with tournament provenance: event-named, podium or official); 5 complete pre-Radiance lists)
 
 ### OGS-017 Dark Child - Starter (Annie), Fury/Chaos
 
@@ -978,9 +1282,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** ready-runes 0.60 [enables] pool 0; spell-matters 0.35 [champion or signature text only] pool 72
 - **Battlefields by text (HEURISTIC):** no battlefield text interacts with this legend text; use the data below
 - **Popularity and results (DATA):** 9 published lists since 2026-10-23 (rank 50 of 58, 0.6%); registered as an extra Neeko legend in 2 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 0 event-named):** champion Annie, Fiery 3/4, Annie, Stubborn 1/4; runes 8 Fury / 4 Chaos 2/4, 7 Fury / 5 Chaos 1/4, 6 Fury / 6 Chaos 1/4; battlefields Void Gate 3/4, Zaun Warrens 2/4, Frozen Fortress 2/4, Vilemaw's Lair 1/4, Minefield 1/4; core (>=75%) Void Seeker 3/4 x2.7, Falling Star 3/4 x2.7, Traveling Merchant 3/4 x2.7, Bilgewater Tracker 3/4 x2.7, Seal of Rage 3/4 x2.3, Piercing Light 3/4 x2.0, Gust 3/4 x1.7, Flash 3/4 x1.7, Lost to the Sands 3/4 x1.3, Annie, Fiery 3/4 x1.0; flex (25-74%) Immortal Phoenix 2/4, Amateur Demolitionist 2/4, Kai'Sa, Survivor 2/4, Vi, Destructive 2/4, Ride the Wind 2/4, Shimmering Swimmer 2/4, Tibbers 2/4, Siren's Song 2/4
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Annie, Stubborn 2/2; runes 7 Fury / 5 Chaos 2/2; battlefields The Arena's Greatest 2/2, Zaun Warrens 2/2, Seat of Power 2/2; core (>=75%) Noxus Hopeful 2/2 x3.0, Kai'Sa, Survivor 2/2 x3.0, Stacked Deck 2/2 x3.0, Traveling Merchant 2/2 x3.0, Flash 2/2 x3.0, Ferrous Forerunner 2/2 x3.0, Long Sword 2/2 x3.0, Rengar, Pouncing 2/2 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (0 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 9 Day 1 pilots = 0.1% of the field, 2 in Day 2 = 0.2% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 6 first, 5 second, 4 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 0 with tournament provenance; sources: pa-fetch 6):** champion Annie, Fiery 3/6, Annie, Stubborn 3/6; runes 8 Fury / 4 Chaos 2/6, 6 Fury / 6 Chaos 2/6, 7 Fury / 5 Chaos 1/6; battlefields Void Gate 3/6, Zaun Warrens 3/6, Seat of Power 2/6, Frozen Fortress 2/6, Grove of the God-Willow 1/6; core (>=75%) Traveling Merchant 5/6 x2.8, Gust 5/6 x2.0, Flash 5/6 x2.0; flex (25-74%) Void Seeker 4/6, Falling Star 4/6, Annie, Stubborn 4/6, Kai'Sa, Survivor 3/6, Bilgewater Tracker 3/6, Seal of Rage 3/6, Reckless Innovator 3/6, Piercing Light 3/6; side deck Acceptable Losses 1/3, Firestorm 1/3, Tibbers 1/3, An Offer You Can't Refuse 1/3, Switcheroo 1/3
+  - Builds by Chosen Champion (DATA): Annie, Fiery 3/6 sets itself apart with Bilgewater Tracker, Piercing Light, Tibbers, Amateur Demolitionist, Shimmering Swimmer; Annie, Stubborn 3/6 sets itself apart with Reckless Innovator
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 6, r1-top3 1; newest set in list: SFD 3, UNL 4; 7 of them hold a card that is banned today):** champion Annie, Stubborn 7/7; runes 6 Fury / 6 Chaos 3/7, 7 Fury / 5 Chaos 3/7, 12 Chaos 1/7; battlefields Zaun Warrens 6/6, The Arena's Greatest 5/6 (BANNED since 2026-07-24), Seat of Power 5/6, Reaver's Row 1/6 (BANNED since 2026-03-31), Minefield 1/6; core (>=75%) Stacked Deck 7/7 x3.0 (BANNED since 2026-09-18), Noxus Hopeful 7/7 x2.9, Annie, Stubborn 7/7 x1.0, Kai'Sa, Survivor 6/7 x3.0, Traveling Merchant 6/7 x3.0, Flash 6/7 x3.0, Rengar, Pouncing 6/7 x3.0, Long Sword 6/7 x2.0; flex (25-74%) Ferrous Forerunner 5/7, Overzealous Fan 5/7, Hard Bargain 5/7, Inferna 4/7, Vex, Apathetic 4/7, Star-Crossed 4/7, Rebuke 4/7, Abandon 4/7; side deck Thermo Beam 6/7, Factory Recall 6/7, Switcheroo 6/7, Against the Odds 4/7, Falling Star 3/7
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### OGS-019 Wuju Bladesman - Starter (Master Yi), Calm/Body
 
@@ -998,9 +1305,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** defend 1.00 [rewards] pool 35; defend-alone 1.00 [rewards] pool 28
 - **Battlefields by text (HEURISTIC):** UNL-208 Black Flame Altar (1.0; Defending); UNL-210 Forbidding Waste (1.0; Defending, Lone defender); VEN-159 Kinkou Temple (1.0; Defending); OGN-279 Fortified Position (0.5; Defending); RAD-161 Durand Memorial (0.5; Defending)
 - **Popularity and results (DATA):** 19 published lists since 2026-10-23 (rank 28 of 58, 1.3%); riftbound.gg week-2 tier 2, 2 wins, 5 top cuts; EU Regional Championship 46% over 106 matches; results are per champion name and cannot be split from UNL-191
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=4, 4 event-named):** champion Master Yi, Tempered 4/4; runes 7 Body / 5 Calm 3/4, 8 Body / 4 Calm 1/4; battlefields Emperor's Dais 3/4, Seat of Power 3/4, Star Spring 3/4, Grove of the God-Willow 2/4, Abandoned Hall 1/4; core (>=75%) Charm 4/4 x3.0, Discipline 4/4 x3.0, Pit Rookie 4/4 x3.0, Punch First 4/4 x3.0, Rengar, Trophy Hunter 4/4 x3.0, Lonely Poro 4/4 x2.8, Defy 4/4 x2.5, Ruin Runner 4/4 x2.0, Rampage 4/4 x2.0, Zhonya's Hourglass 4/4 x1.8, Master Yi, Tempered 4/4 x1.0, First Mate 3/4 x3.0; flex (25-74%) Repulse 2/4, Legion Marauder 1/4, Mask of Foresight 1/4, Iridescent Avian 1/4, Elnuk Herd 1/4, Brutalizer 1/4, Alpha Strike 1/4, Invigorating Bloom 1/4
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Master Yi, Tempered 2/2; runes 7 Body / 5 Calm 2/2; battlefields Emperor's Dais 2/2, Seat of Power 2/2, The Arena's Greatest 1/2, Star Spring 1/2; core (>=75%) Charm 2/2 x3.0, Defy 2/2 x3.0, Discipline 2/2 x3.0, Pit Rookie 2/2 x3.0, Lonely Poro 2/2 x3.0, Punch First 2/2 x3.0, Scuttle Crab 2/2 x3.0, Rengar, Trophy Hunter 2/2 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (4 complete lists in pa-fetch-2026-11-11 (4 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 398 Day 1 pilots = 6.7% of the field, 89 in Day 2 = 8.5% of Day 2; Day 2 conversion 22% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 32 first, 22 second, 33 third; with a Radiance card in the list: 0 / 0 / 1
+- **Radiance-era lists (DATA, n=8, 6 with tournament provenance; sources: pa-fetch 7, r1-top3 1):** champion Master Yi, Tempered 8/8; runes 7 Body / 5 Calm 7/8, 8 Body / 4 Calm 1/8; battlefields Emperor's Dais 7/8, Seat of Power 6/8, Star Spring 6/8, Grove of the God-Willow 3/8, Packed Amphitheater 1/8; core (>=75%) Discipline 8/8 x3.0, Pit Rookie 8/8 x3.0, Rengar, Trophy Hunter 8/8 x3.0, Punch First 8/8 x2.9, Charm 8/8 x2.8, Lonely Poro 8/8 x2.6, Defy 8/8 x2.5, Rampage 8/8 x2.1, Master Yi, Tempered 8/8 x1.0, Scuttle Crab 7/8 x2.9, First Mate 7/8 x2.6, Ruin Runner 7/8 x2.0; flex (25-74%) En Garde 5/8, Tomb-Raider Barbara 5/8, Onslaught 5/8, Graves, Blasting Through 3/8, Repulse 3/8, Iridescent Avian 2/8, Brutalizer 2/8, Akali, Silent 2/8; side deck Decree of Strength 8/8, Decree of Focus 6/8, Tomb-Raider Barbara 5/8, Graves, Blasting Through 5/8, Hush 5/8; shape labels from the deck-theory clustering (4 labelled): spell-tempo 4
+- **Pre-Radiance lists (DATA, n=82, 82 with tournament provenance; sources: official-rq 4, pa-fetch 3, pa-sample 1, r1-top3 74; newest set in list: SFD 3, UNL 63, VEN 16; 18 of them hold a card that is banned today):** champion Master Yi, Tempered 69/76, Yi, Honed 7/76; runes 6 Calm / 6 Body 42/82, 7 Body / 5 Calm 40/82; battlefields Star Spring 59/81, Emperor's Dais 29/81, Seat of Power 28/81, Vilemaw's Lair 26/81, Amateur Recital 15/81; core (>=75%) Defy 82/82 x3.0, Charm 82/82 x2.9, Discipline 81/82 x3.0, Punch First 79/82 x2.5, Zhonya's Hourglass 78/82 x2.6, Lonely Poro 76/82 x3.0, Master Yi, Tempered 74/82 x1.0, En Garde 73/82 x2.2; flex (25-74%) Ruin Runner 49/82, Back Off 43/82, Vilemaw 40/82, Sabotage 40/82, Challenge 34/82, Whiteflame Protector 32/82, Tasty Faefolk 31/82, Pit Rookie 28/82; side deck Sabotage 62/82, Akshan, Mischievous 55/82, Not So Fast 39/82, Disarming Rake 35/82, Ruin Runner 31/82; shape labels from the deck-theory clustering (4 labelled): spell-tempo 4
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (6 with tournament provenance: event-named, podium or official); 82 complete pre-Radiance lists)
 
 ### OGS-021 Lady of Luminosity - Starter (Lux), Mind/Order
 
@@ -1016,9 +1325,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** expensive-spells 1.00 [rewards] pool 28; spell-matters 1.00 [rewards] pool 75; draw 0.60 [enables] pool 37
 - **Battlefields by text (HEURISTIC):** OGN-296 Void Gate (1.0; Spells); SFD-215 Ravenbloom Conservatory (1.0; Spells); UNL-211 Forgotten Library (1.0; Expensive spells (4+/5+ Energy), Spells); UNL-216 The Academy (1.0; Spells); VEN-158 Heisho, Shell of the World (1.0; Spells)
 - **Popularity and results (DATA):** 4 published lists since 2026-10-23 (rank 58 of 58, 0.3%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 0 event-named):** champion Lux, Crownguard 3/3; runes 6 Mind / 6 Order 3/3; battlefields Rockfall Path 2/3, Sigil of the Storm 1/3, Void Gate 1/3, Black Rose Sanctum 1/3, Forbidding Waste 1/3; core (>=75%) Singularity 3/3 x2.0, Lux, Crownguard 3/3 x1.7, The Ruination 3/3 x1.7; flex (25-74%) Bellows Breath 2/3, Honest Broker 2/3, Vanguard Armory 2/3, Sprite Burst 2/3, Progress Day 2/3, Imperial Decree 2/3, Drag Under 2/3, Sprite Fountain 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Lux, Crownguard 1/1; runes 7 Mind / 5 Order 1/1; battlefields Aspirant's Climb 1/1, Forgotten Monument 1/1, The Papertree 1/1; core (>=75%) Stupefy 1/1 x3.0, Ekko, Recurrent 1/1 x3.0, Progress Day 1/1 x3.0, Seal of Insight 1/1 x3.0, Time Warp 1/1 x3.0, Forge of the Future 1/1 x3.0, Soaring Scout 1/1 x3.0, Downstage Dramatics 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (0 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 29 Day 1 pilots = 0.5% of the field, 6 in Day 2 = 0.6% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 2 first, 0 second, 2 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 0 with tournament provenance; sources: pa-fetch 6):** champion Lux, Crownguard 6/6; runes 6 Mind / 6 Order 5/6, 8 Mind / 4 Order 1/6; battlefields Forgotten Library 3/6, Void Gate 2/6, Rockfall Path 2/6, Sigil of the Storm 1/6, Trifarian War Camp 1/6; core (>=75%) Lux, Crownguard 6/6 x1.5, Singularity 5/6 x2.0; flex (25-74%) Honest Broker 4/6, Sprite Burst 4/6, Progress Day 4/6, Rousing Display 4/6, Imperial Decree 4/6, The Ruination 4/6, Bellows Breath 3/6, Drag Under 3/6; side deck Salvage 4/5, Decree of Unity 3/5, Dockside Lock-Up 2/5, Wages of Pain 2/5, Forge of the Future 2/5
+- **Pre-Radiance lists (DATA, n=9, 9 with tournament provenance; sources: official-rq 6, r1-top3 3; newest set in list: SFD 2, UNL 6, VEN 1; 7 of them hold a card that is banned today):** champion Lux, Crownguard 9/9; runes 7 Mind / 5 Order 5/9, 6 Mind / 6 Order 4/9; battlefields Aspirant's Climb 6/8 (BANNED since 2026-07-24), The Papertree 5/8, Forgotten Monument 4/8, Sigil of the Storm 3/8, Vilemaw's Lair 3/8; core (>=75%) Lux, Crownguard 9/9 x1.0, Stupefy 8/9 x2.8, Time Warp 8/9 x2.4, Progress Day 7/9 x2.9, The Ruination 7/9 x1.4; flex (25-74%) Soaring Scout 6/9, Seal of Insight 6/9, Ekko, Recurrent 5/9 (BANNED since 2026-09-18), Shadow's Call 5/9, Sacrifice 5/9, Forge of the Future 5/9, Cull the Weak 5/9, Wages of Pain 5/9; side deck Salvage 5/9, Ashe, Focused 5/9, Wages of Pain 4/9, Garbage Grabber 4/9, Card Sharp 3/9
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 9 complete pre-Radiance lists)
 
 ### OGS-023 Might of Demacia - Starter (Garen), Body/Order
 
@@ -1034,9 +1345,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** conquer 1.00 [rewards] pool 12; wide 1.00 [rewards] pool 21; draw 0.60 [enables] pool 27
 - **Battlefields by text (HEURISTIC):** OGN-282 Monastery of Hirana (0.5; Conquering battlefields); OGN-286 Reckoner's Arena (0.5; Conquering battlefields); OGN-287 Sigil of the Storm (0.5; Conquering battlefields); OGN-289 Targon's Peak (0.5; Conquering battlefields); OGN-291 The Candlelit Sanctum (0.5; Conquering battlefields)
 - **Popularity and results (DATA):** 5 published lists since 2026-10-23 (rank 57 of 58, 0.4%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 0 event-named):** champion Garen, Rugged 2/3, Garen, Commander 1/3; runes 6 Body / 6 Order 1/3, 8 Body / 4 Order 1/3, 8 Order / 4 Body 1/3; battlefields Trifarian War Camp 2/3, Monastery of Hirana 1/3, The Grand Plaza 1/3, Ruined Monastery 1/3, Rockfall Path 1/3; core (>=75%) -; flex (25-74%) Vanguard Captain 2/3, Seal of Unity 2/3, Trifarian Captain 2/3, Xin Zhao, Vigilant 2/3, Cull the Weak 2/3, Rengar, Trophy Hunter 2/3, Vi, Peacekeeper 2/3, Garen, Rugged 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (0 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 9 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 1 Day 1 pilots = 0.0% of the field, 0 in Day 2 = 0.0% of Day 2; fewer than 30 Day 1 pilots, so no conversion rate is shown
+- **Radiance-era lists (DATA, n=6, 0 with tournament provenance; sources: pa-fetch 6):** champion Garen, Commander 3/6, Garen, Rugged 3/6; runes 6 Body / 6 Order 2/6, 8 Order / 4 Body 2/6, 8 Body / 4 Order 1/6; battlefields Trifarian War Camp 4/6, Monastery of Hirana 2/6, The Grand Plaza 2/6, Forbidding Waste 2/6, Black Rose Sanctum 1/6; core (>=75%) -; flex (25-74%) Vanguard Captain 4/6, Cull the Weak 4/6, Seal of Unity 3/6, Trifarian Captain 3/6, Rengar, Trophy Hunter 3/6, Vi, Peacekeeper 3/6, Hidden Blade 3/6, Garen, Commander 3/6; side deck Salvage 2/4, Decree of Strength 2/4, Unyielding Spirit 2/4, Sabotage 1/4, Commander Ledros 1/4
+  - Builds by Chosen Champion (DATA): Garen, Commander 3/6 sets itself apart with Confront, Decisive Strike, Rousing Display, Raucous Anthem, Vanguard Armory; Garen, Rugged 3/6 sets itself apart with Trifarian Captain, Rengar, Trophy Hunter, Vi, Peacekeeper, Pit Rookie, Call to Glory
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 7; newest set in list: SFD 3, UNL 4; 6 of them hold a card that is banned today):** champion Garen, Rugged 4/7, Garen, Commander 3/7; runes 6 Body / 6 Order 5/7, 7 Body / 5 Order 2/7; battlefields Aspirant's Climb 6/6 (BANNED since 2026-07-24), Forgotten Monument 4/6, The Papertree 4/6, Sigil of the Storm 2/6, Obelisk of Power 1/6 (BANNED since 2026-03-31); core (>=75%) Mobilize 7/7 x3.0, Catalyst of Aeons 7/7 x3.0, Dazzling Aurora 7/7 x3.0, Forge of the Future 7/7 x2.9, Vanguard Armory 7/7 x2.6, Confront 6/7 x2.8, Harnessed Dragon 6/7 x2.7; flex (25-74%) Rally the Troops 5/7, Cull the Weak 5/7, Elder Dragon 4/7, Deadbloom Predator 4/7, Blood Money 4/7, Sabotage 4/7, Garen, Rugged 4/7, Flurry of Blades 3/7; side deck Salvage 7/7, Sabotage 6/7, Unyielding Spirit 5/7, Divine Judgment 3/7, Rengar, Trophy Hunter 1/7
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### RAD-139 Boy Who Shattered Time (Ekko), Fury/Mind
 
@@ -1054,9 +1367,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** empower 0.80 [enables/needs] pool 13; death 0.67 [enables] pool 9; cost-reduction 0.60 [enables] pool 11; self-sacrifice 0.60 [enables] pool 53; unit 0.60 [enables] pool 26
 - **Battlefields by text (HEURISTIC):** VEN-163 Risen Altar (0.8; Empower); RAD-159 Black Rose Sanctum (0.7; Units dying); RAD-163 Hunters' Circle (0.6; Cost reduction); RAD-165 Rakelstake (0.6; Playing units); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 59 published lists since 2026-10-23 (rank 5 of 58, 4.1%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Ekko, Ingenious 3/3; runes 6 Fury / 6 Mind 2/3, 7 Fury / 5 Mind 1/3; battlefields Seat of Power 2/3, Dusk Rose Lab 2/3, Forbidding Waste 2/3, Firelights' Hideout 1/3, Rockfall Path 1/3; core (>=75%) Noxus Hopeful 3/3 x3.0, Stupefy 3/3 x3.0, Thousand-Tailed Watcher 3/3 x2.7, Falling Star 3/3 x2.3, Blood Rush 3/3 x2.0, Shock Blast 3/3 x2.0, Legion Rearguard 3/3 x1.7, Pyke, Dockside Butcher 3/3 x1.7, Ekko, Ingenious 3/3 x1.0; flex (25-74%) Watchful Sentry 2/3, Runeblade Anvil 2/3, Detonate 2/3, Battering Ram 2/3, Forecaster 2/3, Sprite Fountain 2/3, Seal of Rage 2/3, Kai'Sa, Survivor 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=4, 4 with tournament provenance; sources: pa-fetch 4):** champion Ekko, Ingenious 4/4; runes 7 Fury / 5 Mind 2/4, 6 Fury / 6 Mind 2/4; battlefields Rockfall Path 3/4, Seat of Power 2/4, Ripper's Bay 2/4, Void Gate 1/4, Firelights' Hideout 1/4; core (>=75%) Stupefy 4/4 x3.0, Falling Star 4/4 x2.5, Thousand-Tailed Watcher 4/4 x2.5, Shock Blast 4/4 x2.0, Ekko, Ingenious 4/4 x1.0, Noxus Hopeful 3/4 x3.0, Plundering Poro 3/4 x3.0, Pyke, Dockside Butcher 3/4 x1.7, Temporal Breach 3/4 x1.7, Time Warp 3/4 x1.3; flex (25-74%) Kai'Sa, Survivor 2/4, Forecaster 2/4, Bilgewater Tracker 2/4, Brynhir Thundersong 2/4, Ekko, Revolutionary 2/4, Blood Rush 2/4, Legion Rearguard 2/4, Vayne, Hunter 2/4; side deck Decree of Insight 4/4, Unchecked Power 4/4, Decree of Rage 3/4, Antagonistic Apparatus 2/4, Bilgewater Tracker 2/4; shape labels from the deck-theory clustering (4 labelled): unit-aggro 2, gear-engine 1, big-control 1
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (4 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-141 Hexplosives Expert (Ziggs), Fury/Chaos
 
@@ -1071,9 +1385,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** gear-token 0.80 [enables] pool 16; tag:Bomb 0.60 [enables] pool 6; death 0.32 [champion or signature text only] pool 6
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 40 published lists since 2026-10-23 (rank 8 of 58, 2.8%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Ziggs, Explosive 3/3; runes 8 Fury / 4 Chaos 3/3; battlefields Void Gate 3/3, Rakelstake 3/3, Forbidding Waste 3/3; core (>=75%) Falling Star 3/3 x3.0, Acceptable Losses 3/3 x3.0, Pack of Wonders 3/3 x3.0, Treasure Trove 3/3 x3.0, Amateur Demolitionist 3/3 x3.0, Bilgewater Tracker 3/3 x3.0, Shimmering Swimmer 3/3 x3.0, Seal of Rage 3/3 x2.0, Ekko, Revolutionary 3/3 x2.0, Detonate 3/3 x2.0, Fizz, Trickster 3/3 x2.0, Ezreal, Prodigy 3/3 x2.0; flex (25-74%) -
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=6, 6 with tournament provenance; sources: pa-fetch 6):** champion Ziggs, Explosive 3/5, Ziggs, Short-Fused 2/5; runes 6 Fury / 6 Chaos 2/6, 8 Fury / 4 Chaos 1/6, 7 Fury / 5 Chaos 1/6; battlefields Void Gate 4/6, Rakelstake 4/6, Fortified Position 1/6, Sigil of the Storm 1/6, Targon's Peak 1/6; core (>=75%) Detonate 6/6 x2.3; flex (25-74%) Amateur Demolitionist 4/6, Pack of Wonders 4/6, Shimmering Swimmer 4/6, Bilgewater Tracker 4/6, Ziggs, Explosive 4/6, Falling Star 3/6, Treasure Trove 3/6, Seal of Rage 3/6; side deck Star-Crossed 4/4, Decree of Rage 3/4, Kha'Zix, Mutating Horror 2/4, Vex, Apathetic 2/4, Gust 1/4; shape labels from the deck-theory clustering (4 labelled): gear-engine 3, unit-aggro 1
+  - Builds by Chosen Champion (DATA): Ziggs, Explosive 3/5 sets itself apart with Whirling Twirligig, Boots of Swiftness, Fizz, Trickster, The List, Vex, Apathetic; Ziggs, Short-Fused 2/5 sets itself apart with Runeblade Anvil, Detonation Amplifier, Iron Ballista, Pack of Wonders, Annie, Fiery
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (6 complete Radiance-era lists (6 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-143 Iron Revenant (Mordekaiser), Fury/Order
 
@@ -1090,9 +1406,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** gear 1.00 [needs/rewards] pool 37; unit 1.00 [rewards] pool 26; banish 0.80 [needs] pool 11; trash 0.80 [needs] pool 18; energy-ramp 0.60 [enables] pool 6; death 0.35 [champion or signature text only] pool 29
 - **Battlefields by text (HEURISTIC):** RAD-162 Firelights' Hideout (1.0; Playing units); RAD-165 Rakelstake (1.0; Gear (non-Equipment included), Playing units); SFD-221 Veiled Temple (1.0; Gear (non-Equipment included)); OGN-281 Hallowed Tomb (0.8; Trash as a resource); SFD-212 Minefield (0.8; Trash as a resource)
 - **Popularity and results (DATA):** 77 published lists since 2026-10-23 (rank 2 of 58, 5.3%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Mordekaiser, Dominating 3/3; runes 6 Fury / 6 Order 2/3, 7 Fury / 5 Order 1/3; battlefields Zaun Warrens 3/3, Ruined Monastery 2/3, Minefield 2/3, Packed Amphitheater 1/3, Seat of Power 1/3; core (>=75%) Kai'Sa, Survivor 3/3 x3.0, Realm of Death 3/3 x3.0, Carrion Dredger 3/3 x3.0, Long Sword 3/3 x2.3, Hidden Blade 3/3 x2.0, Vi, Peacekeeper 3/3 x2.0, Shen, Kinkou 3/3 x1.7, Mordekaiser, Dominating 3/3 x1.0; flex (25-74%) Vanguard Captain 2/3, Trifarian Captain 2/3, Honest Broker 2/3, Falling Star 2/3, Jhin, Murderous Artist 2/3, Rengar, Unseen 2/3, Bilgewater Tracker 2/3, Xin Zhao, Vigilant 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=9, 9 with tournament provenance; sources: pa-fetch 9):** champion Mordekaiser, Dominating 8/9, Mordekaiser, Twice Slain 1/9; runes 6 Fury / 6 Order 3/9, 7 Order / 5 Fury 3/9, 7 Fury / 5 Order 2/9; battlefields Zaun Warrens 7/9, Ruined Monastery 6/9, Minefield 6/9, Black Rose Sanctum 3/9, Trifarian War Camp 2/9; core (>=75%) Realm of Death 9/9 x2.8, Carrion Dredger 9/9 x2.8, Kai'Sa, Survivor 8/9 x3.0, Mordekaiser, Dominating 8/9 x1.0, Vanguard Captain 7/9 x2.9, Long Sword 7/9 x2.4, Vi, Peacekeeper 7/9 x1.9; flex (25-74%) Trifarian Captain 6/9, Bilgewater Tracker 6/9, Xin Zhao, Vigilant 6/9, Hidden Blade 6/9, Shen, Kinkou 6/9, Imperial Decree 6/9, Honest Broker 5/9, Spectral Matron 5/9; side deck Salvage 7/8, Decree of Unity 7/8, Ferrous Forerunner 7/8, Decree of Rage 6/8, Falling Star 5/8; shape labels from the deck-theory clustering (7 labelled): unit-aggro 7
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (9 complete Radiance-era lists (9 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-145 Lady of Clockwork (Orianna), Calm/Mind
 
@@ -1109,9 +1426,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** gear 1.00 [enables/needs/rewards] pool 42; unit-gear 0.60 [enables] pool 16
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Gear (non-Equipment included)); RAD-163 Hunters' Circle (0.5; Gear (non-Equipment included)); RAD-165 Rakelstake (0.5; Gear (non-Equipment included)); SFD-213 Ornn's Forge (0.5; Gear (non-Equipment included)); VEN-161 Piltovan Forge (0.5; Gear (non-Equipment included))
 - **Popularity and results (DATA):** 70 published lists since 2026-10-23 (rank 4 of 58, 4.9%); riftbound.gg week-2 tier 4, 0 wins, 2 top cuts; EU Regional Championship 50% over 24 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Orianna, Exquisite 2/3, Orianna, Mechanical Marvel 1/3; runes 8 Mind / 4 Calm 1/3, 7 Calm / 5 Mind 1/3, 8 Calm / 4 Mind 1/3; battlefields Veiled Temple 3/3, Void Gate 2/3, Ornn's Forge 2/3, Rockfall Path 2/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Singularity 3/3 x2.0; flex (25-74%) Stupefy 2/3, The Ball 2/3, Plundering Poro 2/3, Wages of Pain 2/3, Ravenbloom Student 2/3, Thousand-Tailed Watcher 2/3, Cloth Armor 2/3, Patched Porobot 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=9, 9 with tournament provenance; sources: pa-fetch 9):** champion Orianna, Exquisite 8/9, Orianna, Mechanical Marvel 1/9; runes 7 Calm / 5 Mind 3/9, 8 Calm / 4 Mind 2/9, 6 Calm / 6 Mind 2/9; battlefields Veiled Temple 9/9, Ornn's Forge 7/9, Rockfall Path 5/9, Void Gate 2/9, Targon's Peak 1/9; core (>=75%) Defy 9/9 x3.0, Discipline 9/9 x3.0, Cloth Armor 8/9 x2.6, Orianna, Exquisite 8/9 x1.0; flex (25-74%) The Ball 6/9, Patched Porobot 6/9, Sterak's Gage 6/9, Singularity 6/9, Mask of Foresight 5/9, Stupefy 5/9, Ravenbloom Student 5/9, Thousand-Tailed Watcher 5/9; side deck Not So Fast 9/9, Decree of Insight 8/9, Disarming Rake 6/9, Decree of Focus 6/9, Hush 6/9; shape labels from the deck-theory clustering (9 labelled): spell-tempo 5, gear-engine 4
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (9 complete Radiance-era lists (9 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-147 Pride of Nazumah (K'Sante), Calm/Body
 
@@ -1127,9 +1445,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** defend 1.00 [enables/rewards] pool 36; shield 1.00 [enables/rewards] pool 25; assault 0.60 [enables] pool 5
 - **Battlefields by text (HEURISTIC):** UNL-208 Black Flame Altar (2.0; Defending, Shield); OGN-279 Fortified Position (1.0; Defending, Shield); VEN-159 Kinkou Temple (1.0; Defending); SFD-210 Hall of Legends (0.6; Readies the legend); RAD-161 Durand Memorial (0.5; Defending)
 - **Popularity and results (DATA):** 36 published lists since 2026-10-23 (rank 11 of 58, 2.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion K'Sante, Dauntless 2/3, K'Sante, Courageous 1/3; runes 6 Calm / 6 Body 2/3, 7 Calm / 5 Body 1/3; battlefields Fortified Position 2/3, Grove of the God-Willow 2/3, Amateur Recital 2/3, Forgotten Monument 1/3, Seat of Power 1/3; core (>=75%) Discipline 3/3 x3.0, Ntofo Strikes 3/3 x3.0, Mutated Mouser 3/3 x3.0, Defy 3/3 x2.7, Punch First 3/3 x2.7, Nazuman Ntofo 3/3 x2.3, Zhonya's Hourglass 3/3 x2.0, Block 3/3 x1.7; flex (25-74%) Stalwart Poro 2/3, Scuttle Crab 2/3, Astral Heron 2/3, First Mate 2/3, Consult the Heavens 2/3, Ruin Runner 2/3, Hunting Blind 2/3, K'Sante, Dauntless 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=7, 7 with tournament provenance; sources: pa-fetch 7):** champion K'Sante, Dauntless 4/7, K'Sante, Courageous 3/7; runes 6 Calm / 6 Body 4/7, 7 Calm / 5 Body 2/7, 7 Body / 5 Calm 1/7; battlefields Fortified Position 4/7, Grove of the God-Willow 4/7, Durand Memorial 2/7, Seat of Power 2/7, Amateur Recital 2/7; core (>=75%) Mutated Mouser 7/7 x3.0, Ntofo Strikes 7/7 x2.6, Nazuman Ntofo 7/7 x2.4, Defy 6/7 x2.8, Discipline 6/7 x2.8, Punch First 6/7 x2.5, Block 6/7 x2.0; flex (25-74%) Stalwart Poro 5/7, Consult the Heavens 5/7, Scuttle Crab 5/7, Zhonya's Hourglass 4/7, Charm 4/7, K'Sante, Courageous 4/7, K'Sante, Dauntless 4/7, Astral Heron 3/7; side deck Decree of Focus 5/6, Hush 4/6, Ruin Runner 3/6, Sabotage 3/6, Graves, Blasting Through 3/6; shape labels from the deck-theory clustering (6 labelled): spell-tempo 6
+  - Builds by Chosen Champion (DATA): K'Sante, Dauntless 4/7 sets itself apart with Stoic Ferryman, Sabotage, Armored Tusker, Stalwart Goatherd, Graves, Blasting Through; K'Sante, Courageous 3/7 sets itself apart with Stalwart Poro
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (7 complete Radiance-era lists (7 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-149 The Exile (Riven), Calm/Chaos
 
@@ -1145,10 +1465,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** RAD-150 Blade of the Exile (gear, 3 Energy, 1 Power, 3 Might): "[Equip] — [Any] or exhaust a friendly unit. (Pay the cost: Attach this to a unit you control.) // [Ganking] (I can move from battlefield to battlefield.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** unit 1.00 [rewards] pool 26; ready 0.67 [enables] pool 19
 - **Battlefields by text (HEURISTIC):** RAD-162 Firelights' Hideout (1.0; Playing units); RAD-165 Rakelstake (0.5; Playing units)
-- **Popularity and results (DATA):** 76 published lists since 2026-10-23 (rank 3 of 58, 5.3%); riftbound.gg week-2 tier S, 5 wins, 16 top cuts; EU Regional Championship 54% over 524 matches; registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Riven, Broken Blade 3/3; runes 7 Chaos / 5 Calm 3/3; battlefields Emperor's Dais 3/3, Star Spring 3/3, Rakelstake 2/3, Windswept Hillock 1/3; core (>=75%) Discipline 3/3 x3.0, Blade of the Exile 3/3 x3.0, Stellacorn Herder 3/3 x3.0, Astral Heron 3/3 x3.0, Defy 3/3 x2.7, Zhonya's Hourglass 3/3 x2.7, Tideturner 3/3 x2.3, Reckless Innovator 3/3 x2.3, Bedeviling Stranger 3/3 x2.3, Gust 3/3 x2.0, Scuttle Crab 3/3 x2.0, Blitzcrank, Impassive 3/3 x1.7; flex (25-74%) Battle Preparations 2/3, Traveling Merchant 1/3, Evelynn, Entrancing 1/3, En Garde 1/3, Ki Burst 1/3, Baron Nashor 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 76 published lists since 2026-10-23 (rank 3 of 58, 5.3%); riftbound.gg week-2 tier S, 5 wins, 16 top cuts; EU Regional Championship 54% over 524 matches; registered as an extra Neeko legend in 2 fetched lists
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 5 first, 2 second, 1 third; with a Radiance card in the list: 5 / 2 / 1
+- **Radiance-era lists (DATA, n=26, 26 with tournament provenance; sources: pa-fetch 19, r1-top3 7):** champion Riven, Broken Blade 25/26, Riven, Deserter 1/26; runes 7 Chaos / 5 Calm 13/26, 6 Calm / 6 Chaos 13/26; battlefields Star Spring 26/26, Hunters' Circle 19/26, Emperor's Dais 19/26, Rakelstake 8/26, Windswept Hillock 3/26; core (>=75%) Blade of the Exile 26/26 x2.9, Stellacorn Herder 26/26 x2.9, Defy 26/26 x2.6, Reckless Innovator 26/26 x2.6, Riven, Broken Blade 26/26 x1.1, Discipline 25/26 x2.9, Tideturner 25/26 x2.5, Bedeviling Stranger 25/26 x2.4, Blitzcrank, Impassive 23/26 x1.8, Star-Crossed 23/26 x1.3, Zhonya's Hourglass 22/26 x2.9, Astral Heron 21/26 x3.0; flex (25-74%) Scuttle Crab 17/26, Switcheroo 17/26, Not So Fast 17/26, Traveling Merchant 11/26, Ki Burst 11/26; side deck An Offer You Can't Refuse 24/26, Decree of Focus 23/26, Hush 22/26, Vex, Apathetic 20/26, Not So Fast 15/26; shape labels from the deck-theory clustering (18 labelled): spell-tempo 18
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (26 complete Radiance-era lists (26 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-151 Starry-Eyed Songstress (Seraphine), Mind/Order
 
@@ -1165,9 +1487,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** spell-matters 1.00 [enables/rewards] pool 75; wide 0.80 [needs] pool 33; cost-reduction 0.60 [enables] pool 13; draw 0.32 [champion or signature text only] pool 38; token 0.32 [champion or signature text only] pool 33
 - **Battlefields by text (HEURISTIC):** OGN-296 Void Gate (1.0; Spells); SFD-215 Ravenbloom Conservatory (1.0; Spells); UNL-216 The Academy (1.0; Spells); VEN-158 Heisho, Shell of the World (1.0; Spells); VEN-164 Sandswept Tomb (1.0; Spells)
 - **Popularity and results (DATA):** 40 published lists since 2026-10-23 (rank 9 of 58, 2.8%); riftbound.gg week-2 tier 4, 0 wins, 0 top cuts
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Seraphine, Inspiring 3/3; runes 7 Order / 5 Mind 3/3; battlefields Forbidding Waste 3/3, Vilemaw's Lair 2/3, Void Gate 2/3, Rockfall Path 1/3, Seat of Power 1/3; core (>=75%) Stupefy 3/3 x3.0, Cull the Weak 3/3 x3.0, Concert Poster 3/3 x3.0, Trifarian Captain 3/3 x2.7, Encore 3/3 x2.7, Bellows Breath 3/3 x2.7, Hidden Blade 3/3 x2.3, Imperial Decree 3/3 x2.3, Carrion Dredger 3/3 x2.3, Seraphine, Inspiring 3/3 x1.0; flex (25-74%) Vanguard Captain 2/3, Thousand-Tailed Watcher 2/3, Faithful Manufactor 2/3, Seal of Unity 2/3, Shadow's Call 2/3, Vi, Peacekeeper 2/3, Mordekaiser, Dominating 2/3, Kennen, Keeper of Balance 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=5, 5 with tournament provenance; sources: pa-fetch 5):** champion Seraphine, Not Alone 3/5, Seraphine, Inspiring 2/5; runes 6 Mind / 6 Order 3/5, 7 Order / 5 Mind 2/5; battlefields Void Gate 2/5, Black Rose Sanctum 2/5, Forbidding Waste 2/5, Trifarian War Camp 1/5, Vilemaw's Lair 1/5; core (>=75%) Concert Poster 5/5 x3.0, Encore 5/5 x2.0, Seraphine, Inspiring 4/5 x1.5; flex (25-74%) Cull the Weak 3/5, Imperial Decree 3/5, Bellows Breath 3/5, Faithful Manufactor 3/5, Seraphine, Not Alone 3/5, Stupefy 2/5, Strigian Oracle 2/5, Hidden Blade 2/5; side deck n too small; shape labels from the deck-theory clustering (3 labelled): gear-engine 2, big-control 1
+  - Builds by Chosen Champion (DATA): Seraphine, Not Alone 3/5 sets itself apart with Fanfare, High Note, Industrious Mechsmith, Strigian Oracle, Piltovan Guidebot; Seraphine, Inspiring 2/5 sets itself apart with Stupefy, Hidden Blade, Trifarian Captain, Carrion Dredger, Cull the Weak
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (5 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-153 Agony's Embrace (Evelynn), Body/Chaos
 
@@ -1183,10 +1507,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** RAD-154 Last Caress (spell, 2 Energy): "[Reaction] (Play any time, even before spells and abilities resolve.) // The next unit you play this turn (even from face down) can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [Might] buff if it doesn't have one.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** hidden 1.00 [rewards] pool 18; play-from-elsewhere 1.00 [rewards] pool 32; discard 0.60 [enables] pool 14; draw 0.60 [enables] pool 35
 - **Battlefields by text (HEURISTIC):** OGN-278 Bandle Tree (1.0; Hidden / face-down cards); RAD-157 Bandle Scouts' Academy (0.5; Hidden / face-down cards)
-- **Popularity and results (DATA):** 100 published lists since 2026-10-23 (rank 1 of 58, 6.9%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Evelynn, Entrancing 3/3; runes 8 Chaos / 4 Body 2/3, 6 Body / 6 Chaos 1/3; battlefields Bandle Scouts' Academy 3/3, Startipped Peak 2/3, Rakelstake 2/3, Bandle Tree 1/3, Grove of the God-Willow 1/3; core (>=75%) Gutter Guardian 3/3 x2.7, Pyke, Returned 3/3 x2.7, K'Sante, Courageous 3/3 x2.3, Hold 'Em 3/3 x2.0, Boots of Swiftness 3/3 x2.0, Rengar, Trophy Hunter 3/3 x2.0, Vex, Apathetic 3/3 x2.0, Rampage 3/3 x2.0, Edge of Night 3/3 x1.7, Switcheroo 3/3 x1.3, Evelynn, Entrancing 3/3 x1.0; flex (25-74%) Kinkou Initiate 2/3, Tornado Warrior 2/3, Tail-Cloaked Matriarch 2/3, Fizz, Trickster 2/3, Ezreal, Prodigy 2/3, Star-Crossed 2/3, Baron Nashor 2/3, Onslaught 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 100 published lists since 2026-10-23 (rank 1 of 58, 6.9%); registered as an extra Neeko legend in 1 fetched lists
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=9, 9 with tournament provenance; sources: pa-fetch 9):** champion Evelynn, Entrancing 9/9; runes 6 Body / 6 Chaos 4/9, 8 Chaos / 4 Body 3/9, 7 Chaos / 5 Body 1/9; battlefields Bandle Scouts' Academy 8/9, Rakelstake 6/9, Startipped Peak 6/9, Grove of the God-Willow 3/9, Bandle Tree 2/9; core (>=75%) Pyke, Returned 9/9 x2.4, Hold 'Em 9/9 x2.2, Rengar, Trophy Hunter 9/9 x1.9, Switcheroo 9/9 x1.7, Evelynn, Entrancing 9/9 x1.0, Gutter Guardian 8/9 x2.6, Rampage 8/9 x2.2, Vex, Apathetic 8/9 x2.1, Boots of Swiftness 8/9 x2.0, Edge of Night 7/9 x1.7, Star-Crossed 7/9 x1.7; flex (25-74%) Punch First 6/9, Momentary Companion 5/9, Bedeviling Stranger 5/9, K'Sante, Courageous 5/9, Fizz, Trickster 5/9, Kinkou Initiate 4/9, Ezreal, Prodigy 4/9, Sabotage 4/9; side deck Graves, Blasting Through 7/9, An Offer You Can't Refuse 5/9, Ravenbloom Prefect 4/9, Rampage 4/9, Decree of Strength 3/9; shape labels from the deck-theory clustering (9 labelled): unit-aggro 9
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (9 complete Radiance-era lists (9 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### RAD-155 Exemplar of Demacia (Jarvan IV), Body/Order
 
@@ -1202,9 +1527,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** deploy 1.00 [rewards] pool 7; gear 1.00 [rewards] pool 41; movement 0.70 [enables] pool 38
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Gear (non-Equipment included)); OGN-277 Back-Alley Bar (0.7; Moving units); UNL-206 Altar of Blood (0.7; Moving units); SFD-210 Hall of Legends (0.6; Readies the legend); RAD-163 Hunters' Circle (0.5; Gear (non-Equipment included))
 - **Popularity and results (DATA):** 36 published lists since 2026-10-23 (rank 12 of 58, 2.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Jarvan IV, Martial Paragon 2/3, Jarvan IV, Royal Heir 1/3; runes 6 Body / 6 Order 2/3, 7 Body / 5 Order 1/3; battlefields Monastery of Hirana 3/3, Seat of Power 3/3, Packed Amphitheater 2/3, Forbidding Waste 1/3; core (>=75%) Pit Rookie 3/3 x3.0, Pillaged Armory 3/3 x3.0, Lucian, Merciless 3/3 x3.0, Irresistible Faefolk 3/3 x3.0, Rengar, Trophy Hunter 3/3 x3.0, Call to Glory 3/3 x2.7, Trifarian Captain 3/3 x2.7, Demacian Standard 3/3 x2.7, Nidalee, Cat Form 3/3 x2.7, First Mate 3/3 x2.0, Sett, Kingpin 3/3 x2.0, Punch First 3/3 x2.0; flex (25-74%) Skystrike Squadron 2/3, Jarvan IV, Martial Paragon 2/3, Kinkou Initiate 1/3, Yone, Blademaster 1/3, Portable Portal 1/3, Jarvan IV, Royal Heir 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field:** not in any official field table (the last one is Los Angeles, published 2026-09-30)
+- **Radiance-era lists (DATA, n=6, 4 with tournament provenance; sources: pa-fetch 6):** champion Jarvan IV, Martial Paragon 5/6, Jarvan IV, Royal Heir 1/6; runes 7 Body / 5 Order 3/6, 6 Body / 6 Order 2/6, 8 Body / 4 Order 1/6; battlefields Monastery of Hirana 4/6, Hunters' Circle 4/6, Packed Amphitheater 2/6, Rakelstake 2/6, Ornn's Forge 2/6; core (>=75%) Pillaged Armory 6/6 x3.0, Trifarian Captain 6/6 x2.8, Demacian Standard 6/6 x2.5, Pit Rookie 5/6 x2.8, Skystrike Squadron 5/6 x2.4, Punch First 5/6 x2.4, Rampage 5/6 x2.4, Concert Poster 5/6 x2.2, Jarvan IV, Martial Paragon 5/6 x1.0; flex (25-74%) Call to Glory 4/6, Nidalee, Cat Form 4/6, Rengar, Trophy Hunter 4/6, Lucian, Merciless 3/6, First Mate 3/6, Repulse 3/6, Kinkou Initiate 2/6, Irresistible Faefolk 2/6; side deck Repulse 5/5, Salvage 4/5, Dockside Lock-Up 4/5, Ruin Runner 3/5, Decree of Unity 3/5; shape labels from the deck-theory clustering (3 labelled): unit-aggro 2, gear-engine 1
+- **Pre-Radiance lists (DATA):** n=0
+- **Data confidence: ok; advice basis: radiance-lists** (6 complete Radiance-era lists (4 with tournament provenance: event-named, podium or official); 0 complete pre-Radiance lists)
 
 ### SFD-181 Mechanized Menace (Rumble), Fury/Mind
 
@@ -1220,9 +1546,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** tag:Mech 1.00 [rewards] pool 20; defend 0.60 [enables] pool 13; shield 0.60 [enables] pool 5
 - **Battlefields by text (HEURISTIC):** OGN-279 Fortified Position (1.2; Defending, Shield); RAD-161 Durand Memorial (0.6; Defending); SFD-215 Ravenbloom Conservatory (0.6; Defending); UNL-210 Forbidding Waste (0.6; Defending); VEN-166 Threshold of the Gray (0.6; Defending)
 - **Popularity and results (DATA):** 14 published lists since 2026-10-23 (rank 38 of 58, 1.0%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 1 event-named):** champion Rumble, Hotheaded 3/3; runes 7 Fury / 5 Mind 2/3, 8 Fury / 4 Mind 1/3; battlefields Zaun Warrens 3/3, Grove of the God-Willow 1/3, Startipped Peak 1/3, Trifarian War Camp 1/3, Seat of Power 1/3; core (>=75%) Bubble Bot 3/3 x3.0, Forecaster 3/3 x3.0, Patched Porobot 3/3 x3.0, Gem Jammer 3/3 x2.7, Falling Star 3/3 x2.3, Ferrous Forerunner 3/3 x2.0, Long Sword 3/3 x1.7, Rumble, Hotheaded 3/3 x1.7; flex (25-74%) Stupefy 2/3, Incorrigible Construct 2/3, Temporal Breach 2/3, Antagonistic Apparatus 2/3, Consult the Past 1/3, Lecturing Yordle 1/3, Time Warp 1/3, Resource Extractor 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 77 Day 1 pilots = 1.3% of the field, 4 in Day 2 = 0.4% of Day 2; Day 2 conversion 5% against 18% for the whole field
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Rumble, Hotheaded 5/6, Rumble, Scrapper 1/6; runes 8 Fury / 4 Mind 3/6, 7 Fury / 5 Mind 1/6, 6 Fury / 6 Mind 1/6; battlefields Zaun Warrens 5/6, Rockfall Path 3/6, Minefield 2/6, Seat of Power 2/6, Grove of the God-Willow 1/6; core (>=75%) Stupefy 6/6 x3.0, Forecaster 6/6 x3.0, Incorrigible Construct 6/6 x2.8, Gem Jammer 6/6 x2.8, Bubble Bot 6/6 x2.8, Ferrous Forerunner 6/6 x2.0, Rumble, Hotheaded 6/6 x1.8, Antagonistic Apparatus 5/6 x2.4, Temporal Breach 5/6 x2.4, Falling Star 5/6 x2.0, Clanging Sentry 5/6 x1.6; flex (25-74%) Patched Porobot 4/6, Cleave 4/6, Consult the Past 4/6, Long Sword 4/6, Thousand-Tailed Watcher 3/6, Rumble, Scrapper 3/6, Resource Extractor 2/6, Noxus Hopeful 2/6; side deck Brittle Steel 4/6, Decree of Insight 4/6, Thermo Beam 4/6, Decree of Rage 3/6, Against the Odds 3/6; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 7, pa-fetch 1; newest set in list: SFD 3, UNL 2, VEN 3; 1 of them hold a card that is banned today):** champion Rumble, Hotheaded 7/8, Rumble, Scrapper 1/8; runes 6 Fury / 6 Mind 5/8, 7 Fury / 5 Mind 3/8; battlefields Zaun Warrens 3/7, Trifarian War Camp 2/7, Seat of Power 2/7, Grove of the God-Willow 1/7, Hallowed Tomb 1/7; core (>=75%) Forecaster 8/8 x3.0, Gem Jammer 8/8 x2.9, Bubble Bot 8/8 x2.9, Ferrous Forerunner 8/8 x2.8, Rumble, Hotheaded 8/8 x2.8, Falling Star 8/8 x2.1, Thousand-Tailed Watcher 7/8 x2.6, Stupefy 6/8 x3.0; flex (25-74%) Plundering Poro 5/8, Kai'Sa, Survivor 4/8, Cleave 4/8, Cloth Armor 4/8, Production Surge 3/8, Retreat 3/8, Patched Porobot 3/8, Temporal Breach 3/8; side deck Brynhir Thundersong 6/8, Thermo Beam 5/8, Bellows Breath 4/8, Brittle Steel 3/8, Unchecked Power 3/8; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### SFD-183 Purifier (Lucian), Fury/Body
 
@@ -1238,9 +1565,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** equipment 1.00 [rewards] pool 25; assault 0.70 [enables] pool 32; conquer 0.32 [champion or signature text only] pool 20
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Equipment); SFD-208 Forge of the Fluft (0.5; Equipment)
 - **Popularity and results (DATA):** 12 published lists since 2026-10-23 (rank 45 of 58, 0.8%); EU Regional Championship 38% over 16 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=2, 2 event-named):** champion Lucian, Merciless 2/2; runes 6 Fury / 6 Body 1/2, 7 Body / 5 Fury 1/2; battlefields Forge of the Fluft 2/2, Sunken Temple 2/2, The Candlelit Sanctum 1/2, Windswept Hillock 1/2; core (>=75%) Kai'Sa, Survivor 2/2 x3.0, Doran's Blade 2/2 x3.0, Punch First 2/2 x3.0, Irresistible Faefolk 2/2 x3.0, Noxus Hopeful 2/2 x2.5, First Mate 2/2 x2.5, Sabotage 2/2 x2.5, Long Sword 2/2 x2.5, Relentless Pursuit 2/2 x2.5, Kinkou Initiate 2/2 x2.5, Falling Star 2/2 x2.0, Lucian, Merciless 2/2 x1.0; flex (25-74%) n too small
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (2 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 88 Day 1 pilots = 1.5% of the field, 11 in Day 2 = 1.0% of Day 2; Day 2 conversion 12% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 1 second, 0 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 1 with tournament provenance; sources: pa-fetch 4):** champion Lucian, Merciless 4/4; runes 6 Fury / 6 Body 3/4, 7 Fury / 5 Body 1/4; battlefields Windswept Hillock 3/4, Forge of the Fluft 3/4, Sunken Temple 2/4, Reckoner's Arena 1/4, Seat of Power 1/4; core (>=75%) Relentless Pursuit 4/4 x2.5, Falling Star 4/4 x2.0, Lucian, Merciless 4/4 x1.2, First Mate 3/4 x3.0, Long Sword 3/4 x3.0, Kai'Sa, Survivor 3/4 x2.7, Punch First 3/4 x2.3, Graves, Blasting Through 3/4 x2.0, Blighted Battleaxe 3/4 x1.7; flex (25-74%) Noxus Hopeful 2/4, Pit Rookie 2/4, Doran's Blade 2/4, Boneshiver 2/4, Kinkou Initiate 2/4, Irresistible Faefolk 2/4, Portable Portal 2/4, Ferrous Forerunner 2/4; side deck Brittle Steel 3/4, Rampage 2/4, Sabotage 2/4, Ruin Runner 2/4, Akshan, Mischievous 2/4; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Pre-Radiance lists (DATA, n=11, 11 with tournament provenance; sources: official-rq 10, pa-fetch 1; newest set in list: SFD 3, UNL 4, VEN 4; 1 of them hold a card that is banned today):** champion Lucian, Merciless 11/11; runes 7 Body / 5 Fury 6/11, 6 Fury / 6 Body 4/11, 8 Body / 4 Fury 1/11; battlefields Forge of the Fluft 9/10, Sunken Temple 6/10, The Candlelit Sanctum 4/10, Zaun Warrens 4/10, Windswept Hillock 3/10; core (>=75%) Kai'Sa, Survivor 11/11 x3.0, First Mate 11/11 x2.7, Relentless Pursuit 11/11 x2.7, Punch First 11/11 x2.5, Lucian, Merciless 11/11 x1.4, Doran's Blade 10/11 x3.0, Trinity Force 9/11 x2.6, Sabotage 9/11 x2.0; flex (25-74%) Long Sword 8/11, Ruin Runner 8/11, Irresistible Faefolk 7/11, Skyfall of Areion 7/11, Kinkou Initiate 7/11, Gem Jammer 6/11, Noxus Hopeful 6/11, Blighted Battleaxe 6/11; side deck Ferrous Forerunner 8/11, Akshan, Mischievous 7/11, Unyielding Spirit 7/11, Sabotage 7/11, Rampage 4/11; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 11 complete pre-Radiance lists)
 
 ### SFD-185 Glorious Executioner (Draven), Fury/Chaos
 
@@ -1256,10 +1585,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** SFD-186 Spinning Axe (gear, 2 Energy, 1 Power): "[Quick-Draw] (This has [Reaction]. When you play it, attach it to a unit you control.) // [Equip] [Any] ([Any]: Attach this to a unit you control.) // [Temporary] (If this is unattached, kill it at the start of its controller's Beginning Phase, before scoring.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** combat-win 1.00 [rewards] pool 38; draw 0.60 [enables] pool 30
 - **Battlefields by text (HEURISTIC):** no battlefield text interacts with this legend text; use the data below
-- **Popularity and results (DATA):** 18 published lists since 2026-10-23 (rank 30 of 58, 1.2%); registered as an extra Neeko legend in 2 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Draven, Showboat 3/3; runes 6 Fury / 6 Chaos 3/3; battlefields Grove of the God-Willow 3/3, Star Spring 3/3, Startipped Peak 1/3, Zaun Warrens 1/3, Hunters' Circle 1/3; core (>=75%) Tideturner 3/3 x3.0, Spinning Axe 3/3 x3.0, Vex, Apathetic 3/3 x3.0, Noxus Hopeful 3/3 x2.3, Kai'Sa, Survivor 3/3 x2.3, Rebuke 3/3 x2.3, Overzealous Fan 3/3 x2.3, Falling Star 3/3 x2.0, Switcheroo 3/3 x2.0, Evelynn, Entrancing 3/3 x2.0, Up from the Deep 3/3 x2.0, Draven, Showboat 3/3 x1.0; flex (25-74%) Inferna 2/3, Kha'Zix, Mutating Horror 2/3, Pyke, Returned 2/3, Blood Rush 2/3, Ferrous Forerunner 2/3, Pyke, Dockside Butcher 2/3, Jhin, Murderous Artist 1/3, Siren's Song 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Draven, Showboat 2/2; runes 7 Fury / 5 Chaos 1/2, 6 Fury / 6 Chaos 1/2; battlefields Targon's Peak 1/2, The Arena's Greatest 1/2, Zaun Warrens 1/2, Rockfall Path 1/2, Treasure Hoard 1/2; core (>=75%) Noxus Hopeful 2/2 x3.0, Darius, Trifarian 2/2 x3.0, Stacked Deck 2/2 x3.0, Tideturner 2/2 x3.0, Overzealous Fan 2/2 x3.0, Spinning Axe 2/2 x3.0, Kai'Sa, Survivor 2/2 x2.5, Vex, Apathetic 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 18 published lists since 2026-10-23 (rank 30 of 58, 1.2%); registered as an extra Neeko legend in 3 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 181 Day 1 pilots = 3.0% of the field, 18 in Day 2 = 1.7% of Day 2; Day 2 conversion 10% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 6 first, 6 second, 7 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 1 with tournament provenance; sources: pa-fetch 4):** champion Draven, Showboat 3/4, Draven, Audacious 1/4; runes 6 Fury / 6 Chaos 3/4, 8 Chaos / 4 Fury 1/4; battlefields Grove of the God-Willow 2/4, Targon's Peak 2/4, Bandle Scouts' Academy 2/4, Rakelstake 2/4, Startipped Peak 1/4; core (>=75%) Spinning Axe 4/4 x3.0, Tideturner 4/4 x2.5, Bedeviling Stranger 4/4 x2.5, Vex, Apathetic 4/4 x2.0, Rebuke 4/4 x1.5, Kai'Sa, Survivor 3/4 x3.0, Overzealous Fan 3/4 x2.7, Siren's Song 3/4 x2.0, Falling Star 3/4 x1.7, Gust 3/4 x1.7, Ferrous Forerunner 3/4 x1.7, Draven, Showboat 3/4 x1.0; flex (25-74%) Noxus Hopeful 2/4, Reckless Innovator 2/4, Tail-Cloaked Matriarch 2/4, Pyke, Returned 2/4, Switcheroo 2/4, Star-Crossed 2/4, Evelynn, Entrancing 2/4, Kha'Zix, Mutating Horror 2/4; side deck Ravenbloom Prefect 4/4, Against the Odds 3/4, Ferrous Forerunner 3/4, Thermo Beam 3/4, Brynhir Thundersong 2/4; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Pre-Radiance lists (DATA, n=20, 20 with tournament provenance; sources: official-rq 15, pa-fetch 2, pa-sample 1, r1-top3 2; newest set in list: SFD 9, UNL 5, VEN 6; 18 of them hold a card that is banned today):** champion Draven, Showboat 15/20, Draven, Vanquisher 5/20; runes 6 Fury / 6 Chaos 14/20, 7 Fury / 5 Chaos 3/20, 7 Chaos / 5 Fury 2/20; battlefields Zaun Warrens 14/19, Targon's Peak 8/19, Obelisk of Power 5/19 (BANNED since 2026-03-31), Star Spring 5/19, Aspirant's Climb 4/19 (BANNED since 2026-07-24); core (>=75%) Spinning Axe 20/20 x2.8, Rebuke 20/20 x1.9, Stacked Deck 18/20 x2.9 (BANNED since 2026-09-18), Noxus Hopeful 18/20 x2.8, Tideturner 17/20 x2.9, Kai'Sa, Survivor 17/20 x2.6, Falling Star 17/20 x1.8, Overzealous Fan 16/20 x2.8; flex (25-74%) Cleave 14/20, Darius, Trifarian 13/20, Ferrous Forerunner 13/20, Ride the Wind 12/20, Hard Bargain 12/20, Vex, Apathetic 11/20, Rek'Sai, Breacher 11/20, Evelynn, Entrancing 9/20; side deck Brynhir Thundersong 16/20, Ferrous Forerunner 11/20, Hard Bargain 11/20, Thermo Beam 10/20, Switcheroo 7/20; shape labels from the deck-theory clustering (3 labelled): unit-aggro 3
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 20 complete pre-Radiance lists)
 
 ### SFD-187 Void Burrower (Rek'Sai), Fury/Order
 
@@ -1275,9 +1606,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** conquer 1.00 [rewards] pool 11; play-from-elsewhere 0.80 [enables] pool 30
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); OGN-282 Monastery of Hirana (0.5; Conquering battlefields); OGN-286 Reckoner's Arena (0.5; Conquering battlefields); OGN-287 Sigil of the Storm (0.5; Conquering battlefields); OGN-289 Targon's Peak (0.5; Conquering battlefields)
 - **Popularity and results (DATA):** 37 published lists since 2026-10-23 (rank 10 of 58, 2.6%); riftbound.gg week-2 tier 3, 0 wins, 4 top cuts; EU Regional Championship 53% over 85 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Rek'Sai, Breacher 3/3; runes 8 Fury / 4 Order 2/3, 7 Fury / 5 Order 1/3; battlefields The Candlelit Sanctum 3/3, Hunters' Circle 2/3, Ruined Monastery 2/3, Vilemaw's Lair 1/3, Rockfall Path 1/3; core (>=75%) Noxus Hopeful 3/3 x3.0, Falling Star 3/3 x3.0, Cull the Weak 3/3 x3.0, Faithful Manufactor 3/3 x3.0, Bilgewater Tracker 3/3 x3.0, Shimmering Swimmer 3/3 x3.0, Concert Poster 3/3 x3.0, Trifarian Captain 3/3 x3.0, Undertitan 3/3 x3.0, Inferna 3/3 x3.0, Carrion Dredger 3/3 x3.0, Rengar, Pouncing 3/3 x2.3; flex (25-74%) Long Sword 2/3, Grim Apothecary 2/3, Imperial Decree 1/3, Banner of Conquest 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Rek'Sai, Breacher 2/2; runes 6 Fury / 6 Order 1/2, 8 Fury / 4 Order 1/2; battlefields The Arena's Greatest 2/2, The Candlelit Sanctum 2/2, Trifarian War Camp 1/2, Hall of Legends 1/2; core (>=75%) Noxus Hopeful 2/2 x3.0, Cull the Weak 2/2 x3.0, Faithful Manufactor 2/2 x3.0, Blood Rush 2/2 x3.0, Honest Broker 2/2 x3.0, Undertitan 2/2 x3.0, Void Rush 2/2 x3.0, Inferna 2/2 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 252 Day 1 pilots = 4.2% of the field, 44 in Day 2 = 4.2% of Day 2; Day 2 conversion 18% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 4 first, 4 second, 4 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 4 with tournament provenance; sources: pa-fetch 4):** champion Rek'Sai, Breacher 4/4; runes 6 Fury / 6 Order 2/4, 8 Fury / 4 Order 1/4, 7 Fury / 5 Order 1/4; battlefields The Candlelit Sanctum 4/4, Rockfall Path 3/4, Forbidding Waste 2/4, Vilemaw's Lair 1/4, Hunters' Circle 1/4; core (>=75%) Noxus Hopeful 4/4 x3.0, Falling Star 4/4 x3.0, Cull the Weak 4/4 x3.0, Faithful Manufactor 4/4 x3.0, Bilgewater Tracker 4/4 x3.0, Inferna 4/4 x3.0, Carrion Dredger 4/4 x3.0, Undertitan 4/4 x2.8, Hunting Dog 4/4 x2.0, Rek'Sai, Breacher 4/4 x1.0, Trifarian Captain 3/4 x2.7, Imperial Decree 3/4 x2.3; flex (25-74%) Shimmering Swimmer 2/4, Concert Poster 2/4, Blood Rush 2/4, Noxian Emissary 2/4, Rengar, Pouncing 2/4, Long Sword 2/4, Cleave 1/4, Pouty Poro 1/4; side deck Decree of Rage 4/4, Decree of Unity 4/4, Salvage 3/4, Ashe, Focused 2/4, Brittle Steel 2/4; shape labels from the deck-theory clustering (4 labelled): unit-aggro 4
+- **Pre-Radiance lists (DATA, n=17, 17 with tournament provenance; sources: official-rq 8, pa-fetch 3, pa-sample 1, r1-top3 5; newest set in list: SFD 3, UNL 5, VEN 9; 7 of them hold a card that is banned today):** champion Rek'Sai, Breacher 16/17, Rek'Sai, Swarm Queen 1/17; runes 6 Fury / 6 Order 7/17, 7 Fury / 5 Order 6/17, 12 Order 1/17; battlefields The Candlelit Sanctum 13/16, Trifarian War Camp 9/16, Forbidding Waste 8/16, The Arena's Greatest 7/16 (BANNED since 2026-07-24), Mystic Vortex 4/16; core (>=75%) Noxus Hopeful 17/17 x2.9, Undertitan 16/17 x2.9, Void Rush 16/17 x2.9, Cull the Weak 16/17 x2.8, Rek'Sai, Breacher 16/17 x1.0, Faithful Manufactor 15/17 x3.0, Inferna 14/17 x2.6, Blood Rush 13/17 x2.9; flex (25-74%) Honest Broker 12/17, Falling Star 12/17, Cleave 11/17, Hidden Blade 11/17, Noxian Emissary 7/17, Daring Poro 6/17, Vi, Peacekeeper 6/17, Salvage 6/17; side deck Salvage 11/17, Forge of the Future 9/17, Brittle Steel 9/17, Ferrous Forerunner 8/17, Vi, Peacekeeper 6/17; shape labels from the deck-theory clustering (4 labelled): unit-aggro 4
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (4 with tournament provenance: event-named, podium or official); 17 complete pre-Radiance lists)
 
 ### SFD-189 Fire Below the Mountain (Ornn), Calm/Mind
 
@@ -1293,9 +1626,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** gear 1.00 [rewards] pool 44; energy-ramp 0.60 [enables] pool 7; equipment 0.32 [champion or signature text only] pool 20
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Gear (non-Equipment included)); SFD-210 Hall of Legends (0.6; Readies the legend); VEN-166 Threshold of the Gray (0.6; Adding resources); RAD-163 Hunters' Circle (0.5; Gear (non-Equipment included)); RAD-165 Rakelstake (0.5; Gear (non-Equipment included))
 - **Popularity and results (DATA):** 15 published lists since 2026-10-23 (rank 35 of 58, 1.0%); EU Regional Championship 50% over 12 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Ornn, Blacksmith 3/3; runes 9 Calm / 3 Mind 2/3, 7 Calm / 5 Mind 1/3; battlefields Seat of Power 3/3, Veiled Temple 3/3, Ornn's Forge 2/3, Dusk Rose Lab 1/3; core (>=75%) Seal of Focus 3/3 x3.0, Pit Crew 3/3 x3.0, Brutalizer 3/3 x3.0, Poro Snax 3/3 x3.0, Sterak's Gage 3/3 x3.0, Scuttle Crab 3/3 x3.0, Sprite Fountain 3/3 x3.0, Patched Porobot 3/3 x3.0, Defy 3/3 x2.7, Charm 3/3 x2.0, Guardian Angel 3/3 x1.7, Aspiring Engineer 3/3 x1.7; flex (25-74%) Lonely Poro 2/3, Battle Preparations 2/3, Command: Attack 2/3, Clockwork Keeper 1/3, Invigorating Bloom 1/3, Mask of Foresight 1/3, Lecturing Yordle 1/3, Hush 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Ornn, Forge God 1/2, Ornn, Blacksmith 1/2; runes 8 Calm / 4 Mind 1/2, 7 Calm / 5 Mind 1/2; battlefields The Arena's Greatest 2/2, Ornn's Forge 2/2, Rockfall Path 1/2, Dusk Rose Lab 1/2; core (>=75%) Charm 2/2 x3.0, Sterak's Gage 2/2 x3.0, Sprite Fountain 2/2 x3.0, Defy 2/2 x2.5, Discipline 2/2 x2.5, Pit Crew 2/2 x2.5, Brutalizer 2/2 x2.5, Poro Snax 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 140 Day 1 pilots = 2.3% of the field, 22 in Day 2 = 2.1% of Day 2; Day 2 conversion 16% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 1 first, 0 second, 2 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=5, 3 with tournament provenance; sources: pa-fetch 5):** champion Ornn, Blacksmith 5/5; runes 9 Calm / 3 Mind 2/5, 7 Calm / 5 Mind 2/5, 8 Calm / 4 Mind 1/5; battlefields Ornn's Forge 4/5, Seat of Power 4/5, Veiled Temple 4/5, Hallowed Tomb 1/5, Dusk Rose Lab 1/5; core (>=75%) Seal of Focus 5/5 x3.0, Sterak's Gage 5/5 x3.0, Sprite Fountain 5/5 x3.0, Patched Porobot 5/5 x3.0, Guardian Angel 5/5 x1.8, Ornn, Blacksmith 5/5 x1.2, Pit Crew 4/5 x3.0, Brutalizer 4/5 x3.0, Poro Snax 4/5 x3.0, Defy 4/5 x2.8, Charm 4/5 x2.0, Cloth Armor 4/5 x1.5; flex (25-74%) Lonely Poro 3/5, Scuttle Crab 3/5, Clockwork Keeper 3/5, Aspiring Engineer 3/5, Mask of Foresight 2/5, Orianna, Exquisite 2/5, Invigorating Bloom 2/5, Battle Preparations 2/5; side deck Disarming Rake 4/5, Decree of Insight 4/5, Twilight Shroud 4/5, Decree of Focus 3/5, Charm 3/5; shape labels from the deck-theory clustering (2 labelled): gear-engine 2
+- **Pre-Radiance lists (DATA, n=10, 10 with tournament provenance; sources: official-rq 6, pa-fetch 3, pa-sample 1; newest set in list: SFD 3, UNL 4, VEN 3; 4 of them hold a card that is banned today):** champion Ornn, Blacksmith 5/10, Ornn, Forge God 5/10; runes 8 Calm / 4 Mind 5/10, 7 Calm / 5 Mind 4/10, 6 Calm / 6 Mind 1/10; battlefields Ornn's Forge 9/9, The Arena's Greatest 3/9 (BANNED since 2026-07-24), Seat of Power 3/9, Veiled Temple 3/9, Rockfall Path 2/9; core (>=75%) Pit Crew 10/10 x2.8, Poro Snax 10/10 x2.7, Defy 10/10 x2.5, Sterak's Gage 9/10 x3.0, Seal of Focus 8/10 x2.9, Charm 8/10 x2.4; flex (25-74%) Sprite Fountain 7/10, Brutalizer 7/10, Shurelya's Requiem 7/10, Clockwork Keeper 6/10, Guardian Angel 6/10, Lonely Poro 5/10, Discipline 5/10, Cloth Armor 5/10; side deck Disarming Rake 8/10, Not So Fast 6/10, Singularity 4/10, Charm 4/10, Decree of Insight 3/10; shape labels from the deck-theory clustering (4 labelled): gear-engine 4
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 10 complete pre-Radiance lists)
 
 ### SFD-193 Grandmaster at Arms (Jax), Calm/Body
 
@@ -1312,9 +1647,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** equipment 1.00 [enables/needs] pool 25; draw 0.32 [champion or signature text only] pool 40
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Equipment); SFD-210 Hall of Legends (0.6; Readies the legend); SFD-208 Forge of the Fluft (0.5; Equipment)
 - **Popularity and results (DATA):** 15 published lists since 2026-10-23 (rank 36 of 58, 1.0%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 2 event-named):** champion Jax, Unmatched 3/3; runes 6 Calm / 6 Body 3/3; battlefields Ornn's Forge 3/3, Sunken Temple 3/3, Grove of the God-Willow 1/3, Monastery of Hirana 1/3, Forbidding Waste 1/3; core (>=75%) Discipline 3/3 x3.0, Defy 3/3 x2.7, Brutalizer 3/3 x2.7, Guardian Angel 3/3 x2.7, Counter Strike 3/3 x2.7, Scuttle Crab 3/3 x2.3, Punch First 3/3 x2.0, Rampage 3/3 x2.0, Jax, Unmatched 3/3 x1.0; flex (25-74%) First Mate 2/3, Lucian, Merciless 2/3, Graves, Blasting Through 2/3, Irelia, Fervent 2/3, Doran's Blade 2/3, Boneshiver 2/3, Clockwork Keeper 1/3, Pit Rookie 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Jax, Unmatched 1/1; runes 6 Calm / 6 Body 1/1; battlefields Zaun Warrens 1/1, Ornn's Forge 1/1, Sunken Temple 1/1; core (>=75%) Defy 1/1 x3.0, Discipline 1/1 x3.0, First Mate 1/1 x3.0, Lonely Poro 1/1 x3.0, Brutalizer 1/1 x3.0, Guardian Angel 1/1 x3.0, Lucian, Merciless 1/1 x3.0, Counter Strike 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 68 Day 1 pilots = 1.1% of the field, 4 in Day 2 = 0.4% of Day 2; Day 2 conversion 6% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=5, 1 with tournament provenance; sources: pa-fetch 5):** champion Jax, Unmatched 5/5; runes 6 Calm / 6 Body 3/5, 7 Calm / 5 Body 2/5; battlefields Ornn's Forge 5/5, Sunken Temple 3/5, Fortified Position 1/5, Grove of the God-Willow 1/5, Monastery of Hirana 1/5; core (>=75%) Defy 5/5 x2.6, Brutalizer 5/5 x2.6, Counter Strike 5/5 x2.2, Jax, Unmatched 5/5 x1.0, Guardian Angel 4/5 x2.8, Graves, Blasting Through 4/5 x2.2, Scuttle Crab 4/5 x2.2, Portable Portal 4/5 x2.0, Rampage 4/5 x1.8; flex (25-74%) Discipline 3/5, First Mate 3/5, Punch First 3/5, Charm 3/5, Boneshiver 3/5, Zhonya's Hourglass 2/5, Lonely Poro 2/5, Svellsongur 2/5; side deck Not So Fast 4/5, Hush 3/5, Adaptatron 2/5, Akshan, Mischievous 2/5, Decree of Focus 2/5; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Pre-Radiance lists (DATA, n=11, 11 with tournament provenance; sources: official-rq 9, pa-fetch 2; newest set in list: SFD 3, UNL 5, VEN 3; 4 of them hold a card that is banned today):** champion Jax, Unmatched 11/11; runes 6 Calm / 6 Body 7/11, 7 Body / 5 Calm 3/11, 7 Calm / 5 Body 1/11; battlefields Sunken Temple 7/9, Ornn's Forge 5/9, Targon's Peak 4/9, Aspirant's Climb 3/9 (BANNED since 2026-07-24), Monastery of Hirana 1/9; core (>=75%) Defy 11/11 x2.8, Discipline 11/11 x2.6, Jax, Unmatched 11/11 x1.0, Brutalizer 10/11 x3.0, Guardian Angel 10/11 x3.0, Counter Strike 10/11 x3.0, First Mate 10/11 x2.8, Lucian, Merciless 10/11 x2.5; flex (25-74%) Challenge 8/11, Lonely Poro 7/11, Stellacorn Herder 7/11, Scuttle Crab 7/11, Doran's Blade 7/11, Rengar, Trophy Hunter 6/11, Ruin Runner 6/11, Not So Fast 5/11; side deck Ruin Runner 8/11, Not So Fast 8/11, Akshan, Mischievous 7/11, Sabotage 6/11, Unyielding Spirit 3/11; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Data confidence: thin; advice basis: radiance-lists** (5 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 11 complete pre-Radiance lists)
 
 ### SFD-195 Blade Dancer (Irelia), Calm/Chaos
 
@@ -1331,9 +1668,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** choose-friendly 1.00 [rewards] pool 22; conquer 1.00 [rewards] pool 8; ready 0.60 [enables] pool 19
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); OGN-282 Monastery of Hirana (0.5; Conquering battlefields); OGN-286 Reckoner's Arena (0.5; Conquering battlefields); OGN-287 Sigil of the Storm (0.5; Conquering battlefields); OGN-289 Targon's Peak (0.5; Conquering battlefields)
 - **Popularity and results (DATA):** 20 published lists since 2026-10-23 (rank 26 of 58, 1.4%); riftbound.gg week-2 tier 2, 1 wins, 2 top cuts; EU Regional Championship 38% over 45 matches; registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Irelia, Fervent 2/3; runes 6 Calm / 6 Chaos 3/3; battlefields Targon's Peak 3/3, Sunken Temple 3/3, Abandoned Hall 3/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Defiant Dance 3/3 x3.0, Tideturner 3/3 x2.7, Stellacorn Herder 3/3 x2.7, Boots of Swiftness 3/3 x2.3, Ride the Wind 3/3 x2.0, Guardian Angel 3/3 x2.0, Scuttle Crab 3/3 x1.7, En Garde 3/3 x1.3, Battle Preparations 3/3 x1.3, Irelia, Fervent 3/3 x1.3; flex (25-74%) Orianna, Exquisite 2/3, Charm 2/3, Edge of Night 2/3, Rebuke 2/3, Hunker Down 2/3, Lonely Poro 2/3, Not So Fast 2/3, Gust Monk 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Irelia, Fervent 2/2; runes 6 Calm / 6 Chaos 2/2; battlefields Targon's Peak 2/2, Sunken Temple 2/2, Abandoned Hall 2/2; core (>=75%) Defy 2/2 x3.0, Discipline 2/2 x3.0, Tideturner 2/2 x3.0, Defiant Dance 2/2 x3.0, Scuttle Crab 2/2 x3.0, Charm 2/2 x2.5, Boots of Swiftness 2/2 x2.5, En Garde 2/2 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 500 Day 1 pilots = 8.3% of the field, 105 in Day 2 = 10.0% of Day 2; Day 2 conversion 21% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 24 first, 25 second, 18 third; with a Radiance card in the list: 0 / 2 / 0
+- **Radiance-era lists (DATA, n=7, 7 with tournament provenance; sources: pa-fetch 6, r1-top3 1):** champion Irelia, Fervent 5/6, Irelia, Graceful 1/6; runes 6 Calm / 6 Chaos 6/7, 7 Chaos / 5 Calm 1/7; battlefields Abandoned Hall 7/7, Targon's Peak 5/7, Sunken Temple 4/7, Sandswept Tomb 2/7, Sigil of the Storm 1/7; core (>=75%) Discipline 7/7 x3.0, Defiant Dance 7/7 x3.0, Defy 7/7 x2.9, Tideturner 7/7 x2.7, Stellacorn Herder 7/7 x2.7, Scuttle Crab 7/7 x2.6, Boots of Swiftness 7/7 x2.3, Star-Crossed 7/7 x1.1, Ride the Wind 6/7 x1.8, Irelia, Fervent 6/7 x1.3, Vex, Apathetic 6/7 x1.2, Not So Fast 6/7 x1.0; flex (25-74%) Battle Preparations 5/7, Charm 5/7, Guardian Angel 5/7, Twilight Shroud 5/7, Zhonya's Hourglass 4/7, En Garde 4/7, Akali, Silent 4/7, Reckless Innovator 3/7; side deck Adaptatron 6/7, Vex, Apathetic 5/7, Star-Crossed 5/7, Ravenbloom Prefect 4/7, Gust 4/7; shape labels from the deck-theory clustering (4 labelled): spell-tempo 4
+- **Pre-Radiance lists (DATA, n=50, 50 with tournament provenance; sources: official-rq 13, pa-fetch 3, pa-sample 1, r1-top3 33; newest set in list: SFD 9, UNL 23, VEN 18; 29 of them hold a card that is banned today):** champion Irelia, Fervent 49/49; runes 6 Calm / 6 Chaos 45/50, 7 Chaos / 5 Calm 5/50; battlefields Sunken Temple 43/48, Targon's Peak 39/48, Abandoned Hall 36/48, Zaun Warrens 6/48, Aspirant's Climb 4/48 (BANNED since 2026-07-24); core (>=75%) Discipline 50/50 x3.0, Defiant Dance 50/50 x3.0, Stellacorn Herder 50/50 x2.9, Defy 50/50 x2.8, Boots of Swiftness 50/50 x2.5, Irelia, Fervent 50/50 x1.1, Ride the Wind 48/50 x1.9, Tideturner 47/50 x2.8; flex (25-74%) Scuttle Crab 37/50, Star-Crossed 33/50, Stacked Deck 27/50 (BANNED since 2026-09-18), Zhonya's Hourglass 27/50, Flash 27/50, Gust 22/50, Rebuke 19/50, Fizz, Trickster 19/50; side deck Adaptatron 47/49, Star-Crossed 31/49, Gust 27/49, Not So Fast 24/49, Vex, Apathetic 21/49; shape labels from the deck-theory clustering (4 labelled): spell-tempo 4
+- **Data confidence: ok; advice basis: radiance-lists** (7 complete Radiance-era lists (7 with tournament provenance: event-named, podium or official); 50 complete pre-Radiance lists)
 
 ### SFD-197 Emperor of the Sands (Azir), Calm/Order
 
@@ -1350,9 +1689,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** equipment 1.00 [enables/rewards] pool 18; tag:Sand Soldier 1.00 [rewards] pool 4; token 0.70 [enables] pool 25; movement 0.35 [champion or signature text only] pool 38
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Equipment); SFD-210 Hall of Legends (0.6; Readies the legend); SFD-208 Forge of the Fluft (0.5; Equipment)
 - **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 53 of 58, 0.5%); riftbound.gg week-2 tier 4, 0 wins, 2 top cuts; EU Regional Championship 50% over 16 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Azir, Sovereign 3/3; runes 7 Calm / 5 Order 3/3; battlefields Trifarian War Camp 3/3, Hall of Legends 3/3, Seat of Power 2/3, Vilemaw's Lair 1/3; core (>=75%) Discipline 3/3 x3.0, Doran's Shield 3/3 x3.0, Brutalizer 3/3 x3.0, Eye of the Herald 3/3 x3.0, Guards! 3/3 x3.0, B.F. Sword 3/3 x3.0, Arise! 3/3 x3.0, Defy 3/3 x2.7, Hidden Blade 3/3 x2.7, Hand Hammer 3/3 x2.7, Back Off 3/3 x2.3, Deathgrip 3/3 x1.7; flex (25-74%) Soul Sword 2/3, Battle Preparations 2/3, Kennen, Keeper of Balance 2/3, Trifarian Captain 1/3, En Garde 1/3, Charm 1/3, Vi, Peacekeeper 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Azir, Sovereign 1/1; runes 7 Calm / 5 Order 1/1; battlefields Trifarian War Camp 1/1, Hall of Legends 1/1, Seat of Power 1/1; core (>=75%) Defy 1/1 x3.0, En Garde 1/1 x3.0, Discipline 1/1 x3.0, Hidden Blade 1/1 x3.0, Doran's Shield 1/1 x3.0, Brutalizer 1/1 x3.0, Eye of the Herald 1/1 x3.0, B.F. Sword 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 250 Day 1 pilots = 4.2% of the field, 60 in Day 2 = 5.7% of Day 2; Day 2 conversion 24% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 9 first, 9 second, 7 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=5, 3 with tournament provenance; sources: pa-fetch 5):** champion Azir, Sovereign 5/5; runes 7 Calm / 5 Order 5/5; battlefields Trifarian War Camp 5/5, Hall of Legends 5/5, Seat of Power 3/5, Vilemaw's Lair 2/5; core (>=75%) Discipline 5/5 x3.0, Doran's Shield 5/5 x3.0, Brutalizer 5/5 x3.0, Eye of the Herald 5/5 x3.0, B.F. Sword 5/5 x3.0, Arise! 5/5 x3.0, Defy 5/5 x2.6, Guards! 5/5 x2.6, Hidden Blade 5/5 x2.4, Hand Hammer 5/5 x2.4, Back Off 5/5 x2.2, Battle Preparations 5/5 x1.8; flex (25-74%) Kennen, Keeper of Balance 3/5, Trifarian Captain 2/5, Vi, Peacekeeper 2/5, Charm 2/5; side deck Decree of Unity 5/5, Salvage 5/5, Decree of Focus 5/5, Charm 5/5, Hush 5/5; shape labels from the deck-theory clustering (3 labelled): gear-engine 3
+- **Pre-Radiance lists (DATA, n=16, 16 with tournament provenance; sources: official-rq 7, pa-fetch 2, r1-top3 7; newest set in list: SFD 3, UNL 5, VEN 8; 1 of them hold a card that is banned today):** champion Azir, Sovereign 16/16; runes 7 Calm / 5 Order 9/16, 6 Calm / 6 Order 7/16; battlefields Trifarian War Camp 15/15, Hall of Legends 14/15, Seat of Power 7/15, Ornn's Forge 6/15, Grove of the God-Willow 1/15; core (>=75%) Discipline 16/16 x3.0, Doran's Shield 16/16 x3.0, Brutalizer 16/16 x3.0, Eye of the Herald 16/16 x3.0, B.F. Sword 16/16 x3.0, Arise! 16/16 x3.0, Defy 16/16 x2.8, Guards! 16/16 x2.5; flex (25-74%) Vi, Peacekeeper 11/16, Back Off 10/16, Hand Hammer 8/16, Salvage 7/16, Sacrifice 6/16, Charm 6/16, Shadow's Call 5/16, Cull the Weak 5/16; side deck Salvage 14/16, Ashe, Focused 12/16, Charm 11/16, Vi, Peacekeeper 8/16, Cull the Weak 7/16; shape labels from the deck-theory clustering (2 labelled): gear-engine 2
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 16 complete pre-Radiance lists)
 
 ### SFD-199 Prodigal Explorer (Ezreal), Mind/Chaos
 
@@ -1368,9 +1709,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** choose-enemy 1.00 [rewards] pool 37; spell-matters 1.00 [rewards] pool 77; draw 0.70 [enables] pool 45
 - **Battlefields by text (HEURISTIC):** OGN-296 Void Gate (1.0; Spells); SFD-215 Ravenbloom Conservatory (1.0; Spells); UNL-216 The Academy (1.0; Spells); VEN-158 Heisho, Shell of the World (1.0; Spells); VEN-164 Sandswept Tomb (1.0; Spells)
 - **Popularity and results (DATA):** 13 published lists since 2026-10-23 (rank 41 of 58, 0.9%); riftbound.gg week-2 tier 3, 0 wins, 0 top cuts
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 1 event-named):** champion Ezreal, Prodigy 3/3; runes 6 Mind / 6 Chaos 2/3, 7 Chaos / 5 Mind 1/3; battlefields Sigil of the Storm 3/3, Void Gate 2/3, Frozen Fortress 2/3, Vilemaw's Lair 1/3, Forgotten Monument 1/3; core (>=75%) Stupefy 3/3 x3.0, Wages of Pain 3/3 x3.0, Bellows Breath 3/3 x3.0, Gust 3/3 x2.3, Fizz, Trickster 3/3 x2.3, Thousand-Tailed Watcher 3/3 x2.0, Singularity 3/3 x1.7, Ezreal, Prodigy 3/3 x1.7; flex (25-74%) Pack of Wonders 2/3, Deadly Flourish 2/3, Bewitching Spirit 2/3, Treasure Trove 2/3, Star-Crossed 2/3, The List 2/3, Ravenbloom Student 1/3, Plundering Poro 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Ezreal, Prodigy 2/2; runes 7 Chaos / 5 Mind 2/2; battlefields Aspirant's Climb 2/2, Sigil of the Storm 2/2, Rockfall Path 1/2, Frozen Fortress 1/2; core (>=75%) Stupefy 2/2 x3.0, Stacked Deck 2/2 x3.0, Bellows Breath 2/2 x3.0, Fizz, Trickster 2/2 x3.0, Deadly Flourish 2/2 x3.0, Bewitching Spirit 2/2 x3.0, Gust 2/2 x2.5, Pack of Wonders 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 150 Day 1 pilots = 2.5% of the field, 35 in Day 2 = 3.3% of Day 2; Day 2 conversion 23% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 8 first, 5 second, 4 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Ezreal, Prodigy 6/6; runes 6 Mind / 6 Chaos 3/6, 7 Chaos / 5 Mind 2/6, 7 Mind / 5 Chaos 1/6; battlefields Sigil of the Storm 6/6, Void Gate 4/6, Forgotten Monument 3/6, Frozen Fortress 3/6, Vilemaw's Lair 1/6; core (>=75%) Stupefy 6/6 x3.0, Bellows Breath 6/6 x3.0, Wages of Pain 6/6 x2.8, Gust 6/6 x2.5, Fizz, Trickster 6/6 x2.5, Ezreal, Prodigy 6/6 x1.7, Singularity 6/6 x1.3, Pack of Wonders 5/6 x3.0, Deadly Flourish 5/6 x3.0, Bewitching Spirit 5/6 x3.0, Star-Crossed 5/6 x2.2, Treasure Trove 5/6 x2.0; flex (25-74%) An Offer You Can't Refuse 4/6, Vex, Apathetic 3/6, Hard Bargain 3/6, The Good Stuff 2/6; side deck An Offer You Can't Refuse 5/6, Pickpocket 4/6, Singularity 3/6, Kha'Zix, Mutating Horror 3/6, Mindsplitter 3/6; shape labels from the deck-theory clustering (1 labelled): gear-engine 1
+- **Pre-Radiance lists (DATA, n=18, 18 with tournament provenance; sources: official-rq 9, pa-fetch 1, pa-sample 1, r1-top3 7; newest set in list: SFD 3, UNL 8, VEN 7; 16 of them hold a card that is banned today):** champion Ezreal, Prodigy 18/18; runes 6 Mind / 6 Chaos 10/18, 7 Chaos / 5 Mind 8/18; battlefields Sigil of the Storm 17/17, Frozen Fortress 13/17, Aspirant's Climb 7/17 (BANNED since 2026-07-24), Void Gate 5/17, Heisho, Shell of the World 3/17; core (>=75%) Stupefy 18/18 x3.0, Bellows Breath 18/18 x2.9, Fizz, Trickster 18/18 x2.8, Ezreal, Prodigy 18/18 x1.1, Wages of Pain 17/18 x2.5, Gust 17/18 x2.2, Thousand-Tailed Watcher 17/18 x1.9, Stacked Deck 16/18 x3.0 (BANNED since 2026-09-18); flex (25-74%) Deadly Flourish 13/18, Treasure Trove 13/18, Singularity 13/18, Hard Bargain 11/18, Sprite Fountain 8/18, Ravenbloom Student 5/18, Arcane Shift 5/18, Rebuke 5/18; side deck Turn to Dust 15/18, Kha'Zix, Mutating Horror 12/18, Acceptable Losses 12/18, Mindsplitter 11/18, Angler Beast 9/18; shape labels from the deck-theory clustering (2 labelled): gear-engine 2
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 18 complete pre-Radiance lists)
 
 ### SFD-201 Chem-Baroness (Renata Glasc), Mind/Order
 
@@ -1386,10 +1729,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** SFD-202 Hostile Takeover (spell, 5 Energy, 2 Power): "[Hidden] (Hide now for [Any] to react with later for [0].) // Take control of an enemy unit at a battlefield. Ready it. (Start a combat if other enemies are there. Otherwise, conquer.) // Lose control of that unit and recall it at end of turn. (Send it to base. This isn't a move.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** hold 1.00 [rewards] pool 8; score-race 1.00 [rewards] pool 7; energy-ramp 0.60 [enables] pool 8; gear-token 0.60 [enables] pool 12; gold 0.60 [enables] pool 12; ready 0.32 [champion or signature text only] pool 20
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend); VEN-166 Threshold of the Gray (0.6; Adding resources); OGN-275 Altar to Unity (0.5; Holding battlefields); OGN-280 Grove of the God-Willow (0.5; Holding battlefields); OGN-281 Hallowed Tomb (0.5; Holding battlefields)
-- **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 54 of 58, 0.5%); registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 0 event-named):** champion Renata Glasc, Mastermind 2/3, Renata Glasc, Industrialist 1/3; runes 7 Order / 5 Mind 1/3, 8 Mind / 4 Order 1/3, 6 Mind / 6 Order 1/3; battlefields Power Nexus 2/3, Treasure Hoard 2/3, Fortified Position 1/3, Grove of the God-Willow 1/3, Navori Fighting Pit 1/3; core (>=75%) Patched Porobot 3/3 x3.0, Stupefy 3/3 x2.7; flex (25-74%) Resource Extractor 2/3, Honest Broker 2/3, Plaza Guardian 2/3, Time Warp 2/3, Singularity 2/3, Thousand-Tailed Watcher 2/3, Renata Glasc, Mastermind 2/3, Lecturing Yordle 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (0 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 54 of 58, 0.5%); registered as an extra Neeko legend in 2 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 60 Day 1 pilots = 1.0% of the field, 0 in Day 2 = 0.0% of Day 2; Day 2 conversion 0% against 18% for the whole field
+- **Radiance-era lists (DATA, n=6, 0 with tournament provenance; sources: pa-fetch 6):** champion Renata Glasc, Mastermind 5/6, Renata Glasc, Industrialist 1/6; runes 6 Mind / 6 Order 2/6, 7 Mind / 5 Order 2/6, 7 Order / 5 Mind 1/6; battlefields Power Nexus 4/6, Treasure Hoard 4/6, Grove of the God-Willow 2/6, Bandle Scouts' Academy 2/6, Fortified Position 1/6; core (>=75%) Patched Porobot 6/6 x3.0, Time Warp 5/6 x1.8, Renata Glasc, Mastermind 5/6 x1.0; flex (25-74%) Stupefy 4/6, Resource Extractor 4/6, Hostile Takeover 4/6, Honest Broker 4/6, The Empyrean 4/6, Singularity 4/6, Card Sharp 3/6, Plaza Guardian 3/6; side deck Salvage 4/6, Bellows Breath 2/6, Decree of Unity 2/6, Singularity 2/6, Unchecked Power 2/6
+- **Pre-Radiance lists (DATA, n=9, 9 with tournament provenance; sources: official-rq 9; newest set in list: SFD 2, UNL 4, VEN 3; 3 of them hold a card that is banned today):** champion Renata Glasc, Mastermind 8/9, Renata Glasc, Industrialist 1/9; runes 7 Mind / 5 Order 5/9, 6 Mind / 6 Order 2/9, 8 Mind / 4 Order 1/9; battlefields Treasure Hoard 6/8, Trifarian War Camp 4/8, Vilemaw's Lair 2/8, Seat of Power 2/8, Forbidding Waste 2/8; core (>=75%) Renata Glasc, Mastermind 9/9 x1.0, Hidden Blade 8/9 x2.9, Hostile Takeover 8/9 x2.5, Stupefy 7/9 x2.9, Plundering Poro 7/9 x2.9, Time Warp 7/9 x1.9; flex (25-74%) Honest Broker 6/9, Wages of Pain 6/9, Thousand-Tailed Watcher 6/9, Card Sharp 5/9, Singularity 5/9, Deathgrip 5/9, Vanguard Armory 4/9, Cull the Weak 4/9; side deck Salvage 7/9, Bellows Breath 6/9, Pickpocket 5/9, Cull the Weak 5/9, Imperial Decree 5/9
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 9 complete pre-Radiance lists)
 
 ### SFD-203 Battle Mistress (Sivir), Body/Chaos
 
@@ -1406,9 +1750,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** death 1.00 [rewards] pool 4; recycle 1.00 [rewards] pool 158; gear-token 0.60 [enables] pool 12; gold 0.60 [enables] pool 8
 - **Battlefields by text (HEURISTIC):** OGN-287 Sigil of the Storm (1.0; Recycling runes (= paying Power, rule 164.2.b)); UNL-209 Dusk Rose Lab (1.0; Units dying); SFD-210 Hall of Legends (0.6; Readies the legend); RAD-159 Black Rose Sanctum (0.5; Units dying)
 - **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 55 of 58, 0.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 1 event-named):** champion Sivir, Mercenary 3/3; runes 6 Body / 6 Chaos 2/3, 7 Chaos / 5 Body 1/3; battlefields Sigil of the Storm 2/3, Vilemaw's Lair 1/3, Zaun Warrens 1/3, Black Market 1/3, Sunken Temple 1/3; core (>=75%) Punch First 3/3 x2.7, Star-Crossed 3/3 x2.3, Sivir, Mercenary 3/3 x1.0; flex (25-74%) First Mate 2/3, Tideturner 2/3, Ezreal, Prodigy 2/3, Tail-Cloaked Matriarch 2/3, Edge of Night 2/3, Confront 1/3, Pack of Wonders 1/3, Traveling Merchant 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Sivir, Mercenary 1/1; runes 6 Body / 6 Chaos 1/1; battlefields Aspirant's Climb 1/1, Sigil of the Storm 1/1, Forgotten Monument 1/1; core (>=75%) Challenge 1/1 x3.0, Mobilize 1/1 x3.0, Catalyst of Aeons 1/1 x3.0, Dazzling Aurora 1/1 x3.0, Ride the Wind 1/1 x3.0, Stacked Deck 1/1 x3.0, Punch First 1/1 x3.0, Scryer's Bloom 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 53 Day 1 pilots = 0.9% of the field, 7 in Day 2 = 0.7% of Day 2; Day 2 conversion 13% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 5 first, 5 second, 4 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Sivir, Mercenary 6/6; runes 6 Body / 6 Chaos 6/6; battlefields Sigil of the Storm 4/6, Black Market 3/6, Zaun Warrens 2/6, Sandswept Tomb 2/6, Vilemaw's Lair 1/6; core (>=75%) Sivir, Mercenary 6/6 x1.0, Punch First 5/6 x2.6, Star-Crossed 5/6 x2.4; flex (25-74%) Ride the Wind 4/6, Treasure Trove 3/6, Reckless Innovator 3/6, First Mate 3/6, Pack of Wonders 3/6, The Good Stuff 3/6, Elder Dragon 3/6, Rampage 3/6; side deck An Offer You Can't Refuse 6/6, Hard Bargain 4/6, Unyielding Spirit 3/6, Akshan, Mischievous 3/6, Repulse 3/6; shape labels from the deck-theory clustering (1 labelled): gear-engine 1
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 7, pa-fetch 1; newest set in list: SFD 2, UNL 4, VEN 2; 7 of them hold a card that is banned today):** champion Sivir, Mercenary 8/8; runes 6 Body / 6 Chaos 6/8, 7 Chaos / 5 Body 1/8, 8 Chaos / 4 Body 1/8; battlefields Sigil of the Storm 6/7, Aspirant's Climb 4/7 (BANNED since 2026-07-24), Forgotten Monument 4/7, Zaun Warrens 2/7, Obelisk of Power 1/7 (BANNED since 2026-03-31); core (>=75%) Sivir, Mercenary 8/8 x1.0, Stacked Deck 7/8 x3.0 (BANNED since 2026-09-18), Sabotage 7/8 x2.7, Last Rites 7/8 x1.7, Catalyst of Aeons 6/8 x3.0, Dazzling Aurora 6/8 x3.0, Gust 6/8 x2.5; flex (25-74%) Mobilize 5/8, Scryer's Bloom 5/8, Lunar Boon 5/8, Treasure Trove 5/8, Elder Dragon 5/8, Punch First 5/8, Flurry of Blades 4/8, Challenge 4/8; side deck Akshan, Mischievous 6/8, Mindsplitter 4/8, Pack of Wonders 4/8, Challenge 3/8, Sabotage 3/8; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### SFD-205 Grand Duelist (Fiora), Body/Order
 
@@ -1425,9 +1771,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** mighty 1.00 [rewards] pool 85; channel-rune 0.60 [enables] pool 13
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend); SFD-218 Sunken Temple (0.5; Mighty (5+ Might))
 - **Popularity and results (DATA):** 20 published lists since 2026-10-23 (rank 27 of 58, 1.4%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 1 event-named):** champion Fiora, Victorious 3/3; runes 8 Body / 4 Order 1/3, 7 Body / 5 Order 1/3, 6 Body / 6 Order 1/3; battlefields Sunken Temple 3/3, Monastery of Hirana 2/3, Risen Altar 2/3, Hunters' Circle 1/3, Amateur Recital 1/3; core (>=75%) Pit Rookie 3/3 x3.0, Rampage 3/3 x3.0, Punch First 3/3 x2.7, Riposte 3/3 x2.3, Kinkou Initiate 3/3 x2.3, Rengar, Trophy Hunter 3/3 x2.3, Kayle, Justified 3/3 x2.3, Fiora, Victorious 3/3 x1.0; flex (25-74%) Trifarian Captain 2/3, Call to Glory 2/3, Pillaged Armory 2/3, Sacrifice 2/3, Vi, Peacekeeper 2/3, Hidden Blade 2/3, Harnessed Dragon 2/3, Akshan, Mischievous 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Fiora, Victorious 1/1; runes 7 Body / 5 Order 1/1; battlefields Monastery of Hirana 1/1, Sunken Temple 1/1, Valley of Idols 1/1; core (>=75%) Pit Rookie 1/1 x3.0, Call to Glory 1/1 x3.0, Sea Monkey 1/1 x3.0, B.F. Sword 1/1 x3.0, Unsung Hero 1/1 x3.0, Sacrifice 1/1 x3.0, Rift Herald 1/1 x3.0, Challenge 1/1 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 11 of the 11 official field tables (first 2026-02-25, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 140 Day 1 pilots = 2.3% of the field, 17 in Day 2 = 1.6% of Day 2; Day 2 conversion 12% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 7 first, 6 second, 9 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=5, 0 with tournament provenance; sources: pa-fetch 5):** champion Fiora, Victorious 3/5, Fiora, Worthy 2/5; runes 6 Body / 6 Order 3/5, 7 Body / 5 Order 1/5, 7 Order / 5 Body 1/5; battlefields Sunken Temple 5/5, Monastery of Hirana 3/5, Trifarian War Camp 3/5, Hunters' Circle 1/5, Packed Amphitheater 1/5; core (>=75%) Punch First 5/5 x2.4, Riposte 5/5 x2.4, Hidden Blade 5/5 x1.8, B.F. Sword 4/5 x2.8, Kayle, Justified 4/5 x2.5, Fiora, Victorious 4/5 x1.8; flex (25-74%) Pit Rookie 3/5, Trifarian Captain 3/5, Unsung Hero 3/5, Rampage 3/5, Sett, Brawler 3/5, Call to Glory 3/5, Pillaged Armory 3/5, First Mate 3/5; side deck Akshan, Mischievous 3/5, Salvage 3/5, Decree of Strength 3/5, Unyielding Spirit 2/5, Decree of Unity 2/5
+  - Builds by Chosen Champion (DATA): Fiora, Victorious 3/5 sets itself apart with Pit Rookie, Call to Glory, Kinkou Initiate, Rengar, Trophy Hunter, Vi, Peacekeeper; Fiora, Worthy 2/5 sets itself apart with Unsung Hero, Primal Strength, Cull the Weak, Spectral Matron, Concert Poster
+- **Pre-Radiance lists (DATA, n=15, 15 with tournament provenance; sources: official-rq 8, pa-fetch 4, pa-sample 1, r1-top3 2; newest set in list: SFD 3, UNL 5, VEN 7; 4 of them hold a card that is banned today):** champion Fiora, Worthy 9/14, Fiora, Victorious 5/14; runes 8 Body / 4 Order 5/15, 7 Body / 5 Order 5/15, 6 Body / 6 Order 3/15; battlefields Sunken Temple 11/14, Monastery of Hirana 7/14, Amateur Recital 5/14, Trifarian War Camp 4/14, Risen Altar 4/14; core (>=75%) Riposte 15/15 x2.5, Punch First 13/15 x2.4; flex (25-74%) Sacrifice 11/15, Fiora, Victorious 11/15, Pit Rookie 9/15, Sett, Brawler 9/15, Challenge 9/15, Hidden Blade 9/15, Harnessed Dragon 9/15, Fiora, Worthy 9/15; side deck Salvage 14/15, Sabotage 11/15, Akshan, Mischievous 7/15, Unyielding Spirit 6/15, Ashe, Focused 4/15; shape labels from the deck-theory clustering (5 labelled): big-control 3, unit-aggro 2
+- **Data confidence: thin; advice basis: radiance-lists** (5 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 15 complete pre-Radiance lists)
 
 ### UNL-181 Virtuoso (Jhin), Fury/Mind
 
@@ -1443,9 +1792,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** expensive-spells 1.00 [rewards] pool 23; spell-matters 1.00 [enables/rewards] pool 75; draw 0.70 [enables] pool 38; banish 0.60 [enables] pool 12; channel-rune 0.60 [enables] pool 2; trash 0.60 [enables] pool 16
 - **Battlefields by text (HEURISTIC):** OGN-296 Void Gate (1.0; Spells); SFD-215 Ravenbloom Conservatory (1.0; Spells); UNL-211 Forgotten Library (1.0; Expensive spells (4+/5+ Energy), Spells); UNL-216 The Academy (1.0; Spells); VEN-158 Heisho, Shell of the World (1.0; Spells)
 - **Popularity and results (DATA):** 13 published lists since 2026-10-23 (rank 42 of 58, 0.9%); registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Jhin, Meticulous Killer 3/3; runes 7 Mind / 5 Fury 3/3; battlefields Sigil of the Storm 3/3, Frozen Fortress 3/3, Rockfall Path 2/3, Forbidding Waste 1/3; core (>=75%) Noxus Hopeful 3/3 x3.0, Consult the Past 3/3 x3.0, Stupefy 3/3 x3.0, Forecaster 3/3 x3.0, Plundering Poro 3/3 x3.0, Deadly Flourish 3/3 x3.0, Curtain Call 3/3 x3.0, Sprite Burst 3/3 x2.3, Singularity 3/3 x2.0, Thousand-Tailed Watcher 3/3 x2.0, Time Warp 3/3 x2.0, Ferrous Forerunner 3/3 x2.0; flex (25-74%) Orb of Regret 2/3, Progress Day 2/3, Downstage Dramatics 2/3, Bilgewater Tracker 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Jhin, Meticulous Killer 2/2; runes 10 Mind / 2 Fury 1/2, 7 Mind / 5 Fury 1/2; battlefields Aspirant's Climb 2/2, Sigil of the Storm 1/2, Void Gate 1/2, Forgotten Monument 1/2, Frozen Fortress 1/2; core (>=75%) Consult the Past 2/2 x3.0, Deadly Flourish 2/2 x3.0, Curtain Call 2/2 x3.0, Progress Day 2/2 x2.0, Time Warp 2/2 x2.0, Downstage Dramatics 2/2 x2.0, Sprite Burst 2/2 x1.5, Jhin, Meticulous Killer 2/2 x1.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 56 Day 1 pilots = 0.9% of the field, 5 in Day 2 = 0.5% of Day 2; Day 2 conversion 9% against 18% for the whole field
+- **Radiance-era lists (DATA, n=5, 3 with tournament provenance; sources: pa-fetch 5):** champion Jhin, Meticulous Killer 5/5; runes 7 Mind / 5 Fury 5/5; battlefields Sigil of the Storm 5/5, Frozen Fortress 5/5, Rockfall Path 4/5, Protective Sands 1/5; core (>=75%) Noxus Hopeful 5/5 x3.0, Stupefy 5/5 x3.0, Plundering Poro 5/5 x3.0, Deadly Flourish 5/5 x3.0, Curtain Call 5/5 x3.0, Consult the Past 5/5 x2.8, Sprite Burst 5/5 x2.6, Thousand-Tailed Watcher 5/5 x2.0, Rocket Barrage 5/5 x2.0, Singularity 5/5 x1.8, Jhin, Meticulous Killer 5/5 x1.0, Time Warp 4/5 x1.8; flex (25-74%) Forecaster 3/5, Ferrous Forerunner 3/5, Bilgewater Tracker 3/5, Progress Day 3/5, Unchecked Power 3/5, Frigid Touch 3/5, The Empyrean 2/5, Downstage Dramatics 2/5; side deck Brynhir Thundersong 5/5, Decree of Rage 4/5, Temporal Breach 4/5, Decree of Insight 4/5, Bilgewater Tracker 3/5; shape labels from the deck-theory clustering (3 labelled): big-control 3
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 4, pa-fetch 3; newest set in list: UNL 4, VEN 3; 2 of them hold a card that is banned today):** champion Jhin, Meticulous Killer 6/7, Jhin, Murderous Artist 1/7; runes 7 Mind / 5 Fury 3/7, 8 Mind / 4 Fury 2/7, 6 Fury / 6 Mind 1/7; battlefields Frozen Fortress 5/6, Sigil of the Storm 4/6, Aspirant's Climb 2/6 (BANNED since 2026-07-24), Void Gate 2/6, Rockfall Path 2/6; core (>=75%) Curtain Call 7/7 x3.0, Deadly Flourish 7/7 x2.9, Consult the Past 7/7 x2.6, Sprite Burst 7/7 x2.1, Time Warp 7/7 x1.9, Jhin, Meticulous Killer 7/7 x1.6, Plundering Poro 6/7 x3.0, Singularity 6/7 x2.2; flex (25-74%) Noxus Hopeful 5/7, Stupefy 5/7, Rocket Barrage 5/7, Watchful Sentry 4/7, Ferrous Forerunner 4/7, Progress Day 4/7, Frigid Touch 4/7, Falling Star 4/7; side deck Ferrous Forerunner 5/7, Thermo Beam 4/7, Unchecked Power 4/7, Decree of Insight 3/7, Sprite Burst 3/7; shape labels from the deck-theory clustering (3 labelled): big-control 3
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### UNL-183 Pridestalker (Rengar), Fury/Body
 
@@ -1461,9 +1811,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** unit 1.00 [rewards] pool 28
 - **Battlefields by text (HEURISTIC):** RAD-162 Firelights' Hideout (1.0; Playing units); RAD-165 Rakelstake (0.5; Playing units)
 - **Popularity and results (DATA):** 14 published lists since 2026-10-23 (rank 39 of 58, 1.0%); riftbound.gg week-2 tier 2, 0 wins, 3 top cuts; EU Regional Championship 45% over 29 matches; registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Rengar, Trophy Hunter 3/3; runes 8 Body / 4 Fury 3/3; battlefields Emperor's Dais 3/3, Seat of Power 3/3, Star Spring 3/3; core (>=75%) Pit Rookie 3/3 x3.0, Inferna 3/3 x3.0, Kinkou Initiate 3/3 x3.0, Irresistible Faefolk 3/3 x3.0, Thrill of the Hunt 3/3 x3.0, Noxus Hopeful 3/3 x2.7, Kai'Sa, Survivor 3/3 x2.7, Punch First 3/3 x2.7, Grim Apothecary 3/3 x2.3, First Mate 3/3 x2.0, Sabotage 3/3 x2.0, Elnuk Herd 3/3 x2.0; flex (25-74%) Darius, Trifarian 1/3, Hold 'Em 1/3, Mischievous Marai 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Rengar, Trophy Hunter 2/2; runes 8 Body / 4 Fury 2/2; battlefields Emperor's Dais 2/2, Targon's Peak 1/2, The Arena's Greatest 1/2, Seat of Power 1/2, Star Spring 1/2; core (>=75%) Kai'Sa, Survivor 2/2 x3.0, Pit Rookie 2/2 x3.0, Punch First 2/2 x3.0, Inferna 2/2 x3.0, Determined Sentry 2/2 x3.0, Irresistible Faefolk 2/2 x3.0, Nidalee, Cat Form 2/2 x3.0, Thrill of the Hunt 2/2 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 305 Day 1 pilots = 5.1% of the field, 69 in Day 2 = 6.6% of Day 2; Day 2 conversion 23% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 5 first, 6 second, 5 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 4 with tournament provenance; sources: pa-fetch 4):** champion Rengar, Trophy Hunter 4/4; runes 8 Body / 4 Fury 3/4, 7 Body / 5 Fury 1/4; battlefields Emperor's Dais 4/4, Seat of Power 3/4, Star Spring 3/4, Black Rose Sanctum 1/4, Sandswept Tomb 1/4; core (>=75%) Pit Rookie 4/4 x3.0, Inferna 4/4 x3.0, Kinkou Initiate 4/4 x3.0, Irresistible Faefolk 4/4 x3.0, Thrill of the Hunt 4/4 x3.0, Noxus Hopeful 4/4 x2.8, Kai'Sa, Survivor 4/4 x2.8, Punch First 4/4 x2.8, Grim Apothecary 4/4 x2.5, First Mate 4/4 x2.2, Elnuk Herd 4/4 x2.2, Rampage 4/4 x2.2; flex (25-74%) Hold 'Em 2/4, Brynhir Thundersong 1/4, Darius, Trifarian 1/4, Mischievous Marai 1/4, Repulse 1/4; side deck Ferrous Forerunner 4/4, Decree of Strength 3/4, Noxian Demolitionist 3/4, Brynhir Thundersong 2/4, Bilgewater Tracker 2/4; shape labels from the deck-theory clustering (3 labelled): unit-aggro 3
+- **Pre-Radiance lists (DATA, n=12, 12 with tournament provenance; sources: official-rq 4, pa-fetch 2, pa-sample 1, r1-top3 5; newest set in list: UNL 6, VEN 6; 4 of them hold a card that is banned today):** champion Rengar, Trophy Hunter 11/12, Rengar, Pouncing 1/12; runes 8 Body / 4 Fury 9/12, 7 Body / 5 Fury 2/12, 6 Fury / 6 Body 1/12; battlefields Emperor's Dais 11/11, Star Spring 9/11, Seat of Power 7/11, The Arena's Greatest 4/11 (BANNED since 2026-07-24), Targon's Peak 1/11; core (>=75%) Thrill of the Hunt 12/12 x2.8, Rengar, Trophy Hunter 12/12 x1.2, Irresistible Faefolk 11/12 x3.0, Pit Rookie 11/12 x2.9, Punch First 11/12 x2.9, Inferna 11/12 x2.9, Kai'Sa, Survivor 11/12 x2.8, Kinkou Initiate 11/12 x2.8; flex (25-74%) Noxus Hopeful 7/12, Determined Sentry 7/12, Ferrous Forerunner 7/12, Challenge 6/12, First Mate 6/12, Rampage 5/12, Brynhir Thundersong 3/12, Pakaa Cub 3/12; side deck Brynhir Thundersong 8/12, Unyielding Spirit 8/12, Akshan, Mischievous 7/12, Ferrous Forerunner 6/12, Sabotage 6/12; shape labels from the deck-theory clustering (3 labelled): unit-aggro 3
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (4 with tournament provenance: event-named, podium or official); 12 complete pre-Radiance lists)
 
 ### UNL-185 Bloodharbor Ripper (Pyke), Fury/Chaos
 
@@ -1477,10 +1829,13 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** UNL-186 Death from Below (spell, 4 Energy, 1 Power): "Kill a unit at a battlefield. Then, if it had 3 [Might] or less, you may play this from your trash for [Any]."
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** gear-token 0.70 [enables] pool 15; gold 0.70 [enables] pool 10; bounce-own 0.60 [enables] pool 52; hidden 0.35 [champion or signature text only] pool 24; death 0.32 [champion or signature text only] pool 7
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend)
-- **Popularity and results (DATA):** 24 published lists since 2026-10-23 (rank 23 of 58, 1.7%); registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Pyke, Returned 2/3, Pyke, Dockside Butcher 1/3; runes 7 Chaos / 5 Fury 1/3, 6 Fury / 6 Chaos 1/3, 7 Fury / 5 Chaos 1/3; battlefields Ripper's Bay 2/3, Vilemaw's Lair 1/3, Void Gate 1/3, Zaun Warrens 1/3, Bandle Scouts' Academy 1/3; core (>=75%) Traveling Merchant 3/3 x3.0, Falling Star 3/3 x2.3, Ezreal, Prodigy 3/3 x2.3, Tail-Cloaked Matriarch 3/3 x2.3, Star-Crossed 3/3 x2.0, Vex, Apathetic 3/3 x2.0, Switcheroo 3/3 x1.7, Tideturner 3/3 x1.3, Fizz, Trickster 3/3 x1.3, Pyke, Dockside Butcher 3/3 x1.0; flex (25-74%) Tornado Warrior 2/3, Reckless Innovator 2/3, Blood Rush 2/3, Kharox 2/3, Cleave 2/3, Rengar, Pouncing 2/3, Hard Bargain 2/3, Pyke, Returned 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Pyke, Dockside Butcher 2/2; runes 7 Fury / 5 Chaos 2/2; battlefields Forbidding Waste 2/2, Ripper's Bay 2/2, Aspirant's Climb 1/2, Void Gate 1/2; core (>=75%) Falling Star 2/2 x3.0, Treasure Hunter 2/2 x3.0, Bewitching Spirit 2/2 x3.0, Stacked Deck 2/2 x2.5, Tideturner 2/2 x2.5, Fizz, Trickster 2/2 x2.5, Void Seeker 2/2 x2.0, Star-Crossed 2/2 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 24 published lists since 2026-10-23 (rank 23 of 58, 1.7%); registered as an extra Neeko legend in 2 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 92 Day 1 pilots = 1.5% of the field, 5 in Day 2 = 0.5% of Day 2; Day 2 conversion 5% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 3 with tournament provenance; sources: pa-fetch 4):** champion Pyke, Returned 2/4, Pyke, Dockside Butcher 2/4; runes 7 Chaos / 5 Fury 2/4, 6 Fury / 6 Chaos 1/4, 7 Fury / 5 Chaos 1/4; battlefields Ripper's Bay 4/4, Zaun Warrens 2/4, Vilemaw's Lair 1/4, Void Gate 1/4, Bandle Scouts' Academy 1/4; core (>=75%) Falling Star 4/4 x2.2, Ezreal, Prodigy 4/4 x2.2, Star-Crossed 4/4 x2.0, Fizz, Trickster 4/4 x1.2, Pyke, Dockside Butcher 4/4 x1.0, Traveling Merchant 3/4 x3.0, Tornado Warrior 3/4 x3.0, Tail-Cloaked Matriarch 3/4 x3.0, Reckless Innovator 3/4 x2.7, Vex, Apathetic 3/4 x2.0, Kharox 3/4 x2.0, Bilgewater Tracker 3/4 x1.7; flex (25-74%) Lost to the Sands 2/4, Bedeviling Stranger 2/4, Noxus Hopeful 2/4, Inferna 2/4, Cleave 2/4, Gust 2/4, The Good Stuff 2/4, Hard Bargain 2/4; side deck Decree of Rage 4/4, Ravenbloom Prefect 3/4, Baron Nashor 3/4, An Offer You Can't Refuse 2/4, Brynhir Thundersong 2/4; shape labels from the deck-theory clustering (2 labelled): unit-aggro 2
+  - Builds by Chosen Champion (DATA): Pyke, Returned 2/4 sets itself apart with Traveling Merchant, Tideturner, An Offer You Can't Refuse, Reckless Innovator, Blood Rush; Pyke, Dockside Butcher 2/4 sets itself apart with Gust, Darius, Trifarian, Pack of Wonders, Mindsplitter, Amateur Demolitionist
+- **Pre-Radiance lists (DATA, n=10, 10 with tournament provenance; sources: official-rq 6, pa-fetch 2, pa-sample 2; newest set in list: UNL 6, VEN 4; 8 of them hold a card that is banned today):** champion Pyke, Dockside Butcher 10/10; runes 7 Fury / 5 Chaos 6/10, 6 Fury / 6 Chaos 4/10; battlefields Ripper's Bay 8/9, Forbidding Waste 7/9, Void Gate 6/9, Frozen Fortress 3/9, Aspirant's Climb 2/9 (BANNED since 2026-07-24); core (>=75%) Falling Star 10/10 x3.0, Fizz, Trickster 10/10 x2.2, Star-Crossed 10/10 x1.9, Pyke, Dockside Butcher 10/10 x1.0, Bewitching Spirit 9/10 x3.0, Treasure Hunter 9/10 x2.9, Ezreal, Prodigy 9/10 x1.3, Stacked Deck 8/10 x2.5 (BANNED since 2026-09-18); flex (25-74%) Noxus Hopeful 7/10, Traveling Merchant 6/10, Vex, Apathetic 5/10, Ferrous Forerunner 5/10, Baron Nashor 5/10, Darius, Trifarian 5/10, Kai'Sa, Survivor 5/10, Mindsplitter 5/10; side deck Thermo Beam 7/10, Star-Crossed 7/10, Gust 6/10, Brynhir Thundersong 6/10, Switcheroo 5/10; shape labels from the deck-theory clustering (4 labelled): unit-aggro 4
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 10 complete pre-Radiance lists)
 
 ### UNL-187 Piltover Enforcer (Vi), Fury/Order
 
@@ -1498,9 +1853,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** conquer 1.00 [rewards] pool 12; excess-damage 1.00 [rewards] pool 37; ready 0.60 [enables] pool 45
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); UNL-217 Trapping Grounds (1.0; Conquering battlefields, Excess combat damage); OGN-282 Monastery of Hirana (0.5; Conquering battlefields); OGN-286 Reckoner's Arena (0.5; Conquering battlefields); OGN-287 Sigil of the Storm (0.5; Conquering battlefields)
 - **Popularity and results (DATA):** 9 published lists since 2026-10-23 (rank 51 of 58, 0.6%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Vi, Peacekeeper 2/3; runes 7 Fury / 5 Order 2/3, 8 Fury / 4 Order 1/3; battlefields Packed Amphitheater 2/3, Star Spring 2/3, Reckoner's Arena 1/3, Vilemaw's Lair 1/3, Zaun Warrens 1/3; core (>=75%) Kai'Sa, Survivor 3/3 x3.0, Hextech Gauntlets 3/3 x3.0, Gem Jammer 3/3 x2.7, Hidden Blade 3/3 x2.3, Long Sword 3/3 x2.0, Deathgrip 3/3 x2.0, Kennen, Keeper of Balance 3/3 x1.3, Vi, Peacekeeper 3/3 x1.0; flex (25-74%) Trifarian Captain 2/3, Honest Broker 2/3, Jhin, Murderous Artist 2/3, Pyke, Dockside Butcher 2/3, Cleave 2/3, Falling Star 2/3, Rek'Sai, Breacher 2/3, Fiora, Victorious 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Vi, Peacekeeper 1/1; runes 7 Fury / 5 Order 1/1; battlefields The Arena's Greatest 1/1, Forge of the Fluft 1/1, Star Spring 1/1; core (>=75%) Noxus Hopeful 1/1 x3.0, Pouty Poro 1/1 x3.0, Kai'Sa, Survivor 1/1 x3.0, Faithful Manufactor 1/1 x3.0, Hidden Blade 1/1 x3.0, Gem Jammer 1/1 x3.0, Honest Broker 1/1 x3.0, Hextech Gauntlets 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 105 Day 1 pilots = 1.8% of the field, 0 in Day 2 = 0.0% of Day 2; Day 2 conversion 0% against 18% for the whole field
+- **Radiance-era lists (DATA, n=8, 6 with tournament provenance; sources: pa-fetch 8):** champion Vi, Peacekeeper 6/7, Vi, Hotheaded 1/7; runes 8 Fury / 4 Order 4/8, 7 Fury / 5 Order 4/8; battlefields Packed Amphitheater 5/8, Star Spring 5/8, Vilemaw's Lair 3/8, Sunken Temple 3/8, Forge of the Fluft 2/8; core (>=75%) Hextech Gauntlets 8/8 x2.9, Gem Jammer 8/8 x2.8, Hidden Blade 7/8 x2.3, Falling Star 7/8 x2.0, Long Sword 7/8 x1.9, Vi, Peacekeeper 7/8 x1.4, Inferna 6/8 x2.8, Kai'Sa, Survivor 6/8 x2.7, Trifarian Captain 6/8 x2.7, Pyke, Dockside Butcher 6/8 x2.2, Rengar, Unseen 6/8 x2.0, Deathgrip 6/8 x1.8; flex (25-74%) Jhin, Murderous Artist 5/8, Rek'Sai, Breacher 5/8, Noxus Hopeful 4/8, Fiora, Victorious 4/8, Tactical Retreat 4/8, Vault Breaker 3/8, Perfect Execution 3/8, Ki Barrier 3/8; side deck Decree of Rage 7/8, Decree of Unity 7/8, Salvage 6/8, Brittle Steel 6/8, Ashe, Focused 4/8; shape labels from the deck-theory clustering (5 labelled): unit-aggro 5
+- **Pre-Radiance lists (DATA, n=6, 6 with tournament provenance; sources: official-rq 5, pa-fetch 1; newest set in list: UNL 3, VEN 3; 2 of them hold a card that is banned today):** champion Vi, Peacekeeper 5/6, Vi, Destructive 1/6; runes 7 Fury / 5 Order 4/6, 8 Fury / 4 Order 1/6, 6 Fury / 6 Order 1/6; battlefields Forge of the Fluft 3/5, The Arena's Greatest 2/5 (BANNED since 2026-07-24), Vilemaw's Lair 2/5, Sunken Temple 2/5, Star Spring 2/5; core (>=75%) Hextech Gauntlets 6/6 x3.0, Kai'Sa, Survivor 6/6 x2.8, Honest Broker 6/6 x2.8, Deathgrip 6/6 x2.5, Hidden Blade 5/6 x2.4, Long Sword 5/6 x2.0, Rek'Sai, Breacher 5/6 x1.8, Vi, Peacekeeper 5/6 x1.0; flex (25-74%) Rengar, Unseen 4/6, Gem Jammer 3/6, Noxus Hopeful 3/6, Unsung Hero 3/6, Jhin, Murderous Artist 3/6, Ferrous Forerunner 3/6, Kennen, Keeper of Balance 3/6, Cleave 3/6; side deck Ashe, Focused 6/6, Salvage 6/6, Falling Star 4/6, Decree of Unity 2/6, Brynhir Thundersong 2/6; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (6 with tournament provenance: event-named, podium or official); 6 complete pre-Radiance lists)
 
 ### UNL-189 Bashful Bloom (Lillia), Calm/Mind
 
@@ -1516,9 +1872,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** temporary 1.00 [enables/rewards] pool 14; wide 1.00 [enables/rewards] pool 16; token 0.70 [enables] pool 16; cost-reduction 0.60 [enables] pool 11; tag:Sprite 0.60 [enables] pool 7
 - **Battlefields by text (HEURISTIC):** UNL-208 Black Flame Altar (1.0; Temporary units); RAD-163 Hunters' Circle (0.6; Cost reduction); SFD-210 Hall of Legends (0.6; Readies the legend); SFD-211 Marai Spire (0.6; Cost reduction); SFD-213 Ornn's Forge (0.6; Cost reduction)
 - **Popularity and results (DATA):** 18 published lists since 2026-10-23 (rank 31 of 58, 1.2%); riftbound.gg week-2 tier 4, 0 wins, 1 top cuts
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=2, 2 event-named):** champion Lillia, Fae Fawn 2/2; runes 7 Calm / 5 Mind 1/2, 6 Calm / 6 Mind 1/2; battlefields Seat of Power 2/2, Dusk Rose Lab 2/2, Abandoned Hall 1/2, Black Flame Altar 1/2; core (>=75%) Defy 2/2 x3.0, Discipline 2/2 x3.0, Mask of Foresight 2/2 x3.0, Ravenbloom Student 2/2 x3.0, Sprite Burst 2/2 x3.0, Sprite Fountain 2/2 x3.0, Charm 2/2 x2.5, En Garde 2/2 x2.5, Stupefy 2/2 x2.5, Smoke and Mirrors 2/2 x2.5, Lonely Poro 2/2 x2.0, Brutalizer 2/2 x2.0; flex (25-74%) n too small
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Lillia, Fae Fawn 1/1; runes 6 Calm / 6 Mind 1/1; battlefields The Arena's Greatest 1/1, Seat of Power 1/1, Dusk Rose Lab 1/1; core (>=75%) Defy 1/1 x3.0, En Garde 1/1 x3.0, Discipline 1/1 x3.0, Mask of Foresight 1/1 x3.0, Stupefy 1/1 x3.0, Ravenbloom Student 1/1 x3.0, Sprite Burst 1/1 x3.0, Sprite Fountain 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (2 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 152 Day 1 pilots = 2.5% of the field, 22 in Day 2 = 2.1% of Day 2; Day 2 conversion 14% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 3 first, 3 second, 3 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 4 with tournament provenance; sources: pa-fetch 4):** champion Lillia, Fae Fawn 4/4; runes 6 Calm / 6 Mind 3/4, 7 Calm / 5 Mind 1/4; battlefields Seat of Power 4/4, Dusk Rose Lab 4/4, Black Flame Altar 2/4, Black Rose Sanctum 1/4, Abandoned Hall 1/4; core (>=75%) Defy 4/4 x3.0, Discipline 4/4 x3.0, Mask of Foresight 4/4 x3.0, Ravenbloom Student 4/4 x3.0, Sprite Burst 4/4 x3.0, Sprite Fountain 4/4 x3.0, Stupefy 4/4 x2.5, Lonely Poro 4/4 x2.5, Smoke and Mirrors 4/4 x2.5, Charm 4/4 x2.2, Brutalizer 4/4 x2.2, Battle Preparations 4/4 x1.8; flex (25-74%) Thousand-Tailed Watcher 2/4, Janna, Savior 2/4, Scuttle Crab 1/4, Life from Stone 1/4, Akali, Silent 1/4, Riptide Rex 1/4, Smoke Screen 1/4, Blastcone Fae 1/4; side deck Decree of Insight 3/4, Disarming Rake 3/4, Unchecked Power 3/4, Charm 3/4, Tomb-Raider Barbara 2/4; shape labels from the deck-theory clustering (3 labelled): spell-tempo 3
+- **Pre-Radiance lists (DATA, n=12, 12 with tournament provenance; sources: official-rq 4, pa-fetch 7, r1-top3 1; newest set in list: UNL 4, VEN 8; 3 of them hold a card that is banned today):** champion Lillia, Fae Fawn 12/12; runes 6 Calm / 6 Mind 7/12, 7 Mind / 5 Calm 3/12, 7 Calm / 5 Mind 2/12; battlefields Dusk Rose Lab 11/11, Seat of Power 10/11, Rockfall Path 4/11, Black Flame Altar 4/11, The Arena's Greatest 3/11 (BANNED since 2026-07-24); core (>=75%) Defy 12/12 x3.0, Discipline 12/12 x3.0, Ravenbloom Student 12/12 x3.0, Sprite Fountain 12/12 x3.0, Stupefy 12/12 x2.8, Smoke and Mirrors 12/12 x2.4, Charm 12/12 x1.7, Lillia, Fae Fawn 12/12 x1.3; flex (25-74%) Heart of Dark Ice 8/12, Janna, Savior 6/12, Lonely Poro 5/12, Disarming Rake 5/12, Riptide Rex 4/12, Brutalizer 4/12, Akali, Silent 4/12, Plundering Poro 3/12; side deck Lilting Lullaby 11/12, Disarming Rake 9/12, Unchecked Power 8/12, Charm 8/12, Decree of Insight 7/12; shape labels from the deck-theory clustering (7 labelled): spell-tempo 7
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (4 with tournament provenance: event-named, podium or official); 12 complete pre-Radiance lists)
 
 ### UNL-191 Wuju Master (Master Yi), Calm/Body
 
@@ -1538,9 +1896,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** level 1.00 [rewards] pool 26; ready 0.65 [enables] pool 34
 - **Battlefields by text (HEURISTIC):** UNL-213 Gardens of Becoming (1.0; XP / Level)
 - **Popularity and results (DATA):** 11 published lists since 2026-10-23 (rank 48 of 58, 0.8%); riftbound.gg week-2 tier 2, 2 wins, 5 top cuts; EU Regional Championship 46% over 106 matches; results are per champion name and cannot be split from OGS-019
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=2, 2 event-named):** champion Master Yi, Tempered 2/2; runes 6 Calm / 6 Body 1/2, 7 Body / 5 Calm 1/2; battlefields Reckoner's Arena 1/2, Targon's Peak 1/2, Rockfall Path 1/2, Gardens of Becoming 1/2, Star Spring 1/2; core (>=75%) Defy 2/2 x3.0, Discipline 2/2 x3.0, Punch First 2/2 x3.0, Wuju Apprentice 2/2 x3.0, Master Yi, Unstoppable 2/2 x3.0, Gemhand Hunter 2/2 x3.0, Zhonya's Hourglass 2/2 x2.5, Scuttle Crab 2/2 x2.5, Grim Resolve 2/2 x2.5, Back Off 2/2 x2.0, Voracious Gromp 2/2 x2.0, Arachnoid Horror 2/2 x2.0; flex (25-74%) n too small
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Master Yi, Tempered 1/1; runes 6 Calm / 6 Body 1/1; battlefields Reckoner's Arena 1/1, Amateur Recital 1/1, Gardens of Becoming 1/1; core (>=75%) Defy 1/1 x3.0, Discipline 1/1 x3.0, Wuju Apprentice 1/1 x3.0, Master Yi, Unstoppable 1/1 x3.0, Gemhand Hunter 1/1 x3.0, Grim Resolve 1/1 x3.0, Voracious Gromp 1/1 x3.0, Emperor's Divide 1/1 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (2 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 77 Day 1 pilots = 1.3% of the field, 5 in Day 2 = 0.5% of Day 2; Day 2 conversion 6% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 1 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 1 with tournament provenance; sources: pa-fetch 4):** champion Master Yi, Tempered 3/3; runes 6 Calm / 6 Body 2/4, 8 Calm / 4 Body 1/4, 7 Body / 5 Calm 1/4; battlefields Reckoner's Arena 2/4, Sunken Temple 2/4, Gardens of Becoming 2/4, Star Spring 2/4, Windswept Hillock 1/4; core (>=75%) Gemhand Hunter 4/4 x3.0, Wuju Apprentice 4/4 x2.8, Grim Resolve 4/4 x2.8, Voracious Gromp 4/4 x2.8, Master Yi, Unstoppable 4/4 x2.2, Master Yi, Tempered 4/4 x1.2, Defy 3/4 x3.0, Discipline 3/4 x3.0, Portable Portal 3/4 x2.3, Punch First 3/4 x2.3, Skyward Strike 3/4 x2.3, Zhonya's Hourglass 3/4 x2.0; flex (25-74%) Arachnoid Horror 2/4, Mosstomper 2/4, Concentrate 2/4, Alpha Strike 2/4, Back Off 2/4, Heartening Soul 1/4, Pillaged Armory 1/4, Neeko, Blending In 1/4; side deck Sabotage 3/3, Decree of Strength 3/3, Disarming Rake 2/3, Hush 1/3, Avalanche 1/3; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 3, pa-fetch 2, pa-sample 1, r1-top3 2; newest set in list: UNL 5, VEN 3; 0 of them hold a card that is banned today):** champion Master Yi, Tempered 8/8; runes 6 Calm / 6 Body 4/8, 7 Body / 5 Calm 3/8, 7 Calm / 5 Body 1/8; battlefields Gardens of Becoming 7/7, Reckoner's Arena 6/7, Targon's Peak 3/7, Amateur Recital 3/7, Rockfall Path 1/7; core (>=75%) Defy 8/8 x3.0, Discipline 8/8 x3.0, Wuju Apprentice 8/8 x3.0, Gemhand Hunter 8/8 x3.0, Master Yi, Unstoppable 8/8 x2.9, Zhonya's Hourglass 8/8 x2.5, Back Off 8/8 x2.4, Concentrate 8/8 x2.4; flex (25-74%) Skyward Strike 5/8, Alpha Strike 4/8, Arachnoid Horror 4/8, Hunter's Machete 2/8, Not So Fast 2/8; side deck Sabotage 7/8, Disarming Rake 7/8, Unyielding Spirit 5/8, Not So Fast 4/8, Rampage 3/8; shape labels from the deck-theory clustering (3 labelled): spell-tempo 3
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### UNL-193 Gloomist (Vex), Calm/Chaos
 
@@ -1557,9 +1917,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** hold 1.00 [rewards] pool 14; draw 0.60 [enables] pool 42; stun 0.38 [champion or signature text only] pool 20
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend); OGN-275 Altar to Unity (0.5; Holding battlefields); OGN-280 Grove of the God-Willow (0.5; Holding battlefields); OGN-281 Hallowed Tomb (0.5; Holding battlefields); OGN-283 Navori Fighting Pit (0.5; Holding battlefields)
 - **Popularity and results (DATA):** 29 published lists since 2026-10-23 (rank 17 of 58, 2.0%); riftbound.gg week-2 tier 2, 1 wins, 6 top cuts; EU Regional Championship 36% over 11 matches; registered as an extra Neeko legend in 2 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Vex, Apathetic 3/3; runes 7 Chaos / 5 Calm 2/3, 6 Calm / 6 Chaos 1/3; battlefields Bandle Scouts' Academy 3/3, Bandle Tree 2/3, Startipped Peak 2/3, Targon's Peak 1/3, Hunters' Circle 1/3; core (>=75%) Defy 3/3 x3.0, Zhonya's Hourglass 3/3 x3.0, Steel Paws 3/3 x3.0, Astral Heron 3/3 x3.0, Tornado Warrior 3/3 x3.0, Bedeviling Stranger 3/3 x2.3, Boots of Swiftness 3/3 x2.3, Switcheroo 3/3 x2.3, Tideturner 3/3 x1.7, Rebuke 3/3 x1.3, Star-Crossed 3/3 x1.3, Blitzcrank, Impassive 3/3 x1.0; flex (25-74%) Discipline 2/3, Gust 2/3, Charm 2/3, Edge of Night 2/3, Sneaky Deckhand 1/3, Reckless Innovator 1/3, Irelia, Fervent 1/3, Scuttle Crab 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=3, 3 event-named):** champion Vex, Apathetic 3/3; runes 7 Calm / 5 Chaos 2/3, 6 Calm / 6 Chaos 1/3; battlefields Startipped Peak 3/3, Ravenbloom Conservatory 2/3, Grove of the God-Willow 1/3, The Papertree 1/3, Abandoned Hall 1/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Sona, Harmonious 3/3 x3.0, Overzealous Fan 3/3 x3.0, Mutated Mouser 3/3 x3.0, Back Off 3/3 x3.0, Gust 3/3 x2.0, Charm 3/3 x1.7; flex (25-74%) Evelynn, Entrancing 2/3, Ahri, Alluring 2/3, Boots of Swiftness 2/3, Shadow 2/3, Rebuke 2/3, Vex, Cheerless 2/3, Ride the Wind 2/3, Switcheroo 2/3
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 3 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 165 Day 1 pilots = 2.8% of the field, 32 in Day 2 = 3.0% of Day 2; Day 2 conversion 19% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 4 first, 7 second, 7 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 6 with tournament provenance; sources: pa-fetch 6):** champion Vex, Apathetic 6/6; runes 6 Calm / 6 Chaos 3/6, 7 Chaos / 5 Calm 3/6; battlefields Startipped Peak 5/6, Bandle Scouts' Academy 5/6, Bandle Tree 3/6, Ravenbloom Conservatory 2/6, Grove of the God-Willow 1/6; core (>=75%) Defy 6/6 x3.0, Bedeviling Stranger 6/6 x2.5, Switcheroo 6/6 x2.0, Star-Crossed 6/6 x1.5, Rebuke 6/6 x1.3, Vex, Apathetic 6/6 x1.0, Discipline 5/6 x2.8, Astral Heron 5/6 x2.6, Boots of Swiftness 5/6 x2.0; flex (25-74%) Steel Paws 4/6, Tornado Warrior 4/6, Scuttle Crab 4/6, Back Off 4/6, Gust 4/6, Tideturner 4/6, Charm 4/6, Blitzcrank, Impassive 4/6; side deck Star-Crossed 5/6, Tomb-Raider Barbara 4/6, Decree of Focus 4/6, Not So Fast 4/6, Hush 3/6; shape labels from the deck-theory clustering (5 labelled): spell-tempo 4, gear-engine 1
+- **Pre-Radiance lists (DATA, n=12, 12 with tournament provenance; sources: official-rq 3, pa-fetch 5, pa-sample 3, r1-top3 1; newest set in list: UNL 5, VEN 7; 2 of them hold a card that is banned today):** champion Vex, Apathetic 11/12, Vex, Cheerless 1/12; runes 7 Chaos / 5 Calm 8/12, 6 Calm / 6 Chaos 2/12, 7 Calm / 5 Chaos 2/12; battlefields Startipped Peak 8/11, Fortified Position 6/11, Targon's Peak 4/11, Bandle Tree 3/11, Ravenbloom Conservatory 3/11; core (>=75%) Discipline 12/12 x2.8, Defy 12/12 x2.8, Back Off 12/12 x1.9, Vex, Apathetic 12/12 x1.5, Switcheroo 11/12 x2.4, Boots of Swiftness 10/12 x2.2, Star-Crossed 10/12 x1.8, Rebuke 10/12 x1.6; flex (25-74%) Evelynn, Entrancing 8/12, Gust 8/12, Charm 8/12, Mutated Mouser 7/12, Astral Heron 7/12, Tideturner 7/12, Zhonya's Hourglass 6/12, Pyke, Returned 6/12; side deck Disarming Rake 8/12, Not So Fast 7/12, Star-Crossed 7/12, Gust 5/12, Decree of Focus 5/12; shape labels from the deck-theory clustering (8 labelled): spell-tempo 8
+- **Data confidence: ok; advice basis: radiance-lists** (6 complete Radiance-era lists (6 with tournament provenance: event-named, podium or official); 12 complete pre-Radiance lists)
 
 ### UNL-195 Green Father (Ivern), Calm/Order
 
@@ -1575,9 +1937,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** conquer 1.00 [rewards] pool 5; hold 1.00 [rewards] pool 16; tag:Bird 0.60 [enables] pool 20; tag:Cat 0.60 [enables] pool 14; tag:Dog 0.60 [enables] pool 12; tag:Poro 0.60 [enables] pool 15
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); OGN-286 Reckoner's Arena (1.0; Conquering battlefields, Holding battlefields); OGN-275 Altar to Unity (0.5; Holding battlefields); OGN-280 Grove of the God-Willow (0.5; Holding battlefields); OGN-281 Hallowed Tomb (0.5; Holding battlefields)
 - **Popularity and results (DATA):** 18 published lists since 2026-10-23 (rank 32 of 58, 1.2%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Ivern, Nurturer 3/3; runes 6 Calm / 6 Order 2/3, 7 Calm / 5 Order 1/3; battlefields Vilemaw's Lair 3/3, Rockfall Path 3/3, Forbidding Waste 3/3; core (>=75%) Defy 3/3 x3.0, Stalwart Poro 3/3 x3.0, Discipline 3/3 x3.0, Trusty Ramhound 3/3 x3.0, Mutated Mouser 3/3 x3.0, Back Off 3/3 x2.0, Ivern, Nurturer 3/3 x1.7, Frisky Hunter 3/3 x1.3, Daisy! 3/3 x1.0; flex (25-74%) Raucous Anthem 2/3, Affectionate Poro 2/3, Iridescent Avian 2/3, Emperor's Divide 2/3, Friendship 2/3, Fallen Feline 2/3, Block 2/3, Call to Glory 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Ivern, Nurturer 2/2; runes 5 Order 1/2, 6 Calm / 6 Order 1/2; battlefields Vilemaw's Lair 2/2, Rockfall Path 2/2, Forbidding Waste 1/2, Vaults of Helia 1/2; core (>=75%) Defy 2/2 x3.0, Stalwart Poro 2/2 x3.0, Hidden Blade 2/2 x3.0, Trusty Ramhound 2/2 x3.0, Frisky Hunter 2/2 x3.0, Mutated Mouser 2/2 x3.0, Discipline 2/2 x2.5, Azir, Sovereign 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 81 Day 1 pilots = 1.4% of the field, 3 in Day 2 = 0.3% of Day 2; Day 2 conversion 4% against 18% for the whole field
+- **Radiance-era lists (DATA, n=3, 2 with tournament provenance; sources: pa-fetch 3):** champion Ivern, Nurturer 3/3; runes 7 Calm / 5 Order 2/3, 6 Calm / 6 Order 1/3; battlefields Vilemaw's Lair 3/3, Forbidding Waste 3/3, Rockfall Path 2/3, Vaults of Helia 1/3; core (>=75%) Defy 3/3 x3.0, Stalwart Poro 3/3 x3.0, Discipline 3/3 x3.0, Trusty Ramhound 3/3 x3.0, Mutated Mouser 3/3 x3.0, Ivern, Nurturer 3/3 x1.7, Daisy! 3/3 x1.0; flex (25-74%) Raucous Anthem 2/3, Iridescent Avian 2/3, Emperor's Divide 2/3, Back Off 2/3, Friendship 2/3, Fallen Feline 2/3, Frisky Hunter 2/3, Blitzcrank, Impassive 2/3; side deck Disarming Rake 3/3, Hidden Blade 2/3, Hush 2/3, Not So Fast 2/3, Janna, Savior 2/3; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Pre-Radiance lists (DATA, n=11, 11 with tournament provenance; sources: official-rq 5, pa-fetch 5, pa-sample 1; newest set in list: UNL 6, VEN 5; 0 of them hold a card that is banned today):** champion Ivern, Nurturer 11/11; runes 6 Calm / 6 Order 5/11, 7 Calm / 5 Order 4/11, 8 Calm / 4 Order 2/11; battlefields Vilemaw's Lair 9/10, Rockfall Path 8/10, Forbidding Waste 8/10, Vaults of Helia 3/10, Seat of Power 2/10; core (>=75%) Defy 11/11 x3.0, Stalwart Poro 11/11 x3.0, Trusty Ramhound 11/11 x3.0, Mutated Mouser 11/11 x3.0, Discipline 11/11 x2.5, Frisky Hunter 11/11 x2.5, Ivern, Nurturer 11/11 x1.6, Back Off 11/11 x1.4; flex (25-74%) Friendship 8/11, Call to Glory 7/11, Azir, Sovereign 6/11, Vi, Peacekeeper 6/11, Blitzcrank, Impassive 6/11, Vilemaw 6/11, Daring Poro 5/11, Astral Heron 5/11; side deck Disarming Rake 8/11, Not So Fast 6/11, Cull the Weak 5/11, Flurry of Feathers 5/11, Salvage 4/11; shape labels from the deck-theory clustering (6 labelled): spell-tempo 4, unit-aggro 2
+- **Data confidence: thin; advice basis: radiance-lists** (3 complete Radiance-era lists (2 with tournament provenance: event-named, podium or official); 11 complete pre-Radiance lists)
 
 ### UNL-197 Scorn of the Moon (Diana), Mind/Chaos
 
@@ -1593,9 +1956,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** showdown 1.00 [rewards] pool 67; energy-ramp 0.60 [enables] pool 7; spell-matters 0.35 [champion or signature text only] pool 77
 - **Battlefields by text (HEURISTIC):** VEN-160 Mystic Vortex (1.0; Showdown-speed play); SFD-210 Hall of Legends (0.6; Readies the legend); VEN-166 Threshold of the Gray (0.6; Adding resources)
 - **Popularity and results (DATA):** 22 published lists since 2026-10-23 (rank 24 of 58, 1.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Diana, Lunari 3/3; runes 6 Mind / 6 Chaos 2/3, 8 Chaos / 4 Mind 1/3; battlefields Targon's Peak 3/3, Ravenbloom Conservatory 2/3, Abandoned Hall 2/3, Minefield 1/3, Rockfall Path 1/3; core (>=75%) Stupefy 3/3 x3.0, Ride the Wind 3/3 x3.0, Hwei, Brooding Painter 3/3 x3.0, Moonfall 3/3 x3.0, Gust 3/3 x2.7, Tideturner 3/3 x2.7, Traveling Merchant 3/3 x2.3, Hard Bargain 3/3 x2.0, Star-Crossed 3/3 x2.0, Eclipse 3/3 x1.7, Fizz, Trickster 3/3 x1.3, Smoke Screen 3/3 x1.0; flex (25-74%) Ravenbloom Student 2/3, Sprite Fountain 2/3, Vex, Apathetic 2/3, Rebuke 2/3, Rhasa the Sunderer 1/3, Shadow Order Disciple 1/3, Kennen, Storm of Shuriken 1/3, Flash 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Diana, Lunari 2/2; runes 7 Chaos / 5 Mind 2/2; battlefields Abandoned Hall 2/2, Targon's Peak 1/2, The Arena's Greatest 1/2, Rockfall Path 1/2, Seat of Power 1/2; core (>=75%) Stupefy 2/2 x3.0, Ravenbloom Student 2/2 x3.0, Stacked Deck 2/2 x3.0, Tideturner 2/2 x3.0, Traveling Merchant 2/2 x2.5, Hwei, Brooding Painter 2/2 x2.5, Vex, Apathetic 2/2 x2.5, Moonfall 2/2 x2.5; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 190 Day 1 pilots = 3.2% of the field, 36 in Day 2 = 3.4% of Day 2; Day 2 conversion 19% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 20 first, 25 second, 14 third; with a Radiance card in the list: 0 / 0 / 1
+- **Radiance-era lists (DATA, n=6, 5 with tournament provenance; sources: pa-fetch 5, r1-top3 1):** champion Diana, Lunari 6/6; runes 6 Mind / 6 Chaos 3/6, 7 Chaos / 5 Mind 2/6, 8 Chaos / 4 Mind 1/6; battlefields Abandoned Hall 4/6, Targon's Peak 3/6, Ravenbloom Conservatory 3/6, Rockfall Path 2/6, Fortified Position 1/6; core (>=75%) Stupefy 6/6 x3.0, Moonfall 6/6 x3.0, Ride the Wind 6/6 x2.8, Hard Bargain 6/6 x2.0, Star-Crossed 6/6 x2.0, Eclipse 6/6 x1.8, Fizz, Trickster 6/6 x1.5, Diana, Lunari 6/6 x1.0, Ravenbloom Student 5/6 x3.0, Hwei, Brooding Painter 5/6 x3.0, Tideturner 5/6 x2.8, Vex, Apathetic 5/6 x2.6; flex (25-74%) Traveling Merchant 4/6, Smoke Screen 4/6, Switcheroo 3/6, An Offer You Can't Refuse 3/6, Sprite Fountain 2/6, Bedeviling Stranger 2/6, Flash 2/6; side deck Decree of Insight 5/6, An Offer You Can't Refuse 5/6, Gust 4/6, Star-Crossed 4/6, Acceptable Losses 3/6; shape labels from the deck-theory clustering (4 labelled): spell-tempo 4
+- **Pre-Radiance lists (DATA, n=17, 17 with tournament provenance; sources: official-rq 10, pa-fetch 2, r1-top3 5; newest set in list: UNL 10, VEN 7; 15 of them hold a card that is banned today):** champion Diana, Lunari 17/17; runes 7 Chaos / 5 Mind 14/17, 6 Mind / 6 Chaos 3/17; battlefields Abandoned Hall 15/15, Targon's Peak 10/15, Rockfall Path 7/15, Seat of Power 5/15, Ravenbloom Conservatory 3/15; core (>=75%) Stupefy 17/17 x3.0, Ravenbloom Student 17/17 x3.0, Tideturner 17/17 x3.0, Hwei, Brooding Painter 17/17 x2.9, Moonfall 17/17 x2.6, Ride the Wind 17/17 x2.4, Star-Crossed 17/17 x2.0, Diana, Lunari 17/17 x1.0; flex (25-74%) Acceptable Losses 12/17, Traveling Merchant 11/17, Eclipse 10/17, Smoke Screen 10/17, Sprite Fountain 7/17, Kha'Zix, Mutating Horror 7/17, Vex, Cheerless 5/17; side deck Turn to Dust 14/17, Star-Crossed 14/17, Singularity 12/17, Baron Nashor 8/17, Decree of Insight 7/17; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Data confidence: ok; advice basis: radiance-lists** (6 complete Radiance-era lists (5 with tournament provenance: event-named, podium or official); 17 complete pre-Radiance lists)
 
 ### UNL-199 Deceiver (LeBlanc), Mind/Order
 
@@ -1611,10 +1976,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** UNL-200 Mirror Image (spell, 3 Energy, 2 Power): "Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** conquer 1.00 [rewards] pool 5; hold 1.00 [rewards] pool 8; discard 0.80 [needs] pool 5; temporary 0.80 [enables] pool 14; card-copy 0.70 [enables] pool 3; token 0.70 [enables] pool 33; tag:Reflection 0.60 [enables] pool 2
 - **Battlefields by text (HEURISTIC):** OGN-298 Zaun Warrens (1.3; Conquering battlefields, Discard); RAD-166 Ruined Monastery (1.3; Conquering battlefields, Discard); SFD-210 Hall of Legends (1.1; Conquering battlefields, Readies the legend); OGN-286 Reckoner's Arena (1.0; Conquering battlefields, Holding battlefields); OGN-275 Altar to Unity (0.5; Holding battlefields)
-- **Popularity and results (DATA):** 17 published lists since 2026-10-23 (rank 33 of 58, 1.2%); riftbound.gg week-2 tier 3, 0 wins, 1 top cuts; EU Regional Championship 36% over 28 matches; registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion LeBlanc, Fragmented 3/3; runes 8 Order / 4 Mind 3/3; battlefields Windswept Hillock 3/3, Star Spring 3/3, Dusk Rose Lab 2/3, Trifarian War Camp 1/3; core (>=75%) Soaring Scout 3/3 x3.0, Harnessed Dragon 3/3 x3.0, Karthus, Eternal 3/3 x3.0, Baited Hook 3/3 x3.0, Glasc Mixologist 3/3 x3.0, Ruined Rex 3/3 x3.0, Sacrifice 3/3 x3.0, Vi, Peacekeeper 3/3 x2.7, Honest Broker 3/3 x2.3, Rift Herald 3/3 x2.3, Mirror Image 3/3 x1.7, LeBlanc, Fragmented 3/3 x1.0; flex (25-74%) Black Rose Dignitary 2/3, Watchful Sentry 2/3, Thousand-Tailed Watcher 2/3, Deathgrip 2/3, Hidden Blade 2/3, Trifarian Captain 1/3, Shen, Kinkou 1/3, Dune Devourer 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion LeBlanc, Fragmented 1/1; runes 8 Order / 4 Mind 1/1; battlefields Aspirant's Climb 1/1, Windswept Hillock 1/1, Star Spring 1/1; core (>=75%) Watchful Sentry 1/1 x3.0, Soaring Scout 1/1 x3.0, Harnessed Dragon 1/1 x3.0, Karthus, Eternal 1/1 x3.0, Baited Hook 1/1 x3.0, Glasc Mixologist 1/1 x3.0, Ruined Rex 1/1 x3.0, Black Rose Dignitary 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 17 published lists since 2026-10-23 (rank 33 of 58, 1.2%); riftbound.gg week-2 tier 3, 0 wins, 1 top cuts; EU Regional Championship 36% over 28 matches; registered as an extra Neeko legend in 2 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 298 Day 1 pilots = 5.0% of the field, 71 in Day 2 = 6.7% of Day 2; Day 2 conversion 24% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 11 first, 8 second, 10 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=7, 7 with tournament provenance; sources: pa-fetch 7):** champion LeBlanc, Fragmented 7/7; runes 8 Order / 4 Mind 5/7, 7 Order / 5 Mind 2/7; battlefields Windswept Hillock 7/7, Star Spring 5/7, Dusk Rose Lab 4/7, Trifarian War Camp 2/7, Black Rose Sanctum 1/7; core (>=75%) Soaring Scout 7/7 x3.0, Harnessed Dragon 7/7 x3.0, Karthus, Eternal 7/7 x3.0, Baited Hook 7/7 x3.0, Glasc Mixologist 7/7 x3.0, Ruined Rex 7/7 x3.0, Sacrifice 7/7 x2.9, Vi, Peacekeeper 7/7 x2.3, Mirror Image 7/7 x1.7, LeBlanc, Fragmented 7/7 x1.0, Honest Broker 6/7 x2.2, Thousand-Tailed Watcher 6/7 x1.8; flex (25-74%) Watchful Sentry 5/7, Rift Herald 5/7, Black Rose Dignitary 4/7, Hidden Blade 4/7, Deathgrip 3/7, Trifarian Captain 2/7, Dune Devourer 2/7, Seal of Unity 2/7; side deck Decree of Unity 7/7, Salvage 6/7, Bellows Breath 4/7, Atakhan 4/7, LeBlanc, Everywhere at Once 4/7; shape labels from the deck-theory clustering (6 labelled): big-control 6
+- **Pre-Radiance lists (DATA, n=9, 9 with tournament provenance; sources: official-rq 4, pa-fetch 3, pa-sample 1, r1-top3 1; newest set in list: UNL 5, VEN 4; 4 of them hold a card that is banned today):** champion LeBlanc, Fragmented 9/9; runes 8 Order / 4 Mind 9/9; battlefields Windswept Hillock 8/8, Star Spring 8/8, Aspirant's Climb 4/8 (BANNED since 2026-07-24), Dusk Rose Lab 2/8, Forbidding Waste 2/8; core (>=75%) Soaring Scout 9/9 x3.0, Karthus, Eternal 9/9 x3.0, Glasc Mixologist 9/9 x3.0, Ruined Rex 9/9 x3.0, Watchful Sentry 9/9 x2.8, Sacrifice 9/9 x2.8, Black Rose Dignitary 9/9 x2.6, Vi, Peacekeeper 9/9 x2.3; flex (25-74%) Honest Broker 4/9; side deck LeBlanc, Everywhere at Once 7/8, Ashe, Focused 6/8, Atakhan 6/8, Thousand-Tailed Watcher 5/8, Turn to Dust 5/8; shape labels from the deck-theory clustering (4 labelled): big-control 3, unit-aggro 1
+- **Data confidence: ok; advice basis: radiance-lists** (7 complete Radiance-era lists (7 with tournament provenance: event-named, podium or official); 9 complete pre-Radiance lists)
 
 ### UNL-201 Voidreaver (Kha'Zix), Body/Chaos
 
@@ -1632,10 +1999,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Signature cards (FACT, rule 103.3.d; max 3 in total):** UNL-202 Void Assault (spell, 2 Energy, 1 Power): "Move a friendly unit, then move an enemy unit. (If they both move to a battlefield you don't control, you're the attacker.)"
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** combat-win 1.00 [rewards] pool 16; level 1.00 [enables/needs] pool 23; movement 0.70 [enables] pool 64; buff 0.60 [enables] pool 18
 - **Battlefields by text (HEURISTIC):** UNL-213 Gardens of Becoming (1.0; XP / Level); OGN-277 Back-Alley Bar (0.7; Moving units); UNL-206 Altar of Blood (0.7; Moving units); OGN-282 Monastery of Hirana (0.6; Buffs); SFD-210 Hall of Legends (0.6; Readies the legend)
-- **Popularity and results (DATA):** 31 published lists since 2026-10-23 (rank 15 of 58, 2.1%); riftbound.gg week-2 tier 3, 0 wins, 0 top cuts; EU Regional Championship 55% over 11 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Kha'Zix, Mutating Horror 3/3; runes 6 Body / 6 Chaos 3/3; battlefields Forbidding Waste 3/3, Star Spring 3/3, Sandswept Tomb 3/3; core (>=75%) Punch First 3/3 x3.0, Irresistible Faefolk 3/3 x3.0, Void Assault 3/3 x3.0, Fizz, Trickster 3/3 x2.3, Shadow Order Disciple 3/3 x2.3, Traveling Merchant 3/3 x2.0, Rengar, Trophy Hunter 3/3 x2.0, Vex, Apathetic 3/3 x2.0, Up from the Deep 3/3 x2.0, Sabotage 3/3 x1.3, Star-Crossed 3/3 x1.3, Rampage 3/3 x1.3; flex (25-74%) Reckless Innovator 2/3, The Good Stuff 2/3, Zed, Without a Sound 2/3, Gust 2/3, Ride the Wind 2/3, Tideturner 2/3, Bloodscent Swarm 2/3, Onslaught 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=2, 2 event-named):** champion Kha'Zix, Evolving Hunter 1/2, Kha'Zix, Mutating Horror 1/2; runes 7 Body / 5 Chaos 1/2; battlefields Zaun Warrens 1/2, Forge of the Fluft 1/2, Sunken Temple 1/2, Forbidding Waste 1/2, Star Spring 1/2; core (>=75%) Void Assault 2/2 x3.0, Rengar, Trophy Hunter 2/2 x2.5, Punch First 2/2 x2.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 2 lists in pa-sample-2026-09-06)
+- **Popularity and results (DATA):** 31 published lists since 2026-10-23 (rank 15 of 58, 2.1%); riftbound.gg week-2 tier 3, 0 wins, 0 top cuts; EU Regional Championship 55% over 11 matches; registered as an extra Neeko legend in 1 fetched lists
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 190 Day 1 pilots = 3.2% of the field, 41 in Day 2 = 3.9% of Day 2; Day 2 conversion 22% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 2 second, 3 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=7, 7 with tournament provenance; sources: pa-fetch 7):** champion Kha'Zix, Mutating Horror 7/7; runes 6 Body / 6 Chaos 7/7; battlefields Star Spring 7/7, Sandswept Tomb 7/7, Forbidding Waste 6/7, Packed Amphitheater 1/7; core (>=75%) Punch First 7/7 x3.0, Irresistible Faefolk 7/7 x3.0, Void Assault 7/7 x3.0, Rengar, Trophy Hunter 7/7 x1.9, Star-Crossed 7/7 x1.7, Rampage 7/7 x1.6, Kha'Zix, Mutating Horror 7/7 x1.3, Fizz, Trickster 6/7 x2.3, Shadow Order Disciple 6/7 x2.3, Sabotage 6/7 x1.3, Switcheroo 6/7 x1.2; flex (25-74%) Reckless Innovator 5/7, Vex, Apathetic 5/7, Traveling Merchant 5/7, Ride the Wind 5/7, Up from the Deep 4/7, Zed, Without a Sound 4/7, Gust 4/7, Hard Bargain 4/7; side deck Decree of Strength 7/7, Sabotage 6/7, An Offer You Can't Refuse 5/7, Ravenbloom Prefect 5/7, Star-Crossed 5/7; shape labels from the deck-theory clustering (7 labelled): unit-aggro 7
+- **Pre-Radiance lists (DATA, n=8, 8 with tournament provenance; sources: official-rq 5, pa-fetch 2, r1-top3 1; newest set in list: UNL 4, VEN 4; 6 of them hold a card that is banned today):** champion Kha'Zix, Mutating Horror 6/7, Rengar, Trophy Hunter 1/7; runes 6 Body / 6 Chaos 5/8, 7 Body / 5 Chaos 2/8, 7 Chaos / 5 Body 1/8; battlefields Forbidding Waste 6/7, Zaun Warrens 5/7, Star Spring 4/7, Sandswept Tomb 4/7, The Arena's Greatest 2/7 (BANNED since 2026-07-24); core (>=75%) Kha'Zix, Mutating Horror 8/8 x1.0, Irresistible Faefolk 7/8 x3.0, Void Assault 7/8 x3.0, Rengar, Trophy Hunter 7/8 x2.7, Punch First 7/8 x2.6, Star-Crossed 7/8 x2.3, Sabotage 7/8 x2.1, Stacked Deck 6/8 x3.0 (BANNED since 2026-09-18); flex (25-74%) Traveling Merchant 5/8, Up from the Deep 4/8, Zed, Without a Sound 4/8, Switcheroo 4/8, Shadow Order Disciple 3/8, Mister Root 3/8, Akshan, Mischievous 3/8, Rampage 3/8; side deck Sabotage 7/8, Gust 4/8, Akshan, Mischievous 4/8, Unyielding Spirit 3/8, Decree of Strength 3/8; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: ok; advice basis: radiance-lists** (7 complete Radiance-era lists (7 with tournament provenance: event-named, podium or official); 8 complete pre-Radiance lists)
 
 ### UNL-203 Keeper of the Hammer (Poppy), Body/Order
 
@@ -1653,9 +2022,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** hold 1.00 [rewards] pool 8; level 1.00 [enables/needs] pool 22; draw 0.60 [enables] pool 27
 - **Battlefields by text (HEURISTIC):** UNL-213 Gardens of Becoming (1.0; XP / Level); SFD-210 Hall of Legends (0.6; Readies the legend); OGN-275 Altar to Unity (0.5; Holding battlefields); OGN-280 Grove of the God-Willow (0.5; Holding battlefields); OGN-281 Hallowed Tomb (0.5; Holding battlefields)
 - **Popularity and results (DATA):** 12 published lists since 2026-10-23 (rank 46 of 58, 0.8%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Poppy, Paragon 3/3; runes 6 Body / 6 Order 2/3, 7 Body / 5 Order 1/3; battlefields Sigil of the Storm 2/3, Threshold of the Gray 2/3, Targon's Peak 1/3, Trifarian War Camp 1/3, Packed Amphitheater 1/3; core (>=75%) Poppy, Paragon 3/3 x1.0; flex (25-74%) Catalyst of Aeons 2/3, Dazzling Aurora 2/3, Forge of the Future 2/3, Elder Dragon 2/3, Sacrifice 2/3, Mobilize 2/3, Rampage 2/3, Flurry of Blades 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA, n=1, 1 event-named):** champion Poppy, Paragon 1/1; runes 6 Body / 6 Order 1/1; battlefields Aspirant's Climb 1/1, Sigil of the Storm 1/1, Forgotten Monument 1/1; core (>=75%) Confront 1/1 x3.0, Flurry of Blades 1/1 x3.0, Mobilize 1/1 x3.0, Catalyst of Aeons 1/1 x3.0, Sabotage 1/1 x3.0, Dazzling Aurora 1/1 x3.0, Blood Money 1/1 x3.0, Elder Dragon 1/1 x3.0; flex (25-74%) n too small
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 1 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 7 of the 11 official field tables (first 2026-05-21, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 51 Day 1 pilots = 0.9% of the field, 3 in Day 2 = 0.3% of Day 2; Day 2 conversion 6% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 1 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=5, 3 with tournament provenance; sources: pa-fetch 5):** champion Poppy, Paragon 5/5; runes 6 Body / 6 Order 2/5, 8 Body / 4 Order 2/5, 7 Body / 5 Order 1/5; battlefields Sandswept Tomb 3/5, Sigil of the Storm 2/5, Gardens of Becoming 2/5, Threshold of the Gray 2/5, Targon's Peak 1/5; core (>=75%) Poppy, Paragon 5/5 x1.0, Rampage 4/5 x2.8, Sabotage 4/5 x2.0, Repulse 4/5 x1.0; flex (25-74%) Punch First 3/5, Grim Resolve 3/5, Master Yi, Tempered 3/5, Shepherd's Heirloom 3/5, Rengar, Trophy Hunter 3/5, Irresistible Faefolk 3/5, Kinkou Initiate 3/5, Keeper's Verdict 3/5; side deck Graves, Blasting Through 3/5, Sabotage 3/5, Salvage 3/5, Repulse 3/5, Decree of Unity 2/5; shape labels from the deck-theory clustering (3 labelled): big-control 2, unit-aggro 1
+- **Pre-Radiance lists (DATA, n=6, 6 with tournament provenance; sources: official-rq 4, pa-fetch 1, pa-sample 1; newest set in list: UNL 3, VEN 3; 2 of them hold a card that is banned today):** champion Poppy, Paragon 6/6; runes 6 Body / 6 Order 3/6, 7 Body / 5 Order 3/6; battlefields Forgotten Monument 5/5, Sigil of the Storm 4/5, Aspirant's Climb 2/5 (BANNED since 2026-07-24), Threshold of the Gray 2/5, The Papertree 1/5; core (>=75%) Confront 6/6 x3.0, Mobilize 6/6 x3.0, Catalyst of Aeons 6/6 x3.0, Dazzling Aurora 6/6 x3.0, Elder Dragon 6/6 x3.0, Flurry of Blades 6/6 x2.7, Blood Money 6/6 x2.7, Harnessed Dragon 6/6 x2.5; flex (25-74%) Cull the Weak 4/6, The Ruination 4/6, Salvage 3/6, Challenge 2/6, Divine Judgment 2/6, Grand Strategem 2/6; side deck Salvage 6/6, Rengar, Trophy Hunter 4/6, Sabotage 4/6, Divine Judgment 3/6, Challenge 1/6; shape labels from the deck-theory clustering (2 labelled): big-control 2
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 6 complete pre-Radiance lists)
 
 ### VEN-139 Rogue Assassin (Akali), Fury/Calm
 
@@ -1672,9 +2043,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** movement 0.90 [enables] pool 42; empower 0.67 [enables] pool 13; ready 0.60 [enables] pool 46; showdown 0.60 [enables] pool 60
 - **Battlefields by text (HEURISTIC):** OGN-277 Back-Alley Bar (0.9; Moving units); UNL-206 Altar of Blood (0.9; Moving units); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 33 published lists since 2026-10-23 (rank 13 of 58, 2.3%); riftbound.gg week-2 tier 2, 0 wins, 2 top cuts; EU Regional Championship 44% over 16 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Akali, Deadly Weapon 3/3; runes 7 Fury / 5 Calm 3/3; battlefields Sigil of the Storm 3/3, Void Gate 3/3, Forgotten Monument 3/3; core (>=75%) Falling Star 3/3 x3.0, Defy 3/3 x3.0, Discipline 3/3 x3.0, Zhonya's Hourglass 3/3 x3.0, Stellacorn Herder 3/3 x3.0, Astral Heron 3/3 x3.0, Shuriken Flip 3/3 x3.0, Long Sword 3/3 x2.7, Back Off 3/3 x2.0, Blitzcrank, Impassive 3/3 x1.7, Not So Fast 3/3 x1.0, Mischievous Marai 3/3 x1.0; flex (25-74%) Kai'Sa, Survivor 2/3, Mournful Witness 2/3, Noxus Hopeful 2/3, Block 2/3, Riven, Broken Blade 1/3, Scuttle Crab 1/3, Charm 1/3, Ferrous Forerunner 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 220 Day 1 pilots = 3.7% of the field, 26 in Day 2 = 2.5% of Day 2; Day 2 conversion 12% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 4 first, 1 second, 0 third; with a Radiance card in the list: 1 / 0 / 0
+- **Radiance-era lists (DATA, n=8, 8 with tournament provenance; sources: pa-fetch 7, r1-top3 1):** champion Akali, Deadly Weapon 8/8; runes 7 Fury / 5 Calm 6/8, 6 Fury / 6 Calm 2/8; battlefields Void Gate 8/8, Sigil of the Storm 6/8, Forgotten Monument 6/8, Back-Alley Bar 1/8, Hunters' Circle 1/8; core (>=75%) Discipline 8/8 x3.0, Zhonya's Hourglass 8/8 x3.0, Stellacorn Herder 8/8 x3.0, Shuriken Flip 8/8 x3.0, Defy 8/8 x2.9, Long Sword 8/8 x2.4, Back Off 8/8 x1.9, Akali, Deadly Weapon 8/8 x1.0, Astral Heron 7/8 x3.0, Falling Star 7/8 x2.7, Kai'Sa, Survivor 7/8 x2.7, Blitzcrank, Impassive 7/8 x1.6; flex (25-74%) Scuttle Crab 4/8, Noxus Hopeful 4/8, Block 4/8, Tomb-Raider Barbara 4/8, Battle Preparations 3/8, Charm 3/8, Darius, Trifarian 3/8, Irelia, Fervent 3/8; side deck Not So Fast 7/7, Decree of Rage 6/7, Decree of Focus 6/7, Ferrous Forerunner 5/7, Thermo Beam 5/7; shape labels from the deck-theory clustering (7 labelled): spell-tempo 7
+- **Pre-Radiance lists (DATA, n=5, 5 with tournament provenance; sources: official-rq 2, pa-fetch 2, r1-top3 1; newest set in list: VEN 5; 0 of them hold a card that is banned today):** champion Akali, Deadly Weapon 5/5; runes 6 Fury / 6 Calm 3/5, 7 Fury / 5 Calm 2/5; battlefields Void Gate 4/5, Sigil of the Storm 3/5, Forgotten Monument 2/5, Back-Alley Bar 1/5, Targon's Peak 1/5; core (>=75%) Defy 5/5 x3.0, Discipline 5/5 x3.0, Stellacorn Herder 5/5 x3.0, Shuriken Flip 5/5 x3.0, Zhonya's Hourglass 5/5 x2.8, Falling Star 5/5 x2.6, Akali, Deadly Weapon 5/5 x1.0, Astral Heron 4/5 x3.0; flex (25-74%) Kai'Sa, Survivor 3/5, Scuttle Crab 3/5, Mischievous Marai 3/5, Blitzcrank, Impassive 3/5, Not So Fast 3/5, En Garde 2/5, Lonely Poro 2/5, Irelia, Fervent 2/5; side deck Ferrous Forerunner 5/5, Against the Odds 5/5, Not So Fast 5/5, Akali, Silent 5/5, Decree of Focus 3/5; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Data confidence: ok; advice basis: radiance-lists** (8 complete Radiance-era lists (8 with tournament provenance: event-named, podium or official); 5 complete pre-Radiance lists)
 
 ### VEN-141 Butcher of the Sands (Renekton), Fury/Body
 
@@ -1690,9 +2063,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** activated-abilities 1.00 [rewards] pool 15; unit 1.00 [rewards] pool 28; energy-ramp 0.60 [enables] pool 8
 - **Battlefields by text (HEURISTIC):** RAD-162 Firelights' Hideout (1.0; Playing units); SFD-210 Hall of Legends (0.6; Readies the legend); VEN-166 Threshold of the Gray (0.6; Adding resources); RAD-165 Rakelstake (0.5; Playing units); VEN-161 Piltovan Forge (0.5; Activated abilities)
 - **Popularity and results (DATA):** 14 published lists since 2026-10-23 (rank 40 of 58, 1.0%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 1 event-named):** champion Renekton, Rage Fueled 3/3; runes 7 Fury / 5 Body 2/3, 8 Fury / 4 Body 1/3; battlefields Black Market 3/3, Protective Sands 2/3, Sigil of the Storm 1/3, The Candlelit Sanctum 1/3, Zaun Warrens 1/3; core (>=75%) Kai'Sa, Survivor 3/3 x3.0, Punch First 3/3 x3.0, Falling Star 3/3 x2.7, Kinkou Initiate 3/3 x2.7, Rengar, Trophy Hunter 3/3 x2.7, Nidalee, Cat Form 3/3 x2.0, Rampage 3/3 x2.0, Renekton, Rage Fueled 3/3 x1.0; flex (25-74%) Noxus Hopeful 2/3, Pit Rookie 2/3, Coalesced Energy 2/3, Irresistible Faefolk 2/3, First Mate 2/3, Inferna 2/3, Sabotage 2/3, Long Sword 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 50 Day 1 pilots = 0.8% of the field, 1 in Day 2 = 0.1% of Day 2; Day 2 conversion 2% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=6, 1 with tournament provenance; sources: pa-fetch 6):** champion Renekton, Rage Fueled 6/6; runes 6 Fury / 6 Body 3/6, 7 Fury / 5 Body 2/6, 8 Fury / 4 Body 1/6; battlefields Black Market 5/6, Protective Sands 4/6, Sigil of the Storm 1/6, The Candlelit Sanctum 1/6, Zaun Warrens 1/6; core (>=75%) Kai'Sa, Survivor 6/6 x3.0, Punch First 6/6 x2.8, Rampage 6/6 x2.2, Renekton, Rage Fueled 6/6 x1.0, Coalesced Energy 5/6 x2.8; flex (25-74%) Noxus Hopeful 4/6, Falling Star 4/6, Kinkou Initiate 4/6, Rengar, Trophy Hunter 4/6, Irresistible Faefolk 3/6, Inferna 3/6, First Mate 3/6, Nidalee, Cat Form 3/6; side deck Decree of Rage 4/5, Ferrous Forerunner 4/5, Brittle Steel 3/5, Unyielding Spirit 3/5, Decree of Strength 2/5; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Pre-Radiance lists (DATA, n=5, 5 with tournament provenance; sources: official-rq 3, pa-fetch 1, r1-top3 1; newest set in list: VEN 5; 0 of them hold a card that is banned today):** champion Renekton, Rage Fueled 4/4; runes 7 Body / 5 Fury 3/5, 6 Fury / 6 Body 1/5, 8 Body / 4 Fury 1/5; battlefields Star Spring 4/5, Seat of Power 3/5, Protective Sands 3/5, Sigil of the Storm 1/5, Vilemaw's Lair 1/5; core (>=75%) Punch First 5/5 x2.8, Renekton, Rage Fueled 5/5 x1.0, Irresistible Faefolk 4/5 x3.0, Rengar, Trophy Hunter 4/5 x3.0, Noxus Hopeful 4/5 x2.8, Kai'Sa, Survivor 4/5 x2.8, Inferna 4/5 x2.8, Nidalee, Cat Form 4/5 x2.8; flex (25-74%) First Mate 3/5, Kinkou Initiate 3/5, Dominus 3/5, Cleave 3/5, Grim Apothecary 3/5, Ruin Runner 2/5, Challenge 2/5, Brittle Steel 2/5; side deck Decree of Strength 4/5, Brittle Steel 4/5, Ferrous Forerunner 3/5, Sabotage 3/5, Decree of Rage 3/5; shape labels from the deck-theory clustering (1 labelled): unit-aggro 1
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (1 with tournament provenance: event-named, podium or official); 5 complete pre-Radiance lists)
 
 ### VEN-143 Master of Shadows (Zed), Fury/Chaos
 
@@ -1710,9 +2085,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** banish 1.00 [rewards] pool 14; empower 0.80 [enables/needs] pool 10; discard 0.70 [enables] pool 25; draw 0.60 [enables] pool 30; token 0.50 [champion or signature text only] pool 9
 - **Battlefields by text (HEURISTIC):** VEN-163 Risen Altar (0.8; Empower); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 31 published lists since 2026-10-23 (rank 16 of 58, 2.1%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Zed, Without a Sound 2/3, Zed, From the Shadows 1/3; runes 7 Fury / 5 Chaos 2/3, 7 Chaos / 5 Fury 1/3; battlefields Zaun Warrens 3/3, Minefield 2/3, Forbidding Waste 2/3, Sigil of the Storm 1/3, Rockfall Path 1/3; core (>=75%) Noxus Hopeful 3/3 x3.0, Runeblade Anvil 3/3 x3.0, Bedeviling Stranger 3/3 x2.0, Tideturner 3/3 x1.3, Switcheroo 3/3 x1.0; flex (25-74%) Pack of Wonders 2/3, Traveling Merchant 2/3, Rhasa the Sunderer 2/3, Detonate 2/3, Battering Ram 2/3, Treasure Trove 2/3, Last Rites 2/3, Ride the Wind 2/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 78 Day 1 pilots = 1.3% of the field, 2 in Day 2 = 0.2% of Day 2; Day 2 conversion 3% against 18% for the whole field
+- **Radiance-era lists (DATA, n=5, 3 with tournament provenance; sources: pa-fetch 5):** champion Zed, Without a Sound 3/5, Zed, From the Shadows 2/5; runes 7 Fury / 5 Chaos 2/5, 7 Chaos / 5 Fury 1/5, 9 Chaos / 3 Fury 1/5; battlefields Zaun Warrens 5/5, Minefield 3/5, Forbidding Waste 3/5, Sigil of the Storm 2/5, Ruined Monastery 1/5; core (>=75%) Noxus Hopeful 5/5 x3.0, Runeblade Anvil 5/5 x3.0, Bedeviling Stranger 5/5 x1.8, Traveling Merchant 4/5 x3.0, Rhasa the Sunderer 4/5 x3.0, Battering Ram 4/5 x2.8, Ride the Wind 4/5 x1.8, Bushwhack 4/5 x1.5, Switcheroo 4/5 x1.0; flex (25-74%) Pack of Wonders 3/5, Detonate 3/5, Treasure Trove 3/5, Last Rites 3/5, Tideturner 3/5, Fizz, Trickster 3/5, Zed, Without a Sound 3/5, Seal of Rage 2/5; side deck Hard Bargain 4/5, Gust 3/5, Abandon 3/5, Acceptable Losses 3/5, Vex, Apathetic 3/5; shape labels from the deck-theory clustering (3 labelled): gear-engine 2, unit-aggro 1
+  - Builds by Chosen Champion (DATA): Zed, Without a Sound 3/5 sets itself apart with Cleave, Seal of Discord, Ride the Wind, Switcheroo; Zed, From the Shadows 2/5 sets itself apart with Seal of Rage, Pack of Wonders, Treasure Trove, Detonate, Last Rites
+- **Pre-Radiance lists (DATA, n=4, 4 with tournament provenance; sources: official-rq 2, pa-fetch 2; newest set in list: VEN 4; 2 of them hold a card that is banned today):** champion Zed, Without a Sound 4/4; runes 8 Chaos / 4 Fury 3/4, 7 Chaos / 5 Fury 1/4; battlefields Zaun Warrens 4/4, Minefield 4/4, Forbidding Waste 3/4, Forge of the Fluft 1/4; core (>=75%) Traveling Merchant 4/4 x3.0, Tideturner 4/4 x2.2, Switcheroo 4/4 x2.0, Perfect Execution 4/4 x2.0, Death Mark 4/4 x2.0, Up from the Deep 4/4 x1.8, Zed, Without a Sound 4/4 x1.0, Kai'Sa, Survivor 3/4 x3.0; flex (25-74%) Stacked Deck 2/4 (BANNED since 2026-09-18), Vi, Destructive 2/4, Star-Crossed 2/4, Gust 2/4, Flash 2/4, Hard Bargain 2/4, Boots of Swiftness 1/4, Tornado Warrior 1/4; side deck Ravenbloom Prefect 4/4, Brittle Steel 4/4, Star-Crossed 3/4, Up from the Deep 3/4, Pyke, Returned 2/4; shape labels from the deck-theory clustering (2 labelled): unit-aggro 2
+- **Data confidence: ok; advice basis: radiance-lists** (5 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 4 complete pre-Radiance lists)
 
 ### VEN-145 Curator of the Sands (Nasus), Calm/Mind
 
@@ -1728,9 +2105,12 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** expensive-permanents 1.00 [rewards] pool 20; ready-runes 0.60 [enables] pool 3; channel-rune 0.32 [champion or signature text only] pool 10; death 0.32 [champion or signature text only] pool 10
 - **Battlefields by text (HEURISTIC):** SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 21 published lists since 2026-10-23 (rank 25 of 58, 1.5%); riftbound.gg week-2 tier 4, 0 wins, 1 top cuts; EU Regional Championship 53% over 17 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Nasus, Guardian of Knowledge 3/3; runes 6 Calm / 6 Mind 2/3, 7 Mind / 5 Calm 1/3; battlefields Ruined Monastery 3/3, Rockfall Path 3/3, Sigil of the Storm 2/3, Frozen Fortress 1/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Stupefy 3/3 x3.0, Ravenbloom Student 3/3 x3.0, Thousand-Tailed Watcher 3/3 x3.0, Bellows Breath 3/3 x3.0, Scuttle Crab 3/3 x3.0, Find Your Center 3/3 x2.7, Lonely Poro 3/3 x2.3, Sprite Burst 3/3 x1.0, Tomb-Raider Barbara 3/3 x1.0, Nasus, Guardian of Knowledge 3/3 x1.0; flex (25-74%) Wages of Pain 2/3, Astral Heron 2/3, Back Off 2/3, Sprite Queen 2/3, Not So Fast 2/3, Life from Stone 1/3, The Empyrean 1/3, Temporal Breach 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 207 Day 1 pilots = 3.5% of the field, 22 in Day 2 = 2.1% of Day 2; Day 2 conversion 11% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 3 first, 1 second, 0 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 3 with tournament provenance; sources: pa-fetch 4):** champion Nasus, Guardian of Knowledge 2/4, Nasus, Ascended 2/4; runes 7 Mind / 5 Calm 2/4, 6 Calm / 6 Mind 2/4; battlefields Rockfall Path 4/4, Ruined Monastery 3/4, Vilemaw's Lair 2/4, Sigil of the Storm 1/4, Ravenbloom Conservatory 1/4; core (>=75%) Defy 4/4 x3.0, Discipline 4/4 x3.0, Stupefy 4/4 x3.0, Ravenbloom Student 4/4 x3.0, Thousand-Tailed Watcher 4/4 x3.0, Bellows Breath 4/4 x3.0, Lonely Poro 4/4 x2.8, Scuttle Crab 4/4 x2.5, Find Your Center 3/4 x2.7, Sprite Queen 3/4 x2.3, Temporal Breach 3/4 x2.3; flex (25-74%) Life from Stone 2/4, Hush 2/4, Not So Fast 2/4, Sprite Burst 2/4, Tomb-Raider Barbara 2/4, Nasus, Ascended 2/4, Nasus, Guardian of Knowledge 2/4, The Empyrean 1/4; side deck Tomb-Raider Barbara 4/4, Decree of Insight 3/4, Decree of Focus 3/4, Vilemaw 3/4, Twilight Shroud 3/4; shape labels from the deck-theory clustering (3 labelled): spell-tempo 2, big-control 1
+  - Builds by Chosen Champion (DATA): Nasus, Guardian of Knowledge 2/4 sets itself apart with Sprite Burst, Tomb-Raider Barbara, Find Your Center, Time Warp, Unchecked Power; Nasus, Ascended 2/4 sets itself apart with Charm, En Garde, Tasty Faefolk, Zhonya's Hourglass, Retreat
+- **Pre-Radiance lists (DATA, n=9, 9 with tournament provenance; sources: official-rq 2, pa-fetch 3, r1-top3 4; newest set in list: VEN 9; 0 of them hold a card that is banned today):** champion Nasus, Ascended 9/9; runes 6 Calm / 6 Mind 6/9, 7 Mind / 5 Calm 3/9; battlefields Vilemaw's Lair 6/9, Forgotten Monument 3/9, Rockfall Path 3/9, Sunken Temple 3/9, The Papertree 3/9; core (>=75%) Defy 9/9 x3.0, Discipline 9/9 x3.0, Stupefy 9/9 x2.9, Find Your Center 9/9 x2.8, Thousand-Tailed Watcher 9/9 x2.8, Nasus, Ascended 9/9 x1.0, Ravenbloom Student 8/9 x3.0, Bellows Breath 8/9 x2.1; flex (25-74%) Astral Heron 6/9, Zhonya's Hourglass 6/9, Retreat 5/9, Steel Paws 5/9, Tasty Faefolk 5/9, Charm 5/9, Time Warp 5/9, Back Off 5/9; side deck Not So Fast 9/9, Singularity 7/9, Tomb-Raider Barbara 6/9, Pickpocket 5/9, Helm of Suppression 4/9; shape labels from the deck-theory clustering (3 labelled): spell-tempo 2, big-control 1
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 9 complete pre-Radiance lists)
 
 ### VEN-147 Eye of Twilight (Shen), Calm/Order
 
@@ -1746,9 +2126,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** defend 0.73 [enables] pool 39; tank 0.67 [enables] pool 20
 - **Battlefields by text (HEURISTIC):** RAD-161 Durand Memorial (1.4; Defending, Tank); OGN-279 Fortified Position (0.7; Defending); SFD-215 Ravenbloom Conservatory (0.7; Defending); UNL-210 Forbidding Waste (0.7; Defending); VEN-166 Threshold of the Gray (0.7; Defending)
 - **Popularity and results (DATA):** 10 published lists since 2026-10-23 (rank 49 of 58, 0.7%); registered as an extra Neeko legend in 1 fetched lists
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 2 event-named):** champion Shen, Kinkou 3/3; runes 6 Calm / 6 Order 1/3, 7 Order / 5 Calm 1/3, 7 Calm / 5 Order 1/3; battlefields Kinkou Temple 3/3, Startipped Peak 1/3, Trifarian War Camp 1/3, Bandle Scouts' Academy 1/3, Packed Amphitheater 1/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Charm 3/3 x2.3, Vi, Peacekeeper 3/3 x2.3, Hidden Blade 3/3 x2.0, Emperor's Divide 3/3 x1.3, Shen, Kinkou 3/3 x1.0; flex (25-74%) Mournful Witness 2/3, Stellacorn Herder 2/3, Scuttle Crab 2/3, Blitzcrank, Impassive 2/3, Kennen, Keeper of Balance 2/3, Salvage 2/3, Disciple of Shen 2/3, Stalwart Poro 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (2 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 65 Day 1 pilots = 1.1% of the field, 0 in Day 2 = 0.0% of Day 2; Day 2 conversion 0% against 18% for the whole field
+- **Radiance-era lists (DATA, n=6, 2 with tournament provenance; sources: pa-fetch 6):** champion Shen, Kinkou 6/6; runes 6 Calm / 6 Order 4/6, 7 Order / 5 Calm 1/6, 7 Calm / 5 Order 1/6; battlefields Kinkou Temple 6/6, Trifarian War Camp 3/6, Packed Amphitheater 2/6, Fortified Position 1/6, Grove of the God-Willow 1/6; core (>=75%) Defy 6/6 x2.8, Shen, Kinkou 6/6 x1.0, Discipline 5/6 x2.8, Charm 5/6 x2.2; flex (25-74%) Vi, Peacekeeper 4/6, Hidden Blade 4/6, Kennen, Keeper of Balance 4/6, Emperor's Divide 4/6, Mournful Witness 3/6, Back Off 3/6, Scuttle Crab 3/6, Zhonya's Hourglass 3/6; side deck Salvage 4/4, Decree of Unity 3/4, Not So Fast 3/4, Decree of Focus 3/4, Hush 2/4; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Pre-Radiance lists (DATA, n=3, 3 with tournament provenance; sources: official-rq 1, pa-fetch 2; newest set in list: VEN 3; 0 of them hold a card that is banned today):** champion Shen, Scourge of Shadows 1/3, Shen, Kinkou 1/3, Shen, Leader of the Kinkou Order 1/3; runes 6 Calm / 6 Order 2/3, 7 Calm / 5 Order 1/3; battlefields Kinkou Temple 3/3, Fortified Position 1/3, Grove of the God-Willow 1/3, Trifarian War Camp 1/3, Forgotten Monument 1/3; core (>=75%) Defy 3/3 x3.0, Discipline 3/3 x3.0, Back Off 3/3 x1.7, Ki Barrier 3/3 x1.7; flex (25-74%) Scuttle Crab 2/3, Fiora, Victorious 2/3, Shadow Dash 2/3, Hidden Blade 2/3, Vi, Peacekeeper 2/3, Kennen, Keeper of Balance 2/3, Charm 2/3, Shen, Leader of the Kinkou Order 2/3; side deck Decree of Focus 3/3, Decree of Unity 3/3, Salvage 2/3, Vengeance 1/3, Disarming Rake 1/3; shape labels from the deck-theory clustering (2 labelled): spell-tempo 2
+- **Data confidence: thin; advice basis: radiance-lists** (6 complete Radiance-era lists (2 with tournament provenance: event-named, podium or official); 3 complete pre-Radiance lists)
 
 ### VEN-149 Defender of Tomorrow (Jayce), Mind/Body
 
@@ -1768,9 +2149,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** empower 1.00 [enables/rewards] pool 21; gear 1.00 [enables/needs] pool 42
 - **Battlefields by text (HEURISTIC):** SFD-221 Veiled Temple (1.0; Gear (non-Equipment included)); VEN-163 Risen Altar (1.0; Empower); SFD-210 Hall of Legends (0.6; Readies the legend); RAD-163 Hunters' Circle (0.5; Gear (non-Equipment included)); RAD-165 Rakelstake (0.5; Gear (non-Equipment included))
 - **Popularity and results (DATA):** 29 published lists since 2026-10-23 (rank 18 of 58, 2.0%); riftbound.gg week-2 tier 2, 1 wins, 1 top cuts; EU Regional Championship 68% over 47 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Jayce, Brilliant Inventor 3/3; runes 7 Body / 5 Mind 3/3; battlefields Sigil of the Storm 3/3, Forgotten Monument 3/3, Dragon Roost 2/3, The Papertree 1/3; core (>=75%) Catalyst of Aeons 3/3 x3.0, Dazzling Aurora 3/3 x3.0, Bellows Breath 3/3 x3.0, Elder Dragon 3/3 x3.0, Dredge Up 3/3 x3.0, Clairvoyance 3/3 x3.0, Platewyrm Egg 3/3 x3.0, Garbage Grabber 3/3 x2.3, Flurry of Blades 3/3 x2.3, Gutter Palace 3/3 x2.0, Sabotage 3/3 x1.7, Progress Day 3/3 x1.0; flex (25-74%) Mobilize 2/3, Sprite Burst 2/3, Rocket Barrage 2/3, Repulse 2/3, Temporal Breach 2/3, Wages of Pain 1/3, Deadly Flourish 1/3, Avalanche 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 282 Day 1 pilots = 4.7% of the field, 64 in Day 2 = 6.1% of Day 2; Day 2 conversion 23% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 1 first, 2 second, 1 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=3, 3 with tournament provenance; sources: pa-fetch 3):** champion Jayce, Brilliant Inventor 3/3; runes 7 Body / 5 Mind 3/3; battlefields Sigil of the Storm 3/3, Forgotten Monument 3/3, Dragon Roost 2/3, The Papertree 1/3; core (>=75%) Catalyst of Aeons 3/3 x3.0, Dazzling Aurora 3/3 x3.0, Bellows Breath 3/3 x3.0, Elder Dragon 3/3 x3.0, Dredge Up 3/3 x3.0, Clairvoyance 3/3 x3.0, Platewyrm Egg 3/3 x3.0, Garbage Grabber 3/3 x2.3, Flurry of Blades 3/3 x2.3, Gutter Palace 3/3 x2.0, Sabotage 3/3 x1.7, Progress Day 3/3 x1.0; flex (25-74%) Mobilize 2/3, Sprite Burst 2/3, Rocket Barrage 2/3, Repulse 2/3, Temporal Breach 2/3, Wages of Pain 1/3, Deadly Flourish 1/3, Avalanche 1/3; side deck Deadly Flourish 3/3, Rocket Barrage 2/3, Repulse 2/3, Sabotage 2/3, Disposal Order 1/3; shape labels from the deck-theory clustering (3 labelled): big-control 3
+- **Pre-Radiance lists (DATA, n=7, 7 with tournament provenance; sources: official-rq 1, pa-fetch 2, r1-top3 4; newest set in list: VEN 7; 0 of them hold a card that is banned today):** champion Jayce, Brilliant Inventor 5/7, Jayce, Hammer in Hand 2/7; runes 7 Body / 5 Mind 3/7, 6 Mind / 6 Body 3/7, 8 Body / 4 Mind 1/7; battlefields Sigil of the Storm 7/7, Forgotten Monument 6/7, The Papertree 4/7, Dragon Roost 2/7, Rockfall Path 1/7; core (>=75%) Mobilize 7/7 x3.0, Dazzling Aurora 7/7 x3.0, Elder Dragon 7/7 x3.0, Clairvoyance 7/7 x3.0, Catalyst of Aeons 7/7 x2.9, Dredge Up 7/7 x2.9, Platewyrm Egg 7/7 x2.7, Promising Future 7/7 x2.6; flex (25-74%) Gutter Palace 5/7, Jayce, Brilliant Inventor 5/7, Rocket Barrage 4/7, Deadly Flourish 4/7, Temporal Breach 3/7, Downstage Dramatics 2/7, Sprite Fountain 2/7, Jayce, Hammer in Hand 2/7; side deck Sabotage 6/7, Sprite Burst 5/7, Turn to Dust 5/7, Deadly Flourish 4/7, Flurry of Blades 3/7; shape labels from the deck-theory clustering (2 labelled): big-control 2
+- **Data confidence: thin; advice basis: radiance-lists** (3 complete Radiance-era lists (3 with tournament provenance: event-named, podium or official); 7 complete pre-Radiance lists)
 
 ### VEN-151 Soul's Reflection (Mel), Mind/Chaos
 
@@ -1788,9 +2171,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** empower 1.00 [enables/needs/rewards] pool 13; might-reduction 0.70 [enables] pool 21; spell-matters 0.50 [champion or signature text only] pool 77
 - **Battlefields by text (HEURISTIC):** VEN-163 Risen Altar (1.0; Empower); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 15 published lists since 2026-10-23 (rank 37 of 58, 1.0%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Mel, Defiant Soul 2/3, Mel, Newly Awakened 1/3; runes 7 Mind / 5 Chaos 1/3, 8 Mind / 4 Chaos 1/3, 6 Mind / 6 Chaos 1/3; battlefields Ravenbloom Conservatory 2/3, Frozen Fortress 2/3, Threshold of the Gray 2/3, Targon's Peak 1/3, Rockfall Path 1/3; core (>=75%) Stupefy 3/3 x3.0, Ravenbloom Student 3/3 x3.0, Traveling Merchant 3/3 x3.0, Dredge Up 3/3 x3.0, Applied Researchers 3/3 x3.0, Rebuttal 3/3 x3.0, Time Warp 3/3 x2.7, Shock Blast 3/3 x2.7, Star-Crossed 3/3 x1.3, Smoke Screen 3/3 x1.0, Switcheroo 3/3 x1.0; flex (25-74%) Up from the Deep 2/3, Singularity 2/3, Thousand-Tailed Watcher 2/3, Vex, Apathetic 2/3, Gust 2/3, Mel, Defiant Soul 2/3, Tideturner 1/3, Hwei, Brooding Painter 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 56 Day 1 pilots = 0.9% of the field, 3 in Day 2 = 0.3% of Day 2; Day 2 conversion 5% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 0 first, 0 second, 2 third; with a Radiance card in the list: 0 / 0 / 0
+- **Radiance-era lists (DATA, n=4, 2 with tournament provenance; sources: pa-fetch 4):** champion Mel, Defiant Soul 3/4, Mel, Newly Awakened 1/4; runes 6 Mind / 6 Chaos 2/4, 7 Mind / 5 Chaos 1/4, 8 Mind / 4 Chaos 1/4; battlefields Frozen Fortress 3/4, Ravenbloom Conservatory 2/4, Rockfall Path 2/4, Threshold of the Gray 2/4, Sigil of the Storm 1/4; core (>=75%) Stupefy 4/4 x3.0, Dredge Up 4/4 x3.0, Shock Blast 4/4 x3.0, Rebuttal 4/4 x3.0, Applied Researchers 4/4 x2.8, Switcheroo 4/4 x1.2, Ravenbloom Student 3/4 x3.0, Traveling Merchant 3/4 x3.0, Time Warp 3/4 x2.3, Vex, Apathetic 3/4 x2.0, Singularity 3/4 x1.7, Thousand-Tailed Watcher 3/4 x1.7; flex (25-74%) Up from the Deep 2/4, Gust 2/4, Bedeviling Stranger 2/4, Tideturner 1/4, Reckless Innovator 1/4, Ezreal, Prodigy 1/4, Tail-Cloaked Matriarch 1/4, Ride the Wind 1/4; side deck An Offer You Can't Refuse 4/4, Decree of Insight 3/4, Star-Crossed 3/4, Unchecked Power 3/4, Mel, Newly Awakened 3/4; shape labels from the deck-theory clustering (1 labelled): big-control 1
+- **Pre-Radiance lists (DATA, n=5, 5 with tournament provenance; sources: official-rq 2, pa-fetch 1, r1-top3 2; newest set in list: VEN 5; 4 of them hold a card that is banned today):** champion Mel, Newly Awakened 3/5, Mel, Defiant Soul 2/5; runes 6 Mind / 6 Chaos 2/5, 7 Mind / 5 Chaos 2/5, 7 Chaos / 5 Mind 1/5; battlefields Ravenbloom Conservatory 3/5, Rockfall Path 2/5, Forbidding Waste 2/5, Threshold of the Gray 2/5, Targon's Peak 1/5; core (>=75%) Stupefy 5/5 x3.0, Ravenbloom Student 5/5 x3.0, Rebuttal 5/5 x3.0, Shock Blast 5/5 x2.8, Star-Crossed 5/5 x1.8, Stacked Deck 4/5 x3.0 (BANNED since 2026-09-18), Applied Researchers 4/5 x3.0, Dredge Up 4/5 x2.8; flex (25-74%) Traveling Merchant 3/5, Time Warp 3/5, Fizz, Trickster 3/5, Singularity 3/5, Ride the Wind 3/5, Switcheroo 3/5, Mel, Newly Awakened 3/5, Hwei, Brooding Painter 2/5; side deck Turn to Dust 4/5, Decree of Insight 4/5, Pickpocket 3/5, Ravenbloom Prefect 3/5, Acceptable Losses 3/5; shape labels from the deck-theory clustering (1 labelled): spell-tempo 1
+- **Data confidence: thin; advice basis: radiance-lists** (4 complete Radiance-era lists (2 with tournament provenance: event-named, podium or official); 5 complete pre-Radiance lists)
 
 ### VEN-153 Matriarch of War (Ambessa), Body/Order
 
@@ -1808,9 +2193,10 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** empower 1.00 [enables/needs/rewards] pool 21; ready 0.60 [enables] pool 33; death 0.32 [champion or signature text only] pool 28
 - **Battlefields by text (HEURISTIC):** VEN-163 Risen Altar (1.0; Empower); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 8 published lists since 2026-10-23 (rank 56 of 58, 0.5%)
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=1, 1 event-named):** champion Ambessa, The Wolf 1/1; runes 8 Body / 4 Order 1/1; battlefields Star Spring 1/1, Risen Altar 1/1, Sandswept Tomb 1/1; core (>=75%) Punch First 1/1 x3.0, Irresistible Faefolk 1/1 x3.0, Vi, Peacekeeper 1/1 x3.0, Legion Marauder 1/1 x3.0, Rampage 1/1 x3.0, First Mate 1/1 x2.0, Lucian, Merciless 1/1 x2.0, Rengar, Trophy Hunter 1/1 x2.0, Tactical Retreat 1/1 x2.0, Guttural Roar 1/1 x2.0, Onslaught 1/1 x2.0, Ambessa, The Wolf 1/1 x2.0; flex (25-74%) n too small
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: insufficient** (1 complete lists in pa-fetch-2026-11-11 (1 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 97 Day 1 pilots = 1.6% of the field, 4 in Day 2 = 0.4% of Day 2; Day 2 conversion 4% against 18% for the whole field
+- **Radiance-era lists (DATA, n=3, 0 with tournament provenance; sources: pa-fetch 3):** champion Ambessa, The Wolf 3/3; runes 7 Body / 5 Order 2/3, 8 Body / 4 Order 1/3; battlefields Sunken Temple 3/3, Risen Altar 3/3, Sandswept Tomb 2/3, Windswept Hillock 1/3; core (>=75%) Punch First 3/3 x3.0, Legion Marauder 3/3 x2.7, Rampage 3/3 x2.7, Repulse 3/3 x1.7, Public Execution 3/3 x1.7, Ambessa, The Wolf 3/3 x1.3; flex (25-74%) Kayle, Justified 2/3, Kinkou Initiate 2/3, Rengar, Trophy Hunter 2/3, Noxian Emissary 2/3, Pit Rookie 2/3, Hidden Blade 2/3, Trifarian Captain 2/3, Guttural Roar 2/3; side deck Salvage 2/3, Ruin Runner 2/3, Decree of Strength 2/3, Decree of Unity 2/3, Onslaught 2/3
+- **Pre-Radiance lists (DATA, n=5, 5 with tournament provenance; sources: official-rq 1, pa-fetch 4; newest set in list: VEN 5; 0 of them hold a card that is banned today):** champion Ambessa, The Wolf 5/5; runes 7 Body / 5 Order 3/5, 8 Body / 4 Order 2/5; battlefields Risen Altar 5/5, Sunken Temple 3/5, Sandswept Tomb 3/5, Star Spring 2/5, Seat of Power 1/5; core (>=75%) Punch First 5/5 x3.0, Legion Marauder 5/5 x2.8, Rampage 5/5 x2.4, Sabotage 5/5 x2.0, Guttural Roar 5/5 x2.0, Public Execution 5/5 x2.0, Ambessa, The Wolf 5/5 x1.4, Irresistible Faefolk 4/5 x3.0; flex (25-74%) Tactical Retreat 3/5, Kennen, Keeper of Balance 3/5, Hidden Blade 3/5, Onslaught 3/5, Solari Sunhawk 2/5, Challenge 2/5, Lucian, Merciless 2/5, Nidalee, Cat Form 2/5; side deck Salvage 5/5, Ruin Runner 4/5, Decree of Strength 3/5, Repulse 3/5, Divine Judgment 2/5; shape labels from the deck-theory clustering (4 labelled): unit-aggro 4
+- **Data confidence: thin; advice basis: radiance-lists** (3 complete Radiance-era lists (0 with tournament provenance: event-named, podium or official); 5 complete pre-Radiance lists)
 
 ### VEN-155 Heart of the Tempest (Kennen), Order/Chaos
 
@@ -1828,9 +2214,11 @@ Reading guide: "Text" is verbatim from the named source. "Parsed ability", "Rewa
 - **Theme axes (HEURISTIC weights; pool = cards of that kind inside the Domain Identity):** play-from-elsewhere 1.00 [rewards] pool 43; empower 0.80 [enables/needs] pool 13; assault 0.60 [enables] pool 10; trash 0.32 [champion or signature text only] pool 25
 - **Battlefields by text (HEURISTIC):** VEN-163 Risen Altar (0.8; Empower); SFD-210 Hall of Legends (0.6; Readies the legend)
 - **Popularity and results (DATA):** 41 published lists since 2026-10-23 (rank 7 of 58, 2.8%); riftbound.gg week-2 tier 1, 0 wins, 10 top cuts; EU Regional Championship 50% over 237 matches
-- **Played lists, pa-fetch-2026-11-11 (DATA, n=3, 3 event-named):** champion Kennen, Storm of Shuriken 3/3; runes 9 Chaos / 3 Order 2/3, 10 Chaos / 2 Order 1/3; battlefields Zaun Warrens 3/3, Minefield 3/3, Ruined Monastery 1/3, Sandswept Tomb 1/3, Shadow Temple 1/3; core (>=75%) Nocturne, Horrifying 3/3 x3.0, Rhasa the Sunderer 3/3 x3.0, Seal of Discord 3/3 x3.0, Trifarian Captain 3/3 x3.0, Lightning Rush 3/3 x3.0, Ride the Wind 3/3 x2.7, Traveling Merchant 3/3 x2.7, Gust 3/3 x2.0, Last Rites 3/3 x2.0, Switcheroo 3/3 x1.7, Fizz, Trickster 3/3 x1.3, Star-Crossed 3/3 x1.3; flex (25-74%) Reckless Innovator 2/3, Ezreal, Prodigy 2/3, Tideturner 2/3, Bedeviling Stranger 2/3, Flash 2/3, An Offer You Can't Refuse 2/3, Tornado Warrior 1/3, Rebuke 1/3
-- **Played lists, pa-sample-2026-09-06 (DATA):** n=0
-- **Data confidence: thin** (3 complete lists in pa-fetch-2026-11-11 (3 with an event marker in the name); 0 lists in pa-sample-2026-09-06)
+- **Official Regional Qualifier field (FACT counts from playriftbound.com, all before Radiance):** in 3 of the 11 official field tables (first 2026-08-26, last 2026-09-30); last 3 events (Barcelona, Singapore, Los Angeles): 653 Day 1 pilots = 10.9% of the field, 202 in Day 2 = 19.2% of Day 2; Day 2 conversion 31% against 18% for the whole field
+- **Podiums (DATA, riftbound.one top-3 lists, n=534 lists, events 2026-04 to 2026-10):** 6 first, 13 second, 9 third; with a Radiance card in the list: 1 / 0 / 1
+- **Radiance-era lists (DATA, n=14, 14 with tournament provenance; sources: pa-fetch 12, r1-top3 2):** champion Kennen, Storm of Shuriken 13/14, Kennen, Keeper of Balance 1/14; runes 9 Chaos / 3 Order 9/14, 8 Chaos / 4 Order 2/14, 10 Chaos / 2 Order 1/14; battlefields Zaun Warrens 14/14, Minefield 13/14, Ruined Monastery 7/14, Veiled Temple 3/14, The Candlelit Sanctum 1/14; core (>=75%) Nocturne, Horrifying 14/14 x3.0, Trifarian Captain 14/14 x3.0, Lightning Rush 14/14 x3.0, Switcheroo 14/14 x1.8, Rhasa the Sunderer 13/14 x3.0, Seal of Discord 13/14 x3.0, Traveling Merchant 13/14 x2.9, Ride the Wind 13/14 x2.1, Last Rites 13/14 x1.9, Fizz, Trickster 13/14 x1.5, Star-Crossed 13/14 x1.4, Kennen, Storm of Shuriken 13/14 x1.0; flex (25-74%) Reckless Innovator 10/14, Flash 9/14, Edge of Night 8/14, Tail-Cloaked Matriarch 7/14, Hard Bargain 7/14, Rebuke 5/14, Tornado Warrior 4/14, Ezreal, Prodigy 4/14; side deck Decree of Unity 13/14, Ravenbloom Prefect 12/14, An Offer You Can't Refuse 12/14, Star-Crossed 9/14, Abandon 8/14; shape labels from the deck-theory clustering (11 labelled): gear-engine 10, unit-aggro 1
+- **Pre-Radiance lists (DATA, n=31, 31 with tournament provenance; sources: official-rq 4, pa-fetch 2, r1-top3 25; newest set in list: VEN 31; 28 of them hold a card that is banned today):** champion Kennen, Storm of Shuriken 29/31, Kennen, Keeper of Balance 2/31; runes 9 Chaos / 3 Order 20/31, 8 Chaos / 4 Order 9/31, 10 Chaos / 2 Order 1/31; battlefields Minefield 31/31, Zaun Warrens 29/31, Veiled Temple 9/31, The Candlelit Sanctum 7/31, Forbidding Waste 6/31; core (>=75%) Lightning Rush 31/31 x3.0, Rhasa the Sunderer 31/31 x3.0, Ride the Wind 31/31 x2.7, Seal of Discord 30/31 x3.0, Kennen, Storm of Shuriken 30/31 x1.0, Traveling Merchant 29/31 x2.9, Fizz, Trickster 29/31 x2.0, Stacked Deck 28/31 x3.0 (BANNED since 2026-09-18); flex (25-74%) Gust 20/31, Treasure Hunter 18/31, Tideturner 18/31, Up from the Deep 17/31, Shadow Order Disciple 14/31, Salvage 12/31, Rebuke 11/31, Flash 11/31; side deck Salvage 29/31, Abandon 23/31, Decree of Unity 21/31, Ravenbloom Prefect 14/31, Rebuke 12/31; shape labels from the deck-theory clustering (2 labelled): gear-engine 2
+- **Data confidence: ok; advice basis: radiance-lists** (14 complete Radiance-era lists (14 with tournament provenance: event-named, podium or official); 31 complete pre-Radiance lists)
 
 ## 10. Files and how to re-run
 
@@ -1843,25 +2231,30 @@ All under `docs/research/analysis/legend-profiles/`:
 | `fetch_pa_decks.py` | Network: per-legend sample of Piltover Archive deck pages into `data/pa-decks.jsonl` (resumable, round-robin) |
 | `build_legend_meta.py` | Data half: `data/legend-profiles.meta.json` |
 | `report.py`, `assemble_doc.py`, `doc_template.md` | Render this document |
-| `run_all.sh` | Rebuild both halves and the fragments without network |
+| `run_all.sh` | Rebuild both halves, the fragments and this document without network |
 | `data/bans-known.json` | Ban flags used here (source: `Untitled/config/current-constructed-rules.json` plus the 2026-09-18 announcement) |
 | `data/results-riftboundgg-2026-11.json` | Hand-transcribed results |
+| `raw/official-rq-top-decks-2026-11-11.json` | Copy of `analysis/meta-sources/raw/official-events.json` (official field tables and printed lists, input) |
+| `raw/riftbound-one-decklists-parsed-2026-11-11.json`, `raw/riftbound-one-decklists-qty-2026-11-11.json` | Copies of `analysis/meta-sources/raw/r1-parsed.json` and `r1-decks.json` (riftbound.one top-3 lists, input) |
+| `../raw/pa-decks.jsonl`, `../out/results.json` | Shared inputs read in place: event-named Piltover Archive lists; deck-theory shape labels |
 | `raw/gallery-2026-11-11.json` | Official gallery items as fetched (input) |
 | `raw/riftcodex-p*.json` | Riftcodex pages as fetched (only used to show it is stale) |
 
 ```
 cd docs/research/analysis/legend-profiles
-python3 fetch_pa_decks.py --list ../raw/pa-list.jsonl --per-legend 6 --out data/pa-decks.jsonl   # optional, network
-sh run_all.sh
-python3 assemble_doc.py --out ../../legend-profiles.md
+python3 fetch_pa_decks.py --list ../raw/pa-list.jsonl --per-legend 10 --out data/pa-decks.jsonl   # optional, network, resumable
+sh run_all.sh    # text half, data half, fragments, ../../legend-profiles.md
 ```
 
 ## 11. Open items
 
-- UNCONFIRMED: domains of the 11 RAD cards whose gallery record has no domain list. Until fixed they are outside every pool.
+- UNCONFIRMED: domains of the RAD cards whose gallery record has no domain list. Until fixed they are outside every pool.
 - UNCONFIRMED: the parse of the 9 RAD legends has no engine script to check against. They were read by eye once (section 2.1 table against section 9).
-- UNCONFIRMED: placements written in list names ("1st", "Top 8", "Best of") are self-reported by uploaders. No structured tournament source was reachable.
-- UNCONFIRMED: which Master Yi legend the riftbound.gg "Master Yi" lines refer to.
+- UNCONFIRMED: placements written in Piltover Archive list names ("1st", "Top 8", "Best of") are self-reported by uploaders; how riftbound.one collects its podium lists is not documented on the page we saved.
+- UNCONFIRMED: no official field table or official list exists yet for any Radiance-era event, so every Radiance-era number here comes from community sites.
+- UNCONFIRMED: which Master Yi legend the riftbound.gg "Master Yi" lines refer to. The official tables do split them from Sydney (2026-05-21) on; before that only OGS-019 existed.
+- UNCONFIRMED: why OGN-251 Jinx, OGN-253 Darius and OGN-259 Yasuo have no row in the last three official tables (zero pilots or omitted).
 - UNCONFIRMED: whether the `pa-list` default order biases the popularity counts (only the first 144 of about 417 pages were crawled).
-- Not done: clustering into archetypes beyond the Chosen Champion split; matchup data; side deck advice (other research tasks).
+- Not done: the Houston 2025 official article; matchup data; side deck advice beyond inclusion counts (other research tasks).
+- Not done: a per-ban-window split of the older sample. Older lists are flagged, not separated.
 - Not done: a port of the generator to the app's language. The Python scripts are the reference behaviour; the regular expressions and constants are the specification.

@@ -25,8 +25,9 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 8. **Start-of-game rules are being playtested.** Riot is testing three go-second bonuses outside premier events and says this is "not a rules update" [F: https://playriftbound.com/en-us/news/organizedplay/testing-start-of-game-rules, published 2026-10-15]. Section 3 uses the current CR only.
 9. **Bomb token text** comes from CR 187.12, not from the gallery (the gallery has no Bomb row).
 10. **Gallery typing errors.** 15 RAD rows have an empty card type and several `[Deploy]` gear are typed "unit" with no Might. `build-cards.mjs` repairs these by rule (CR 830.1.a: Deploy is present on Gear) and flags them (`inferType`, `typeFixed`). Five rows remain typed "unit" with no Might (Consult the Heavens, Ephemeral Ward, Invigorating Bloom, Runeblade Anvil, Supernova). Deck analysis uses the type printed in the Piltover Archive deck record when a card appears in a list.
-11. **Who may act in another pair's showdown in multiplayer** was not traced to a single rule; see 5.1.
-12. Synergy-axis regexes (section 4) were spot-checked through the example column only, not with a 40-card sample.
+    A second group was found while validating section 4 and is **not** repaired in `cards-2026-11-11.json`: seven RAD rows are typed "spell" although five print a Might value (Battlefield Armorer RAD-130, Coalesced Energy RAD-016, Demacian Illuminators RAD-131, Overloaded Traveler RAD-072, Siren of the Shallows RAD-097) and two have gear-style `[Exhaust]:` abilities and no Might (Resplendent Rostrum RAD-046, Scrutinizing Scope RAD-064) [D: gallery fetched 2026-11-11]. Their true types are UNCONFIRMED here (no second primary source was read). Pool-level role and axis counts treat them as spells; deck-level counts are unaffected when the Piltover Archive record carries a type. The card sync must re-check these codes.
+11. **Who may act in another pair's showdown in multiplayer** is now read from the rules (5.1): Focus passes to "the next Player in Turn Order" and the showdown ends when "all Players have passed once in sequence" (CR 347.1.b, 347.2.a, 347.2.b, 348). No rule limits Focus to the attacker and defender, but no rule sentence says "players outside the combat may play cards" either; the multipliers in 5.2 assume they may.
+12. Synergy-axis regexes (section 4) were hand-checked on two 40-card samples (section 4, "Validation"). The structural tests (type, cost, Might) were not sampled because they cannot misread text; they are the weakest signals and are marked as such.
 13. Multiplayer strategy has **no data** here: all 406 lists are 1v1 lists.
 
 ## 1. Facts the model must encode
@@ -40,6 +41,7 @@ Everything in sections 2-4 can be regenerated with the scripts in `docs/research
 - [F] Ekko, Recurrent and Stacked Deck were banned effective 2026-09-18 (https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026).
 - [F] Radiance adds keywords Deploy (CR 830), Disarm (CR 831), Show Off (CR 832), Equipment that can become units, and Bomb gear tokens (CR 187.12; overview article above). Radiance has nine new legends in the gallery: Evelynn (body/chaos), Ekko (fury/mind), Jarvan IV (body/order), Ziggs (fury/chaos), Mordekaiser (fury/order), Orianna (calm/mind), K'Sante (calm/body), Seraphine (mind/order), Riven (calm/chaos). The gallery now lists 58 distinct legend names.
 - [F] RC Europe took place in Stuttgart; the preview article dated 2026-10-27 calls it "next month" (https://playriftbound.com/en-us/news/organizedplay/all-eyes-on-rc-europe). [C] A community guide gives the dates as November 6-8, 2026 (gamertagmythras.com, via search snippet).
+- [F] Nothing newer than this changes deck building: the official news index on 2026-11-11 lists only two November items, "Riftbound World Showcase" (2026-11-05, organized play) and a product-drawing FAQ (2026-11-06); the latest rules, ban and set articles are the October and September ones cited here (https://playriftbound.com/en-us/news/).
 
 ### 1.2 Deck construction
 
@@ -119,7 +121,7 @@ Other rules in the same file:
 - `speed`: for spells, `reaction` if `[Reaction]` is among the leading keywords, `action` if `[Action]` is, else `slow`; units with `[Ambush]` count as `reaction`, cards with `[Hidden]` as `hidden`.
 - `interaction` (used in bands) = any of the `removal` bucket, `counterspell`, `combat_trick`, `debuff`.
 
-Pool counts [D: 953 named main-deck cards in the gallery]: draw 124, tempo_ready 121, ramp 73, movement 93, removal_damage 87, combat_trick 66, protection 61, token_maker 51, score_trigger 49, recursion 44, removal_kill 40, selection 39, buff 39, debuff 34, stun 28, discard_outlet 23, hate_gear 18, sweeper 17, removal_bounce 14, points 14, counterspell 12, hand_attack 8, hate_trash 2, point_denial 2, topend 146. Spells by speed: 70 reaction, 89 action, 113 slow.
+Pool counts [D: 953 named main-deck cards in the gallery]: draw 124, tempo_ready 121, ramp 73, movement 93, removal_damage 87, combat_trick 65, protection 61, token_maker 51, score_trigger 49, recursion 44, removal_kill 40, selection 39, buff 36, debuff 34, stun 28, discard_outlet 23, hate_gear 18, sweeper 17, removal_bounce 14, points 14, counterspell 12, hand_attack 8, hate_trash 2, point_denial 2, topend 146. Spells by speed: 70 reaction, 89 action, 113 slow.
 
 Validation by hand [D]. Each round printed 40 cards with their assigned roles (`validate-roles.mjs N seed`), was read card by card, and the errors found were fixed before the next round:
 
@@ -133,7 +135,7 @@ Validation by hand [D]. Each round printed 40 cards with their assigned roles (`
 
 Read this as: the last unbiased random round (3) had about 5% label errors, and the cards that matter most for the bands (rounds 4 and 5) were corrected individually. Rounds 4 and 5 were not re-sampled after their fixes.
 
-Known remaining gaps [H]: conditional or pronoun-only removal ("if it is stunned, kill it") is caught only for a few phrasings; `ramp` includes one-shot Gold tokens; `tempo_ready` mixes "enters ready" units with "ready another unit" effects; cards whose value is a static combat bonus (Mask of Foresight) have no role.
+Known remaining gaps [H]: conditional or pronoun-only removal ("if it is stunned, kill it") is caught only for a few phrasings; `ramp` includes one-shot Gold tokens; `tempo_ready` mixes "enters ready" units with "ready another unit" effects; cards whose value is a static combat bonus (Mask of Foresight) have no role. A sixth check (the section 4 samples) found that `buff` and `combat_trick` matched "spend a buff as an additional cost" (Call to Glory, Wallop, Kraken Hunter) because of a missing word boundary; this was fixed and the analysis re-run. Only the `x_buff` means moved (Call to Glory is in 19 lists); no band, cluster or centroid changed.
 
 ### 2.3 Archetypes found in the data
 
@@ -302,7 +304,8 @@ Enabler / payoff definitions in words (the regexes are in the script):
 | discard | "discard N" (yours) | "when you discard", "discarded this turn" | Discard CR 423 |
 | trash / recursion | `[Burn N]`, discard, "into your trash", friendly sacrifice | "from your trash", `[Flow]`, "cards in your trash" | Burn CR 441, Flow CR 829 |
 | stun | `[Stun]` | "stunned" | Stun CR 424 |
-| movement | "move a (friendly) unit", `[Ganking]` | "when I move", "when a friendly unit moves", "moved this turn" | Move CR 421, Ganking CR 810 |
+| movement | "move a/another (friendly) unit" (not an enemy unit), `[Ganking]` | "when I move", "when a friendly unit moves", "moved this turn" | Move CR 421, Ganking CR 810 |
+| enemy displacement | "move an/up to N/any number of enemy unit(s)" | "when you move an enemy unit", "enemy unit that moved this turn", "enemy unit alone" | Move CR 421 |
 | conquer triggers | `[Accelerate]`, "enter ready", "ready a unit", `[Ganking]`, `[Assault]` | "when I/you conquer", "conquer effects", `[Hunt]` | CR 471.1, 473.2.a, Hunt CR 823 |
 | hold triggers | `[Shield]`, `[Tank]`, `[Deflect]`, "can't be chosen" | "when I/you hold", "hold effects", `[Hunt]` | CR 471.2, 473.2.b |
 | mighty | units with Might ≥ 5, "+3 Might or more", "double Might" | `[Mighty]`, "5 Might or more" | reminder text "I'm Mighty while I have 5+ Might" (Fiora, Victorious) |
@@ -328,9 +331,18 @@ Enabler / payoff definitions in words (the regexes are in the script):
 Findings [D]:
 - **Region tags are not a synergy axis today.** Ionia (83 cards), Noxus (56), Demacia (39), Shurima (38), Bandle City (37), Yordle (36), Shadow Isles (33), Piltover (31), Mount Targon (31), Freljord (29) and Zaun (27) have **zero** cards, legends or battlefields whose rules text names them. The two Bilgewater "payoffs" in the table only say that a token is "from Bilgewater". Do not build a "Noxus" or "Yordle" theme score; keep the tags as inert metadata until a card references them.
 - The tags that do have payoffs are creature-type tags: Mech (17 members, 17 cards naming it, Rumble's legend), Bird (9 / 14), Poro (14 / 8), Dog (15 / 7), Cat (13 / 7), Dragon (21 / 4), plus Equipment (41 / 13; Azir, Jax, Lucian legends).
-- Largest two-sided axes: conquer triggers (161 enablers / 40 payoffs, seven legends, 17 battlefields), hold triggers (102 / 36, 14 battlefields), movement (77 / 32), trash (56 / 53), attack (41 / 41), tokens (51 / 38), gear (132 / 23), equipment (43 / 20), XP (26 / 23).
-- Thin payoff sides, so easy to over-count as themes: discard (4 payoffs), defend (4), gold (4), deploy/bombs (5), show off (6), hand size (6), stun (7), mighty (9).
+- Largest two-sided axes: conquer triggers (161 enablers / 40 payoffs, seven legends, 17 battlefields), hold triggers (102 / 36, 14 battlefields), movement of your own units (58 / 30), trash (56 / 53), attack (41 / 41), tokens (51 / 38), gear (132 / 23), equipment (43 / 20), XP (26 / 23).
+- Thin payoff sides, so easy to over-count as themes: enemy displacement (20 enablers, 3 payoffs: Blast Cone, Isolate, Siren's Song), discard (4 payoffs), defend (4), gold (4), deploy/bombs (5), show off (6), hand size (6), stun (7), deflect/being chosen (7), solo (7), mighty (9).
 - Precision caveat [H]: "rune ramp" payoffs are mostly just expensive cards (202); "show off" enablers are a superset; treat both as weak signals with a low axis weight.
+
+Validation [D]. `validate-axes.mjs N seed` prints N random pool cards with every axis label; each label was read against the card text. Structural labels (any gear, any spell costing ≤ 2, any card costing ≤ 1 or ≥ 7) were not counted.
+
+| round | sample | text labels | false positives | false negatives | what was fixed afterwards |
+|---|---|---|---|---|---|
+| 1 | 40 random, seed 31337 | 105 | 5 | 2 | "move an enemy unit" split out of movement into its own axis; "chosen by an enemy spell" (hosers, "can't be chosen") no longer a being-chosen payoff; "didn't die alone" and "no other friendly unit" no longer solo payoffs; "spend a buff as…" no longer a buff enabler; "channel that many runes plus 1" added to ramp; "kill a … you control" as a cost added to sacrifice payoffs |
+| 2 | 40 random, seed 99, after the round-1 fixes | 86 | 3 | 2 | "gear with [Deploy]" mentioned in text is no longer a Deploy enabler; "spent … to play a spell this turn" added to spell-slinging payoffs. Left as is: `[Ganking]` on a gear (The Ball) counts as a conquer enabler; two errors came from the mistyped RAD rows in caveat 0.10 |
+
+Read this as 6-7% wrong or missing text-based labels in a fresh sample (7 of 105, then 5 of 86), a little worse than the role classifier's last random round (2.2). Round 2 was not re-sampled after its two fixes. The counts in the table above are the post-fix counts.
 
 ## 5. How 2v2 and free-for-all change card value
 
@@ -356,7 +368,8 @@ More facts that move card value:
 - [F] 2v2: teammates cannot use the same legend or the same battlefields (CR 491.8.h, 491.8.i). Hands may be shown to a teammate (CR 491.8.f).
 - [F] 2v2: the Final Point by Conquer needs every battlefield scored that turn except those your ally held at the scoring step (CR 491.8.g.1).
 - [F] 2v2 bans *Master Yi, Wuju Bladesman* (Rules Hub). His legend text is "While a friendly unit defends alone, it gets +2 Might" [F: gallery], which reaches a teammate's units through CR 491.8.e.
-- UNCONFIRMED: whether a player who is not part of a combat may play Action or Reaction spells during that combat's showdown. CR 348 says a showdown closes when "all players pass Focus", which suggests every player gets Focus, but the participation rules were not read end to end.
+- [F] Showdowns are not limited to the two fighting players. The player who contested the battlefield gains Focus first (CR 345); after a play or a pass "the next Player in Turn Order gains Focus" (CR 347.1.b, 347.2.b); the showdown ends when "all Players have passed once in sequence" (CR 347.2.a, 348). When combat triggers are ordered, "all non-Defender players in Turn Order" add theirs after the attacker (CR 466.2.d.1). So a third player gets Focus in someone else's showdown and can use it for legally timed cards (Action or Reaction, CR 806.1.b, 813.1.b). UNCONFIRMED only in the sense that no sentence states this for uninvolved players by name.
+- [F] "XP is not shared between Allies in Game Modes with Teammates" (CR 732).
 
 Card-pool counts that matter here [D: 953 named main-deck cards]:
 - 14 cards scale with the number of opponents ("each opponent", "opponents …"); 12 say "each player".
@@ -376,7 +389,7 @@ Multipliers for the per-card score's mode component (section 7). Baseline 1.00 =
 | "choose an opponent", single-target discard | ×0.8 / ×0.7 | ×0.9 | one of several opponents; the others gain relatively |
 | spot removal, one-for-one | ×0.85 / ×0.8 | ×1.0 | one answer, more threats; in 2v2 the teammate shares the work |
 | sweepers and "all units" damage | ×1.25 / ×1.4 | ×1.1 (hits the teammate too unless it says "enemy") | more units on three battlefields |
-| counterspells | ×0.85 / ×0.8 | ×1.0, playable on the teammate's turn by invitation | more spells than you can counter |
+| counterspells | ×0.85 / ×0.8 | ×1.0, playable on the teammate's turn by invitation | more spells than you can counter; they can still be used in other players' showdowns (CR 347) |
 | Hold payoffs, Shield, Tank, Deflect, "can't be chosen" | ×1.15 / ×1.25 | ×1.15 | a hold must survive 2-3 enemy turns instead of 1 |
 | Conquer payoffs, Accelerate, Ganking, movement | ×1.1 / ×1.1 | ×1.0 | a third battlefield is more often empty or weakly held; but conquer cannot take the last point alone |
 | direct point gain ("score 1 point"), extra turn | ×1.3 / ×1.3 | ×1.2 (11 points to cover) | exempt from the Final Point rule, which is harder with 3 battlefields |
@@ -400,7 +413,7 @@ Deck-level changes [H]:
 - Restates the mode table above and the 2v2 scoring clauses; its rule content matches CR 487-491 as read here.
 - Argues that 11 points is slow in practice: a team holding all three battlefields scores them only on one teammate's turn per round, about 3 points per four turns, so a game takes at least four full rounds. This is an arithmetic consequence of CR 491.8.b.1 and looks correct, but it is their reasoning, not a Riot statement.
 - Says the Master Yi legend was banned in 2v2 effective 2026-07-24 because the +2 Might reaches a teammate's lone defender. The ban is confirmed on the Rules Hub; the stated reason is consistent with the July article (https://playriftbound.com/en-us/news/announcements/july-ban-list-updates) but was not quoted from it here.
-- Notes that XP is not shared between teammates. UNCONFIRMED against the CR in this pass.
+- Notes that XP is not shared between teammates. Confirmed: CR 732.
 
 No community tier list or card-by-card multiplayer evaluation was found by search on 2026-11-11.
 
@@ -581,6 +594,7 @@ Files in `docs/research/analysis/` (Node 22, no dependencies):
 | `build-cards.mjs` → `cards-2026-11-11.json` | official gallery → one row per base code, with type repairs flagged |
 | `pa-lib.mjs`, `crawl-list.mjs`, `select-tournament.mjs`, `fetch-decks.mjs` | Piltover Archive listing and deck pages → `raw/pa-list.jsonl`, `raw/pa-tournament-ids.json`, `raw/pa-decks.jsonl` |
 | `roles.mjs`, `validate-roles.mjs`, `top-played.mjs` | role rules and the validation samples |
+| `validate-axes.mjs` | 40-card samples of the synergy-axis labels (section 4) |
 | `analyze.mjs` → `out/00…07, 10, results.json` | features, clusters, bands, legends, runes, sideboards |
 | `consistency.mjs` → `out/08-consistency.md` | hypergeometric tables |
 | `axes.mjs` → `out/09-axes.md`, `out/axes.json` | synergy axes against the pool |
@@ -597,6 +611,7 @@ Confirmed against a primary source on 2026-11-11:
 - Ban lists and set legality, read from the Rules Hub page text.
 - Radiance dates, mechanics and the two preconstructed lists, read from the overview article.
 - Card texts quoted (Decree cycle, Master Yi legend, Fiora reminder text, Defy), read from the official gallery.
+- Second pass, same day: CR 345-348 and 466.2.d.1 (who gets Focus in a showdown) and CR 732 (XP not shared), read from the same CR text; the official news index checked for November items; `assemble.mjs` re-run and confirmed to reproduce this file byte for byte before the section 4 fixes were applied.
 
 Corrections to local material (old → new, source):
 - Core Rules edition 2026-07-16 → 2026-10-09 (Rules Hub).
@@ -606,7 +621,7 @@ Corrections to local material (old → new, source):
 - Sideboard size 8 in the September sample → 10 allowed and used (TR 601.1.c.1; 2.9).
 
 Could not verify:
-- Items 0.3, 0.4, 0.7, 0.8 (outcome of the playtest), 0.11.
+- Items 0.3, 0.4, 0.7, 0.8 (outcome of the playtest); the true card types of the seven RAD rows in 0.10.
 - RC Europe dates and metagame shares (community only; riftdecks.com and mobalytics.gg returned HTTP 403 and were not retried).
 - api.riftcodex.com timed out on 2026-11-11; the gallery was used instead, so Riftcodex-only fields (TCGplayer ids) were not refreshed.
 - Which Tournament Rules edition raised the sideboard from 8 to 10.

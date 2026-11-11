@@ -1,0 +1,11 @@
+win        n  18 | sub-score mean 0.742 | clock 6.44 | interaction 10.7 | primary TALL 6, BURST 6, WIDE 3, HOLD 3
+top8       n  32 | sub-score mean 0.662 | clock 7.16 | interaction 10.6 | primary ATTRITION 9, BURST 9, TALL 7, WIDE 6, HOLD 1
+top64      n  20 | sub-score mean 0.721 | clock 7.20 | interaction 9.6 | primary BURST 7, TALL 5, HOLD 4, WIDE 3, ATTRITION 1
+bestof     n  47 | sub-score mean 0.715 | clock 7.02 | interaction 9.6 | primary WIDE 15, BURST 10, HOLD 9, TALL 7, ATTRITION 6
+event-only n  84 | sub-score mean 0.735 | clock 6.85 | interaction 11.1 | primary BURST 21, TALL 18, WIDE 17, ATTRITION 15, HOLD 10, POINTS 3
+  part closer      win/top8 0.789 (n 50) vs rest 0.820 (n 151)
+  part depth       win/top8 0.765 (n 50) vs rest 0.827 (n 151)
+  part plan_b      win/top8 0.398 (n 50) vs rest 0.454 (n 151)
+  part final_point win/top8 0.693 (n 50) vs rest 0.717 (n 151)
+  part resilience  win/top8 0.645 (n 50) vs rest 0.620 (n 151)
+  sub-score   win/top8 0.691 vs rest 0.727

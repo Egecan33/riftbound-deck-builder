@@ -77,7 +77,7 @@ export interface Ability {
   conditions: Condition[];               // gates: Legion, Level N, Empowered, "while ...", intervening "if"
   effects: Effect[];
   staticType?: string;                   // might-mod, keyword-grant, enter-ready, cost-mod, play-permission, restriction, additional-cost, bonus-damage, trigger-mod, deckbuilding, usage-limit, ...
-  origin: 'rules' | 'equipment-effect';  // equipment-effect = text granted to the equipped unit (CR 724: Effect Text is inactive unless attached)
+  origin: 'rules' | 'equipment-effect';  // equipment-effect = text granted to the equipped unit (CR 136.2.b: Effect Text is inactive unless attached)
   text: string;
   status: Status;
 }

@@ -17,7 +17,8 @@ from itertools import combinations
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 GAMELAB = os.environ.get('GAMELAB', os.path.expanduser('~/github_repositories/GameLab'))
-OUT = os.path.join(HERE, 'out')
+OUT = os.path.join(HERE, os.environ.get('OUT_DIR', 'out'))
+NO_SUPPRESS = '--no-suppress' in sys.argv  # reproduces the pre-audit graph (the one the first 40-edge sample was drawn from)
 os.makedirs(OUT, exist_ok=True)
 
 # ----------------------------------------------------------------------------------------------- load
@@ -26,8 +27,9 @@ def load_pool():
     scripts = json.load(open(os.path.join(HERE, 'engine-scripts.json')))
     pool = []
     for c in cards:
+        # cards.json marks battlefields (and other domain-less cards) as 'colorless'; that is no Domain and never restricts a deck (Core Rules 103.1.b)
         pool.append(dict(code=c['cardCode'], gid=c['gameplayId'], name=c['name'], set=c['set'], type=c['type'],
-                         superTypes=c['superTypes'], domains=c['domains'], tags=c['tags'], energy=c['energy'],
+                         superTypes=c['superTypes'], domains=[d for d in c['domains'] if d != 'colorless'], tags=c['tags'], energy=c['energy'],
                          power=c['power'], might=c['might'], text=c['rulesText'] or '',
                          keywords=[k['name'] for k in c['keywords']], script=scripts.get(c['gameplayId'])))
     radp = os.path.join(HERE, 'data/rad-cards.json')
@@ -672,6 +674,54 @@ RULES = [
  R('equipment->unit-keyword', 0.0, lambda c: None, lambda c: None, ''),
 ]
 
+# ------------------------------------------------------------------------- false-positive suppressors
+# Added after the first 40-edge hand audit (docs/research/interactions.md section 6). Each returns a reason string when
+# the candidate edge must be dropped. HEURISTIC text checks on the two sentences the edge would quote.
+SUPPRESSED = Counter()
+SELF_VERB = re.compile(r'\b(?:buff|ready|move|empower|stun)\]? me\b', re.I)
+OTHER_VERB = re.compile(r'\b(?:buff|ready|move|empower) (?:an?\b|another|up to|each|all|friendly|your|something|it\b|them\b|that|two|the)', re.I)
+def _sent(c, k):
+    f = c['facets'].get(k) if k in c['facets'] else None
+    return (f or {}).get('sent') or ' '.join(c['_sent'])
+def suppress(rule, a, ka, b, kb):
+    sa = _sent(a, ka) if ka not in ('is', 'cost') else ' '.join(a['_sent'])
+    sb = _sent(b, kb) if kb not in ('is', 'cost') else ' '.join(b['_sent'])
+    # S1 cost threshold on the payoff ("... with Energy cost [7] or more", "a spell that costs 5 or more"): Core Rules 206, 206.1
+    m = re.search(r'(?:energy cost|costs?) \[?(\d+)\]? or more', sb, re.I)
+    if m and rule in ('gear->gearpayoff', 'unit->unitpayoff', 'spell->spellpayoff', 'gearability->abilitypayoff'):
+        n = int(m.group(1))
+        if rule == 'gearability->abilitypayoff':
+            costs = [int(x) for x in re.findall(r'\[(\d+)\][^:.]*:', a['text'])]
+            if not costs or max(costs) < n: return 'S1 cost-threshold'
+        elif (a['energy'] or 0) < n: return 'S1 cost-threshold'
+    # S2 negated tag ("non-Recruit")
+    if rule.startswith('tribal:') and re.search(r'non-' + re.escape(rule[7:]), sb, re.I): return 'S2 negated-tag'
+    # S3 an effect scoped to "here" (a battlefield) cannot reach a legend (legends are not at a location: Core Rules 109-110 zones)
+    if b['type'] == 'legend' and rule in ('empower->empowered', 'ready->exhaust-legend', 'ready->readytrigger', 'buff->buffpayoff') and re.search(r'\bhere\b', sa, re.I): return 'S3 here-vs-legend'
+    # S4 "play" without "ignoring its cost" is not a cost cheat (Core Rules 356: costs are paid unless the effect says otherwise)
+    if rule == 'cheat->expensive' and not re.search(r'ignoring [^.]{0,20}costs?|without paying|for free|reducing (?:its|their) (?:energy )?cost|costs? \[?\d+\]? less|reduce (?:its|their|the|my) (?:energy )?cost', a['text'], re.I): return 'S4 play-not-free'
+    # S9 the free play belongs to the opponent ("They play that unit ..."): not a cheat for your own cards
+    if rule == 'cheat->expensive' and re.search(r'\bthey play\b|opponent plays', a['text'], re.I): return 'S9 opponent-plays'
+    # S7 the free play only returns a card that was banished from the board, it cannot cheat a card from hand or deck
+    if rule == 'cheat->expensive' and re.search(r'banish (?:an?|another) (?:\w+ )?unit', a['text'], re.I) and re.search(r'play the banished|its owner plays it', a['text'], re.I): return 'S7 cheat-from-board'
+    # S5 the enabler only does it to itself, and the payoff is another card's self-scoped requirement
+    if rule in ('buff->buffpayoff', 'ready->exhaust-unit', 'ready->attacker', 'ready->exhaustpayoff', 'ready->readytrigger', 'move->selfmove', 'target->targeted', 'empower->empowered'):
+        swap = re.search(r"and it to|each other's|and an?other", sa, re.I)  # "Move me to its location and it to my original location" moves both
+        if SELF_VERB.search(sa) and not OTHER_VERB.search(sa) and not swap:
+            if rule != 'buff->buffpayoff' or re.search(r"buff me|i'm buffed|buffs? on me|my buffs?|spend (?:a|my) buff", sb, re.I): return 'S5 self-only-enabler'
+    # S6 move destination: the enabler moves a unit to base, the payoff needs a move to a battlefield
+    mv = sa[sa.lower().find('move'):] if 'move' in sa.lower() else sa  # judge the destination on the move clause only
+    if rule == 'move->selfmove' and re.search(r'move to a battlefield', sb, re.I) and re.search(r"to (?:your|its|their|my|its owner's) base|\bto base\b", mv, re.I) and not re.search(r'to (?:a|another|that|an? \w+) battlefield|\bthere\b', mv, re.I): return 'S6 move-destination'
+    # S10 (added after the second sample) the watcher needs an enemy unit to be moved; the enabler only moves friendly units
+    if rule == 'move->movewatch' and re.search(r'move an enemy unit', sb, re.I) and not has(a, 'P.move.enemy') and not re.search(r'enemy|move (?:an? |up to \w+ )?units?\b(?! you control)', mv, re.I): return 'S10 move-controller'
+    # S12 (added after the lines demo) the enabler readies runes only, the payoff needs a unit / legend / gear to be readied
+    if rule.startswith('ready->') and re.search(r'ready (?:up to \w+ |\d+ |your |two |a )?(?:exhausted )?runes?\b', sa, re.I) and not re.search(r'ready (?:an?\b(?! rune)|another|it\b|them\b|me\b|that|something|up to \w+ (?:units|gear)|your legend|all)', sa, re.I): return 'S12 readies-runes-only'
+    # S13 the enabler moves gear, the payoff is a unit's own move trigger
+    if rule == 'move->selfmove' and re.search(r'move (?:an? )?(?:friendly )?gear', mv, re.I) and not re.search(r'move (?:an? |another |up to \w+ )?(?:friendly )?units?', mv, re.I): return 'S13 moves-gear'
+    # S8 "with a spell" qualifier on a kill payoff
+    if rule == 'removal->killpayoff' and re.search(r'with a spell', sb, re.I) and a['type'] != 'spell': return 'S8 needs-spell'
+    return None
+
 def edge_strength(rule, nE, nP, a, b, fe, fp, mult):
     """nE = how many enablers this payoff has under the rule, nP = how many payoffs this enabler has under the rule.
     An edge between a narrow enabler and a narrow payoff keeps its full weight; 'any spell -> any spell payoff' is damped."""
@@ -697,6 +747,9 @@ def build_edges(pool, together):
                 if not together(a, b): continue
                 ok, mult, note = r['extra'](a, b) if r['extra'] else (True, 1, '')
                 if not ok: continue
+                if not NO_SUPPRESS:
+                    why = suppress(r['id'], a, ka, b, kb)
+                    if why: SUPPRESSED[why] += 1; continue
                 raw.append((a, ka, b, kb, mult, note))
         nE = len({x[0]['code'] for x in raw}); nP = len({x[2]['code'] for x in raw})
         stats[r['id']] = dict(enablers=nE, payoffs=nP, edges=len(raw), cls=r['cls'])
@@ -724,7 +777,9 @@ def build_edges(pool, together):
         for b in payoffs:
             for a in members + makers:
                 if a['code'] == b['code'] or not together(a, b): continue
-                # a legend / signature naming its own champion is deck-construction (103.2), not a tribal payoff
+                if not NO_SUPPRESS:
+                    why = suppress('tribal:' + tag, a, 'is', b, 'C.tag:' + tag)
+                    if why: SUPPRESSED[why] += 1; continue
                 raw.append((a, b, tag, a in makers and a not in members))
     by_tag = Counter(t for _, _, t, _ in raw)
     for a, b, tag, maker in raw:
@@ -888,7 +943,7 @@ def build_structures(pool, edges, together):
                 dom = set(by[a]['domains']) | set(by[b]['domains']) | set(by[c]['domains'])
                 if len(dom) > 2: continue
                 tri.append((round(strong[tuple(sorted((a, b)))] + strong[tuple(sorted((a, c)))] + strong[tuple(sorted((b, c)))], 2), [a, b, c], sorted(rules)))
-    tri.sort(key=lambda x: -x[0])
+    tri.sort(key=lambda x: (-x[0], x[1]))  # tie-break on card codes: set iteration order must not leak into the output
     S['triples'] = [dict(cards=t[1], s=t[0], rules=t[2]) for t in tri[:600]]
     S['counts'] = dict(loops=Counter(l['kind'] for l in S['loops']), cost_cheats=len(S['cost_cheats']), engines=len(S['engines']), strong_pairs=len(strong), triples=len(tri))
     return S
@@ -904,7 +959,7 @@ def main():
     facets_out = {c['code']: dict(name=c['name'], type=c['type'], set=c['set'], domains=c['domains'], energy=c['energy'], might=c['might'], source='engine' if c['script'] is not None else 'text',
                                   facets={k: dict(rep=v.get('rep'), src=v.get('src'), sent=v.get('sent')) for k, v in c['facets'].items() if '@' not in k and not k.startswith('_')}) for c in pool}
     json.dump(facets_out, open(os.path.join(OUT, 'facets.json'), 'w'), indent=0)
-    json.dump(dict(edges=edges, nonbos=nonbos, rule_stats=stats), open(os.path.join(OUT, 'edges.json'), 'w'))
+    json.dump(dict(edges=edges, nonbos=nonbos, rule_stats=stats, suppressed=dict(SUPPRESSED)), open(os.path.join(OUT, 'edges.json'), 'w'))
     json.dump(S, open(os.path.join(OUT, 'structures.json'), 'w'), indent=0, default=lambda o: dict(o))
     # agreement of the text-only extractor with the engine-derived facets (931 scripted cards)
     rows = []
@@ -917,6 +972,7 @@ def main():
     print('cards with >=1 produces facet', sum(1 for c in pool if any(k.startswith('P.') and '@' not in k for k in c['facets'])), 'with >=1 cares facet', sum(1 for c in pool if any(k.startswith('C.') and '@' not in k for k in c['facets'])))
     print('edges', len(edges), 'specific', sum(1 for e in edges if e['cls'] == 'specific'), 'class', sum(1 for e in edges if e['cls'] == 'class'), 'nonbos', len(nonbos))
     print('structures', json.dumps(S['counts'], default=dict))
+    print('suppressed', dict(SUPPRESSED))
     if '-v' in sys.argv:
         for k, v in sorted(stats.items(), key=lambda x: -x[1]['edges']): print(f"  {k:28s} enablers {v['enablers']:4d} payoffs {v['payoffs']:4d} edges {v['edges']:6d} {v['cls']}")
         print('text-vs-engine (facet, tp, fp, fn, precision, recall)')

@@ -1,0 +1,197 @@
+
+===== removal_single (121) =====
+[deal:unit] SFD-016 Recurve Bow [gear fury E2 P- M0 normal] kw:Equip |   TEXT: [Equip] [Fury] ([Fury]: Attach this to a unit you control.)
+[deal:unit,kill:gear] RAD-013 Lost to the Sands [spell fury E3 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Choose one — / - Deal 4 to a unit at a battlefield. / - Kill a gear.
+[fight:unit] OGN-128 Challenge [spell body E2 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Choose a friendly unit and an enemy unit. They deal damage equal to their Mights to each other.
+[deal:unit] RAD-082 Primordial Roar [spell body E4 P2 M- normal] kw:Show Off |   TEXT: [Show Off] a unit. (As you play this, you may reveal a unit from hand or pick a friendly unit.) / If you showed off a unit, deal damage equal to that unit's Might to a unit.
+[kill:gear] OGN-224 Salvage [spell order E2 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / You may kill a gear. Draw 1.
+[deal:unit] SFD-070 Wages of Pain [spell mind E3 P- M- action] kw:Hidden,Action |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Action] (Play on your turn or in showdowns.) / Deal 3 to a unit at a battlefield. Play a Gold gear token exhausted.
+[kill:gear] SFD-074 Pickpocket [unit mind E3 P- M3 normal] kw: |   TEXT: When you play me, you may kill a gear with Energy cost no more than [1]. If you do, play a Gold gear token exhausted.
+[kill:gear] SFD-032 Disarming Rake [unit calm E3 P1 M2 normal] kw: |   TEXT: When you play me, you may kill a gear.
+[fight:unit] OGS-008 Gentlemen's Duel [spell body E6 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Give a friendly unit +3 [Might] this turn. Then choose an enemy unit. They deal damage equal to their Mights to each other.
+[deal:unit] VEN-060 Sky Cruiser [unit mind E4 P1 M3 normal] kw: |   TEXT: Discard a gear, [1], [Exhaust]: Deal 4 to a unit at a battlefield.
+
+===== removal_sweeper (25) =====
+[deal:unit] OGS-018 Tibbers [unit/signature fury+chaos E8 P2 M7 normal] kw: |   TEXT: When you play me, deal 3 to all units at battlefields.
+[deal:unit] OGN-123 Unchecked Power [spell mind E7 P2 M- normal] kw: |   TEXT: Exhaust all friendly units, then deal 12 to all units at battlefields.
+[deal:unit] RAD-079 Avalanche [spell body E5 P2 M- normal] kw: |   TEXT: Deal 3 to all units in bases.
+[deal:unit] OGN-250 Stormbringer [spell/signature fury+body E6 P2 M- normal] kw: |   TEXT: Choose a friendly unit in your base. Deal damage equal to its Might to all enemy units at a battlefield, then move your unit there.
+[deal:unit] OGN-148 Anivia, Primal [unit/champion body E7 P2 M8 normal] kw: |   TEXT: When I attack, deal 3 to all enemy units here.
+[deal:unit] RAD-085 Graves, Blasting Through [unit/champion body E5 P1 M4 normal] kw: |   TEXT: When I attack or defend, deal damage equal to my Might to all enemy units here. / I don't deal combat damage.
+[deal:unit] OGN-133 Flurry of Blades [spell body E1 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Deal 1 to all units at battlefields.
+[deal:unit] RAD-006 Scorched Earth [spell  E4 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Deal 5 damage split among units at a single battlefield.
+[deal:unit] OGN-190 Kog'Maw, Caustic [unit/champion chaos E3 P1 M1 normal] kw:Deathknell |   TEXT: [Deathknell] — Deal 4 to all units at my battlefield. (When I die, get the effect.)
+[deal:unit] OGN-268 Bullet Time [spell/signature body+chaos E1 P- M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Pay any amount of [Rainbow] to deal that much damage to all enemy units at a battlefield.
+
+===== combat_trick (65) =====
+[might] SFD-182 Danger Zone [spell/signature fury+mind E1 P1 M- reaction] kw:Reaction,Repeat |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / [Repeat] [1][Rainbow] (You may pay the additional cost to repeat this spell's effect.) / Give your Mechs +1 [Might] this turn.
+[doubleMight] OGN-069 Last Stand [spell calm E3 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Double a friendly unit's Might this turn. Give it [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)
+[stun] RAD-028 Ki Burst [spell calm E1 P- M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / As an additional cost to play this, exhaust a friendly unit. / [Stun] a unit. (It doesn't deal combat damage this turn.)
+[stun] UNL-042 Back Off [spell calm E3 P- M- action] kw:Hidden,Action |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Action] (Play on your turn or in showdowns.) / [Stun] a unit. (It doesn't deal combat damage this turn.) / If you played this from your hand, draw 1.
+[ready] OGN-260 Last Breath [spell/signature calm+chaos E3 P2 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Ready a friendly unit. It deals damage equal to its Might to an enemy unit at a battlefield.
+[might] UNL-066 Moonlight Affliction [spell mind E7 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Give a unit -10 [Might] this turn.
+[stun] UNL-134 Existential Dread [spell chaos E1 P1 M- action] kw:Action,Repeat |   TEXT: [Action] (Play on your turn or in showdowns.) / [Repeat] [2] (You may pay the additional cost to repeat this spell's effect.) / [Stun] an attacking enemy unit. If it's already stunned, return it to its owner's hand instead. (A stunned unit doesn't deal combat damage this turn.)
+[might] VEN-072 Guttural Roar [spell body E2 P- M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Give a unit +2 [Might] this turn. If it's [Empowered], give it +4 [Might] this turn instead.
+[might] SFD-151 Bonds of Strength [spell order E2 P- M- reaction] kw:Reaction,Repeat |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / [Repeat] [2] (You may pay the additional cost to repeat this spell's effect.) / Give two friendly units each +1 [Might] this turn.
+[might] OGN-095 Stupefy [spell mind E1 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Give a unit -1 [Might] this turn, to a minimum of 1 [Might]. Draw 1.
+
+===== counter_protection (33) =====
+[grant-Deflect] SFD-104 Petricite Monument [gear body E2 P- M- normal] kw:Temporary |   TEXT: [Temporary] (Kill this at the start of its controller's Beginning Phase, before scoring.) / Friendly units have [Deflect]. (Opponents must pay [Rainbow] to choose them with a spell or ability.)
+[counter] SFD-045 Not So Fast [spell calm E2 P1 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Counter an enemy spell or ability that chooses a friendly unit or gear.
+[death-replacement] OGS-020 Highlander [spell/signature calm+body E4 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Choose a friendly unit. The next time it dies this turn, recall it exhausted instead. (Send it to base. This isn't a move.)
+[prevent] OGN-145 Unyielding Spirit [spell body E1 P1 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Prevent all spell and ability damage this turn.
+[counter] RAD-041 Hush [spell  E1 P2 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Counter a spell with Power cost [Rainbow][Rainbow] or more.
+[counter] SFD-206 Riposte [spell/signature body+order E2 P2 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Choose a friendly unit and a spell. Counter that spell and give that unit +[Might] equal to that spell's Energy cost this turn.
+[death-replacement] SFD-051 Guardian Angel [gear calm E2 P- M1 normal] kw:Equip |   TEXT: [Equip] [Calm] ([Calm]: Attach this to a unit you control.)
+[death-replacement] OGN-023 Unlicensed Armory [gear fury E2 P- M- normal] kw: |   TEXT: Discard 1, [Exhaust]: Choose a friendly unit. The next time it dies this turn, you may pay [Fury] to recall it exhausted instead. (Send it to base. This isn't a move.)
+[retarget] OGN-080 Mystic Reversal [spell calm E4 P3 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Gain control of a spell. You may make new choices for it.
+[death-replacement] OGN-269 The Boss [legend body+order E- P- M- normal] kw: |   TEXT: When a buffed unit you control would die, you may pay [Rainbow] and exhaust me to spend its buff and recall it exhausted instead. (Send it to base. This isn't a move.) / When you conquer, ready me.
+
+===== card_flow (152) =====
+[draw] RAD-062 Gravity Field [gear calm E5 P1 M- normal] kw:Deploy,Deathknell |   TEXT: [Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.) / Opponents must pay [1][Rainbow] to move one or more units to this battlefield. / [Deathknell][>] Draw 1. (When I die, get the effect.)
+[draw] VEN-143 Master of Shadows [legend fury+chaos E- P- M- normal] kw: |   TEXT: When you banish a card you own, empower me. (I become Empowered if I'm not already.) / [Action][>] Disempower me, [Exhaust]: Discard 1, then draw 1.
+[draw] RAD-017 Detonation Amplifier [gear chaos E4 P1 M- normal] kw:Deploy |   TEXT: [Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.) / When you play this, you may kill another friendly unit or gear to draw 1. / Friendly [Deathknell] effects here trigger an additional time.
+[draw] OGN-095 Stupefy [spell mind E1 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Give a unit -1 [Might] this turn, to a minimum of 1 [Might]. Draw 1.
+[draw] RAD-152 Encore [spell/signature mind+order E3 P1 M- normal] kw: |   TEXT: Choose two — / - Deal 2 to a unit. / - Play two 1 [Might] Recruit unit tokens. / - Give up to two units each +1 [Might] this turn. / - Look at the top 2 cards of your Main Deck, draw 1 and recycle the other.
+[draw] RAD-024 Blossoming Dreamroot [gear chaos E2 P- M- normal] kw:Deploy |   TEXT: [Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.) / When you win a combat here, draw 1.
+[draw] VEN-042 Shen, Scourge of Shadows [unit/champion calm E5 P1 M6 normal] kw: |   TEXT: When I hold, if there is exactly one other unit you control here, draw 1.
+[draw] SFD-124 Doran's Ring [gear chaos E1 P- M1 normal] kw:Equip |   TEXT: [Equip] [Chaos] ([Chaos]: Attach this to a unit you control.)
+[draw] VEN-056 Clairvoyance [spell mind E7 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / [Predict 5]. (Look at the top 5 cards of your Main Deck. Recycle any of them and put the rest back in any order.) / Draw 2.
+[draw] VEN-057 Covert Informant [unit mind E3 P1 M4 normal] kw:Empower,Empowered |   TEXT: [Empower] [3] ([3]: Empower me. Use only if not Empowered.) / [Empowered][>] When I move, draw 1.
+
+===== card_selection (54) =====
+[look] OGN-062 Reinforce [spell calm E5 P- M- normal] kw: |   TEXT: Look at the top 5 cards of your Main Deck. You may banish a unit from among them, then play it, reducing its cost by [5]. Recycle the remaining cards.
+[look] RAD-053 Strigian Oracle [unit mind E2 P- M2 normal] kw: |   TEXT: When I become exhausted, [Predict]. (Look at the top card of your Main Deck. You may recycle it.)
+[look] UNL-211 Forgotten Library [battlefield colorless E- P- M- normal] kw: |   TEXT: While you control this battlefield, when you play a spell, if you spent [4] or more, [Predict]. (Look at the top card of your Main Deck. You may recycle it.)
+[Vision] OGN-174 Sai Scout [unit chaos E6 P- M5 normal] kw:Vision |   TEXT: [Vision] (When you play me, look at the top card of your Main Deck. You may recycle it.) / You may play me to an open battlefield.
+[look] OGN-242 Baited Hook [gear order E3 P- M- normal] kw: |   TEXT: [1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.
+[look] RAD-018 Drakehound Packmaster [unit fury E9 P2 M9 normal] kw: |   TEXT: When you play me, reveal the top card of each opponent's Main Deck. Choose one and banish it, then play it, ignoring its cost. Recycle the rest.
+[look] VEN-047 Apprentice Mage [unit mind E3 P- M3 normal] kw:Empower,Empowered |   TEXT: [Empower] [2] ([2]: Empower me. Use only if not Empowered.) / When I become [Empowered], [Predict 2]. (Look at the top 2 cards of your Main Deck. Recycle any of them and put the rest back in any order.) / [Empowered][>] I have +1 [Might].
+[Vision] OGN-171 Mystic Poro [unit chaos E2 P- M2 normal] kw:Vision |   TEXT: [Vision] (When you play me, look at the top card of your Main Deck. You may recycle it.)
+[look] SFD-018 Void Hatchling [unit fury E2 P- M2 normal] kw: |   TEXT: If you would reveal cards from a deck, look at the top card first. You may recycle it. Then reveal those cards.
+[look] SFD-188 Void Rush [spell/signature fury+order E2 P1 M- normal] kw: |   TEXT: Reveal the top 2 cards of your Main Deck. You may play one of them, reducing its cost by [2]. Draw any you did not play this way.
+
+===== rune_ramp (96) =====
+[add] UNL-T05 Gold [gear/token colorless E- P- M- normal] kw: |   TEXT: [Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow]. (Abilities that add resources can't be reacted to.)
+[channel] RAD-092 Seraphic Wyvern [unit body E7 P- M7 normal] kw: |   TEXT: If you would channel runes, channel that many runes plus 1 exhausted rune instead.
+[gold-token] RAD-105 Reckless Innovator [unit chaos E3 P- M3 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Chaos] as an additional cost to have me enter ready.) / When I become exhausted, choose one — / - Play a Gold gear token exhausted. (It has "[Reaction][>] Kill this, [Exhaust]: [Add] [Rainbow].") / - Pay [Chaos] to draw 1.
+[channel] VEN-063 Nasus, Guardian of Knowledge [unit/champion mind E5 P1 M6 normal] kw: |   TEXT: Once each turn, when an enemy unit here dies, channel 1 rune exhausted.
+[channel] UNL-181 Virtuoso [legend fury+mind E- P- M- normal] kw: |   TEXT: When you play a spell, if you spent [4] or more, you may banish it. Then, if there are four spells banished with me, put each in its trash, channel 4 runes, and draw 1.
+[add] UNL-093 Dragonsoul Sage [unit body E2 P- M1 normal] kw: |   TEXT: [Reaction][>] [Exhaust]: [Add] [1]. (Abilities that add resources can't be reacted to.)
+[add] SFD-189 Fire Below the Mountain [legend calm+mind E- P- M- normal] kw: |   TEXT: [Exhaust]: [Reaction] — [Add] [Rainbow]. Use only to play gear or use gear abilities. (Abilities that add resources can't be reacted to.)
+[channel] RAD-091 Jarvan IV, Martial Paragon [unit/champion body E4 P1 M4 normal] kw: |   TEXT: Your gear with [Deploy] have [Action]. (They can be played on your turn or in showdowns.) / When I conquer, if there is a friendly gear with [Deploy] here, channel 1 rune exhausted.
+[readyRune] VEN-145 Curator of the Sands [legend calm+mind E- P- M- normal] kw: |   TEXT: When you play a unit, gear, or activated ability with Energy cost [7] or more, you may exhaust me to ready up to 2 runes.
+[add] RAD-103 Gutter Guardian [unit chaos E3 P- M3 normal] kw:Hidden,Show Off |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from hand or pick another friendly one on the board.) / When you play me, if you showed off, [Add] [Rainbow].
+
+===== cost_reducer (15) =====
+[others] RAD-139 Boy Who Shattered Time [legend fury+mind E- P- M- normal] kw:Empower |   TEXT: [Empower] —  [1], [Exhaust] (Use only if not Empowered.) / Disempower me, [Exhaust]: Reduce the cost of the next unit you play this turn by [2][Rainbow] and give it "Kill me at end of turn."
+[others] SFD-213 Ornn's Forge [battlefield colorless E- P- M- normal] kw: |   TEXT: While you control this battlefield, the first friendly non-token gear played each turn costs [1] less.
+[others] SFD-026 Rumble, Hotheaded [unit/champion fury E4 P- M4 normal] kw: |   TEXT: Your Mechs each have [Assault]. (+1 [Might] while we're attackers.) / When I conquer, you may recycle another friendly unit to play a Mech from your trash. Reduce its Energy cost by the Might of the unit you recycled.
+[others] VEN-055 Applied Researchers [unit mind E4 P- M4 normal] kw:Empower,Empowered |   TEXT: [Empower] [3] ([3]: Empower me. Use only if not Empowered.) / [Empowered][>] Your spells cost [1][Rainbow] less, to a minimum of [1].
+[others] RAD-163 Hunters' Circle [battlefield colorless E- P- M- normal] kw: |   TEXT: For each player, the first unit or gear they play here on their turn costs [1] less.
+[others] OGN-031 Raging Firebrand [unit fury E6 P1 M4 normal] kw: |   TEXT: When you play me, the next spell you play this turn costs [5] less.
+[others] SFD-149 Ezreal, Prodigy [unit/champion chaos E3 P1 M3 normal] kw: |   TEXT: When you play me, discard 1, then draw 2. / Optional additional costs you pay cost [1] or [Rainbow] less.
+[others] SFD-141 Irelia, Graceful [unit/champion chaos E4 P1 M4 normal] kw: |   TEXT: Your spells that choose me cost [1] or [Rainbow] less.
+[others] VEN-161 Piltovan Forge [battlefield colorless E- P- M- normal] kw: |   TEXT: While you control this battlefield, the first friendly gear activated ability played each turn costs [1] less.
+[others] VEN-098 Stargazer [unit chaos E5 P- M4 normal] kw: |   TEXT: Spells with [Flow] you play from your trash cost [2] less, to a minimum of [1].
+
+===== finisher (76) =====
+[big-body] SFD-174 Trove Golem [unit order E8 P2 M9 normal] kw: |   TEXT: When you play me, play four Gold gear tokens exhausted.
+[mass-pump] SFD-175 Undertitan [unit order E6 P1 M5 normal] kw: |   TEXT: When you play me, give your other units +2 [Might] this turn. / As I'm revealed from your deck, [Add] [2].
+[big-body] RAD-125 Dune Devourer [unit order E7 P1 M7 normal] kw:Deflect |   TEXT: You may kill a friendly unit as an additional cost to play me. If you do, I cost [2] less. / [Deflect] (Opponents must pay [Rainbow] to choose me with a spell or ability.)
+[big-body] UNL-196 Daisy! [unit/signature calm+order E9 P2 M8 normal] kw: |   TEXT: I enter ready. / Reduce my cost by [1] for each of the following tags among your units — Bird, Cat, Dog, and Poro. / When I attack while your units have all 4 tags, [Stun] an enemy unit here. (It doesn't deal combat damage this turn.)
+[score] OGN-066 Ahri, Alluring [unit/champion calm E5 P1 M4 normal] kw: |   TEXT: When I hold, you score 1 point.
+[big-body] SFD-094 Direwing [unit body E7 P- M7 normal] kw: |   TEXT: I enter ready if you control another Dragon.
+[big-body] UNL-060 Vilemaw [unit calm E8 P2 M8 normal] kw:Ambush |   TEXT: [Ambush] (You may play me as a [Reaction] to a battlefield where you have units.) / Enemy units here with less Might than me don't deal combat damage. / When I hold, draw 1.
+[big-body] UNL-104 Gentle Gemdragon [unit body E8 P- M8 normal] kw: |   TEXT: When you play me or another Dragon, ready up to 2 runes.
+[big-body] OGN-161 Deadbloom Predator [unit body E8 P2 M8 normal] kw:Deflect |   TEXT: [Deflect] (Opponents must pay [Rainbow] to choose me with a spell or ability.) / You may play me to an occupied enemy battlefield.
+[big-body] VEN-091 Corrupted Dragon [unit body E10 P2 M10 normal] kw: |   TEXT: If your score is not within 3 points of the Victory Score, I enter ready. / When I attack, you may move any number of enemy units here each with 5 [Might] or less to their base.
+
+===== token_maker (66) =====
+[unit:Bird] UNL-153 Carrion Dredger [unit order E2 P- M1 normal] kw:Deathknell |   TEXT: [Deathknell][>] Play a 1 [Might] Bird unit token with [Deflect] to your base. (When I die, get the effect. Opponents must pay [Rainbow] to choose a [Deflect] unit with a spell or ability.)
+[unit:Reflection] UNL-200 Mirror Image [spell/signature mind+order E3 P2 M- normal] kw: |   TEXT: Choose a unit. Play a ready Reflection unit token to your base. It becomes a copy of that unit. Give it [Temporary]. (Kill it at the start of its controller's Beginning Phase, before scoring.)
+[unit:Recruit] SFD-153 Eye of the Herald [gear order E1 P- M0 normal] kw:Equip |   TEXT: [Equip] [Order] ([Order]: Attach this to a unit you control.)
+[unit:Sprite] UNL-069 Sprite Burst [spell mind E5 P- M- normal] kw: |   TEXT: Play two ready 3 [Might] Sprite unit tokens with [Temporary]. (Kill each at the start of its controller's Beginning Phase, before scoring.)
+[unit:Recruit] RAD-007 Rally for War [spell fury E3 P1 M- normal] kw: |   TEXT: Choose an occupied enemy battlefield. Play three 1 [Might] Recruit unit tokens there.
+[unit:Recruit] OGN-117 Viktor, Innovator [unit/champion mind E4 P1 M3 normal] kw: |   TEXT: When you play a card on an opponent's turn, play a 1 [Might] Recruit unit token in your base.
+[unit:Sand Soldier] SFD-198 Arise! [spell/signature calm+order E6 P1 M- normal] kw: |   TEXT: Play a 2 [Might] Sand Soldier unit token for each Equipment you control. Then ready two of them.
+[unit:Recruit] SFD-179 Corina Veraza [unit order E7 P1 M6 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Order] as an additional cost to have me enter ready.) / When I move to a battlefield, play three 1 [Might] Recruit unit tokens here.
+[unit:Recruit] RAD-116 Concert Poster [gear order E1 P- M- normal] kw:Deploy |   TEXT: [Deploy] (Play this only to a battlefield. When an opponent holds here, kill this.) / When you play this or when you conquer here, you may pay [1] to play a 1 [Might] Recruit unit token to your base.
+[unit:Mech] SFD-076 Production Surge [spell mind E4 P1 M- normal] kw: |   TEXT: This costs [2] less if you control a Mech. / Play a 3 [Might] Mech unit token to your base. / Draw 1.
+
+===== buff_source (122) =====
+[buff-counter] RAD-154 Last Caress [spell/signature body+chaos E2 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / The next unit you play this turn (even from face down) can be played to any battlefield. When you play it, [Buff] it. (Give it a +1 [Might] buff if it doesn't have one.)
+[anthem] OGN-294 Trifarian War Camp [battlefield colorless E- P- M- normal] kw: |   TEXT: Units here have +1 [Might]. (This includes attackers.)
+[keyword-anthem] RAD-055 Clanging Sentry [unit mind E3 P- M2 normal] kw: |   TEXT: Your Mechs have [Disarm]. (When each of us attacks, give an enemy unit there -1 [Might] this turn.)
+[equipment] SFD-115 Trinity Force [gear body E4 P- M2 normal] kw:Equip |   TEXT: [Equip] [Body] ([Body]: Attach this to a unit you control.)
+[keyword-anthem] SFD-071 Breakneck Mech [unit mind E8 P2 M7 normal] kw: |   TEXT: Your Mechs have [Deflect] and [Ganking]. (Opponents must pay [Rainbow] to choose us with a spell or ability. We can move from battlefield to battlefield.) / I enter ready if you control another Mech.
+[equipment] RAD-071 Nazuman Ntofo [gear order E1 P- M0 normal] kw:Equip,Shield2 |   TEXT: [Equip] [1] ([1]: Attach this to a unit you control.)
+[keyword-anthem] OGN-074 Taric, Protector [unit/champion calm E4 P1 M4 normal] kw:Shield,Tank |   TEXT: [Shield] (+1 [Might] while I'm a defender.) / [Tank] (I must be assigned combat damage first.) / Other friendly units here have [Shield].
+[anthem] OGS-013 Garen, Commander [unit/champion order E6 P1 M5 normal] kw: |   TEXT: Other friendly units have +1 [Might] here.
+[anthem] VEN-159 Kinkou Temple [battlefield colorless E- P- M- normal] kw: |   TEXT: Units here with [Tank] have +1 [Might].
+[equipment] UNL-158 Shepherd's Heirloom [gear order E2 P- M2 normal] kw:Equip |   TEXT: When you play this, gain 1 XP. / [Equip] — Spend 1 XP (Pay the cost: Attach this to a unit you control.)
+
+===== mobility (98) =====
+[grant-Ganking] UNL-010 Vault Breaker [spell fury E1 P1 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Give a unit [Assault 2] and [Ganking] this turn. (+2 [Might] while it's an attacker. It can move from battlefield to battlefield.)
+[move] RAD-155 Exemplar of Demacia [legend body+order E- P- M- normal] kw: |   TEXT: When you play a gear with [Deploy], you may exhaust me and pay [Rainbow] to move a friendly unit to that battlefield.
+[move] VEN-034 Resonating Strike [spell calm E2 P1 M- reaction] kw:Hidden,Reaction |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / [Reaction] (Play on your turn or in showdowns.) / Choose a battlefield you control and a unit you control at a different location. Move that unit to that battlefield and give it +2 [Might] this turn.
+[move] VEN-139 Rogue Assassin [legend fury+calm E- P- M- normal] kw:Empower |   TEXT: [Empower] [3][Rainbow] ([3][Rainbow]: Empower this. Use only if not Empowered.) / [Action][>] [Exhaust]: If it's your turn, move a friendly unit in a showdown to base and if I'm [Empowered], ready it.
+[grant-Ganking] OGN-019 Raging Soul [unit fury E4 P- M4 normal] kw: |   TEXT: If you've discarded a card this turn, I have [Assault] and [Ganking]. (+1 [Might] while I'm an attacker. I can move from battlefield to battlefield.)
+[Ganking] OGN-231 Commander Ledros [unit order E6 P4 M8 normal] kw:Deflect,Ganking |   TEXT: As you play me, you may kill any number of friendly units as an additional cost. Reduce my cost by [Order] for each killed this way. / [Deflect] (Opponents must pay [Rainbow] to choose me with a spell or ability.) / [Ganking] (I can move from battlefield to battlefield.)
+[move] SFD-079 Bard, Mercurial [unit/champion mind E4 P1 M4 normal] kw: |   TEXT: You may exhaust your legend as an additional cost to play me. / When you play me, if you paid the additional cost, move any number of your units to an open battlefield.
+[Ganking] OGN-036 Vi, Destructive [unit/champion fury E2 P1 M3 normal] kw:Ganking |   TEXT: [Ganking] (I can move from battlefield to battlefield.) / Recycle 1 from your trash: Give me +1 [Might] this turn.
+[Ganking] UNL-115 Nilah, Joyful Ascetic [unit/champion body E3 P1 M4 normal] kw:Accelerate,Ganking |   TEXT: [Accelerate] (You may pay [1][Body] as an additional cost to have me enter ready.) / [Ganking] (I can move from battlefield to battlefield.) / When I move, gain 1 XP.
+[play-anywhere] OGN-193 Miss Fortune, Buccaneer [unit/champion chaos E4 P1 M4 normal] kw: |   TEXT: You may play me to an open battlefield. / Friendly units may be played to open battlefields.
+
+===== haste (68) =====
+[Accelerate] OGN-010 Legion Rearguard [unit fury E2 P- M2 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.)
+[Accelerate] VEN-016 Eclipse Dragon [unit fury E8 P- M8 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.) / When I move, if you control 4 or fewer runes, draw 1.
+[Accelerate] UNL-127 Mister Root [unit chaos E2 P- M1 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Chaos] as an additional cost to have me enter ready.) / When I move to a battlefield, gain 2 XP.
+[Accelerate] OGN-162 Miss Fortune, Captain [unit/champion body E5 P1 M5 normal] kw:Accelerate,Ganking |   TEXT: [Accelerate] (You may pay [1][Body] as an additional cost to have me enter ready.) / [Ganking] (I can move from battlefield to battlefield.) / The first time I move each turn, you may ready something else that's exhausted.
+[self] RAD-021 Ekko, Revolutionary [unit/champion fury E5 P1 M4 normal] kw:Assault |   TEXT: I enter ready. / [Assault] (+1 [Might] while I'm an attacker.) / [Action][>] Discard 1, [1][Fury]: Banish me, then play me to your base, ignoring my cost.
+[Accelerate] OGN-030 Jinx, Demolitionist [unit/champion fury E3 P1 M4 normal] kw:Accelerate,Assault2 |   TEXT: [Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.) / [Assault 2] (+2 [Might] while I'm an attacker.) / When you play me, discard 2.
+[Accelerate] OGN-075 Tasty Faefolk [unit calm E7 P- M6 normal] kw:Accelerate,Deathknell |   TEXT: [Accelerate] (You may pay [1][Calm] as an additional cost to have me enter ready.) / [Deathknell] — Channel 2 runes exhausted and draw 1. (When I die, get the effect.)
+[self] RAD-093 Disposal Expert [unit fury E4 P- M3 normal] kw:Disarm2 |   TEXT: I enter ready if you control no other units. / [Disarm 2] (When I attack, give an enemy unit here -2 [Might] this turn.)
+[Accelerate] OGN-039 Kai'Sa, Survivor [unit/champion fury E4 P- M4 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.) / When I conquer, draw 1.
+[Accelerate] SFD-103 Jaull-Fish [unit body E7 P2 M6 normal] kw:Accelerate |   TEXT: [Accelerate] (You may pay [1][Body] as an additional cost to have me enter ready.) / I cost [2] less for each of your [Mighty] units. (A unit is Mighty while it has 5+ [Might].)
+
+===== recursion (42) =====
+[Flow] VEN-081 Onslaught [spell body E4 P- M- normal] kw:Flow |   TEXT: Give a unit +6 [Might] this turn. / [Flow] [4] (You may play this from your trash for its Flow cost. Then banish it.)
+[Flow] VEN-003 Brittle Steel [spell fury E2 P1 M- normal] kw:Flow |   TEXT: Kill a gear. / [Flow] [4][Fury] (You may play this from your trash for its Flow cost. Then banish it.)
+[play] UNL-142 Heedless Resurrection [spell chaos E2 P1 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / As an additional cost to play this, kill a friendly unit. / Play a unit from your trash that costs no more Energy and no more Power than the killed unit, ignoring its cost.
+[play] VEN-114 Kharox [unit chaos E6 P- M5 normal] kw:Empower |   TEXT: [Empower] [6][Chaos][Chaos] ([6][Chaos][Chaos]: Empower me. Use only if not Empowered.) / When I become [Empowered], choose an opponent. They [Burn 3]. Then you may do this: Choose a unit in their trash and play it, ignoring its cost. (To Burn 3, they put the top 3 cards of their Main Deck into their trash.)
+[Flow] VEN-105 Twilight Step [spell chaos E2 P1 M- normal] kw:Flow |   TEXT: Move a unit with 3 [Might] or less. / [Flow] [4][Chaos] (You may play this from your trash for its Flow cost. Then banish it.)
+[Flow] VEN-100 Up from the Deep [spell chaos E3 P- M- normal] kw:Flow |   TEXT: Play two 1 [Might] Tentacle unit tokens from Bilgewater. / [Flow] [3] (You may play this from your trash for its Flow cost. Then banish it.)
+[Flow] VEN-116 Dragon Form [spell order E3 P- M- normal] kw:Flow |   TEXT: Choose a unit. Its base Might becomes 5 this turn. / [Flow] [3] (You may play this from your trash for its Flow cost. Then banish it.)
+[play] SFD-150 Last Rites [gear chaos E3 P- M2 normal] kw:Equip |   TEXT: [Equip] — [Chaos], Recycle 2 cards from your trash (Pay the cost: Attach this to a unit you control.)
+[Flow] VEN-148 Shadow Dash [spell/signature calm+order E2 P1 M- normal] kw:Flow |   TEXT: Move an enemy unit to a battlefield where you have units. If you have exactly two units there, they each get +1 [Might] this turn. / [Flow] [5][Rainbow][Rainbow] (You may play this from your trash for its Flow cost. Then banish it.)
+[Flow] VEN-140 Shuriken Flip [spell/signature fury+calm E1 P1 M- normal] kw:Flow |   TEXT: Deal 2 to up to one enemy unit at a battlefield, then move a friendly unit. / [Flow] [3][Rainbow] (You may play this from your trash for its Flow cost. Then banish it.)
+
+===== disruption (120) =====
+[tax] VEN-045 Helm of Suppression [gear calm E4 P1 M- normal] kw:Empower,Empowered |   TEXT: [Empower] [4][Calm] ([4][Calm]: Empower this. Use only if not Empowered.) / Opponents' spells cost [1] more. If this is [Empowered], they cost [1][Rainbow] more instead.
+[bounce] OGN-172 Rebuke [spell chaos E2 P2 M- action] kw:Action |   TEXT: [Action] (Play on your turn or in showdowns.) / Return a unit at a battlefield to its owner's hand.
+[shrink] UNL-182 Curtain Call [spell/signature fury+mind E4 P- M- normal] kw:Repeat |   TEXT: [Repeat] — [1] / [Rainbow] / [1][Rainbow] (You may pay each additional cost to repeat this spell's effect.) / Choose one you haven't already chosen — / - Draw 1. / - Deal 2 to a unit at a battlefield. / - Deal 3 to a unit at a base. / - Give a unit at a battlefield -4 [Might] this turn.
+[reveal-hand,discard] OGN-192 Mindsplitter [unit chaos E7 P2 M7 normal] kw: |   TEXT: When you play me, choose an opponent. They reveal their hand. Choose a card from it, and they discard that card.
+[bounce] VEN-115 Ocean Drake [unit chaos E8 P2 M7 normal] kw: |   TEXT: You may play me to an open battlefield. / When you play me, you may return a non-Dragon unit to its owner's hand.
+[bounce] RAD-107 Bedeviling Stranger [unit chaos E2 P- M2 normal] kw:Hidden |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / When you play me, choose a battlefield. If there are 4 or more units there, you may return an enemy unit there to its owner's hand.
+[restriction] UNL-190 Lilting Lullaby [spell/signature calm+mind E2 P2 M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Counter a spell. Its controller can't play spells this turn.
+[restriction] OGN-295 Vilemaw's Lair [battlefield colorless E- P- M- normal] kw: |   TEXT: Units can't move from here to base.
+[shrink] RAD-048 High Note [spell mind E3 P- M- reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve.) / Give a unit -[Might] this turn equal to the number of exhausted units you control.
+[move-enemy] SFD-053 Janna, Savior [unit/champion calm E3 P1 M3 reaction] kw:Reaction |   TEXT: [Reaction] (Play any time, even before spells and abilities resolve, including to a battlefield you control.) / When you play me, heal your units here, then move an enemy unit from here to its base.
+
+===== NO ROLE (185 deckable) =====
+VEN-095 Shadow Order Disciple [unit chaos E2 P- M2 normal] kw: |   TEXT: When I move, you may [Burn 1] to give me +1 [Might] this turn. (To Burn 1, put the top card of your Main Deck into your trash.)
+OGN-052 Stalwart Poro [unit calm E2 P- M2 normal] kw:Shield |   TEXT: [Shield] (+1 [Might] while I'm a defender.)
+OGN-210 Daring Poro [unit order E2 P- M2 normal] kw:Assault |   TEXT: [Assault] (+1 [Might] while I'm an attacker.)
+RAD-057 Piltovan Guidebot [unit mind E4 P- M3 normal] kw: |   TEXT: When you play a card, you may have my base Might become equal to that card's Energy cost this turn.
+OGN-018 Noxus Saboteur [unit fury E3 P- M3 normal] kw: |   TEXT: Your opponents' [Hidden] cards can't be revealed here.
+OGN-240 Sett, Kingpin [unit/champion order E4 P1 M5 normal] kw:Tank |   TEXT: [Tank] (I must be assigned combat damage first.) / I get +1 [Might] for each buffed friendly unit at my battlefield.
+RAD-095 Momentary Companion [unit chaos E4 P- M4 normal] kw:Hidden |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / When you play me, if it's not your turn, give me [Temporary]. (Kill me at the start of my controller's Beginning Phase, before scoring.)
+OGN-175 Shipyard Skulker [unit chaos E3 P- M3 normal] kw: |   TEXT: 
+UNL-092 Demacian Diplomat [unit body E2 P- M2 normal] kw: |   TEXT: When you play me, gain 1 XP.
+VEN-096 Shadowblade Lurker [unit chaos E5 P- M5 normal] kw: |   TEXT: I cost [2] less for each card with my name in your trash.
+SFD-038 Ribbon Dancer [unit calm E3 P- M3 normal] kw: |   TEXT: When I move to a battlefield, give another friendly unit +1 [Might] this turn.
+VEN-043 Steel Paws [unit calm E1 P- M0 normal] kw:Deflect,Empower,Empowered |   TEXT: [Deflect] (Opponents must pay [Rainbow] to choose me with a spell or ability.) / [Empower] [7] ([7]: Empower me. Use only if not Empowered.) / [Empowered][>] I have +7 [Might].
+VEN-101 Gust Monk [unit chaos E2 P- M2 normal] kw: |   TEXT: You may pay [1] as an additional cost to play me. / When you play me, if you paid the additional cost, banish a card from any trash to give a unit [Assault 2] this turn. (+2 [Might] while it's an attacker.)
+VEN-108 Forgotten Relic [gear chaos E5 P- M- normal] kw: |   TEXT: When you play this or at the start of your Beginning Phase, [Burn 1]. When you burn a unit this way, do this: Give a friendly unit +[Might] equal to the burned card's Might this turn. (To Burn 1, put the top card of your Main Deck into your trash.)
+VEN-097 Spiderling [unit chaos E3 P- M1 normal] kw:Hidden |   TEXT: [Hidden] (Hide now for [Rainbow] to react with later for [0].) / I have +1 [Might] for each other unit you control here with my name. / Your deck can have any number of cards named Spiderling.

@@ -97,13 +97,24 @@ def main():
     # data half
     pf = M['datasets']['pa-fetch-2026-11-11']
     R['N_PA_PARSED'], R['N_PA_COMPLETE'] = str(pf['decksParsed']), str(pf['decksComplete'])
-    R['N_PA_EVENT'] = str(sum((l['samples']['pa-fetch-2026-11-11'] or {}).get('nEventMarker', 0) for l in M['legends']))
-    per = Counter((l['samples']['pa-fetch-2026-11-11'] or {}).get('n', 0) for l in M['legends'])
+    R['N_PA_EVENT'] = str(sum((l['samples']['radiance'] or {}).get('nEventMarker', 0) for l in M['legends']))
+    per = Counter((l['samples']['radiance'] or {}).get('n', 0) for l in M['legends'])
     R['PER_LEGEND_DIST'] = 'lists per legend: ' + ', '.join('%d (x%d legends)' % (k, v) for k, v in sorted(per.items()))
     pl = M['datasets']['pa-list-2026-11-11']
     R['N_LIST_ROWS'], R['N_LIST_PAGES'], R['N_LIST_RECENT'] = str(pl['rows']), str(pl['pages']), str(pl['rowsSinceRadiance'])
     R['N_LOCAL'] = str(M['datasets']['pa-sample-2026-09-06']['decksWithLegend'])
-    R['N_LOCAL_LEGENDS'] = str(sum(1 for l in M['legends'] if l['samples']['pa-sample-2026-09-06']))
+    R['N_LOCAL_COMPLETE'] = str(M['datasets']['pa-sample-2026-09-06']['decksComplete'])
+    D, PL = M['datasets'], M['pooling']
+    R['N_PA_OWN'], R['N_PA_SHARED'] = str(pf['fromPerLegendFetch']), str(pf['addedFromSharedEventFetch'])
+    R['N_R1_PARSED'], R['N_R1_COMPLETE'] = str(D['r1-top3-2026-11-11']['decksParsed']), str(D['r1-top3-2026-11-11']['decksComplete'])
+    R['N_OFF_PARSED'], R['N_OFF_COMPLETE'] = str(D['official-rq-2026']['decksParsed']), str(D['official-rq-2026']['decksComplete'])
+    R['N_COMPLETE_ALL'], R['N_DUPES'], R['N_POOLED'] = str(PL['completeLists']), str(PL['duplicatesDropped']), str(PL['pooledLists'])
+    R['N_POOL_RAD'], R['N_POOL_PRE'] = str(PL['radianceEra']), str(PL['preRadiance'])
+    R['OFFICIAL_EVENTS_TABLE'] = '\n'.join(['| Published | Article (FACT source) | Legends in field table | Day 1 pilots | Day 2 pilots | Lists printed |', '|---|---|---|---|---|---|'] + [
+        '| %s | [%s](%s) | %d | %d | %d | %d |' % (e['publishedAt'], e['title'].replace('\u2019', "'"), e['url'], e['legendsInTable'], e['day1Players'], e['day2Players'], e['lists'])
+        for e in D['official-rq-2026']['events']])
+    basis = Counter(l['adviceBasis'] for l in M['legends'])
+    R['BASIS_RAD'], R['BASIS_PRE'], R['BASIS_TEXT'] = str(basis['radiance-lists']), str(basis['pre-radiance-lists-only']), str(basis['text-only'])
     conf = Counter(l['dataConfidence'] for l in M['legends'])
     R['CONF_OK'], R['CONF_THIN'], R['CONF_INSUFF'] = str(conf['ok']), str(conf['thin']), str(conf['insufficient'])
 
@@ -111,6 +122,35 @@ def main():
         return '%s %s' % (l['legendCode'], [L for L in T['legends'] if L['legendCode'] == l['legendCode']][0]['championTag'])
     R['CONF_OK_LIST'] = ', '.join(tagname(l) for l in M['legends'] if l['dataConfidence'] == 'ok') or 'none'
     R['CONF_INSUFF_LIST'] = ', '.join(tagname(l) for l in M['legends'] if l['dataConfidence'] == 'insufficient') or 'none'
+    def nrad(l):
+        return (l['samples']['radiance'] or {}).get('n', 0)
+
+    def npre(l):
+        return (l['samples']['preRadiance'] or {}).get('n', 0)
+    R['CONF_THIN_LIST'] = ', '.join('%s (%d RAD-era, %d with provenance; %d older)' % (
+        tagname(l), nrad(l), (l['samples']['radiance'] or {}).get('nEventMarker', 0), npre(l)) for l in M['legends'] if l['dataConfidence'] == 'thin')
+    R['CONF_INSUFF_DETAIL'] = ', '.join('%s (%d RAD-era, %d older; basis %s)' % (tagname(l), nrad(l), npre(l), l['adviceBasis'])
+                                        for l in M['legends'] if l['dataConfidence'] == 'insufficient') or 'none'
+    no_off = [l for l in M['legends'] if not l.get('officialField')]
+    R['N_NO_OFFICIAL'], R['NO_OFFICIAL_LIST'] = str(len(no_off)), ', '.join(tagname(l) for l in no_off)
+    not_recent = [l for l in M['legends'] if l.get('officialField') and not l['officialField']['recent']]
+    R['NOT_RECENT_OFFICIAL_LIST'] = ', '.join(tagname(l) for l in not_recent) or 'none'
+    small_off = [l for l in M['legends'] if l.get('officialField') and l['officialField']['recent'] and not l['officialField']['recent']['enoughForConversion']]
+    R['SMALL_OFFICIAL_LIST'] = ', '.join('%s (%d)' % (tagname(l), l['officialField']['recent']['day1']) for l in small_off) or 'none'
+    rec = [l for l in M['legends'] if l.get('officialField') and l['officialField']['recent']]
+    R['TOP_OFFICIAL'] = ', '.join('%s %.1f%%' % (tagname(l).split(' ', 1)[1], 100 * l['officialField']['recent']['day1Share'])
+                                  for l in sorted(rec, key=lambda l: -l['officialField']['recent']['day1Share'])[:8])
+    R['TOP_CONVERSION'] = ', '.join('%s %d%% (%d pilots)' % (tagname(l).split(' ', 1)[1], round(100 * l['officialField']['recent']['day2Conversion']), l['officialField']['recent']['day1'])
+                                    for l in sorted([x for x in rec if x['officialField']['recent']['enoughForConversion']],
+                                                    key=lambda l: -l['officialField']['recent']['day2Conversion'])[:8])
+    R['FIELD_CONVERSION'] = '%d%%' % round(100 * rec[0]['officialField']['recent']['fieldDay2Conversion']) if rec else '-'
+    pod = sorted(M['legends'], key=lambda l: -(l['podiums']['all']['first']))[:8]
+    R['TOP_PODIUM'] = ', '.join('%s %d' % (tagname(l).split(' ', 1)[1], l['podiums']['all']['first']) for l in pod)
+    R['N_NO_PODIUM'] = str(sum(1 for l in M['legends'] if not sum(l['podiums']['all'].values())))
+    arch_n = sum((l['samples']['radiance'] or {}).get('archetypeLabels', {}).get('nLabelled', 0) for l in M['legends'])
+    R['N_ARCH_LABELLED'] = str(arch_n)
+    weak = [l for l in M['legends'] if l['dataConfidence'] != 'ok']
+    R['N_WEAK'] = str(len(weak))
     scarce = [l for l in M['legends'] if l['dataAvailability'] == 'scarce']
     R['N_SCARCE'] = str(len(scarce))
     R['SCARCE_LIST'] = ', '.join('%s (%d lists, %d event-named)' % (tagname(l), l['popularity']['listsSinceRadiance'],
@@ -119,10 +159,10 @@ def main():
     no_results = [l for l in M['legends'] if not l.get('results')]
     R['N_NO_RESULTS'] = str(len(no_results))
     R['NO_RESULTS_LIST'] = ', '.join(tagname(l) for l in no_results)
-    both = [l for l in M['legends'] if l['dataAvailability'] == 'scarce' and not (l.get('results') or {}).get('tierList')
+    both = [l for l in M['legends'] if l['dataConfidence'] != 'ok' and not (l.get('results') or {}).get('tierList')
             and not ((l.get('results') or {}).get('euRegional') or {}).get('winRatePct')]
     R['N_NO_DATA_ADVICE'] = str(len(both))
-    R['NO_DATA_ADVICE_LIST'] = ', '.join(tagname(l) for l in both)
+    R['NO_DATA_ADVICE_LIST'] = ', '.join('%s (%d)' % (tagname(l), nrad(l)) for l in both)
     top = sorted(M['legends'], key=lambda l: l['popularity']['rankSinceRadiance'] or 99)[:8]
     R['TOP_POP'] = ', '.join('%s %d' % (tagname(l).split(' ', 1)[1], l['popularity']['listsSinceRadiance']) for l in top)
     R['UNRESOLVED'] = ', '.join('%s x%d' % kv for kv in M['unresolvedDeckEntries'].items()) or 'none'
@@ -133,7 +173,7 @@ def main():
     hit = tot = slots = slot_hit = 0
     axis_hit = axis_tot = 0
     for L in T['legends']:
-        smp = meta[L['legendCode']]['samples']['pa-fetch-2026-11-11']
+        smp = meta[L['legendCode']]['samples']['radiance']
         fit = [b['cardCode'] for b in L['battlefields'] if 'bannedFrom' not in b]
         if not smp or not fit:
             continue
@@ -144,7 +184,7 @@ def main():
         slots += sum(played.values())
         slot_hit += sum(v for c, v in played.items() if c in fit)
     for L in T['legends']:
-        smp = meta[L['legendCode']]['samples']['pa-fetch-2026-11-11']
+        smp = meta[L['legendCode']]['samples']['radiance']
         if not smp:
             continue
         core = {c['cardCode'] for c in smp['coreCards']}
@@ -160,7 +200,7 @@ def main():
                        % (axis_hit, axis_tot))
     bf_all, n_lists = Counter(), 0
     for l in M['legends']:
-        smp = l['samples']['pa-fetch-2026-11-11']
+        smp = l['samples']['radiance']
         if smp:
             n_lists += smp['n']
             for b in smp['battlefields']:

@@ -1,37 +1,45 @@
-Ahri, Nine-Tailed Fox                    ATTRITION 1
-Akali, Rogue Assassin                    HOLD 1
-Azir, Emperor of the Sands               TALL 1
-Diana, Scorn of the Moon                 ATTRITION 1
-Draven, Glorious Executioner             HIDDEN 1
-Ekko, Boy Who Shattered Time             BURST 1
-Evelynn, Agony's Embrace                 HIDDEN 1
-Ivern, Green Father                      HOLD 1
-Jarvan IV, Exemplar of Demacia           TALL 1
-K'Sante, Pride of Nazumah                HOLD 1
-Kai'Sa, Daughter of the Void             ATTRITION 1
-Kennen, Heart of the Tempest             BURST 1, HIDDEN 1
-Kha'Zix, Voidreaver                      TALL 1
-Leona, Radiant Dawn                      HOLD 1
-Lillia, Bashful Bloom                    WIDE 1
-Master Yi, Wuju Bladesman                HIDDEN 1
-Mel, Soul's Reflection                   HIDDEN 1
-Mordekaiser, Iron Revenant               WIDE 1
-Orianna, Lady of Clockwork               WIDE 1, ATTRITION 1
-Ornn, Fire Below the Mountain            TALL 1
-Pyke, Bloodharbor Ripper                 ATTRITION 1
-Rek'Sai, Void Burrower                   WIDE 1
-Renekton, Butcher of the Sands           TALL 1
-Rengar, Pridestalker                     HIDDEN 1
-Riven, The Exile                         HOLD 1, HIDDEN 1
-Rumble, Mechanized Menace                BURST 1
-Seraphine, Starry-Eyed Songstress        WIDE 1
-Sett, The Boss                           TALL 1
-Teemo, Swift Scout                       HIDDEN 1
-Vex, Gloomist                            HIDDEN 1
-Viktor, Herald of the Arcane             WIDE 1
-Volibear, Relentless Storm               TALL 1
-Zed, Master of Shadows                   HIDDEN 1
-Ziggs, Hexplosives Expert                WIDE 1
-primary route totals [('HIDDEN', 10), ('WIDE', 7), ('TALL', 7), ('HOLD', 5), ('ATTRITION', 5), ('BURST', 3)] n 37
-secondary route totals [('BURST', 9), ('TALL', 9), ('ATTRITION', 8), ('HOLD', 5), ('HIDDEN', 4), ('WIDE', 2)]
+Riven, The Exile                   n  2 | BURST 2                            | delivery>=1:  1 | clock 6.0 | closers 3.5 | score 0.79
+Kennen, Heart of the Tempest       n  2 | BURST 2                            | delivery>=1:  0 | clock 6.0 | closers 5.0 | score 0.62
+Orianna, Lady of Clockwork         n  2 | WIDE 1, ATTRITION 1                | delivery>=1:  0 | clock 7.0 | closers 3.5 | score 0.51
+Teemo, Swift Scout                 n  1 | WIDE 1                             | delivery>=1:  1 | clock 6.0 | closers 3.0 | score 0.57
+Viktor, Herald of the Arcane       n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 10.0 | score 0.78
+Diana, Scorn of the Moon           n  1 | BURST 1                            | delivery>=1:  0 | clock 6.0 | closers 6.0 | score 0.68
+Lillia, Bashful Bloom              n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 8.0 | score 0.92
+Ivern, Green Father                n  1 | HOLD 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.83
+Evelynn, Agony's Embrace           n  1 | HOLD 1                             | delivery>=1:  1 | clock 8.0 | closers 3.0 | score 0.63
+Mordekaiser, Iron Revenant         n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.81
+Zed, Master of Shadows             n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 1.0 | score 0.47
+Kha'Zix, Voidreaver                n  1 | BURST 1                            | delivery>=1:  0 | clock 6.0 | closers 1.0 | score 0.86
+Rek'Sai, Void Burrower             n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 6.0 | score 0.72
+Kai'Sa, Daughter of the Void       n  1 | ATTRITION 1                        | delivery>=1:  0 | clock 9.0 | closers 5.0 | score 0.55
+Akali, Rogue Assassin              n  1 | BURST 1                            | delivery>=1:  0 | clock 8.0 | closers 3.0 | score 0.80
+Jarvan IV, Exemplar of Demacia     n  1 | TALL 1                             | delivery>=1:  0 | clock 8.0 | closers 2.0 | score 0.70
+Ziggs, Hexplosives Expert          n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 2.0 | score 0.44
+Ekko, Boy Who Shattered Time       n  1 | BURST 1                            | delivery>=1:  0 | clock 6.0 | closers 11.0 | score 0.83
+K'Sante, Pride of Nazumah          n  1 | HOLD 1                             | delivery>=1:  0 | clock 7.0 | closers 1.0 | score 0.99
+Seraphine, Starry-Eyed Songstress  n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 6.0 | score 0.77
+Rengar, Pridestalker               n  1 | TALL 1                             | delivery>=1:  1 | clock 6.0 | closers 1.0 | score 0.64
+Leona, Radiant Dawn                n  1 | HOLD 1                             | delivery>=1:  0 | clock 7.0 | closers 4.0 | score 0.82
+Master Yi, Wuju Bladesman          n  1 | TALL 1                             | delivery>=1:  1 | clock 6.0 | closers 4.0 | score 0.63
+Sett, The Boss                     n  1 | TALL 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.94
+Pyke, Bloodharbor Ripper           n  1 | ATTRITION 1                        | delivery>=1:  0 | clock 8.0 | closers 2.0 | score 0.45
+Rumble, Mechanized Menace          n  1 | BURST 1                            | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.70
+Vex, Gloomist                      n  1 | HOLD 1                             | delivery>=1:  1 | clock 7.0 | closers 1.0 | score 0.91
+Azir, Emperor of the Sands         n  1 | WIDE 1                             | delivery>=1:  0 | clock 7.0 | closers 1.0 | score 0.67
+Renekton, Butcher of the Sands     n  1 | TALL 1                             | delivery>=1:  0 | clock 6.0 | closers 5.0 | score 0.73
+Draven, Glorious Executioner       n  1 | BURST 1                            | delivery>=1:  1 | clock 6.0 | closers 3.0 | score 0.55
+Volibear, Relentless Storm         n  1 | TALL 1                             | delivery>=1:  0 | clock 8.0 | closers 15.0 | score 0.83
+Ahri, Nine-Tailed Fox              n  1 | ATTRITION 1                        | delivery>=1:  0 | clock 7.0 | closers 3.0 | score 0.58
+Mel, Soul's Reflection             n  1 | ATTRITION 1                        | delivery>=1:  1 | clock 7.0 | closers 1.0 | score 0.42
+Ornn, Fire Below the Mountain      n  1 | WIDE 1                             | delivery>=1:  0 | clock 6.0 | closers 3.0 | score 0.48
+primary route totals [('WIDE', 11), ('BURST', 10), ('TALL', 6), ('HOLD', 5), ('ATTRITION', 5)] n 37
+secondary route totals [('TALL', 13), ('BURST', 11), ('HOLD', 6), ('WIDE', 4), ('ATTRITION', 3)]
+hidden delivery (norm >= 1): 8
 specials []
+point cards in main decks: []
+by primary route: n, mean clock, median closers, median interaction, mean sub-score
+  WIDE      n  11 | clock 6.5 (6-7) | closers 3 | interaction 9 | score 0.66
+  TALL      n   6 | clock 6.7 (6-8) | closers 4 | interaction 5 | score 0.74
+  HOLD      n   5 | clock 7.0 (6-8) | closers 3 | interaction 11 | score 0.84
+  BURST     n  10 | clock 6.2 (6-8) | closers 4 | interaction 12 | score 0.72
+  ATTRITION n   5 | clock 7.6 (7-9) | closers 2 | interaction 14 | score 0.48

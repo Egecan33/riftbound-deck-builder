@@ -1,0 +1,56 @@
+
+## WIDE: closers 53, enablers 89
+ closers: Ferrous Forerunner [SFD-021](79); Sprite Fountain [UNL-078](57); Sprite Burst [UNL-069](44); Concert Poster [RAD-116](35); Baron Nashor [UNL-147](33); Vanguard Captain [OGN-218](29); Unchecked Power [OGN-123](28); Up from the Deep [VEN-100](21); Faithful Manufactor [OGN-211](18); Forge of the Future [OGN-212](15)
+ enablers: Scuttle Crab [UNL-053](118); Trifarian Captain [RAD-129](109); Bedeviling Stranger [RAD-107](101); Tideturner [OGN-199](95); Traveling Merchant [OGN-185](78); Plundering Poro [SFD-069](70); Carrion Dredger [UNL-153](63); Irresistible Faefolk [UNL-112](57)
+ battlefields: Altar to Unity; The Grand Plaza; Black Rose Sanctum; Emperor's Dais; Trapping Grounds
+ legends: Viktor, Herald of the Arcane; Garen, Might of Demacia; Azir, Emperor of the Sands; Lillia, Bashful Bloom; Master Yi, Wuju Master; LeBlanc, Deceiver
+
+## TALL: closers 128, enablers 195
+ closers: Thousand-Tailed Watcher [OGN-116](124); Astral Heron [VEN-044](98); Ferrous Forerunner [SFD-021](79); Rengar, Trophy Hunter [UNL-120](78); Ruin Runner [SFD-105](45); Rhasa the Sunderer [OGN-195](39); The Empyrean [RAD-060](36); Elder Dragon [UNL-118](33); Baron Nashor [UNL-147](33); Harnessed Dragon [OGN-234](24)
+ enablers: Discipline [OGN-058](209); Zhonya's Hourglass [OGN-077](117); Punch First [SFD-097](117); Vex, Apathetic [UNL-150](104); Rampage [VEN-083](95); Decree of Focus [VEN-040](86); Decree of Insight [VEN-061](81); Carrion Dredger [UNL-153](63)
+ battlefields: Back-Alley Bar; Navori Fighting Pit; Sunken Temple; Abandoned Hall; Trapping Grounds; Valley of Idols; Heisho, Shell of the World
+ legends: Volibear, Relentless Storm; Lee Sin, Blind Monk; Leona, Radiant Dawn; Sett, The Boss; Fiora, Grand Duelist; Rengar, Pridestalker; Kha'Zix, Voidreaver
+
+## HOLD: closers 49, enablers 61
+ closers: Blitzcrank, Impassive [OGN-067](61); Xin Zhao, Vigilant [SFD-176](22); Fiora, Victorious [OGN-232](17); Dockside Lock-Up [RAD-136](17); Orianna, Exquisite [RAD-042](15); Vilemaw [UNL-060](15); K'Sante, Courageous [RAD-086](14); Sett, Kingpin [OGN-240](10); Ivern, Nurturer [UNL-051](5); Galio, Indefatigable [UNL-171](4)
+ enablers: Vex, Apathetic [UNL-150](104); Vi, Peacekeeper [UNL-176](72); Back Off [UNL-042](59); Lecturing Yordle [OGN-087](37); Graves, Blasting Through [RAD-085](36); The Good Stuff [RAD-106](32); Mutated Mouser [UNL-036](30); Stalwart Poro [OGN-052](29)
+ battlefields: Altar to Unity; Fortified Position; Grove of the God-Willow; Hallowed Tomb; Navori Fighting Pit; Reaver's Row; Reckoner's Arena; Startipped Peak; The Grand Plaza; Cosmic Vista; Durand Memorial; Power Nexus; Ravenbloom Conservatory; The Papertree; Amateur Recital; Black Flame Altar; Forbidding Waste; The Academy; Vaults of Helia; Kinkou Temple; Shadow Temple; Threshold of the Gray
+ legends: Master Yi, Wuju Bladesman; K'Sante, Pride of Nazumah; Rumble, Mechanized Menace; Renata Glasc, Chem-Baroness; Vex, Gloomist; Ivern, Green Father; LeBlanc, Deceiver; Poppy, Keeper of the Hammer; Shen, Eye of Twilight
+
+## BURST: closers 107, enablers 152
+ closers: Thousand-Tailed Watcher [OGN-116](124); Kai'Sa, Survivor [OGN-039](96); Ride the Wind [OGN-173](74); Sprite Fountain [UNL-078](57); Sprite Burst [UNL-069](44); Nocturne, Horrifying [OGN-194](33); Riven, Broken Blade [RAD-043](24); Xin Zhao, Vigilant [SFD-176](22); Irelia, Fervent [SFD-057](21); Fiora, Victorious [OGN-232](17)
+ enablers: Reckless Innovator [RAD-105](104); Tideturner [OGN-199](95); Stellacorn Herder [SFD-048](89); Traveling Merchant [OGN-185](78); Vi, Peacekeeper [UNL-176](72); Plundering Poro [SFD-069](70); First Mate [OGN-132](58); Irresistible Faefolk [UNL-112](57)
+ battlefields: Monastery of Hirana; Reaver's Row; Sigil of the Storm; Targon's Peak; The Candlelit Sanctum; Windswept Hillock; Zaun Warrens; Firelights' Hideout; Ruined Monastery; Emperor's Dais; Hall of Legends; Minefield; Seat of Power; Sunken Temple; Treasure Hoard; Veiled Temple; Trapping Grounds; Protective Sands
+ legends: Yasuo, Unforgiven; Miss Fortune, Bounty Hunter; Sett, The Boss; Garen, Might of Demacia; K'Sante, Pride of Nazumah; Riven, The Exile; Jarvan IV, Exemplar of Demacia; Lucian, Purifier; Rek'Sai, Void Burrower; Irelia, Blade Dancer; Sivir, Battle Mistress; Vi, Piltover Enforcer; Lillia, Bashful Bloom; Master Yi, Wuju Master; Ivern, Green Father; LeBlanc, Deceiver; Kha'Zix, Voidreaver; Akali, Rogue Assassin; Ambessa, Matriarch of War; Kennen, Heart of the Tempest
+
+## POINTS: closers 11, enablers 2
+ closers: Ahri, Alluring [OGN-066](2); Yasuo, Windrider [OGN-205](2); Draven, Audacious [SFD-148](2); Nasus, Ascended [VEN-046](1); Shen, Leader of the Kinkou Order [VEN-138](1); Tryndamere, Barbarian [OGN-034](0); Evelynn, In Control [RAD-109](0); Renata Glasc, Mastermind [SFD-088](0); Ivern, Friend to All [UNL-177](0); Swain, Visionary [VEN-065](0)
+ enablers: Red Brambleback [UNL-029](2); Blue Sentinel [UNL-087](0)
+ battlefields: Reckoner's Arena; Cosmic Vista; Power Nexus
+ legends: 
+
+## HIDDEN: closers 33, enablers 38
+ closers: Scuttle Crab [UNL-053](118); Rengar, Trophy Hunter [UNL-120](78); Vi, Peacekeeper [UNL-176](72); Nidalee, Cat Form [UNL-114](39); Tornado Warrior [VEN-099](32); Pyke, Returned [UNL-145](30); Edge of Night [SFD-139](27); Kha'Zix, Mutating Horror [UNL-143](24); Evelynn, Entrancing [UNL-141](20); Gutter Guardian [RAD-103](18)
+ enablers: Zhonya's Hourglass [OGN-077](117); Bedeviling Stranger [RAD-107](101); Tideturner [OGN-199](95); Switcheroo [SFD-145](94); Hidden Blade [OGN-213](81); Temporal Breach [VEN-066](79); Back Off [UNL-042](59); Inferna [UNL-002](51)
+ battlefields: Bandle Tree; Bandle Scouts' Academy
+ legends: Teemo, Swift Scout; Evelynn, Agony's Embrace
+
+## ATTRITION: closers 86, enablers 293
+ closers: Thousand-Tailed Watcher [OGN-116](124); Astral Heron [VEN-044](98); Ferrous Forerunner [SFD-021](79); Rhasa the Sunderer [OGN-195](39); The Empyrean [RAD-060](36); Elder Dragon [UNL-118](33); Baron Nashor [UNL-147](33); Unchecked Power [OGN-123](28); Flurry of Blades [OGN-133](24); Harnessed Dragon [OGN-234](24)
+ enablers: Defy [OGN-045](216); Discipline [OGN-058](209); Stupefy [OGN-095](142); Star-Crossed [UNL-128](138); Falling Star [OGN-029](136); Gust [OGN-169](122); Scuttle Crab [UNL-053](118); Reckless Innovator [RAD-105](104)
+ battlefields: Grove of the God-Willow; Hallowed Tomb; Monastery of Hirana; The Dreaming Tree; Zaun Warrens; Black Market; Emperor's Dais; Seat of Power; Sunken Temple; Dusk Rose Lab; Forbidding Waste; Protective Sands
+ legends: Jinx, Loose Cannon; Ahri, Nine-Tailed Fox; Lux, Lady of Luminosity; Garen, Might of Demacia; Mordekaiser, Iron Revenant; Evelynn, Agony's Embrace; Draven, Glorious Executioner; Ezreal, Prodigal Explorer; Jhin, Virtuoso; Vex, Gloomist; Poppy, Keeper of the Hammer; Zed, Master of Shadows; Mel, Soul's Reflection
+
+## answers:sweep n=13: Unchecked Power [OGN-123](28); Flurry of Blades [OGN-133](24); Angler Beast [UNL-132](16); Avalanche [RAD-079](12); Downwell [SFD-147](6); The Ruination [UNL-180](5); Renekton, Rage Fueled [VEN-019](1); Cannon Barrage [OGN-127](0); Anivia, Primal [OGN-148](0)
+
+## answers:stun n=28: Vex, Apathetic [UNL-150](104); Vi, Peacekeeper [UNL-176](72); Back Off [UNL-042](59); Kennen, Keeper of Balance [VEN-135](25); Riven, Broken Blade [RAD-043](24); Ki Burst [RAD-028](15); Existential Dread [UNL-134](9); One-Two Punch [RAD-121](8); Facebreaker [OGN-220](5)
+
+## answers:displace n=37: Star-Crossed [UNL-128](138); Gust [OGN-169](122); Bedeviling Stranger [RAD-107](101); Charm [OGN-043](80); Blitzcrank, Impassive [OGN-067](61); Rebuke [OGN-172](59); Irresistible Faefolk [UNL-112](57); Void Assault [UNL-202](21); Evelynn, Entrancing [UNL-141](20)
+
+## answers:removal n=103: Falling Star [OGN-029](136); Bilgewater Tracker [RAD-003](100); An Offer You Can't Refuse [RAD-101](100); Decree of Rage [VEN-015](99); Bellows Breath [SFD-080](96); Decree of Unity [VEN-131](94); Salvage [OGN-224](91); Hidden Blade [OGN-213](81); Temporal Breach [VEN-066](79)
+
+## answers:counter n=9: Defy [OGN-045](216); Hush [RAD-041](63); Hard Bargain [SFD-136](46); Abandon [UNL-131](27); Wind Wall [OGN-064](4); Flurry of Feathers [UNL-044](3); Lilting Lullaby [UNL-190](2); Crumbling Sands [VEN-039](2); Riposte [SFD-206](0)
+
+## answers:prot n=61: Zhonya's Hourglass [OGN-077](117); Vex, Apathetic [UNL-150](104); Decree of Insight [VEN-061](81); Carrion Dredger [UNL-153](63); Ruin Runner [SFD-105](45); Baron Nashor [UNL-147](33); Akali, Silent [VEN-038](26); Irelia, Fervent [SFD-057](21); Fiora, Victorious [OGN-232](17)
+
+## answers:debuff n=31: Stupefy [OGN-095](142); Thousand-Tailed Watcher [OGN-116](124); Decree of Insight [VEN-061](81); Smoke Screen [OGN-093](35); Eclipse [UNL-063](23); Realm of Death [RAD-144](21); Defiant Dance [SFD-196](15); Moonfall [UNL-198](12); Orb of Regret [OGN-090](10)
