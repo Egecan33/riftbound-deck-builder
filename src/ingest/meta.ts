@@ -187,6 +187,7 @@ export interface ResolvedDeck {
   createdAt: string; editedAt: string; views: number; likes: number;
   cards: Record<MetaZone, Record<string, number>>;   // card id -> copies; the Chosen Champion is counted inside main
   unresolved: string[]; complete: boolean; banned: string[];
+  illegal: string[];   // why the list is not a deck under any format: off-identity cards, wrong or missing Chosen Champion
 }
 
 const MAIN_TYPES = new Set(['unit', 'spell', 'gear']);
@@ -229,12 +230,34 @@ export function resolveDeck(deck: PaDeck, db: CardDb): ResolvedDeck {
     const zones: MetaZone[] = b.zone === 'battlefields' ? ['battlefields'] : ['main', 'side'];
     if (b.zone === 'legend' ? legendId === card.id : zones.some((z) => cards[z][card.id])) banned.push(card.id);
   }
-  // A usable list: everything resolved, 40 or more main-deck cards with the champion, 12 runes, 3 battlefields.
-  const complete = unresolved.length === 0 && total(cards.main) >= 40 && total(cards.runes) === 12 && Object.keys(cards.battlefields).length === 3;
+  // A list that breaks deck construction itself is not evidence of what the legend plays (measured on the
+  // 2026-11-12 sync: a six-domain pile under a Fury/Chaos legend and a Kha'Zix list with a Rengar champion
+  // were being counted). Checked here: Domain Identity of main deck, sideboard and runes (CR 103.2.b,
+  // 103.4.a.1; rules.md §2) and the Chosen Champion (CR 103.3.a.2; rules.md §3). Cards flagged
+  // `dataIncomplete` are skipped: their stored domain is not trusted. Bans are handled separately.
+  const illegal: string[] = [];
+  if (legend && legendId) {
+    const inIdentity = (c: Card) => c.noDomain || c.dataIncomplete || c.domains.every((d) => legend.domains.includes(d));
+    for (const z of ['main', 'side', 'runes'] as const) {
+      for (const [id, q] of Object.entries(cards[z])) {
+        const card = db.get(id);
+        if (card && !inIdentity(card)) illegal.push(`off-identity: ${q} ${card.name}`);
+      }
+    }
+    const isChampionOf = (c: Card | undefined) => !!c && c.type === 'unit' && c.superTypes.includes('champion') && c.championTag === legend.championTag;
+    if (championId) {
+      if (!isChampionOf(db.get(championId))) illegal.push(`champion: ${db.get(championId)?.name ?? championId} does not match ${legend.name}`);
+    } else if (!Object.keys(cards.main).some((id) => isChampionOf(db.get(id)))) {
+      illegal.push(`champion: no champion unit of ${legend.name} in the list`);
+    }
+  }
+  // A usable list: everything resolved, 40 or more main-deck cards with the champion, 12 runes, 3 battlefields,
+  // and nothing in `illegal`.
+  const complete = unresolved.length === 0 && illegal.length === 0 && total(cards.main) >= 40 && total(cards.runes) === 12 && Object.keys(cards.battlefields).length === 3;
   return {
     id: deck.id, name: deck.name, legendId, championId, format: cls.format, event: cls.event, rank: cls.rank,
     createdAt: deck.createdAt, editedAt: deck.editedAt, views: deck.views, likes: deck.likes,
-    cards, unresolved, complete, banned,
+    cards, unresolved, complete, banned, illegal,
   };
 }
 
@@ -380,7 +403,7 @@ export function storeDecks(db: Db, decks: readonly ResolvedDeck[], eras: readonl
       upsert.run({
         id: d.id, name: d.name, legendId: d.legendId, championId: d.championId, format: d.format, createdAt: d.createdAt, editedAt: d.editedAt,
         views: d.views, likes: d.likes, event: d.event ? 1 : 0, rank: d.rank, era: eraOf(d.editedAt, eras)?.id ?? null,
-        complete: d.complete ? 1 : 0, banned: d.banned.length, unresolved: JSON.stringify(d.unresolved), fetchedAt,
+        complete: d.complete ? 1 : 0, banned: d.banned.length, unresolved: JSON.stringify([...d.unresolved, ...d.illegal]), fetchedAt,
       });
       clear.run(d.id);
       for (const zone of ['main', 'side', 'battlefields', 'runes'] as const) {

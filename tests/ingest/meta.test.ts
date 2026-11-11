@@ -100,7 +100,8 @@ describe('resolving and aggregating lists', () => {
 
   it('aggregates inclusion per legend, drops banned cards, and grades thin samples', () => {
     const base = paDeck(0);
-    const withBan = { ...base, id: 'b', main: [...base.main.slice(1), { q: base.main[0].q, name: 'Ekko, Recurrent', code: 'OGN-110' }] };
+    // Stacked Deck is banned and Chaos, inside the Calm/Chaos identity of the first reference deck.
+    const withBan = { ...base, id: 'b', main: [...base.main.slice(1), { q: base.main[0].q, name: 'Stacked Deck', code: 'OGN-183' }] };
     const old = { ...base, id: 'old', editedAt: '2026-10-01T00:00:00.000Z' };
     const multi = { ...base, id: 'm', name: '2v2 list' };
     const resolved = [base, { ...base, id: 'a2' }, withBan, old, multi, paDeck(1)].map((d) => resolveDeck(d, db));
@@ -112,7 +113,9 @@ describe('resolving and aggregating lists', () => {
     expect(row.era).toBe('RAD+older');
     expect(legends).toHaveLength(2);
     const mine = cards.filter((c) => c.legend === legend);
-    expect(mine.some((c) => c.card === db.byName('Ekko, Recurrent')!.id)).toBe(false);
+    expect(resolved[2].complete).toBe(true);
+    expect(resolved[2].banned).toEqual([db.byName('Stacked Deck')!.id]);
+    expect(mine.some((c) => c.card === db.byName('Stacked Deck')!.id)).toBe(false);
     const champion = mine.find((c) => c.zone === 'champion')!;
     expect(champion.share).toBe(1);
     const first = mine.find((c) => c.zone === 'main' && c.card === db.byName(base.main[0].code!)!.id)!;
@@ -122,6 +125,48 @@ describe('resolving and aggregating lists', () => {
     expect(mine.filter((c) => c.zone === 'runes')).toHaveLength(1);
     expect(mine.filter((c) => c.zone === 'battlefields')).toHaveLength(3);
     expect(runeSplitKey(resolved[0].cards.runes, db)).toMatch(/^[a-z]+\d+(-[a-z]+\d+)?$/);
+  });
+
+  it('does not count a list that breaks Domain Identity or has the wrong Chosen Champion', () => {
+    const base = paDeck(0); // Blade Dancer, Calm/Chaos
+    expect(resolveDeck(base, db).illegal).toEqual([]);
+
+    const swap = (name: string) => [...base.main.slice(1), { q: base.main[0].q, name, code: db.byName(name)!.code }];
+    const offDomain = resolveDeck({ ...base, id: 'off', main: swap('Glowstone') }, db); // Order
+    expect(offDomain.unresolved).toEqual([]);
+    expect(offDomain.illegal).toEqual([`off-identity: ${base.main[0].q} Glowstone`]);
+    expect(offDomain.complete).toBe(false);
+
+    const offSide = resolveDeck({ ...base, id: 'side', side: [{ q: 1, name: 'Glowstone', code: null }] }, db);
+    expect(offSide.complete).toBe(false);
+    const offRune = resolveDeck({ ...base, id: 'rune', runes: [{ q: 12, name: 'Order Rune', code: null }] }, db);
+    expect(offRune.illegal).toEqual(['off-identity: 12 Order Rune']);
+
+    // Another legend's champion in the champion slot (seen live: a Kha'Zix list with Rengar, Trophy Hunter).
+    const stranger = db.byName(fixtureDecks()[1].deck.champion!)!;
+    const wrongChampion = resolveDeck({ ...base, id: 'champ', champions: [{ q: 1, name: stranger.name, code: stranger.code }] }, db);
+    expect(wrongChampion.illegal.some((x) => x.startsWith('champion: '))).toBe(true);
+    expect(wrongChampion.complete).toBe(false);
+
+    // No champion slot: fine when the main deck holds a champion unit of the legend, not otherwise.
+    const inMain = resolveDeck({ ...base, id: 'in-main', champions: [], main: [...base.main, base.champions[0]] }, db);
+    expect(inMain.championId).toBeNull();
+    expect(inMain.complete).toBe(true);
+    const own = db.get(fixtureDecks()[0].deck.champion!)!;
+    const others = base.main.filter((e) => db.byName(e.code!)!.championTag !== own.championTag || !db.byName(e.code!)!.superTypes.includes('champion'));
+    const filler = { q: 40 - others.reduce((n, e) => n + e.q, 0), name: 'Spiderling', code: 'VEN-097' }; // Chaos, any number
+    const none = resolveDeck({ ...base, id: 'none', champions: [], main: [...others, filler] }, db);
+    expect(Object.values(none.cards.main).reduce((a, b) => a + b, 0)).toBe(40);
+    expect(none.illegal).toEqual([`champion: no champion unit of ${db.get(fixtureDecks()[0].legend)!.name} in the list`]);
+    expect(none.complete).toBe(false);
+
+    // None of them reaches the aggregate.
+    const { legends } = aggregate([offDomain, offSide, offRune, wrongChampion, none], db, eras);
+    expect(legends).toEqual([]);
+
+    // A card whose row is flagged incomplete has an untrusted domain and is not judged.
+    const incomplete = db.all().find((c) => c.dataIncomplete && c.type !== null && c.domains.length === 1 && !['calm', 'chaos'].includes(c.domains[0]));
+    if (incomplete) expect(resolveDeck({ ...base, id: 'inc', main: swap(incomplete.name) }, db).illegal).toEqual([]);
   });
 
   it('survives an empty input', () => {

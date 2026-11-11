@@ -27,7 +27,7 @@ Last updated: 2026-11-12. Stage 2 (plan Tasks 1-2) done; the build continues at 
 |---|---|---|
 | 0 | Research with independent fact-checking | done; 5 of 11 files verified, the rest are tested against real cards during the build (owner asked to stop spending on research) |
 | 1 | Design doc `docs/superpowers/specs/2026-11-12-riftbound-forge-design.md` and plan `docs/superpowers/plans/2026-11-12-riftbound-forge.md` | done |
-| 2 | Foundation and data: plan Tasks 1-2 | done |
+| 2 | Foundation and data: plan Tasks 1-2 | done and reviewed 2026-11-12. Synced: 1,408 gallery printings → 1,091 gameplay cards + 9 tokens (unit 546, spell 271, gear 130, battlefield 74, legend 58, rune 6, untyped Radiance 6); 177 champion units, 60 signature cards; 8 Radiance rows `dataIncomplete`; 70 errata applied; 13 bans (12 Standard + 1 2v2 legend), 6 sets, side deck 10; 300 of 1,100 images on disk (the rest: `pnpm sync images`); meta 508 lists, 498 usable Standard lists, 58 legends (1 ok, 12 thin, 45 insufficient) |
 | 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | not started |
 | 4 | API and UI: plan Tasks 10-11 | not started |
 | 5 | End-to-end tests: plan Task 12 | not started |
@@ -69,7 +69,10 @@ To resume Stage 0 in a new session: for each expected file that is missing or ha
 - The official gallery's Radiance rows were unfinished on 2026-11-12: 13 with no card type, 23 whose type contradicts the row's own image text, 11 with no domain, and 14 more with a wrong domain that looks complete. The `cards` sync flags all of them `dataIncomplete` by itself (type checks, plus a collector-number domain-block check). `sync-data/card-overrides.json` repairs the 42 that a second source confirms; 8 stay incomplete (RAD-039, 069, 072, 102, 104, 111, 120, 131). Remove an override once the gallery row is fixed.
 - The gallery repeats an Equipment's Might bonus in `might`; `Card.might` is null for gear and the bonus is in `mightBonus`. An Equipment's attached-effect text is appended to `Card.text` as lines starting with `Effect: `.
 - `Card.text` symbols: `[Might]`, `[Exhaust]`, `[Any]`, `[Fury]`...`[Order]`, `[N]`. The Riftfoundry mine expects `[S]`, `[T]`, `[A]`, `[C]`; `src/engine/mine/adapter.ts` (Task 4) converts.
-- Meta after the first sync: 508 Piltover Archive lists (502 usable), 58 legends, but only 1 legend graded `ok` and 12 `thin`; the rest are `insufficient` until more `pnpm sync meta` runs (150 requests each) add lists.
+- Meta after the first sync: 508 Piltover Archive lists (500 complete: 498 Standard, 2 2v2 that are stored but not aggregated), 58 legends, but only 1 legend graded `ok` and 12 `thin`; the rest are `insufficient` until more `pnpm sync meta` runs (150 requests each) add lists.
+- A public list is counted only if it is a deck: all cards resolved, 40+ main, 12 runes, 3 battlefields, every main, side and rune card inside the legend's Domain Identity, and a Chosen Champion of that legend (in the champion slot, or at least in the main deck). The stage 2 review found a six-domain pile and a Kha'Zix list with a Rengar champion being counted; the reason a list is left out is stored in `meta_decks.unresolved`.
+- Buff and XP Tracker are typeless token markers (`type` null), not unfinished rows: `dataIncomplete` is set on the 8 Radiance rows only.
+- Neeko, Blending In (RAD-167) has no domain but a Power cost of 1; `powerDomains` is empty for her. The Boss (OGN-269) keeps `[C]` in its errata text because the article does not say which of the legend's two runes is meant. Engine tasks must handle both.
 
 ## Data on disk (gitignored, rebuild with `pnpm sync`)
 

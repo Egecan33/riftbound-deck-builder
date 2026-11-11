@@ -112,6 +112,16 @@ describe('printings', () => {
 });
 
 describe('incomplete gallery rows', () => {
+  it('a typeless token marker (Buff, XP Tracker) is not an incomplete row', () => {
+    const { cards, warnings } = buildCards([
+      row('UNL-T04', 'Buff', { type: null, superTypes: ['token'], domains: ['colorless'] }),
+      row('UNL-T08', 'XP Tracker', { type: null, superTypes: ['token'], domains: ['colorless'] }),
+    ], [], [], ctx);
+    expect(cards.map((c) => [c.name, c.type, c.dataIncomplete])).toEqual([['Buff', null, false], ['XP Tracker', null, false]]);
+    expect(warnings).toEqual([]);
+  });
+
+
   it('an empty type gives dataIncomplete and type null', () => {
     const card = toCard([row('RAD-034/167', 'Hunker Down', { type: null, domains: ['calm'], energy: 2, text: '<p>[Reaction]</p>', alt: 'Riftbound Spell: Hunker Down. [Reaction]' })], [], [], ctx);
     expect(card.type).toBeNull();

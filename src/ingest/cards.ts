@@ -168,7 +168,10 @@ export function buildCard(
   // "unit" without Might is missing or wrong data: the card is flagged, never guessed (plan Review focus 2).
   let type: CardType | null = null;
   if (override?.type) type = override.type;
-  else if (gType === null) issues.push('no card type in the gallery row');
+  else if (gType === null) {
+    // Buff and XP Tracker are typeless markers, not unfinished rows (rules.md §11); a token is never deckable anyway.
+    if (!token) issues.push('no card type in the gallery row');
+  }
   else if (aType !== null && aType !== gType) issues.push(`type conflict: gallery says ${gType}, image text says ${aType}`);
   else if (gType === 'spell' && might !== null) issues.push('typed spell but has Might');
   else if (gType === 'unit' && might === null && !token) issues.push('typed unit but has no Might');
@@ -245,7 +248,7 @@ export function buildCard(
     keywords,
     copyLimit,
     imageUrl: item.cardImage.url,
-    dataIncomplete: type === null || domainMissing,
+    dataIncomplete: (type === null && !token) || domainMissing,
   };
 
   const printings: PrintingRow[] = parsed.map((p) => ({
