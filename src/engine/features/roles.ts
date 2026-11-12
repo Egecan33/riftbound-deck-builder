@@ -44,7 +44,7 @@ export function rolesOf(card: Card, traits: Iterable<string>): Role[] {
   if ((spell && fast && has('might-boost', 'might-reduction', 'damage-prevention', 'bonus-damage')) || (gear && has('quick-draw') && has('might-boost'))) roles.add('combat-trick');
   // On a unit, Deflect/Shield/Tank protect that unit only; on a spell or gear they are given to something
   // (a token maker is left out: there the keyword belongs to the token).
-  if (has('damage-prevention', 'protection') || (!unit && !has('token') && has('deflect', 'shield', 'tank'))) roles.add('protection');
+  if (has('damage-prevention', 'protection', 'death-prevention') || (!unit && !has('token') && has('deflect', 'shield', 'tank'))) roles.add('protection');
   if (has('counter')) roles.add('counter');
   if (has('draw')) roles.add('card-flow');
   if (has('channel-rune', 'energy-ramp')) roles.add('rune-ramp');

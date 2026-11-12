@@ -27,6 +27,10 @@ export const SUPPRESSORS: Readonly<Record<string, string>> = {
   'wrong-type-kill': 'the enabler cannot kill the Deathknell card: unit vs gear, or a [Mighty] unit is asked for',
   'skip-not-extra-turn': 'the "skip" text skips a phase; it gives no additional turn',
   'trait-override': 'a reviewed mine override removed the trait this reason rests on',
+  // Stage 3 review (2026-11-12), found by sampling the stored edges against card text:
+  'own-effect-only': 'the payoff counts only what its own effect did ("when you burn a unit this way")',
+  'no-activated-ability': 'the payoff asks for an activated ability of a gear and the gear has none',
+  'death-side': 'the payoff watches enemy units die and the enabler kills only your own',
 };
 
 export interface PackageSides { enabler: ScoreCard; payoff: ScoreCard }
@@ -92,12 +96,21 @@ const KILL_SELF = /\bkill (?:this|me)\b/i;
 const DEATH_REPLACEMENT = /\bwould die\b[^.]*\bkill (?:this|me) instead\b/i;
 const DEATH_WATCHER = /\bwhen (?:a|an|another|one or more|any)\b[^.,]*\b(?:dies?|is killed|are killed)\b|\bwhen you kill\b|\bif (?:a|an|another)\b[^.,]*\b(?:died|has died)\b|\bfor each\b[^.]*\bdied\b|\bunits? died\b|\[deathknell\] effects/i;
 const WITH_SPELL = /\bwith a spell\b/i;
+const ENEMY_DEATH = /\benemy units?\b[^.,]*\b(?:dies?|is killed|are killed)\b|\bkill an? (?:stunned |exhausted |damaged )?enemy\b/i;
+const KILLS_ENEMY_TOO = /\beach player\b|\bopponents?\b|\benemy\b|\bthe defender\b|\bkill (?:a|an|all|each|any) (?:units?|gear)\b(?! you control)/i;
+const THIS_WAY = /\bthis way\b/i;
+const NEEDS_GEAR_ABILITY = /\bactivated ability of a gear\b/i;
+/** A cost before a colon ("[1], [T]: ...", "Discard 1, [T]: ...") or [Equip]: the gear has an ability to activate. */
+const ACTIVATED = /(?:^|\n|"|\. )[^.\n"]{0,60}(?:\]|\bthis|\bme|\bxp|\b\d)\s*:\s|\[equip\]/i;
+const BOOSTS_A_UNIT = /\bgive (?:a|an|another|it|that|them|those|up to \w+|each|all|your|friendly)\b[^.]*\+|\b(?:friendly|other|your) units?\b[^.]*\b(?:have|has|get|gets|gain|gains)\b[^.]*\+|\[buff\] (?:a|an|another|all|each|friendly|up to)|\bdouble (?:a|an|that) |\bmights? of\b|\bbase might becomes\b/i;
 
 function deathSuppressor(enabler: ScoreCard, payoff: ScoreCard, same: boolean): string | null {
   const produce = sentencesWithTrait(enabler, 'death-enabler');
   const need = sentencesWithTrait(payoff, 'death-payoff');
   if (produce.length === 0 || need.length === 0) return null;
   if (all(need, WITH_SPELL) && enabler.type !== 'spell') return 'kill-with-spell';
+  // "When an enemy unit dies ..." (Pyke, Returned) is fed by removal, not by a sacrifice outlet.
+  if (all(need, ENEMY_DEATH) && !any(produce, KILLS_ENEMY_TOO)) return 'death-side';
   if (all(produce, DEATH_REPLACEMENT)) return 'death-replacement';
   const watcher = any(need, DEATH_WATCHER);
   const killsOthers = any(produce, KILL_OTHER);
@@ -173,6 +186,18 @@ function thresholdSuppressor(enabler: ScoreCard, payoff: ScoreCard, payoffTrait:
 }
 
 function judgeOrientation(enabler: ScoreCard, payoff: ScoreCard, x: Trait, y: Trait, same: boolean): string | null {
+  // A payoff that counts only its own effect ("When you burn a unit this way") is fed by no other card.
+  const needed = sentencesWithTrait(payoff, y);
+  if (!same && needed.length > 0 && all(needed, THIS_WAY)) return 'own-effect-only';
+  if (x === 'gear' && y === 'gear-matters' && needed.length > 0 && all(needed, NEEDS_GEAR_ABILITY) && !ACTIVATED.test(enabler.rulesText.replace(/\([^)]*\)/g, ' '))) return 'no-activated-ability';
+  if (x === 'might-boost' && y === 'might-damage') {
+    // The boost has to reach the unit that deals its Might: a second copy of one card, or a card that only
+    // grows itself, is not that.
+    const boosts = sentencesWithTrait(enabler, 'might-boost');
+    if (same) return 'self-only-enabler';
+    return boosts.length === 0 || any(boosts, BOOSTS_A_UNIT) ? null : 'self-only-enabler';
+  }
+  if ((x as string) === 'replay-unit' && same) return 'self-only-enabler';
   if (x === 'movement') return movementSuppressor(enabler, payoff, same);
   if (x === 'death-enabler') return deathSuppressor(enabler, payoff, same);
   if (x === 'temporary') {

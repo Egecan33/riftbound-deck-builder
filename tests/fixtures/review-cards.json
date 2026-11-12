@@ -1,0 +1,1426 @@
+{
+ "note": "Real synced rows (data/forge.db, 2026-11-12) quoted by the stage 3 review tests of the card mine and the network (tests/engine/mine/refine.test.ts, tests/engine/network/review.test.ts). Card text belongs to Riot Games; kept here only as test input.",
+ "cards": [
+  {
+   "id": "ogn-203-298",
+   "code": "OGN-203",
+   "name": "Possession",
+   "shortName": "Possession",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 8,
+   "power": 3,
+   "powerDomains": [
+    "chaos"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nChoose an enemy unit at a battlefield. Take control of it and recall it. (Send it to your base. This isn't a move.)",
+   "text": "[Action] (Play on your turn or in showdowns.)\nChoose an enemy unit at a battlefield. Take control of it and recall it. (Send it to your base. This isn't a move.)",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f26462174fd01407f25f7d49a70862d2b9af35cc-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-202-221",
+   "code": "SFD-202",
+   "name": "Hostile Takeover",
+   "shortName": "Hostile Takeover",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "spell",
+   "superTypes": [
+    "signature"
+   ],
+   "domains": [
+    "mind",
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Renata Glasc"
+   ],
+   "championTag": "Renata Glasc",
+   "energy": 5,
+   "power": 2,
+   "powerDomains": [
+    "mind",
+    "order"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\nTake control of an enemy unit at a battlefield. Ready it. (Start a combat if other enemies are there. Otherwise, conquer.)\nLose control of that unit and recall it at end of turn. (Send it to base. This isn't a move.)",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\nTake control of an enemy unit at a battlefield. Ready it. (Start a combat if other enemies are there. Otherwise, conquer.)\nLose control of that unit and recall it at end of turn. (Send it to base. This isn't a move.)",
+   "errata": false,
+   "keywords": [
+    "Hidden"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/56651a87166df7108ce9f945bd71390d4926770a-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-148-167",
+   "code": "RAD-148",
+   "name": "Ntofo Strikes",
+   "shortName": "Ntofo Strikes",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [
+    "signature"
+   ],
+   "domains": [
+    "calm",
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "K'Sante"
+   ],
+   "championTag": "K'Sante",
+   "energy": 2,
+   "power": 1,
+   "powerDomains": [
+    "calm",
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nGive a friendly unit [Shield 2] this turn, then deal damage equal to its [Shield] to an enemy unit. (A unit with Shield has +1 [Might] for each instance of Shield while it's a defender.)",
+   "text": "[Action] (Play on your turn or in showdowns.)\nGive a friendly unit [Shield 2] this turn, then deal damage equal to its [Shield] to an enemy unit. (A unit with Shield has +1 [Might] for each instance of Shield while it's a defender.)",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ab5aa7d29bd49efe2c9da3b62a8065295c189991-744x1040.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-059-298",
+   "code": "OGN-059",
+   "name": "Eclipse Herald",
+   "shortName": "Eclipse Herald",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Bird",
+    "Mount Targon"
+   ],
+   "championTag": null,
+   "energy": 7,
+   "power": 1,
+   "powerDomains": [
+    "calm"
+   ],
+   "might": 7,
+   "mightBonus": null,
+   "printedText": "When you stun an enemy unit, ready me and give me +1 [Might] this turn.",
+   "text": "When you stun an enemy unit, ready me and give me +1 [Might] this turn.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bbe4fec278b8960681f97da658dc2f06ee46c4bd-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-086-166",
+   "code": "VEN-086",
+   "name": "Gangplank, Naval",
+   "shortName": "Gangplank",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Bilgewater",
+    "Gangplank"
+   ],
+   "championTag": "Gangplank",
+   "energy": 6,
+   "power": null,
+   "powerDomains": [],
+   "might": 6,
+   "mightBonus": null,
+   "printedText": "[Empower] [Body][Body] ([Body][Body]: Empower me. Use only if not Empowered.)\n[Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] instead.",
+   "text": "[Empower] [Body][Body] ([Body][Body]: Empower me. Use only if not Empowered.)\n[Empowered][>] If a spell or ability that chooses me would stun me, give me -[Might], or return me to hand, give me +3 [Might] this turn instead.",
+   "errata": true,
+   "keywords": [
+    "Empower"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f270a3ecc4850594513c45d145f2b855152e2cb7-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-170-219",
+   "code": "UNL-170",
+   "name": "Atakhan",
+   "shortName": "Atakhan",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Noxus",
+    "Demon"
+   ],
+   "championTag": null,
+   "energy": 10,
+   "power": 3,
+   "powerDomains": [
+    "order"
+   ],
+   "might": 7,
+   "mightBonus": null,
+   "printedText": "You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs.\n[Ganking] (I can move from battlefield to battlefield.)\nWhen I attack, the defender must kill one of their units here.",
+   "text": "You may kill a friendly unit as an additional cost to play me. If you do, I cost [1] less for each Energy it costs and [Order] less for each Power it costs.\n[Ganking] (I can move from battlefield to battlefield.)\nWhen I attack, the defender must kill one of their units here.",
+   "errata": false,
+   "keywords": [
+    "Ganking"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a0b3994aad6b6c64ace14193c1363713e6b6ede2-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-077-298",
+   "code": "OGN-077",
+   "name": "Zhonya's Hourglass",
+   "shortName": "Zhonya's Hourglass",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\nThe next time a friendly unit would die, kill this instead. Recall that unit exhausted. (Send it to base. This isn't a move.)",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\nIf a friendly unit would die, kill this instead. Heal that unit, exhaust it, and recall it. (Send it to base. This isn't a move.)",
+   "errata": true,
+   "keywords": [
+    "Hidden"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/dc38172c56f838b407fc9f170ba973da32d7cd4d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-007-219",
+   "code": "UNL-007",
+   "name": "Smite",
+   "shortName": "Smite",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": 1,
+   "powerDomains": [
+    "fury"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nDeal 3 to a unit at a battlefield. If it would die this turn, banish it instead.",
+   "text": "[Action] (Play on your turn or in showdowns.)\nDeal 3 to a unit at a battlefield. If it would die this turn, banish it instead.",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f46252e8c65a2eb3f476ea51f214af7651d0622d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-020-167",
+   "code": "RAD-020",
+   "name": "Mordekaiser, Twice Slain",
+   "shortName": "Mordekaiser",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Noxus",
+    "Mordekaiser"
+   ],
+   "championTag": "Mordekaiser",
+   "energy": 7,
+   "power": 1,
+   "powerDomains": [
+    "fury"
+   ],
+   "might": 5,
+   "mightBonus": null,
+   "printedText": "[Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.)\n[Assault 3] (+3 [Might] while I'm an attacker.)\nOnce each turn, if I would die, you may kill a friendly unit to heal me, exhaust me, and recall me instead.",
+   "text": "[Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.)\n[Assault 3] (+3 [Might] while I'm an attacker.)\nOnce each turn, if I would die, you may kill a friendly unit to heal me, exhaust me, and recall me instead.",
+   "errata": false,
+   "keywords": [
+    "Accelerate",
+    "Assault"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/66db9510de566ac43157ecdcc96f33b5f553a38d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-145-221",
+   "code": "SFD-145",
+   "name": "Switcheroo",
+   "shortName": "Switcheroo",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": 2,
+   "powerDomains": [
+    "chaos"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Action] (Play on your turn or in showdowns.)\nSwap the Mights of two units at the same battlefield this turn.",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Action] (Play on your turn or in showdowns.)\nSwap the Mights of two units at the same battlefield this turn.",
+   "errata": false,
+   "keywords": [
+    "Hidden",
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a4338f495feff5eee46d5349b5fded5e35e76176-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-019-166",
+   "code": "VEN-019",
+   "name": "Renekton, Rage Fueled",
+   "shortName": "Renekton",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Shurima",
+    "Renekton"
+   ],
+   "championTag": "Renekton",
+   "energy": 6,
+   "power": null,
+   "powerDomains": [],
+   "might": 6,
+   "mightBonus": null,
+   "printedText": "[Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.)\nWhen I attack, if you control 4 or fewer runes, deal 2 to all enemy units here.",
+   "text": "[Accelerate] (You may pay [1][Fury] as an additional cost to have me enter ready.)\nWhen I attack, if you control 4 or fewer runes, deal 2 to all enemy units here.",
+   "errata": false,
+   "keywords": [
+    "Accelerate"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2f6eb3e8328048ad52617c8639ecbe2c287efa36-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-063-166",
+   "code": "VEN-063",
+   "name": "Nasus, Guardian of Knowledge",
+   "shortName": "Nasus",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Dog",
+    "Shurima",
+    "Nasus"
+   ],
+   "championTag": "Nasus",
+   "energy": 5,
+   "power": 1,
+   "powerDomains": [
+    "mind"
+   ],
+   "might": 6,
+   "mightBonus": null,
+   "printedText": "Once each turn, when an enemy unit here dies, channel 1 rune exhausted.",
+   "text": "Once each turn, when an enemy unit here dies, channel 1 rune exhausted.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/aa96dbb8b4d72db7e47a72ce652ad542f55bf31d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-015-221",
+   "code": "SFD-015",
+   "name": "Perched Grimwyrm",
+   "shortName": "Perched Grimwyrm",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Dragon",
+    "Shadow Isles"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": null,
+   "powerDomains": [],
+   "might": 5,
+   "mightBonus": null,
+   "printedText": "Play me only to a battlefield you conquered this turn. (You can't play me anywhere else.)",
+   "text": "Play me only to a battlefield you conquered this turn. (You can't play me anywhere else.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/71af1587378c1c3feabd1b148fb776e42c7d27e8-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-128-219",
+   "code": "UNL-128",
+   "name": "Star-Crossed",
+   "shortName": "Star-Crossed",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": 1,
+   "powerDomains": [
+    "chaos"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nReturn a friendly unit and an enemy unit to their owners' hands.",
+   "text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nReturn a friendly unit and an enemy unit to their owners' hands.",
+   "errata": false,
+   "keywords": [
+    "Reaction"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0bfa45e6e86dfc256de0163f96273b761e9592fb-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-199-298",
+   "code": "OGN-199",
+   "name": "Tideturner",
+   "shortName": "Tideturner",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Bilgewater"
+   ],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\nWhen you play me, you may choose a friendly unit. Move me to its location and it to my original location.",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\nWhen you play me, you may choose a unit you control at another location. Move me to its location and it to my original location.",
+   "errata": true,
+   "keywords": [
+    "Hidden"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/bad355dba8b32d1fba33dc3924cad6a34b61b5af-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-184-219",
+   "code": "UNL-184",
+   "name": "Thrill of the Hunt",
+   "shortName": "Thrill of the Hunt",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "spell",
+   "superTypes": [
+    "signature"
+   ],
+   "domains": [
+    "fury",
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Rengar"
+   ],
+   "championTag": "Rengar",
+   "energy": 2,
+   "power": 1,
+   "powerDomains": [
+    "fury",
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\nBanish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.",
+   "text": "[Reaction] (Play any time, even before spells and abilities resolve.)\nBanish a friendly unit, then its owner plays it to any battlefield, ignoring its cost.",
+   "errata": false,
+   "keywords": [
+    "Reaction"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2753c2b3ea4fd55e5225a4451a29736b5c3434a8-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-097-221",
+   "code": "SFD-097",
+   "name": "Punch First",
+   "shortName": "Punch First",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 1,
+   "power": 2,
+   "powerDomains": [
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nGive a unit +5 [Might] this turn.",
+   "text": "[Action] (Play on your turn or in showdowns.)\nGive a unit +5 [Might] this turn.",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/d124efad90ff61d4ac29ee69fe71e48a7cd6ece2-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-083-166",
+   "code": "VEN-083",
+   "name": "Rampage",
+   "shortName": "Rampage",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "As you play this, you may pay [Body] as an additional cost.\nChoose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 [Might] this turn. They deal damage equal to their Mights to each other.",
+   "text": "As you play this, you may pay [Body] as an additional cost.\nChoose a friendly unit and an enemy unit. If you paid the additional cost, give the friendly unit +2 [Might] this turn. They deal damage equal to their Mights to each other.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3c85ae2c6bd5b2644651564fad0f86ad19c5709a-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-108-166",
+   "code": "VEN-108",
+   "name": "Forgotten Relic",
+   "shortName": "Forgotten Relic",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 5,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "When you play this or at the start of your Beginning Phase, [Burn 1]. When you burn a unit this way, do this: Give a friendly unit +[Might] equal to the burned card's Might this turn. (To Burn 1, put the top card of your Main Deck into your trash.)",
+   "text": "When you play this or at the start of your Beginning Phase, [Burn 1]. When you burn a unit this way, do this: Give a friendly unit +[Might] equal to the burned card's Might this turn. (To Burn 1, put the top card of your Main Deck into your trash.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e249b3c2a7f652dfb7549604f600792df11835b4-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-022-166",
+   "code": "VEN-022",
+   "name": "Endless Riches",
+   "shortName": "Endless Riches",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 5,
+   "power": 1,
+   "powerDomains": [
+    "fury"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "When you play this, banish your hand and trash, then [Burn 7].\nSkip your Draw Phase.\nYou may play cards from your trash.\nIf a card would go to your trash from anywhere other than your Main Deck, banish it instead.",
+   "text": "When you play this, banish your hand and trash, then [Burn 7].\nSkip your Draw Phase.\nYou may play cards from your trash.\nIf a card would go to your trash from anywhere other than your Main Deck, banish it instead.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e2c33bf55162086acd458775a5db3d976f137b61-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-075-221",
+   "code": "SFD-075",
+   "name": "Prize of Progress",
+   "shortName": "Prize of Progress",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Mech",
+    "Piltover"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": 1,
+   "powerDomains": [
+    "mind"
+   ],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "When you use an activated ability of a gear, give me +1 [Might] this turn.",
+   "text": "When you use an activated ability of a gear, give me +1 [Might] this turn.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c08f0b6ed24415e6a440a17931c7e2a2db3ab2cc-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-085-219",
+   "code": "UNL-085",
+   "name": "Sumpworks Map",
+   "shortName": "Sumpworks Map",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Reaction] (Play any time, even before spells and abilities resolve.)\n[Temporary] (Kill this at the start of its controller's Beginning Phase, before scoring.)\nWhen an opponent scores, draw 1.",
+   "text": "[Reaction] (Play any time, even before spells and abilities resolve.)\n[Temporary] (Kill this at the start of its controller's Beginning Phase, before scoring.)\nWhen an opponent scores, draw 1.",
+   "errata": false,
+   "keywords": [
+    "Reaction",
+    "Temporary"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/87c3d5007aa3c3e2c4ff3d5bf78a92a2bee58db3-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-145-219",
+   "code": "UNL-145",
+   "name": "Pyke, Returned",
+   "shortName": "Pyke",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Pyke",
+    "Bilgewater"
+   ],
+   "championTag": "Pyke",
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Backline] (I must be assigned combat damage last.)\nOnce each turn, when an enemy unit dies while I'm at a battlefield, play a Gold gear token exhausted. (It has \"[Reaction][>] Kill this, [Exhaust]: [Add] [Any].\")",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Backline] (I must be assigned combat damage last.)\nOnce each turn, when an enemy unit dies while I'm at a battlefield, play a Gold gear token exhausted. (It has \"[Reaction][>] Kill this, [Exhaust]: [Add] [Any].\")",
+   "errata": false,
+   "keywords": [
+    "Hidden",
+    "Backline"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2eaa5396b1cac9b245bde5a56b87314f8ae76a38-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-139-219",
+   "code": "UNL-139",
+   "name": "Bone Skewer",
+   "shortName": "Bone Skewer",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": 1,
+   "powerDomains": [
+    "chaos"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\nChoose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs. When they do, [Stun] it. (It doesn't deal combat damage this turn.)",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\nChoose a battlefield. An opponent reveals their hand. You may choose a unit from it. They play that unit to that battlefield, ignoring any and all costs. If they do, then do this: [Stun] it. (It doesn't deal combat damage this turn.)",
+   "errata": true,
+   "keywords": [
+    "Hidden"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e06e3e3033640bc8a5bc98acd4e3a0925c6e2c9a-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-160-298",
+   "code": "OGN-160",
+   "name": "Dazzling Aurora",
+   "shortName": "Dazzling Aurora",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 9,
+   "power": 2,
+   "powerDomains": [
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit. Play it, ignoring its cost, and recycle the rest.",
+   "text": "At the end of your turn, reveal cards from the top of your Main Deck until you reveal a unit and banish it. Play it, ignoring its cost, and recycle the rest.",
+   "errata": true,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c023856a50c75058465f283d181277ce265ba108-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-247-298",
+   "code": "OGN-247",
+   "name": "Daughter of the Void",
+   "shortName": "Daughter of the Void",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "legend",
+   "superTypes": [],
+   "domains": [
+    "fury",
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Kai'Sa"
+   ],
+   "championTag": "Kai'Sa",
+   "energy": null,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Exhaust]: [Reaction] — [Add] [Any]. Use only to play spells. (Abilities that add resources can't be reacted to.)",
+   "text": "[Exhaust]: [Reaction] — [Add] [Any]. Use only to play spells. (Abilities that add resources can't be reacted to.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3ea826277086945a2cdfda4e41b771075aa8b15b-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-155-166",
+   "code": "VEN-155",
+   "name": "Heart of the Tempest",
+   "shortName": "Heart of the Tempest",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "legend",
+   "superTypes": [],
+   "domains": [
+    "order",
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Yordle",
+    "Kennen"
+   ],
+   "championTag": "Kennen",
+   "energy": null,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "When you play a card from anywhere other than your hand, empower me.\n[Action][>] Disempower me, [Exhaust]: Give a unit [Assault 2] this turn. (+2 [Might] while it's an attacker.)",
+   "text": "When you play a card from anywhere other than your hand, empower me.\n[Action][>] Disempower me, [Exhaust]: Give a unit [Assault 2] this turn. (+2 [Might] while it's an attacker.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0eab83392b310417d2630d50a3bfee3dd02b31c4-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-065-167",
+   "code": "RAD-065",
+   "name": "Seraphine, Inspiring",
+   "shortName": "Seraphine",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Piltover",
+    "Seraphine"
+   ],
+   "championTag": "Seraphine",
+   "energy": 4,
+   "power": 1,
+   "powerDomains": [
+    "mind"
+   ],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "[Disarm 2] (When I attack, give an enemy unit here -2 [Might] this turn.)\nOnce each turn, when you exhaust three or more friendly units at the same time, you may draw 1.",
+   "text": "[Disarm 2] (When I attack, give an enemy unit here -2 [Might] this turn.)\nOnce each turn, when you exhaust three or more friendly units at the same time, you may draw 1.",
+   "errata": false,
+   "keywords": [
+    "Disarm"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/60e0711c64958cc3a59a3bd3bf4c013758b1b92b-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-050-166",
+   "code": "VEN-050",
+   "name": "Grumpy Rockbear",
+   "shortName": "Grumpy Rockbear",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Shurima"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "[Empower] [12]. This ability costs [1] less for each rune you control. (Pay the cost: Empower me. Use only if not Empowered.)\n[Empowered][>] I have [Deflect] and [Shield 3]. (Opponents must pay [Any] to choose me with a spell or ability.+3 [Might] while I'm a defender.)",
+   "text": "[Empower] [12]. This ability costs [1] less for each rune you control. (Pay the cost: Empower me. Use only if not Empowered.)\n[Empowered][>] I have [Deflect] and [Shield 3]. (Opponents must pay [Any] to choose me with a spell or ability.+3 [Might] while I'm a defender.)",
+   "errata": false,
+   "keywords": [
+    "Empower"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2f7f3759c59746486a5f91b8452302fa59eddde6-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-242-298",
+   "code": "OGN-242",
+   "name": "Baited Hook",
+   "shortName": "Baited Hook",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.",
+   "text": "[1][Order], [Exhaust]: Kill a friendly unit. Look at the top 5 cards of your Main Deck. You may banish a unit from among them that has Might up to 1 more than the killed unit and play it, ignoring its cost. Then recycle the rest.",
+   "errata": true,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7b4e6a1e32878a7d5fe4e40869c83e47ea08de7c-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-209-298",
+   "code": "OGN-209",
+   "name": "Cull the Weak",
+   "shortName": "Cull the Weak",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": 1,
+   "powerDomains": [
+    "order"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "Each player kills one of their units.",
+   "text": "Each player kills one of their units.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/49338a4b31727c6ef50e7dbc54e7004dcd2b6f4c-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-040-298",
+   "code": "OGN-040",
+   "name": "Seal of Rage",
+   "shortName": "Seal of Rage",
+   "set": "OGN",
+   "sets": [
+    "OGN",
+    "SFD"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 0,
+   "power": 1,
+   "powerDomains": [
+    "fury"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Exhaust]: [Reaction] — [Add] [Fury]. (Abilities that add resources can't be reacted to.)",
+   "text": "[Exhaust]: [Reaction] — [Add] [Fury]. (Abilities that add resources can't be reacted to.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/fbdd14adb40b0ca46b89f476a356fa21413d812e-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-061-167",
+   "code": "RAD-061",
+   "name": "Ekko, Ingenious",
+   "shortName": "Ekko",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Ekko",
+    "Zaun"
+   ],
+   "championTag": "Ekko",
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "As an additional cost to play me, return a friendly unit to its owner's hand.\n[Ganking] (I can move from battlefield to battlefield.)",
+   "text": "As an additional cost to play me, return a friendly unit to its owner's hand.\n[Ganking] (I can move from battlefield to battlefield.)",
+   "errata": false,
+   "keywords": [
+    "Ganking"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/3129469742d7aa5c6921ebae841ccee1923bb279-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-044-221",
+   "code": "SFD-044",
+   "name": "Legion Quartermaster",
+   "shortName": "Legion Quartermaster",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Trifarian",
+    "Noxus"
+   ],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "As an additional cost to play me, return a friendly gear to its owner's hand.",
+   "text": "As an additional cost to play me, return a friendly gear to its owner's hand.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c09cc35ffc98b46f919c09e09a93b603d63eb73e-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-151-167",
+   "code": "RAD-151",
+   "name": "Starry-Eyed Songstress",
+   "shortName": "Starry-Eyed Songstress",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "legend",
+   "superTypes": [],
+   "domains": [
+    "mind",
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Seraphine"
+   ],
+   "championTag": "Seraphine",
+   "energy": null,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "As an additional cost to play a spell, you may exhaust me and three friendly units to reduce the cost of that spell by [2].",
+   "text": "As an additional cost to play a spell, you may exhaust me and three friendly units to reduce the cost of that spell by [2].",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/399262205b15aa3b6306eb1d80a308791dcbe2ca-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-056-167",
+   "code": "RAD-056",
+   "name": "Improvised Projectile",
+   "shortName": "Improvised Projectile",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": 1,
+   "powerDomains": [
+    "mind"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.",
+   "text": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ecbb970f955b8e12369921f30ad08cab04e59a3f-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-055-298",
+   "code": "OGN-055",
+   "name": "Wielder of Water",
+   "shortName": "Wielder of Water",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Ionia"
+   ],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "While I'm attacking or defending alone, I have +2 [Might].",
+   "text": "While I'm attacking or defending alone, I have +2 [Might].",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5b38a7758705bd739caf07b5c0c49482a4a23015-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-113-166",
+   "code": "VEN-113",
+   "name": "Kennen, Storm of Shuriken",
+   "shortName": "Kennen",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [
+    "champion"
+   ],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Yordle",
+    "Kennen",
+    "Ionia"
+   ],
+   "championTag": "Kennen",
+   "energy": 3,
+   "power": 1,
+   "powerDomains": [
+    "chaos"
+   ],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "When you play me, [Burn 2]. (Put the top 2 cards of your Main Deck into your trash.)\nWhen I conquer, give a spell in your trash [Flow] equal to its cost this turn. (You may play it from your trash for its Flow cost. Then banish it.)",
+   "text": "When you play me, [Burn 2]. (Put the top 2 cards of your Main Deck into your trash.)\nWhen I conquer, give a spell in your trash [Flow] equal to its cost this turn. (You may play it from your trash for its Flow cost. Then banish it.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/2f27c99f3df2940940dddd65105e5e42bbeeab3d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-099-298",
+   "code": "OGN-099",
+   "name": "Garbage Grabber",
+   "shortName": "Garbage Grabber",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "Recycle 3 from your trash, [1], [Exhaust]: Draw 1.",
+   "text": "Recycle 3 from your trash, [1], [Exhaust]: Draw 1.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/199f21237aeee2582904463a15ec62ce29452c10-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-125-166",
+   "code": "VEN-125",
+   "name": "Hungry Wolf",
+   "shortName": "Hungry Wolf",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Dog",
+    "Freljord"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "[Order]: Ready me and give me +1 [Might] this turn. Use only if you've chosen an enemy unit this turn and only once each turn.",
+   "text": "[Order]: Ready me and give me +1 [Might] this turn. Use only if you've chosen an enemy unit this turn and only once each turn.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/464b4e2edfd526a3b72a80ab05bc9630b7057c22-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-258-298",
+   "code": "OGN-258",
+   "name": "Dragon's Rage",
+   "shortName": "Dragon's Rage",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "spell",
+   "superTypes": [
+    "signature"
+   ],
+   "domains": [
+    "calm",
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Lee Sin"
+   ],
+   "championTag": "Lee Sin",
+   "energy": 4,
+   "power": 1,
+   "powerDomains": [
+    "calm",
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "Move an enemy unit. Then choose another enemy unit at its destination. They deal damage equal to their Mights to each other.",
+   "text": "Move an enemy unit. Then do this: Choose another enemy unit at its destination. They deal damage equal to their Mights to each other.",
+   "errata": true,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7f4cbd4fb340cc13b3fbe0ec0db706464d9b29f4-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  }
+ ]
+}

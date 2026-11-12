@@ -43,6 +43,11 @@ export const PACKAGE_PAIRS: ReadonlyArray<{
     right: "rune-count-payoff",
     label: "Rune-count acceleration",
   },
+  // Forge additions (stage 3 review, not in the port). Top lists play these together and the ported list had
+  // no join for them: a bounce or flicker of one's own unit next to a "When you play me" effect, and a Might
+  // boost given to a unit next to an effect that deals that unit's Might as damage. HEURISTIC, like the rest.
+  { left: "replay-unit", right: "play-effect", label: "Replay play effects" },
+  { left: "might-boost", right: "might-damage", label: "Might as damage" },
 ];
 
 export const ORPHAN_ENGINE_RULES: ReadonlyArray<{

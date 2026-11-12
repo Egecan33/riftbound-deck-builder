@@ -15,6 +15,7 @@
 //
 // HEURISTIC: every number in addForgeSemanticFamilies is a prior chosen to sit beside the ported value of the
 // closest older keyword (Assault for Disarm, a chosen 2-damage ping for a Bomb). None is measured.
+import { REVIEW_TRAIT_LABELS, addReviewSemanticFamilies } from './refine';
 import type { ScoreCard } from './types';
 
 /** Trait ids added by Forge. labels.ts merges them into TRAIT_LABELS, so `Trait` covers them. */
@@ -37,6 +38,8 @@ export const FORGE_TRAIT_LABELS = {
   sweeper: 'Mass removal',
   solo: 'Alone / one on one',
   'unit-play-payoff': 'Unit-play payoff',
+  // Stage 3 review additions, see refine.ts.
+  ...REVIEW_TRAIT_LABELS,
 } as const;
 
 export type ForgeTrait = keyof typeof FORGE_TRAIT_LABELS;
@@ -108,7 +111,7 @@ const PROTECTION =
 const LOCK =
   /\bopponents? can'?t play\b|\bplayers? can'?t (?:play|score)\b|\bunits can'?t be played here\b|\bcan'?t play (?:cards|spells|units)\b|\bunits don'?t ready\b/;
 const PLACEMENT =
-  /\b(?:you may )?play me to an? (?:occupied|open|enemy)\b|\bcan be played to\b|\bplay me only to\b|\bplayed to any battlefield\b/;
+  /\b(?:you may )?play me to an? (?:occupied|open|enemy)\b|\bcan be played to\b|\bplayed to any battlefield\b/;
 const HIDDEN_MATTERS =
   /\bface ?down\b|\bhide (?:an additional|ignoring|a card)\b|\bcards? with \[hidden\]|\bhidden cards?\b|\bwhen you hide\b|\byou can hide\b/;
 const BONUS_DAMAGE = /\bbonus damage\b/;
@@ -311,6 +314,8 @@ export type ForgeSemanticAdd = (
  * them a Radiance card is rated as if its keyword text were blank. HEURISTIC values, see the file header.
  */
 export function addForgeSemanticFamilies(add: ForgeSemanticAdd, text: string): void {
+  // Stage 3 review: families the audit found unvalued (death prevention, counted damage), see refine.ts.
+  addReviewSemanticFamilies(add, text);
   // Disarm X (CR 831): "When I attack, give an enemy unit here -X Might this turn." An attack-only swing of
   // X, like Assault X (ported: 0.55 * 0.55 per point), and the reduction lasts the turn. Owned values sum.
   const grantPattern = /\b(?:have|has|gains?|gets?)\s+\[disarm(?: \d+)?\]/;
