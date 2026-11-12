@@ -31,7 +31,10 @@ export const FORGE_TRAIT_LABELS = {
   'might-reduction-payoff': 'Might-reduction payoff',
   placement: 'Flexible placement',
   protection: 'Protection from being chosen',
+  'gear-removal': 'Gear removal',
+  'point-gain': 'Direct points',
   'show-off': 'Show Off',
+  sweeper: 'Mass removal',
   solo: 'Alone / one on one',
   'unit-play-payoff': 'Unit-play payoff',
 } as const;
@@ -123,6 +126,12 @@ const SPELL_MATTERS_EXTRA = /\bspells you play\b|\bto play a spell this turn\b|\
 const MUTUAL_MIGHT_DAMAGE = /\bdeal damage equal to their mights to each other\b/;
 const EACH_PLAYER_KILLS = /\beach player (?:must )?kills? one of their units\b/;
 const BACKLINE_TEXT = /\bi must be assigned combat damage last\b/;
+// Plan Task 5 (roles): families the role list needs and no trait named. Mass damage, kill, banish, stun or
+// bounce over all or each unit or gear, friendly-only wording left out; removal that can hit an enemy gear.
+const SWEEPER =
+  /\b(?:deals? \d+(?: damage)? to|kill|banish|stun|return) (?:all|each|every) (?!friendly)(?:other |enemy |stunned |exhausted |damaged |attacking |defending )*(?:units?|gear)\b(?! you control| from (?:your|a|their) trash)|\bgive (?:all|each) enemy units? -\d+ \[[ms]\]/;
+const GEAR_REMOVAL =
+  /\b(?:kill|banish) (?:a|an|all|each|every|another|up to \w+|any number of|that)(?: enemy| attached)? (?:gear|equipment)\b|\bkill (?:a|an|all|each)(?: enemy)? units? (?:or|and) gear\b|\b(?:kill|banish) all gear\b/;
 const POINT_TEXT = /\bpoints needed to win\b|\bgains? \d+ points?\b/;
 
 /**
@@ -175,6 +184,15 @@ export function addForgeTraits(card: ScoreCard, text: string, traits: TraitSink)
   if (has(HIDDEN_MATTERS)) traits.add('hidden-matters');
   if (has(BONUS_DAMAGE)) traits.add('bonus-damage');
   if (has(UNIT_PLAY_PAYOFF)) traits.add('unit-play-payoff');
+
+  if (has(SWEEPER)) {
+    traits.add('sweeper');
+    traits.add('interaction');
+  }
+  if (has(GEAR_REMOVAL)) {
+    traits.add('gear-removal');
+    traits.add('interaction');
+  }
 
   // Existing traits, wordings the ported patterns miss ------------------------------------------------------
   if (has(COST_REDUCTION_EXTRA)) traits.add('cost-reduction');

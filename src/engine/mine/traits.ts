@@ -329,6 +329,8 @@ export function deriveTraits(card: ScoreCard): Set<Trait> {
   }
 
   // Forge addition (not in the port): Radiance keywords and coverage gaps, see radiance.ts.
+  // Forge addition for plan Task 5 (role point-source): the card itself scores points for its controller.
+  if (scoring.ownPoints > 0) traits.add("point-gain");
   addForgeTraits(card, text, traits);
 
   return traits;

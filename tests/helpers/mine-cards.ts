@@ -33,3 +33,24 @@ export function mineOverrides(): Record<string, MineOverride> {
   const file = JSON.parse(readFileSync(path.join(process.cwd(), 'sync-data', 'card-overrides.json'), 'utf8')) as { mine?: MineOverrideEntry[] };
   return mineOverridesById(file.mine, mineCards());
 }
+
+let network: { all: Card[]; byCode: Map<string, Card> } | null = null;
+
+/** The mine test cards plus tests/fixtures/network-cards.json (real rows the network and feature tests quote). */
+export function networkCards(): Card[] {
+  if (!network) {
+    const file = JSON.parse(readFileSync(path.join(process.cwd(), 'tests', 'fixtures', 'network-cards.json'), 'utf8')) as { cards: StoredCard[] };
+    const base = mineCards();
+    const have = new Set(base.map((c) => c.id));
+    const all = [...base, ...file.cards.map(reviveCard).filter((c) => !have.has(c.id))];
+    network = { all, byCode: new Map(all.map((c) => [c.code, c])) };
+  }
+  return network.all;
+}
+
+export function networkCard(code: string): Card {
+  networkCards();
+  const card = network!.byCode.get(code);
+  if (!card) throw new Error(`network test card ${code} is in no fixture`);
+  return card;
+}

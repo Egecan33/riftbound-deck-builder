@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "asOf": "2026-11-12",
- "note": "Reviewed per-card corrections applied by the `cards` sync step. Each entry names its reason and source. An entry may set: type, domains, noDomain, tags, championTag, copyLimit (a number or \"unlimited\"). Radiance entries: on 2026-11-12 the official gallery had unfinished Radiance rows (empty or wrong card type, empty or wrong domain). The sync flags such rows as incomplete by itself; an entry here repairs a row only where two sources agree (the row's own image text for the type, Piltover Archive card data for type and domain, and the set's collector-number domain blocks). Rows without a second source stay incomplete. Remove an entry once the gallery row is fixed. The `mine` list holds reviewed corrections to the card mine (plan Task 4), read by the `features` step: addTraits, removeTraits, or noMechanic (the card's text is a restriction or deck-construction rule and has no trait on purpose).",
+ "note": "Reviewed per-card corrections applied by the `cards` sync step. Each entry names its reason and source. An entry may set: type, domains, noDomain, tags, championTag, copyLimit (a number or \"unlimited\"). Radiance entries: on 2026-11-12 the official gallery had unfinished Radiance rows (empty or wrong card type, empty or wrong domain). The sync flags such rows as incomplete by itself; an entry here repairs a row only where two sources agree (the row's own image text for the type, Piltover Archive card data for type and domain, and the set's collector-number domain blocks). Rows without a second source stay incomplete. Remove an entry once the gallery row is fixed. The `mine` list holds reviewed corrections to the card mine (plan Task 4), read by the `features` step: addTraits, removeTraits, or noMechanic (the card's text is a restriction or deck-construction rule and has no trait on purpose). The `forbiddenInteractions` list (plan Task 5) holds card pairs whose supposed combo the rules forbid, each with its rule; the `features` step drops the pair's synergy reasons whose id starts with an entry of `drop` (\"*\" = every synergy reason; an empty list = the pair's ordinary joins are legal and stay, only the claimed line is illegal, which the line generator must not print).",
  "cards": [
   {
    "name": "Karma, Channeler",
@@ -456,6 +456,156 @@
    ],
    "reason": "\"players only channel 1 rune at the start of their Channel Phase\" limits channelling for everyone; it is resource denial, not ramp.",
    "source": "card text; GameLab script comparison 2026-11-12 (script has no channel)"
+  }
+ ],
+ "forbiddenInteractions": [
+  {
+   "cards": [
+    "SFD-059",
+    "SFD-049"
+   ],
+   "claim": "Svellsongur on Aphelios, Exalted triggers his attach ability twice",
+   "reason": "Copied text is added after the attach event; the ability triggers once.",
+   "rule": "FAQ Vendetta (reverses FAQ Spiritforged)",
+   "drop": [],
+   "source": "docs/research/rulings-and-errata.md section 5 row 1"
+  },
+  {
+   "cards": [
+    "OGN-102",
+    "OGN-203"
+   ],
+   "claim": "Portal Rescue on a unit taken with Possession keeps it",
+   "reason": "Errata: its owner plays it to their base, so the unit goes back to the opponent.",
+   "rule": "Errata Origins; FAQ Origins",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 3"
+  },
+  {
+   "cards": [
+    "UNL-170",
+    "RAD-143"
+   ],
+   "claim": "Kill a unit for Atakhan's cost and banish it with Iron Revenant to pay Atakhan's Power",
+   "reason": "Energy and Power are paid before the kill.",
+   "rule": "CR 357.1, 357.2; FAQ Radiance",
+   "drop": [],
+   "source": "docs/research/rulings-and-errata.md section 5 row 8"
+  },
+  {
+   "cards": [
+    "RAD-092",
+    "OGN-134"
+   ],
+   "claim": "Seraphic Wyvern makes Mobilize draw when the Rune Deck is nearly empty",
+   "reason": "Only the spell's own channel is checked.",
+   "rule": "FAQ Radiance",
+   "drop": [],
+   "source": "docs/research/rulings-and-errata.md section 5 row 9"
+  },
+  {
+   "cards": [
+    "RAD-092",
+    "OGN-138"
+   ],
+   "claim": "Seraphic Wyvern makes Catalyst of Aeons draw when the Rune Deck is nearly empty",
+   "reason": "Only the spell's own channel is checked.",
+   "rule": "FAQ Radiance",
+   "drop": [],
+   "source": "docs/research/rulings-and-errata.md section 5 row 9"
+  },
+  {
+   "cards": [
+    "SFD-015",
+    "VEN-157"
+   ],
+   "claim": "Perched Grimwyrm played to Dragon Roost by paying the Roost cost",
+   "reason": "\"Play me only to a battlefield you conquered this turn\" is a restriction; can't beats can.",
+   "rule": "CR 054, 054.2; FAQ Vendetta",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 10"
+  },
+  {
+   "cards": [
+    "OGN-286",
+    "SFD-116"
+   ],
+   "claim": "Reckoner's Arena hold fires Yone, Blademaster's conquer damage",
+   "reason": "His own condition (the battlefield was uncontrolled) is still checked.",
+   "rule": "FAQ Unleashed",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 11"
+  },
+  {
+   "cards": [
+    "OGN-043",
+    "RAD-062"
+   ],
+   "claim": "Charm drags an enemy unit into your Gravity Field so that they pay",
+   "reason": "You perform the move, so nobody pays.",
+   "rule": "CR 204.4; FAQ Radiance",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 13"
+  },
+  {
+   "cards": [
+    "UNL-192",
+    "UNL-106"
+   ],
+   "claim": "Moving two targets of Alpha Strike to base enables Repulse",
+   "reason": "Mistargeted units still count as chosen while on the board.",
+   "rule": "Patch notes Vendetta; FAQ Unleashed",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 15"
+  },
+  {
+   "cards": [
+    "UNL-131",
+    "SFD-140"
+   ],
+   "claim": "Abandon returns a spell replayed by Fizz, Trickster to hand",
+   "reason": "\"Then recycle it\" applies however the spell leaves the chain.",
+   "rule": "CR 829.1.b; FAQ Vendetta",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 16"
+  },
+  {
+   "cards": [
+    "OGN-095",
+    "VEN-086"
+   ],
+   "claim": "Stupefy on your own 1-Might empowered Gangplank, Naval gives +3 Might",
+   "reason": "No -Might is actually given at the minimum of 1.",
+   "rule": "FAQ Vendetta",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 18"
+  },
+  {
+   "cards": [
+    "SFD-202",
+    "VEN-066"
+   ],
+   "claim": "Hostile Takeover then Temporal Breach keeps the stolen unit",
+   "reason": "The owner cannot play it to your base; it stays banished.",
+   "rule": "FAQ Vendetta",
+   "drop": [
+    "*"
+   ],
+   "source": "docs/research/rulings-and-errata.md section 5 row 22"
   }
  ]
 }
