@@ -159,12 +159,12 @@ export interface WinRoute {
   id: RouteId; strength: number;    // 0..1
   closers: string[]; enablers: string[];
   closerCopies: number; pCloserByTurn5: number; clock: number;
-  foldsTo: { text: string; cardIds: string[]; fieldRate: number | null }[];
+  foldsTo: { text: string; cardIds: string[]; fieldRate: number | null; answerIds?: string[] }[]; // answerIds (Task 7): the field's answer cards the text names; cardIds are the deck's own cards
   notes: string[];
 }
 export interface WinReport { routes: WinRoute[]; hiddenDelivery: boolean; value: number }
 
-export interface Line { kind: 'keep' | 'turn' | 'sequence' | 'package' | 'spike' | 'matchup' | 'side' | 'format'; text: string; cardIds: string[]; reason: string; probability: number | null; heuristic: boolean }
+export interface Line { kind: 'keep' | 'turn' | 'sequence' | 'package' | 'spike' | 'matchup' | 'side' | 'format'; text: string; cardIds: string[]; reason: string; probability: number | null; heuristic: boolean; otherIds?: string[] } // otherIds (Task 7): named cards that are not the deck's own in this line (an opposing legend's cards, the missing card of a one-away package)
 export interface LineReport { keeps: Line[]; turns: Line[]; sequencing: Line[]; packages: Line[]; oneAway: Line[]; spikes: Line[]; matchup: Line[]; side: Line[]; format: Line[] }
 
 export interface BuildOptions { ownedOnly: boolean; owned: Record<string, number> | null; seed: number; buildAround: string[] }
