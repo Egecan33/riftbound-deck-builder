@@ -31,14 +31,21 @@ export const SIDE = {
   wideUnits: 22, wideShare: 0.3,
   spellList: 14, spellShare: 0.5,
   ownSideLists: 5,
-  weights: { ownSide: 12, targets: 1, rating: 0.05, topUp: 1 },
+  /**
+   * Stage 3 review: with ownSide 12 and rating 0.05 the raw count of answered copies decided alone, so every
+   * Order legend sided 2x Mordekaiser, Dominating (9 Energy) and 54% of side copies were cards the legend's own
+   * lists side. `ownSide` (shrunk by the number of lists) and `fieldSide` are per share of lists (data).
+   */
+  weights: { ownSide: 60, fieldSide: 40, targets: 1, rating: 0.15, topUp: 1 }, ownPrior: 8,
+  /** A card most of the legend's lists side at 1.5+ copies is taken at the copies they side. */
+  ownCopiesShare: 0.5,
 } as const;
 
 const JOB_LABEL: Record<SideJob, string> = { 'gear-hate': 'Gear hate', removal: 'Extra removal', stack: 'Counter or hand attack', sweeper: 'Sweeper', protection: 'Protection', free: 'Free slot' };
 const UNIT_KINDS: readonly Answer['kind'][] = [...REMOVING, 'displace'];
 
 interface Exposure { lists: number; legends: number; gear: number; gearHeavy: number; wide: number; spells: number }
-interface FieldView { field: Field; exposure: Exposure; typical: { legend: Card; decks: number; cards: { card: Card; copies: number }[] }[]; reach: Map<string, number[]> }
+interface FieldView { field: Field; exposure: Exposure; typical: { legend: Card; decks: number; cards: { card: Card; copies: number }[] }[]; reach: Map<string, number[]>; sided: Map<string, { share: number; lists: number; of: number }> }
 const views = new WeakMap<CardDb, FieldView>();
 
 function viewOf(db: CardDb): FieldView {
@@ -56,7 +63,7 @@ function viewOf(db: CardDb): FieldView {
     if (sum.unit >= SIDE.wideUnits) exposure.wide += w;
     if (sum.spell >= SIDE.spellList) exposure.spells += w;
   }
-  views.set(db, (held = { field, exposure, typical, reach: new Map() }));
+  views.set(db, (held = { field, exposure, typical, reach: new Map(), sided: new Map() }));
   return held;
 }
 
@@ -81,6 +88,22 @@ function reachOf(card: Card, view: FieldView): number[] {
     return expected;
   });
   view.reach.set(card.id, out);
+  return out;
+}
+
+/** Share of the field's lists that could side the card (its domains inside the legend's) and do (data). */
+function fieldSided(card: Card, view: FieldView): { share: number; lists: number; of: number } {
+  const held = view.sided.get(card.id);
+  if (held) return held;
+  let of = 0;
+  let lists = 0;
+  for (const { legend, meta } of view.field.legends) {
+    if (!card.domains.every((d) => legend.domains.includes(d))) continue;
+    of += meta.decks;
+    lists += meta.decks * (meta.side[card.id]?.share ?? 0);
+  }
+  const out = { share: of > 0 ? lists / of : 0, lists: Math.round(lists), of };
+  view.sided.set(card.id, out);
   return out;
 }
 
@@ -149,7 +172,8 @@ export function planSideDeck(deck: Deck, ctx: EngineContext, opts: BuildOptions)
     const own = ownSide?.[card.id]?.share ?? 0;
     const best = bestThird(card, view);
     const topUp = qtyIn(work.main, card.id) > 0 ? SIDE.weights.topUp : 0;
-    return { own, best, v: own * SIDE.weights.ownSide + best.value * SIDE.weights.targets + ratingOf(db, card) * SIDE.weights.rating + topUp + seededBias(opts.seed, `side:${card.id}`) * 0.5 };
+    const conf = meta ? meta.decks / (meta.decks + SIDE.ownPrior) : 0;
+    return { own, best, v: own * conf * SIDE.weights.ownSide + fieldSided(card, view).share * SIDE.weights.fieldSide + best.value * SIDE.weights.targets + ratingOf(db, card) * SIDE.weights.rating + topUp + seededBias(opts.seed, `side:${card.id}`) * 0.5 };
   };
   const take = (card: Card, qty: number, job: SideJob, why: string): void => {
     const { own, best } = value(card);
@@ -159,6 +183,8 @@ export function planSideDeck(deck: Deck, ctx: EngineContext, opts: BuildOptions)
     if (answer) parts.push(describeAnswer(answer));
     if (best.peak) parts.push(`answers ${best.peak.expected.toFixed(1)} expected copies of a typical ${best.peak.legend.championTag ?? best.peak.legend.name} list, its best matchup in the field (card-against-card test, data)`);
     if (own > 0 && meta) parts.push(`${ownSide?.[card.id]?.decks ?? 0} of ${meta.decks} public ${legend.name} lists side it (data)`);
+    const fs = fieldSided(card, view);
+    if (fs.lists > 0) parts.push(`${fs.lists} of the ${fs.of} public lists of all legends that could side it do (data)`);
     if (qtyIn(work.main, card.id) > 0) parts.push(`an extra copy of a main-deck card (${qtyIn(work.main, card.id)} in the main deck)`);
     const held = picks.find((p) => p.id === card.id);
     if (held) held.qty += qty;
@@ -178,7 +204,9 @@ export function planSideDeck(deck: Deck, ctx: EngineContext, opts: BuildOptions)
       const best = ranked[0];
       if (!best) { if (first) notes.push(`No legal ${JOB_LABEL[q.job].toLowerCase()} card for the side deck in ${legend.name}'s domains${opts.ownedOnly ? ' in the collection' : ''}.`); break; }
       // Rule 7: one-ofs by default; the main gear answer is the one job played as a two-of.
-      const qty = Math.min(left, room(best.c), q.job === 'gear-hate' && first ? 2 : 1);
+      const stat = ownSide?.[best.c.id];
+      const sidedCopies = stat && stat.share >= SIDE.ownCopiesShare ? Math.round(stat.avgCopies) : 1;
+      const qty = Math.min(left, room(best.c), Math.max(sidedCopies, q.job === 'gear-hate' && first ? 2 : 1));
       take(best.c, qty, q.job, q.why);
       left -= qty;
       first = false;
@@ -190,12 +218,14 @@ export function planSideDeck(deck: Deck, ctx: EngineContext, opts: BuildOptions)
   for (let guard = 0; guard < cap && total(work.side) < cap; guard += 1) {
     const ranked = candidates
       .filter((c) => qtyIn(work.side, c.id) === 0 && room(c) > 0)
-      .map((c) => { const s = scorer.score(c, 'side'); return { c, s, v: (ownSide?.[c.id]?.share ?? 0) * 100 + (s.gate ? -1000 : s.score) + seededBias(opts.seed, `side:${c.id}`) * 2 }; })
+      .map((c) => { const s = scorer.score(c, 'side'); return { c, s, v: (ownSide?.[c.id]?.share ?? 0) * 100 + fieldSided(c, view).share * SIDE.weights.fieldSide + (s.gate ? -1000 : s.score) + seededBias(opts.seed, `side:${c.id}`) * 2 }; })
       .filter((x) => !x.s.gate)
       .sort((a, b) => b.v - a.v || a.c.id.localeCompare(b.c.id));
     const best = ranked[0];
     if (!best) { notes.push(`The side deck stops at ${total(work.side)} of ${cap}: no other legal card${opts.ownedOnly ? ' in the collection' : ''}.`); break; }
-    take(best.c, 1, 'free', (ownSide?.[best.c.id]?.share ?? 0) > 0 ? 'sided by players of this legend' : `best remaining card score for the side deck (${best.s.score})`);
+    const stat = ownSide?.[best.c.id];
+    const qty = Math.max(1, Math.min(room(best.c), stat && stat.share >= SIDE.ownCopiesShare ? Math.round(stat.avgCopies) : 1));
+    take(best.c, qty, 'free', (ownSide?.[best.c.id]?.share ?? 0) > 0 ? 'sided by players of this legend' : `best remaining card score for the side deck (${best.s.score})`);
   }
   return { entries: work.side.map((e) => ({ ...e })), picks, notes };
 }

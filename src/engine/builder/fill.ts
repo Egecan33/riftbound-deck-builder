@@ -18,13 +18,18 @@
 //   strongest stored partners of the champion and of every build-around card.
 // - Copies follow the legend's public lists where they exist (data), then the ported rules.
 // - Format: a main deck of 40 in all six formats; multiplayer formats shift the utility (HEURISTIC below).
+// - Play data (lean.ts, stage 3 review): the cards most of the legend's public lists run are taken as a core
+//   before the quota phases, and every candidate's utility carries what the lists say about it.
 import { isSignature, sameTag } from '../rules/champion';
+import { falseReason } from '../lines/context';
+import { isGenericReason } from '../network/edges';
 import { copyLimit } from '../rules/copies';
 import { legendOf } from '../rules/identity';
 import { createScorer } from '../scoring';
 import { featuresFor, qtyOf, summarizeDeck } from '../summary';
 import { INTERACTION_ROLES, derivedCounts, targetsFor, type FullTargets } from '../targets';
 import type { BuildOptions, Card, CardScore, Deck, EngineContext, Format, PowerTarget, Role } from '../types';
+import { LEAN, coreCards, playLean } from './lean';
 import { profileFor, type BuildProfile } from './profiles';
 import { seededBias } from './rng';
 import { isMainType, legalPool, mainSizeOf, nameOf, netOf, qtyIn, roomFor, signatureRoom, total, withCopies, type BuildPick, type MainType } from './state';
@@ -41,6 +46,8 @@ export const BUILD = {
   signatureScore: 50,
   /** Lowest evaluated rating the free fill takes, by power target (spec 9); dropped when the pool runs out. */
   floor: { competitive: 52, focused: 45, casual: 0 } as Record<PowerTarget, number>,
+  /** Main-deck slots the core phase (lean.ts) leaves to the quota phases and the seed. */
+  flexSlots: 6,
   /** Lists of the legend needed before their copy counts are followed. */
   copyLists: 5, copyCardLists: 3,
   /** Multiplayer (fit sub-score, rules.md 10): holding through several enemy turns, sweepers and direct points gain; counters lose. */
@@ -90,6 +97,7 @@ export function staticUtility(card: Card, deck: Deck, fc: FillContext): number {
   u -= Math.max(0, card.power ?? 0) * fc.profile.powerPenalty;
   u += (seededBias(fc.opts.seed, card.id) - 0.5) * 2 * BUILD.jitter;
   if (MULTIPLAYER.includes(deck.format)) for (const role of featuresFor(db, card).roles) u += BUILD.multiplayer[role] ?? 0;
+  u += playLean(card, deck, db).value;
   return u;
 }
 
@@ -199,7 +207,8 @@ export function fillMain(state: FillState, fc: FillContext): void {
   const add = (pick: Ranked, qty: number, phase: string, why: string): void => {
     state.deck = withCopies(state.deck, 'main', pick.card.id, qty);
     const partner = pick.score.partners[0];
-    const text = `${why}. Card score ${pick.score.score}${partner ? `; works with ${nameOf(db, partner.id)} (${partner.reason})` : ''}.`;
+    const lean = playLean(pick.card, state.deck, db).text;
+    const text = `${why}. Card score ${pick.score.score}${partner ? `; works with ${nameOf(db, partner.id)} (${partner.reason})` : ''}.${lean ? ` ${lean}.` : ''}`;
     const held = state.picks.find((p) => p.zone === 'main' && p.id === pick.card.id);
     if (held) held.qty += qty;
     else state.picks.push({ zone: 'main', id: pick.card.id, qty, phase, reason: text });
@@ -232,12 +241,12 @@ export function fillMain(state: FillState, fc: FillContext): void {
 
   // 2. Packages: the strongest stored partners of each build-around card, then of the Chosen Champion.
   const champion = state.deck.champion ? db.get(state.deck.champion) : undefined;
-  const sources: { card: Card; n: number }[] = fc.anchors.map((card) => ({ card, n: BUILD.partnersPerAnchor }));
-  if (champion && !fc.anchors.some((a) => a.id === champion.id)) sources.push({ card: champion, n: BUILD.partnersOfChampion });
+  const sources: { card: Card; n: number; own: boolean }[] = fc.anchors.map((card) => ({ card, n: BUILD.partnersPerAnchor, own: true }));
+  if (champion && !fc.anchors.some((a) => a.id === champion.id)) sources.push({ card: champion, n: BUILD.partnersOfChampion, own: false });
   for (const source of sources) {
     const partners = db.edges(source.card.id)
       .map((e) => ({ id: e.a === source.card.id ? e.b : e.a, edge: e }))
-      .filter((p) => p.edge.net >= BUILD.packageNet && statics.has(p.id))
+      .filter((p) => p.edge.net >= BUILD.packageNet && statics.has(p.id) && p.edge.reasons.some((r) => r.kind === 'synergy' && !isGenericReason(r.id) && !falseReason(r)))
       .sort((a, b) => b.edge.net - a.edge.net || a.id.localeCompare(b.id));
     let taken = 0;
     for (const p of partners) {
@@ -245,14 +254,35 @@ export function fillMain(state: FillState, fc: FillContext): void {
       const card = db.get(p.id);
       if (!card) continue;
       if (qtyIn(state.deck.main, card.id) > 0) { taken += 1; continue; }
+      // A partner of the champion nobody asked for is not seeded against the data: when the legend has public
+      // lists and under a fifth of them run the card (Eclipse Herald for Riven: 0 of 26; Up from the Deep for Kennen:
+      // 8%), the stored pair alone does not put it in.
+      // Partners of a build-around card are always seeded: the user asked for that plan.
+      const legendLists = state.deck.legend ? db.legendMeta(state.deck.legend) : undefined;
+      if (!source.own && legendLists && legendLists.decks >= LEAN.minLists && (legendLists.main[card.id]?.share ?? 0) < LEAN.partnerShare) continue;
       const counts = countsOf(state.deck, fc);
       const score = createScorer(state.deck, ctx).score(card, 'main');
       if (score.gate || safeCopies(card, counts) <= 0) continue;
       const qty = Math.min(Math.max(2, suggestedCopies(card, state.deck, fc).copies), safeCopies(card, counts));
-      const reason = p.edge.reasons.find((r) => r.kind === 'synergy');
+      const reason = p.edge.reasons.find((r) => r.kind === 'synergy' && !isGenericReason(r.id) && !falseReason(r));
       add({ card, score, utility: score.score }, qty, 'package', `Partner of ${source.card.name}: ${reason ? `${reason.label} - ${reason.detail}` : `stored pair value ${p.edge.net.toFixed(2)}`}`);
       taken += 1;
     }
+  }
+  // 2b. Core (data): the cards most public lists of this legend run, at the copies they run, most played first.
+  // Only the deck size, the copy limits and the collection bound it; the quota phases then work around it.
+  for (const core of coreCards(state.deck, db)) {
+    if (!statics.has(core.card.id)) continue; // not legal here (banned, format, collection)
+    const have = qtyIn(state.deck.main, core.card.id);
+    const counts = countsOf(state.deck, fc);
+    // `flexSlots` stay open so the quota phases and the seed ("Reroll") still decide something.
+    let room = Math.min(roomFor(core.card, state.deck, opts), size - BUILD.flexSlots - counts.total);
+    if (isSignature(core.card)) room = Math.min(room, signatureRoom(state.deck, db));
+    const qty = Math.min(core.copies - have, room);
+    if (qty <= 0) continue;
+    const score = createScorer(state.deck, ctx).score(core.card, 'main');
+    if (score.gate) continue;
+    add({ card: core.card, score, utility: score.score }, qty, 'core', `Core card of ${nameOf(db, state.deck.legend ?? '')}: ${core.lists} of ${core.of} public lists run it (${Math.round(core.share * 100)}%), at ${core.copies} ${core.copies === 1 ? 'copy' : 'copies'} (data)`);
   }
   targets = targetsFor(state.deck, db);
 

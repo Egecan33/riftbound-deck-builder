@@ -19,12 +19,18 @@ import { legalPool, netOf, ownedEnough, ratingOf, type BuildPick } from './state
 
 /** HEURISTIC constants. */
 export const ZONES = {
-  /** Lists of the legend needed before registered battlefields and champions lead the choice (the rating's own bar). */
-  battlefieldLists: 8, championLists: 5,
+  /**
+   * Lists of the legend needed before registered battlefields and champions lead the choice. Battlefields: 4,
+   * with the share shrunk by lists / (lists + battlefieldPrior) - the first version asked for 8 and gave a
+   * legend with 4 public lists three battlefields none of them brings (stage 3 review).
+   */
+  battlefieldLists: 4, battlefieldPrior: 4, championLists: 5,
   /** Ported weights: pair with a build-around card, pair with the champion, own rating. */
   anchorPair: 1.5, championPair: 0.8, rating: 0.25,
   /** A different split is taken only when it raises the mean on-time cast chance by this much. */
   runeGain: 0.02,
+  /** Lists of the legend, and the share of them on one split, before that split may move the computed one by a rune. */
+  runeLists: 8, runeShare: 0.25,
 } as const;
 
 const DOMAIN_LABEL: Record<Domain, string> = { fury: 'Fury', calm: 'Calm', mind: 'Mind', body: 'Body', chaos: 'Chaos', order: 'Order' };
@@ -112,7 +118,7 @@ export function chooseBattlefields(deck: Deck, ctx: EngineContext, anchors: read
       const fit = scorer.score(card, 'battlefields');
       const share = useMeta ? meta.battlefields[card.id]?.share ?? 0 : 0;
       const pairs = anchors.reduce((n, a) => n + netOf(db, card.id, a.id), 0) * ZONES.anchorPair + (champion ? netOf(db, card.id, champion.id) * ZONES.championPair : 0);
-      return { card, fit, share, score: share * 200 + fit.score * 0.5 + pairs + seededBias(opts.seed, `bf:${card.id}`) * 2 };
+      return { card, fit, share, score: share * (meta ? meta.decks / (meta.decks + ZONES.battlefieldPrior) : 0) * 200 + fit.score * 0.5 + pairs + seededBias(opts.seed, `bf:${card.id}`) * 2 };
     })
     .sort((a, b) => b.score - a.score || a.card.id.localeCompare(b.card.id));
   const weight = deck.format === 'standard-bo3' ? 'all three are used across a best-of-three match' : 'one of the three is drawn at random each game, so each is a third of a game';
@@ -167,6 +173,23 @@ export function chooseRunes(deck: Deck, ctx: EngineContext): { runes: Partial<Re
     if (p >= bestP + ZONES.runeGain) { best = split; bestP = p; }
   }
   const demandText = domains.map((d) => `${DOMAIN_LABEL[d]} ${Math.round((demand[d] ?? 0) * 10) / 10}`).join(', ');
+  // Data (stage 3 review): the split most public lists of the legend run, when it is within one rune of the
+  // computed one. Measured on 789 public lists: the formula alone gives a list's own split 47% of the time.
+  const meta = db.legendMeta(legend.id);
+  if (meta && meta.decks >= ZONES.runeLists) {
+    let pick: { na: number; share: number } | null = null;
+    for (const [key, share] of Object.entries(meta.runeSplits)) {
+      const m = new RegExp(`(?:^|-)${a}(\\d+)(?:-|$)`).exec(key);
+      const na = m ? Number(m[1]) : NaN;
+      if (!Number.isFinite(na) || share < ZONES.runeShare || Math.abs(na - (best[a] ?? 0)) > 1) continue;
+      if (!pick || share > pick.share) pick = { na, share };
+    }
+    if (pick && pick.na !== (best[a] ?? 0)) {
+      const split = { [a]: pick.na, [b]: RUNE_DECK_SIZE - pick.na } as Partial<Record<Domain, number>>;
+      return { runes: split, reason: `${text(split)}: the split ${Math.round(pick.share * 100)}% of ${meta.decks} public ${legend.name} lists run (data), one rune from the ${text(best)} the Power demand of this main deck gives (${demandText}).` };
+    }
+    if (pick) return { runes: best, reason: `${text(best)} from the Power demand of the main deck (${demandText}); ${Math.round(pick.share * 100)}% of ${meta.decks} public ${legend.name} lists run the same split (data).` };
+  }
   return {
     runes: best,
     reason: best === base

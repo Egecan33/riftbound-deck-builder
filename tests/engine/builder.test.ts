@@ -4,13 +4,13 @@
 import { describe, expect, it } from 'vitest';
 import {
   CLIMB_STEPS, PROFILES, applySwaps, autoBuild, autoBuildDetailed, buildSideDeck, chooseRunes, fillRest, fillRestDetailed, improveDeck,
-  mulberry32, planSideDeck, rate, seededBias, stableBias, suggestSwaps, suggestedCopies,
+  LEAN, coreCards, mulberry32, planSideDeck, playLean, rate, seededBias, stableBias, suggestSwaps, suggestedCopies,
 } from '@/engine/builder';
 import { copyLimit } from '@/engine/rules/copies';
 import { formatRules } from '@/engine/rules/formats';
 import { cardFitsDeck, isLegal, validateDeck } from '@/engine/rules/validate';
 import { featuresFor } from '@/engine/summary';
-import type { BuildOptions, Card, CardDb, Deck, DeckEntry, EngineContext, Format } from '@/engine/types';
+import type { BuildOptions, Card, CardDb, Deck, DeckEntry, EngineContext, Format, LegendMeta } from '@/engine/types';
 import { hasRealDb } from '../helpers/real-db';
 import { blankDeck, scoredFixture } from './scoring/forge-db';
 
@@ -430,4 +430,106 @@ describe.skipIf(!hasRealDb())('autoBuild on the synced pool (data/forge.db)', ()
     expect(q(times, 1)).toBeLessThan(3000);
     expect(seedSame).toBeLessThan(Math.max(1, seedPairs / 4));
   }, 1_800_000);
+});
+
+// Stage 3 review of the builder: what the legend's public lists say leads the build (lean.ts).
+describe('play data in the builder', () => {
+  const { db, decks } = scoredFixture();
+  const ref = decks[0].deck;
+  const legend = db.get(ref.legend as string) as Card;
+  const withMeta = (meta: LegendMeta): CardDb => ({ ...db, legendMeta: (id: string) => (id === meta.legendId ? meta : db.legendMeta(id)) });
+  const bare = (power: Deck['power'] = 'competitive', format: Format = 'standard-bo3'): Deck => blankDeck({ format, power, legend: legend.id });
+  const stat = (share: number, avgCopies: number, of = 10) => ({ decks: Math.round(share * of), share, avgCopies });
+  const noMeta = withMeta({ legendId: legend.id, decks: 0, quality: 'insufficient', main: {}, side: {}, battlefields: {}, champions: {}, runeSplits: {} });
+  const plain = autoBuildDetailed(bare(), ctxOf(noMeta), opts());
+  // Three cards the build without data does not take: legal, three copies allowed, not champion or signature.
+  const outsiders = db.all()
+    .filter((c) => (c.type === 'unit' || c.type === 'spell') && copyLimit(c) >= 3 && !c.superTypes.includes('champion') && !c.superTypes.includes('signature')
+      && !plain.deck.main.some((e) => e.id === c.id) && cardFitsDeck(c, 'main', plain.deck, db) === null && (c.energy ?? 0) <= 4)
+    .sort((a, b) => featuresFor(db, a).evaluatedRating - featuresFor(db, b).evaluatedRating || a.id.localeCompare(b.id))
+    .slice(0, 3);
+  const meta = (over: Partial<LegendMeta> = {}): LegendMeta => ({
+    legendId: legend.id, decks: 10, quality: 'thin',
+    main: Object.fromEntries([...outsiders.map((c, i) => [c.id, stat(i === 2 ? 0.3 : 0.9, i === 0 ? 3 : 2)] as const)]),
+    side: {}, battlefields: {}, champions: {}, runeSplits: {}, ...over,
+  });
+
+  it('core cards of the legend are in the deck at the copies its lists run, with the data in the reason; casual builds take no core', () => {
+    expect(outsiders).toHaveLength(3);
+    const m = withMeta(meta());
+    expect(coreCards(bare(), m).map((c) => [c.card.id, c.copies])).toEqual([[outsiders[0].id, 3], [outsiders[1].id, 2]]);
+    const built = autoBuildDetailed(bare(), ctxOf(m), opts());
+    expectBuilt(built.deck, m, 'core');
+    expect(built.deck.main.find((e) => e.id === outsiders[0].id)?.qty).toBe(3);
+    expect(built.deck.main.find((e) => e.id === outsiders[1].id)?.qty).toBeGreaterThanOrEqual(2);
+    const pick = built.picks.find((p) => p.id === outsiders[0].id)!;
+    expect(pick.phase).toBe('core');
+    expect(pick.reason).toMatch(/Core card of .*: 9 of 10 public lists run it \(90%\), at 3 copies \(data\)/);
+    // The hill-climb does not cut a core card.
+    expect(built.climb.some((sw) => sw.out === outsiders[0].id || sw.out === outsiders[1].id)).toBe(false);
+    expect(coreCards(bare('casual'), m)).toEqual([]);
+    // Under LEAN.minLists lists there is no core.
+    expect(coreCards(bare(), withMeta(meta({ decks: LEAN.minLists - 1 })))).toEqual([]);
+  });
+
+  it('playLean: a card the lists run gains, a card none runs loses, and the sentence gives the numbers', () => {
+    const m = withMeta(meta());
+    const run = playLean(outsiders[0], bare(), m);
+    const absent = plain.deck.main.map((e) => db.get(e.id) as Card).find((c) => c.id !== plain.deck.champion && !outsiders.some((o) => o.id === c.id))!;
+    const none = playLean(absent, bare(), m);
+    expect(run.value).toBeGreaterThan(0);
+    expect(run.text).toMatch(/90% of 10 public .* lists run it/);
+    expect(none.value).toBeLessThan(0);
+    expect(none.text).toMatch(/none of 10 public .* lists runs it/);
+    expect(playLean(outsiders[0], bare('casual'), m)).toEqual({ value: 0, text: null });
+    expect(playLean(outsiders[0], bare(), noMeta).value).toBe(0);
+  });
+
+  it('the rune split moves one rune to the split most lists run, never two, and says so', () => {
+    const deck = plain.deck;
+    const base = chooseRunes(deck, ctxOf(noMeta));
+    const [a, b] = Object.keys(base.runes) as (keyof typeof base.runes)[];
+    const na = base.runes[a] as number;
+    const near = na + 1 <= 9 ? na + 1 : na - 1;
+    const keyOf = (x: number): string => (x >= 12 - x ? `${a}${x}-${b}${12 - x}` : `${b}${12 - x}-${a}${x}`);
+    const moved = chooseRunes(deck, ctxOf(withMeta(meta({ runeSplits: { [keyOf(near)]: 0.8, [keyOf(na)]: 0.2 } }))));
+    expect(moved.runes[a]).toBe(near);
+    expect((moved.runes[a] as number) + (moved.runes[b] as number)).toBe(12);
+    expect(moved.reason).toMatch(/the split 80% of 10 public .* lists run \(data\), one rune from/);
+    const far = na + 2 <= 9 ? na + 2 : na - 2;
+    expect(chooseRunes(deck, ctxOf(withMeta(meta({ runeSplits: { [keyOf(far)]: 1 } })))).runes).toEqual(base.runes);
+    const same = chooseRunes(deck, ctxOf(withMeta(meta({ runeSplits: { [keyOf(na)]: 0.7, [keyOf(near)]: 0.3 } }))));
+    expect(same.runes).toEqual(base.runes);
+    expect(same.reason).toMatch(/70% of 10 public .* lists run the same split \(data\)/);
+  });
+
+  it('the side deck takes what the legend\'s lists side, at their copies; battlefields follow four lists', () => {
+    const noSide = planSideDeck({ ...plain.deck, side: [] }, ctxOf(noMeta), opts());
+    const sidedCard = db.all().find((c) => (c.type === 'unit' || c.type === 'spell' || c.type === 'gear') && copyLimit(c) >= 3 && !c.superTypes.includes('signature')
+      && !plain.deck.main.some((e) => e.id === c.id) && !noSide.entries.some((e) => e.id === c.id) && cardFitsDeck(c, 'side', plain.deck, db) === null)!;
+    const field = db.all().filter((c) => c.type === 'battlefield' && !plain.deck.battlefields.includes(c.id) && cardFitsDeck(c, 'battlefields', { ...plain.deck, battlefields: [] }, db) === null)[0];
+    const sideMeta = withMeta(meta({ decks: 5, side: { [sidedCard.id]: stat(1, 2, 5) } }));
+    const plan = planSideDeck({ ...plain.deck, side: [] }, ctxOf(sideMeta), opts());
+    expect(plan.entries.find((e) => e.id === sidedCard.id)?.qty).toBe(2);
+    expect(plan.picks.find((p) => p.id === sidedCard.id)?.reason).toMatch(/5 of 5 public .* lists side it \(data\)/);
+    const m = withMeta(meta({ decks: 4, battlefields: { [field.id]: stat(1, 1, 4) } }));
+    const built = autoBuildDetailed(bare(), ctxOf(m), opts());
+    expect(built.deck.battlefields).toContain(field.id);
+    expect(built.picks.find((p) => p.id === field.id)?.reason).toMatch(/Brought by 4 of 4 public/);
+  });
+
+  it('improveDeck: the card coming in is the better card for the deck, and its named partner is in the deck', () => {
+    const m = withMeta(meta());
+    const junk = outsiders[2];
+    const victim = ref.main.find((e) => e.id !== ref.champion && e.qty >= 2)!;
+    const bad: Deck = { ...ref, main: [...ref.main.map((e) => (e.id === victim.id ? { ...e, qty: e.qty - 2 } : e)).filter((e) => e.qty > 0), { id: junk.id, qty: 2, locked: false }] };
+    const swaps = improveDeck(bad, ctxOf(m), opts());
+    let cur = bad;
+    for (const sw of swaps) {
+      expect(sw.ratingAfter).toBeGreaterThan(sw.ratingBefore);
+      cur = applySwaps(cur, [sw]);
+      const named = /works with ([^:]+):/.exec(sw.reason)?.[1];
+      if (named) expect([legend.name, ...cur.main.map((e) => db.get(e.id)?.name), ...cur.battlefields.map((id) => db.get(id)?.name)], sw.reason).toContain(named);
+    }
+  });
 });

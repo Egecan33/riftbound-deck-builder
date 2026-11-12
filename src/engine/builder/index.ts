@@ -24,6 +24,7 @@ import { chooseBattlefields, chooseChampion, chooseLegend, chooseRunes } from '.
 
 export * from './rng';
 export * from './profiles';
+export { LEAN, coreCards, playLean, type Lean } from './lean';
 export { BUILD, anchorCopies, legendAffinity, staticUtility, suggestedCopies } from './fill';
 export { ZONES, chooseBattlefields, chooseChampion, chooseLegend, chooseRunes } from './zones';
 export { SIDE, buildSideDeck, planSideDeck, type SideJob, type SidePlan } from './side';
@@ -36,7 +37,7 @@ export const CLIMB_STEPS = 6;
 export const CLIMB_GUIDED = 6;
 
 /** Picks the climb may not cut: the plan's key cards (spec 13.3) - the champion, signature cards, build-around cards and their package partners. */
-const KEY_PHASES: readonly string[] = ['champion', 'identity', 'package', 'build-around'];
+const KEY_PHASES: readonly string[] = ['champion', 'identity', 'package', 'build-around', 'core'];
 
 export interface BuildResult {
   deck: Deck;

@@ -16,10 +16,11 @@ import type { BuildOptions, Card, CardDb, CardScore, Deck, EngineContext, Fix, S
 import { seededBias } from './rng';
 import { legalPool, nameOf, qtyIn, rate, roomFor, signatureRoom, withCopies } from './state';
 import { isSignature } from '../rules/champion';
+import { playLean } from './lean';
 import { chooseRunes } from './zones';
 
 /** HEURISTIC limits of the search. */
-export const SWAPS = { maxImprove: 15, outsPerStep: 3, insPerOut: 2, failuresToStop: 2, minGain: 0.1, guidedRates: 12, guidedSubscores: 4 } as const;
+export const SWAPS = { maxImprove: 15, outsPerStep: 3, insPerOut: 2, failuresToStop: 2, minGain: 0.1, guidedRates: 12, guidedSubscores: 4, weakScore: 35, insPerWeakOut: 8 } as const;
 
 /** Violations that name a card to cut from the main or side deck. */
 const CUT_CODES: readonly string[] = ['CARD_BANNED', 'CARD_NOT_IN_FORMAT', 'DOMAIN_VIOLATION', 'SIGNATURE_WRONG_CHAMPION', 'SIGNATURE_TOTAL_EXCEEDED', 'COPY_LIMIT_EXCEEDED', 'UNIQUE_LIMIT_EXCEEDED', 'TOKEN_IN_DECK', 'MAIN_WRONG_TYPE', 'SIDEBOARD_WRONG_TYPE', 'RUNE_WRONG_TYPE'];
@@ -48,7 +49,7 @@ function searchOf(deck: Deck, ctx: EngineContext, opts: BuildOptions): Search {
 }
 
 /** Best cards for the slot a removed copy leaves, by card score in the deck without that copy. */
-function bestIns(without: Deck, zone: 'main' | 'side', out: string, s: Search, n: number, only?: (card: Card) => boolean): { card: Card; score: CardScore }[] {
+function bestIns(without: Deck, zone: 'main' | 'side', out: string, s: Search, n: number, only?: (card: Card) => boolean): { card: Card; score: CardScore; u: number }[] {
   const db = s.ctx.db;
   const scorer = createScorer(without, s.ctx);
   const ranked: { card: Card; score: CardScore; u: number }[] = [];
@@ -57,31 +58,39 @@ function bestIns(without: Deck, zone: 'main' | 'side', out: string, s: Search, n
     if (isSignature(card) && (zone === 'side' || signatureRoom(without, db) <= 0)) continue;
     const score = scorer.score(card, zone);
     if (score.gate) continue;
-    ranked.push({ card, score, u: score.score + (seededBias(s.opts.seed, `swap:${card.id}`) - 0.5) });
+    ranked.push({ card, score, u: score.score + (zone === 'main' ? playLean(card, without, db).value : 0) + (seededBias(s.opts.seed, `swap:${card.id}`) - 0.5) });
   }
   return ranked.sort((a, b) => b.u - a.u || a.card.id.localeCompare(b.card.id)).slice(0, n);
 }
 
-/** Main-deck copies that may be cut, weakest first (ported replacement-slot order: lowest card score, duplicated cards first on ties, then the more expensive). */
-function weakestOuts(deck: Deck, scorer: Scorer, s: Search): { card: Card; score: CardScore }[] {
+/**
+ * Main-deck copies that may be cut, weakest first (ported replacement-slot order: lowest value, duplicated cards
+ * first on ties, then the more expensive). The value `u` is the card score plus what the play data says
+ * (lean.ts), so a card most lists of the legend run is not offered as a cut before a card none runs.
+ */
+function weakestOuts(deck: Deck, scorer: Scorer, s: Search): { card: Card; score: CardScore; u: number }[] {
   const db = s.ctx.db;
   const locked = lockedIds(deck, 'main');
-  const out: { card: Card; score: CardScore; qty: number }[] = [];
+  const out: { card: Card; score: CardScore; qty: number; u: number }[] = [];
   for (const e of deck.main) {
     const card = db.get(e.id);
     if (!card || qtyOf(e) <= 0 || locked.has(e.id) || s.protect.has(e.id)) continue;
     if (e.id === deck.champion && qtyOf(e) <= 1) continue;
-    out.push({ card, score: scorer.score(card, 'main'), qty: qtyOf(e) });
+    const score = scorer.score(card, 'main');
+    out.push({ card, score, qty: qtyOf(e), u: score.score + playLean(card, deck, db).value });
   }
-  return out.sort((a, b) => a.score.score - b.score.score || b.qty - a.qty || (b.card.energy ?? -1) - (a.card.energy ?? -1) || a.card.id.localeCompare(b.card.id));
+  return out.sort((a, b) => a.u - b.u || b.qty - a.qty || (b.card.energy ?? -1) - (a.card.energy ?? -1) || a.card.id.localeCompare(b.card.id));
 }
 
 const firstReason = (score: CardScore): string => (score.reasons[0] ?? '').replace(/\.$/, '');
 
-function reasonOf(db: CardDb, out: Card, outScore: CardScore | null, inn: Card, inScore: CardScore, why: string | null): string {
-  const partner = inScore.partners[0];
-  const cut = why ?? `${out.name} is the weakest copy here (card score ${outScore?.score ?? 0}${outScore && firstReason(outScore) ? `: ${firstReason(outScore)}` : ''})`;
-  return `${cut}. ${inn.name} is the best card for the slot (card score ${inScore.score}${partner ? `; works with ${nameOf(db, partner.id)}: ${partner.reason}` : firstReason(inScore) ? `: ${firstReason(inScore)}` : ''}).`;
+function reasonOf(db: CardDb, deck: Deck, out: Card, outScore: CardScore | null, inn: Card, inScore: CardScore, why: string | null): string {
+  // A partner is named only if it is in the deck the swap leaves (the replacement was ranked without the weak copies).
+  const partner = inScore.partners.find((p) => p.id === deck.legend || p.id === deck.champion || deck.battlefields.includes(p.id) || qtyIn(deck.main, p.id) > 0);
+  const outLean = playLean(out, deck, db).text;
+  const inLean = playLean(inn, deck, db).text;
+  const cut = why ?? `${out.name} is the weakest copy here (card score ${outScore?.score ?? 0}${outScore && firstReason(outScore) ? `: ${firstReason(outScore)}` : ''}${outLean ? `; ${outLean}` : ''})`;
+  return `${cut}. ${inn.name} is the best card for the slot (card score ${inScore.score}${partner ? `; works with ${nameOf(db, partner.id)}: ${partner.reason}` : firstReason(inScore) ? `: ${firstReason(inScore)}` : ''}${inLean ? `; ${inLean}` : ''}).`;
 }
 
 /** Rune split redone after a main-deck change, only if the deck already had a full rune deck chosen by the builder. */
@@ -137,7 +146,7 @@ export function climbSwaps(deck: Deck, ctx: EngineContext, opts: BuildOptions, c
     if (!pick || !card) break;
     const next = resplit(withCopies(without, bad.zone, pick.card.id, 1), ctx, !keepRunes);
     const nextRated = rate(next, ctx);
-    out.push({ zone: bad.zone, out: bad.id, in: pick.card.id, reason: reasonOf(db, card, null, pick.card, pick.score, `${card.name} cannot stay: ${bad.violation.message}`), ratingBefore: rated.precise, ratingAfter: nextRated.precise });
+    out.push({ zone: bad.zone, out: bad.id, in: pick.card.id, reason: reasonOf(db, next, card, null, pick.card, pick.score, `${card.name} cannot stay: ${bad.violation.message}`), ratingBefore: rated.precise, ratingAfter: nextRated.precise });
     cur = next;
     rated = nextRated;
   }
@@ -147,17 +156,28 @@ export function climbSwaps(deck: Deck, ctx: EngineContext, opts: BuildOptions, c
   const tried = new Set<string>();
   while (out.length < limit && failures < cfg.failuresToStop) {
     const scorer = createScorer(cur, ctx);
-    const outs = weakestOuts(cur, scorer, s).filter((o) => !tried.has(o.card.id)).slice(0, cfg.outsPerStep);
+    const allOuts = weakestOuts(cur, scorer, s);
+    const outs = allOuts.filter((o) => !tried.has(o.card.id)).slice(0, cfg.outsPerStep);
     if (outs.length === 0) break;
     let best: { next: Deck; rated: ReturnType<typeof rate>; proposal: SwapProposal } | null = null;
+    // Cards the search is about to cut must not choose what comes in. Without this a junk card recruits its
+    // own partners ("Dredge Up works with Endless Riches"), the pair then holds each other in, and the search
+    // stops with the junk still in the deck. Replacements are ranked in the deck without the clearly weak copies.
+    // Every clearly weak copy counts, not only the ones tried in this step: the first version let a weak card that
+    // was fourth in line ("Blast Cone") be named as the partner of the card brought in for the first.
+    const doomed = allOuts.filter((o) => o.u < SWAPS.weakScore);
+    const basisOf = (without: Deck): Deck => (doomed.length === 0 ? without : { ...without, main: without.main.filter((e) => !doomed.some((d) => d.card.id === e.id)) });
     for (const o of outs) {
       const without = withoutCopy(cur, o.card.id);
-      for (const pick of bestIns(without, 'main', o.card.id, s, cfg.insPerOut)) {
+      const weak = o.u < SWAPS.weakScore;
+      for (const pick of bestIns(basisOf(without), 'main', o.card.id, s, weak ? SWAPS.insPerWeakOut : cfg.insPerOut)) {
+        if (roomFor(pick.card, without, s.opts) <= 0 || (isSignature(pick.card) && signatureRoom(without, db) <= 0)) continue;
+        if (pick.u <= o.u) continue; // the card coming in must be the better card for this deck, not only raise the total
         const next = resplit(withCopies(without, 'main', pick.card.id, 1), ctx, !keepRunes);
         const nextRated = rate(next, ctx);
         if (nextRated.precise < rated.precise + SWAPS.minGain) continue;
         if (!best || nextRated.precise > best.rated.precise) {
-          best = { next, rated: nextRated, proposal: { zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, o.card, o.score, pick.card, pick.score, null), ratingBefore: rated.precise, ratingAfter: nextRated.precise } };
+          best = { next, rated: nextRated, proposal: { zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, next, o.card, o.score, pick.card, pick.score, null), ratingBefore: rated.precise, ratingAfter: nextRated.precise } };
         }
       }
       if (best) break; // the weakest copy that can be improved is taken first
@@ -191,11 +211,12 @@ export function climbSwaps(deck: Deck, ctx: EngineContext, opts: BuildOptions, c
           const without = withoutCopy(cur, o.card.id);
           const pick = bestIns(without, 'main', o.card.id, s, 1, match)[0];
           if (!pick) break;
+          if (pick.u <= o.u) continue;
           budget -= 1;
           const next = resplit(withCopies(without, 'main', pick.card.id, 1), ctx, !keepRunes);
           const nextRated = rate(next, ctx);
           if (nextRated.precise < rated.precise + SWAPS.minGain) continue;
-          out.push({ zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, o.card, o.score, pick.card, pick.score, `${sub.label}: ${fix.text.replace(/\.$/, '')}; ${o.card.name} is the weakest copy that does not help with it (card score ${o.score.score})`), ratingBefore: rated.precise, ratingAfter: nextRated.precise });
+          out.push({ zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, next, o.card, o.score, pick.card, pick.score, `${sub.label}: ${fix.text.replace(/\.$/, '')}; ${o.card.name} is the weakest copy that does not help with it (card score ${o.score.score})`), ratingBefore: rated.precise, ratingAfter: nextRated.precise });
           cur = next;
           rated = nextRated;
           accepted = true;
@@ -238,20 +259,22 @@ export function suggestSwaps(deck: Deck, ctx: EngineContext, opts: BuildOptions,
     const pick = bestIns(without, bad.zone, bad.id, s, 1)[0];
     const card = db.get(bad.id);
     if (!pick || !card) continue;
-    const after = rate(withCopies(without, bad.zone, pick.card.id, 1), ctx);
-    repairs.push({ zone: bad.zone, out: bad.id, in: pick.card.id, reason: reasonOf(db, card, null, pick.card, pick.score, `${card.name} cannot stay: ${v.message}`), ratingBefore: rated.precise, ratingAfter: after.precise });
+    const fixed = withCopies(without, bad.zone, pick.card.id, 1);
+    const after = rate(fixed, ctx);
+    repairs.push({ zone: bad.zone, out: bad.id, in: pick.card.id, reason: reasonOf(db, fixed, card, null, pick.card, pick.score, `${card.name} cannot stay: ${v.message}`), ratingBefore: rated.precise, ratingAfter: after.precise });
   }
   const scorer = createScorer(deck, ctx);
   const gains: SwapProposal[] = [];
   const usedIn = new Set<string>();
   for (const o of weakestOuts(deck, scorer, s).filter((x) => !seen.has(x.card.id)).slice(0, want * 2)) {
     const without = withoutCopy(deck, o.card.id);
-    const pick = bestIns(without, 'main', o.card.id, s, 3).find((p) => !usedIn.has(p.card.id));
+    const pick = bestIns(without, 'main', o.card.id, s, 3).find((p) => !usedIn.has(p.card.id) && p.u > o.u);
     if (!pick) continue;
-    const after = rate(withCopies(without, 'main', pick.card.id, 1), ctx);
+    const swapped = withCopies(without, 'main', pick.card.id, 1);
+    const after = rate(swapped, ctx);
     if (after.precise <= rated.precise) continue;
     usedIn.add(pick.card.id);
-    gains.push({ zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, o.card, o.score, pick.card, pick.score, null), ratingBefore: rated.precise, ratingAfter: after.precise });
+    gains.push({ zone: 'main', out: o.card.id, in: pick.card.id, reason: reasonOf(db, swapped, o.card, o.score, pick.card, pick.score, null), ratingBefore: rated.precise, ratingAfter: after.precise });
   }
   gains.sort((a, b) => (b.ratingAfter - b.ratingBefore) - (a.ratingAfter - a.ratingBefore) || a.out.localeCompare(b.out));
   return [...repairs, ...gains].slice(0, want);
