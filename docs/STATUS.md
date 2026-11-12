@@ -15,7 +15,7 @@ Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed
 - Power target casual / focused / competitive replaces brackets; say plainly what is heuristic.
 - Scraping community sites (Piltover Archive and similar) is allowed and stays in the repo as a normal sync step.
 - Research files are pushed as written (local paths not scrubbed). Raw downloads stay local (`docs/research/**/raw/` is gitignored).
-- GitHub repo is `Egecan33/riftbound-deck-builder` (renamed 2026-11-12 for discoverability; product name Riftbound Forge, local folder still `riftbound-forge`). Ship downloadable executables for macOS and Windows (plan Task 13).
+- GitHub repo is `Egecan33/riftbound-deck-builder` (renamed 2026-11-12 for discoverability; product name Riftbound Forge, local folder still `riftbound-forge`). Ship downloads for macOS and Windows packaged exactly like Commander Forge: portable zips with bundled Node and a double-click starter, GitHub Release, full README (plan Task 13).
 - Reuse the owner's Riftfoundry code (`decksofriftbound`): its card mine and knowledge network in `scoring.ts`, theory-deck generator and more (spec section 8.4). Look there first, port with tests, extend.
 - Understanding and evaluating cards correctly is the priority.
 - Keep token use modest, the way Commander Forge was built: small staged workflows, no extra research rounds.

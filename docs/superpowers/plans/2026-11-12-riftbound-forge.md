@@ -371,17 +371,17 @@ Routes (JSON): `GET /api/status`; `POST/GET /api/sync`; `GET /api/legends`; `GET
 - [ ] Whole-branch review against the spec's goals and anti-goals by driving the real UI and reading screenshots; fix findings; `pnpm typecheck && pnpm test && pnpm e2e`.
 - [ ] `README.md`: real getting-started, screenshots, roadmap ticked. `docs/STATUS.md` final.
 
-### Task 13: Desktop downloads for macOS and Windows
+### Task 13: Downloads for macOS and Windows, packaged exactly like Commander Forge
 
-Owner, 2026-11-12: the app must be downloadable and usable directly, with executables for Mac and Windows. The GitHub repository is `Egecan33/riftbound-deck-builder` (renamed from `riftbound-forge` for discoverability; the product name stays Riftbound Forge and the local folder name is unchanged).
+Owner, 2026-11-12: "package both like the Magic one and put them on GitHub, with everything." The GitHub repository is `Egecan33/riftbound-deck-builder` (product name Riftbound Forge; local folder `riftbound-forge`). This replaces the earlier Electron idea.
 
-**Files:** `desktop/` (Electron main process), `electron-builder.yml`, `.github/workflows/release.yml`, `package.json` scripts, `README.md`.
+Port Commander Forge's release setup (`~/github_repositories/commander-forge`: `packaging/` with `assemble.mjs`, `build-sync.mjs`, `launcher.mjs`, the `.command` and `.bat` starters, `READ ME FIRST.txt`, `RELEASE_NOTES.md`; `.github/workflows/release.yml`; `package.json` scripts `build:sync` and `package`; `next.config.ts` standalone output; its commits `275a85b` and `e35f899`). Same shape: a portable zip per platform holding the Next standalone server, the bundled sync script, the official Node.js binary and a double-click starter. No card data or images in the bundle; first start syncs them.
 
-- [ ] Next.js `output: 'standalone'`. An Electron main process starts the standalone server on a free localhost port and opens a window on it; quits the server on exit. The data directory moves to the per-user app data folder when packaged (`app.getPath('userData')`), and stays `./data` when run from source; one function decides this and everything reads it.
-- [ ] `better-sqlite3` rebuilt for Electron on each platform (`electron-builder install-app-deps`).
-- [ ] The packaged app ships code and `sync-data/` only. No card data, no images. First start opens the Data page, which runs the sync with progress.
-- [ ] `electron-builder`: macOS `dmg` (universal or arm64 + x64) and Windows `nsis` installer plus a portable `exe`.
-- [ ] `.github/workflows/release.yml`: on a `v*` tag, build on `macos-latest` and `windows-latest`, run `pnpm typecheck && pnpm test`, and attach the artifacts to a GitHub Release.
-- [ ] The builds are unsigned (no Apple Developer ID or Windows certificate). README states this and gives the one-time steps to open an unsigned app on each system. Do not claim otherwise.
-- [ ] Verify on this Mac: build the dmg locally, install, start, sync, auto-build a deck. The Windows build is verified by the CI job succeeding and its artifact existing; say plainly that it was not run on a Windows machine.
-- [ ] Tag `v0.1.0`, confirm the Release has both platforms' files, update README download links and screenshots. Commit.
+**Files:** `packaging/*`, `.github/workflows/release.yml`, `package.json`, `next.config.ts`, `README.md`, `docs/screenshots/*`.
+
+- [ ] Port and adapt names, port 3220, data directory handling and the sync steps of this app (`cards errata legality images meta features`; `sync-data/` ships in the bundle).
+- [ ] Build and assemble the macOS bundle on this Mac. Unzip it into a fresh folder, start it with the starter, run the first sync from the Data page, auto-build a deck, quit. Fix what breaks.
+- [ ] `release.yml` on a `v*` tag: macOS arm64, macOS x64 and Windows x64 bundles, tests first, artifacts attached to a GitHub Release. Runner images as in Commander Forge's current workflow.
+- [ ] README like Commander Forge's: download and downloads badges, test-count badge, hero screenshot, feature list, screenshot table, download and first-run instructions per system including the unsigned-app steps, run-from-source, how it works, data sources and legal note. State plainly what is heuristic. Roadmap ticked.
+- [ ] Tag `v0.1.0`, push, wait for the workflow, confirm the Release holds all three zips, download the macOS one and start it once more. The Windows bundle is verified by its CI job and artifact only; say so.
+- [ ] `docs/STATUS.md` final. Commit.
