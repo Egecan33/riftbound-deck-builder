@@ -65,6 +65,21 @@ export const RATING = {
   enginePoints: 12, offChampion: 0.6,
   sideFullShare: 0.5, bfNoData: 0.7, bfMinLists: 8,
   powerMean: { competitive: 68, focused: 62, casual: 0 } as Record<string, number>,
+  /**
+   * Answers (calibration 2026-11-12, plan Task 12). The weighted sub-scores let a deck with no removal or no
+   * interaction at all keep a tournament-level rating (40 tournament lists 80 mean; the same lists with every
+   * interaction card swapped for good units 67, the best of them 84). Measured on 789 public Standard lists:
+   * interaction copies (removal, sweeper, counter, combat trick, disruption) p1 3, p2 4, p5 5, median 14;
+   * removal and sweeper copies 0 in 4% of lists (11 of 295 tournament lists); chance of an interaction card by
+   * turn 3 p2 0.56, p10 0.83, median 0.97. HEURISTIC scales on top of those measured floors:
+   * - `answersFloor` interaction copies (p5) or more cost nothing; under it the whole rating is scaled down
+   *   linearly to `answersMaxLoss` at 0 (like dead cards: a deck that cannot answer anything is not 13% worse).
+   * - no removal or sweeper at all scales the rating by 1 - `noRemovalLoss`.
+   * - the interaction term of Consistency runs from `ixLo` (0) to `ixHi` (full) instead of linearly from 0.
+   * - a short core role's hole is at most count / band floor, so 0 removal is a full hole, not a third of one.
+   * Applied once the main deck is full (MAIN_MIN cards): an unfinished deck is not judged on what it lacks yet.
+   */
+  answersFloor: 5, answersMaxLoss: 0.25, noRemovalLoss: 0.08, ixLo: 0.5, ixHi: 0.9,
 } as const;
 
 const DOMAIN_LABEL: Record<Domain, string> = { fury: 'Fury', calm: 'Calm', mind: 'Mind', body: 'Body', chaos: 'Chaos', order: 'Order' };
@@ -156,8 +171,13 @@ function synergyScore(w: Work, theme: Record<string, number>): SubScore {
     const t = w.summary.axisTotals[top[0]] ?? { e: 0, p: 0 };
     const lo = Math.min(t.e, t.p);
     const hi = Math.max(t.e, t.p);
+    // A theme with no card at all on either side is a theme the deck does not play, not a lopsided one (the Task 12
+    // calibration print told a Kha'Zix build "Buffs is lopsided: 0 enabler and 0 payoff copies. Add payoffs").
+    // The score is unchanged (0 balance); only the words are.
     balance = hi === 0 ? 0 : lo >= RATING.balanceFull * w.targets.scale ? 1 : lo / hi;
-    if (balance < 0.5) {
+    if (hi === 0) {
+      fixes.push({ weight: 1, fix: { text: `No card here plays ${axisLabel(top[0])}, the theme ${w.legend?.name ?? 'the legend'} leans on most; the deck builds around something else.`, filter: { axis: top[0] } } });
+    } else if (balance < 0.5) {
       const side = t.e < t.p ? 'enablers' : 'payoffs';
       fixes.push({ weight: 4, fix: { text: `The deck's top theme, ${axisLabel(top[0])}, is lopsided: ${Math.round(t.e)} enabler and ${Math.round(t.p)} payoff copies. Add ${side}.`, filter: { axis: top[0] } } });
     }
@@ -233,6 +253,28 @@ export function deadCards(w: Pick<Work, 'deck' | 'main'>): { copies: number; nam
     out.copies += h.qty;
     out.names.push(h.card.name);
     for (const d of payingDomains(h.card)) if (!out.domains.includes(d)) out.domains.push(d);
+  }
+  return out;
+}
+
+/**
+ * How much the deck can answer: interaction copies and removal (plus sweeper) copies, and the factor that scales
+ * the whole rating when they are under the measured floors of public lists (see RATING answers*). HEURISTIC scale.
+ */
+export function answersOf(w: Pick<Work, 'deck' | 'db' | 'summary'>): { interaction: number; removal: number; factor: number; interactionFix: Fix | null; removalFix: Fix | null } {
+  const interaction = derivedCounts(w.deck, w.db).interaction;
+  const removal = w.summary.roleCounts.removal + w.summary.roleCounts.sweeper;
+  const out = { interaction, removal, factor: 1, interactionFix: null as Fix | null, removalFix: null as Fix | null };
+  if (w.summary.mainCount < MAIN_MIN) return out;
+  const floor = RATING.answersFloor;
+  if (interaction < floor) {
+    const loss = RATING.answersMaxLoss * (1 - interaction / floor);
+    out.factor *= 1 - loss;
+    out.interactionFix = { text: `Only ${interaction} interaction ${interaction === 1 ? 'card' : 'cards'} (removal, sweepers, counters, combat tricks, disruption); 95% of public lists run ${RATING.answersFloor} or more (median 14). A deck that cannot answer the opponent's board scales the whole rating by ${(1 - loss).toFixed(2)} (heuristic).`, filter: { role: 'removal' } };
+  }
+  if (removal === 0) {
+    out.factor *= 1 - RATING.noRemovalLoss;
+    out.removalFix = { text: `No removal or sweeper: nothing here kills or bounces an enemy unit, which 96% of public lists can do. That scales the whole rating by ${(1 - RATING.noRemovalLoss).toFixed(2)} (heuristic).`, filter: { role: 'removal' } };
   }
   return out;
 }
@@ -330,12 +372,16 @@ function rolesScore(w: Work): SubScore {
     weights += part.weight;
     const fix = bandFix(w, part.key, part.label, count, part.role ? { role: part.role } : null);
     if (fix) fixes.push({ ...fix, weight: part.weight * (isShort ? RATING.shortFirst : 1) });
-    if (isShort && part.weight >= 3 && score < RATING.coreHole && (!hole || score < hole.score)) hole = { score, fix: fix?.fix ?? null };
+    // The hole is at most count / band floor: 0 removal against a floor of 3 is a full hole (bandScore alone gave
+    // it 0.33 through the tolerance and kept 83% of the Roles score; calibration 2026-11-12).
+    const holeScore = isShort ? Math.min(score, count / Math.max(1, w.targets.scaled[part.key].lo)) : score;
+    if (isShort && part.weight >= 3 && holeScore < RATING.coreHole && (!hole || holeScore < hole.score)) hole = { score: holeScore, fix: fix?.fix ?? null };
   }
   const scale = hole ? 1 - RATING.coreHole + hole.score : 1;
   if (hole?.fix) hole.fix.text += ` A core role this far under its band scales the whole Roles score by ${scale.toFixed(2)} (heuristic).`;
   fixes.sort((a, b) => (1 - b.score) * b.weight - (1 - a.score) * a.weight);
-  return sub('roles', 'Roles', (total / weights) * scale, fixes.map((f) => f.fix), false);
+  const removalFix = answersOf(w).removalFix;
+  return sub('roles', 'Roles', (total / weights) * scale, [...(removalFix ? [removalFix] : []), ...fixes.map((f) => f.fix)], false);
 }
 
 function winScore(w: Work, win: WinReport | undefined): SubScore {
@@ -385,7 +431,10 @@ function consistencyScore(w: Work): SubScore {
   }
   if (over > 0) fixes.push({ score: sizeFit, fix: { text: `${w.summary.mainCount} main-deck cards: each card over ${MAIN_MIN} makes every key card rarer (a 3-of is in the opening hand ${pct(seenByTurn(3, 0, library))} of the time here).`, filter: null } });
   fixes.sort((a, b) => a.score - b.score);
-  return sub('consistency', 'Consistency', 0.35 * pOpen + 0.25 * pIx + 0.25 * redundancy + 0.15 * sizeFit, fixes.map((f) => f.fix), false);
+  const ixFix = answersOf(w).interactionFix;
+  if (ixFix) { const i = fixes.findIndex((f) => /interaction cards: at least one by turn 3/.test(f.fix.text)); if (i >= 0) fixes.splice(i, 1); }
+  const ixValue = clamp01((pIx - RATING.ixLo) / (RATING.ixHi - RATING.ixLo));
+  return sub('consistency', 'Consistency', 0.35 * pOpen + 0.25 * ixValue + 0.25 * redundancy + 0.15 * sizeFit, [...(ixFix ? [ixFix] : []), ...fixes.map((f) => f.fix)], false);
 }
 
 function extrasScore(w: Work): SubScore {
@@ -477,7 +526,9 @@ export function rateDeck(deck: Deck, ctx: EngineContext, extras: { win?: WinRepo
   // Cards the rune deck can never pay for are dead cards: no weighted sub-score can say that loudly enough
   // (a 12/0 split of a two-domain tournament list lost 6 points in the stage 3 review), so they scale the total.
   const deadShare = summary.mainCount > 0 ? deadCards(w).copies / summary.mainCount : 0;
-  const raw = Math.round((subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100) * (1 - RATING.deadCardScale * Math.min(1, deadShare)));
+  // Same for a deck with (almost) no answers: see RATING answers* (calibration 2026-11-12).
+  const answers = answersOf(w).factor;
+  const raw = Math.round((subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100) * (1 - RATING.deadCardScale * Math.min(1, deadShare)) * answers);
   const rating = Math.max(0, Math.min(100, broken ? Math.min(ILLEGAL_CAP, raw) : raw));
   return { rating: Number.isFinite(rating) ? rating : 0, legal, complete, subscores, violations };
 }

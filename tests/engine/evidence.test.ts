@@ -190,6 +190,36 @@ describe('evidence blend', () => {
     const legend = computeFeatures(kaisa, undefined, undefined, { evidence: evidence({ share: 1 }) });
     expect(legend.evaluatedRating).toBe(legend.baseRating);
   });
+
+  it('signature card judged by its own legend only: the evidence pulls harder (calibration 2026-11-12)', () => {
+    // Lilting Lullaby as synced: mechanical 78, 1 of 19 of its legend's lists, nEff 9.7. Was 73 with the plain blend.
+    const lullaby = evidence({ share: 0.11, lists: 1, eligibleLists: 19, eligibleLegends: 1, nEff: 9.7, peak: { legend: 'x', share: 0.087, lists: 1, of: 19 } });
+    expect(evaluate(78, lullaby).evaluatedRating).toBe(73);
+    const sig = evaluate(78, lullaby, undefined, { signature: true });
+    expect(sig.evaluatedRating).toBeLessThanOrEqual(55);
+    expect(sig.reason).toMatch(/Signature card: only its legend can run it/);
+    // A signature its legend always runs rises more than with the plain blend.
+    const always = evidence({ share: 1, lists: 14, eligibleLists: 14, eligibleLegends: 1, nEff: 12 });
+    expect(evaluate(70, always, undefined, { signature: true }).evaluatedRating).toBeGreaterThan(evaluate(70, always).evaluatedRating);
+    expect(evaluate(70, always, undefined, { signature: true }).evaluatedRating).toBeGreaterThanOrEqual(82);
+    // Not applied to a non-signature card, nor to a signature whose evidence spans several legends.
+    expect(evaluate(78, lullaby, undefined, { signature: false }).evaluatedRating).toBe(73);
+    expect(evaluate(78, { ...lullaby, eligibleLegends: 2 }, undefined, { signature: true }).evaluatedRating).toBe(73);
+    // Monotonic in share, bounded, and the card text still counts (weight below maxWeight).
+    let last = -1;
+    for (let s = 0; s <= 100; s += 5) {
+      const r = evaluate(60, evidence({ share: s / 100, eligibleLegends: 1, nEff: 20 }), undefined, { signature: true }).evaluatedRating;
+      expect(r).toBeGreaterThanOrEqual(last);
+      expect(r).toBeGreaterThanOrEqual(0);
+      expect(r).toBeLessThanOrEqual(100);
+      last = r;
+    }
+    expect(evaluate(60, evidence({ share: 0, eligibleLegends: 1, nEff: 1e6 }), undefined, { signature: true }).evaluatedRating).toBeGreaterThan(30);
+    // computeFeatures passes the signature flag from the card.
+    const ev = evidence({ share: 0, lists: 0, eligibleLists: 32, eligibleLegends: 1, nEff: 25.9 });
+    const f = computeFeatures(rain, undefined, undefined, { evidence: ev });
+    expect(f.evaluatedRating).toBeLessThan(evaluate(f.baseRating, ev).evaluatedRating);
+  });
 });
 
 describe('measured co-play edges', () => {

@@ -1,6 +1,7 @@
 // CardFeatures of one card (spec 8.3): the mined part (plan Task 4) plus roles and axes (plan Task 5). Pure.
 import { evaluate } from '../evidence/blend';
 import { isMainDeckCard } from '../evidence/play';
+import { isSignature } from '../rules/champion';
 import { mineCard, ownsKeyword, toScoreCard, type MineOverride, type MinedCard } from '../mine';
 import type { Card, CardFeatures, PlayEvidence, Speed } from '../types';
 import { axesOf } from './axes';
@@ -43,7 +44,7 @@ export function computeFeatures(card: Card, override?: MineOverride, tags?: read
   const scored = mined.foundation !== null;
   // Play evidence is defined for main-deck cards only (a legend's or battlefield's play is in the meta rows).
   const evidence = scored && isMainDeckCard(card) ? context.evidence ?? null : null;
-  const evaluation = evaluate(mined.baseRating, evidence, context.peakLegendName);
+  const evaluation = evaluate(mined.baseRating, evidence, context.peakLegendName, { signature: isSignature(card) });
   return {
     id: card.id,
     traits: mined.traits,

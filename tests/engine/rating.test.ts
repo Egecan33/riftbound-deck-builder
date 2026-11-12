@@ -1,6 +1,9 @@
 // Plan Task 6: the deck rating (spec 11).
 import { describe, expect, it } from 'vitest';
-import { ILLEGAL_CAP, RATING_WEIGHTS, rateDeck } from '@/engine/rating';
+import { ILLEGAL_CAP, RATING, RATING_WEIGHTS, rateDeck } from '@/engine/rating';
+import { featuresFor } from '@/engine/summary';
+import { INTERACTION_ROLES } from '@/engine/targets';
+import { identityFit } from '@/engine/rules/identity';
 import { runeSplit } from '@/engine/maths';
 import { isLegal, validateDeck } from '@/engine/rules/validate';
 import { parseDecklist } from '@/engine/text';
@@ -16,6 +19,58 @@ const entries = (ids: string[], qty = 3): Deck['main'] => ids.map((id) => ({ id,
 const ctxOf = (db: EngineContext['db']): EngineContext => ({ db, opponentLegend: null });
 const subOf = (r: DeckRating, key: string) => r.subscores.find((s) => s.key === key)!;
 const finite = (r: DeckRating): boolean => Number.isFinite(r.rating) && r.subscores.every((s) => Number.isFinite(s.value) && s.value >= 0 && s.value <= 100);
+
+describe('answers: a deck with no removal or no interaction is told apart from a real list (calibration 2026-11-12)', () => {
+  // The reference decks with every removal (or every interaction) card swapped for the best in-identity units
+  // that answer nothing: quality stays, answers go. The weighted sub-scores alone moved 7 / 13 points on 40
+  // tournament lists; with the answers scale the stripped copies rate clearly lower.
+  const strip = (db: EngineContext['db'], deck: Deck, bad: (roles: string[]) => boolean): Deck => {
+    const legend = db.get(deck.legend!)!;
+    const keep = deck.main.filter((e) => e.id === deck.champion || !bad(featuresFor(db, db.get(e.id)!).roles));
+    let missing = deck.main.reduce((n, e) => n + e.qty, 0) - keep.reduce((n, e) => n + e.qty, 0);
+    const have = new Set(keep.map((e) => db.get(e.id)!.name));
+    const fill = db.all().filter((c) => c.type === 'unit' && !have.has(c.name) && !c.superTypes.includes('signature') && !c.superTypes.includes('champion') && !c.superTypes.includes('token')
+      && !c.dataIncomplete && identityFit(c, new Set(legend.domains)) === 'ok' && !featuresFor(db, c).roles.some((r) => INTERACTION_ROLES.includes(r)))
+      .sort((a, b) => featuresFor(db, b).evaluatedRating - featuresFor(db, a).evaluatedRating || a.id.localeCompare(b.id));
+    const main = [...keep];
+    for (const c of fill) { if (missing <= 0) break; const q = Math.min(3, missing); main.push({ id: c.id, qty: q, locked: false }); missing -= q; }
+    return { ...deck, main };
+  };
+  it('stripping removal, then all interaction, lowers the rating, Roles and Consistency, with a fix that says why', () => {
+    const { db, decks } = scoredFixture();
+    let checked = 0;
+    for (const d of decks) {
+      const real = rateDeck(d.deck, ctxOf(db));
+      const noRemoval = rateDeck(strip(db, d.deck, (r) => r.includes('removal') || r.includes('sweeper')), ctxOf(db));
+      const noIx = rateDeck(strip(db, d.deck, (r) => r.some((x) => (INTERACTION_ROLES as readonly string[]).includes(x))), ctxOf(db));
+      if (subOf(real, 'roles').fixes.some((f) => /^No removal/.test(f.text))) continue; // the list itself runs none
+      checked += 1;
+      expect(noRemoval.rating, d.file).toBeLessThanOrEqual(real.rating - 5);
+      expect(noIx.rating, d.file).toBeLessThanOrEqual(real.rating - 15);
+      expect(subOf(noRemoval, 'roles').value, d.file).toBeLessThan(subOf(real, 'roles').value);
+      expect(subOf(noIx, 'consistency').value, d.file).toBeLessThan(subOf(real, 'consistency').value);
+      expect(subOf(noRemoval, 'roles').fixes[0].text).toMatch(/No removal or sweeper.*scales the whole rating by 0\.92/);
+      expect(subOf(noIx, 'consistency').fixes[0].text).toMatch(/interaction cards? \(removal, sweepers.*scales the whole rating by 0\.[78]\d/);
+      expect(finite(noIx)).toBe(true);
+    }
+    expect(checked).toBeGreaterThanOrEqual(4);
+  });
+  it('a real list with enough answers is not scaled; an unfinished deck is not judged on answers yet', () => {
+    const { db, decks } = scoredFixture();
+    for (const d of decks) {
+      const r = rateDeck(d.deck, ctxOf(db));
+      const texts = r.subscores.flatMap((s) => s.fixes.map((f) => f.text)).join(' | ');
+      if (!/scales the whole rating/.test(texts)) expect(r.rating, d.file).toBe(Math.round(r.subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100));
+      const stripped = strip(db, d.deck, (x) => x.some((y) => (INTERACTION_ROLES as readonly string[]).includes(y)));
+      let n = 0;
+      const part = rateDeck({ ...stripped, main: stripped.main.filter((e) => (n += e.qty) <= 30) }, ctxOf(db));
+      const partTexts = part.subscores.flatMap((s) => s.fixes.map((f) => f.text)).join(' | ');
+      expect(partTexts).not.toMatch(/No removal or sweeper/);
+      expect(partTexts).not.toMatch(/A deck that cannot answer/);
+    }
+    expect(RATING.answersFloor).toBeGreaterThan(0);
+  });
+});
 
 describe('rateDeck on the reference decks (fixture pool, no play evidence)', () => {
   it('each reference deck is legal and rates 55-90; weights sum to 100; at most three fixes per sub-score; heuristic sub-scores are flagged', () => {
@@ -181,7 +236,9 @@ describe('rateDeck on the reference decks (fixture pool, no play evidence)', () 
     const units = cards.filter((c) => c.type === 'unit' && (c.energy ?? 9) <= 4).slice(0, 14).map((c) => ({ id: c.id, qty: 3, locked: false }));
     const r = rateDeck(blankDeck({ legend: legend.id, main: units.slice(0, 13).concat([{ id: units[13].id, qty: 1, locked: false }]), runes: { fury: 6, mind: 6 } }), ctxOf(syn));
     const roles = subOf(r, 'roles').fixes.map((f) => f.text);
-    expect(roles[0]).toMatch(/short on (Removal|Card flow) for .+: have 0, band \d+-\d+/);
+    // A deck with no removal at all is told so first (calibration 2026-11-12), then the band shortfalls.
+    expect(roles[0]).toMatch(/^No removal or sweeper/);
+    expect(roles[1]).toMatch(/short on (Removal|Card flow) for .+: have 0, band \d+-\d+/);
     expect(roles.findIndex((t) => / over on /.test(t))).not.toBe(0);
   });
   it('a 15-card partial deck returns a rating labelled by its size, not capped for being unfinished, with no NaN', () => {

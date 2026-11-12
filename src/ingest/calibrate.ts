@@ -1,3 +1,5 @@
+// `pnpm calibrate --legends [N]` (plan Task 12): for N legends (default 8, the most-listed ones) prints the top 30
+// scored cards, the auto-build per format, its rating with sub-scores, win routes and lines. Read-only.
 // `pnpm calibrate [--write | --report | --diagnose]`: fits the calibration table of src/engine/mine/calibration.ts on the TRAIN
 // split of the synced lists and prints the check on the HOLDOUT split. `--write` pastes the fitted table
 // between the markers of calibration.ts. No network; reads data/forge.db.
@@ -18,8 +20,12 @@ import {
   type CalibrationInput, type MineOverrideEntry,
 } from '@/engine/mine';
 import { championTagOf } from '@/engine/rules/champion';
-import type { Card, LegalityData, PlayEvidence } from '@/engine/types';
-import { loadCards, loadLegality } from '@/server/carddb';
+import { autoBuildDetailed } from '@/engine/builder';
+import { generateLines } from '@/engine/lines';
+import { createScorer } from '@/engine/scoring';
+import { detectWinRoutes } from '@/engine/wincons';
+import type { Card, Deck, Format, LegalityData, Line, PlayEvidence } from '@/engine/types';
+import { loadCardDb, loadCards, loadLegality } from '@/server/carddb';
 import { openDb } from '@/server/db';
 import { readOverridesFile } from '@/server/syncdata';
 import { loadPlayLists } from './evidence';
@@ -336,7 +342,55 @@ function diagnose(data: CalibrationData, log: (line: string) => void): void {
   }
 }
 
+/** Task 12 calibration print: what a player would see for the most-listed legends. Read-only. */
+export function legendsReport(count: number, log: (line: string) => void): void {
+  const sql = openDb();
+  const db = loadCardDb(sql);
+  const ctx = { db, opponentLegend: null };
+  const legends = db.all().filter((c) => c.type === 'legend' && (db.legendMeta(c.id)?.decks ?? 0) > 0)
+    .sort((a, b) => (db.legendMeta(b.id)?.decks ?? 0) - (db.legendMeta(a.id)?.decks ?? 0) || a.id.localeCompare(b.id)).slice(0, count);
+  const name = (id: string): string => db.get(id)?.name ?? id;
+  const formats: Format[] = ['standard-bo1', 'standard-bo3', '2v2', 'ffa3', 'ffa4'];
+  const blank = (legend: string, format: Format): Deck => ({ id: null, name: 'calibration', format, power: 'competitive', legend, champion: null, main: [], side: [], runes: {},
+    battlefields: [], extraLegends: [], themeWeights: null, teammate: null });
+  for (const legend of legends) {
+    const meta = db.legendMeta(legend.id);
+    log(`\n=== ${legend.name} (${legend.domains.join('/')}) - ${meta?.decks ?? 0} lists, ${meta?.quality ?? 'no data'}`);
+    for (const format of formats) {
+      const t0 = Date.now();
+      const built = autoBuildDetailed(blank(legend.id, format), ctx, { ownedOnly: false, owned: null, seed: 1, buildAround: [] });
+      const ms = Date.now() - t0;
+      const d = built.deck;
+      const main = d.main.reduce((n, e) => n + e.qty, 0), side = d.side.reduce((n, e) => n + e.qty, 0);
+      const runes = Object.entries(d.runes).map(([k, v]) => `${v} ${k}`).join(' / ');
+      log(`--- ${format}: rating ${built.rating.rating} (${built.precise}), ${built.rating.legal ? 'legal' : `NOT legal: ${built.violations.map((v) => v.code).join(', ')}`}, ${main} main / ${side} side, runes ${runes}, ${ms} ms`);
+      log(`    sub-scores: ${built.rating.subscores.map((s) => `${s.key} ${s.value}`).join(', ')}`);
+      if (format === 'standard-bo1' || format === 'standard-bo3') {
+        log(`    champion ${d.champion ? name(d.champion) : '-'}; battlefields ${d.battlefields.map(name).join(', ')}`);
+        log(`    main: ${d.main.map((e) => `${e.qty} ${name(e.id)}`).join(', ')}`);
+        if (side) log(`    side: ${d.side.map((e) => `${e.qty} ${name(e.id)}`).join(', ')}`);
+        for (const s of built.rating.subscores) for (const f of s.fixes.slice(0, 1)) log(`    fix [${s.key}]: ${f.text}`);
+      }
+      if (format !== 'standard-bo1') continue;
+      const scorer = createScorer(d, ctx);
+      const pool = db.all().filter((c) => isMainDeckCard(c) && !c.dataIncomplete).map((c) => ({ c, s: scorer.score(c, 'main') }))
+        .filter((x) => !x.s.gate).sort((a, b) => b.s.score - a.s.score || a.c.id.localeCompare(b.c.id)).slice(0, 30);
+      const inDeck = new Set(d.main.map((e) => e.id));
+      log(`    top 30 scored cards for this deck (* = in the build): ${pool.map((x) => `${inDeck.has(x.c.id) ? '*' : ''}${x.c.name} ${x.s.score}`).join(', ')}`);
+      const win = detectWinRoutes(d, ctx);
+      for (const r of win.routes) log(`    route ${r.id} ${Math.round(r.strength * 100)}%: closers ${r.closers.map(name).slice(0, 4).join(', ') || '-'}; ${r.notes[0] ?? ''}`);
+      const lines = generateLines(d, ctx);
+      for (const [kind, list] of Object.entries(lines)) for (const l of (list as Line[]).slice(0, 2)) log(`    line ${kind}: ${l.text}`);
+    }
+  }
+}
+
 function main(): void {
+  if (process.argv.includes('--legends')) {
+    const n = Number(process.argv[process.argv.indexOf('--legends') + 1]);
+    legendsReport(Number.isFinite(n) && n > 0 ? n : 8, (line) => console.log(line));
+    return;
+  }
   const write = process.argv.includes('--write');
   const data = loadCalibrationData();
   const log = (line: string) => console.log(line);
