@@ -1,0 +1,5 @@
+# Keep LF everywhere so text fixtures compare equal on Windows checkouts.
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.ico binary
