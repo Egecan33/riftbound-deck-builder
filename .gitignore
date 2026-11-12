@@ -12,3 +12,6 @@ docs/research/**/raw/
 # tooling
 next-env.d.ts
 *.log
+
+# scratch output of review and benchmark scripts
+.audit-tmp/
