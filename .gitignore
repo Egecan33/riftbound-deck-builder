@@ -20,3 +20,7 @@ next-env.d.ts
 
 # working screenshots of UI reviews (card art); add the few the README shows with git add -f
 docs/screenshots/
+
+# release bundles (packaging/)
+dist/
+release/

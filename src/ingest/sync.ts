@@ -55,6 +55,7 @@ export function parseArgs(argv: string[]): { steps: Step[]; flags: Flags } {
 }
 
 async function main(): Promise<void> {
+  if (process.argv.includes('--help')) { console.log(USAGE); return; }
   const { steps, flags } = parseArgs(process.argv.slice(2));
   const db = openDb();
   const log: Log = (line) => console.log(line);
