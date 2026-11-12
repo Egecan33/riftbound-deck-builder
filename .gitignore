@@ -1,6 +1,8 @@
 node_modules/
 .next/
 data/
+# the Card data screen is source, not data
+!/src/app/data/
 *.tsbuildinfo
 test-results/
 playwright-report/
@@ -15,3 +17,6 @@ next-env.d.ts
 
 # scratch output of review and benchmark scripts
 .audit-tmp/
+
+# working screenshots of UI reviews (card art); add the few the README shows with git add -f
+docs/screenshots/

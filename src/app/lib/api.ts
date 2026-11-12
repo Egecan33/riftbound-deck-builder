@@ -70,6 +70,8 @@ export interface StatusResponse {
   stale: boolean;
   settings: Settings;
   sync: SyncState;
+  /** Plain-word names the UI shows for engine ids, and the basic rune card of each domain (for its image). */
+  labels: { traits: Record<string, string>; axes: { id: AxisId; label: string }[]; runeCards: Partial<Record<Domain, string>> };
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -288,8 +290,9 @@ async function call<T>(method: string, path: string, body?: unknown, signal?: Ab
   let data: unknown = null;
   try {
     data = await res.json();
-  } catch {
-    // an empty or non-JSON body is reported by status below
+  } catch (e) {
+    // An aborted read must not look like an empty answer; an empty or non-JSON body is reported by status below.
+    if (signal?.aborted) throw e;
   }
   if (!res.ok) {
     const message = data && typeof data === 'object' && typeof (data as { error?: unknown }).error === 'string' ? (data as { error: string }).error : `${method} ${path} failed (${res.status})`;

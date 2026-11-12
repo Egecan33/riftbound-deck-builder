@@ -1,15 +1,43 @@
 @import 'tailwindcss';
+/* Tailwind skips gitignored paths, and the root rule `data/` also matches this folder. */
+@source './data';
 
-/* Riftbound Forge: dark workbench surfaces so card art is the only saturated thing on screen. */
-@theme {
-  --color-void: #0e1116;
-  --color-slate: #171c24;
-  --color-edge: #2a323f;
-  --color-mist: #9aa6b8;
-  --color-bone: #e8edf4;
-  --color-rift: #5ec8d8;
+/*
+ * Riftbound Forge. A dark workbench: the surfaces are cold iron, and the only saturated things on
+ * screen are card art and the six domain colours. Scores use the colours of heated metal (iron grey
+ * to white-hot) so they never read as a domain. Fonts are system faces only: the app runs offline.
+ */
+@theme static {
+  --color-void: #0c0e13;
+  --color-pit: #12151c;
+  --color-slate: #191d27;
+  --color-raise: #232937;
+  --color-edge: #2d3443;
+  --color-edge-hi: #434c60;
+  --color-mist: #98a1b3;
+  --color-dim: #6b7384;
+  --color-bone: #ece8df;
+  --color-heat: #f3dfae;
+
+  --color-fury: #e5493d;
+  --color-calm: #4fb878;
+  --color-mind: #4a9cec;
+  --color-body: #f08b33;
+  --color-chaos: #a76ce6;
+  --color-order: #ecc83c;
+
+  --color-band-low: #6f7686;
+  --color-band-mid: #a89f8a;
+  --color-band-good: #e2c583;
+  --color-band-top: #fff2d2;
+  --color-band-gated: #4a5060;
+
+  --color-ok: #86d3a4;
+  --color-bad: #ff8d7c;
+  --color-measured: #8fc7d9;
 
   --font-sans: 'Avenir Next', Avenir, 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-display: 'Avenir Next Condensed', 'Bahnschrift', 'Arial Narrow', 'Avenir Next', 'Segoe UI', sans-serif;
 }
 
 :root {
@@ -25,12 +53,433 @@ body {
   background: var(--color-void);
   color: var(--color-bone);
   font-family: var(--font-sans);
-  font-size: 14px;
+  font-size: 13.5px;
   line-height: 1.45;
   font-feature-settings: 'tnum' 1;
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-rift);
+  outline: 2px solid var(--color-heat);
   outline-offset: 2px;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-heat) 35%, transparent);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-edge) transparent;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Type */
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 0.005em;
+  line-height: 1.08;
+}
+.num {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Cards */
+
+.card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 744 / 1039;
+  border-radius: 4.6% / 3.3%;
+  overflow: hidden;
+  background: var(--color-pit);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.55), 0 6px 14px -8px rgb(0 0 0 / 0.9);
+}
+.card.wide {
+  aspect-ratio: 1039 / 744;
+  border-radius: 3.3% / 4.6%;
+}
+.card > img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.card-fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8%;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.15;
+  color: var(--color-mist);
+  background: repeating-linear-gradient(135deg, var(--color-pit) 0 9px, var(--color-slate) 9px 18px);
+  border: 1px dashed var(--color-edge-hi);
+  border-radius: inherit;
+}
+.skeleton {
+  background: linear-gradient(100deg, var(--color-pit) 30%, var(--color-slate) 50%, var(--color-pit) 70%);
+  background-size: 300% 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -300% 0;
+  }
+}
+
+.tile {
+  position: relative;
+}
+.tile-main {
+  display: block;
+  width: 100%;
+  cursor: pointer;
+  border-radius: 4.6% / 3.3%;
+}
+.tile.gated .card > img {
+  filter: grayscale(1) brightness(0.42);
+}
+.tile.weak .card {
+  box-shadow: 0 0 0 2px var(--color-bad), 0 6px 14px -8px rgb(0 0 0 / 0.9);
+}
+.tile.locked .card {
+  box-shadow: 0 0 0 2px var(--color-heat), 0 6px 14px -8px rgb(0 0 0 / 0.9);
+}
+.tile-actions {
+  position: absolute;
+  inset: auto 4px 4px 4px;
+  display: flex;
+  gap: 3px;
+  justify-content: flex-end;
+  opacity: 0;
+  transition: opacity 90ms;
+}
+.tile:hover .tile-actions,
+.tile:focus-within .tile-actions {
+  opacity: 1;
+}
+.tile-btn {
+  min-width: 24px;
+  height: 24px;
+  padding: 0 6px;
+  border-radius: 6px;
+  background: rgb(8 10 14 / 0.88);
+  border: 1px solid var(--color-edge-hi);
+  color: var(--color-bone);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+.tile-btn:hover {
+  background: var(--color-heat);
+  color: #14110a;
+  border-color: var(--color-heat);
+}
+
+/* The score: a small heated plate in the corner of a card. */
+.score {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  min-width: 26px;
+  padding: 1px 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  color: #15120b;
+  background: var(--band);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.7);
+}
+.score.gated {
+  color: var(--color-mist);
+}
+.qty {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  min-width: 22px;
+  padding: 1px 5px 0;
+  border-radius: 5px;
+  text-align: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--color-bone);
+  background: rgb(8 10 14 / 0.9);
+  border: 1px solid var(--color-edge-hi);
+}
+.tile-note {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 16px 6px 5px;
+  font-size: 10.5px;
+  line-height: 1.2;
+  color: var(--color-bone);
+  background: linear-gradient(to top, rgb(8 10 14 / 0.96) 55%, transparent);
+  pointer-events: none;
+}
+
+/* ------------------------------------------------------------------------------------------- */
+/* Controls */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 12px;
+  border-radius: 7px;
+  border: 1px solid var(--color-edge-hi);
+  background: var(--color-raise);
+  color: var(--color-bone);
+  font-weight: 600;
+  font-size: 12.5px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.btn:hover:not(:disabled) {
+  border-color: var(--color-mist);
+}
+.btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.btn.primary {
+  background: var(--color-heat);
+  border-color: var(--color-heat);
+  color: #15120b;
+}
+.btn.primary:hover:not(:disabled) {
+  background: var(--color-band-top);
+  border-color: var(--color-band-top);
+}
+.btn.quiet {
+  background: transparent;
+  border-color: transparent;
+  color: var(--color-mist);
+}
+.btn.quiet:hover:not(:disabled) {
+  color: var(--color-bone);
+  border-color: var(--color-edge);
+}
+.btn.small {
+  height: 24px;
+  padding: 0 8px;
+  font-size: 11.5px;
+  border-radius: 6px;
+}
+
+.field {
+  height: 30px;
+  padding: 0 9px;
+  border-radius: 7px;
+  border: 1px solid var(--color-edge);
+  background: var(--color-pit);
+  color: var(--color-bone);
+  font-size: 12.5px;
+  min-width: 0;
+}
+.field:hover {
+  border-color: var(--color-edge-hi);
+}
+textarea.field {
+  height: auto;
+  padding: 8px 10px;
+  line-height: 1.4;
+  font-family: ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+select.field {
+  padding-right: 4px;
+}
+
+.seg {
+  display: inline-flex;
+  padding: 2px;
+  border-radius: 8px;
+  background: var(--color-pit);
+  border: 1px solid var(--color-edge);
+}
+.seg > button {
+  height: 24px;
+  padding: 0 9px;
+  border-radius: 6px;
+  color: var(--color-mist);
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.seg > button:hover {
+  color: var(--color-bone);
+}
+.seg > button[aria-pressed='true'] {
+  background: var(--color-raise);
+  color: var(--color-bone);
+  box-shadow: inset 0 0 0 1px var(--color-edge-hi);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 22px;
+  padding: 0 8px;
+  border-radius: 11px;
+  border: 1px solid var(--color-edge);
+  background: var(--color-pit);
+  color: var(--color-mist);
+  font-size: 11.5px;
+  white-space: nowrap;
+}
+button.chip {
+  cursor: pointer;
+}
+button.chip:hover {
+  border-color: var(--color-edge-hi);
+  color: var(--color-bone);
+}
+.chip[aria-pressed='true'] {
+  color: var(--color-bone);
+  border-color: var(--dc, var(--color-heat));
+  background: color-mix(in srgb, var(--dc, var(--color-heat)) 20%, var(--color-pit));
+}
+
+/* Where a number comes from. "heuristic" = a judgement of the engine; "measured" = counted in synced lists. */
+.mark {
+  display: inline-block;
+  padding: 0 5px;
+  border-radius: 4px;
+  font-size: 10px;
+  line-height: 15px;
+  font-weight: 600;
+  vertical-align: 1px;
+  white-space: nowrap;
+}
+.mark.heuristic {
+  color: var(--color-mist);
+  border: 1px dashed var(--color-dim);
+}
+.mark.measured {
+  color: #0d1a1f;
+  background: var(--color-measured);
+}
+.mark.rule {
+  color: var(--color-bone);
+  border: 1px solid var(--color-edge-hi);
+}
+
+/* Rune pip: a domain as a small cut gem. */
+.pip {
+  display: inline-block;
+  width: 0.92em;
+  height: 0.92em;
+  border-radius: 2px;
+  transform: rotate(45deg) scale(0.82);
+  background: var(--dc);
+  box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.25), 0 0 0 1px rgb(0 0 0 / 0.5);
+  vertical-align: -0.08em;
+  flex: none;
+}
+.energy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.35em;
+  height: 1.35em;
+  padding: 0 0.25em;
+  border-radius: 1em;
+  background: var(--color-raise);
+  border: 1px solid var(--color-edge-hi);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.86em;
+  line-height: 1;
+  vertical-align: 0.05em;
+}
+.kw {
+  font-weight: 700;
+  color: var(--color-heat);
+}
+
+.bar {
+  position: relative;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--color-pit);
+  box-shadow: inset 0 0 0 1px var(--color-edge);
+  overflow: hidden;
+}
+.bar > i {
+  position: absolute;
+  inset: 0 auto 0 0;
+  border-radius: 3px;
+  background: var(--band, var(--color-band-good));
+}
+
+.panel {
+  background: var(--color-slate);
+  border: 1px solid var(--color-edge);
+  border-radius: 10px;
+}
+.well {
+  background: var(--color-pit);
+  border: 1px solid var(--color-edge);
+  border-radius: 8px;
+}
+.h {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+.sub {
+  color: var(--color-mist);
+  font-size: 12px;
+}
+
+/* The two-domain seam: a deck's identity as a line of colour. */
+.seam {
+  height: 3px;
+  background: linear-gradient(90deg, var(--d1, var(--color-edge)) 0 50%, var(--d2, var(--d1, var(--color-edge))) 50% 100%);
+}
+
+.overlay-back {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  background: rgb(4 5 8 / 0.78);
+  backdrop-filter: blur(3px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+  .tile-actions {
+    transition: none;
+  }
 }

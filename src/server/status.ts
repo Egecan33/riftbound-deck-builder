@@ -1,5 +1,8 @@
 import { readdirSync } from 'node:fs';
 import type { StatusResponse, SyncStep } from '@/app/lib/api';
+import { AXES } from '@/engine/features/axes';
+import { TRAIT_LABELS } from '@/engine/mine/labels';
+import type { Domain } from '@/engine/types';
 import { DEFAULT_SETTINGS, getSettings } from './settings';
 import { cacheSlot } from './state';
 import { dbPath, getCardDb, getDb, imageDir, legalityFile } from './store';
@@ -57,11 +60,24 @@ function readCounts(): Counts {
 const numberOf = (v: unknown): number => (typeof v === 'number' && Number.isFinite(v) ? v : 0);
 
 /** The Data page's facts. Never throws: a database that cannot be opened is reported in `error`. */
+/** The basic rune card of each domain, so the UI can show a Rune Deck as images. */
+function runeCards(): Partial<Record<Domain, string>> {
+  return cacheSlot('rune-cards', () => {
+    const out: Partial<Record<Domain, string>> = {};
+    for (const card of getCardDb().all()) {
+      const d = card.domains[0];
+      if (card.type === 'rune' && card.domains.length === 1 && d && !out[d]) out[d] = card.id;
+    }
+    return out;
+  });
+}
+
 export function getStatus(): StatusResponse {
   const steps = Object.fromEntries(SYNC_STEPS.map((s) => [s, null])) as StatusResponse['steps'];
   const base: StatusResponse = {
     ready: false, error: null, dbPath: dbPath(), steps, counts: emptyCounts(), imagesMissing: 0, legality: null, coverage: null,
     cardsSyncedAt: null, stale: true, settings: { ...DEFAULT_SETTINGS }, sync: syncState(),
+    labels: { traits: TRAIT_LABELS, axes: AXES.map((a) => ({ id: a.id, label: a.label })), runeCards: {} },
   };
   try {
     const db = getDb();
@@ -98,6 +114,7 @@ export function getStatus(): StatusResponse {
     const age = base.cardsSyncedAt ? Date.now() - Date.parse(base.cardsSyncedAt) : Number.POSITIVE_INFINITY;
     base.stale = !(age < STALE_AFTER_MS);
     base.ready = base.counts.cards > 0 && base.counts.features > 0;
+    if (base.ready) base.labels.runeCards = runeCards();
   } catch (err) {
     base.error = err instanceof Error ? err.message : String(err);
   }

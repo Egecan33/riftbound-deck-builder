@@ -2,7 +2,7 @@
 
 This file is the single place a new session reads to continue the build if the previous one was cut off. Update it at every stage boundary, in the same commit as the stage's work.
 
-Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed; plan Task 10 (server and API) done; the build continues at plan Task 11 (UI).
+Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed; stage 4 (plan Tasks 10-11, API and UI) done; the build continues at plan Task 12 (end-to-end tests, calibration, review).
 
 ## Owner's decisions (do not re-ask)
 
@@ -29,7 +29,7 @@ Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed
 | 1 | Design doc `docs/superpowers/specs/2026-11-12-riftbound-forge-design.md` and plan `docs/superpowers/plans/2026-11-12-riftbound-forge.md` | done |
 | 2 | Foundation and data: plan Tasks 1-2 | done and reviewed 2026-11-12. Synced: 1,408 gallery printings → 1,091 gameplay cards + 9 tokens (unit 546, spell 271, gear 130, battlefield 74, legend 58, rune 6, untyped Radiance 6); 177 champion units, 60 signature cards; 8 Radiance rows `dataIncomplete`; 70 errata applied; 13 bans (12 Standard + 1 2v2 legend), 6 sets, side deck 10; 300 of 1,100 images on disk (the rest: `pnpm sync images`); meta 508 lists, 498 usable Standard lists, 58 legends (1 ok, 12 thin, 45 insufficient) |
 | 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | done and reviewed 2026-11-12. `pnpm typecheck` clean, `pnpm test` 956 tests in 64 files. Synced pool at review time: 816 lists, 789 usable Standard lists, 58 legends with meta (5 ok, 26 thin, 27 insufficient), 22,451 stored edges. Builder (commit `49606b5`): 696 auto-builds (58 legends x 6 formats x 2 seeds), 694 legal with 40 / 12 / 3 and a 10-card side deck in best-of-three; the 2 others are Wuju Bladesman in 2v2, where the legend itself is banned and the build says so; median 63 ms a build, slowest 216 ms. For the 44 legends with 8+ lists: 94% of the cards that 60%+ of the legend's lists run are in its build (51% before the review), all of the cards 90%+ run (58% before), 2% of copies are cards none of its lists runs (31% before); 84% of side-deck copies are cards 20%+ of its lists side (54% before); the rune split equals a public list's own split for 55% of 789 lists and is within one rune for 91% (47% / 87% before). Improve on 10 tournament lists with 8 copies swapped for the weakest legal cards: 76 of 80 junk copies proposed out, 114 proposals, every one raises the rating. Lines (commit `c144ff3`): 553 lines for 12 tournament lists of 12 legends, every line names cards of the deck; identical line texts between two decks of different legends 1.05% on average (7.9% at most over 66 pairs), between two lists of the same legend 13.4% on average. Known limits are in the section below. |
-| 4 | API and UI: plan Tasks 10-11 | Task 10 (server and API) done 2026-11-12: 15 routes under `src/app/api`, contract and typed client in `src/app/lib/api.ts`, 27 route tests on a temp SQLite seeded from the fixtures (983 tests in all). Measured over HTTP on the built app with the synced database, 24 auto-built decks: `/api/analyze` after a one-card edit 24 ms median, 32 ms slowest; same deck state again 5 ms; new opponent 42 ms; `/api/cards` first page after an edit 9 ms median, 16 ms slowest, later pages and filters 2-4 ms; `/api/build` auto 100 ms median, 325 ms slowest. Script: `.audit-tmp/bench-api.ts` (local, not committed). Task 11 (UI) not started |
+| 4 | API and UI: plan Tasks 10-11 | Task 10 (server and API) done 2026-11-12: 15 routes under `src/app/api`, contract and typed client in `src/app/lib/api.ts`, 27 route tests on a temp SQLite seeded from the fixtures (983 tests in all). Measured over HTTP on the built app with the synced database, 24 auto-built decks: `/api/analyze` after a one-card edit 24 ms median, 32 ms slowest; same deck state again 5 ms; new opponent 42 ms; `/api/cards` first page after an edit 9 ms median, 16 ms slowest, later pages and filters 2-4 ms; `/api/build` auto 100 ms median, 325 ms slowest. Script: `.audit-tmp/bench-api.ts` (local, not committed). Task 11 (UI) done 2026-11-12: `/` decks, `/new`, `/deck/[id]` builder (header, virtualised card browser, deck zones, panels Rating / Win conditions / Lines / Matchup / Network / Themes / Improve, card overlay), `/data`, `/collection`, import and export dialogs; first run with an empty database redirects to `/data`. Driven by hand with Playwright on the synced database at 1440x900, dev and production build: auto-build from `/new` to a legal 40 / 12 / 3 / 10 deck in about 0.5 s, remove and add a card (counts, legality chip and rating change), accept a swap, fill the rest, import a partial list with one unknown line, collection paste, a sync step with its log. `StatusResponse.labels` (trait and axis names, rune card ids) was added to the API contract for the UI. Not built or not verified: see the section below |
 | 5 | End-to-end tests: plan Task 12 | not started |
 | 6 | Final review by driving the real UI and looking at screenshots | not started |
 | 7 | Desktop downloads for macOS and Windows: plan Task 13 | not started |
@@ -44,6 +44,18 @@ Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed
 - Stored network edges still hold pairs the lines now filter at read time (Temporary tokens with a card's own Deathknell; Shadow's Call with a gear). The filter is in `src/engine/lines/context.ts`; the edges themselves were not rebuilt.
 - 4 of 80 junk copies in the Improve test are not proposed out: no single swap for them raises the rating by 0.1.
 - 2v2 and FFA builds use Standard lists as their play data (no multiplayer lists are synced).
+
+## Stage 4: what the UI does not do yet
+
+- No Playwright spec is committed; the UI was driven by a script and by eye. Plan Task 12 writes `tests/e2e`.
+- 2v2: the teammate's legend can be picked in the builder header, the teammate's battlefields cannot be entered.
+- `extraLegends` (Neeko, Blending In) has no control; a deck that has them keeps them.
+- The opponent for the matchup lines is remembered per deck in the browser's local storage, not in the saved deck. The builder's pick reasons ("Why the builder chose these cards") live in session storage and are gone after the tab closes.
+- Sync from the Data page was exercised with the `images` step only (all files present, no request made). The steps that fetch from the network were not run from the UI.
+- Desktop only: the layout needs 1240 px of width. No keyboard shortcuts beyond Tab and Escape.
+- Card reasons in the overlay are matched to their score part by the first word of the engine's sentence ("Quality", "Synergy", ...). If the engine renames a sentence, the reason falls back to position.
+- The app name in the legality chip, labels for formats and power targets, and the six domain colours are UI constants in `src/app/lib/ui.ts` and `globals.css` (presentation, not game facts).
+- Working screenshots of the review are in `docs/screenshots/` (gitignored, 27 MB with card art). Task 12 picks the ones the README shows.
 
 ## Stage 0 detail
 
