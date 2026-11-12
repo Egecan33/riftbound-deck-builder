@@ -493,7 +493,8 @@ function SwapCard({ id, lookup, onOpen, label }: Common & { id: string; label: '
   return (
     <button type="button" className="w-[84px] shrink-0 text-left" onClick={() => onOpen(id)} title={lookup[id]?.name ?? id} data-testid={`swap-${label}`}>
       <span className={label === 'out' ? 'block opacity-70' : 'block'}><CardImage card={lookup[id]} id={id} /></span>
-      <span className="mt-0.5 block truncate text-[11px]" style={{ color: label === 'out' ? 'var(--color-bad)' : 'var(--color-ok)' }}>{label === 'out' ? 'Out' : 'In'}: {lookup[id]?.name ?? id}</span>
+      <span className="mt-0.5 block text-[11px] leading-tight" style={{ color: label === 'out' ? 'var(--color-bad)' : 'var(--color-ok)' }}>{label === 'out' ? 'Out' : 'In'}</span>
+      <span className="block text-[11px] leading-tight text-bone">{lookup[id]?.name ?? id}</span>
     </button>
   );
 }

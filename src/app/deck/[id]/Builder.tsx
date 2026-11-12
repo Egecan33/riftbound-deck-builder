@@ -7,7 +7,7 @@ import { CardDetail, shareText } from '../../components/CardDetail';
 import { CardImage, Gauge, LegendPicker, Overlay, seamStyle } from '../../components/card';
 import { useNotify, useStatus } from '../../components/Shell';
 import {
-  ApiError, analyzeDeck, buildDeck, exportDeck, getChampions, getDeck, updateDeck,
+  ApiError, analyzeDeck, browseCards, buildDeck, exportDeck, getChampions, getDeck, updateDeck,
   type AnalyzeResponse, type BuildMode, type BuildPickView, type CardLookup, type ChampionOption, type ClientCard, type ExportResponse,
 } from '../../lib/api';
 import {
@@ -310,6 +310,12 @@ export function Builder({ id }: { id: string }) {
                 onChange={(lid) => mutate((d) => ({ ...d, teammate: { legend: lid, battlefields: d.teammate?.battlefields ?? [] } }))}
               />
             )}
+            {deck.format === '2v2' && (
+              <TeammateBattlefields
+                deck={deck}
+                onChange={(ids) => mutate((d) => ({ ...d, teammate: { legend: d.teammate?.legend ?? null, battlefields: ids } }))}
+              />
+            )}
             <span className="text-[11.5px] text-dim" data-testid="save-state">{saveState === 'saving' ? 'Saving' : saveState === 'failed' ? 'Not saved' : 'Saved'}{analysing ? ', analysing' : ''}</span>
           </div>
         </div>
@@ -475,3 +481,41 @@ function ExportDialog({ exported, onClose }: { exported: ExportResponse; onClose
 }
 
 export type { BuildPickView };
+
+/** 2v2: the battlefields the teammate brings, so a shared battlefield name is flagged (CR 491.8.i). */
+function TeammateBattlefields({ deck, onChange }: { deck: Deck; onChange: (ids: string[]) => void }) {
+  const [all, setAll] = useState<ClientCard[] | null>(null);
+  const chosen = deck.teammate?.battlefields ?? [];
+  useEffect(() => {
+    const ctrl = new AbortController();
+    browseCards({ deck, zone: 'battlefields', sort: 'name', page: 1, pageSize: 200 }, ctrl.signal)
+      .then((r) => setAll(r.cards.map((c) => c.card)))
+      .catch(() => {});
+    return () => ctrl.abort();
+    // the battlefield list does not depend on the deck's contents
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deck.format]);
+  const name = (id: string) => all?.find((c) => c.id === id)?.name ?? id;
+  return (
+    <span className="flex flex-wrap items-center gap-1" data-testid="teammate-battlefields">
+      {chosen.map((id) => (
+        <button key={id} type="button" className="chip" title="Remove from the teammate's battlefields" onClick={() => onChange(chosen.filter((x) => x !== id))}>
+          {name(id)} ×
+        </button>
+      ))}
+      {chosen.length < 3 && (
+        <select
+          className="field"
+          style={{ height: 26 }}
+          value=""
+          aria-label="Add a teammate battlefield"
+          disabled={!all}
+          onChange={(e) => { if (e.target.value) onChange([...chosen, e.target.value]); }}
+        >
+          <option value="">Teammate's battlefields ({chosen.length}/3)</option>
+          {(all ?? []).filter((c) => !chosen.includes(c.id)).map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
+        </select>
+      )}
+    </span>
+  );
+}

@@ -78,7 +78,7 @@ export function Browser({ deck, live, query, setQuery, onOpen, onAdd, onRemove, 
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <input className="field min-w-0 flex-1" placeholder="Search name, text or tag" value={typed} onChange={(e) => setTyped(e.target.value)} aria-label="Search cards" data-testid="browser-search" />
+          <input className="field min-w-0 flex-1" placeholder="Search cards" title="Searches name, text and tags" value={typed} onChange={(e) => setTyped(e.target.value)} aria-label="Search cards" data-testid="browser-search" />
           <select className="field" value={query.sort} onChange={(e) => set('sort', e.target.value as CardSort)} aria-label="Sort by">
             {SORTS.map((s) => <option key={s.id} value={s.id}>{s.label}</option>)}
           </select>
