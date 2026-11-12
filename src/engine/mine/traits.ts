@@ -27,7 +27,17 @@ import {
   type ScoreCard,
 } from "./types";
 
+// Forge addition (not in the port): the traits of a card depend only on the card, and the ported deck score
+// and pair analysis ask for them thousands of times per deck. Memoised per ScoreCard object; every caller
+// gets its own copy, so a caller that edits its set cannot change another's.
+const traitCache = new WeakMap<ScoreCard, ReadonlySet<Trait>>();
 export function deriveTraits(card: ScoreCard): Set<Trait> {
+  let held = traitCache.get(card);
+  if (!held) traitCache.set(card, (held = computeTraits(card)));
+  return new Set(held);
+}
+
+function computeTraits(card: ScoreCard): Set<Trait> {
   const text = rulesForScoring(card);
   const traits = new Set<Trait>();
   const has = (pattern: RegExp) => pattern.test(text);

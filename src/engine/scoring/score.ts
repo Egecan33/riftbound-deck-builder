@@ -12,7 +12,7 @@
 import { isCoPlayReason } from '../evidence/coplay';
 import { axisLabel } from '../features/axes';
 import { ROLE_LABELS } from '../features/roles';
-import { cardRuneReliability, type RuneRecommendation } from '../maths/hypergeo';
+import type { RuneRecommendation } from '../maths/hypergeo';
 import { runeSplit } from '../maths/runes';
 import { isGenericReason } from '../network/edges';
 import { championTagOf, isSignature, isTokenCard, sameTag } from '../rules/champion';
@@ -23,7 +23,7 @@ import { cardFitsDeck } from '../rules/validate';
 import { featuresFor, profileFor, qtyOf, resolveThemeWeights, summarizeDeck, withoutCopy } from '../summary';
 import { bandText, targetsFor, type FullTargets } from '../targets';
 import type { AxisId, Card, CardDb, CardEdge, CardFeatures, CardScore, Deck, DeckSummary, Domain, EngineContext, Format, LegendMeta, Role, ScorePart, Zone } from '../types';
-import { scoreCardOf } from './bridge';
+import { acceptedCast, castFit, payOdds, runesWhenCast } from './castability';
 
 /** Spec 10 weights. */
 export const SCORE_WEIGHTS = { quality: 25, synergy: 30, role: 15, curve: 15, meta: 10, fit: 5 } as const;
@@ -40,13 +40,21 @@ export const SCORE = {
   edgeShare: 0.65, axisShare: 0.35, antiShare: 0.3, antiScale: 3,
   secondAxis: 0.15, scarceSide: 1.15, ownSignature: 0.6,
   /** Meta weight = 10 x lists / (lists + metaPrior); the rest moves to Quality and Synergy in halves. */
-  metaPrior: 8, metaFullShare: 0.6,
+  metaPrior: 8, metaFullShare: 0.6, metaLift: 0.4,
+  /**
+   * A card that asks nothing of the deck (an answer, a counter, card flow; no payoff side on any theme) cannot
+   * show stored partners, and a card every list runs has no co-play lift either. Without a floor the staples of
+   * a tournament list were its lowest-scored cards. This share of Synergy follows such a card's quality.
+   */
+  standAlone: 0.5,
   noBandedRole: 0.25, minorRole: 0.8,
   castShare: 0.6, curveUnder: 1, curveInside: 0.6, curveOver: 0.2,
   partners: 5,
 } as const;
 
 const CORE_ROLES: readonly Role[] = ['unit-body', 'removal', 'card-flow'];
+/** Roles whose cards do their work without a partner in the deck. HEURISTIC list. */
+export const STAND_ALONE_ROLES: readonly Role[] = ['removal', 'sweeper', 'counter', 'disruption', 'protection', 'card-flow', 'combat-trick'];
 const DOMAIN_LABEL: Record<Domain, string> = { fury: 'Fury', calm: 'Calm', mind: 'Mind', body: 'Body', chaos: 'Chaos', order: 'Order' };
 
 const clamp01 = (x: number): number => (Number.isFinite(x) ? Math.max(0, Math.min(1, x)) : 0);
@@ -88,7 +96,7 @@ interface Frame {
   max: Record<ScorePart['key'], number>;
 }
 
-function buildFrame(deck: Deck, db: CardDb): Frame {
+function buildFrame(deck: Deck, db: CardDb, pin?: FullTargets): Frame {
   const summary = summarizeDeck(deck, db);
   const cards: DeckCard[] = [];
   const copies = new Map<string, number>();
@@ -114,7 +122,7 @@ function buildFrame(deck: Deck, db: CardDb): Frame {
   const metaMax = r1(SCORE_WEIGHTS.meta * (lists / (lists + SCORE.metaPrior)));
   const moved = (SCORE_WEIGHTS.meta - metaMax) / 2;
   return {
-    deck, summary, targets: targetsFor(deck, db, summary), theme: resolveThemeWeights(deck, db, summary), cards, copies, signatures,
+    deck, summary, targets: targetsFor(deck, db, summary, pin ? { id: pin.archetypeId, reason: pin.reason } : undefined), theme: resolveThemeWeights(deck, db, summary), cards, copies, signatures,
     runes: split.map(([domain, count]) => ({ domain, count, demand: summary.powerDemand[domain] ?? 0 })),
     runesAreRecommended: own.length === 0,
     legend, champion: deck.champion ? db.get(deck.champion) ?? null : null, meta,
@@ -211,12 +219,17 @@ function scoreMain(card: Card, zone: Zone, frame: Frame, db: CardDb): CardScore 
   let axisPart = bestAxis ? Math.min(1, bestAxis.value + (second ? SCORE.secondAxis : 0)) : 0;
   const ownSignature = isSignature(card) && frame.legend !== null && sameTag(championTagOf(card), championTagOf(frame.legend));
   if (ownSignature) axisPart = Math.max(axisPart, SCORE.ownSignature);
-  const synergy = r1(frame.max.synergy * clamp01(SCORE.edgeShare * edgePart + SCORE.axisShare * axisPart - SCORE.antiShare * anti));
+  const network = clamp01(SCORE.edgeShare * edgePart + SCORE.axisShare * axisPart - SCORE.antiShare * anti);
+  const aloneRole = STAND_ALONE_ROLES.find((r) => f.roles.includes(r));
+  const alone = aloneRole && !Object.values(f.axes).some((v) => v.p >= 0.5) ? clamp01(SCORE.standAlone * q - SCORE.antiShare * anti) : 0;
+  const standsAlone = alone > network;
+  const synergy = r1(frame.max.synergy * Math.max(network, alone));
   const partnerText = positives.slice(0, 3).map((p) => `${p.name} (${p.label}${p.measuredOnly ? ', measured co-play only' : ''})`).join(', ');
   const synergyBits: string[] = [];
   if (positives.length) synergyBits.push(`works with ${partnerText}${positives.length > 3 ? ` and ${positives.length - 3} more` : ''}`);
   if (bestAxis) synergyBits.push(`${bestAxis.side} on the deck's ${axisLabel(bestAxis.id)} theme (weight ${(frame.theme[bestAxis.id] ?? 0).toFixed(2)})`);
   if (ownSignature) synergyBits.push(`signature card of ${legendName}'s champion`);
+  if (standsAlone && aloneRole) synergyBits.push(`stands alone: ${ROLE_LABELS[aloneRole]} needs no partner, so ${pct(SCORE.standAlone)} of this part follows its quality (heuristic)`);
   if (negatives.length) synergyBits.push(`clashes with ${negatives.slice(0, 2).map((n) => `${n.name} (${n.label})`).join(', ')}`);
   reasons.push(`Synergy ${synergy}/${frame.max.synergy}: ${synergyBits.length ? synergyBits.join('; ') : `no stored interaction with ${frame.cards.length ? 'the cards in the deck' : legendName} and no match with its themes`}.`);
 
@@ -246,14 +259,19 @@ function scoreMain(card: Card, zone: Zone, frame: Frame, db: CardDb): CardScore 
   const inSlot = frame.summary.curve[f.costBucket] ?? 0;
   const curveFit = !slot ? SCORE.curveInside : inSlot < slot.lo ? SCORE.curveUnder : inSlot < slot.hi ? SCORE.curveInside : SCORE.curveOver;
   const power = card.power ?? 0;
-  const cast = power > 0 ? cardRuneReliability(scoreCardOf(card), frame.runes) : 1;
+  // Castability is the odds as a share of what public lists usually reach for a card of this cost (measured),
+  // not the raw odds: no split pays a 2-Energy card with 2 Power on its first turn more than a third of the time.
+  const odds = power > 0 ? payOdds(card, frame.runes) : 1;
+  const cast = power > 0 ? castFit(card, frame.runes) : 1;
   const curve = r1(frame.max.curve * clamp01(SCORE.castShare * cast + (1 - SCORE.castShare) * curveFit));
   const slotName = `${f.costBucket >= 7 ? '7+' : f.costBucket}-Energy slot`;
   const slotText = !slot ? `${slotName} has no band` : `${slotName} ${inSlot < slot.lo ? 'is under' : inSlot < slot.hi ? 'is inside' : 'is at or over'} its band (${inSlot}, band ${bandText(slot)})`;
   const payable = (card.powerDomains.length ? card.powerDomains : card.domains);
   const have = frame.runes.filter((r) => (payable as string[]).includes(r.domain)).reduce((n, r) => n + r.count, 0);
+  const totalRunes = frame.runes.reduce((n, r) => n + r.count, 0);
+  const accepted = acceptedCast(card);
   const castText = power > 0
-    ? `; its ${power} ${payable.map((d) => DOMAIN_LABEL[d]).join('/')} Power is paid on time in ${pct(cast)} of games with ${have} of ${frame.runes.reduce((n, r) => n + r.count, 0)} runes${frame.runesAreRecommended ? ' (recommended split, the deck has no runes yet)' : ''}`
+    ? `; its ${power} ${payable.map((d) => DOMAIN_LABEL[d]).join('/')} Power is paid with the first ${Math.min(Math.max(totalRunes, 2), runesWhenCast(card))} runes in ${pct(odds)} of games with ${have} of ${totalRunes} runes${frame.runesAreRecommended ? ' (recommended split, the deck has no runes yet)' : ''}; ${accepted.measured ? `public lists usually reach ${pct(accepted.usual)} for this cost` : 'no public list runs this cost (heuristic comparison)'}`
     : '; no Power cost';
   reasons.push(`Curve and runes ${curve}/${frame.max.curve}: ${slotText}${castText}.`);
 
@@ -264,7 +282,10 @@ function scoreMain(card: Card, zone: Zone, frame: Frame, db: CardDb): CardScore 
     if (stat && stat.share > 0) {
       const overall = Math.max(0.01, ev?.share ?? stat.share);
       const lift = Math.max(0, Math.min(1.5, Math.log2(stat.share / overall))) / 1.5;
-      meta = r1(frame.max.meta * clamp01(0.6 * Math.min(1, stat.share / SCORE.metaFullShare) + 0.4 * lift));
+      // A card most of the legend's lists run earns the whole part; under that, running it more here than
+      // elsewhere (lift) fills part of the gap. (The first version capped a card every list runs at 60%.)
+      const base = Math.min(1, stat.share / SCORE.metaFullShare);
+      meta = r1(frame.max.meta * clamp01(base + SCORE.metaLift * lift * (1 - base)));
       reasons.push(`Meta ${meta}/${frame.max.meta}: per-legend inclusion data - ${stat.decks} of ${frame.meta.decks} ${legendName} lists run it${zone === 'side' ? ' in the side deck' : ''} (${pct(stat.share)}, ${stat.avgCopies.toFixed(1)} copies)${frame.meta.quality !== 'ok' ? `; sample is ${frame.meta.quality}, so this part weighs ${frame.max.meta} instead of ${SCORE_WEIGHTS.meta}` : ''}.`);
     } else {
       reasons.push(`Meta 0/${frame.max.meta}: per-legend inclusion data - none of ${frame.meta.decks} ${legendName} lists run it${zone === 'side' ? ' in the side deck' : ''}.`);
@@ -347,7 +368,7 @@ export function createScorer(deck: Deck, ctx: EngineContext): Scorer {
   const frameFor = (card: Card, zone: Zone): Frame => {
     if (zone !== 'main' || !inMain.has(card.id)) return base;
     let frame = without.get(card.id);
-    if (!frame) without.set(card.id, (frame = buildFrame(withoutCopy(deck, card.id), db)));
+    if (!frame) without.set(card.id, (frame = buildFrame(withoutCopy(deck, card.id), db, base.targets)));
     return frame;
   };
   const score = (card: Card, zone: Zone = 'main'): CardScore => {

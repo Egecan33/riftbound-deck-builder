@@ -235,8 +235,10 @@ export function bandScore(x: number, spec: BandSpec): number {
  * bands scaled to its size. `scaled` and the `Targets` fields are what the deck is compared with now;
  * `full` is where a 40-card deck should end (the card score's role need uses `full`).
  */
-export function targetsFor(deck: Deck, db: CardDb, summary: DeckSummary = summarizeDeck(deck, db)): FullTargets {
-  const { id, reason } = archetypeOf(deck, db, summary);
+export function targetsFor(deck: Deck, db: CardDb, summary: DeckSummary = summarizeDeck(deck, db), pin?: { id: Archetype; reason: string }): FullTargets {
+  // `pin` keeps the archetype of another deck state: the card score judges a card of the deck against the
+  // bands of the deck it is in, not against the bands of whatever archetype the deck minus one copy is nearest to.
+  const { id, reason } = pin ?? archetypeOf(deck, db, summary);
   const measured = MEASURED_BANDS[id];
   const tolerance = POWER_TOLERANCE[deck.power] ?? 1;
   const shift = MODE_SHIFT[deck.format] ?? {};

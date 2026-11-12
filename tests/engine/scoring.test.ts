@@ -1,6 +1,7 @@
 // Plan Task 6: the per-card score (spec 10).
 import { describe, expect, it } from 'vitest';
-import { createScorer, candidateFit, SCORE_WEIGHTS } from '@/engine/scoring';
+import { createScorer, candidateFit, SCORE, SCORE_WEIGHTS } from '@/engine/scoring';
+import { ACCEPTED_CAST, acceptedCast, castFit, payOdds, runesWhenCast } from '@/engine/scoring/castability';
 import { resolveThemeWeights, summarizeDeck } from '@/engine/summary';
 import { GUIDELINE_RECONCILIATION, MEASURED_BANDS, archetypeOf, bandScore, targetsFor } from '@/engine/targets';
 import { evaluateDeckGuidelines } from '@/engine/scoring/ported';
@@ -159,7 +160,76 @@ describe('parts', () => {
     const none = part({ fury: 12 });
     const many = part({ fury: 4, mind: 8 });
     expect(none.parts.find((p) => p.key === 'curve')!.points).toBeLessThan(many.parts.find((p) => p.key === 'curve')!.points);
-    expect(none.reasons.find((r) => r.startsWith('Curve'))).toContain('2 Mind Power is paid on time in 0% of games with 0 of 12 runes');
+    expect(none.reasons.find((r) => r.startsWith('Curve'))).toContain('2 Mind Power is paid with the first 2 runes in 0% of games with 0 of 12 runes');
+    expect(none.reasons.find((r) => r.startsWith('Curve'))).toContain('public lists usually reach 32% for this cost');
+  });
+  // Stage 3 review of Task 6.
+  it('castability draws max(2, Energy, Power) runes and is judged against what public lists reach, not a flat 80%', () => {
+    const pips = (energy: number, power: number) => card('x', { energy, power, powerDomains: ['mind'], domains: ['mind'] });
+    expect(runesWhenCast(pips(1, 3))).toBe(3);
+    expect(runesWhenCast(pips(0, 1))).toBe(2);
+    expect(payOdds(pips(1, 3), [{ domain: 'mind', count: 12 }])).toBe(1);      // the ported function returned 0 here
+    expect(payOdds(pips(2, 2), [{ domain: 'fury', count: 12 }])).toBe(0);
+    expect(payOdds(pips(2, 0), [])).toBe(1);
+    expect(payOdds(pips(2, 1), [])).toBe(0);
+    // 2 Energy, 2 Power, a 6/6 split: 15/66 = 23% is what one list in ten accepts, so it is not a fault
+    const even = [{ domain: 'mind', count: 6 }, { domain: 'fury', count: 6 }];
+    expect(payOdds(pips(2, 2), even)).toBeCloseTo(15 / 66, 3);
+    expect(acceptedCast(pips(2, 2))).toMatchObject({ measured: true, low: 0.23, usual: 0.32 });
+    expect(castFit(pips(2, 2), even)).toBeGreaterThan(0.7);
+    expect(castFit(pips(2, 2), [{ domain: 'mind', count: 7 }, { domain: 'fury', count: 5 }])).toBe(1);
+    expect(castFit(pips(2, 2), [{ domain: 'fury', count: 12 }])).toBeLessThan(0.05);
+    // a cell no public list fills is a heuristic and says so
+    expect(acceptedCast(pips(4, 3)).measured).toBe(false);
+    expect(acceptedCast(pips(2, 0))).toEqual({ low: 1, usual: 1, measured: true });
+    for (const row of Object.values(ACCEPTED_CAST)) for (const c of row) expect(c.low).toBeLessThanOrEqual(c.usual);
+  });
+  it('a card every list of the legend runs earns the whole Meta part, also when every other legend runs it too', () => {
+    const stat = (share: number) => ({ decks: Math.round(share * 20), share, avgCopies: 3 });
+    const evidence = (share: number) => ({ lists: 100, eligibleLists: 100, share, nEff: 100, eraWeight: 1, banned: false, peak: null });
+    const meta = [{ legendId: 'legend-tester', decks: 20, quality: 'ok' as const, main: { everywhere: stat(1), ours: stat(1), some: stat(0.3), few: stat(0.3) }, side: {}, battlefields: {}, champions: {}, runeSplits: {} }];
+    const { db, legend } = syntheticDb(30, {
+      cards: ['everywhere', 'ours', 'some', 'few'].map((id) => card(id)), meta,
+      features: [features('everywhere', { evidence: evidence(1) as never }), features('ours', { evidence: evidence(0.05) as never }), features('some', { evidence: evidence(0.3) as never }), features('few', { evidence: evidence(0.05) as never })],
+    });
+    const scorer = createScorer(blankDeck({ legend: legend.id }), ctxOf(db));
+    const part = (id: string) => scorer.score(db.get(id)!).parts.find((p) => p.key === 'meta')!;
+    expect(part('everywhere').points).toBe(part('everywhere').max);
+    expect(part('ours').points).toBe(part('ours').max);
+    expect(Math.abs(part('some').points - part('some').max * 0.5)).toBeLessThanOrEqual(0.11);
+    expect(part('few').points).toBeGreaterThan(part('some').points);   // run here far more than elsewhere
+    expect(part('few').points).toBeLessThan(part('few').max);
+  });
+  it('a card that needs no partner is not scored as off-plan: half of Synergy follows its quality, and the reason says so', () => {
+    const { db, legend } = syntheticDb(30, {
+      cards: [card('answer', { type: 'spell', might: null }), card('body'), card('needy', { type: 'spell', might: null }), card('weak', { type: 'spell', might: null })],
+      features: [
+        features('answer', { roles: ['counter'], evaluatedRating: 80 }), features('body', { roles: ['unit-body'], evaluatedRating: 80 }),
+        features('needy', { roles: ['counter'], evaluatedRating: 80, axes: { discard: { e: 0, p: 1 } } }), features('weak', { roles: ['counter'], evaluatedRating: 30 }),
+      ],
+    });
+    const scorer = createScorer(blankDeck({ legend: legend.id, main: entries(['t0', 't1', 't3', 't4']) }), ctxOf(db));
+    const syn = (id: string) => { const s = scorer.score(db.get(id)!); return { part: s.parts.find((p) => p.key === 'synergy')!, reason: s.reasons.find((r) => r.startsWith('Synergy'))!, s }; };
+    expect(syn('answer').part.points).toBeCloseTo(syn('answer').part.max * SCORE.standAlone, 1);
+    expect(syn('answer').reason).toContain('stands alone: Counter needs no partner');
+    expect(syn('body').part.points).toBe(0);
+    expect(syn('needy').part.points).toBe(0);       // a payoff asks the deck for something
+    expect(syn('weak').part.points).toBe(0);        // nothing to follow
+    expect(Math.abs(sumParts(syn('answer').s) - syn('answer').s.score)).toBeLessThanOrEqual(0.5);
+  });
+  it('an in-deck card is judged against the bands of the deck it is in: leave-one-out never changes the archetype', () => {
+    const { db, decks } = scoredFixture();
+    for (const d of decks) {
+      const archetype = targetsFor(d.deck, db).archetype;
+      const scorer = createScorer(d.deck, ctxOf(db));
+      for (const e of d.deck.main) {
+        const reason = scorer.score(db.get(e.id)!).reasons.find((r) => r.startsWith('Role need'))!;
+        if (reason.includes(' for ')) expect(reason, `${d.file} ${e.id}`).toContain(`for ${archetype})`);
+      }
+    }
+    const { db: syn, legend } = syntheticDb(30);
+    const deck = blankDeck({ legend: legend.id, main: entries(['t0', 't1', 't2']) });
+    expect(targetsFor(deck, syn, undefined, { id: 'big-control', reason: 'pinned' })).toMatchObject({ archetypeId: 'big-control', reason: 'pinned' });
   });
 });
 

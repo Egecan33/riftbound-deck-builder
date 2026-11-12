@@ -15,13 +15,14 @@
 import { axisLabel } from '../features/axes';
 import { ROLE_LABELS } from '../features/roles';
 import { seenByTurn } from '../maths/curve';
-import { cardRuneReliability, type RuneRecommendation } from '../maths/hypergeo';
+import type { RuneRecommendation } from '../maths/hypergeo';
 import { runeSplit } from '../maths/runes';
 import { isGenericReason } from '../network/edges';
 import { BATTLEFIELDS_BROUGHT, MAIN_MIN, RUNE_DECK_SIZE, formatRules } from '../rules/formats';
 import { legendOf } from '../rules/identity';
 import { isLegal, validateDeck } from '../rules/validate';
-import { portedDeckScore, scoreCardOf } from '../scoring/bridge';
+import { portedDeckScore } from '../scoring/bridge';
+import { CAST_EPS, acceptedCast, castFit, payOdds, payingDomains, payingRunes, runesWhenCast } from '../scoring/castability';
 import { featuresFor, qtyOf, resolveThemeWeights, summarizeDeck } from '../summary';
 import { bandScore, bandText, derivedCounts, targetsFor, wholeBand, type FullTargets } from '../targets';
 import type { Card, CardDb, CardFeatures, Deck, DeckRating, DeckSummary, Domain, EngineContext, Fix, Role, SubScore, Violation, WinReport } from '../types';
@@ -44,12 +45,23 @@ export const RATING = {
   /**
    * Stored partners per card (copy-weighted, each card counted up to `partnerCap`) at which the density term is
    * full. Measured 2026-11-12 on public lists: 0.65 (p25), 1.33 (median), 1.95 (p75) rules-interaction partners.
-   * In the median public list 40% of the copies have no stored partner at all, so `orphanFree` of the deck may
-   * be unconnected before the orphan term falls.
+   * In the median public list 40% of the copies have no stored partner at all, so "no partner" alone is not a
+   * fault. An orphan is an unconnected PAYOFF with fewer than `orphanEnablers` enabler copies in the deck
+   * (stage 3 review); `orphanFree` of the deck may be orphans before the orphan term falls.
    */
-  partnersFull: 2, partnerCap: 4, orphanFree: 0.25, orphanSpan: 0.5, balanceFull: 6, orphanPenalty: 0.08, orphanPenaltyMax: 0.24,
-  castTarget: 0.8,
+  partnersFull: 2, partnerCap: 4, orphanFree: 0.05, orphanSpan: 0.3, orphanEnablers: 3, balanceFull: 6, orphanPenalty: 0.08, orphanPenaltyMax: 0.24,
+  /**
+   * Share of the rating lost per share of main-deck cards that the rune deck can never pay for (0 runes of every
+   * domain that pays their Power). 1 = a dead card counts as a missing card. HEURISTIC.
+   */
+  deadCardScale: 1,
   earlyLo: 0.6, earlyHi: 0.9,
+  /** A count outside its band becomes a fix at this band score or lower (1 = on the band edge, 0.5 = at the tolerance edge). HEURISTIC. */
+  fixBelow: 0.8,
+  /** In the order of role fixes a missing role counts this much more than a surplus of the same size. HEURISTIC. */
+  shortFirst: 1.5,
+  /** Band score of a core role under which the Roles score is scaled by (1 - coreHole + score). HEURISTIC. */
+  coreHole: 0.5,
   enginePoints: 12, offChampion: 0.6,
   sideFullShare: 0.5, bfNoData: 0.7, bfMinLists: 8,
   powerMean: { competitive: 68, focused: 62, casual: 0 } as Record<string, number>,
@@ -72,10 +84,15 @@ function bandFix(w: Work, key: string, label: string, count: number, filter: Fix
   const band = w.targets.scaled[key];
   if (!band) return null;
   const score = bandScore(count, band);
-  if (score >= 1) return null;
+  // The band is the middle half of public lists, so half of all tournament lists sit just outside it on any one
+  // count. That costs score, but it is only called a fix from `fixBelow` down (stage 3 review: 40 of 40
+  // tournament lists were told to fix their curve).
+  if (score > RATING.fixBelow) return null;
   const short = count < band.lo;
   const shown = wholeBand(band);
   const gap = Math.max(1, Math.round(short ? shown.lo - count : count - shown.hi));
+  // One card off the middle half is inside the spread of tournament lists unless it is past the tolerance edge.
+  if (gap <= 1 && score >= 0.5) return null;
   return { score, fix: { text: `${gap} ${short ? 'short on' : 'over on'} ${label} for ${w.targets.archetype}: have ${count}, band ${bandText(band)}${w.so}.`, filter: short ? filter : null } };
 }
 
@@ -114,10 +131,22 @@ function synergyScore(w: Work, theme: Record<string, number>): SubScore {
     }
     partnerSum += h.qty * Math.min(RATING.partnerCap, partners);
     const onTheme = Object.entries(h.f.axes).some(([axis, v]) => (theme[axis] ?? 0) >= 0.3 && Math.max(v.e, v.p) >= 0.5);
-    if (partners === 0 && !onTheme) {
-      orphanCopies += h.qty;
-      fixes.push({ weight: h.qty, fix: { text: `${h.qty}x ${h.card.name} has no stored interaction (rules text or measured co-play) with any other card in the deck or with ${w.legend?.name ?? 'a legend'}, and is on none of the deck's themes.`, filter: null } });
+    if (partners > 0 || onTheme) continue;
+    // An orphan is a card that WANTS something the deck does not give it: a payoff whose enablers are missing.
+    // A card that only enables, answers or draws stands on its own, and so does a card most lists run. (The first
+    // version called every unconnected card an orphan and listed Defy and Discipline as a fault of 40 of 40
+    // tournament lists.)
+    if (h.f.evaluatedRating >= RATING.qualityHi) continue;
+    let unmet: { axis: string; enablers: number } | null = null;
+    for (const [axis, v] of Object.entries(h.f.axes)) {
+      if (v.p < 0.5) continue;
+      const enablers = Math.max(0, (w.summary.axisTotals[axis]?.e ?? 0) - h.qty * v.e);
+      if (enablers >= RATING.orphanEnablers * w.targets.scale) { unmet = null; break; }
+      if (!unmet || enablers < unmet.enablers) unmet = { axis, enablers };
     }
+    if (!unmet) continue;
+    orphanCopies += h.qty;
+    fixes.push({ weight: h.qty, fix: { text: `${h.qty}x ${h.card.name} pays off ${axisLabel(unmet.axis)}, but the deck has ${Math.round(unmet.enablers)} other ${Math.round(unmet.enablers) === 1 ? 'copy' : 'copies'} that set it up, and it has no stored interaction (rules text or measured co-play) with any other card here or with ${w.legend?.name ?? 'a legend'}.`, filter: { axis: unmet.axis } } });
   }
   const density = Math.min(1, partnerSum / copies / RATING.partnersFull);
   const orphanShare = Math.max(0, orphanCopies / copies - RATING.orphanFree) / RATING.orphanSpan;
@@ -179,13 +208,33 @@ function curveScore(w: Work): SubScore {
   const library = libraryOf(w);
   const pEarly = seenByTurn(early.copies, 2, library);
   const earlyValue = clamp01((pEarly - RATING.earlyLo) / (RATING.earlyHi - RATING.earlyLo));
-  if (earlyValue < 1) {
-    const want = Math.ceil(w.targets.scaled.earlyUnits.lo);
+  const want = Math.ceil(w.targets.scaled.earlyUnits.lo);
+  // Said only when the deck has fewer early plays than the lower quartile of its archetype's public lists, or
+  // so few that the early term is at zero.
+  if (earlyValue < 1 && (early.copies < want || pEarly < RATING.earlyLo)) {
     fixes.push({ score: earlyValue, fix: { text: `${early.copies} ${early.label}: one is in hand by turn 2 in ${pct(pEarly)} of games${want > early.copies ? `; ${want} would give ${pct(seenByTurn(want, 2, library))}` : ''}.`, filter: { type: 'unit', maxEnergy: 2 } } });
   }
   // The two whole-curve findings come first; then the buckets furthest from their band.
   bucketFixes.sort((a, b) => a.score - b.score);
   return sub('curve', 'Curve', 0.4 * avg + 0.3 * (buckets / 7) + 0.3 * earlyValue, [...fixes, ...bucketFixes].map((f) => f.fix), false);
+}
+
+/**
+ * Main-deck cards with a Power cost that no rune of the deck's rune deck can pay. Only a complete-looking rune
+ * deck is judged (an empty one is "no runes yet", not a mistake). Gold tokens and other Power sources are not
+ * modelled (deck-theory.md 6), which is why this scales the rating instead of failing the deck.
+ */
+export function deadCards(w: Pick<Work, 'deck' | 'main'>): { copies: number; names: string[]; domains: Domain[] } {
+  const runes = (Object.entries(w.deck.runes) as [Domain, number][]).filter(([, n]) => Number.isFinite(n) && n > 0).map(([domain, count]) => ({ domain, count: Math.floor(count) }));
+  const out = { copies: 0, names: [] as string[], domains: [] as Domain[] };
+  if (runes.reduce((n, r) => n + r.count, 0) === 0) return out;
+  for (const h of w.main) {
+    if ((h.card.power ?? 0) < 1 || payingRunes(h.card, runes) > 0) continue;
+    out.copies += h.qty;
+    out.names.push(h.card.name);
+    for (const d of payingDomains(h.card)) if (!out.domains.includes(d)) out.domains.push(d);
+  }
+  return out;
 }
 
 function runesScore(w: Work): SubScore {
@@ -199,33 +248,45 @@ function runesScore(w: Work): SubScore {
   const fixes: { fix: Fix; score: number }[] = [];
   let weight = 0;
   let cast = 0;
+  const dead = deadCards(w);
+  if (dead.copies > 0) {
+    fixes.push({
+      score: -1,
+      fix: {
+        text: `${dead.copies} of ${w.summary.mainCount} main-deck cards can never be paid for from this rune deck: it has 0 ${dead.domains.map((d) => DOMAIN_LABEL[d]).join(' or ')} runes for ${dead.names.slice(0, 4).join(', ')}${dead.names.length > 4 ? ` and ${dead.names.length - 4} more` : ''}. Those cards are dead, so the whole rating is scaled by ${(1 - RATING.deadCardScale * dead.copies / Math.max(1, w.summary.mainCount)).toFixed(2)} (heuristic).`,
+        filter: dead.domains[0] ? { domain: dead.domains[0] } : null,
+      },
+    });
+  }
   for (const h of w.main) {
     const power = h.card.power ?? 0;
     if (power < 1) continue;
-    const p = cardRuneReliability(scoreCardOf(h.card), runes);
+    const p = payOdds(h.card, runes);
+    const accepted = acceptedCast(h.card);
     weight += h.qty;
-    cast += h.qty * p;
-    if (p >= RATING.castTarget) continue;
-    const payable = (h.card.powerDomains.length ? h.card.powerDomains : h.card.domains).filter((d) => w.legend?.domains.includes(d));
+    cast += h.qty * castFit(h.card, runes);
+    if (p + CAST_EPS >= accepted.low) continue;
+    const r = Math.min(total, runesWhenCast(h.card));
+    const basis = accepted.measured ? `public lists reach ${pct(accepted.low)} to ${pct(accepted.usual)} for a card with this cost` : 'no public list runs a card with this cost, so the comparison is a heuristic';
+    const payable = payingDomains(h.card).filter((d) => w.legend?.domains.includes(d));
     if (payable.length !== 1) {
-      fixes.push({ score: p, fix: { text: `${h.card.name} (${power} Power) is paid on time in only ${pct(p)} of games with these runes.`, filter: null } });
+      fixes.push({ score: p / Math.max(0.01, accepted.usual), fix: { text: `${h.card.name} (${power} Power) is paid with the first ${r} runes in only ${pct(p)} of games with these runes (${basis}).`, filter: null } });
       continue;
     }
     const domain = payable[0];
-    const have = runes.find((r) => r.domain === domain)?.count ?? 0;
+    const have = runes.find((x) => x.domain === domain)?.count ?? 0;
     let need = have;
     let pNeed = p;
-    while (need < total && pNeed < RATING.castTarget) {
+    while (need < total && pNeed + CAST_EPS < accepted.usual) {
       need += 1;
-      const moved = [{ domain, count: need, demand: 0 }, { domain: '__other', count: total - need, demand: 0 }];
-      pNeed = cardRuneReliability(scoreCardOf(h.card), moved);
+      pNeed = payOdds(h.card, [{ domain, count: need }, { domain: '__other', count: total - need }]);
     }
     fixes.push({
-      score: p,
+      score: p / Math.max(0.01, accepted.usual),
       fix: {
-        text: pNeed >= RATING.castTarget
-          ? `${need - have} short on ${DOMAIN_LABEL[domain]} runes for ${h.card.name}: have ${have}, need ${need} (its ${power} Power is paid on time in ${pct(p)} of games now, ${pct(pNeed)} with ${need}).`
-          : `${h.card.name} needs ${power} ${DOMAIN_LABEL[domain]} Power; even ${total} ${DOMAIN_LABEL[domain]} runes pay it on time in only ${pct(pNeed)} of games (have ${have}).`,
+        text: pNeed + CAST_EPS >= accepted.usual
+          ? `${need - have} short on ${DOMAIN_LABEL[domain]} runes for ${h.card.name}: have ${have}, need ${need} (its ${power} Power is paid with the first ${r} runes in ${pct(p)} of games now, ${pct(pNeed)} with ${need}; ${basis}).`
+          : `${h.card.name} needs ${power} ${DOMAIN_LABEL[domain]} Power; even ${total} ${DOMAIN_LABEL[domain]} runes pay it with the first ${r} runes in only ${pct(pNeed)} of games (have ${have}).`,
         filter: { domain },
       },
     });
@@ -256,15 +317,25 @@ function rolesScore(w: Work): SubScore {
   const fixes: { fix: Fix; score: number; weight: number }[] = [];
   let total = 0;
   let weights = 0;
+  // A weighted mean hides a hole: a control list with 0 of its 7-14 removal cards kept 69% of this sub-score
+  // (stage 3 review). The core role (units, removal, card flow) that is furthest under its band scales the mean
+  // once its band score is under `coreHole`. Measured 2026-11-12: 24% of public lists are under 0.5 on one core
+  // role and lose a little; 6% are under 0.25 (3% of placed tournament lists).
+  let hole: { score: number; fix: Fix | null } | null = null;
   for (const part of ROLE_PARTS) {
     const count = part.role === 'unit-body' ? w.summary.typeCounts.unit : w.summary.roleCounts[part.role as Role];
-    total += part.weight * bandScore(count, w.targets.scaled[part.key]);
+    const score = bandScore(count, w.targets.scaled[part.key]);
+    const isShort = count < w.targets.scaled[part.key].lo;
+    total += part.weight * score;
     weights += part.weight;
     const fix = bandFix(w, part.key, part.label, count, part.role ? { role: part.role } : null);
-    if (fix) fixes.push({ ...fix, weight: part.weight });
+    if (fix) fixes.push({ ...fix, weight: part.weight * (isShort ? RATING.shortFirst : 1) });
+    if (isShort && part.weight >= 3 && score < RATING.coreHole && (!hole || score < hole.score)) hole = { score, fix: fix?.fix ?? null };
   }
+  const scale = hole ? 1 - RATING.coreHole + hole.score : 1;
+  if (hole?.fix) hole.fix.text += ` A core role this far under its band scales the whole Roles score by ${scale.toFixed(2)} (heuristic).`;
   fixes.sort((a, b) => (1 - b.score) * b.weight - (1 - a.score) * a.weight);
-  return sub('roles', 'Roles', total / weights, fixes.map((f) => f.fix), false);
+  return sub('roles', 'Roles', (total / weights) * scale, fixes.map((f) => f.fix), false);
 }
 
 function winScore(w: Work, win: WinReport | undefined): SubScore {
@@ -306,7 +377,7 @@ function consistencyScore(w: Work): SubScore {
   const over = Math.max(0, w.summary.mainCount - MAIN_MIN);
   const sizeFit = Math.max(0, 1 - 0.25 * over);
   const fixes: { fix: Fix; score: number }[] = [];
-  if (pOpen < 0.8) fixes.push({ score: pOpen, fix: { text: `An opening hand (4 cards, up to 2 replaced) holds one of the ${early.copies} ${early.label} in ${pct(pOpen)} of games.`, filter: { type: 'unit', maxEnergy: 2 } } });
+  if (pOpen < 0.8 && (early.copies < Math.ceil(w.targets.scaled.earlyUnits.lo) || pOpen < RATING.earlyLo)) fixes.push({ score: pOpen, fix: { text: `An opening hand (4 cards, up to 2 replaced) holds one of the ${early.copies} ${early.label} in ${pct(pOpen)} of games.`, filter: { type: 'unit', maxEnergy: 2 } } });
   if (pIx < 0.85) fixes.push({ score: pIx, fix: { text: `${d.interaction} interaction cards: at least one by turn 3 in ${pct(pIx)} of games.`, filter: { role: 'removal' } } });
   if (redundancy < 1) {
     const b = w.targets.scaled.threeOfs;
@@ -349,8 +420,8 @@ function extrasScore(w: Work): SubScore {
   const met = [roles.removal >= 2, roles.hate >= 2, roles.guard >= 1];
   const side = 0.4 * Math.min(1, w.summary.sideCount / Math.max(1, rules.sideMax)) + 0.6 * (met.filter(Boolean).length / met.length);
   if (w.summary.sideCount < rules.sideMax) fixes.push({ text: `Side deck has ${w.summary.sideCount} of ${rules.sideMax} cards.`, filter: null });
-  if (!met[0]) fixes.push({ text: `Side deck has ${roles.removal} removal cards; 2 or more cover a matchup that needs extra answers.`, filter: { role: 'removal' } });
-  if (!met[1]) fixes.push({ text: `Side deck has ${roles.hate} cards that remove gear; 2 or more cover gear decks.`, filter: { role: 'hate' } });
+  if (!met[0]) fixes.push({ text: `Side deck has ${roles.removal} removal ${roles.removal === 1 ? 'card' : 'cards'}; 2 or more cover a matchup that needs extra answers.`, filter: { role: 'removal' } });
+  if (!met[1]) fixes.push({ text: `Side deck has ${roles.hate} ${roles.hate === 1 ? 'card that removes' : 'cards that remove'} gear; 2 or more cover gear decks.`, filter: { role: 'hate' } });
   if (!met[2]) fixes.push({ text: 'Side deck has no counter or protection card for spell-heavy opponents.', filter: { role: 'counter' } });
   return sub('extras', 'Battlefields and side deck', 0.5 * bf + 0.5 * side, fixes, true);
 }
@@ -394,8 +465,19 @@ export function rateDeck(deck: Deck, ctx: EngineContext, extras: { win?: WinRepo
   const violations: Violation[] = validateDeck(deck, db);
   const legal = isLegal(violations);
   const complete = !!w.legend && !!deck.champion && summary.mainCount >= MAIN_MIN && summary.runeCount === RUNE_DECK_SIZE && deck.battlefields.length === BATTLEFIELDS_BROUGHT;
-  const broken = violations.some((v) => v.severity === 'error' && !UNFINISHED_CODES.includes(v.code));
-  const raw = Math.round(subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100);
+  // "Not finished" is a deck that is still short. Too many runes or battlefields is a broken deck, and a Chosen
+  // Champion that is not in the main deck yet is only unfinished while the main deck is still being filled.
+  const short = summary.mainCount < MAIN_MIN;
+  const unfinished = (v: Violation): boolean =>
+    v.code === 'RUNE_COUNT' ? summary.runeCount < RUNE_DECK_SIZE
+      : v.code === 'BATTLEFIELD_COUNT' ? deck.battlefields.length < BATTLEFIELDS_BROUGHT
+        : v.code === 'CHAMPION_NOT_IN_MAIN' ? short
+          : UNFINISHED_CODES.includes(v.code);
+  const broken = violations.some((v) => v.severity === 'error' && !unfinished(v));
+  // Cards the rune deck can never pay for are dead cards: no weighted sub-score can say that loudly enough
+  // (a 12/0 split of a two-domain tournament list lost 6 points in the stage 3 review), so they scale the total.
+  const deadShare = summary.mainCount > 0 ? deadCards(w).copies / summary.mainCount : 0;
+  const raw = Math.round((subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100) * (1 - RATING.deadCardScale * Math.min(1, deadShare)));
   const rating = Math.max(0, Math.min(100, broken ? Math.min(ILLEGAL_CAP, raw) : raw));
   return { rating: Number.isFinite(rating) ? rating : 0, legal, complete, subscores, violations };
 }

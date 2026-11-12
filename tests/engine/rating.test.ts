@@ -9,7 +9,9 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fixtureDeckFiles } from '../helpers/fixture-db';
 import { hasRealDb } from '../helpers/real-db';
-import { blankDeck, scoredFixture, syntheticDb } from './scoring/forge-db';
+import { blankDeck, card, features, scoredFixture, syntheticDb } from './scoring/forge-db';
+
+const entries = (ids: string[], qty = 3): Deck['main'] => ids.map((id) => ({ id, qty, locked: false }));
 
 const ctxOf = (db: EngineContext['db']): EngineContext => ({ db, opponentLegend: null });
 const subOf = (r: DeckRating, key: string) => r.subscores.find((s) => s.key === key)!;
@@ -88,8 +90,16 @@ describe('rateDeck on the reference decks (fixture pool, no play evidence)', () 
       expect(subOf(after, 'runes').value, d.file).toBeLessThan(subOf(before, 'runes').value);
       const texts = subOf(after, 'runes').fixes.map((f) => f.text);
       const label = domain[0].toUpperCase() + domain.slice(1);
-      expect(texts.some((t) => new RegExp(`\\d+ short on ${label} runes for .+: have 0, need \\d+ \\(its \\d+ Power is paid on time in 0% of games now, \\d+% with \\d+\\)`).test(t)), `${d.file}: ${texts.join(' | ')}`).toBe(true);
+      expect(texts.some((t) => new RegExp(`\\d+ short on ${label} runes for .+: have 0, need \\d+ \\(its \\d+ Power is paid with the first \\d+ runes in 0% of games now, \\d+% with \\d+; `).test(t)), `${d.file}: ${texts.join(' | ')}`).toBe(true);
       expect(subOf(after, 'runes').fixes.some((f) => f.filter?.domain === domain)).toBe(true);
+      // Stage 3 review: cards no rune can pay for are dead; the first rune fix counts them and the rating is scaled.
+      const dead = d.deck.main.filter((e) => { const c = db.get(e.id)!; return (c.power ?? 0) >= 1 && !(c.powerDomains.length ? c.powerDomains : c.domains).includes(other); }).reduce((n, e) => n + e.qty, 0);
+      const mainCount = d.deck.main.reduce((n, e) => n + e.qty, 0);
+      expect(texts[0], d.file).toContain(`${dead} of ${mainCount} main-deck cards can never be paid for from this rune deck: it has 0 ${label} runes for `);
+      expect(texts[0]).toContain(`scaled by ${(1 - dead / mainCount).toFixed(2)} (heuristic)`);
+      const weighted = after.subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100;
+      expect(after.rating).toBe(Math.round(weighted * (1 - dead / mainCount)));
+      expect(before.rating - after.rating, d.file).toBeGreaterThanOrEqual(8);
       checked += 1;
     }
     expect(checked).toBeGreaterThanOrEqual(4);
@@ -119,6 +129,60 @@ describe('rateDeck on the reference decks (fixture pool, no play evidence)', () 
     expect(r.rating).toBeLessThanOrEqual(ILLEGAL_CAP);
     expect(r.violations.some((v) => v.code === 'DOMAIN_VIOLATION' && v.cardIds.includes(off.id))).toBe(true);
     expect(Math.round(r.subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100)).toBeGreaterThan(ILLEGAL_CAP);
+  });
+  it('too many runes is a broken deck (capped); too few runes, or a Chosen Champion not yet in a partial main deck, is an unfinished one', () => {
+    const { db, decks } = scoredFixture();
+    const d = decks[0];
+    const domain = db.get(d.legend)!.domains[0];
+    const weighted = (r: DeckRating) => Math.round(r.subscores.reduce((n, s) => n + s.weight * s.value, 0) / 100);
+    const over = rateDeck({ ...d.deck, runes: { ...d.deck.runes, [domain]: (d.deck.runes[domain] ?? 0) + 1 } }, ctxOf(db));
+    expect(over.violations.some((v) => v.code === 'RUNE_COUNT')).toBe(true);
+    expect(weighted(over)).toBeGreaterThan(ILLEGAL_CAP);
+    expect(over.rating).toBe(ILLEGAL_CAP);
+    const under = rateDeck({ ...d.deck, runes: { ...d.deck.runes, [domain]: (d.deck.runes[domain] ?? 0) - 1 } }, ctxOf(db));
+    expect(under.violations.some((v) => v.code === 'RUNE_COUNT')).toBe(true);
+    expect(under.rating).toBe(weighted(under));
+    let n = 0;
+    const part = rateDeck({ ...d.deck, main: d.deck.main.filter((e) => e.id !== d.deck.champion && (n += e.qty) <= 20) }, ctxOf(db));
+    expect(part.violations.some((v) => v.code === 'CHAMPION_NOT_IN_MAIN')).toBe(true);
+    expect(part.rating).toBe(weighted(part));
+    expect(part.rating).toBeGreaterThan(ILLEGAL_CAP);
+    // in a full main deck the same violation is a broken deck
+    const champ = d.deck.main.find((e) => e.id === d.deck.champion)!;
+    const filler = d.deck.main.find((e) => e.id !== d.deck.champion && e.qty < 3) ?? null;
+    if (filler) {
+      const full = rateDeck({ ...d.deck, main: d.deck.main.filter((e) => e !== champ).map((e) => (e === filler ? { ...e, qty: e.qty + champ.qty } : e)) }, ctxOf(db));
+      if (full.violations.some((v) => v.code === 'CHAMPION_NOT_IN_MAIN')) expect(full.rating).toBeLessThanOrEqual(ILLEGAL_CAP);
+    }
+  });
+  it('an unconnected card is an orphan only when it is a payoff whose enablers are missing; the fix names the card, the theme and the count', () => {
+    const extra = [card('payoff', { domains: ['fury'] }), card('plain', { domains: ['fury'] }), card('fed', { domains: ['fury'] }), card('feeder', { domains: ['fury'] })];
+    const { db, legend } = syntheticDb(40, {
+      cards: extra,
+      features: [features('payoff', { axes: { discard: { e: 0, p: 1 } } }), features('plain'), features('fed', { axes: { trash: { e: 0, p: 1 } } }), features('feeder', { axes: { trash: { e: 1, p: 0 } } })],
+    });
+    const main = [...entries(['t0', 't1', 't2', 't3', 't4', 't6', 't7', 't8', 't9']), ...entries(['payoff', 'plain', 'fed', 'feeder'])];
+    const r = rateDeck(blankDeck({ legend: legend.id, main: [...main, { id: 't10', qty: 1, locked: false }] }), ctxOf(db));
+    const texts = r.subscores.find((s) => s.key === 'synergy')!.fixes.map((f) => f.text).join(' | ');
+    expect(texts).toContain('3x Card payoff pays off Discard, but the deck has 0 other copies that set it up');
+    expect(texts).not.toContain('Card plain');
+    expect(texts).not.toContain('Card fed pays off');
+  });
+  it('a count one card outside the middle half of public lists is not called a fix; a missing role is listed before a surplus', () => {
+    const { db, decks } = scoredFixture();
+    for (const d of decks) {
+      const r = rateDeck(d.deck, ctxOf(db));
+      for (const s of r.subscores) for (const f of s.fixes) if (/^1 (short|over) on /.test(f.text)) {
+        // only past the tolerance edge: the band text is "lo-hi" and the count is at least 2 away from the unrounded band
+        expect(s.value, `${d.file}: ${f.text}`).toBeLessThan(100);
+      }
+    }
+    const { db: syn, legend, cards } = syntheticDb(60);
+    const units = cards.filter((c) => c.type === 'unit' && (c.energy ?? 9) <= 4).slice(0, 14).map((c) => ({ id: c.id, qty: 3, locked: false }));
+    const r = rateDeck(blankDeck({ legend: legend.id, main: units.slice(0, 13).concat([{ id: units[13].id, qty: 1, locked: false }]), runes: { fury: 6, mind: 6 } }), ctxOf(syn));
+    const roles = subOf(r, 'roles').fixes.map((f) => f.text);
+    expect(roles[0]).toMatch(/short on (Removal|Card flow) for .+: have 0, band \d+-\d+/);
+    expect(roles.findIndex((t) => / over on /.test(t))).not.toBe(0);
   });
   it('a 15-card partial deck returns a rating labelled by its size, not capped for being unfinished, with no NaN', () => {
     const { db, decks } = scoredFixture();
