@@ -1,4 +1,5 @@
 // Collects cards into the zones of a Deck. Shared by the text importer and the deck-code decoder. Pure.
+import { formatName } from '../rules/formats';
 import { nameKey } from '../rules/names';
 import type { Card, CardDb, Deck, DeckEntry, Domain } from '../types';
 import { isToken, tokenNotice } from './resolve';
@@ -38,7 +39,7 @@ export class DeckCollector {
     const formats = this.bans.get(nameKey(card.name));
     if (formats && !this.bannedSeen.has(card.id)) {
       this.bannedSeen.add(card.id);
-      this.notice(`${card.name} is on the ban list (${[...new Set(formats)].join(', ')}); it was imported and the deck check will flag it.`);
+      this.notice(`${card.name} is on the ban list (${[...new Set(formats)].map(formatName).join(', ')}); it was imported and the deck check will flag it.`);
     }
     if (card.dataIncomplete) this.notice(`${card.name} (${card.code}) has incomplete source data; check it by hand.`);
     if (card.type === 'legend') {

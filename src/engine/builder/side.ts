@@ -12,7 +12,7 @@
 // best third of the field, not the mean. HEURISTIC: the weights of (a)-(c) and the thresholds.
 import { copyLimit } from '../rules/copies';
 import { isSignature } from '../rules/champion';
-import { formatRules } from '../rules/formats';
+import { formatName, formatRules } from '../rules/formats';
 import { legendOf } from '../rules/identity';
 import { createScorer } from '../scoring';
 import { featuresFor, qtyOf } from '../summary';
@@ -142,7 +142,7 @@ export function planSideDeck(deck: Deck, ctx: EngineContext, opts: BuildOptions)
   const db = ctx.db;
   const rules = formatRules(deck.format, db.legality());
   const legend = legendOf(deck, db);
-  if (!rules.sideAllowed || rules.sideMax <= 0) return { entries: [], picks: [], notes: [`${deck.format} has no side deck (TR 601.1.c covers best-of-three Constructed).`] };
+  if (!rules.sideAllowed || rules.sideMax <= 0) return { entries: [], picks: [], notes: [`${formatName(deck.format)} has no side deck (TR 601.1.c covers best-of-three Constructed).`] };
   const kept = deck.side.filter((e) => e.locked && qtyOf(e) > 0).map((e) => ({ ...e, qty: qtyOf(e) }));
   if (!legend) return { entries: kept, picks: [], notes: ['No legend: no side deck can be chosen.'] };
   const cap = rules.sideMax;

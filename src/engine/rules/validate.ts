@@ -10,7 +10,7 @@
 import type { Card, CardDb, Deck, DeckEntry, Domain, Format, LegalityData, Violation, Zone } from '../types';
 import { championTagOf, eligibleChampions, isChampionUnit, isSignature, isTokenCard, sameTag } from './champion';
 import { copyLimit } from './copies';
-import { BATTLEFIELDS_BROUGHT, RUNE_DECK_SIZE, SIGNATURE_MAX, formatRules, type FormatRules } from './formats';
+import { BATTLEFIELDS_BROUGHT, RUNE_DECK_SIZE, SIGNATURE_MAX, domainName, formatName, formatRules, type FormatRules } from './formats';
 import { identityFit, legendOf } from './identity';
 import { nameKey } from './names';
 
@@ -98,7 +98,7 @@ function contextOf(deck: Deck, db: CardDb): Ctx {
 
 const ZONE_LABEL: Record<Zone, string> = { main: 'main deck', side: 'side deck', runes: 'rune deck', battlefields: 'battlefields', legend: 'legend slot' };
 const typeLabel = (c: Card): string => c.type ?? 'unknown type';
-const domainLabel = (ds: Iterable<Domain>): string => [...ds].join('/') || 'none';
+const domainLabel = (ds: Iterable<Domain>): string => [...ds].map(domainName).join('/') || 'none';
 
 /** Every problem with one card sitting in one zone, counts aside. */
 function cardIssues(card: Card, zone: Zone, ctx: Ctx): Violation[] {
@@ -139,11 +139,11 @@ function cardIssues(card: Card, zone: Zone, ctx: Ctx): Violation[] {
     const ffa = FFA.has(ctx.format);
     const note = ffa ? ' (interpretation: free-for-all has no official ban list; the Standard list is applied)' : '';
     out.push(violation(zone === 'legend' ? 'LEGEND_BANNED' : 'CARD_BANNED', 'error', 'TR 601.2.d',
-      `${card.name} is banned in ${ctx.format} since ${ban.effectiveFrom}${note}.`, ids, ffa));
+      `${card.name} is banned in ${formatName(ctx.format)} since ${ban.effectiveFrom}${note}.`, ids, ffa));
   }
   if (ctx.legalSets && !card.sets.some((s) => (ctx.legalSets as Set<string>).has(s.toUpperCase()))) {
     out.push(violation('CARD_NOT_IN_FORMAT', 'error', 'CR 103.3.e, TR 601.2.a, 601.3.c',
-      `${card.name} has no printing in a set that is legal in ${ctx.format} (printed in ${card.sets.join(', ') || 'no known set'}).`, ids));
+      `${card.name} has no printing in a set that is legal in ${formatName(ctx.format)} (printed in ${card.sets.join(', ') || 'no known set'}).`, ids));
   }
   if (zone !== 'legend' && ctx.legend) {
     const fit = identityFit(card, ctx.identity);
@@ -337,7 +337,7 @@ export function validateDeck(deck: Deck, db: CardDb): Violation[] {
   // 24, 26: side deck size and whether the format has one.
   if (sideCount > 0 && !rules.sideAllowed) {
     out.push(violation('SIDEBOARD_NOT_ALLOWED', 'warning', 'TR 403, 601.1.c',
-      `${deck.format} has no side deck; these ${sideCount} cards will not be used. (interpretation: side decks exist only in the Tournament Rules for Constructed)`, [...side.keys()], true));
+      `${formatName(deck.format)} has no side deck; these ${sideCount} cards will not be used. (interpretation: side decks exist only in the Tournament Rules for Constructed)`, [...side.keys()], true));
   } else if (sideCount > rules.sideMax) {
     out.push(violation('SIDEBOARD_TOO_LARGE', 'error', 'TR 601.1.c.1', `The side deck has ${sideCount} cards; the maximum is ${rules.sideMax}.`));
   }
@@ -373,7 +373,7 @@ export function validateDeck(deck: Deck, db: CardDb): Violation[] {
       const ban = ctx.bans.get(card.id);
       if (ban) {
         out.push(violation('NEEKO_LEGEND_BANNED', 'warning', 'rules.md §8.3 (unconfirmed)',
-          `${card.name} is banned in ${deck.format} as a Champion Legend. (interpretation: no official source says whether a ban also covers an extra legend)`, [id], true));
+          `${card.name} is banned in ${formatName(deck.format)} as a Champion Legend. (interpretation: no official source says whether a ban also covers an extra legend)`, [id], true));
       }
     }
     if (repeated.length > 0) {

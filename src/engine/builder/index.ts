@@ -10,7 +10,7 @@
 //   only) -> repair -> bounded hill-climb on the rating (swaps.ts) -> runes again.
 // Deterministic for `opts.seed`; a different seed moves close calls (rng.ts).
 import { eligibleChampions } from '../rules/champion';
-import { RUNE_DECK_SIZE } from '../rules/formats';
+import { RUNE_DECK_SIZE, formatName } from '../rules/formats';
 import { legendOf } from '../rules/identity';
 import { cardFitsDeck, validateDeck } from '../rules/validate';
 import { qtyOf } from '../summary';
@@ -164,7 +164,7 @@ function build(input: Deck, ctx: EngineContext, rawOpts: BuildOptions, mode: 'au
   } else if (mode === 'auto' && total(deck.side) === 0) {
     notes.push(deck.format === 'standard-bo1' || deck.format === '2v2'
       ? `No side deck built for ${deck.format}: it is used between the games of a best-of-three match; call buildSideDeck to get one anyway.`
-      : `${deck.format} has no side deck.`);
+      : `${formatName(deck.format)} has no side deck.`);
   }
 
   // Repair, then the bounded hill-climb (spec 13.7): one-copy swaps judged by the rating. Not in fill mode,

@@ -12,6 +12,14 @@ export interface FormatRules {
 }
 
 // Rule constants, not lists: CR 103.3 (40), CR 103.4.a (12), CR 487.4.a-491.4.a (3), CR 103.3.d.1 (3).
+/** Human names of formats and domains for messages the owner reads (ids stay in data). */
+export const FORMAT_NAME: Record<Format, string> = {
+  'standard-bo1': 'Standard best of one', 'standard-bo3': 'Standard best of three', '2v2': '2v2',
+  ffa3: 'Free-for-all (3)', ffa4: 'Free-for-all (4)', casual: 'Casual',
+};
+export const formatName = (f: string): string => FORMAT_NAME[f as Format] ?? f;
+export const domainName = (d: string): string => d.charAt(0).toUpperCase() + d.slice(1);
+
 export const MAIN_MIN = 40;
 export const RUNE_DECK_SIZE = 12;
 export const BATTLEFIELDS_BROUGHT = 3;

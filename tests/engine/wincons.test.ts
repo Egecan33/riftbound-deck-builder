@@ -218,7 +218,7 @@ describe('legality, special routes and formats', () => {
     const r = detectWinRoutes(deck, ctx);
     const banned = card('Fight or Flight').id;
     for (const route of r.routes) { expect(route.closers).not.toContain(banned); expect(route.enablers).not.toContain(banned); }
-    expect(r.routes[0].notes).toContain('Fight or Flight is not counted: it is banned in standard-bo3.');
+    expect(r.routes[0].notes).toContain('Fight or Flight is not counted: it is banned in Standard best of three.');
     // The same card is not banned in a casual game.
     expect(viewDeck({ ...deck, format: 'casual' }, db).excluded).toEqual([]);
   });

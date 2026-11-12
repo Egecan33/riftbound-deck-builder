@@ -4,7 +4,7 @@
 // plan) and a card whose source row is incomplete is left out of every count (fail closed). Both are listed
 // in `excluded` so the report can say so. Partial decks (no legend, no champion, 7 cards) resolve to whatever
 // is there; nothing here throws.
-import { formatRules } from '../rules/formats';
+import { formatName, formatRules } from '../rules/formats';
 import { legendOf } from '../rules/identity';
 import { nameKey } from '../rules/names';
 import type { Card, CardDb, CardFeatures, Deck, DeckEntry, Domain } from '../types';
@@ -74,7 +74,7 @@ export function viewDeck(deck: Deck, db: CardDb): DeckView {
       if (!card) continue;
       if (card.dataIncomplete) { excluded.push({ card, why: 'its source row is incomplete' }); continue; }
       if (card.type !== 'unit' && card.type !== 'spell' && card.type !== 'gear') continue;
-      if (isBanned(card, 'main')) { excluded.push({ card, why: `it is banned in ${deck.format}` }); continue; }
+      if (isBanned(card, 'main')) { excluded.push({ card, why: `it is banned in ${formatName(deck.format)}` }); continue; }
       out.push(deckCard(card, db, qty, card.id === championId));
     }
     return out.sort((a, b) => a.card.name.localeCompare(b.card.name) || a.card.id.localeCompare(b.card.id));
@@ -88,7 +88,7 @@ export function viewDeck(deck: Deck, db: CardDb): DeckView {
   for (const id of deck.battlefields ?? []) {
     const card = db.get(id);
     if (!card || card.type !== 'battlefield' || card.dataIncomplete) continue;
-    if (isBanned(card, 'battlefields')) { excluded.push({ card, why: `it is banned in ${deck.format}` }); continue; }
+    if (isBanned(card, 'battlefields')) { excluded.push({ card, why: `it is banned in ${formatName(deck.format)}` }); continue; }
     if (!battlefields.some((b) => b.card.id === card.id)) battlefields.push(deckCard(card, db));
   }
   const byDomain: Partial<Record<Domain, number>> = {};
