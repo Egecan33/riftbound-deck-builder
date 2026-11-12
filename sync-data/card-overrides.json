@@ -387,6 +387,21 @@
  ],
  "aliases": [
   {
+   "alias": "ARC-006",
+   "name": "Viktor, Leader",
+   "reason": "Printing code Piltover Archive writes for a promo printing the official gallery does not list (seen in synced public lists, 2026-11-12)."
+  },
+  {
+   "alias": "RAD-157-Prize",
+   "name": "Bandle Scouts' Academy",
+   "reason": "Prize printing code Piltover Archive writes; the official gallery lists RAD-157 only (seen in synced public lists, 2026-11-12)."
+  },
+  {
+   "alias": "RAD-159-Prize",
+   "name": "Black Rose Sanctum",
+   "reason": "Prize printing code Piltover Archive writes; the official gallery lists RAD-159 only (seen in synced public lists, 2026-11-12)."
+  },
+  {
    "alias": "Yi, Meditative",
    "name": "Master Yi, Meditative",
    "reason": "Name in older local data and lists (rules.md section 3)."

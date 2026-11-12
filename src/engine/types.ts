@@ -49,6 +49,23 @@ export interface CardFeatures {
   axes: Record<AxisId, { e: number; p: number }>; // sparse, strengths in [0,1]
   costBucket: number;               // energy 0..7, 7 = 7+
   unparsed: string[];               // sentences no rule matched
+  // Evaluation (stage 3 review). `baseRating` above is the mechanical rating: card text only, no play data.
+  evaluatedRating: number;          // 0..100: baseRating blended with play evidence by sample size; = baseRating with no data
+  evidence: PlayEvidence | null;    // null = no play data
+  ratingReasons: string[];          // why the mechanical rating and the evaluated rating are what they are
+}
+
+/** Measured play of a main-deck card in synced public lists. DATA, not a rules statement. */
+export interface PlayEvidence {
+  share: number;                    // weighted share of the lists that could run the card (eligibility-normalised), 0..1
+  lists: number;                    // eligible lists that run it
+  eligibleLists: number;            // lists that could run it (legend allows it, card legal on the list's date)
+  eligibleLegends: number;
+  nEff: number;                     // effective sample size of the eligible lists (Kish)
+  avgCopies: number;                // copies when run
+  eraWeight: number;                // 1 = all evidence from the current rules era; lower = older lists
+  peak: { legend: string; share: number; lists: number; of: number } | null; // best single legend, shrunk for few lists
+  banned: boolean;                  // banned today: the numbers are from before the ban
 }
 
 export interface EdgeReason { id: string; kind: 'synergy' | 'antisynergy'; scope: string; label: string; detail: string; value: number }

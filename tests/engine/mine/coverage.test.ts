@@ -16,7 +16,7 @@ describe('mineCard', () => {
       for (const trait of mined.traits) expect(TRAIT_LABELS, `${card.code} ${trait}`).toHaveProperty(trait);
       expect(mined.baseRating).toBeGreaterThanOrEqual(0);
       expect(mined.baseRating).toBeLessThanOrEqual(100);
-      expect(mined.baseRating).toBe(toBaseRating100(mined.foundation!));
+      expect(mined.baseRating).toBe(toBaseRating100(mined.calibratedFoundation!));
       expect(CARD_TIER_GRADES as readonly string[]).toContain(mined.grade);
       // No score without reasons: the ledger names what the number is made of.
       if (card.text.replaceAll(/\([^)]*\)/g, ' ').trim() && mined.effectProfile.mechanics.length === 0) unvalued.push(card.code);

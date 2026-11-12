@@ -1,6 +1,7 @@
 // mineCard and the coverage report. New code on top of the ported mine; nothing here changes a rating.
 import type { Card } from '../types';
 import { toScoreCard } from './adapter';
+import { calibrateFoundation, type CalibrationResult } from './calibration';
 import { cardTierGrade, isScoredCard, type CardTierGrade } from './grades';
 import type { Trait } from './labels';
 import { baseCardRatingBreakdown } from './rating';
@@ -13,8 +14,8 @@ export const TYPE_TRAITS: ReadonlySet<string> = new Set(['unit', 'spell', 'gear'
 
 /**
  * HEURISTIC scale. The ported foundation rating runs from about 2 to 8.5 (grade thresholds 3.14 = D to
- * 6.86 = SSS+). CardFeatures.baseRating is 0..100: foundation x 12, clamped. The grade is always taken
- * from the foundation rating itself, never from this number.
+ * 6.86 = SSS+). CardFeatures.baseRating is 0..100: calibrated foundation x 12, clamped. The grade is taken
+ * from the calibrated foundation itself (calibration.ts), never from the 0..100 number.
  */
 export const BASE_RATING_SCALE = 12;
 export const toBaseRating100 = (foundation: number): number =>
@@ -35,8 +36,16 @@ export interface MinedCard {
   traits: Trait[];
   /** Ported foundation rating (about 2..8.5); null for cards the mine does not score (runes, typeless rows). */
   foundation: number | null;
-  /** 0..100, see BASE_RATING_SCALE; 0 when not scored. */
+  /**
+   * Foundation after the play calibration of calibration.ts (same scale); equal to `foundation` for legends
+   * and battlefields. This is the mechanical rating: text only, no play data of the card itself.
+   */
+  calibratedFoundation: number | null;
+  /** The calibration terms that moved the rating; null when not scored. */
+  calibration: CalibrationResult | null;
+  /** 0..100 from the calibrated foundation, see BASE_RATING_SCALE; 0 when not scored. */
   baseRating: number;
+  /** Tier grade of the calibrated foundation. */
   grade: CardTierGrade | null;
   /** Sentences of the current text that produced no trait and no recognised effect. */
   unparsed: string[];
@@ -125,12 +134,15 @@ export function mineScoreCard(card: ScoreCard, override?: MineOverride): MinedCa
   const breakdown = scored ? baseCardRatingBreakdown(card) : null;
   const components: Record<string, number> = {};
   if (breakdown) for (const [k, v] of Object.entries(breakdown)) if (typeof v === 'number') components[k] = v;
+  const calibration = breakdown ? calibrateFoundation({ card, breakdown, traits }) : null;
   return {
     id: card.id,
     traits: [...traits].sort() as Trait[],
     foundation: breakdown ? breakdown.total : null,
-    baseRating: breakdown ? toBaseRating100(breakdown.total) : 0,
-    grade: breakdown ? cardTierGrade(breakdown.total) : null,
+    calibratedFoundation: calibration ? calibration.total : null,
+    calibration,
+    baseRating: calibration ? toBaseRating100(calibration.total) : 0,
+    grade: calibration ? cardTierGrade(calibration.total) : null,
     unparsed: unparsedSentences(card),
     effectProfile: {
       recognizedEffects: breakdown ? [...breakdown.recognizedEffects] : [],

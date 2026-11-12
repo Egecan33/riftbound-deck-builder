@@ -11,7 +11,8 @@
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "e2e": "playwright test",
-    "sync": "tsx src/ingest/sync.ts"
+    "sync": "tsx src/ingest/sync.ts",
+    "calibrate": "tsx src/ingest/calibrate.ts"
   },
   "dependencies": {
     "@piltoverarchive/riftbound-deck-codes": "^1.5.0",
