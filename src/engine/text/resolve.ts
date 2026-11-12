@@ -12,6 +12,29 @@ export function padCode(set: string, number: string): string {
   return m ? `${set}-${m[1].padStart(3, '0')}${m[2]}` : `${set}-${number}`;
 }
 
+const RUNE_CODE = /^[A-Za-z]{2,4}-R(\d{1,2})[abs*]?$/;
+
+/**
+ * The card a printing code means. `CardDb.byName` knows the printings of the official gallery, but the
+ * gallery lists rune printings for some sets only (OGN, VEN, RAD on 2026-11-12), while public lists and
+ * deck codes also write "SFD-R04a" or "UNL-R05a" (49 of 508 synced Piltover Archive lists do).
+ * HEURISTIC, measured: the six basic runes are numbered R01..R06 in the same domain order in every set
+ * (gallery VEN and RAD; the SFD and UNL codes carry the same six names on Piltover Archive), so an
+ * unlisted rune code is read as the rune with that R-number in a set the gallery does list.
+ */
+export function cardByCode(code: string, db: CardDb): Card | undefined {
+  const direct = db.byName(code);
+  if (direct) return direct;
+  const rune = RUNE_CODE.exec(code.trim());
+  if (!rune) return undefined;
+  const number = rune[1].padStart(2, '0');
+  for (const set of db.legality().sets) {
+    const card = db.byName(`${set.code}-R${number}`);
+    if (card?.type === 'rune') return card;
+  }
+  return undefined;
+}
+
 const CODE_IN_TEXT = /\b([A-Za-z]{2,4})-((?:SP|T|R)?\d{1,3}[abs*]?)(?:\/\d+)?(?![A-Za-z0-9])/i;
 const ARENA_SUFFIX = /\(([A-Za-z]{2,4})\)\s*#?((?:SP|T|R)?\d{1,3}[abs*]?)\s*$/i; // "Card Name (OGN) 43"
 
@@ -22,7 +45,7 @@ const ARENA_SUFFIX = /\(([A-Za-z]{2,4})\)\s*#?((?:SP|T|R)?\d{1,3}[abs*]?)\s*$/i;
 export function resolveCard(raw: string, db: CardDb): Card | undefined {
   const text = raw.trim().replace(/^["'“”]+|["'“”]+$/g, '').trim();
   if (!text) return undefined;
-  const direct = db.byName(text);
+  const direct = cardByCode(text, db);
   if (direct) return direct;
   const arena = ARENA_SUFFIX.exec(text);
   const bare = text.replace(ARENA_SUFFIX, '').replace(/\s*[([{][^)\]}]*[)\]}]/g, ' ').replace(/\s+/g, ' ').trim();
@@ -31,12 +54,12 @@ export function resolveCard(raw: string, db: CardDb): Card | undefined {
     if (byBare) return byBare;
   }
   if (arena) {
-    const byArena = db.byName(padCode(arena[1], arena[2]));
+    const byArena = cardByCode(padCode(arena[1], arena[2]), db);
     if (byArena) return byArena;
   }
   const code = CODE_IN_TEXT.exec(text);
   if (code) {
-    const byCode = db.byName(padCode(code[1], code[2]));
+    const byCode = cardByCode(padCode(code[1], code[2]), db);
     if (byCode) return byCode;
     // "OGN-043 Charm": the code is unknown but the rest may still be a name.
     const rest = text.replace(CODE_IN_TEXT, ' ').replace(/[()[\]]/g, ' ').replace(/\s+/g, ' ').trim();

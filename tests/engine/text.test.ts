@@ -339,3 +339,39 @@ describe('parseCollection', () => {
     expect(() => parseCollection(undefined as unknown as string, db)).not.toThrow();
   });
 });
+
+describe('adversarial review: rune printings the official gallery does not list', () => {
+  // Piltover Archive writes runes of Spiritforged and Unleashed as SFD-R01a..R06a and UNL-R01..R06a;
+  // the gallery has rune printings for OGN, VEN and RAD only.
+  const order = ['fury', 'calm', 'mind', 'body', 'chaos', 'order'] as const;
+
+  it('reads them in a list as the rune with the same R-number', () => {
+    for (const set of ['SFD', 'UNL']) {
+      order.forEach((domain, i) => {
+        for (const suffix of ['', 'a']) {
+          const parsed = parseDecklist(`Runes:\n7 ${set}-R0${i + 1}${suffix}`, db);
+          expect(parsed.unresolved, `${set}-R0${i + 1}${suffix}`).toEqual([]);
+          expect(parsed.deck.runes, `${set}-R0${i + 1}${suffix}`).toEqual({ [domain]: 7 });
+        }
+      });
+    }
+    expect(parseDecklist('7 UNL-R09a', db).unresolved).toHaveLength(1);
+    expect(parseDecklist('7 XYZ-123', db).unresolved).toHaveLength(1);
+  });
+
+  it('decodes a deck code that carries them', async () => {
+    const { getCodeFromDeck } = await import('@piltoverarchive/riftbound-deck-codes');
+    const { deck } = readFixtureDeck('kaisa-daughter-of-the-void.txt');
+    const cards = [
+      ...deck.main.map((e) => ({ cardCode: db.get(e.id)!.code, count: e.qty })),
+      { cardCode: db.get(deck.legend!)!.code, count: 1 },
+      ...deck.battlefields.map((b) => ({ cardCode: db.get(b)!.code, count: 1 })),
+      ...order.filter((d) => (deck.runes[d] ?? 0) > 0).map((d) => ({ cardCode: `UNL-R0${order.indexOf(d) + 1}a`, count: deck.runes[d] as number })),
+    ];
+    const code = getCodeFromDeck(cards, [], db.get(deck.champion!)!.code);
+    const decoded = decodeDeckCode(code, db);
+    expect(decoded.unresolved).toEqual([]);
+    expect(decoded.deck.runes).toEqual(deck.runes);
+    expect(shape(decoded.deck)).toEqual(shape({ ...deck, side: [] }));
+  });
+});

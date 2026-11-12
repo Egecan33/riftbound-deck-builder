@@ -7,7 +7,7 @@
 import { getCodeFromDeck, getDeckFromCode, type Deck as CodeDeck } from '@piltoverarchive/riftbound-deck-codes';
 import type { Card, CardDb, Deck, Domain } from '../types';
 import { DeckCollector } from './collector';
-import type { UnresolvedLine } from './resolve';
+import { cardByCode, type UnresolvedLine } from './resolve';
 
 export interface DecodedDeckCode {
   deck: Partial<Deck>;
@@ -54,7 +54,7 @@ export function decodeDeckCode(code: string, db: CardDb): DecodedDeckCode {
   const place = (section: CodeDeck, zone: 'main' | 'side') => {
     for (const { cardCode, count } of section) {
       position += 1;
-      const card = db.byName(cardCode);
+      const card = cardByCode(cardCode, db);
       if (!card || !collector.add(card, count, zone)) unresolved.push({ line: position, text: `${count} ${cardCode}` });
     }
   };
@@ -62,12 +62,12 @@ export function decodeDeckCode(code: string, db: CardDb): DecodedDeckCode {
   place(decoded.sideboard ?? [], 'side');
   for (const legendCode of decoded.additionalLegends ?? []) {
     position += 1;
-    const card = db.byName(legendCode);
+    const card = cardByCode(legendCode, db);
     if (card) collector.add(card, 1, 'main');
     else unresolved.push({ line: position, text: `1 ${legendCode}` });
   }
   if (decoded.chosenChampion) {
-    const champion = db.byName(decoded.chosenChampion);
+    const champion = cardByCode(decoded.chosenChampion, db);
     if (champion) collector.setChampion(champion);
     else {
       unresolved.push({ line: position + 1, text: `1 ${decoded.chosenChampion}` });
