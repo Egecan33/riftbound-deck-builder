@@ -75,7 +75,8 @@ describe('database and card steps', () => {
     expect(syncErrata(db, quiet, { rawFile }).applied).toBe(1);
     expect(readSyncState(db, 'errata')?.info.entries).toBe(70);
     syncFeatures(db, quiet);
-    expect(readSyncState(db, 'features')?.info.implemented).toBe(false);
+    // Plan Task 4 replaced the stub: the step now mines every card (see tests/ingest/features.test.ts).
+    expect(readSyncState(db, 'features')?.info.implemented).toBe(true);
   });
 
   it('the legality step fails loudly when a ban does not match the cards', async () => {

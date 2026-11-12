@@ -1,7 +1,7 @@
 {
  "schemaVersion": 1,
  "asOf": "2026-11-12",
- "note": "Reviewed per-card corrections applied by the `cards` sync step. Each entry names its reason and source. An entry may set: type, domains, noDomain, tags, championTag, copyLimit (a number or \"unlimited\"). Radiance entries: on 2026-11-12 the official gallery had unfinished Radiance rows (empty or wrong card type, empty or wrong domain). The sync flags such rows as incomplete by itself; an entry here repairs a row only where two sources agree (the row's own image text for the type, Piltover Archive card data for type and domain, and the set's collector-number domain blocks). Rows without a second source stay incomplete. Remove an entry once the gallery row is fixed.",
+ "note": "Reviewed per-card corrections applied by the `cards` sync step. Each entry names its reason and source. An entry may set: type, domains, noDomain, tags, championTag, copyLimit (a number or \"unlimited\"). Radiance entries: on 2026-11-12 the official gallery had unfinished Radiance rows (empty or wrong card type, empty or wrong domain). The sync flags such rows as incomplete by itself; an entry here repairs a row only where two sources agree (the row's own image text for the type, Piltover Archive card data for type and domain, and the set's collector-number domain blocks). Rows without a second source stay incomplete. Remove an entry once the gallery row is fixed. The `mine` list holds reviewed corrections to the card mine (plan Task 4), read by the `features` step: addTraits, removeTraits, or noMechanic (the card's text is a restriction or deck-construction rule and has no trait on purpose).",
  "cards": [
   {
    "name": "Karma, Channeler",
@@ -405,6 +405,57 @@
    "alias": "Wuju Bladesman - Starter",
    "name": "Wuju Bladesman",
    "reason": "Starter legend name before the gallery split name and subtitle (legality-and-data.md section 5.1)."
+  }
+ ],
+ "mine": [
+  {
+   "code": "UNL-111",
+   "name": "Determined Sentry",
+   "noMechanic": true,
+   "reason": "Whole text is a movement restriction on itself (\"I can't move to base.\"); a drawback, not a mechanic a deck can build on.",
+   "source": "card text; pool coverage report 2026-11-12"
+  },
+  {
+   "code": "VEN-029",
+   "name": "Ol' Poro",
+   "noMechanic": true,
+   "reason": "Whole text is a timing restriction on itself (cannot be played on turns one to three).",
+   "source": "card text; pool coverage report 2026-11-12"
+  },
+  {
+   "code": "VEN-129",
+   "name": "Sacred Protector",
+   "noMechanic": true,
+   "reason": "Whole text is a combat-damage restriction on itself; a drawback, not a mechanic a deck can build on.",
+   "source": "card text; pool coverage report 2026-11-12"
+  },
+  {
+   "code": "RAD-167",
+   "name": "Neeko, Blending In",
+   "noMechanic": true,
+   "reason": "Deck-construction text (up to 3 extra legends, CR 103.1) and a Legend Zone effect; no trait family models an added Legend. Treated by the rules engine and legend profiles, not by the mine.",
+   "source": "docs/research/mechanics-glossary.md section 4.22"
+  },
+  {
+   "code": "VEN-022",
+   "name": "Endless Riches",
+   "removeTraits": [
+    "draw"
+   ],
+   "reason": "\"Skip your Draw Phase\" is the only draw wording; the card stops draws. The ported pattern reads the word 'draw'.",
+   "source": "card text; GameLab script comparison 2026-11-12 (script has no draw)"
+  },
+  {
+   "code": "VEN-036",
+   "name": "Sandstone Chimera",
+   "removeTraits": [
+    "channel-rune"
+   ],
+   "addTraits": [
+    "interaction"
+   ],
+   "reason": "\"players only channel 1 rune at the start of their Channel Phase\" limits channelling for everyone; it is resource denial, not ramp.",
+   "source": "card text; GameLab script comparison 2026-11-12 (script has no channel)"
   }
  ]
 }

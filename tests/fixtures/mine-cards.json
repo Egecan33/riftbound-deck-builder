@@ -1,0 +1,817 @@
+{
+ "note": "Test fixture: synced cards (data/forge.db, 2026-11-12) that the card-mine tests quote and that tests/fixtures/cards.json does not contain. Same row format as cards.json. Card data belongs to Riot Games; see the README disclaimer.",
+ "cards": [
+  {
+   "id": "ogn-055-298",
+   "code": "OGN-055",
+   "name": "Wielder of Water",
+   "shortName": "Wielder of Water",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Ionia"
+   ],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "While I'm attacking or defending alone, I have +2 [Might].",
+   "text": "While I'm attacking or defending alone, I have +2 [Might].",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5b38a7758705bd739caf07b5c0c49482a4a23015-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-140-298",
+   "code": "OGN-140",
+   "name": "Herald of Scales",
+   "shortName": "Herald of Scales",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Mount Targon"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": null,
+   "powerDomains": [],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "Your Dragons' Energy costs are reduced by [2], to a minimum of [1].",
+   "text": "Your Dragons' Energy costs are reduced by [2], to a minimum of [1].",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/be49bceea1d328769774fb4daac4732861f6e4fd-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-161-298",
+   "code": "OGN-161",
+   "name": "Deadbloom Predator",
+   "shortName": "Deadbloom Predator",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Shadow Isles"
+   ],
+   "championTag": null,
+   "energy": 8,
+   "power": 2,
+   "powerDomains": [
+    "body"
+   ],
+   "might": 8,
+   "mightBonus": null,
+   "printedText": "[Deflect] (Opponents must pay [Any] to choose me with a spell or ability.)\nYou may play me to an occupied enemy battlefield.",
+   "text": "[Deflect] (Opponents must pay [Any] to choose me with a spell or ability.)\nYou may play me to an occupied enemy battlefield.",
+   "errata": false,
+   "keywords": [
+    "Deflect"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/112b4b3847b26ea2d245ac0976717d109be7b032-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ogn-225-298",
+   "code": "OGN-225",
+   "name": "Solari Chief",
+   "shortName": "Solari Chief",
+   "set": "OGN",
+   "sets": [
+    "OGN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Mount Targon"
+   ],
+   "championTag": null,
+   "energy": 5,
+   "power": 1,
+   "powerDomains": [
+    "order"
+   ],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "When you play me, choose an enemy unit. If it is stunned, kill it. Otherwise, stun it. (It doesn't deal combat damage this turn.)",
+   "text": "When you play me, choose an enemy unit. If it is stunned, kill it. Otherwise, stun it. (It doesn't deal combat damage this turn.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/02fd791fdaa7d1c63221655e889fb412de103ca2-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-011-167",
+   "code": "RAD-011",
+   "name": "Incorrigible Construct",
+   "shortName": "Incorrigible Construct",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 4,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "[Show Off] a Mech. (As you play me, you may reveal a Mech from hand or pick another friendly Mech.)\nI enter ready if you showed off.",
+   "text": "[Show Off] a Mech. (As you play me, you may reveal a Mech from hand or pick another friendly Mech.)\nI enter ready if you showed off.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e95470d5c2fbc9f7f8ab0b1c19f32fd704918c83-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-050-167",
+   "code": "RAD-050",
+   "name": "Mysterious Chronomancer",
+   "shortName": "Mysterious Chronomancer",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 5,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "When you play me, [Predict 2]. (Look at the top 2 cards of your Main Deck. Recycle any of them and put the rest back in any order.)\n[Disarm 2] (When I attack, give an enemy unit here -2 [Might] this turn.)",
+   "text": "When you play me, [Predict 2]. (Look at the top 2 cards of your Main Deck. Recycle any of them and put the rest back in any order.)\n[Disarm 2] (When I attack, give an enemy unit here -2 [Might] this turn.)",
+   "errata": false,
+   "keywords": [
+    "Disarm"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72828b0fe019b2e03069510f781dfa8f5759ac12-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-053-167",
+   "code": "RAD-053",
+   "name": "Strigian Oracle",
+   "shortName": "Strigian Oracle",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "When I become exhausted, [Predict]. (Look at the top card of your Main Deck. You may recycle it.)",
+   "text": "When I become exhausted, [Predict]. (Look at the top card of your Main Deck. You may recycle it.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5973b5036060f29e24f8778949bf6f01f360c0a4-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-055-167",
+   "code": "RAD-055",
+   "name": "Clanging Sentry",
+   "shortName": "Clanging Sentry",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "Your Mechs have [Disarm]. (When each of us attacks, give an enemy unit there -1 [Might] this turn.)",
+   "text": "Your Mechs have [Disarm]. (When each of us attacks, give an enemy unit there -1 [Might] this turn.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/5d4c22ef863e041887a00d34b2dae1f3ce658326-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-056-167",
+   "code": "RAD-056",
+   "name": "Improvised Projectile",
+   "shortName": "Improvised Projectile",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": 1,
+   "powerDomains": [
+    "mind"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.",
+   "text": "[Action] (Play on your turn or in showdowns.)\nChoose a friendly gear. Deal damage equal to its Energy cost to a unit at a battlefield.",
+   "errata": false,
+   "keywords": [
+    "Action"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ecbb970f955b8e12369921f30ad08cab04e59a3f-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-082-167",
+   "code": "RAD-082",
+   "name": "Primordial Roar",
+   "shortName": "Primordial Roar",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 4,
+   "power": 2,
+   "powerDomains": [
+    "body"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Show Off] a unit. (As you play this, you may reveal a unit from hand or pick a friendly unit.)\nIf you showed off a unit, deal damage equal to that unit's Might to a unit.",
+   "text": "[Show Off] a unit. (As you play this, you may reveal a unit from hand or pick a friendly unit.)\nIf you showed off a unit, deal damage equal to that unit's Might to a unit.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/945633b0c2ed7f303245c917ffbcdb80dcfb524e-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-092-167",
+   "code": "RAD-092",
+   "name": "Seraphic Wyvern",
+   "shortName": "Seraphic Wyvern",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Dragon"
+   ],
+   "championTag": null,
+   "energy": 7,
+   "power": null,
+   "powerDomains": [],
+   "might": 7,
+   "mightBonus": null,
+   "printedText": "If you would channel runes, channel that many runes plus 1 exhausted rune instead.",
+   "text": "If you would channel runes, channel that many runes plus 1 exhausted rune instead.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/ad1793554440d8d5017eadc565ca6c787a969de1-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-094-167",
+   "code": "RAD-094",
+   "name": "Explosimian",
+   "shortName": "Explosimian",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 6,
+   "power": null,
+   "powerDomains": [],
+   "might": 6,
+   "mightBonus": null,
+   "printedText": "When I hold, play three Bomb gear tokens to a single battlefield. (They have [Deploy]. When each dies, deal 2 to an enemy there and kill your other Bombs there.)",
+   "text": "When I hold, play three Bomb gear tokens to a single battlefield. (They have [Deploy]. When each dies, deal 2 to an enemy there and kill your other Bombs there.)",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/f2590617229f3efc078aa2429f65b85101303200-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-103-167",
+   "code": "RAD-103",
+   "name": "Gutter Guardian",
+   "shortName": "Gutter Guardian",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from hand or pick another friendly one on the board.)\nWhen you play me, if you showed off, [Add] [Any].",
+   "text": "[Hidden] (Hide now for [Any] to react with later for [0].)\n[Show Off] a card with [Hidden]. (As you play me, you may reveal such a card from hand or pick another friendly one on the board.)\nWhen you play me, if you showed off, [Add] [Any].",
+   "errata": false,
+   "keywords": [
+    "Hidden"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/756827744317003e4992163ff9bf1dc991682de8-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-127-167",
+   "code": "RAD-127",
+   "name": "Rousing Display",
+   "shortName": "Rousing Display",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 5,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "[Show Off] a card with Energy cost [7] or more. (As you play this, you may reveal such a card from hand or pick a friendly one.)\nPlay two 1 [Might] Recruit unit tokens to your base. If you showed off, play four to your base instead.disa",
+   "text": "[Show Off] a card with Energy cost [7] or more. (As you play this, you may reveal such a card from hand or pick a friendly one.)\nPlay two 1 [Might] Recruit unit tokens to your base. If you showed off, play four to your base instead.disa",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/18aa7cab082fd0e293260bcf480a1a76d12b64d9-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "rad-135-167",
+   "code": "RAD-135",
+   "name": "Remember the Fallen",
+   "shortName": "Remember the Fallen",
+   "set": "RAD",
+   "sets": [
+    "RAD"
+   ],
+   "type": "spell",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 8,
+   "power": 2,
+   "powerDomains": [
+    "order"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "Play up to 3 units and/or gear from your trash, each with Energy cost no more than [3] and Power cost no more than [Any], ignoring their costs.",
+   "text": "Play up to 3 units and/or gear from your trash, each with Energy cost no more than [3] and Power cost no more than [Any], ignoring their costs.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0bfd45446d5ffb816438ae2668ad4e5b7f188ad3-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-063-221",
+   "code": "SFD-063",
+   "name": "Chemtech Cask",
+   "shortName": "Chemtech Cask",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 1,
+   "power": null,
+   "powerDomains": [],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "When you play a spell on an opponent's turn, you may exhaust me to play a Gold gear token exhausted.",
+   "text": "When you play a spell on an opponent's turn, you may exhaust me to play a Gold gear token exhausted.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/39071feea6d3739a834a83b1841f496bdfc3a59a-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "sfd-067-221",
+   "code": "SFD-067",
+   "name": "Frostcoat Cub",
+   "shortName": "Frostcoat Cub",
+   "set": "SFD",
+   "sets": [
+    "SFD"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "mind"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Dog",
+    "Freljord"
+   ],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 3,
+   "mightBonus": null,
+   "printedText": "You may pay [Mind] as an additional cost to play me.\nWhen you play me, if you paid the additional cost, give a unit -2 [Might] this turn.",
+   "text": "You may pay [Mind] as an additional cost to play me.\nWhen you play me, if you paid the additional cost, give a unit -2 [Might] this turn.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/0b5f1f6ed65e070d2878b8aa21fd95e43688fc1d-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-043-219",
+   "code": "UNL-043",
+   "name": "Enthusiastic Promoter",
+   "shortName": "Enthusiastic Promoter",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Yordle",
+    "Bandle City"
+   ],
+   "championTag": null,
+   "energy": 3,
+   "power": null,
+   "powerDomains": [],
+   "might": 2,
+   "mightBonus": null,
+   "printedText": "[Backline] (I must be assigned combat damage last.)\nWhen I hold, [Buff] all units here. (Give each a +1 [Might] buff if it doesn't have one.)",
+   "text": "[Backline] (I must be assigned combat damage last.)\nWhen I hold, [Buff] all units here. (Give each a +1 [Might] buff if it doesn't have one.)",
+   "errata": false,
+   "keywords": [
+    "Backline"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/c03bdc371440cbf6de773b0b39010808bfdecea1-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-057-219",
+   "code": "UNL-057",
+   "name": "Alpha Wildclaw",
+   "shortName": "Alpha Wildclaw",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Cat",
+    "Freljord"
+   ],
+   "championTag": null,
+   "energy": 6,
+   "power": 2,
+   "powerDomains": [
+    "calm"
+   ],
+   "might": 7,
+   "mightBonus": null,
+   "printedText": "[Tank] (I must be assigned combat damage first.)\nYour units here with less Might than me can't be chosen by enemy spells and abilities.",
+   "text": "[Tank] (I must be assigned combat damage first.)\nYour units here with less Might than me can't be chosen by enemy spells and abilities.",
+   "errata": false,
+   "keywords": [
+    "Tank"
+   ],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/39ec974dae18bf82fcc18a95044d8df04cc14d3c-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "unl-111-219",
+   "code": "UNL-111",
+   "name": "Determined Sentry",
+   "shortName": "Determined Sentry",
+   "set": "UNL",
+   "sets": [
+    "UNL"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "body"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Yordle",
+    "Bandle City"
+   ],
+   "championTag": null,
+   "energy": 1,
+   "power": null,
+   "powerDomains": [],
+   "might": 1,
+   "mightBonus": null,
+   "printedText": "I can't move to base.",
+   "text": "I can't move to base.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/b491c050b8505c52000c5ad7bb5a0b7855fa4ad1-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-022-166",
+   "code": "VEN-022",
+   "name": "Endless Riches",
+   "shortName": "Endless Riches",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "gear",
+   "superTypes": [],
+   "domains": [
+    "fury"
+   ],
+   "noDomain": false,
+   "tags": [],
+   "championTag": null,
+   "energy": 5,
+   "power": 1,
+   "powerDomains": [
+    "fury"
+   ],
+   "might": null,
+   "mightBonus": null,
+   "printedText": "When you play this, banish your hand and trash, then [Burn 7].\nSkip your Draw Phase.\nYou may play cards from your trash.\nIf a card would go to your trash from anywhere other than your Main Deck, banish it instead.",
+   "text": "When you play this, banish your hand and trash, then [Burn 7].\nSkip your Draw Phase.\nYou may play cards from your trash.\nIf a card would go to your trash from anywhere other than your Main Deck, banish it instead.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/e2c33bf55162086acd458775a5db3d976f137b61-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-029-166",
+   "code": "VEN-029",
+   "name": "Ol' Poro",
+   "shortName": "Ol' Poro",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Poro",
+    "Bandle City"
+   ],
+   "championTag": null,
+   "energy": 2,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "I can't be played on your first, second, or third turns.",
+   "text": "I can't be played on your first, second, or third turns.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/267fdc483ff8c740779f23eb8f965105feb030cd-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-036-166",
+   "code": "VEN-036",
+   "name": "Sandstone Chimera",
+   "shortName": "Sandstone Chimera",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "calm"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Shurima"
+   ],
+   "championTag": null,
+   "energy": 7,
+   "power": 2,
+   "powerDomains": [
+    "calm"
+   ],
+   "might": 8,
+   "mightBonus": null,
+   "printedText": "While I'm at a battlefield, players only channel 1 rune at the start of their Channel Phase.",
+   "text": "While I'm at a battlefield, players only channel 1 rune at the start of their Channel Phase.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/7a483e91e2bbb81bc8f66697bd610427b080b45c-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-098-166",
+   "code": "VEN-098",
+   "name": "Stargazer",
+   "shortName": "Stargazer",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "chaos"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Mount Targon"
+   ],
+   "championTag": null,
+   "energy": 5,
+   "power": null,
+   "powerDomains": [],
+   "might": 4,
+   "mightBonus": null,
+   "printedText": "Spells with [Flow] you play from your trash cost [2] less, to a minimum of [1].",
+   "text": "Spells with [Flow] you play from your trash cost [2] less, to a minimum of [1].",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/72ef8764cb3909940f0ca4bd8b31cdceed241af0-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  },
+  {
+   "id": "ven-129-166",
+   "code": "VEN-129",
+   "name": "Sacred Protector",
+   "shortName": "Sacred Protector",
+   "set": "VEN",
+   "sets": [
+    "VEN"
+   ],
+   "type": "unit",
+   "superTypes": [],
+   "domains": [
+    "order"
+   ],
+   "noDomain": false,
+   "tags": [
+    "Fae",
+    "Ionia"
+   ],
+   "championTag": null,
+   "energy": 4,
+   "power": 1,
+   "powerDomains": [
+    "order"
+   ],
+   "might": 6,
+   "mightBonus": null,
+   "printedText": "I don't deal combat damage unless I'm at a battlefield with exactly one other unit you control.",
+   "text": "I don't deal combat damage unless I'm at a battlefield with exactly one other unit you control.",
+   "errata": false,
+   "keywords": [],
+   "copyLimit": 3,
+   "imageUrl": "https://cmsassets.rgpub.io/sanity/images/dsfx7636/game_data_live/a93887af1128d19cdec798611ffdd29900ac5d85-744x1039.png?accountingTag=RB",
+   "dataIncomplete": false
+  }
+ ]
+}
