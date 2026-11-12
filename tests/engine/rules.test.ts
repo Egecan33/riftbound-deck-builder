@@ -759,3 +759,30 @@ describe('review focus 5: format differences in one table', () => {
     }
   });
 });
+
+describe('adversarial review: nothing is legal by default', () => {
+  it('a ban entry that names no card in the data is reported as DATA_STALE in its formats, not dropped', () => {
+    const unknown = { name: 'A Card That Was Renamed', zone: 'main' as const, formats: ['standard-bo3', '2v2'] as Format[], effectiveFrom: '2026-11-01', sourceUrl: '' };
+    const other = dbWith((c) => c, { ...db.legality(), bans: [...db.legality().bans, unknown] });
+    const vs = check(legalDeck('Daughter of the Void', "Kai'Sa, Survivor", 'standard-bo3', other), other);
+    expect(codes(vs)).toEqual(['DATA_STALE']);
+    expect(vs[0].message).toContain('A Card That Was Renamed');
+    expect(isLegal(vs)).toBe(false);
+    expect(isLegal(check(legalDeck('Daughter of the Void', "Kai'Sa, Survivor", '2v2', other), other))).toBe(false);
+    for (const format of ['standard-bo1', 'ffa3', 'casual'] as Format[]) {
+      expect(check(legalDeck('Daughter of the Void', "Kai'Sa, Survivor", format, other), other), format).toEqual([]);
+    }
+  });
+
+  it('every ban of the reviewed snapshot names a card (the fixture holds all banned cards)', () => {
+    for (const ban of db.legality().bans) expect(db.byName(ban.name), ban.name).toBeDefined();
+  });
+
+  it('a format the rules do not know is an error, not casual', () => {
+    const vs = check({ ...kaisa(), format: 'legacy' as Format });
+    expect(errors(vs)).toEqual(['FORMAT_UNKNOWN']);
+    expect(isLegal(vs)).toBe(false);
+    expect(() => check({ ...kaisa(), format: undefined as unknown as Format })).not.toThrow();
+    expect(isLegal(check({ ...kaisa(), format: undefined as unknown as Format }))).toBe(false);
+  });
+});

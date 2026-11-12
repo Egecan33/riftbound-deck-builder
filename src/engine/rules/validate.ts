@@ -26,6 +26,7 @@ type Ban = LegalityData['bans'][number];
 const DOMAINS: readonly Domain[] = ['fury', 'calm', 'mind', 'body', 'chaos', 'order'];
 const MAIN_TYPES: ReadonlySet<string> = new Set(['unit', 'spell', 'gear']);
 const FFA: ReadonlySet<Format> = new Set<Format>(['ffa3', 'ffa4']);
+const FORMATS: readonly Format[] = ['standard-bo1', 'standard-bo3', '2v2', 'ffa3', 'ffa4', 'casual'];
 
 const violation = (code: string, severity: Severity, rule: string, message: string, cardIds: string[] = [], interpretation = false): Violation =>
   ({ code, severity, message, cardIds, rule, interpretation });
@@ -48,7 +49,7 @@ const total = (m: ReadonlyMap<string, number>): number => [...m.values()].reduce
 
 // ---- per-database lookups (the ban list and set legality are data: sync-data/legality.json) ----
 
-interface Lookups { bans: Map<Format, Map<string, Ban>>; legalSets: Set<string> | null; runes: Map<Domain, Card> }
+interface Lookups { bans: Map<Format, Map<string, Ban>>; unknownBans: Ban[]; legalSets: Set<string> | null; runes: Map<Domain, Card> }
 const lookupCache = new WeakMap<CardDb, { legality: LegalityData; value: Lookups }>();
 
 function lookups(db: CardDb): Lookups {
@@ -56,9 +57,10 @@ function lookups(db: CardDb): Lookups {
   const held = lookupCache.get(db);
   if (held && held.legality === legality) return held.value;
   const bans = new Map<Format, Map<string, Ban>>();
+  const unknownBans: Ban[] = [];
   for (const ban of legality.bans) {
     const card = db.byName(ban.name); // bans are by name: every printing (rules.md §9)
-    if (!card) continue;
+    if (!card) { unknownBans.push(ban); continue; } // reported by validateDeck: a ban that cannot be applied is never dropped in silence
     for (const f of ban.formats) {
       if (!bans.has(f)) bans.set(f, new Map());
       (bans.get(f) as Map<string, Ban>).set(card.id, ban);
@@ -71,7 +73,7 @@ function lookups(db: CardDb): Lookups {
   for (const c of db.all()) {
     if (c.type === 'rune' && c.superTypes.includes('basic') && c.domains.length === 1 && !runes.has(c.domains[0])) runes.set(c.domains[0], c);
   }
-  const value = { bans, legalSets, runes };
+  const value = { bans, unknownBans, legalSets, runes };
   lookupCache.set(db, { legality, value });
   return value;
 }
@@ -185,6 +187,16 @@ export function validateDeck(deck: Deck, db: CardDb): Violation[] {
   const { rules, legend } = ctx;
   const look = lookups(db);
   const names = (cards: Card[]): string => cards.map((c) => c.name).join(', ');
+
+  // The format itself. An unknown one would otherwise read as casual, with no ban list and no exact size.
+  if (!(FORMATS as readonly string[]).includes(deck.format)) {
+    out.push(violation('FORMAT_UNKNOWN', 'error', 'rules.md §10', `"${String(deck.format)}" is not a format this app knows; choose one of ${FORMATS.join(', ')}.`));
+  }
+  // 34: a ban entry of this format that names no card in the local data cannot be applied, so legality is unknown.
+  for (const ban of look.unknownBans) {
+    if (!ban.formats.includes(rules.banListOf)) continue;
+    out.push(violation('DATA_STALE', 'warning', 'rules.md §0.1, §9', `The ban list names "${ban.name}", which is not in the local card data, so that ban cannot be checked. Run \`pnpm sync cards\` or correct sync-data/legality.json.`));
+  }
 
   // 1-3: Champion Legend.
   if (!deck.legend) {
