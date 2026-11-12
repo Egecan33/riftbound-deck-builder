@@ -2,7 +2,7 @@
 
 This file is the single place a new session reads to continue the build if the previous one was cut off. Update it at every stage boundary, in the same commit as the stage's work.
 
-Last updated: 2026-11-12. Stage 2 (plan Tasks 1-2) done; the build continues at plan Task 3.
+Last updated: 2026-11-12. Stage 3 (plan Tasks 3-9, the engine) done and reviewed; the build continues at plan Task 10 (API and UI).
 
 ## Owner's decisions (do not re-ask)
 
@@ -28,11 +28,22 @@ Last updated: 2026-11-12. Stage 2 (plan Tasks 1-2) done; the build continues at 
 | 0 | Research with independent fact-checking | done; 5 of 11 files verified, the rest are tested against real cards during the build (owner asked to stop spending on research) |
 | 1 | Design doc `docs/superpowers/specs/2026-11-12-riftbound-forge-design.md` and plan `docs/superpowers/plans/2026-11-12-riftbound-forge.md` | done |
 | 2 | Foundation and data: plan Tasks 1-2 | done and reviewed 2026-11-12. Synced: 1,408 gallery printings → 1,091 gameplay cards + 9 tokens (unit 546, spell 271, gear 130, battlefield 74, legend 58, rune 6, untyped Radiance 6); 177 champion units, 60 signature cards; 8 Radiance rows `dataIncomplete`; 70 errata applied; 13 bans (12 Standard + 1 2v2 legend), 6 sets, side deck 10; 300 of 1,100 images on disk (the rest: `pnpm sync images`); meta 508 lists, 498 usable Standard lists, 58 legends (1 ok, 12 thin, 45 insufficient) |
-| 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | not started |
+| 3 | Engine: plan Tasks 3-9, adversarial reviewer after each part | done and reviewed 2026-11-12. `pnpm typecheck` clean, `pnpm test` 956 tests in 64 files. Synced pool at review time: 816 lists, 789 usable Standard lists, 58 legends with meta (5 ok, 26 thin, 27 insufficient), 22,451 stored edges. Builder (commit `49606b5`): 696 auto-builds (58 legends x 6 formats x 2 seeds), 694 legal with 40 / 12 / 3 and a 10-card side deck in best-of-three; the 2 others are Wuju Bladesman in 2v2, where the legend itself is banned and the build says so; median 63 ms a build, slowest 216 ms. For the 44 legends with 8+ lists: 94% of the cards that 60%+ of the legend's lists run are in its build (51% before the review), all of the cards 90%+ run (58% before), 2% of copies are cards none of its lists runs (31% before); 84% of side-deck copies are cards 20%+ of its lists side (54% before); the rune split equals a public list's own split for 55% of 789 lists and is within one rune for 91% (47% / 87% before). Improve on 10 tournament lists with 8 copies swapped for the weakest legal cards: 76 of 80 junk copies proposed out, 114 proposals, every one raises the rating. Lines (commit `c144ff3`): 553 lines for 12 tournament lists of 12 legends, every line names cards of the deck; identical line texts between two decks of different legends 1.05% on average (7.9% at most over 66 pairs), between two lists of the same legend 13.4% on average. Known limits are in the section below. |
 | 4 | API and UI: plan Tasks 10-11 | not started |
 | 5 | End-to-end tests: plan Task 12 | not started |
 | 6 | Final review by driving the real UI and looking at screenshots | not started |
 | 7 | Desktop downloads for macOS and Windows: plan Task 13 | not started |
+
+## Stage 3: what is still weak (found by the review, not fixed)
+
+- The deck rating (Task 6) rates some consensus tournament lists lower than piles the hill-climb can reach, so the builder protects the legend's core cards from the climb instead of trusting the rating. Auto-built decks rate 84 on median; the tournament lists they copy rate 72-87.
+- Legends with fewer than 4 public lists (Garen: 2) get no core. Their builds lean on the play data of all legends and come out as generic piles of the stronger domain (Garen: 38 Order cards, 2 Body).
+- 12-14 of 58 legends build the same main deck for seed 1 and seed 2: after the core, six slots are left and the play data outweighs the seed. "Reroll" changes little for well-covered legends.
+- Win routes: for the attrition and wide routes the `closers` field can hold removal spells or token makers (the note says "no single card closes this route", the field does not). `WinRoute` has no flag for it.
+- One-card-away lines suggest the same few cards across decks (Yasuo, Windrider; Azir, Sovereign; Caitlyn, Patrolling; Pack of Wonders): they are the only payoff of their family in the network.
+- Stored network edges still hold pairs the lines now filter at read time (Temporary tokens with a card's own Deathknell; Shadow's Call with a gear). The filter is in `src/engine/lines/context.ts`; the edges themselves were not rebuilt.
+- 4 of 80 junk copies in the Improve test are not proposed out: no single swap for them raises the rating by 0.1.
+- 2v2 and FFA builds use Standard lists as their play data (no multiplayer lists are synced).
 
 ## Stage 0 detail
 
