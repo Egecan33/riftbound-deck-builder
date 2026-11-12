@@ -33,9 +33,25 @@ export function formatLines(lc: LineContext): Line[] {
       .filter((c) => c.card.type !== 'battlefield')
       .map((c) => [c.card.id, c] as const)).values()]);
     const pick = facts.battlefieldPick.chosen ? `you choose it game by game (${facts.battlefieldPick.rule})` : `it is yours in one game of three, picked at random (${facts.battlefieldPick.rule})`;
-    const use = partners.length > 0 ? `It works with ${nameList(partners.map((c) => c.card.name), 4)}.` : `No card in the deck is linked to it${facts.battlefieldPick.chosen ? ', so it is the last one to choose' : ''}.`;
-    out.push(line(lc, 'format', `${b.card.name}: "${b.sentences[0] ?? ''}" ${use} In ${format} ${pick}.`, [b, ...partners.slice(0, 4)],
-      `${partners.length > 0 ? 'Network edges between the battlefield and deck cards (heuristic). ' : ''}${facts.battlefieldsOnBoard} battlefields are in play (${facts.battlefieldRule}).`, facts.battlefieldPick.chosen ? null : 1 / 3, partners.length > 0));
+    // No stored edge: read the battlefield's own sentence for the three things a deck list can answer directly
+    // (stage 3 review: Void Gate was "linked to no card" in a list with 11 damage spells, Bandle Scouts' Academy
+    // in a list with 16 Hidden copies, and all three battlefields were "the last one to choose").
+    const text = b.sentences.join(' ');
+    let direct: DeckCard[] = [];
+    let directWhy = '';
+    if (partners.length === 0) {
+      if (/\bbonus damage\b/i.test(text)) { direct = byQty(main.filter((c) => answersOf(c.card).some((a) => a.kind === 'damage' || a.kind === 'sweep'))); directWhy = 'deal damage with a spell or ability'; }
+      else if (/\bhide a card here\b|\bfacedown\b|\bface down\b/i.test(text)) { direct = byQty(main.filter((c) => routeFeatures(c).has('hidden'))); directWhy = 'have Hidden'; }
+      else if (/\bwhen you hold here\b/i.test(text)) { direct = holders; directWhy = 'are built to hold'; }
+    }
+    const meta = view.legend ? lc.ctx.db.legendMeta(view.legend.card.id) : undefined;
+    const stat = meta?.battlefields[b.card.id];
+    const brought = meta && meta.decks >= 4 && stat ? ` ${stat.decks} of ${meta.decks} public ${view.legend!.card.name} lists bring it (data).` : '';
+    const use = partners.length > 0 ? `It works with ${nameList(partners.map((c) => c.card.name), 4)}.`
+      : direct.length > 0 ? `${copies(direct)} ${copies(direct) === 1 ? 'copy' : 'copies'} in the deck ${directWhy}: ${nameList(direct.map((c) => c.card.name), 4)}.`
+      : 'No card in the deck is tied to it by its text.';
+    out.push(line(lc, 'format', `${b.card.name}: "${b.sentences[0] ?? ''}" ${use}${brought} In ${format} ${pick}.`, [b, ...partners.slice(0, 4), ...direct.slice(0, 4)],
+      `${partners.length > 0 ? 'Network edges between the battlefield and deck cards (heuristic). ' : direct.length > 0 ? "Read from the battlefield's own sentence and the deck's card texts. " : ''}${facts.battlefieldsOnBoard} battlefields are in play (${facts.battlefieldRule}).`, facts.battlefieldPick.chosen ? null : 1 / 3, partners.length > 0));
   }
 
   const conquerRule = facts.team ? RULE.teamFinalPoint : RULE.finalPointConquer;

@@ -35,7 +35,7 @@ interface Reach { hit: { t: Typical; why: string; conditional: boolean }[]; miss
 /** Which typical cards of a list one of my cards answers, with expected copies answered per opposing list. */
 function reach(card: Card, typical: readonly Typical[]): Reach {
   const out: Reach = { hit: [], miss: [], expected: 0, answer: null };
-  const answers = answersOf(card).filter((a) => UNIT_KINDS.includes(a.kind) || a.kind === 'gear-kill' || (a.kind === 'counter' && !a.counter?.onlyTargeting));
+  const answers = answersOf(card).filter((a) => UNIT_KINDS.includes(a.kind) || a.kind === 'gear-kill' || a.kind === 'counter');
   if (answers.length === 0) return out;
   out.answer = answers[0];
   for (const t of typical) {
@@ -43,6 +43,15 @@ function reach(card: Card, typical: readonly Typical[]): Reach {
     let miss = '';
     let relevant = false;
     for (const a of answers) {
+      // "Counter an enemy spell or ability that chooses a friendly unit or gear" (Not So Fast): its targets are
+      // the opposing cards that aim at one of yours, read from their own text. Conditional: they have to aim it.
+      if (a.kind === 'counter' && a.counter?.onlyTargeting) {
+        const aimed = aimedAt(t.card);
+        if (!aimed || (t.card.type !== 'spell' && !/\bability\b/i.test(a.sentence))) continue;
+        relevant = true;
+        if (!best) best = { why: `it chooses your unit or gear (${aimed})`, conditional: true };
+        continue;
+      }
       const applies = a.kind === 'counter' ? t.card.type === 'spell' : a.kind === 'gear-kill' ? t.card.type === 'gear' : t.card.type === 'unit';
       if (!applies) continue;
       relevant = true;
@@ -54,6 +63,12 @@ function reach(card: Card, typical: readonly Typical[]): Reach {
     else if (relevant) out.miss.push({ t, why: miss });
   }
   return out;
+}
+
+/** What an opposing card aims at one of your units or gear, in words; null when it chooses nothing of yours. */
+function aimedAt(card: Card): string | null {
+  const a = answersOf(card).find((x) => x.kind !== 'sweep' && x.kind !== 'counter');
+  return a ? describeAnswer(a) : null;
 }
 
 const typicalOf = (meta: LegendMeta, lc: LineContext): Typical[] => typicalList(meta, lc.ctx.db).filter((t) => t.share >= TYPICAL);
@@ -260,6 +275,11 @@ export function sideLines(lc: LineContext): Line[] {
   if (!rules.sideAllowed) {
     return [line(lc, 'side', `${view.deck.format} is played without a side deck: ${nameList(view.side.map((c) => c.card.name), 4)} (${sideCopies} cards) are not used.`, view.side, 'Side decks exist only in the Tournament Rules for Constructed (TR 601.1.c); no rule gives this format one.', null, false)];
   }
+  // A side deck is only played from game 2 of a match (TR 403.5); every format but best-of-three is one game.
+  if (view.deck.format !== 'standard-bo3') {
+    return [line(lc, 'side', `${view.deck.format} is a single game, so the ${sideCopies} side cards (${nameList(view.side.map((c) => c.card.name), 4)}) are never played: side cards come in from game 2 of a match, and there is none. Anything you want from them has to be in the 40.`, view.side,
+      `Best of 1 (${view.facts.firstTurnRule.replace(/\.7$/, ".6")}); no side cards in game 1 (${RULE.sideGameOne}).`, null, false)];
+  }
   const field = fieldOf(lc.ctx.db);
   const perLegend = (card: Card): { legend: Card; expected: number; hits: Typical[] }[] => field.legends.map(({ legend, meta }) => {
     const r = reach(card, typicalList(meta, lc.ctx.db).filter((t) => t.share >= TYPICAL));
@@ -273,15 +293,23 @@ export function sideLines(lc: LineContext): Line[] {
       `Side deck size (${RULE.sideSize}); 1-for-1 exchange (${RULE.sideOneForOne}); no side cards in game 1 (${RULE.sideGameOne}).`, null, false));
     // Side cards with the same effect and limits share a line.
     const jobs = new Map<string, DeckCard[]>();
+    // The effect a side card is rated by: the one `reach` tests (removal, gear removal, a counterspell). A stun
+    // or a Might reduction works on any unit and buys a turn, so no best matchup can be named for it.
+    const rated = (c: DeckCard): Answer | null => reach(c.card, []).answer;
+    const unrated: DeckCard[] = [];
     for (const c of [...view.side].sort((a, b) => b.qty - a.qty || a.card.name.localeCompare(b.card.name))) {
-      const answer = answersOf(c.card)[0];
-      if (!answer) continue;
+      const answer = rated(c);
+      if (!answer) { if (answersOf(c.card).length > 0) unrated.push(c); continue; }
       const key = describeAnswer(answer);
       jobs.set(key, [...(jobs.get(key) ?? []), c]);
     }
+    if (unrated.length > 0) {
+      out.push(line(lc, 'side', `${nameList(unrated.map((x) => `${x.card.name} x${x.qty} (${describeAnswer(answersOf(x.card)[0])})`), 3)} ${unrated.length > 1 ? 'are' : 'is'} not rated by targets: the effect works on any unit and only buys the turn, so it has no best matchup in this data. ${unrated[0].card.name}: "${answersOf(unrated[0].card)[0].sentence}"`, unrated,
+        'Only removal, gear removal and counterspells are tested card against card; a stun or a Might reduction is not counted as an answer (heuristic).', null, true));
+    }
     for (const [job, cards] of jobs) {
       const c = cards[0];
-      const answer = answersOf(c.card)[0];
+      const answer = rated(c)!;
       const who = nameList(cards.map((x) => `${x.card.name} x${x.qty}`), 3);
       const scores = perLegend(c.card).sort((a, b) => b.expected - a.expected || a.legend.id.localeCompare(b.legend.id));
       const best = scores.filter((x) => x.expected >= 1).slice(0, 2);

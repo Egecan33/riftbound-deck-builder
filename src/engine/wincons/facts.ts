@@ -19,6 +19,7 @@ export const RULE = {
   basicRune: 'CR 164.2',
   entersExhausted: 'CR 359.2.c',
   moveCost: 'CR 144.2',
+  moveDestinations: 'CR 144.4',
   showdownTiming: 'CR 308.1.a',
   closedTiming: 'CR 309.1.a',
   focusAttacker: 'CR 466.2.c.1.a',

@@ -5,7 +5,7 @@ import Database from 'better-sqlite3';
 import { describe, expect, it } from 'vitest';
 import type { Card, Deck, DeckEntry, WinReport } from '@/engine/types';
 import {
-  HIDDEN_REF, ROUTE_REF, answerHits, answersOf, deckCard, describeAnswer, detectWinRoutes, fieldOf, formatFacts, routeFeatures, routeReferences, viewDeck,
+  HIDDEN_REF, REF_FLOOR, ROUTE_REF, answerHits, answersOf, deckCard, describeAnswer, detectWinRoutes, fieldOf, formatFacts, routeFeatures, routeReferences, viewDeck,
 } from '@/engine/wincons';
 import { loadCardDb } from '@/server/carddb';
 import { hasRealDb, metaLists } from '../helpers/real-db';
@@ -139,10 +139,21 @@ describe('detectWinRoutes on the six reference decks', () => {
     expect(primaries).toEqual({ irelia: 'burst', kaisa: 'attrition', kennen: 'burst', khazix: 'tall', reksai: 'wide', riven: 'burst' });
     expect(new Set(Object.values(primaries)).size).toBeGreaterThanOrEqual(4);
   });
+  it('notes read as sentences: "1 copy", and a Chosen Champion that closes no route is explained', () => {
+    for (const d of decks) {
+      const r = report(d.file.split('-')[0]);
+      for (const route of r.routes) for (const n of route.notes) expect(n, d.file).not.toMatch(/\b1 copies\b/);
+      const champion = d.deck.champion as string;
+      const closes = r.routes.some((route) => route.closers.includes(champion));
+      const explained = r.routes[0].notes.some((n) => n.includes('the Chosen Champion (CR 103.3.a.1), is not a closer of any route here'));
+      expect(closes !== explained, d.file).toBe(true);
+    }
+  });
   it('names the closers a player would name', () => {
     expect(names(report('kennen').routes[0].closers)).toEqual(['Nocturne, Horrifying', 'Ride the Wind']);
     expect(names(report('kaisa').routes[0].closers)).toEqual(['Thousand-Tailed Watcher', 'The Empyrean']);
-    expect(names(report('riven').routes[0].closers)).toEqual(['Riven, Broken Blade', 'Riven, Deserter', 'Hunker Down']);
+    // Hunker Down readies a unit that then "can't move this turn": it takes no second battlefield, so it is not a burst closer (stage 3 review).
+    expect(names(report('riven').routes[0].closers)).toEqual(['Riven, Broken Blade', 'Riven, Deserter']);
     expect(names(report('khazix').routes[0].closers)[0]).toBe("Kha'Zix, Mutating Horror");
     // The Chosen Champion is listed first and is always available (Champion Zone).
     expect(report('riven').routes[0].pCloserByTurn5).toBe(1);
@@ -299,8 +310,9 @@ describe.skipIf(!hasRealDb())('calibration against the synced lists (wincons.md 
       // with `routeReferences` and update ROUTE_REF and HIDDEN_REF.
       const refs = routeReferences(all, real);
       for (const route of ['wide', 'tall', 'hold', 'burst', 'attrition'] as const) {
-        expect(refs[route], route).toBeGreaterThan(ROUTE_REF[route] * 0.65);
-        expect(refs[route], route).toBeLessThan(ROUTE_REF[route] * 1.35);
+        // A reference is the 75th percentile, but never under REF_FLOOR weighted copies (hold: its percentile is 3).
+        expect(Math.max(refs[route], REF_FLOOR), route).toBeGreaterThan(ROUTE_REF[route] * 0.65);
+        expect(Math.max(refs[route], REF_FLOOR), route).toBeLessThan(ROUTE_REF[route] * 1.35);
       }
       expect(refs.hidden).toBeGreaterThan(HIDDEN_REF * 0.65);
       expect(refs.hidden).toBeLessThan(HIDDEN_REF * 1.35);

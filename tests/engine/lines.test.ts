@@ -1,7 +1,7 @@
 // Lines (plan Task 7, spec 14): deck-specific, rule-cited, never the same text for different decks.
 import { describe, expect, it } from 'vitest';
 import type { Card, Deck, DeckEntry, Line, LineReport } from '@/engine/types';
-import { buildContext, generateLines, packagesOf, sharedLineShare, turnFor } from '@/engine/lines';
+import { buildContext, falsePair, generateLines, packagesOf, sharedLineShare, turnFor } from '@/engine/lines';
 import { answersOf, formatFacts } from '@/engine/wincons';
 import { theoryDb } from '../helpers/theory-db';
 
@@ -61,7 +61,7 @@ describe('generateLines on the six reference decks', () => {
     // The fixture network gives the Riven list no enabler-payoff family; it gets the exhaust detector instead.
     expect(reports.filter(({ r }) => r.packages.length > 0).length).toBeGreaterThanOrEqual(5);
     const riven = reports.find(({ d }) => d.file.startsWith('riven'))!.r;
-    expect(texts(riven.sequencing)).toMatch(/Riven, Deserter.* when a unit becomes exhausted\. Every move exhausts the unit that moves/);
+    expect(texts(riven.sequencing)).toMatch(/Riven, Deserter counts your other units becoming exhausted\. Every move exhausts the unit that moves/);
     expect(reasons(riven.sequencing)).toMatch(/CR 144\.2/);
   });
   it('decks of different legends share fewer than 15% of their line texts', () => {
@@ -170,7 +170,9 @@ describe('sequencing and packages come from the network and from rule-backed det
     for (const l of network) { expect(l.cardIds.length).toBe(2); expect(l.text).toMatch(/: ".+" -> .+: ".+"/); }
     // A "When I move" unit has to be in play before the move; a replayed unit is on the board before the bounce.
     expect(texts(network)).toMatch(/Traveling Merchant first, then Ride the Wind \(Move triggers\)/);
-    expect(texts(lines(deckOf('reksai')).sequencing)).toMatch(/on the board, then Grim Apothecary to play .+ again \(Replay play effects\)/);
+    expect(texts(network)).toMatch(/Trifarian Captain on the board, then Star-Crossed to play Trifarian Captain again \(Replay play effects\)/);
+    // Stage 3 review: a spell is gone when it resolves, so the permanent it triggers is named first.
+    expect(texts(reksai.sequencing)).not.toMatch(/Cull the Weak first, then/);
     expect(texts(reksai.sequencing)).toMatch(/Carrion Dredger first, then (?:Cull the Weak|Shimmering Swimmer) \(Death engine\)/);
   });
   it('detectors fire only for cards the deck holds, each with its rule', () => {
@@ -180,8 +182,8 @@ describe('sequencing and packages come from the network and from rule-backed det
     expect(why).toMatch(/CR 309\.1\.a.*CR 167/);
     expect(seq).toMatch(/Hide Bedeviling Stranger, Switcheroo, Tideturner and Edge of Night/);
     expect(why).toMatch(/CR 811\.1\.b/);
-    expect(seq).toMatch(/Kennen, Storm of Shuriken moves and conquers first; Ride the Wind then readies it/);
-    expect(why).toMatch(/CR 359\.2\.c.*CR 144\.2/);
+    expect(seq).toMatch(/Kennen, Storm of Shuriken takes one battlefield with its own move; Ride the Wind \(2\+1P\) then moves it again and readies it/);
+    expect(why).toMatch(/CR 144\.2.*CR 144\.4/);
     expect(seq).toMatch(/Switcheroo costs 2 Power/);
     expect(seq).toMatch(/Reckless Innovator: pay 1 Energy and 1 Power more to enter ready/);
     expect(why).toMatch(/CR 805\.1\.b/);
@@ -382,5 +384,63 @@ describe('partial and broken decks never throw', () => {
     deck.main.push(entry('Fight or Flight', 3));
     const banned = card('Fight or Flight').id;
     for (const l of all(lines(deck, 'Daughter of the Void'))) expect(l.cardIds).not.toContain(banned);
+  });
+});
+
+describe('stage 3 review of the lines', () => {
+  const reports = decks.map((d) => ({ d, r: lines(d.deck) }));
+  it('a pair whose two sentences do not meet is not a line', () => {
+    // Temporary tokens die, not the card whose reward is its own Deathknell.
+    expect(falsePair('package:temporary:death-payoff:a:b', 'Play two ready 3 Might Sprite unit tokens with [Temporary]', '[Deathknell][>] Play a 1 Might Bird unit token with [Deflect] to your base')).toBe(true);
+    expect(falsePair('package:temporary:death-payoff:a:b', 'Play two ready 3 Might Sprite unit tokens with [Temporary]', 'Your [Deathknell] effects trigger an additional time')).toBe(true);
+    // A card that watches any other friendly unit die does get them.
+    expect(falsePair('package:temporary:death-payoff:a:b', 'Play two ready 3 Might Sprite unit tokens with [Temporary]', 'When another non-Recruit unit you control dies, play a 1 Might Recruit unit token into your base')).toBe(false);
+    // Giving Temporary to the Deathknell unit itself is the real interaction.
+    expect(falsePair('package:temporary:death-payoff:a:b', 'Choose a friendly unit without [Temporary]', '[Deathknell][>] Play a 1 Might Bird unit token with [Deflect] to your base')).toBe(false);
+    // Your own unit dying is not "an enemy unit dies", stunned or not.
+    expect(falsePair('package:temporary:death-payoff:a:b', 'play a ready 3 Might Sprite unit token with [Temporary] here', 'When a stunned enemy unit here dies, draw 1')).toBe(true);
+    expect(falsePair('package:death-enabler:death-payoff:a:b', 'Kill a friendly unit', 'When an enemy unit dies while I am at a battlefield, draw 1')).toBe(true);
+    expect(falsePair('package:stun:stun-payoff:a:b', 'Stun a unit', 'When a stunned enemy unit here dies, draw 1')).toBe(false);
+  });
+  it('battlefield lines say what the deck does with the battlefield, never that all three are "the last one to choose"', () => {
+    for (const { d, r } of reports) {
+      const fields = r.format.filter((l) => d.deck.battlefields.includes(l.cardIds[0]));
+      expect(fields.length, d.file).toBe(d.deck.battlefields.length);
+      for (const l of fields) expect(l.text, d.file).not.toMatch(/last one to choose|is linked to it/);
+    }
+    // A Bonus Damage battlefield in a list with damage spells names them (Void Gate with Falling Star, Hextech Ray).
+    const kaisa = deckOf('kaisa');
+    const gate = card('Void Gate');
+    const r = lines({ ...kaisa, battlefields: [gate.id, ...kaisa.battlefields.filter((id) => id !== gate.id).slice(0, 2)] });
+    const line = r.format.find((l) => l.cardIds[0] === gate.id)!;
+    expect(line.text).toMatch(/copies in the deck deal damage with a spell or ability: .*(Falling Star|Hextech Ray)/);
+    expect(line.cardIds.length).toBeGreaterThan(1);
+  });
+  it('one-card-away lines are only for a side the deck has at most one copy of, and never repeat a family the deck already has as a package', () => {
+    for (const { d, r } of reports) {
+      const packageLabels = r.packages.map((l) => l.text.split(':')[0]);
+      for (const l of r.oneAway) {
+        expect(l.text, d.file).not.toMatch(/almost nothing/);
+        expect(l.text, d.file).toMatch(/but (?:no card that (?:feeds|rewards) them|only .+ to (?:feed|reward) them)\./);
+        const label = /^One card away from ([^:]+):/.exec(l.text)?.[1];
+        expect(packageLabels, `${d.file}: ${l.text}`).not.toContain(label);
+      }
+      // Two families over the same deck cards are one suggestion.
+      const keys = r.oneAway.map((l) => [...l.cardIds].sort().join('|'));
+      expect(new Set(keys).size, d.file).toBe(keys.length);
+    }
+  });
+  it('a network pair line is left out when both cards are held under 10% of the time', () => {
+    for (const { d, r } of reports) for (const l of r.sequencing.filter((x) => x.reason.startsWith('Network edge'))) {
+      if (/always/.test(l.text)) continue;
+      expect(l.probability ?? 1, `${d.file}: ${l.text}`).toBeGreaterThanOrEqual(0.1 - 1e-9);
+    }
+  });
+  it('the Tank line guards a closer or the champion, and legend pairs read as a sentence', () => {
+    for (const { d, r } of reports) {
+      for (const l of r.sequencing) expect(l.text, d.file).not.toMatch(/is always in play, so [A-Z]/);
+    }
+    const riven = reports.find(({ d }) => d.file.startsWith('riven'))!.r;
+    expect(texts(riven.sequencing)).toMatch(/Put Blitzcrank, Impassive at the same battlefield as Riven, Deserter/);
   });
 });

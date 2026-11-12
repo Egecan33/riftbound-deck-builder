@@ -18,7 +18,7 @@
 // never a strength rating. Rule facts quoted in notes carry their rule number.
 import type { CardDb, Deck, EngineContext, RouteId, WinReport, WinRoute } from '../types';
 import { RULE } from './facts';
-import { routeFeatures, type Feature } from './features';
+import { routeFeatures, soloSide, type Feature } from './features';
 import { foldsFor } from './folds';
 import { displayName, nameList, pSeen, pct, viewDeck, type DeckCard, type DeckView } from './view';
 
@@ -49,7 +49,14 @@ export const HIDDEN_WEIGHTS: Partial<Record<Feature, number>> = { hidden: 0.25, 
  * (`routeReferences`; tests/engine/wincons.test.ts checks them against the synced lists when the database
  * is there). POINTS has a 75th percentile of 0; its reference is two copies of a point card (wincons.md 4.3).
  */
-export const ROUTE_REF: Record<ScoringRoute, number> = { wide: 10, tall: 11.25, hold: 3, burst: 13.5, points: 6.0, attrition: 16.5 };
+/**
+ * No reference is lower than this many weighted copies. HEURISTIC (stage 3 review): the 75th percentile of HOLD
+ * is 3 (most lists have no hold plan; the 90th percentile is 10), so two Shield units made HOLD the first route
+ * of a list that wins another way: Lecturing Yordle was the "closer" of Jayce lists, Explosimian of Ziggs lists.
+ * With the floor 60 of the 130 hold-first synced lists move to the route their champion or top end carries.
+ */
+export const REF_FLOOR = 6;
+export const ROUTE_REF: Record<ScoringRoute, number> = { wide: 10, tall: 11.25, hold: REF_FLOOR, burst: 13.5, points: 6.0, attrition: 16.5 };
 export const HIDDEN_REF = 6.25;
 /** Routes whose rank is within this of the first are co-primary (wincons.md V6 item 5). */
 export const CO_PRIMARY = 0.2;
@@ -232,10 +239,15 @@ const copyList = (cards: readonly DeckCard[], max = 4): string => nameList(cards
 function familyNotes(view: DeckView): string[] {
   const out: string[] = [];
   const of = (f: Feature): DeckCard[] => byWeight(copiesWith(view, f));
-  const solo = of('solo');
-  if (solo.length > 0 || (view.legend && routeFeatures(view.legend, 'legend').has('solo'))) {
-    out.push(`Alone / one-on-one plan: ${[view.legend && view.legend.traits.has('solo') ? displayName(view.legend.card) : null, copyList(solo)].filter(Boolean).join(' with ')} care about a unit that stands by itself, so units go to different battlefields.`);
+  // Whose unit is alone decides the advice: your own (spread out) or an enemy's (go where one stands alone).
+  const solo = of('solo').filter((c) => soloSide(c) === 'own');
+  const legendSolo = !!view.legend && routeFeatures(view.legend, 'legend').has('solo') && soloSide(view.legend) === 'own';
+  if (solo.length > 0 || legendSolo) {
+    const who = [legendSolo ? displayName(view.legend!.card) : null, solo.length ? copyList(solo) : null].filter(Boolean);
+    out.push(`Alone / one-on-one plan: ${who.join(' with ')} ${who.length === 1 && solo.length <= 1 ? 'cares' : 'care'} about your unit standing by itself, so units go to different battlefields.`);
   }
+  const lone = of('solo').filter((c) => soloSide(c) === 'enemy');
+  if (lone.length > 0) out.push(`Lone-enemy plan: ${copyList(lone)} ${lone.length > 1 ? 'pay' : 'pays'} off where an enemy unit stands alone, so attack the battlefield that holds exactly one of theirs.`);
   const enablers = of('death-enabler');
   const payoffs = of('death-payoff');
   if (sumQty(enablers) >= 2 && sumQty(payoffs) >= 2) out.push(`Death loop: ${copyList(enablers, 3)} kill or sacrifice your own units for ${copyList(payoffs, 3)}.`);
@@ -272,15 +284,21 @@ export function detectWinRoutes(deck: Deck, ctx: EngineContext): WinReport {
     const label = ROUTE_LABELS[d.id];
     if (i === 0) notes.push(`${label} is the main way this list scores: ${round2(d.norm)}x the commitment of the top quarter of synced lists (HEURISTIC).`);
     else if (first.rank - d.rank <= CO_PRIMARY) notes.push(`${label} is co-primary with ${ROUTE_LABELS[first.id]}: the two rank within ${CO_PRIMARY} of each other.`);
-    if (d.fallback) notes.push(`No single card closes this route by itself; the count is the ${sumQty(d.closers)} copies carrying its main feature: ${copyList(d.closers)}.`);
-    else notes.push(`Closers: ${copyList(d.closers)} (${sumQty(d.closers)} copies). ${d.closers.some((c) => c.champion) ? `${d.closers.find((c) => c.champion)!.card.name} is the Chosen Champion and starts in the Champion Zone (${RULE.championZone}), so one is always available.` : `At least one in the ${view.facts.seats[0].seen(5)} cards seen by turn 5: ${pct(d.p)}.`}`);
-    if (a.feed && a.feed.route === d.id && view.legend) notes.push(`${displayName(view.legend.card)} is switched on by ${a.feed.label}: ${a.feed.copies} copies (${copyList(byWeight(a.feed.feeders))}).`);
+    if (d.fallback) notes.push(`No single card closes this route by itself; the count is the ${sumQty(d.closers)} ${sumQty(d.closers) === 1 ? 'copy' : 'copies'} carrying its main feature: ${copyList(d.closers)}.`);
+    else notes.push(`Closers: ${copyList(d.closers)} (${sumQty(d.closers)} ${sumQty(d.closers) === 1 ? 'copy' : 'copies'}). ${d.closers.some((c) => c.champion) ? `${d.closers.find((c) => c.champion)!.card.name} is the Chosen Champion and starts in the Champion Zone (${RULE.championZone}), so one is always available.` : `At least one in the ${view.facts.seats[0].seen(5)} cards seen by turn 5: ${pct(d.p)}.`}`);
+    if (a.feed && a.feed.route === d.id && view.legend) notes.push(`${displayName(view.legend.card)} is switched on by ${a.feed.label}: ${a.feed.copies} ${a.feed.copies === 1 ? 'copy' : 'copies'} (${copyList(byWeight(a.feed.feeders))}).`);
     if (i === 0) {
       notes.push(`Uncontested clock: turn ${a.clock} (first conquer on turn ${a.firstConquerTurn}, about ${round2(a.pointsPerTurn)} points a turn toward ${facts.team ? `your half of ${facts.victoryScore}` : facts.victoryScore}, ${facts.victoryRule}). HEURISTIC: ignores the opponent.`);
       const holdPart = a.reach.holders.length ? `holders: ${copyList(a.reach.holders, 3)}` : 'this list has no unit built to hold';
       const movePart = a.reach.movers.length ? `ready or moving pieces: ${copyList(a.reach.movers, 3)}` : 'this list has no ready or move effect to take them in one turn';
       const directPart = a.reach.pointCards.length ? ` ${copyList(a.reach.pointCards, 2)} ${a.reach.pointCards.length > 1 ? 'give' : 'gives'} the point without a battlefield.` : '';
       notes.push(`Last point: a hold wins outright (${RULE.finalPointOther}) - ${holdPart}. A conquer gives it only if all ${facts.battlefieldsOnBoard} battlefields were scored that turn (${facts.team ? RULE.teamFinalPoint : RULE.finalPointConquer}) - ${movePart}.${directPart}`);
+      // The Chosen Champion is always available (CR 103.3.a.1); when no route counts it as a closer, say what it is here for.
+      const champ = view.champion;
+      if (champ && !kept.some((k) => k.closers.some((c) => c.card.id === champ.card.id))) {
+        const asEnabler = kept.find((k) => k.enablers.some((c) => c.card.id === champ.card.id));
+        notes.push(`${champ.card.name}, the Chosen Champion (${RULE.championZone}), is not a closer of any route here${asEnabler ? `; it is counted as an enabler of ${ROUTE_LABELS[asEnabler.id].toLowerCase()}` : ''}: "${champ.sentences.find((s) => !/^\[[^\]]+\]$/.test(s.trim())) ?? champ.sentences[0] ?? ''}"`);
+      }
       for (const n of familyNotes(view)) notes.push(n);
       for (const e of view.excluded) notes.push(`${e.card.name} is not counted: ${e.why}.`);
     }

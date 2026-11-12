@@ -30,6 +30,48 @@ const kw = (c: DeckCard, keyword: string): boolean => c.card.keywords.some((k) =
 
 const cache = new WeakMap<DeckCard, Set<Feature>>();
 
+export interface ReadyEffect {
+  /** The sentence the effect was read from. */
+  sentence: string;
+  /** 'own': a unit you already control; 'taken': an enemy unit the same card takes control of (Hostile Takeover). */
+  target: 'own' | 'taken';
+  /** False when the card says the readied unit cannot move this turn (Hunker Down). */
+  canMove: boolean;
+  /** "Ready your units". */
+  all: boolean;
+}
+
+const READY = /\bready (?:an?|it|them|me|up to \w+|another|each|all|your|that|two|friendly)\b/;
+const READY_OTHER = /\bready (?:up to \w+ |\d+ |your |an? |all |two )?(?:friendly |exhausted )?(?:runes?|gear|legends?)\b/;
+
+/** Ready effects of a card that ready a unit (not runes, gear or a legend), each with what the card lets that unit do. */
+export function readyEffects(c: DeckCard): ReadyEffect[] {
+  const out: ReadyEffect[] = [];
+  const S = c.sentences.map((s) => s.toLowerCase());
+  S.forEach((s, i) => {
+    // Not a ready effect of this card: a trigger on readying ("When you ready a friendly unit, ..."), or readying the enemy's units.
+    if (!READY.test(s) || READY_OTHER.test(s) || /\bwhen you (?:choose or )?ready\b/.test(s) || /\bready (?:all |an? |each )?enemy\b/.test(s)) return;
+    const near = `${S[i - 1] ?? ''} ${s}`;
+    out.push({
+      sentence: c.sentences[i],
+      target: /\btake control of an enemy unit\b/.test(near) ? 'taken' : 'own',
+      canMove: !/\bcan(?:'|’)t move\b/.test(`${s} ${S[i + 1] ?? ''}`),
+      all: /\bready (?:all |each of )?your units\b|\bready all (?:friendly )?units\b/.test(s),
+    });
+  });
+  return out;
+}
+
+/** Whose unit an "alone" text is about: the caster's ("while I'm alone here") or an enemy's ("if an enemy unit is alone there"). */
+export function soloSide(c: DeckCard): 'own' | 'enemy' | null {
+  const hit = c.sentences.map((s) => s.toLowerCase()).filter((s) => /\balone\b|\bone on one\b|\bonly unit\b/.test(s));
+  if (hit.length === 0) return c.traits.has('solo') ? 'own' : null;
+  // "If I didn't die alone" (Loyal Poro) rewards company: it is not an alone plan at all.
+  const real = hit.filter((s) => !/\bdidn(?:'|’)t die alone\b|\bnot alone\b/.test(s));
+  if (real.length === 0) return null;
+  return real.some((s) => !/\benemy units? (?:is |are )?alone\b|\balone enemy\b|\benemy unit that(?:'|’)s alone\b/.test(s)) ? 'own' : 'enemy';
+}
+
 export function routeFeatures(c: DeckCard, role: CardRole = 'main'): Set<Feature> {
   const held = cache.get(c);
   if (held) return held;
@@ -51,7 +93,9 @@ export function routeFeatures(c: DeckCard, role: CardRole = 'main'): Set<Feature
   // Speed and movement.
   if (unit && (kw(c, 'accelerate') || some(/\bi enter ready\b/))) f.add('haste');
   if (role === 'legend' && some(/\bunits? you play\b[^.]*\benter ready\b|\byour units enter ready\b/)) f.add('haste');
-  const readies = S.filter((s) => /\bready (?:an?|it|them|me|up to \w+|another|each|all|your|that|two|friendly)\b/.test(s) && !/\bready (?:up to \w+ |\d+ |your |an? |all |two )?(?:friendly |exhausted )?(?:runes?|gear|legends?)\b/.test(s));
+  // A ready effect counts for scoring only when the readied unit may still move ("Ready a friendly unit. It
+  // can't move this turn." is a defensive trick, not a second conquer).
+  const readies = readyEffects(c).filter((r) => r.canMove).map((r) => r.sentence.toLowerCase());
   if (readies.some((s) => role !== 'legend' || !/\bready me\b/.test(s) || /\bready (?:it|a unit|an? \w+ unit)\b/.test(s))) f.add('ready');
   if (unit && kw(c, 'ganking')) f.add('gank');
   if (role === 'legend' && some(/\bgive a unit \[ganking\]/)) f.add('gank');

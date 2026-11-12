@@ -197,6 +197,16 @@ export interface Hit { hits: boolean; conditional: boolean; why: string }
 
 const hasKeyword = (card: Card, keyword: string): boolean => card.keywords.some((k) => k.toLowerCase() === keyword);
 
+/** Does the unit's own text stop enemy spells and abilities from choosing it? */
+export function untargetable(target: Card): 'always' | 'outside-combat' | null {
+  for (const s of sentencesOf(target)) {
+    const m = /^i can(?:'|’)t be chosen by enemy spells and abilities\b(.*)$/i.exec(s);
+    if (!m) continue;
+    return /\bunless i(?:'|’)m in combat\b/i.test(m[1]) ? 'outside-combat' : /\bunless\b|\bwhile\b|\bif\b/i.test(m[1]) ? null : 'always';
+  }
+  return null;
+}
+
 /** Short description of an effect with its limits: "deal 3", "return, 3 Might or less", "kill, enemy Calm only". */
 export function describeAnswer(a: Answer): string {
   const limits = [
@@ -220,7 +230,7 @@ function describeCounter(a: Answer): string {
     c.maxEnergy !== null ? `Energy ${c.maxEnergy} or less` : null,
     c.maxPower !== null ? `Power ${c.maxPower} or less` : null,
     c.minPower !== null ? `Power ${c.minPower} or more` : null,
-    c.onlyTargeting ? 'only one that chooses their unit or gear' : null,
+    c.onlyTargeting ? 'only an enemy spell or ability that chooses a friendly unit or gear' : null,
     c.tax !== null ? `unless you pay ${c.tax}` : null,
   ].filter(Boolean);
   return parts.length ? `counter a spell: ${parts.join(', ')}` : 'counter any spell';
@@ -254,6 +264,13 @@ export function answerHits(a: Answer, target: Card): Hit {
   if (a.where === 'base') return no('only reaches units at a base');
   if (a.domain && !target.domains.includes(a.domain)) return no(`only ${a.domain} units`);
   if (a.maxMight !== null && might > a.maxMight) return no(`${might} Might is over its ${a.maxMight} limit`);
+  // "I can't be chosen by enemy spells and abilities" (Baron Nashor, Ruin Runner): only an effect that chooses
+  // nothing (mass damage, "kill all units") reaches the unit. A [Level N] line is not counted: it is off at the start.
+  if (a.kind !== 'sweep') {
+    const guard = untargetable(target);
+    if (guard === 'always') return no('it cannot be chosen by enemy spells and abilities');
+    if (guard === 'outside-combat') return yes(`only while it is in combat (it cannot be chosen otherwise)`, true);
+  }
   const deflect = hasKeyword(target, 'deflect') && a.kind !== 'sweep' ? ' (Deflect: they pay 1 more Power to choose it)' : '';
   switch (a.kind) {
     case 'damage':

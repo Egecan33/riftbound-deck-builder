@@ -65,6 +65,32 @@ export function orient(edge: CardEdge, reason: EdgeReason, a: DeckCard, b: DeckC
   return { edge, reason, enabler: a, payoff: b, enablerQuote: '', payoffQuote: '', directed: false, measured };
 }
 
+/**
+ * A stored edge whose two quoted sentences do not meet. The network joins "your unit dies" enablers (Temporary,
+ * sacrifice) to every death payoff, including the ones that only count enemy deaths (Pyke, Returned: "when an
+ * enemy unit dies"); a line built on that pair would be false, so the link is dropped here.
+ */
+export function falseLink(l: Link): boolean {
+  return l.directed && falsePair(l.reason.id, l.enablerQuote, l.payoffQuote);
+}
+
+/** The same test on the raw quotes (the builder's package phase uses it on stored edges). */
+export function falsePair(reasonId: string, enablerQuote: string, payoffQuote: string): boolean {
+  // "Play two Sprite unit tokens with [Temporary]" kills those tokens, not the payoff: a card whose reward is its
+  // own [Deathknell] (Carrion Dredger) or more Deathknell triggers (Karthus) gets nothing from them.
+  if (/^package:temporary[^:]*:/.test(reasonId) && /\bplay\b[^.]*\btokens?\b[^.]*\[temporary\]/i.test(enablerQuote) && /\[deathknell\]/i.test(payoffQuote)) return true;
+  const ownDeath = /^package:(?:temporary|death-enabler|sacrifice)[^:]*:/.test(reasonId) || /\[temporary\]|\bkill (?:a|one of (?:your|their)) (?:friendly )?units?\b|\bkills? one of their units\b/i.test(enablerQuote);
+  return ownDeath && /\bwhen an? (?:stunned |damaged |exhausted )?enemy unit (?:here )?dies\b/i.test(payoffQuote) && !/\bfriendly\b|\ba unit dies\b|\banother unit\b/i.test(payoffQuote);
+}
+
+/** A stored reason whose detail is `Enabler: "..." | Payoff: "..."` and whose two sentences do not meet. */
+export function falseReason(reason: EdgeReason): boolean {
+  const cut = reason.detail.lastIndexOf(' | ');
+  if (cut <= 0 || !reason.id.startsWith('package:')) return false;
+  const q = (chunk: string): string => { const at = chunk.indexOf(': "'); const end = chunk.lastIndexOf('"'); return at >= 0 && end > at + 3 ? chunk.slice(at + 3, end) : ''; };
+  return falsePair(reason.id, q(reason.detail.slice(0, cut)), q(reason.detail.slice(cut + 3)));
+}
+
 export function buildContext(deck: Deck, ctx: EngineContext): LineContext {
   const view = viewDeck(deck, ctx.db);
   const win = analyseRoutes(view);
@@ -78,6 +104,7 @@ export function buildContext(deck: Deck, ctx: EngineContext): LineContext {
       for (const reason of edge.reasons) {
         if (reason.kind !== 'synergy' || isGenericReason(reason.id)) continue;
         const link = orient(edge, reason, nodes[i], nodes[j]);
+        if (falseLink(link)) continue;
         (link.measured ? coPlay : links).push(link);
       }
     }
