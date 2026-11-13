@@ -1,4 +1,4 @@
-// pnpm sync [cards|errata|legality|images|meta|features|fixtures|all]... [--limit N] [--max N] [--allow-shrink]
+// pnpm sync [cards|errata|legality|images|meta|features|fixtures|all]... [--limit N] [--max N] [--pages N] [--min-views N] [--allow-shrink]
 // Each step is resumable and idempotent, writes `sync_state` and prints `step done/total`.
 import { pathToFileURL } from 'node:url';
 import { invalidateCardDb } from '@/server/carddb';
@@ -15,14 +15,14 @@ export const STEPS = ['cards', 'errata', 'legality', 'meta', 'features', 'images
 export type Step = (typeof STEPS)[number] | 'fixtures';
 const ORDER: readonly Step[] = [...STEPS, 'fixtures'];
 
-export interface Flags { limit?: number; max?: number; allowShrink: boolean }
+export interface Flags { limit?: number; max?: number; pages?: number; minViews?: number; allowShrink: boolean }
 
 export async function runStep(step: Step, db: Db, log: Log, flags: Flags = { allowShrink: false }): Promise<void> {
   switch (step) {
     case 'cards': await syncCards(db, log, { allowShrink: flags.allowShrink }); break;
     case 'errata': syncErrata(db, log); break;
     case 'legality': await syncLegality(db, log); break;
-    case 'meta': await syncMeta(db, log, { max: flags.max }); break;
+    case 'meta': await syncMeta(db, log, { max: flags.max, listingPages: flags.pages, minViews: flags.minViews }); break;
     case 'features': syncFeatures(db, log); break;
     case 'images': await syncImages(db, log, { limit: flags.limit }); break;
     case 'fixtures': (await import('./fixtures')).writeFixtures(db, log); break;
@@ -30,7 +30,7 @@ export async function runStep(step: Step, db: Db, log: Log, flags: Flags = { all
   invalidateCardDb();
 }
 
-const USAGE = `Usage: pnpm sync [${ORDER.join('|')}|all]... [--limit N] [--max N] [--allow-shrink]`;
+const USAGE = `Usage: pnpm sync [${ORDER.join('|')}|all]... [--limit N] [--max N] [--pages N] [--min-views N] [--allow-shrink]`;
 
 export function parseArgs(argv: string[]): { steps: Step[]; flags: Flags } {
   const flags: Flags = { allowShrink: false };
@@ -44,6 +44,8 @@ export function parseArgs(argv: string[]): { steps: Step[]; flags: Flags } {
     const arg = argv[i];
     if (arg === '--limit') flags.limit = int('--limit', argv[++i]);
     else if (arg === '--max') flags.max = int('--max', argv[++i]);
+    else if (arg === '--pages') flags.pages = int('--pages', argv[++i]);
+    else if (arg === '--min-views') flags.minViews = int('--min-views', argv[++i]);
     else if (arg === '--allow-shrink') flags.allowShrink = true;
     else if (arg === 'all') steps.push(...STEPS);
     else if ((ORDER as readonly string[]).includes(arg)) steps.push(arg as Step);

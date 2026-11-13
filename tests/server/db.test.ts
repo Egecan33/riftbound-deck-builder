@@ -159,6 +159,8 @@ describe('sync-data files', () => {
   it('parses the sync command line', () => {
     expect(parseArgs(['meta', 'cards', '--max', '20']).steps).toEqual(['cards', 'meta']);
     expect(parseArgs(['images', '--limit', '200']).flags.limit).toBe(200);
+    const meta = parseArgs(['meta', '--pages', '120', '--min-views', '100']).flags;
+    expect([meta.pages, meta.minViews]).toEqual([120, 100]);
     expect(parseArgs([]).steps).toEqual(['cards', 'errata', 'legality', 'meta', 'features', 'images']);
     expect(parseArgs(['all', 'fixtures']).steps.at(-1)).toBe('fixtures');
     expect(() => parseArgs(['nope'])).toThrow(/unknown argument/);

@@ -429,6 +429,7 @@ export function storeAggregate(db: Db, agg: ReturnType<typeof aggregate>): void 
 export interface MetaOptions {
   max?: number;               // request cap for this run (listing pages and deck pages together); 0 = no network
   listingPages?: number;
+  minViews?: number;          // views a non-event list needs to be fetched (default META.minViews)
   researchDir?: string | null; // null = ignore the research caches
   deckCache?: string;
   listCache?: string;
@@ -440,7 +441,7 @@ export interface MetaInfo {
 }
 
 /** Which listed decks are worth a page fetch (meta-sources.md §3.2 recipe, step 3). HEURISTIC. */
-export function pickCandidates(rows: readonly PaListRow[], have: ReadonlyMap<string, string>, legendCount: ReadonlyMap<string, number>, db: CardDb, era: Era, newestSet: string): PaListRow[] {
+export function pickCandidates(rows: readonly PaListRow[], have: ReadonlyMap<string, string>, legendCount: ReadonlyMap<string, number>, db: CardDb, era: Era, newestSet: string, minViews: number = META.minViews): PaListRow[] {
   const latest = new Map<string, PaListRow>();
   for (const r of rows) {
     const held = latest.get(r.id);
@@ -451,7 +452,7 @@ export function pickCandidates(rows: readonly PaListRow[], have: ReadonlyMap<str
     const cls = classifyName(r.name);
     if (!r.isLegal || SKIP_RE.test(r.name)) continue;
     if (!(r.editedAt.slice(0, 10) >= era.from || r.sets.includes(newestSet))) continue;
-    if (!(cls.event || r.views >= META.minViews)) continue;
+    if (!(cls.event || r.views >= minViews)) continue;
     const stored = have.get(r.id);
     if (stored !== undefined && stored >= r.editedAt) continue; // never refetch a deck that was not edited
     const legend = r.legendCode ? db.byName(r.legendCode) : undefined;
@@ -534,7 +535,7 @@ export async function syncMeta(db: Db, log: Log, opts: MetaOptions = {}): Promis
       const r = resolveDeck(d, cards);
       if (r.complete && r.legendId && r.format === 'standard' && r.editedAt.slice(0, 10) >= era.from) legendCount.set(r.legendId, (legendCount.get(r.legendId) ?? 0) + 1);
     }
-    const candidates = pickCandidates(listRows, have, legendCount, cards, era, newestSet);
+    const candidates = pickCandidates(listRows, have, legendCount, cards, era, newestSet, opts.minViews ?? META.minViews);
     const budget = Math.max(0, max - requests);
     const todo = candidates.slice(0, budget);
     remainingCandidates = candidates.length - todo.length;
