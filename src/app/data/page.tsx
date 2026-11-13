@@ -155,6 +155,21 @@ export default function DataPage() {
                   </li>
                 ))}
               </ul>
+              {(leg.upcomingBans?.length ?? 0) > 0 && (
+                <>
+                  <h3 className="mt-3 text-[12.5px] font-semibold">Announced, not yet in effect ({leg.upcomingBans?.length})</h3>
+                  <p className="sub">Legal until their date; decks holding them get a warning.</p>
+                  <ul className="mt-1 max-h-64 space-y-1 overflow-y-auto pr-1 text-[12.5px]" data-testid="upcoming-ban-list">
+                    {leg.upcomingBans?.map((b, i) => (
+                      <li key={i} className="flex items-baseline gap-2">
+                        <span className="min-w-0 flex-1 truncate">{b.name}{b.zone !== 'main' ? ` (${b.zone})` : ''}</span>
+                        <span className="text-dim">{b.formats.map((f) => FORMAT_SHORT[f]).join(', ')}</span>
+                        <a className="text-heat underline-offset-2 hover:underline" href={b.sourceUrl} target="_blank" rel="noreferrer">from {b.effectiveFrom}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
               <div className="well mt-3 p-2.5">
                 <label className="flex items-start gap-2 text-[12.5px]">
                   <input type="checkbox" className="mt-0.5 accent-[var(--color-heat)]" checked={leg.ffaUsesStandardBans} onChange={(e) => void save({ ffaUsesStandardBans: e.target.checked })} data-testid="ffa-bans" />
