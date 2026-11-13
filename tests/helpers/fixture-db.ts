@@ -19,7 +19,7 @@ function load() {
     const cards = file.cards.map(reviveCard);
     const meta = readJson<MetaFixture>('meta.json').legends;
     // Legality comes from the reviewed sync-data file itself, so tests follow the real ban list.
-    const legality = toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data')));
+    const legality = { ...toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))), upcomingBans: [] /* announced bans have their own test */ };
     cached = { cards, meta, db: createCardDb(cards, [], [], [], meta, legality, file.aliases) };
   }
   return cached;

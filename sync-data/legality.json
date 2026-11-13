@@ -1,6 +1,6 @@
 {
  "schemaVersion": 1,
- "asOf": "2026-11-11",
+ "asOf": "2026-11-13",
  "note": "Reviewed snapshot from docs/research/rules.md section 9 and legality-and-data.md sections 2-3. Bans are by card name (every printing); `code` is the first printing and is asserted against the synced cards. Edit this file, not code, when the official lists change.",
  "hub": {
   "url": "https://playriftbound.com/en-us/rules-hub/",
@@ -31,6 +31,11 @@
    "key": "BAN-SEP",
    "url": "https://playriftbound.com/en-us/news/announcements/september-ban-list-updates-effective-september-18-2026/",
    "published": "2026-09-15"
+  },
+  {
+   "key": "BAN-NOV",
+   "url": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/",
+   "published": "2026-11-13"
   }
  ],
  "sets": [
@@ -246,6 +251,16 @@
    "effectiveFrom": "2026-07-24",
    "sourceUrl": "https://playriftbound.com/en-us/news/announcements/july-ban-list-updates/",
    "listedAs": "Master Yi, Wuju Bladesman"
-  }
+  },
+  { "name": "Riven, Broken Blade", "zone": "main", "code": "RAD-043", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Zhonya's Hourglass", "zone": "main", "code": "OGN-077", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Stellacorn Herder", "zone": "main", "code": "SFD-048", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Nocturne, Horrifying", "zone": "main", "code": "OGN-194", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Rhasa the Sunderer", "zone": "main", "code": "OGN-195", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Brynhir Thundersong", "zone": "main", "code": "OGN-026", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Dazzling Aurora", "zone": "main", "code": "OGN-160", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Baited Hook", "zone": "main", "code": "OGN-242", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Emperor's Dais", "zone": "battlefields", "code": "SFD-207", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" },
+  { "name": "Star Spring", "zone": "battlefields", "code": "UNL-215", "formats": ["standard-bo1", "standard-bo3", "2v2"], "effectiveFrom": "2026-11-23", "sourceUrl": "https://playriftbound.com/en-us/news/announcements/radiance-ban-list-updates-effective-november-23-2026/" }
  ]
 }

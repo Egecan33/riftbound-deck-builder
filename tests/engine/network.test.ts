@@ -254,7 +254,7 @@ describe('quotes', () => {
 
 describe('findLoops', () => {
   const pool = networkCards();
-  const db = createCardDb(pool, [], [], [], [], toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))));
+  const db = createCardDb(pool, [], [], [], [], { ...toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))), upcomingBans: [] /* announced bans have their own test */ });
   const ids = (...codes: string[]): string[] => codes.map((c) => card(c).id);
 
   it('finds the mutual pair The Syren + Miss Fortune, Captain and quotes both cards', () => {

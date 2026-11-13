@@ -63,19 +63,27 @@ const FFA: readonly Format[] = ['ffa3', 'ffa4'];
  * `ffa.useStandardBans` is on (or the caller forces it), every Standard ban also applies to ffa3 and ffa4.
  * That is a heuristic (rules.md §9) and the caller may switch it off.
  */
-export function toLegalityData(file: LegalityFile, opts: { ffaUsesStandardBans?: boolean } = {}): LegalityData {
+export function toLegalityData(file: LegalityFile, opts: { ffaUsesStandardBans?: boolean; today?: string } = {}): LegalityData {
   const ffa = opts.ffaUsesStandardBans ?? file.ffa.useStandardBans;
+  const today = opts.today ?? todayIso();
+  const all = file.bans.map((b) => {
+    const formats = [...b.formats];
+    if (ffa && STANDARD.some((f) => formats.includes(f))) for (const f of FFA) if (!formats.includes(f)) formats.push(f);
+    return { name: b.name, zone: b.zone, formats, effectiveFrom: b.effectiveFrom, sourceUrl: b.sourceUrl };
+  });
+  // A ban counts from its effective date. Announced bans that have not started yet are carried
+  // separately so the validator can warn about them without making today's decks illegal.
   return {
     asOf: file.asOf,
     sets: file.sets.map((s) => ({ code: s.code, name: s.name, legalFrom: s.legalFrom })),
-    bans: file.bans.map((b) => {
-      const formats = [...b.formats];
-      if (ffa && STANDARD.some((f) => formats.includes(f))) for (const f of FFA) if (!formats.includes(f)) formats.push(f);
-      return { name: b.name, zone: b.zone, formats, effectiveFrom: b.effectiveFrom, sourceUrl: b.sourceUrl };
-    }),
+    bans: all.filter((b) => b.effectiveFrom <= today),
+    upcomingBans: all.filter((b) => b.effectiveFrom > today),
     sideboardMax: file.sideboardMax,
   };
 }
+
+/** Today's date as YYYY-MM-DD; FORGE_TODAY pins it (the tests do, so their results do not change with the calendar). */
+export const todayIso = (): string => process.env.FORGE_TODAY ?? new Date().toISOString().slice(0, 10);
 
 /** Sets in release order (ties by code): the order used to pick a card's first printing. */
 export const setOrderOf = (file: LegalityFile): string[] =>

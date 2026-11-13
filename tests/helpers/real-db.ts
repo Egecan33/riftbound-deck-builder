@@ -26,7 +26,7 @@ function load() {
   try {
     const cards = loadCards(sql);
     // Legality is read from the reviewed file, like the fixture db, so the tests follow sync-data/legality.json.
-    const legality = toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data')));
+    const legality = { ...toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))), upcomingBans: [] /* announced bans have their own test */ };
     const db = createCardDb(cards, [], [], [], loadLegendMeta(sql), legality, loadAliases(sql, cards, readOverridesFile()));
     const lists = new Map<string, MetaList>();
     const rows = sql.prepare('SELECT id, name, format, legend_id AS legend, champion_id AS champion, complete, banned FROM meta_decks ORDER BY id').all() as

@@ -35,7 +35,7 @@ export function theoryDb(): { db: CardDb; decks: FixtureDeck[] } {
   // Every legend stays in: which pairs can share a deck is decided by the legends of the pool.
   const nodes = cards.filter((c) => ids.has(c.id) || c.type === 'legend');
   const edges = buildEdges(nodes, { forbidden: file.forbiddenInteractions, removedTraits: removedTraitsOf(overrides) });
-  const legality = toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data')));
+  const legality = { ...toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))), upcomingBans: [] /* announced bans have their own test */ };
   const profiles = legendProfiles(createCardDb(cards, features));
   cached = { db: createCardDb(cards, features, edges, profiles, meta, legality), decks };
   return cached;

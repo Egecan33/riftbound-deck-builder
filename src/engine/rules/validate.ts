@@ -49,7 +49,7 @@ const total = (m: ReadonlyMap<string, number>): number => [...m.values()].reduce
 
 // ---- per-database lookups (the ban list and set legality are data: sync-data/legality.json) ----
 
-interface Lookups { bans: Map<Format, Map<string, Ban>>; unknownBans: Ban[]; legalSets: Set<string> | null; runes: Map<Domain, Card> }
+interface Lookups { bans: Map<Format, Map<string, Ban>>; upcoming: Map<Format, Map<string, Ban>>; unknownBans: Ban[]; legalSets: Set<string> | null; runes: Map<Domain, Card> }
 const lookupCache = new WeakMap<CardDb, { legality: LegalityData; value: Lookups }>();
 
 function lookups(db: CardDb): Lookups {
@@ -66,6 +66,15 @@ function lookups(db: CardDb): Lookups {
       (bans.get(f) as Map<string, Ban>).set(card.id, ban);
     }
   }
+  const upcoming = new Map<Format, Map<string, Ban>>();
+  for (const ban of legality.upcomingBans ?? []) {
+    const card = db.byName(ban.name);
+    if (!card) { unknownBans.push(ban); continue; }
+    for (const f of ban.formats) {
+      if (!upcoming.has(f)) upcoming.set(f, new Map());
+      (upcoming.get(f) as Map<string, Ban>).set(card.id, ban);
+    }
+  }
   // A set is legal once its date has come, measured against the snapshot's own date so the result is reproducible.
   const legalSets = legality.sets.length === 0 ? null
     : new Set(legality.sets.filter((s) => s.legalFrom !== null && (!legality.asOf || s.legalFrom <= legality.asOf)).map((s) => s.code.toUpperCase()));
@@ -73,14 +82,14 @@ function lookups(db: CardDb): Lookups {
   for (const c of db.all()) {
     if (c.type === 'rune' && c.superTypes.includes('basic') && c.domains.length === 1 && !runes.has(c.domains[0])) runes.set(c.domains[0], c);
   }
-  const value = { bans, unknownBans, legalSets, runes };
+  const value = { bans, upcoming, unknownBans, legalSets, runes };
   lookupCache.set(db, { legality, value });
   return value;
 }
 
 interface Ctx {
   format: Format; rules: FormatRules; legend: Card | null; identity: Set<Domain>; legendTag: string | null;
-  bans: Map<string, Ban>; legalSets: Set<string> | null;
+  bans: Map<string, Ban>; upcoming: Map<string, Ban>; legalSets: Set<string> | null;
 }
 
 function contextOf(deck: Deck, db: CardDb): Ctx {
@@ -92,6 +101,7 @@ function contextOf(deck: Deck, db: CardDb): Ctx {
     identity: new Set(legend?.domains ?? []),
     legendTag: legend ? championTagOf(legend) : null,
     bans: look.bans.get(rules.banListOf) ?? new Map(),
+    upcoming: look.upcoming.get(rules.banListOf) ?? new Map(),
     legalSets: deck.format === 'casual' ? null : look.legalSets,
   };
 }
@@ -139,7 +149,12 @@ function cardIssues(card: Card, zone: Zone, ctx: Ctx): Violation[] {
     const ffa = FFA.has(ctx.format);
     const note = ffa ? ' (interpretation: free-for-all has no official ban list; the Standard list is applied)' : '';
     out.push(violation(zone === 'legend' ? 'LEGEND_BANNED' : 'CARD_BANNED', 'error', 'TR 601.2.d',
-      `${card.name} is banned in ${formatName(ctx.format)} since ${ban.effectiveFrom}${note}.`, ids, ffa));
+      `${card.name} is banned in ${formatName(ctx.format)} from ${ban.effectiveFrom}${note}.`, ids, ffa));
+  }
+  const soon = ctx.upcoming.get(card.id);
+  if (soon && !ban) {
+    out.push(violation(zone === 'legend' ? 'LEGEND_BANNED_SOON' : 'CARD_BANNED_SOON', 'warning', 'TR 601.2.d',
+      `${card.name} will be banned in ${formatName(ctx.format)} from ${soon.effectiveFrom}; legal until then.`, ids, FFA.has(ctx.format)));
   }
   if (ctx.legalSets && !card.sets.some((s) => (ctx.legalSets as Set<string>).has(s.toUpperCase()))) {
     out.push(violation('CARD_NOT_IN_FORMAT', 'error', 'CR 103.3.e, TR 601.2.a, 601.3.c',

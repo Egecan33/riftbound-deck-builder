@@ -7,6 +7,8 @@ import { describe, expect, it } from 'vitest';
 import { createCardDb } from '@/engine/carddb';
 import { cardFitsDeck, eligibleChampions, isLegal, validateDeck } from '@/engine/rules/validate';
 import type { Card, CardDb, Deck, DeckEntry, Domain, Format, Violation } from '@/engine/types';
+import path from 'node:path';
+import { readLegalityFile, toLegalityData } from '@/server/syncdata';
 import { hasRealDb, realDb } from '../helpers/real-db';
 
 const FORMATS: Format[] = ['standard-bo1', 'standard-bo3', '2v2', 'ffa3', 'ffa4', 'casual'];
@@ -129,6 +131,18 @@ describe.skipIf(!hasRealDb())('rules engine on the real synced pool', () => {
       }
     }
     done();
+  });
+
+  it('an announced ban (November 23 2026 list) warns until its date and is an error from that day', () => {
+    const file = readLegalityFile(path.join(process.cwd(), 'sync-data'));
+    const star = need('Star Spring');
+    const deck = { ...base(legends[0]), battlefields: [star.id, ...fields.slice(0, 2).map((c) => c.id)] };
+    const codes = (today: string) => {
+      const dated = createCardDb([...db.all()], [], [], [], [], toLegalityData(file, { today }));
+      return validateDeck(deck, dated).map((v) => `${v.severity}:${v.code}`);
+    };
+    expect(codes('2026-11-22')).toEqual(['warning:CARD_BANNED_SOON']);
+    expect(codes('2026-11-23')).toEqual(['error:CARD_BANNED']);
   });
 
   it('every legend x every champion unit of the pool as Chosen Champion: only tag-matching, in-identity, unbanned ones pass', () => {

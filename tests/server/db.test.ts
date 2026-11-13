@@ -89,7 +89,7 @@ describe('database and card steps', () => {
     const lines: string[] = [];
     const page = '<p>Last updated: December 1, 2026</p>';
     const info = await syncLegality(empty, (l) => lines.push(l), { http: { minGapMs: 0, fetchImpl: (async () => new Response(page)) as typeof fetch } });
-    expect(info).toMatchObject({ bans: 13, sets: 6, hubNewest: '2026-12-01', stale: true });
+    expect(info).toMatchObject({ bans: 23, sets: 6, hubNewest: '2026-12-01', stale: true });
     expect(lines.join('\n')).toMatch(/Rules Hub was updated 2026-12-01/);
     const down = await syncLegality(empty, quiet, { http: { minGapMs: 0, maxAttempts: 1, fetchImpl: (async () => { throw new Error('offline'); }) as typeof fetch } });
     expect(down).toMatchObject({ hubChecked: false, stale: false });
@@ -122,14 +122,14 @@ describe('database and card steps', () => {
 describe('sync-data files', () => {
   const legality = readLegalityFile();
 
-  it('legality: six sets, twelve Standard bans, the 2v2 legend ban, side deck of 10, sources on every ban', () => {
+  it('legality: six sets, twenty-two Standard bans (Nov 23 update included), the 2v2 legend ban, side deck of 10, sources on every ban', () => {
     expect(validateLegality(legality)).toEqual([]);
     expect(legality.sets.map((s) => s.code).sort()).toEqual(['OGN', 'OGS', 'RAD', 'SFD', 'UNL', 'VEN']);
     expect(setOrderOf(legality)).toEqual(['OGN', 'OGS', 'SFD', 'UNL', 'VEN', 'RAD']);
     expect(legality.sideboardMax).toBe(10);
     const standard = legality.bans.filter((b) => b.formats.includes('standard-bo1') && b.formats.includes('standard-bo3'));
-    expect(standard).toHaveLength(12);
-    expect(standard.filter((b) => b.zone === 'battlefields')).toHaveLength(5);
+    expect(standard).toHaveLength(22);
+    expect(standard.filter((b) => b.zone === 'battlefields')).toHaveLength(7);
     expect(standard.every((b) => b.formats.includes('2v2'))).toBe(true);
     const only2v2 = legality.bans.filter((b) => !b.formats.includes('standard-bo1'));
     expect(only2v2.map((b) => [b.name, b.zone, b.code, b.formats])).toEqual([['Wuju Bladesman', 'legend', 'OGS-019', ['2v2']]]);
@@ -143,6 +143,15 @@ describe('sync-data files', () => {
     expect(off.bans.filter((b) => b.formats.includes('ffa3') || b.formats.includes('ffa4'))).toHaveLength(0);
     expect(on.bans.filter((b) => b.formats.includes('casual'))).toHaveLength(0);
     expect(on.bans.find((b) => b.name === 'Wuju Bladesman')?.formats).toEqual(['2v2']);
+  });
+
+  it('a ban counts from its effective date; announced bans wait in upcomingBans', () => {
+    const before = toLegalityData(legality, { today: '2026-11-22' });
+    const after = toLegalityData(legality, { today: '2026-11-23' });
+    expect(before.bans.filter((b) => b.formats.includes('standard-bo3'))).toHaveLength(12);
+    expect(before.upcomingBans?.map((b) => b.name)).toContain('Riven, Broken Blade');
+    expect(after.bans.filter((b) => b.formats.includes('standard-bo3'))).toHaveLength(22);
+    expect(after.upcomingBans).toEqual([]);
   });
 
   it('errata: 70 reviewed entries with sources and codes; overrides name their reason and source', () => {

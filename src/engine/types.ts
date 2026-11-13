@@ -74,7 +74,8 @@ export interface CardEdge { a: string; b: string; synergy: number; antisynergy: 
 export interface LegalityData {
   asOf: string;                                    // ISO date of the reviewed snapshot
   sets: { code: string; name: string; legalFrom: string | null }[];
-  bans: { name: string; zone: Zone; formats: Format[]; effectiveFrom: string; sourceUrl: string }[];
+  bans: { name: string; zone: Zone; formats: Format[]; effectiveFrom: string; sourceUrl: string }[];          // in effect today
+  upcomingBans?: { name: string; zone: Zone; formats: Format[]; effectiveFrom: string; sourceUrl: string }[]; // announced, not yet in effect
   sideboardMax: number;
 }
 

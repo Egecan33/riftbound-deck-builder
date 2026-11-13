@@ -28,7 +28,7 @@ export function scoredFixture(): { db: CardDb; decks: FixtureDeck[] } {
   }
   const features = ingestFeatures(cards);
   const edges = buildEdges(cards.filter((c) => ids.has(c.id)));
-  const legality = toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data')));
+  const legality = { ...toLegalityData(readLegalityFile(path.join(process.cwd(), 'sync-data'))), upcomingBans: [] /* announced bans have their own test */ };
   const meta = cards.map((c) => plain.legendMeta(c.id)).filter((m): m is LegendMeta => !!m);
   const withFeatures = createCardDb(cards, features, edges, [], meta, legality);
   const db = createCardDb(cards, features, edges, legendProfiles(withFeatures), meta, legality);
