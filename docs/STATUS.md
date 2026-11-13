@@ -2,7 +2,7 @@
 
 This file is the single place a new session reads to continue the build if the previous one was cut off. Update it at every stage boundary, in the same commit as the stage's work.
 
-Released: v0.1.2 on 2026-11-13 with macOS arm64, macOS x64 and Windows x64 bundles (v0.1.0 and v0.1.1 are incomplete earlier attempts: Windows failed on CRLF fixtures, then Intel macOS on a 5 s test timeout).
+Released: v0.1.3 on 2026-11-13 (November 23 ban list, date-aware bans) and v0.1.2 before it, with macOS arm64, macOS x64 and Windows x64 bundles (v0.1.0 and v0.1.1 are incomplete earlier attempts: Windows failed on CRLF fixtures, then Intel macOS on a 5 s test timeout).
 
 Last updated: 2026-11-12. Stages 3-6 (plan Tasks 3-12: engine, API and UI, end-to-end tests, calibration and review) done; the build continues at plan Task 13 (README and downloads for macOS and Windows).
 
